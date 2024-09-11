@@ -6,19 +6,23 @@ on:
 
 jobs:
   triggered_job:
-    
     runs-on: ubuntu-latest
     
     permissions:
       contents: write
       issues: write
-      
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Cleanup old client
-        run: rm -rf celenium-api-go/
+      - name: Delete all files except .github/workflows and LICENSE
+        run: |
+          find . -mindepth 1 \
+            -not -path './.git*' \
+            -not -path './.github/workflows*' \
+            -not -name 'LICENSE' \
+            -exec rm -rf {} +
 
       - name: Generate API client
         run: |
@@ -26,9 +30,9 @@ jobs:
             -v ${{ github.workspace }}:/local openapitools/openapi-generator-cli generate \
             -i https://raw.githubusercontent.com/celenium-io/celestia-indexer/${{ github.event.client_payload.tag }}/cmd/api/docs/swagger.json \
             -g go \
-            -o /local/celenium-api-go \
-            -p packageName=celenium --skip-validate-spec
-          
+            -p packageName=celenium --skip-validate-spec \
+            -o /local --git-repo-id celenium-api-go --git-user-id celenium-io
+
       - name: Configure Git
         run: |
           git config --global user.name "GitHub Actions Bot"
