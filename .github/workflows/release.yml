@@ -1,0 +1,45 @@
+name: Generate Celenium API
+
+on:
+  repository_dispatch:
+    types: [tag_created]
+
+jobs:
+  triggered_job:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      issues: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Delete all files except .github/workflows and LICENSE
+        run: |
+          find . -mindepth 1 \
+            -not -path './.git*' \
+            -not -path './.github/workflows*' \
+            -not -name 'LICENSE' \
+            -exec rm -rf {} +
+
+      - name: Generate API client
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/local openapitools/openapi-generator-cli generate \
+            -i https://raw.githubusercontent.com/celenium-io/celestia-indexer/${{ github.event.client_payload.tag }}/cmd/api/docs/swagger.json \
+            -g go \
+            -p packageName=celenium --skip-validate-spec \
+            -o /local --git-repo-id celenium-api-go --git-user-id celenium-io
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      - name: Commit and push changes
+        run: |
+          git add .
+          git commit -m "${{ github.event.client_payload.tag }}"
+          git push https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}.git
