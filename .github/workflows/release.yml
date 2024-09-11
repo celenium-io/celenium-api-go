@@ -1,0 +1,41 @@
+name: Generate Celenium API
+
+on:
+  repository_dispatch:
+    types: [tag_created]
+
+jobs:
+  triggered_job:
+    
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      issues: write
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Cleanup old client
+        run: rm -rf celenium-api-go/
+
+      - name: Generate API client
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/local openapitools/openapi-generator-cli generate \
+            -i https://raw.githubusercontent.com/celenium-io/celestia-indexer/${{ github.event.client_payload.tag }}/cmd/api/docs/swagger.json \
+            -g go \
+            -o /local/celenium-api-go \
+            -p packageName=celenium --skip-validate-spec
+          
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      - name: Commit and push changes
+        run: |
+          git add .
+          git commit -m "${{ github.event.client_payload.tag }}"
+          git push https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}.git
