@@ -5,7 +5,8 @@ on:
     types: [tag_created]
 
 jobs:
-  triggered_job:
+  generate_api_job:
+    name: Generate API & GitHub push
     runs-on: ubuntu-latest
     
     permissions:
@@ -43,3 +44,19 @@ jobs:
           git add .
           git commit -m "${{ github.event.client_payload.tag }}"
           git push https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}.git
+          
+  release:
+    name: Release
+    needs: generate_api_job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Publish GitHub Release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.PAT }}
+          prerelease: false
+          automatic_release_tag: ${{ github.event.client_payload.tag }}
