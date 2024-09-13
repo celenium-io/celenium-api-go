@@ -113,6 +113,14 @@
 
 * `EventTypeCancelUnbondingDelegation` (value: `"cancel_unbonding_delegation"`)
 
+* `EventTypeActiveProposal` (value: `"active_proposal"`)
+
+* `EventTypeInactiveProposal` (value: `"inactive_proposal"`)
+
+* `EventTypeIcs27Packet` (value: `"ics27_packet"`)
+
+* `EventTypeChannelCloseConfirm` (value: `"channel_close_confirm"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
