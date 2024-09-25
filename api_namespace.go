@@ -27,12 +27,12 @@ type NamespaceAPIService service
 type ApiGetBlobRequest struct {
 	ctx context.Context
 	ApiService *NamespaceAPIService
-	commitment *string
+	request *HandlerPostBlobRequest
 }
 
-// Blob commitment
-func (r ApiGetBlobRequest) Commitment(commitment string) ApiGetBlobRequest {
-	r.commitment = &commitment
+// Request body containing height, commitment and namespace hash
+func (r ApiGetBlobRequest) Request(request HandlerPostBlobRequest) ApiGetBlobRequest {
+	r.request = &request
 	return r
 }
 
@@ -43,7 +43,7 @@ func (r ApiGetBlobRequest) Execute() (*ResponsesBlob, *http.Response, error) {
 /*
 GetBlob Get namespace blob by commitment on height
 
-Returns blob
+Returns blob.
 To authorize your requests you have to select the required tariff on our site. Then you receive api key to authorize. Api key should be passed via request header `apikey`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -76,8 +76,8 @@ func (a *NamespaceAPIService) GetBlobExecute(r ApiGetBlobRequest) (*ResponsesBlo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.commitment == nil {
-		return localVarReturnValue, nil, reportError("commitment is required and must be specified")
+	if r.request == nil {
+		return localVarReturnValue, nil, reportError("request is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -98,7 +98,7 @@ func (a *NamespaceAPIService) GetBlobExecute(r ApiGetBlobRequest) (*ResponsesBlo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.commitment
+	localVarPostBody = r.request
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -383,12 +383,12 @@ func (a *NamespaceAPIService) GetBlobLogsExecute(r ApiGetBlobLogsRequest) ([]Res
 type ApiGetBlobMetadataRequest struct {
 	ctx context.Context
 	ApiService *NamespaceAPIService
-	commitment *string
+	request *HandlerPostBlobRequest
 }
 
-// Blob commitment
-func (r ApiGetBlobMetadataRequest) Commitment(commitment string) ApiGetBlobMetadataRequest {
-	r.commitment = &commitment
+// Request body containing height, commitment and namespace hash
+func (r ApiGetBlobMetadataRequest) Request(request HandlerPostBlobRequest) ApiGetBlobMetadataRequest {
+	r.request = &request
 	return r
 }
 
@@ -400,6 +400,7 @@ func (r ApiGetBlobMetadataRequest) Execute() (*ResponsesBlobLog, *http.Response,
 GetBlobMetadata Get blob metadata by commitment on height
 
 Returns blob metadata
+To authorize your requests you have to select the required tariff on our site. Then you receive api key to authorize. Api key should be passed via request header `apikey`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetBlobMetadataRequest
@@ -431,8 +432,8 @@ func (a *NamespaceAPIService) GetBlobMetadataExecute(r ApiGetBlobMetadataRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.commitment == nil {
-		return localVarReturnValue, nil, reportError("commitment is required and must be specified")
+	if r.request == nil {
+		return localVarReturnValue, nil, reportError("request is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -453,7 +454,7 @@ func (a *NamespaceAPIService) GetBlobMetadataExecute(r ApiGetBlobMetadataRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.commitment
+	localVarPostBody = r.request
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

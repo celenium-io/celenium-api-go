@@ -24,6 +24,8 @@ type ResponsesRollupWithStats struct {
 	BlobsCount *int32 `json:"blobs_count,omitempty"`
 	BlobsCountPct *float32 `json:"blobs_count_pct,omitempty"`
 	Bridge *string `json:"bridge,omitempty"`
+	Category *string `json:"category,omitempty"`
+	Compression *string `json:"compression,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Explorer *string `json:"explorer,omitempty"`
 	Fee *string `json:"fee,omitempty"`
@@ -36,11 +38,14 @@ type ResponsesRollupWithStats struct {
 	Links []string `json:"links,omitempty"`
 	Logo *string `json:"logo,omitempty"`
 	Name *string `json:"name,omitempty"`
+	Provider *string `json:"provider,omitempty"`
 	Size *int32 `json:"size,omitempty"`
 	SizePct *float32 `json:"size_pct,omitempty"`
 	Slug *string `json:"slug,omitempty"`
 	Stack *string `json:"stack,omitempty"`
 	Twitter *string `json:"twitter,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Vm *string `json:"vm,omitempty"`
 	Website *string `json:"website,omitempty"`
 }
 
@@ -155,6 +160,70 @@ func (o *ResponsesRollupWithStats) HasBridge() bool {
 // SetBridge gets a reference to the given string and assigns it to the Bridge field.
 func (o *ResponsesRollupWithStats) SetBridge(v string) {
 	o.Bridge = &v
+}
+
+// GetCategory returns the Category field value if set, zero value otherwise.
+func (o *ResponsesRollupWithStats) GetCategory() string {
+	if o == nil || IsNil(o.Category) {
+		var ret string
+		return ret
+	}
+	return *o.Category
+}
+
+// GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithStats) GetCategoryOk() (*string, bool) {
+	if o == nil || IsNil(o.Category) {
+		return nil, false
+	}
+	return o.Category, true
+}
+
+// HasCategory returns a boolean if a field has been set.
+func (o *ResponsesRollupWithStats) HasCategory() bool {
+	if o != nil && !IsNil(o.Category) {
+		return true
+	}
+
+	return false
+}
+
+// SetCategory gets a reference to the given string and assigns it to the Category field.
+func (o *ResponsesRollupWithStats) SetCategory(v string) {
+	o.Category = &v
+}
+
+// GetCompression returns the Compression field value if set, zero value otherwise.
+func (o *ResponsesRollupWithStats) GetCompression() string {
+	if o == nil || IsNil(o.Compression) {
+		var ret string
+		return ret
+	}
+	return *o.Compression
+}
+
+// GetCompressionOk returns a tuple with the Compression field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithStats) GetCompressionOk() (*string, bool) {
+	if o == nil || IsNil(o.Compression) {
+		return nil, false
+	}
+	return o.Compression, true
+}
+
+// HasCompression returns a boolean if a field has been set.
+func (o *ResponsesRollupWithStats) HasCompression() bool {
+	if o != nil && !IsNil(o.Compression) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompression gets a reference to the given string and assigns it to the Compression field.
+func (o *ResponsesRollupWithStats) SetCompression(v string) {
+	o.Compression = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -541,6 +610,38 @@ func (o *ResponsesRollupWithStats) SetName(v string) {
 	o.Name = &v
 }
 
+// GetProvider returns the Provider field value if set, zero value otherwise.
+func (o *ResponsesRollupWithStats) GetProvider() string {
+	if o == nil || IsNil(o.Provider) {
+		var ret string
+		return ret
+	}
+	return *o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithStats) GetProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.Provider) {
+		return nil, false
+	}
+	return o.Provider, true
+}
+
+// HasProvider returns a boolean if a field has been set.
+func (o *ResponsesRollupWithStats) HasProvider() bool {
+	if o != nil && !IsNil(o.Provider) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvider gets a reference to the given string and assigns it to the Provider field.
+func (o *ResponsesRollupWithStats) SetProvider(v string) {
+	o.Provider = &v
+}
+
 // GetSize returns the Size field value if set, zero value otherwise.
 func (o *ResponsesRollupWithStats) GetSize() int32 {
 	if o == nil || IsNil(o.Size) {
@@ -701,6 +802,70 @@ func (o *ResponsesRollupWithStats) SetTwitter(v string) {
 	o.Twitter = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ResponsesRollupWithStats) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithStats) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *ResponsesRollupWithStats) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *ResponsesRollupWithStats) SetType(v string) {
+	o.Type = &v
+}
+
+// GetVm returns the Vm field value if set, zero value otherwise.
+func (o *ResponsesRollupWithStats) GetVm() string {
+	if o == nil || IsNil(o.Vm) {
+		var ret string
+		return ret
+	}
+	return *o.Vm
+}
+
+// GetVmOk returns a tuple with the Vm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithStats) GetVmOk() (*string, bool) {
+	if o == nil || IsNil(o.Vm) {
+		return nil, false
+	}
+	return o.Vm, true
+}
+
+// HasVm returns a boolean if a field has been set.
+func (o *ResponsesRollupWithStats) HasVm() bool {
+	if o != nil && !IsNil(o.Vm) {
+		return true
+	}
+
+	return false
+}
+
+// SetVm gets a reference to the given string and assigns it to the Vm field.
+func (o *ResponsesRollupWithStats) SetVm(v string) {
+	o.Vm = &v
+}
+
 // GetWebsite returns the Website field value if set, zero value otherwise.
 func (o *ResponsesRollupWithStats) GetWebsite() string {
 	if o == nil || IsNil(o.Website) {
@@ -752,6 +917,12 @@ func (o ResponsesRollupWithStats) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Bridge) {
 		toSerialize["bridge"] = o.Bridge
 	}
+	if !IsNil(o.Category) {
+		toSerialize["category"] = o.Category
+	}
+	if !IsNil(o.Compression) {
+		toSerialize["compression"] = o.Compression
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -788,6 +959,9 @@ func (o ResponsesRollupWithStats) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+	if !IsNil(o.Provider) {
+		toSerialize["provider"] = o.Provider
+	}
 	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size
 	}
@@ -802,6 +976,12 @@ func (o ResponsesRollupWithStats) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Twitter) {
 		toSerialize["twitter"] = o.Twitter
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Vm) {
+		toSerialize["vm"] = o.Vm
 	}
 	if !IsNil(o.Website) {
 		toSerialize["website"] = o.Website

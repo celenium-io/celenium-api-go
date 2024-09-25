@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **BlobsCount** | Pointer to **int32** |  | [optional] 
 **BlobsCountPct** | Pointer to **float32** |  | [optional] 
 **Bridge** | Pointer to **string** |  | [optional] 
+**Category** | Pointer to **string** |  | [optional] 
+**Compression** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Explorer** | Pointer to **string** |  | [optional] 
 **Fee** | Pointer to **string** |  | [optional] 
@@ -19,11 +21,14 @@ Name | Type | Description | Notes
 **Links** | Pointer to **[]string** |  | [optional] 
 **Logo** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**Provider** | Pointer to **string** |  | [optional] 
 **Size** | Pointer to **int32** |  | [optional] 
 **SizePct** | Pointer to **float32** |  | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 **Stack** | Pointer to **string** |  | [optional] 
 **Twitter** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
+**Vm** | Pointer to **string** |  | [optional] 
 **Website** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -119,6 +124,56 @@ SetBridge sets Bridge field to given value.
 `func (o *ResponsesRollupWithStats) HasBridge() bool`
 
 HasBridge returns a boolean if a field has been set.
+
+### GetCategory
+
+`func (o *ResponsesRollupWithStats) GetCategory() string`
+
+GetCategory returns the Category field if non-nil, zero value otherwise.
+
+### GetCategoryOk
+
+`func (o *ResponsesRollupWithStats) GetCategoryOk() (*string, bool)`
+
+GetCategoryOk returns a tuple with the Category field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCategory
+
+`func (o *ResponsesRollupWithStats) SetCategory(v string)`
+
+SetCategory sets Category field to given value.
+
+### HasCategory
+
+`func (o *ResponsesRollupWithStats) HasCategory() bool`
+
+HasCategory returns a boolean if a field has been set.
+
+### GetCompression
+
+`func (o *ResponsesRollupWithStats) GetCompression() string`
+
+GetCompression returns the Compression field if non-nil, zero value otherwise.
+
+### GetCompressionOk
+
+`func (o *ResponsesRollupWithStats) GetCompressionOk() (*string, bool)`
+
+GetCompressionOk returns a tuple with the Compression field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompression
+
+`func (o *ResponsesRollupWithStats) SetCompression(v string)`
+
+SetCompression sets Compression field to given value.
+
+### HasCompression
+
+`func (o *ResponsesRollupWithStats) HasCompression() bool`
+
+HasCompression returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -420,6 +475,31 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### GetProvider
+
+`func (o *ResponsesRollupWithStats) GetProvider() string`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *ResponsesRollupWithStats) GetProviderOk() (*string, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *ResponsesRollupWithStats) SetProvider(v string)`
+
+SetProvider sets Provider field to given value.
+
+### HasProvider
+
+`func (o *ResponsesRollupWithStats) HasProvider() bool`
+
+HasProvider returns a boolean if a field has been set.
+
 ### GetSize
 
 `func (o *ResponsesRollupWithStats) GetSize() int32`
@@ -544,6 +624,56 @@ SetTwitter sets Twitter field to given value.
 `func (o *ResponsesRollupWithStats) HasTwitter() bool`
 
 HasTwitter returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *ResponsesRollupWithStats) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *ResponsesRollupWithStats) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *ResponsesRollupWithStats) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *ResponsesRollupWithStats) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
+### GetVm
+
+`func (o *ResponsesRollupWithStats) GetVm() string`
+
+GetVm returns the Vm field if non-nil, zero value otherwise.
+
+### GetVmOk
+
+`func (o *ResponsesRollupWithStats) GetVmOk() (*string, bool)`
+
+GetVmOk returns a tuple with the Vm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVm
+
+`func (o *ResponsesRollupWithStats) SetVm(v string)`
+
+SetVm sets Vm field to given value.
+
+### HasVm
+
+`func (o *ResponsesRollupWithStats) HasVm() bool`
+
+HasVm returns a boolean if a field has been set.
 
 ### GetWebsite
 

@@ -971,15 +971,15 @@ paths:
       - namespace
     post:
       description: |-
-        Returns blob
+        Returns blob.
         To authorize your requests you have to select the required tariff on our site. Then you receive api key to authorize. Api key should be passed via request header `apikey`.
       operationId: get-blob
       requestBody:
         content:
           application/json:
             schema:
-              type: string
-        description: Blob commitment
+              $ref: '#/components/schemas/handler.postBlobRequest'
+        description: "Request body containing height, commitment and namespace hash"
         required: true
       responses:
         "200":
@@ -997,17 +997,19 @@ paths:
       summary: Get namespace blob by commitment on height
       tags:
       - namespace
-      x-codegen-request-body-name: commitment
+      x-codegen-request-body-name: request
   /blob/metadata:
     post:
-      description: Returns blob metadata
+      description: |-
+        Returns blob metadata
+        To authorize your requests you have to select the required tariff on our site. Then you receive api key to authorize. Api key should be passed via request header `apikey`.
       operationId: get-blob-metadata
       requestBody:
         content:
           application/json:
             schema:
-              type: string
-        description: Blob commitment
+              $ref: '#/components/schemas/handler.postBlobRequest'
+        description: "Request body containing height, commitment and namespace hash"
         required: true
       responses:
         "200":
@@ -1025,7 +1027,7 @@ paths:
       summary: Get blob metadata by commitment on height
       tags:
       - namespace
-      x-codegen-request-body-name: commitment
+      x-codegen-request-body-name: request
   /block:
     get:
       description: List blocks info
@@ -4360,6 +4362,23 @@ components:
         message:
           type: string
       type: object
+    handler.postBlobRequest:
+      properties:
+        commitment:
+          example: vbGakK59+Non81TE3ULg5Ve5ufT9SFm/bCyY+WLR3gg=
+          type: string
+        hash:
+          example: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
+          type: string
+        height:
+          example: 123456
+          minimum: 1
+          type: integer
+      required:
+      - commitment
+      - hash
+      - height
+      type: object
     responses.Address:
       description: Celestia address information
       example:
@@ -5474,8 +5493,11 @@ components:
         stack: op_stack
         website: https://website.com
         description: Long rollup description
+        type: settled
         twitter: https://x.com/account
         l2_beat: https://github.com/account
+        provider: name
+        vm: evm
         explorer: https://explorer.karak.network/
         name: Rollup name
         logo: https://some_link.com/image.png
@@ -5484,10 +5506,20 @@ components:
         - links
         bridge: https://github.com/account
         id: 321
+        category: nft
+        compression: zip
         slug: rollup_slug
       properties:
         bridge:
           example: https://github.com/account
+          format: string
+          type: string
+        category:
+          example: nft
+          format: string
+          type: string
+        compression:
+          example: zip
           format: string
           type: string
         description:
@@ -5522,6 +5554,10 @@ components:
           example: Rollup name
           format: string
           type: string
+        provider:
+          example: name
+          format: string
+          type: string
         slug:
           example: rollup_slug
           format: string
@@ -5532,6 +5568,14 @@ components:
           type: string
         twitter:
           example: https://x.com/account
+          format: string
+          type: string
+        type:
+          example: settled
+          format: string
+          type: string
+        vm:
+          example: evm
           format: string
           type: string
         website:
@@ -5609,28 +5653,33 @@ components:
       type: object
     responses.RollupWithDayStats:
       example:
-        mb_price: "100"
         namespace_count: 100
-        github: https://github.com/account
         stack: op_stack
-        website: https://website.com
-        total_size: 100
         description: Long rollup description
-        avg_size: 100
+        type: settled
         blobs_count: 100
-        pfb_count: 100
         twitter: https://x.com/account
         l2_beat: https://l2beat.com/scaling/projects/karak
-        blobs_per_pfb: 100.0
+        provider: name
         total_fee: "100"
-        explorer: https://explorer.karak.network/
-        name: Rollup name
         logo: https://some_link.com/image.png
-        bridge: https://github.com/account
         id: 321
         throughput: 100
-        fee_per_pfb: "100"
         slug: rollup_slug
+        mb_price: "100"
+        github: https://github.com/account
+        website: https://website.com
+        total_size: 100
+        avg_size: 100
+        pfb_count: 100
+        blobs_per_pfb: 100.0
+        vm: evm
+        explorer: https://explorer.karak.network/
+        name: Rollup name
+        bridge: https://github.com/account
+        category: nft
+        compression: zip
+        fee_per_pfb: "100"
       properties:
         avg_size:
           example: 100
@@ -5646,6 +5695,14 @@ components:
           type: number
         bridge:
           example: https://github.com/account
+          format: string
+          type: string
+        category:
+          example: nft
+          format: string
+          type: string
+        compression:
+          example: zip
           format: string
           type: string
         description:
@@ -5692,6 +5749,10 @@ components:
           example: 100
           format: integer
           type: integer
+        provider:
+          example: name
+          format: string
+          type: string
         slug:
           example: rollup_slug
           format: string
@@ -5716,6 +5777,14 @@ components:
           example: https://x.com/account
           format: string
           type: string
+        type:
+          example: settled
+          format: string
+          type: string
+        vm:
+          example: evm
+          format: string
+          type: string
         website:
           example: https://website.com
           format: string
@@ -5723,29 +5792,34 @@ components:
       type: object
     responses.RollupWithStats:
       example:
-        github: https://github.com/account
         stack: op_stack
-        website: https://website.com
-        size_pct: 0.9876
         fee: "123.456789"
         description: Long rollup description
+        type: settled
         blobs_count: 2
         twitter: https://x.com/account
         l2_beat: https://l2beat.com/scaling/projects/karak
-        size: 1000
-        explorer: https://explorer.karak.network/
-        last_message_time: 2023-07-04T03:10:57Z
-        name: Rollup name
-        fee_pct: 0.9876
+        provider: name
         logo: https://some_link.com/image.png
         links:
         - links
         - links
-        bridge: https://github.com/account
         id: 321
-        first_message_time: 2023-07-04T03:10:57Z
         blobs_count_pct: 0.9876
         slug: rollup_slug
+        github: https://github.com/account
+        website: https://website.com
+        size_pct: 0.9876
+        size: 1000
+        vm: evm
+        explorer: https://explorer.karak.network/
+        last_message_time: 2023-07-04T03:10:57Z
+        name: Rollup name
+        fee_pct: 0.9876
+        bridge: https://github.com/account
+        category: nft
+        compression: zip
+        first_message_time: 2023-07-04T03:10:57Z
       properties:
         blobs_count:
           example: 2
@@ -5757,6 +5831,14 @@ components:
           type: number
         bridge:
           example: https://github.com/account
+          format: string
+          type: string
+        category:
+          example: nft
+          format: string
+          type: string
+        compression:
+          example: zip
           format: string
           type: string
         description:
@@ -5807,6 +5889,10 @@ components:
           example: Rollup name
           format: string
           type: string
+        provider:
+          example: name
+          format: string
+          type: string
         size:
           example: 1000
           format: integer
@@ -5825,6 +5911,14 @@ components:
           type: string
         twitter:
           example: https://x.com/account
+          format: string
+          type: string
+        type:
+          example: settled
+          format: string
+          type: string
+        vm:
+          example: evm
           format: string
           type: string
         website:

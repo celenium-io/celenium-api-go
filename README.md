@@ -164,6 +164,7 @@ Class | Method | HTTP request | Description
 
  - [GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus](docs/GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus.md)
  - [HandlerError](docs/HandlerError.md)
+ - [HandlerPostBlobRequest](docs/HandlerPostBlobRequest.md)
  - [ResponsesAddress](docs/ResponsesAddress.md)
  - [ResponsesBalance](docs/ResponsesBalance.md)
  - [ResponsesBlob](docs/ResponsesBlob.md)

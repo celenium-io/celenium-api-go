@@ -22,6 +22,7 @@ docs/GasAPI.md
 docs/GeneralAPI.md
 docs/GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus.md
 docs/HandlerError.md
+docs/HandlerPostBlobRequest.md
 docs/NamespaceAPI.md
 docs/ResponsesAddress.md
 docs/ResponsesBalance.md
@@ -87,6 +88,7 @@ go.mod
 go.sum
 model_github_com_celenium_io_celestia_indexer_internal_storage_types_status.go
 model_handler_error.go
+model_handler_post_blob_request.go
 model_responses_address.go
 model_responses_balance.go
 model_responses_blob.go
