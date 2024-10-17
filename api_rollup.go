@@ -1110,6 +1110,7 @@ type ApiListRollupRequest struct {
 	offset *int32
 	sort *string
 	sortBy *string
+	category *string
 }
 
 // Count of requested entities
@@ -1133,6 +1134,12 @@ func (r ApiListRollupRequest) Sort(sort string) ApiListRollupRequest {
 // Sort field. Default: size
 func (r ApiListRollupRequest) SortBy(sortBy string) ApiListRollupRequest {
 	r.sortBy = &sortBy
+	return r
+}
+
+// Comma-separated rollup category list
+func (r ApiListRollupRequest) Category(category string) ApiListRollupRequest {
+	r.category = &category
 	return r
 }
 
@@ -1187,6 +1194,9 @@ func (a *RollupAPIService) ListRollupExecute(r ApiListRollupRequest) ([]Response
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "", "")
+	}
+	if r.category != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "category", r.category, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1270,6 +1280,7 @@ type ApiListRollup24hRequest struct {
 	offset *int32
 	sort *string
 	sortBy *string
+	category *string
 }
 
 // Count of requested entities
@@ -1293,6 +1304,12 @@ func (r ApiListRollup24hRequest) Sort(sort string) ApiListRollup24hRequest {
 // Sort field. Default: mb_price
 func (r ApiListRollup24hRequest) SortBy(sortBy string) ApiListRollup24hRequest {
 	r.sortBy = &sortBy
+	return r
+}
+
+// Comma-separated rollup category list
+func (r ApiListRollup24hRequest) Category(category string) ApiListRollup24hRequest {
+	r.category = &category
 	return r
 }
 
@@ -1347,6 +1364,9 @@ func (a *RollupAPIService) ListRollup24hExecute(r ApiListRollup24hRequest) ([]Re
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "", "")
+	}
+	if r.category != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "category", r.category, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

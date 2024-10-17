@@ -20,6 +20,7 @@ var _ MappedNullable = &ResponsesEnums{}
 
 // ResponsesEnums struct for ResponsesEnums
 type ResponsesEnums struct {
+	Categories []string `json:"categories,omitempty"`
 	EventType []string `json:"event_type,omitempty"`
 	MessageType []string `json:"message_type,omitempty"`
 	Status []string `json:"status,omitempty"`
@@ -40,6 +41,38 @@ func NewResponsesEnums() *ResponsesEnums {
 func NewResponsesEnumsWithDefaults() *ResponsesEnums {
 	this := ResponsesEnums{}
 	return &this
+}
+
+// GetCategories returns the Categories field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetCategories() []string {
+	if o == nil || IsNil(o.Categories) {
+		var ret []string
+		return ret
+	}
+	return o.Categories
+}
+
+// GetCategoriesOk returns a tuple with the Categories field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetCategoriesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Categories) {
+		return nil, false
+	}
+	return o.Categories, true
+}
+
+// HasCategories returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasCategories() bool {
+	if o != nil && !IsNil(o.Categories) {
+		return true
+	}
+
+	return false
+}
+
+// SetCategories gets a reference to the given []string and assigns it to the Categories field.
+func (o *ResponsesEnums) SetCategories(v []string) {
+	o.Categories = v
 }
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
@@ -148,6 +181,9 @@ func (o ResponsesEnums) MarshalJSON() ([]byte, error) {
 
 func (o ResponsesEnums) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Categories) {
+		toSerialize["categories"] = o.Categories
+	}
 	if !IsNil(o.EventType) {
 		toSerialize["event_type"] = o.EventType
 	}

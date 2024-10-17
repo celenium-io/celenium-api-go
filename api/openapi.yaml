@@ -2185,6 +2185,11 @@ paths:
           - size
           - fee
           type: string
+      - description: Comma-separated rollup category list
+        in: query
+        name: category
+        schema:
+          type: string
       responses:
         "200":
           content:
@@ -2266,6 +2271,11 @@ paths:
           - namespace_count
           - pfb_count
           - mb_price
+          type: string
+      - description: Comma-separated rollup category list
+        in: query
+        name: category
+        schema:
           type: string
       responses:
         "200":
@@ -4870,10 +4880,17 @@ components:
         message_type:
         - message_type
         - message_type
+        categories:
+        - categories
+        - categories
         status:
         - status
         - status
       properties:
+        categories:
+          items:
+            type: string
+          type: array
         event_type:
           items:
             type: string

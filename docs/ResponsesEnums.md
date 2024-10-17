@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Categories** | Pointer to **[]string** |  | [optional] 
 **EventType** | Pointer to **[]string** |  | [optional] 
 **MessageType** | Pointer to **[]string** |  | [optional] 
 **Status** | Pointer to **[]string** |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewResponsesEnumsWithDefaults instantiates a new ResponsesEnums object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCategories
+
+`func (o *ResponsesEnums) GetCategories() []string`
+
+GetCategories returns the Categories field if non-nil, zero value otherwise.
+
+### GetCategoriesOk
+
+`func (o *ResponsesEnums) GetCategoriesOk() (*[]string, bool)`
+
+GetCategoriesOk returns a tuple with the Categories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCategories
+
+`func (o *ResponsesEnums) SetCategories(v []string)`
+
+SetCategories sets Categories field to given value.
+
+### HasCategories
+
+`func (o *ResponsesEnums) HasCategories() bool`
+
+HasCategories returns a boolean if a field has been set.
 
 ### GetEventType
 
