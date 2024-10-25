@@ -477,6 +477,8 @@ paths:
           - MsgTimeout
           - MsgTimeoutOnClose
           - MsgAcknowledgement
+          - MsgSignalVersion
+          - MsgTryUpgrade
           type: string
       responses:
         "200":
@@ -741,6 +743,8 @@ paths:
           - MsgTimeout
           - MsgTimeoutOnClose
           - MsgAcknowledgement
+          - MsgSignalVersion
+          - MsgTryUpgrade
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -1389,6 +1393,8 @@ paths:
           - MsgTimeout
           - MsgTimeoutOnClose
           - MsgAcknowledgement
+          - MsgSignalVersion
+          - MsgTryUpgrade
           type: string
       - description: Comma-separated message types which should be excluded from list
         in: query
@@ -1469,6 +1475,8 @@ paths:
           - MsgTimeout
           - MsgTimeoutOnClose
           - MsgAcknowledgement
+          - MsgSignalVersion
+          - MsgTryUpgrade
           type: string
       responses:
         "200":
@@ -3498,6 +3506,8 @@ paths:
           - MsgTimeout
           - MsgTimeoutOnClose
           - MsgAcknowledgement
+          - MsgSignalVersion
+          - MsgTryUpgrade
           type: string
       - description: Comma-separated message types list which should be excluded
         in: query
@@ -3578,6 +3588,8 @@ paths:
           - MsgTimeout
           - MsgTimeoutOnClose
           - MsgAcknowledgement
+          - MsgSignalVersion
+          - MsgTryUpgrade
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -6763,6 +6775,8 @@ components:
       - MsgTimeout
       - MsgTimeoutOnClose
       - MsgAcknowledgement
+      - MsgSignalVersion
+      - MsgTryUpgrade
       type: string
       x-enum-varnames:
       - MsgUnknown
@@ -6839,6 +6853,8 @@ components:
       - MsgTimeout
       - MsgTimeoutOnClose
       - MsgAcknowledgement
+      - MsgSignalVersion
+      - MsgTryUpgrade
   securitySchemes:
     ApiKeyAuth:
       description: To authorize your requests you have to select the required tariff

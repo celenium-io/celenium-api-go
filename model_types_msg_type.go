@@ -95,6 +95,8 @@ const (
 	MsgTimeout TypesMsgType = "MsgTimeout"
 	MsgTimeoutOnClose TypesMsgType = "MsgTimeoutOnClose"
 	MsgAcknowledgement TypesMsgType = "MsgAcknowledgement"
+	MsgSignalVersion TypesMsgType = "MsgSignalVersion"
+	MsgTryUpgrade TypesMsgType = "MsgTryUpgrade"
 )
 
 // All allowed values of TypesMsgType enum
@@ -173,6 +175,8 @@ var AllowedTypesMsgTypeEnumValues = []TypesMsgType{
 	"MsgTimeout",
 	"MsgTimeoutOnClose",
 	"MsgAcknowledgement",
+	"MsgSignalVersion",
+	"MsgTryUpgrade",
 }
 
 func (v *TypesMsgType) UnmarshalJSON(src []byte) error {

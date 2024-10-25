@@ -151,6 +151,10 @@
 
 * `MsgAcknowledgement` (value: `"MsgAcknowledgement"`)
 
+* `MsgSignalVersion` (value: `"MsgSignalVersion"`)
+
+* `MsgTryUpgrade` (value: `"MsgTryUpgrade"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
