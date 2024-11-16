@@ -129,6 +129,7 @@ Class | Method | HTTP request | Description
 *RollupAPI* | [**ListRollup**](docs/RollupAPI.md#listrollup) | **Get** /rollup | List rollups info
 *RollupAPI* | [**ListRollup24h**](docs/RollupAPI.md#listrollup24h) | **Get** /rollup/day | List rollups info with stats by previous 24 hours
 *RollupAPI* | [**RollupExport**](docs/RollupAPI.md#rollupexport) | **Get** /rollup/{id}/export | Export rollup blobs
+*RollupAPI* | [**RollupGroupedStatistics**](docs/RollupAPI.md#rollupgroupedstatistics) | **Get** /rollup/group | Rollup Grouped Statistics
 *SearchAPI* | [**Search**](docs/SearchAPI.md#search) | **Get** /search | Search by hash
 *StatsAPI* | [**Stats24hChanges**](docs/StatsAPI.md#stats24hchanges) | **Get** /stats/changes_24h | Get changes for 24 hours
 *StatsAPI* | [**StatsMessagesCount24h**](docs/StatsAPI.md#statsmessagescount24h) | **Get** /stats/messages_count_24h | Get messages distribution for the last 24 hours
@@ -196,6 +197,7 @@ Class | Method | HTTP request | Description
  - [ResponsesRedelegation](docs/ResponsesRedelegation.md)
  - [ResponsesRollup](docs/ResponsesRollup.md)
  - [ResponsesRollupAllSeriesItem](docs/ResponsesRollupAllSeriesItem.md)
+ - [ResponsesRollupGroupedStats](docs/ResponsesRollupGroupedStats.md)
  - [ResponsesRollupStats24h](docs/ResponsesRollupStats24h.md)
  - [ResponsesRollupWithDayStats](docs/ResponsesRollupWithDayStats.md)
  - [ResponsesRollupWithStats](docs/ResponsesRollupWithStats.md)

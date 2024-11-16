@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Categories** | Pointer to **[]string** |  | [optional] 
 **EventType** | Pointer to **[]string** |  | [optional] 
 **MessageType** | Pointer to **[]string** |  | [optional] 
+**RollupType** | Pointer to **[]string** |  | [optional] 
 **Status** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetMessageType sets MessageType field to given value.
 `func (o *ResponsesEnums) HasMessageType() bool`
 
 HasMessageType returns a boolean if a field has been set.
+
+### GetRollupType
+
+`func (o *ResponsesEnums) GetRollupType() []string`
+
+GetRollupType returns the RollupType field if non-nil, zero value otherwise.
+
+### GetRollupTypeOk
+
+`func (o *ResponsesEnums) GetRollupTypeOk() (*[]string, bool)`
+
+GetRollupTypeOk returns a tuple with the RollupType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRollupType
+
+`func (o *ResponsesEnums) SetRollupType(v []string)`
+
+SetRollupType sets RollupType field to given value.
+
+### HasRollupType
+
+`func (o *ResponsesEnums) HasRollupType() bool`
+
+HasRollupType returns a boolean if a field has been set.
 
 ### GetStatus
 

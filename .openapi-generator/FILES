@@ -55,6 +55,7 @@ docs/ResponsesPrice.md
 docs/ResponsesRedelegation.md
 docs/ResponsesRollup.md
 docs/ResponsesRollupAllSeriesItem.md
+docs/ResponsesRollupGroupedStats.md
 docs/ResponsesRollupStats24h.md
 docs/ResponsesRollupWithDayStats.md
 docs/ResponsesRollupWithStats.md
@@ -120,6 +121,7 @@ model_responses_price.go
 model_responses_redelegation.go
 model_responses_rollup.go
 model_responses_rollup_all_series_item.go
+model_responses_rollup_grouped_stats.go
 model_responses_rollup_stats24h.go
 model_responses_rollup_with_day_stats.go
 model_responses_rollup_with_stats.go

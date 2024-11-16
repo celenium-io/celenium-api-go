@@ -171,4 +171,16 @@ func Test_celenium_RollupAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RollupAPIService RollupGroupedStatistics", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.RollupAPI.RollupGroupedStatistics(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

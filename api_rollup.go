@@ -1575,3 +1575,143 @@ func (a *RollupAPIService) RollupExportExecute(r ApiRollupExportRequest) (*http.
 
 	return localVarHTTPResponse, nil
 }
+
+type ApiRollupGroupedStatisticsRequest struct {
+	ctx context.Context
+	ApiService *RollupAPIService
+	func_ *string
+	column *string
+}
+
+// Aggregate function
+func (r ApiRollupGroupedStatisticsRequest) Func_(func_ string) ApiRollupGroupedStatisticsRequest {
+	r.func_ = &func_
+	return r
+}
+
+// Group column
+func (r ApiRollupGroupedStatisticsRequest) Column(column string) ApiRollupGroupedStatisticsRequest {
+	r.column = &column
+	return r
+}
+
+func (r ApiRollupGroupedStatisticsRequest) Execute() ([]ResponsesRollupGroupedStats, *http.Response, error) {
+	return r.ApiService.RollupGroupedStatisticsExecute(r)
+}
+
+/*
+RollupGroupedStatistics Rollup Grouped Statistics
+
+Rollup Grouped Statistics
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRollupGroupedStatisticsRequest
+*/
+func (a *RollupAPIService) RollupGroupedStatistics(ctx context.Context) ApiRollupGroupedStatisticsRequest {
+	return ApiRollupGroupedStatisticsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []ResponsesRollupGroupedStats
+func (a *RollupAPIService) RollupGroupedStatisticsExecute(r ApiRollupGroupedStatisticsRequest) ([]ResponsesRollupGroupedStats, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ResponsesRollupGroupedStats
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RollupAPIService.RollupGroupedStatistics")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/rollup/group"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.func_ != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "func", r.func_, "", "")
+	}
+	if r.column != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "column", r.column, "", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}

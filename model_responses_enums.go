@@ -23,6 +23,7 @@ type ResponsesEnums struct {
 	Categories []string `json:"categories,omitempty"`
 	EventType []string `json:"event_type,omitempty"`
 	MessageType []string `json:"message_type,omitempty"`
+	RollupType []string `json:"rollup_type,omitempty"`
 	Status []string `json:"status,omitempty"`
 }
 
@@ -139,6 +140,38 @@ func (o *ResponsesEnums) SetMessageType(v []string) {
 	o.MessageType = v
 }
 
+// GetRollupType returns the RollupType field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetRollupType() []string {
+	if o == nil || IsNil(o.RollupType) {
+		var ret []string
+		return ret
+	}
+	return o.RollupType
+}
+
+// GetRollupTypeOk returns a tuple with the RollupType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetRollupTypeOk() ([]string, bool) {
+	if o == nil || IsNil(o.RollupType) {
+		return nil, false
+	}
+	return o.RollupType, true
+}
+
+// HasRollupType returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasRollupType() bool {
+	if o != nil && !IsNil(o.RollupType) {
+		return true
+	}
+
+	return false
+}
+
+// SetRollupType gets a reference to the given []string and assigns it to the RollupType field.
+func (o *ResponsesEnums) SetRollupType(v []string) {
+	o.RollupType = v
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ResponsesEnums) GetStatus() []string {
 	if o == nil || IsNil(o.Status) {
@@ -189,6 +222,9 @@ func (o ResponsesEnums) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MessageType) {
 		toSerialize["message_type"] = o.MessageType
+	}
+	if !IsNil(o.RollupType) {
+		toSerialize["rollup_type"] = o.RollupType
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status

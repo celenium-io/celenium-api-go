@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**ListRollup**](RollupAPI.md#ListRollup) | **Get** /rollup | List rollups info
 [**ListRollup24h**](RollupAPI.md#ListRollup24h) | **Get** /rollup/day | List rollups info with stats by previous 24 hours
 [**RollupExport**](RollupAPI.md#RollupExport) | **Get** /rollup/{id}/export | Export rollup blobs
+[**RollupGroupedStatistics**](RollupAPI.md#RollupGroupedStatistics) | **Get** /rollup/group | Rollup Grouped Statistics
 
 
 
@@ -804,6 +805,74 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RollupGroupedStatistics
+
+> []ResponsesRollupGroupedStats RollupGroupedStatistics(ctx).Func_(func_).Column(column).Execute()
+
+Rollup Grouped Statistics
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	func_ := "func__example" // string | Aggregate function (optional)
+	column := "column_example" // string | Group column (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RollupAPI.RollupGroupedStatistics(context.Background()).Func_(func_).Column(column).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RollupAPI.RollupGroupedStatistics``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RollupGroupedStatistics`: []ResponsesRollupGroupedStats
+	fmt.Fprintf(os.Stdout, "Response from `RollupAPI.RollupGroupedStatistics`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRollupGroupedStatisticsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **func_** | **string** | Aggregate function | 
+ **column** | **string** | Group column | 
+
+### Return type
+
+[**[]ResponsesRollupGroupedStats**](ResponsesRollupGroupedStats.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
