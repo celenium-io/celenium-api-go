@@ -26,6 +26,7 @@ type ResponsesRollupWithDayStats struct {
 	Bridge *string `json:"bridge,omitempty"`
 	Category *string `json:"category,omitempty"`
 	Compression *string `json:"compression,omitempty"`
+	DefiLama *string `json:"defi_lama,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Explorer *string `json:"explorer,omitempty"`
 	FeePerPfb *string `json:"fee_per_pfb,omitempty"`
@@ -256,6 +257,38 @@ func (o *ResponsesRollupWithDayStats) HasCompression() bool {
 // SetCompression gets a reference to the given string and assigns it to the Compression field.
 func (o *ResponsesRollupWithDayStats) SetCompression(v string) {
 	o.Compression = &v
+}
+
+// GetDefiLama returns the DefiLama field value if set, zero value otherwise.
+func (o *ResponsesRollupWithDayStats) GetDefiLama() string {
+	if o == nil || IsNil(o.DefiLama) {
+		var ret string
+		return ret
+	}
+	return *o.DefiLama
+}
+
+// GetDefiLamaOk returns a tuple with the DefiLama field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithDayStats) GetDefiLamaOk() (*string, bool) {
+	if o == nil || IsNil(o.DefiLama) {
+		return nil, false
+	}
+	return o.DefiLama, true
+}
+
+// HasDefiLama returns a boolean if a field has been set.
+func (o *ResponsesRollupWithDayStats) HasDefiLama() bool {
+	if o != nil && !IsNil(o.DefiLama) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefiLama gets a reference to the given string and assigns it to the DefiLama field.
+func (o *ResponsesRollupWithDayStats) SetDefiLama(v string) {
+	o.DefiLama = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -957,6 +990,9 @@ func (o ResponsesRollupWithDayStats) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Compression) {
 		toSerialize["compression"] = o.Compression
+	}
+	if !IsNil(o.DefiLama) {
+		toSerialize["defi_lama"] = o.DefiLama
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

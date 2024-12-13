@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
 *NamespaceAPI* | [**GetBlob**](docs/NamespaceAPI.md#getblob) | **Post** /blob | Get namespace blob by commitment on height
 *NamespaceAPI* | [**GetBlobLogs**](docs/NamespaceAPI.md#getbloblogs) | **Get** /namespace/{id}/{version}/blobs | Get blob changes for namespace
 *NamespaceAPI* | [**GetBlobMetadata**](docs/NamespaceAPI.md#getblobmetadata) | **Post** /blob/metadata | Get blob metadata by commitment on height
+*NamespaceAPI* | [**GetBlobProof**](docs/NamespaceAPI.md#getblobproof) | **Get** /blob/proofs | Get blob inclusion proofs
 *NamespaceAPI* | [**GetBlobs**](docs/NamespaceAPI.md#getblobs) | **Get** /blob | List all blobs with filters
 *NamespaceAPI* | [**GetNamespace**](docs/NamespaceAPI.md#getnamespace) | **Get** /namespace/{id} | Get namespace info
 *NamespaceAPI* | [**GetNamespaceActive**](docs/NamespaceAPI.md#getnamespaceactive) | **Get** /namespace/active | Get last used namespace

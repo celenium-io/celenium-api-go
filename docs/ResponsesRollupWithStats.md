@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Bridge** | Pointer to **string** |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
 **Compression** | Pointer to **string** |  | [optional] 
+**DefiLama** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Explorer** | Pointer to **string** |  | [optional] 
 **Fee** | Pointer to **string** |  | [optional] 
@@ -174,6 +175,31 @@ SetCompression sets Compression field to given value.
 `func (o *ResponsesRollupWithStats) HasCompression() bool`
 
 HasCompression returns a boolean if a field has been set.
+
+### GetDefiLama
+
+`func (o *ResponsesRollupWithStats) GetDefiLama() string`
+
+GetDefiLama returns the DefiLama field if non-nil, zero value otherwise.
+
+### GetDefiLamaOk
+
+`func (o *ResponsesRollupWithStats) GetDefiLamaOk() (*string, bool)`
+
+GetDefiLamaOk returns a tuple with the DefiLama field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefiLama
+
+`func (o *ResponsesRollupWithStats) SetDefiLama(v string)`
+
+SetDefiLama sets DefiLama field to given value.
+
+### HasDefiLama
+
+`func (o *ResponsesRollupWithStats) HasDefiLama() bool`
+
+HasDefiLama returns a boolean if a field has been set.
 
 ### GetDescription
 

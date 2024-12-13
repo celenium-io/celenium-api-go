@@ -23,6 +23,7 @@ type ResponsesRollup struct {
 	Bridge *string `json:"bridge,omitempty"`
 	Category *string `json:"category,omitempty"`
 	Compression *string `json:"compression,omitempty"`
+	DefiLama *string `json:"defi_lama,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Explorer *string `json:"explorer,omitempty"`
 	Github *string `json:"github,omitempty"`
@@ -151,6 +152,38 @@ func (o *ResponsesRollup) HasCompression() bool {
 // SetCompression gets a reference to the given string and assigns it to the Compression field.
 func (o *ResponsesRollup) SetCompression(v string) {
 	o.Compression = &v
+}
+
+// GetDefiLama returns the DefiLama field value if set, zero value otherwise.
+func (o *ResponsesRollup) GetDefiLama() string {
+	if o == nil || IsNil(o.DefiLama) {
+		var ret string
+		return ret
+	}
+	return *o.DefiLama
+}
+
+// GetDefiLamaOk returns a tuple with the DefiLama field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollup) GetDefiLamaOk() (*string, bool) {
+	if o == nil || IsNil(o.DefiLama) {
+		return nil, false
+	}
+	return o.DefiLama, true
+}
+
+// HasDefiLama returns a boolean if a field has been set.
+func (o *ResponsesRollup) HasDefiLama() bool {
+	if o != nil && !IsNil(o.DefiLama) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefiLama gets a reference to the given string and assigns it to the DefiLama field.
+func (o *ResponsesRollup) SetDefiLama(v string) {
+	o.DefiLama = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -651,6 +684,9 @@ func (o ResponsesRollup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Compression) {
 		toSerialize["compression"] = o.Compression
+	}
+	if !IsNil(o.DefiLama) {
+		toSerialize["defi_lama"] = o.DefiLama
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

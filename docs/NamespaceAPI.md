@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**GetBlob**](NamespaceAPI.md#GetBlob) | **Post** /blob | Get namespace blob by commitment on height
 [**GetBlobLogs**](NamespaceAPI.md#GetBlobLogs) | **Get** /namespace/{id}/{version}/blobs | Get blob changes for namespace
 [**GetBlobMetadata**](NamespaceAPI.md#GetBlobMetadata) | **Post** /blob/metadata | Get blob metadata by commitment on height
+[**GetBlobProof**](NamespaceAPI.md#GetBlobProof) | **Get** /blob/proofs | Get blob inclusion proofs
 [**GetBlobs**](NamespaceAPI.md#GetBlobs) | **Get** /blob | List all blobs with filters
 [**GetNamespace**](NamespaceAPI.md#GetNamespace) | **Get** /namespace/{id} | Get namespace info
 [**GetNamespaceActive**](NamespaceAPI.md#GetNamespaceActive) | **Get** /namespace/active | Get last used namespace
@@ -221,6 +222,72 @@ func main() {
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetBlobMetadataRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request** | [**HandlerPostBlobRequest**](HandlerPostBlobRequest.md) | Request body containing height, commitment and namespace hash | 
+
+### Return type
+
+[**ResponsesBlobLog**](ResponsesBlobLog.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetBlobProof
+
+> ResponsesBlobLog GetBlobProof(ctx).Request(request).Execute()
+
+Get blob inclusion proofs
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	request := *openapiclient.NewHandlerPostBlobRequest("vbGakK59+Non81TE3ULg5Ve5ufT9SFm/bCyY+WLR3gg=", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=", int32(123456)) // HandlerPostBlobRequest | Request body containing height, commitment and namespace hash
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.NamespaceAPI.GetBlobProof(context.Background()).Request(request).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `NamespaceAPI.GetBlobProof``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetBlobProof`: ResponsesBlobLog
+	fmt.Fprintf(os.Stdout, "Response from `NamespaceAPI.GetBlobProof`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetBlobProofRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

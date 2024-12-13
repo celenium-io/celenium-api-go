@@ -1032,6 +1032,34 @@ paths:
       tags:
       - namespace
       x-codegen-request-body-name: request
+  /blob/proofs:
+    get:
+      description: Returns blob inclusion proofs
+      operationId: get-blob-proof
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/handler.postBlobRequest'
+        description: "Request body containing height, commitment and namespace hash"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responses.BlobLog'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+      summary: Get blob inclusion proofs
+      tags:
+      - namespace
+      x-codegen-request-body-name: request
   /block:
     get:
       description: List blocks info
@@ -5576,6 +5604,7 @@ components:
         github: https://github.com/account
         stack: op_stack
         website: https://website.com
+        defi_lama: Manta
         description: Long rollup description
         type: settled
         twitter: https://x.com/account
@@ -5604,6 +5633,10 @@ components:
           type: string
         compression:
           example: zip
+          format: string
+          type: string
+        defi_lama:
+          example: Manta
           format: string
           type: string
         description:
@@ -5763,6 +5796,7 @@ components:
       example:
         namespace_count: 100
         stack: op_stack
+        defi_lama: Manta
         description: Long rollup description
         type: settled
         blobs_count: 100
@@ -5811,6 +5845,10 @@ components:
           type: string
         compression:
           example: zip
+          format: string
+          type: string
+        defi_lama:
+          example: Manta
           format: string
           type: string
         description:
@@ -5901,6 +5939,7 @@ components:
     responses.RollupWithStats:
       example:
         stack: op_stack
+        defi_lama: Manta
         fee: "123.456789"
         description: Long rollup description
         type: settled
@@ -5947,6 +5986,10 @@ components:
           type: string
         compression:
           example: zip
+          format: string
+          type: string
+        defi_lama:
+          example: Manta
           format: string
           type: string
         description:
