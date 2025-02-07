@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to **string** |  | [optional] 
+**Address** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Commissions** | Pointer to **string** |  | [optional] 
 **ConsAddress** | Pointer to **string** |  | [optional] 
 **Contacts** | Pointer to **string** |  | [optional] 
-**Delegator** | Pointer to **string** |  | [optional] 
+**Delegator** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Details** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] 
 **Identity** | Pointer to **string** |  | [optional] 
@@ -44,20 +44,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAddress
 
-`func (o *ResponsesValidator) GetAddress() string`
+`func (o *ResponsesValidator) GetAddress() ResponsesShortAddress`
 
 GetAddress returns the Address field if non-nil, zero value otherwise.
 
 ### GetAddressOk
 
-`func (o *ResponsesValidator) GetAddressOk() (*string, bool)`
+`func (o *ResponsesValidator) GetAddressOk() (*ResponsesShortAddress, bool)`
 
 GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAddress
 
-`func (o *ResponsesValidator) SetAddress(v string)`
+`func (o *ResponsesValidator) SetAddress(v ResponsesShortAddress)`
 
 SetAddress sets Address field to given value.
 
@@ -144,20 +144,20 @@ HasContacts returns a boolean if a field has been set.
 
 ### GetDelegator
 
-`func (o *ResponsesValidator) GetDelegator() string`
+`func (o *ResponsesValidator) GetDelegator() ResponsesShortAddress`
 
 GetDelegator returns the Delegator field if non-nil, zero value otherwise.
 
 ### GetDelegatorOk
 
-`func (o *ResponsesValidator) GetDelegatorOk() (*string, bool)`
+`func (o *ResponsesValidator) GetDelegatorOk() (*ResponsesShortAddress, bool)`
 
 GetDelegatorOk returns a tuple with the Delegator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDelegator
 
-`func (o *ResponsesValidator) SetDelegator(v string)`
+`func (o *ResponsesValidator) SetDelegator(v ResponsesShortAddress)`
 
 SetDelegator sets Delegator field to given value.
 

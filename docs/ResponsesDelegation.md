@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **string** |  | [optional] 
-**Delegator** | Pointer to **string** |  | [optional] 
+**Delegator** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Validator** | Pointer to [**ResponsesShortValidator**](ResponsesShortValidator.md) |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasAmount returns a boolean if a field has been set.
 
 ### GetDelegator
 
-`func (o *ResponsesDelegation) GetDelegator() string`
+`func (o *ResponsesDelegation) GetDelegator() ResponsesShortAddress`
 
 GetDelegator returns the Delegator field if non-nil, zero value otherwise.
 
 ### GetDelegatorOk
 
-`func (o *ResponsesDelegation) GetDelegatorOk() (*string, bool)`
+`func (o *ResponsesDelegation) GetDelegatorOk() (*ResponsesShortAddress, bool)`
 
 GetDelegatorOk returns a tuple with the Delegator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDelegator
 
-`func (o *ResponsesDelegation) SetDelegator(v string)`
+`func (o *ResponsesDelegation) SetDelegator(v ResponsesShortAddress)`
 
 SetDelegator sets Delegator field to given value.
 

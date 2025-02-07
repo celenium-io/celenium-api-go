@@ -36,6 +36,20 @@ func Test_celenium_AddressAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AddressAPIService AddressCelestials", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var hash string
+
+		resp, httpRes, err := apiClient.AddressAPI.AddressCelestials(context.Background(), hash).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AddressAPIService AddressDelegations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

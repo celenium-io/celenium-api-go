@@ -30,6 +30,7 @@ docs/ResponsesBlob.md
 docs/ResponsesBlobLog.md
 docs/ResponsesBlock.md
 docs/ResponsesBlockStats.md
+docs/ResponsesCelestial.md
 docs/ResponsesChange24hBlockStats.md
 docs/ResponsesConstants.md
 docs/ResponsesCountItem.md
@@ -61,6 +62,7 @@ docs/ResponsesRollupWithDayStats.md
 docs/ResponsesRollupWithStats.md
 docs/ResponsesSearchItem.md
 docs/ResponsesSeriesItem.md
+docs/ResponsesShortAddress.md
 docs/ResponsesShortRollup.md
 docs/ResponsesShortValidator.md
 docs/ResponsesSignedBlocks.md
@@ -96,6 +98,7 @@ model_responses_blob.go
 model_responses_blob_log.go
 model_responses_block.go
 model_responses_block_stats.go
+model_responses_celestial.go
 model_responses_change24h_block_stats.go
 model_responses_constants.go
 model_responses_count_item.go
@@ -127,6 +130,7 @@ model_responses_rollup_with_day_stats.go
 model_responses_rollup_with_stats.go
 model_responses_search_item.go
 model_responses_series_item.go
+model_responses_short_address.go
 model_responses_short_rollup.go
 model_responses_short_validator.go
 model_responses_signed_blocks.go

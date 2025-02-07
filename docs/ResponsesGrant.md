@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Authorization** | Pointer to **string** |  | [optional] 
 **Expiration** | Pointer to **string** |  | [optional] 
-**Grantee** | Pointer to **string** |  | [optional] 
-**Granter** | Pointer to **string** |  | [optional] 
+**Grantee** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
+**Granter** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Height** | Pointer to **int32** |  | [optional] 
 **Params** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **RevokeHeight** | Pointer to **int32** |  | [optional] 
@@ -85,20 +85,20 @@ HasExpiration returns a boolean if a field has been set.
 
 ### GetGrantee
 
-`func (o *ResponsesGrant) GetGrantee() string`
+`func (o *ResponsesGrant) GetGrantee() ResponsesShortAddress`
 
 GetGrantee returns the Grantee field if non-nil, zero value otherwise.
 
 ### GetGranteeOk
 
-`func (o *ResponsesGrant) GetGranteeOk() (*string, bool)`
+`func (o *ResponsesGrant) GetGranteeOk() (*ResponsesShortAddress, bool)`
 
 GetGranteeOk returns a tuple with the Grantee field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGrantee
 
-`func (o *ResponsesGrant) SetGrantee(v string)`
+`func (o *ResponsesGrant) SetGrantee(v ResponsesShortAddress)`
 
 SetGrantee sets Grantee field to given value.
 
@@ -110,20 +110,20 @@ HasGrantee returns a boolean if a field has been set.
 
 ### GetGranter
 
-`func (o *ResponsesGrant) GetGranter() string`
+`func (o *ResponsesGrant) GetGranter() ResponsesShortAddress`
 
 GetGranter returns the Granter field if non-nil, zero value otherwise.
 
 ### GetGranterOk
 
-`func (o *ResponsesGrant) GetGranterOk() (*string, bool)`
+`func (o *ResponsesGrant) GetGranterOk() (*ResponsesShortAddress, bool)`
 
 GetGranterOk returns a tuple with the Granter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGranter
 
-`func (o *ResponsesGrant) SetGranter(v string)`
+`func (o *ResponsesGrant) SetGranter(v ResponsesShortAddress)`
 
 SetGranter sets Granter field to given value.
 

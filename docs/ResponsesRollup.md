@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Provider** | Pointer to **string** |  | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 **Stack** | Pointer to **string** |  | [optional] 
+**Tags** | Pointer to **[]string** |  | [optional] 
 **Twitter** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **Vm** | Pointer to **string** |  | [optional] 
@@ -417,6 +418,31 @@ SetStack sets Stack field to given value.
 `func (o *ResponsesRollup) HasStack() bool`
 
 HasStack returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *ResponsesRollup) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *ResponsesRollup) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *ResponsesRollup) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *ResponsesRollup) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetTwitter
 

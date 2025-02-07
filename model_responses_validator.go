@@ -20,11 +20,11 @@ var _ MappedNullable = &ResponsesValidator{}
 
 // ResponsesValidator struct for ResponsesValidator
 type ResponsesValidator struct {
-	Address *string `json:"address,omitempty"`
+	Address *ResponsesShortAddress `json:"address,omitempty"`
 	Commissions *string `json:"commissions,omitempty"`
 	ConsAddress *string `json:"cons_address,omitempty"`
 	Contacts *string `json:"contacts,omitempty"`
-	Delegator *string `json:"delegator,omitempty"`
+	Delegator *ResponsesShortAddress `json:"delegator,omitempty"`
 	Details *string `json:"details,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	Identity *string `json:"identity,omitempty"`
@@ -58,9 +58,9 @@ func NewResponsesValidatorWithDefaults() *ResponsesValidator {
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise.
-func (o *ResponsesValidator) GetAddress() string {
+func (o *ResponsesValidator) GetAddress() ResponsesShortAddress {
 	if o == nil || IsNil(o.Address) {
-		var ret string
+		var ret ResponsesShortAddress
 		return ret
 	}
 	return *o.Address
@@ -68,7 +68,7 @@ func (o *ResponsesValidator) GetAddress() string {
 
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesValidator) GetAddressOk() (*string, bool) {
+func (o *ResponsesValidator) GetAddressOk() (*ResponsesShortAddress, bool) {
 	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
@@ -84,8 +84,8 @@ func (o *ResponsesValidator) HasAddress() bool {
 	return false
 }
 
-// SetAddress gets a reference to the given string and assigns it to the Address field.
-func (o *ResponsesValidator) SetAddress(v string) {
+// SetAddress gets a reference to the given ResponsesShortAddress and assigns it to the Address field.
+func (o *ResponsesValidator) SetAddress(v ResponsesShortAddress) {
 	o.Address = &v
 }
 
@@ -186,9 +186,9 @@ func (o *ResponsesValidator) SetContacts(v string) {
 }
 
 // GetDelegator returns the Delegator field value if set, zero value otherwise.
-func (o *ResponsesValidator) GetDelegator() string {
+func (o *ResponsesValidator) GetDelegator() ResponsesShortAddress {
 	if o == nil || IsNil(o.Delegator) {
-		var ret string
+		var ret ResponsesShortAddress
 		return ret
 	}
 	return *o.Delegator
@@ -196,7 +196,7 @@ func (o *ResponsesValidator) GetDelegator() string {
 
 // GetDelegatorOk returns a tuple with the Delegator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesValidator) GetDelegatorOk() (*string, bool) {
+func (o *ResponsesValidator) GetDelegatorOk() (*ResponsesShortAddress, bool) {
 	if o == nil || IsNil(o.Delegator) {
 		return nil, false
 	}
@@ -212,8 +212,8 @@ func (o *ResponsesValidator) HasDelegator() bool {
 	return false
 }
 
-// SetDelegator gets a reference to the given string and assigns it to the Delegator field.
-func (o *ResponsesValidator) SetDelegator(v string) {
+// SetDelegator gets a reference to the given ResponsesShortAddress and assigns it to the Delegator field.
+func (o *ResponsesValidator) SetDelegator(v ResponsesShortAddress) {
 	o.Delegator = &v
 }
 

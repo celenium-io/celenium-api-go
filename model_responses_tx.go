@@ -36,7 +36,7 @@ type ResponsesTx struct {
 	Messages []ResponsesMessage `json:"messages,omitempty"`
 	MessagesCount *int64 `json:"messages_count,omitempty"`
 	Position *int64 `json:"position,omitempty"`
-	Signers []string `json:"signers,omitempty"`
+	Signers []ResponsesShortAddress `json:"signers,omitempty"`
 	Status *GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus `json:"status,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	TimeoutHeight *int64 `json:"timeout_height,omitempty"`
@@ -508,9 +508,9 @@ func (o *ResponsesTx) SetPosition(v int64) {
 }
 
 // GetSigners returns the Signers field value if set, zero value otherwise.
-func (o *ResponsesTx) GetSigners() []string {
+func (o *ResponsesTx) GetSigners() []ResponsesShortAddress {
 	if o == nil || IsNil(o.Signers) {
-		var ret []string
+		var ret []ResponsesShortAddress
 		return ret
 	}
 	return o.Signers
@@ -518,7 +518,7 @@ func (o *ResponsesTx) GetSigners() []string {
 
 // GetSignersOk returns a tuple with the Signers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesTx) GetSignersOk() ([]string, bool) {
+func (o *ResponsesTx) GetSignersOk() ([]ResponsesShortAddress, bool) {
 	if o == nil || IsNil(o.Signers) {
 		return nil, false
 	}
@@ -534,8 +534,8 @@ func (o *ResponsesTx) HasSigners() bool {
 	return false
 }
 
-// SetSigners gets a reference to the given []string and assigns it to the Signers field.
-func (o *ResponsesTx) SetSigners(v []string) {
+// SetSigners gets a reference to the given []ResponsesShortAddress and assigns it to the Signers field.
+func (o *ResponsesTx) SetSigners(v []ResponsesShortAddress) {
 	o.Signers = v
 }
 

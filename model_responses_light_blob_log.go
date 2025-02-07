@@ -27,7 +27,7 @@ type ResponsesLightBlobLog struct {
 	Height *int32 `json:"height,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	Namespace *string `json:"namespace,omitempty"`
-	Signer *string `json:"signer,omitempty"`
+	Signer *ResponsesShortAddress `json:"signer,omitempty"`
 	Size *int32 `json:"size,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	TxHash **os.File `json:"tx_hash,omitempty"`
@@ -211,9 +211,9 @@ func (o *ResponsesLightBlobLog) SetNamespace(v string) {
 }
 
 // GetSigner returns the Signer field value if set, zero value otherwise.
-func (o *ResponsesLightBlobLog) GetSigner() string {
+func (o *ResponsesLightBlobLog) GetSigner() ResponsesShortAddress {
 	if o == nil || IsNil(o.Signer) {
-		var ret string
+		var ret ResponsesShortAddress
 		return ret
 	}
 	return *o.Signer
@@ -221,7 +221,7 @@ func (o *ResponsesLightBlobLog) GetSigner() string {
 
 // GetSignerOk returns a tuple with the Signer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesLightBlobLog) GetSignerOk() (*string, bool) {
+func (o *ResponsesLightBlobLog) GetSignerOk() (*ResponsesShortAddress, bool) {
 	if o == nil || IsNil(o.Signer) {
 		return nil, false
 	}
@@ -237,8 +237,8 @@ func (o *ResponsesLightBlobLog) HasSigner() bool {
 	return false
 }
 
-// SetSigner gets a reference to the given string and assigns it to the Signer field.
-func (o *ResponsesLightBlobLog) SetSigner(v string) {
+// SetSigner gets a reference to the given ResponsesShortAddress and assigns it to the Signer field.
+func (o *ResponsesLightBlobLog) SetSigner(v ResponsesShortAddress) {
 	o.Signer = &v
 }
 

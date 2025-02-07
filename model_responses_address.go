@@ -21,6 +21,7 @@ var _ MappedNullable = &ResponsesAddress{}
 // ResponsesAddress Celestia address information
 type ResponsesAddress struct {
 	Balance *ResponsesBalance `json:"balance,omitempty"`
+	Celestials *ResponsesCelestial `json:"celestials,omitempty"`
 	FirstHeight *int32 `json:"first_height,omitempty"`
 	Hash *string `json:"hash,omitempty"`
 	Id *int32 `json:"id,omitempty"`
@@ -74,6 +75,38 @@ func (o *ResponsesAddress) HasBalance() bool {
 // SetBalance gets a reference to the given ResponsesBalance and assigns it to the Balance field.
 func (o *ResponsesAddress) SetBalance(v ResponsesBalance) {
 	o.Balance = &v
+}
+
+// GetCelestials returns the Celestials field value if set, zero value otherwise.
+func (o *ResponsesAddress) GetCelestials() ResponsesCelestial {
+	if o == nil || IsNil(o.Celestials) {
+		var ret ResponsesCelestial
+		return ret
+	}
+	return *o.Celestials
+}
+
+// GetCelestialsOk returns a tuple with the Celestials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesAddress) GetCelestialsOk() (*ResponsesCelestial, bool) {
+	if o == nil || IsNil(o.Celestials) {
+		return nil, false
+	}
+	return o.Celestials, true
+}
+
+// HasCelestials returns a boolean if a field has been set.
+func (o *ResponsesAddress) HasCelestials() bool {
+	if o != nil && !IsNil(o.Celestials) {
+		return true
+	}
+
+	return false
+}
+
+// SetCelestials gets a reference to the given ResponsesCelestial and assigns it to the Celestials field.
+func (o *ResponsesAddress) SetCelestials(v ResponsesCelestial) {
+	o.Celestials = &v
 }
 
 // GetFirstHeight returns the FirstHeight field value if set, zero value otherwise.
@@ -216,6 +249,9 @@ func (o ResponsesAddress) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Balance) {
 		toSerialize["balance"] = o.Balance
+	}
+	if !IsNil(o.Celestials) {
+		toSerialize["celestials"] = o.Celestials
 	}
 	if !IsNil(o.FirstHeight) {
 		toSerialize["first_height"] = o.FirstHeight

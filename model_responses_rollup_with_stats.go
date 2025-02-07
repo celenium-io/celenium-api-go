@@ -44,6 +44,7 @@ type ResponsesRollupWithStats struct {
 	SizePct *float32 `json:"size_pct,omitempty"`
 	Slug *string `json:"slug,omitempty"`
 	Stack *string `json:"stack,omitempty"`
+	Tags []string `json:"tags,omitempty"`
 	Twitter *string `json:"twitter,omitempty"`
 	Type *string `json:"type,omitempty"`
 	Vm *string `json:"vm,omitempty"`
@@ -803,6 +804,38 @@ func (o *ResponsesRollupWithStats) SetStack(v string) {
 	o.Stack = &v
 }
 
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *ResponsesRollupWithStats) GetTags() []string {
+	if o == nil || IsNil(o.Tags) {
+		var ret []string
+		return ret
+	}
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithStats) GetTagsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tags) {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *ResponsesRollupWithStats) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *ResponsesRollupWithStats) SetTags(v []string) {
+	o.Tags = v
+}
+
 // GetTwitter returns the Twitter field value if set, zero value otherwise.
 func (o *ResponsesRollupWithStats) GetTwitter() string {
 	if o == nil || IsNil(o.Twitter) {
@@ -1009,6 +1042,9 @@ func (o ResponsesRollupWithStats) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Stack) {
 		toSerialize["stack"] = o.Stack
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
 	}
 	if !IsNil(o.Twitter) {
 		toSerialize["twitter"] = o.Twitter

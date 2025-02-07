@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Messages** | Pointer to [**[]ResponsesMessage**](ResponsesMessage.md) |  | [optional] 
 **MessagesCount** | Pointer to **int64** |  | [optional] 
 **Position** | Pointer to **int64** |  | [optional] 
-**Signers** | Pointer to **[]string** |  | [optional] 
+**Signers** | Pointer to [**[]ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Status** | Pointer to [**GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus**](GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus.md) |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **TimeoutHeight** | Pointer to **int64** |  | [optional] 
@@ -394,20 +394,20 @@ HasPosition returns a boolean if a field has been set.
 
 ### GetSigners
 
-`func (o *ResponsesTx) GetSigners() []string`
+`func (o *ResponsesTx) GetSigners() []ResponsesShortAddress`
 
 GetSigners returns the Signers field if non-nil, zero value otherwise.
 
 ### GetSignersOk
 
-`func (o *ResponsesTx) GetSignersOk() (*[]string, bool)`
+`func (o *ResponsesTx) GetSignersOk() (*[]ResponsesShortAddress, bool)`
 
 GetSignersOk returns a tuple with the Signers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSigners
 
-`func (o *ResponsesTx) SetSigners(v []string)`
+`func (o *ResponsesTx) SetSigners(v []ResponsesShortAddress)`
 
 SetSigners sets Signers field to given value.
 

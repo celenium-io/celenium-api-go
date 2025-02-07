@@ -593,7 +593,7 @@ No authorization required
 
 ## ListRollup
 
-> []ResponsesRollupWithStats ListRollup(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Execute()
+> []ResponsesRollupWithStats ListRollup(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Execute()
 
 List rollups info
 
@@ -617,10 +617,11 @@ func main() {
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	sortBy := "sortBy_example" // string | Sort field. Default: size (optional)
 	category := "category_example" // string | Comma-separated rollup category list (optional)
+	tags := "tags_example" // string | Comma-separated rollup tags list (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RollupAPI.ListRollup(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Execute()
+	resp, r, err := apiClient.RollupAPI.ListRollup(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RollupAPI.ListRollup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -646,6 +647,7 @@ Name | Type | Description  | Notes
  **sort** | **string** | Sort order. Default: desc | 
  **sortBy** | **string** | Sort field. Default: size | 
  **category** | **string** | Comma-separated rollup category list | 
+ **tags** | **string** | Comma-separated rollup tags list | 
 
 ### Return type
 
@@ -667,7 +669,7 @@ No authorization required
 
 ## ListRollup24h
 
-> []ResponsesRollupWithDayStats ListRollup24h(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Execute()
+> []ResponsesRollupWithDayStats ListRollup24h(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Execute()
 
 List rollups info with stats by previous 24 hours
 
@@ -691,10 +693,11 @@ func main() {
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	sortBy := "sortBy_example" // string | Sort field. Default: mb_price (optional)
 	category := "category_example" // string | Comma-separated rollup category list (optional)
+	tags := "tags_example" // string | Comma-separated rollup tags list (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RollupAPI.ListRollup24h(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Execute()
+	resp, r, err := apiClient.RollupAPI.ListRollup24h(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RollupAPI.ListRollup24h``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -720,6 +723,7 @@ Name | Type | Description  | Notes
  **sort** | **string** | Sort order. Default: desc | 
  **sortBy** | **string** | Sort field. Default: mb_price | 
  **category** | **string** | Comma-separated rollup category list | 
+ **tags** | **string** | Comma-separated rollup tags list | 
 
 ### Return type
 

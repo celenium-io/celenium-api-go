@@ -22,7 +22,7 @@ var _ MappedNullable = &ResponsesUndelegation{}
 type ResponsesUndelegation struct {
 	Amount *string `json:"amount,omitempty"`
 	CompletionTime *string `json:"completion_time,omitempty"`
-	Delegator *string `json:"delegator,omitempty"`
+	Delegator *ResponsesShortAddress `json:"delegator,omitempty"`
 	Height *int32 `json:"height,omitempty"`
 	Time *string `json:"time,omitempty"`
 	Validator *ResponsesShortValidator `json:"validator,omitempty"`
@@ -110,9 +110,9 @@ func (o *ResponsesUndelegation) SetCompletionTime(v string) {
 }
 
 // GetDelegator returns the Delegator field value if set, zero value otherwise.
-func (o *ResponsesUndelegation) GetDelegator() string {
+func (o *ResponsesUndelegation) GetDelegator() ResponsesShortAddress {
 	if o == nil || IsNil(o.Delegator) {
-		var ret string
+		var ret ResponsesShortAddress
 		return ret
 	}
 	return *o.Delegator
@@ -120,7 +120,7 @@ func (o *ResponsesUndelegation) GetDelegator() string {
 
 // GetDelegatorOk returns a tuple with the Delegator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesUndelegation) GetDelegatorOk() (*string, bool) {
+func (o *ResponsesUndelegation) GetDelegatorOk() (*ResponsesShortAddress, bool) {
 	if o == nil || IsNil(o.Delegator) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *ResponsesUndelegation) HasDelegator() bool {
 	return false
 }
 
-// SetDelegator gets a reference to the given string and assigns it to the Delegator field.
-func (o *ResponsesUndelegation) SetDelegator(v string) {
+// SetDelegator gets a reference to the given ResponsesShortAddress and assigns it to the Delegator field.
+func (o *ResponsesUndelegation) SetDelegator(v ResponsesShortAddress) {
 	o.Delegator = &v
 }
 

@@ -5,6 +5,7 @@ All URIs are relative to *https://api-mainnet.celenium.io/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddressBlobs**](AddressAPI.md#AddressBlobs) | **Get** /address/{hash}/blobs | Get blobs pushed by address
+[**AddressCelestials**](AddressAPI.md#AddressCelestials) | **Get** /address/{hash}/celestials | Get list of celestial id for address
 [**AddressDelegations**](AddressAPI.md#AddressDelegations) | **Get** /address/{hash}/delegations | Get delegations made by address
 [**AddressGrantee**](AddressAPI.md#AddressGrantee) | **Get** /address/{hash}/granters | Get grants where address is grantee
 [**AddressGrants**](AddressAPI.md#AddressGrants) | **Get** /address/{hash}/grants | Get grants made by address
@@ -85,6 +86,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ResponsesBlobLog**](ResponsesBlobLog.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AddressCelestials
+
+> []ResponsesCelestial AddressCelestials(ctx, hash).Limit(limit).Offset(offset).Execute()
+
+Get list of celestial id for address
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	hash := "hash_example" // string | Hash
+	limit := int32(56) // int32 | Count of requested entities (optional)
+	offset := int32(56) // int32 | Offset (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AddressAPI.AddressCelestials(context.Background(), hash).Limit(limit).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressCelestials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AddressCelestials`: []ResponsesCelestial
+	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.AddressCelestials`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**hash** | **string** | Hash | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddressCelestialsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Count of requested entities | 
+ **offset** | **int32** | Offset | 
+
+### Return type
+
+[**[]ResponsesCelestial**](ResponsesCelestial.md)
 
 ### Authorization
 

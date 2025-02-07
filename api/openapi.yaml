@@ -209,6 +209,56 @@ paths:
       summary: Get blobs pushed by address
       tags:
       - address
+  /address/{hash}/celestials:
+    get:
+      description: Get list of celestial id for address
+      operationId: address-celestials
+      parameters:
+      - description: Hash
+        in: path
+        name: hash
+        required: true
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.Celestial'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get list of celestial id for address
+      tags:
+      - address
   /address/{hash}/delegations:
     get:
       description: Get delegations made by address
@@ -2226,6 +2276,11 @@ paths:
         name: category
         schema:
           type: string
+      - description: Comma-separated rollup tags list
+        in: query
+        name: tags
+        schema:
+          type: string
       responses:
         "200":
           content:
@@ -2311,6 +2366,11 @@ paths:
       - description: Comma-separated rollup category list
         in: query
         name: category
+        schema:
+          type: string
+      - description: Comma-separated rollup tags list
+        in: query
+        name: tags
         schema:
           type: string
       responses:
@@ -2715,6 +2775,7 @@ paths:
           - size
           - size_per_blob
           - fee
+          - tvl
           type: string
       - description: Timeframe
         in: path
@@ -3471,6 +3532,74 @@ paths:
       tags:
       - stats
       x-internal: true
+  /stats/tvs:
+    get:
+      description: Get TVS of the network
+      operationId: stats-tvs
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get TVS of the network
+      tags:
+      - stats
+  /stats/tvs/{timeframe}:
+    get:
+      description: Get histogram for network TVS by timeframe
+      operationId: stats-tvs-series
+      parameters:
+      - description: Timeframe
+        in: path
+        name: timeframe
+        required: true
+        schema:
+          enum:
+          - day
+          - month
+          type: string
+      - description: Time from in unix timestamp
+        in: query
+        name: from
+        schema:
+          type: integer
+      - description: Time to in unix timestamp
+        in: query
+        name: to
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.SeriesItem'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get histogram for network TVS
+      tags:
+      - stats
   /tx:
     get:
       description: List transactions info
@@ -4485,6 +4614,10 @@ components:
           unbonding: "10000000000"
           currency: utia
           delegated: "10000000000"
+        celestials:
+          image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+          name: name
+          primary: true
         id: 321
         first_height: 100
         hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
@@ -4492,6 +4625,8 @@ components:
       properties:
         balance:
           $ref: '#/components/schemas/responses.Balance'
+        celestials:
+          $ref: '#/components/schemas/responses.Celestial'
         first_height:
           example: 100
           type: integer
@@ -4570,8 +4705,16 @@ components:
           timeout_height: 0
           messages_count: 1
           signers:
-          - signers
-          - signers
+          - celestials:
+              image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+              name: name
+              primary: true
+            hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+          - celestials:
+              image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+              name: name
+              primary: true
+            hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
           codespace: sdk
           events_count: 2
           gas_wanted: 9348
@@ -4623,7 +4766,12 @@ components:
           logo: https://some_link.com/image.png
           id: 321
           slug: rollup_slug
-        signer: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        signer:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
       properties:
         commitment:
           example: vbGakK59+Non81TE3ULg5Ve5ufT9SFm/bCyY+WLR3gg=
@@ -4646,9 +4794,7 @@ components:
         rollup:
           $ref: '#/components/schemas/responses.ShortRollup'
         signer:
-          example: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          format: string
-          type: string
+          $ref: '#/components/schemas/responses.ShortAddress'
         size:
           example: 10
           format: integer
@@ -4822,6 +4968,23 @@ components:
           example: 12
           type: integer
       type: object
+    responses.Celestial:
+      description: Linked celestial id
+      example:
+        image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+        name: name
+        primary: true
+      properties:
+        image_url:
+          example: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+          type: string
+        name:
+          example: name
+          type: string
+        primary:
+          example: true
+          type: boolean
+      type: object
     responses.Change24hBlockStats:
       example:
         blobs_size_24h: 0.1234
@@ -4896,7 +5059,12 @@ components:
     responses.Delegation:
       example:
         amount: "0.1"
-        delegator: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        delegator:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         validator:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
@@ -4906,8 +5074,7 @@ components:
           example: "0.1"
           type: string
         delegator:
-          example: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          type: string
+          $ref: '#/components/schemas/responses.ShortAddress'
         validator:
           $ref: '#/components/schemas/responses.ShortValidator'
       type: object
@@ -4977,6 +5144,9 @@ components:
         status:
         - status
         - status
+        tags:
+        - tags
+        - tags
       properties:
         categories:
           items:
@@ -4995,6 +5165,10 @@ components:
             type: string
           type: array
         status:
+          items:
+            type: string
+          type: array
+        tags:
           items:
             type: string
           type: array
@@ -5062,14 +5236,24 @@ components:
     responses.Grant:
       example:
         authorization: /cosmos.staking.v1beta1.MsgDelegate
-        grantee: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        grantee:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         expiration: 2023-07-04T03:10:57+00:00
         revoke_height: 123123
         time: 2023-07-04T03:10:57+00:00
         params:
           key: "{}"
         revoked: true
-        granter: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        granter:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         height: 123123
       properties:
         authorization:
@@ -5079,11 +5263,9 @@ components:
           example: 2023-07-04T03:10:57+00:00
           type: string
         grantee:
-          example: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          type: string
+          $ref: '#/components/schemas/responses.ShortAddress'
         granter:
-          example: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          type: string
+          $ref: '#/components/schemas/responses.ShortAddress'
         height:
           example: 123123
           type: integer
@@ -5151,7 +5333,12 @@ components:
         id: 200
         time: 2023-07-04T03:10:57Z
         height: 100
-        signer: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        signer:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
       properties:
         commitment:
           example: vbGakK59+Non81TE3ULg5Ve5ufT9SFm/bCyY+WLR3gg=
@@ -5174,9 +5361,7 @@ components:
           format: base64
           type: string
         signer:
-          example: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          format: string
-          type: string
+          $ref: '#/components/schemas/responses.ShortAddress'
         size:
           example: 10
           format: integer
@@ -5389,8 +5574,16 @@ components:
           timeout_height: 0
           messages_count: 1
           signers:
-          - signers
-          - signers
+          - celestials:
+              image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+              name: name
+              primary: true
+            hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+          - celestials:
+              image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+              name: name
+              primary: true
+            hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
           codespace: sdk
           events_count: 2
           gas_wanted: 9348
@@ -5567,7 +5760,12 @@ components:
       example:
         amount: "0.1"
         completion_time: 2023-07-04T03:10:57+00:00
-        delegator: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        delegator:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         destination:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
@@ -5586,8 +5784,7 @@ components:
           example: 2023-07-04T03:10:57+00:00
           type: string
         delegator:
-          example: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          type: string
+          $ref: '#/components/schemas/responses.ShortAddress'
         destination:
           $ref: '#/components/schemas/responses.ShortValidator'
         height:
@@ -5607,6 +5804,9 @@ components:
         defi_lama: Manta
         description: Long rollup description
         type: settled
+        tags:
+        - tags
+        - tags
         twitter: https://x.com/account
         l2_beat: https://github.com/account
         provider: name
@@ -5683,6 +5883,10 @@ components:
           example: op_stack
           format: string
           type: string
+        tags:
+          items:
+            type: string
+          type: array
         twitter:
           example: https://x.com/account
           format: string
@@ -5957,6 +6161,9 @@ components:
         github: https://github.com/account
         website: https://website.com
         size_pct: 0.9876
+        tags:
+        - tags
+        - tags
         size: 1000
         vm: evm
         explorer: https://explorer.karak.network/
@@ -6060,6 +6267,10 @@ components:
           example: op_stack
           format: string
           type: string
+        tags:
+          items:
+            type: string
+          type: array
         twitter:
           example: https://x.com/account
           format: string
@@ -6114,6 +6325,20 @@ components:
         value:
           example: "0.17632"
           format: string
+          type: string
+      type: object
+    responses.ShortAddress:
+      example:
+        celestials:
+          image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+          name: name
+          primary: true
+        hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+      properties:
+        celestials:
+          $ref: '#/components/schemas/responses.Celestial'
+        hash:
+          example: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
           type: string
       type: object
     responses.ShortRollup:
@@ -6295,8 +6520,16 @@ components:
         timeout_height: 0
         messages_count: 1
         signers:
-        - signers
-        - signers
+        - celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        - celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         codespace: sdk
         events_count: 2
         gas_wanted: 9348
@@ -6389,7 +6622,7 @@ components:
           type: integer
         signers:
           items:
-            type: string
+            $ref: '#/components/schemas/responses.ShortAddress'
           type: array
         status:
           allOf:
@@ -6444,7 +6677,12 @@ components:
       example:
         amount: "0.1"
         completion_time: 2023-07-04T03:10:57+00:00
-        delegator: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        delegator:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         validator:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
@@ -6459,8 +6697,7 @@ components:
           example: 2023-07-04T03:10:57+00:00
           type: string
         delegator:
-          example: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          type: string
+          $ref: '#/components/schemas/responses.ShortAddress'
         height:
           example: 100
           type: integer
@@ -6473,8 +6710,18 @@ components:
     responses.Validator:
       example:
         website: https://www.easy2stake.com/
-        address: celestiavaloper1un77nfm6axkhkupe8fk4xl6fd4adz3y59fucpu
-        delegator: celestia1un77nfm6axkhkupe8fk4xl6fd4adz3y5qk7ph6
+        address:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        delegator:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         max_rate: "0.1"
         moniker: Easy 2 Stake
         voting_power: "1"
@@ -6492,8 +6739,7 @@ components:
         rewards: "1"
       properties:
         address:
-          example: celestiavaloper1un77nfm6axkhkupe8fk4xl6fd4adz3y59fucpu
-          type: string
+          $ref: '#/components/schemas/responses.ShortAddress'
         commissions:
           example: "1"
           type: string
@@ -6504,8 +6750,7 @@ components:
           example: security@0xfury.com
           type: string
         delegator:
-          example: celestia1un77nfm6axkhkupe8fk4xl6fd4adz3y5qk7ph6
-          type: string
+          $ref: '#/components/schemas/responses.ShortAddress'
         details:
           example: Some long text about validator
           type: string

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Height** | Pointer to **int32** |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
-**Signer** | Pointer to **string** |  | [optional] 
+**Signer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Size** | Pointer to **int32** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **TxHash** | Pointer to ***os.File** |  | [optional] 
@@ -160,20 +160,20 @@ HasNamespace returns a boolean if a field has been set.
 
 ### GetSigner
 
-`func (o *ResponsesLightBlobLog) GetSigner() string`
+`func (o *ResponsesLightBlobLog) GetSigner() ResponsesShortAddress`
 
 GetSigner returns the Signer field if non-nil, zero value otherwise.
 
 ### GetSignerOk
 
-`func (o *ResponsesLightBlobLog) GetSignerOk() (*string, bool)`
+`func (o *ResponsesLightBlobLog) GetSignerOk() (*ResponsesShortAddress, bool)`
 
 GetSignerOk returns a tuple with the Signer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSigner
 
-`func (o *ResponsesLightBlobLog) SetSigner(v string)`
+`func (o *ResponsesLightBlobLog) SetSigner(v ResponsesShortAddress)`
 
 SetSigner sets Signer field to given value.
 

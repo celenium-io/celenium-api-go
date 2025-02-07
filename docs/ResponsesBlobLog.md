@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **int32** |  | [optional] 
 **Namespace** | Pointer to [**ResponsesNamespace**](ResponsesNamespace.md) |  | [optional] 
 **Rollup** | Pointer to [**ResponsesShortRollup**](ResponsesShortRollup.md) |  | [optional] 
-**Signer** | Pointer to **string** |  | [optional] 
+**Signer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Size** | Pointer to **int32** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **Tx** | Pointer to [**ResponsesTx**](ResponsesTx.md) |  | [optional] 
@@ -186,20 +186,20 @@ HasRollup returns a boolean if a field has been set.
 
 ### GetSigner
 
-`func (o *ResponsesBlobLog) GetSigner() string`
+`func (o *ResponsesBlobLog) GetSigner() ResponsesShortAddress`
 
 GetSigner returns the Signer field if non-nil, zero value otherwise.
 
 ### GetSignerOk
 
-`func (o *ResponsesBlobLog) GetSignerOk() (*string, bool)`
+`func (o *ResponsesBlobLog) GetSignerOk() (*ResponsesShortAddress, bool)`
 
 GetSignerOk returns a tuple with the Signer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSigner
 
-`func (o *ResponsesBlobLog) SetSigner(v string)`
+`func (o *ResponsesBlobLog) SetSigner(v ResponsesShortAddress)`
 
 SetSigner sets Signer field to given value.
 

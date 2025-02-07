@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Balance** | Pointer to [**ResponsesBalance**](ResponsesBalance.md) |  | [optional] 
+**Celestials** | Pointer to [**ResponsesCelestial**](ResponsesCelestial.md) |  | [optional] 
 **FirstHeight** | Pointer to **int32** |  | [optional] 
 **Hash** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] 
@@ -53,6 +54,31 @@ SetBalance sets Balance field to given value.
 `func (o *ResponsesAddress) HasBalance() bool`
 
 HasBalance returns a boolean if a field has been set.
+
+### GetCelestials
+
+`func (o *ResponsesAddress) GetCelestials() ResponsesCelestial`
+
+GetCelestials returns the Celestials field if non-nil, zero value otherwise.
+
+### GetCelestialsOk
+
+`func (o *ResponsesAddress) GetCelestialsOk() (*ResponsesCelestial, bool)`
+
+GetCelestialsOk returns a tuple with the Celestials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCelestials
+
+`func (o *ResponsesAddress) SetCelestials(v ResponsesCelestial)`
+
+SetCelestials sets Celestials field to given value.
+
+### HasCelestials
+
+`func (o *ResponsesAddress) HasCelestials() bool`
+
+HasCelestials returns a boolean if a field has been set.
 
 ### GetFirstHeight
 

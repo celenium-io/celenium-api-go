@@ -22,8 +22,8 @@ var _ MappedNullable = &ResponsesGrant{}
 type ResponsesGrant struct {
 	Authorization *string `json:"authorization,omitempty"`
 	Expiration *string `json:"expiration,omitempty"`
-	Grantee *string `json:"grantee,omitempty"`
-	Granter *string `json:"granter,omitempty"`
+	Grantee *ResponsesShortAddress `json:"grantee,omitempty"`
+	Granter *ResponsesShortAddress `json:"granter,omitempty"`
 	Height *int32 `json:"height,omitempty"`
 	Params map[string]map[string]interface{} `json:"params,omitempty"`
 	RevokeHeight *int32 `json:"revoke_height,omitempty"`
@@ -113,9 +113,9 @@ func (o *ResponsesGrant) SetExpiration(v string) {
 }
 
 // GetGrantee returns the Grantee field value if set, zero value otherwise.
-func (o *ResponsesGrant) GetGrantee() string {
+func (o *ResponsesGrant) GetGrantee() ResponsesShortAddress {
 	if o == nil || IsNil(o.Grantee) {
-		var ret string
+		var ret ResponsesShortAddress
 		return ret
 	}
 	return *o.Grantee
@@ -123,7 +123,7 @@ func (o *ResponsesGrant) GetGrantee() string {
 
 // GetGranteeOk returns a tuple with the Grantee field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesGrant) GetGranteeOk() (*string, bool) {
+func (o *ResponsesGrant) GetGranteeOk() (*ResponsesShortAddress, bool) {
 	if o == nil || IsNil(o.Grantee) {
 		return nil, false
 	}
@@ -139,15 +139,15 @@ func (o *ResponsesGrant) HasGrantee() bool {
 	return false
 }
 
-// SetGrantee gets a reference to the given string and assigns it to the Grantee field.
-func (o *ResponsesGrant) SetGrantee(v string) {
+// SetGrantee gets a reference to the given ResponsesShortAddress and assigns it to the Grantee field.
+func (o *ResponsesGrant) SetGrantee(v ResponsesShortAddress) {
 	o.Grantee = &v
 }
 
 // GetGranter returns the Granter field value if set, zero value otherwise.
-func (o *ResponsesGrant) GetGranter() string {
+func (o *ResponsesGrant) GetGranter() ResponsesShortAddress {
 	if o == nil || IsNil(o.Granter) {
-		var ret string
+		var ret ResponsesShortAddress
 		return ret
 	}
 	return *o.Granter
@@ -155,7 +155,7 @@ func (o *ResponsesGrant) GetGranter() string {
 
 // GetGranterOk returns a tuple with the Granter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesGrant) GetGranterOk() (*string, bool) {
+func (o *ResponsesGrant) GetGranterOk() (*ResponsesShortAddress, bool) {
 	if o == nil || IsNil(o.Granter) {
 		return nil, false
 	}
@@ -171,8 +171,8 @@ func (o *ResponsesGrant) HasGranter() bool {
 	return false
 }
 
-// SetGranter gets a reference to the given string and assigns it to the Granter field.
-func (o *ResponsesGrant) SetGranter(v string) {
+// SetGranter gets a reference to the given ResponsesShortAddress and assigns it to the Granter field.
+func (o *ResponsesGrant) SetGranter(v ResponsesShortAddress) {
 	o.Granter = &v
 }
 
