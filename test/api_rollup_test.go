@@ -40,7 +40,9 @@ func Test_celenium_RollupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.RollupAPI.GetRollupAllSeries(context.Background()).Execute()
+		var timeframe string
+
+		resp, httpRes, err := apiClient.RollupAPI.GetRollupAllSeries(context.Background(), timeframe).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

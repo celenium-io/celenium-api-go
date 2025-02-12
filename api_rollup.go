@@ -151,9 +151,10 @@ func (a *RollupAPIService) GetRollupExecute(r ApiGetRollupRequest) (*ResponsesRo
 type ApiGetRollupAllSeriesRequest struct {
 	ctx context.Context
 	ApiService *RollupAPIService
+	timeframe string
 }
 
-func (r ApiGetRollupAllSeriesRequest) Execute() ([]ResponsesRollupAllSeriesItem, *http.Response, error) {
+func (r ApiGetRollupAllSeriesRequest) Execute() ([]map[string][]ResponsesRollupAllSeriesItem, *http.Response, error) {
 	return r.ApiService.GetRollupAllSeriesExecute(r)
 }
 
@@ -163,23 +164,25 @@ GetRollupAllSeries Get series for all rollups
 Get series for all rollups
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param timeframe Timeframe
  @return ApiGetRollupAllSeriesRequest
 */
-func (a *RollupAPIService) GetRollupAllSeries(ctx context.Context) ApiGetRollupAllSeriesRequest {
+func (a *RollupAPIService) GetRollupAllSeries(ctx context.Context, timeframe string) ApiGetRollupAllSeriesRequest {
 	return ApiGetRollupAllSeriesRequest{
 		ApiService: a,
 		ctx: ctx,
+		timeframe: timeframe,
 	}
 }
 
 // Execute executes the request
-//  @return []ResponsesRollupAllSeriesItem
-func (a *RollupAPIService) GetRollupAllSeriesExecute(r ApiGetRollupAllSeriesRequest) ([]ResponsesRollupAllSeriesItem, *http.Response, error) {
+//  @return []map[string][]ResponsesRollupAllSeriesItem
+func (a *RollupAPIService) GetRollupAllSeriesExecute(r ApiGetRollupAllSeriesRequest) ([]map[string][]ResponsesRollupAllSeriesItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ResponsesRollupAllSeriesItem
+		localVarReturnValue  []map[string][]ResponsesRollupAllSeriesItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RollupAPIService.GetRollupAllSeries")
@@ -187,7 +190,8 @@ func (a *RollupAPIService) GetRollupAllSeriesExecute(r ApiGetRollupAllSeriesRequ
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/rollup/stats/series"
+	localVarPath := localBasePath + "/rollup/stats/series/{timeframe}"
+	localVarPath = strings.Replace(localVarPath, "{"+"timeframe"+"}", url.PathEscape(parameterValueToString(r.timeframe, "timeframe")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

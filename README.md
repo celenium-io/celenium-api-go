@@ -121,7 +121,7 @@ Class | Method | HTTP request | Description
 *NamespaceAPI* | [**GetNamespaceRollups**](docs/NamespaceAPI.md#getnamespacerollups) | **Get** /namespace/{id}/{version}/rollups | List rollups using the namespace
 *NamespaceAPI* | [**ListNamespace**](docs/NamespaceAPI.md#listnamespace) | **Get** /namespace | List namespace info
 *RollupAPI* | [**GetRollup**](docs/RollupAPI.md#getrollup) | **Get** /rollup/{id} | Get rollup info
-*RollupAPI* | [**GetRollupAllSeries**](docs/RollupAPI.md#getrollupallseries) | **Get** /rollup/stats/series | Get series for all rollups
+*RollupAPI* | [**GetRollupAllSeries**](docs/RollupAPI.md#getrollupallseries) | **Get** /rollup/stats/series/{timeframe} | Get series for all rollups
 *RollupAPI* | [**GetRollupBlobs**](docs/RollupAPI.md#getrollupblobs) | **Get** /rollup/{id}/blobs | Get rollup blobs
 *RollupAPI* | [**GetRollupBySlug**](docs/RollupAPI.md#getrollupbyslug) | **Get** /rollup/slug/{slug} | Get rollup by slug
 *RollupAPI* | [**GetRollupDistribution**](docs/RollupAPI.md#getrollupdistribution) | **Get** /rollup/{id}/distribution/{name}/{timeframe} | Get rollup distribution
@@ -145,8 +145,6 @@ Class | Method | HTTP request | Description
 *StatsAPI* | [**StatsSquareSize**](docs/StatsAPI.md#statssquaresize) | **Get** /stats/square_size | Get histogram for square size distribution
 *StatsAPI* | [**StatsStakingSeries**](docs/StatsAPI.md#statsstakingseries) | **Get** /stats/staking/series/{id}/{name}/{timeframe} | Get histogram for staking with precomputed stats
 *StatsAPI* | [**StatsSummary**](docs/StatsAPI.md#statssummary) | **Get** /stats/summary/{table}/{function} | Get value by table and function
-*StatsAPI* | [**StatsTvs**](docs/StatsAPI.md#statstvs) | **Get** /stats/tvs | Get TVS of the network
-*StatsAPI* | [**StatsTvsSeries**](docs/StatsAPI.md#statstvsseries) | **Get** /stats/tvs/{timeframe} | Get histogram for network TVS
 *TransactionsAPI* | [**GetTransaction**](docs/TransactionsAPI.md#gettransaction) | **Get** /tx/{hash} | Get transaction by hash
 *TransactionsAPI* | [**GetTransactionEvents**](docs/TransactionsAPI.md#gettransactionevents) | **Get** /tx/{hash}/events | Get transaction events
 *TransactionsAPI* | [**GetTransactionMessages**](docs/TransactionsAPI.md#gettransactionmessages) | **Get** /tx/{hash}/messages | Get transaction messages

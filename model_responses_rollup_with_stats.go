@@ -26,6 +26,7 @@ type ResponsesRollupWithStats struct {
 	Bridge *string `json:"bridge,omitempty"`
 	Category *string `json:"category,omitempty"`
 	Compression *string `json:"compression,omitempty"`
+	DaPct *float32 `json:"da_pct,omitempty"`
 	DefiLama *string `json:"defi_lama,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Explorer *string `json:"explorer,omitempty"`
@@ -226,6 +227,38 @@ func (o *ResponsesRollupWithStats) HasCompression() bool {
 // SetCompression gets a reference to the given string and assigns it to the Compression field.
 func (o *ResponsesRollupWithStats) SetCompression(v string) {
 	o.Compression = &v
+}
+
+// GetDaPct returns the DaPct field value if set, zero value otherwise.
+func (o *ResponsesRollupWithStats) GetDaPct() float32 {
+	if o == nil || IsNil(o.DaPct) {
+		var ret float32
+		return ret
+	}
+	return *o.DaPct
+}
+
+// GetDaPctOk returns a tuple with the DaPct field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithStats) GetDaPctOk() (*float32, bool) {
+	if o == nil || IsNil(o.DaPct) {
+		return nil, false
+	}
+	return o.DaPct, true
+}
+
+// HasDaPct returns a boolean if a field has been set.
+func (o *ResponsesRollupWithStats) HasDaPct() bool {
+	if o != nil && !IsNil(o.DaPct) {
+		return true
+	}
+
+	return false
+}
+
+// SetDaPct gets a reference to the given float32 and assigns it to the DaPct field.
+func (o *ResponsesRollupWithStats) SetDaPct(v float32) {
+	o.DaPct = &v
 }
 
 // GetDefiLama returns the DefiLama field value if set, zero value otherwise.
@@ -988,6 +1021,9 @@ func (o ResponsesRollupWithStats) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Compression) {
 		toSerialize["compression"] = o.Compression
+	}
+	if !IsNil(o.DaPct) {
+		toSerialize["da_pct"] = o.DaPct
 	}
 	if !IsNil(o.DefiLama) {
 		toSerialize["defi_lama"] = o.DefiLama

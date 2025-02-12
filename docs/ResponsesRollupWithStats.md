@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Bridge** | Pointer to **string** |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
 **Compression** | Pointer to **string** |  | [optional] 
+**DaPct** | Pointer to **float32** |  | [optional] 
 **DefiLama** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Explorer** | Pointer to **string** |  | [optional] 
@@ -176,6 +177,31 @@ SetCompression sets Compression field to given value.
 `func (o *ResponsesRollupWithStats) HasCompression() bool`
 
 HasCompression returns a boolean if a field has been set.
+
+### GetDaPct
+
+`func (o *ResponsesRollupWithStats) GetDaPct() float32`
+
+GetDaPct returns the DaPct field if non-nil, zero value otherwise.
+
+### GetDaPctOk
+
+`func (o *ResponsesRollupWithStats) GetDaPctOk() (*float32, bool)`
+
+GetDaPctOk returns a tuple with the DaPct field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDaPct
+
+`func (o *ResponsesRollupWithStats) SetDaPct(v float32)`
+
+SetDaPct sets DaPct field to given value.
+
+### HasDaPct
+
+`func (o *ResponsesRollupWithStats) HasDaPct() bool`
+
+HasDaPct returns a boolean if a field has been set.
 
 ### GetDefiLama
 

@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **Logo** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Size** | Pointer to **int32** |  | [optional] 
-**Time** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -154,31 +153,6 @@ SetSize sets Size field to given value.
 `func (o *ResponsesRollupAllSeriesItem) HasSize() bool`
 
 HasSize returns a boolean if a field has been set.
-
-### GetTime
-
-`func (o *ResponsesRollupAllSeriesItem) GetTime() time.Time`
-
-GetTime returns the Time field if non-nil, zero value otherwise.
-
-### GetTimeOk
-
-`func (o *ResponsesRollupAllSeriesItem) GetTimeOk() (*time.Time, bool)`
-
-GetTimeOk returns a tuple with the Time field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTime
-
-`func (o *ResponsesRollupAllSeriesItem) SetTime(v time.Time)`
-
-SetTime sets Time field to given value.
-
-### HasTime
-
-`func (o *ResponsesRollupAllSeriesItem) HasTime() bool`
-
-HasTime returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

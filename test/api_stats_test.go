@@ -185,30 +185,4 @@ func Test_celenium_StatsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test StatsAPIService StatsTvs", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.StatsAPI.StatsTvs(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test StatsAPIService StatsTvsSeries", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var timeframe string
-
-		resp, httpRes, err := apiClient.StatsAPI.StatsTvsSeries(context.Background(), timeframe).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 }

@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // checks if the ResponsesRollupAllSeriesItem type satisfies the MappedNullable interface at compile time
@@ -26,7 +25,6 @@ type ResponsesRollupAllSeriesItem struct {
 	Logo *string `json:"logo,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Size *int32 `json:"size,omitempty"`
-	Time *time.Time `json:"time,omitempty"`
 }
 
 // NewResponsesRollupAllSeriesItem instantiates a new ResponsesRollupAllSeriesItem object
@@ -206,38 +204,6 @@ func (o *ResponsesRollupAllSeriesItem) SetSize(v int32) {
 	o.Size = &v
 }
 
-// GetTime returns the Time field value if set, zero value otherwise.
-func (o *ResponsesRollupAllSeriesItem) GetTime() time.Time {
-	if o == nil || IsNil(o.Time) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Time
-}
-
-// GetTimeOk returns a tuple with the Time field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResponsesRollupAllSeriesItem) GetTimeOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.Time) {
-		return nil, false
-	}
-	return o.Time, true
-}
-
-// HasTime returns a boolean if a field has been set.
-func (o *ResponsesRollupAllSeriesItem) HasTime() bool {
-	if o != nil && !IsNil(o.Time) {
-		return true
-	}
-
-	return false
-}
-
-// SetTime gets a reference to the given time.Time and assigns it to the Time field.
-func (o *ResponsesRollupAllSeriesItem) SetTime(v time.Time) {
-	o.Time = &v
-}
-
 func (o ResponsesRollupAllSeriesItem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -262,9 +228,6 @@ func (o ResponsesRollupAllSeriesItem) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size
-	}
-	if !IsNil(o.Time) {
-		toSerialize["time"] = o.Time
 	}
 	return toSerialize, nil
 }

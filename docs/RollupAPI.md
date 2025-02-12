@@ -5,7 +5,7 @@ All URIs are relative to *https://api-mainnet.celenium.io/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetRollup**](RollupAPI.md#GetRollup) | **Get** /rollup/{id} | Get rollup info
-[**GetRollupAllSeries**](RollupAPI.md#GetRollupAllSeries) | **Get** /rollup/stats/series | Get series for all rollups
+[**GetRollupAllSeries**](RollupAPI.md#GetRollupAllSeries) | **Get** /rollup/stats/series/{timeframe} | Get series for all rollups
 [**GetRollupBlobs**](RollupAPI.md#GetRollupBlobs) | **Get** /rollup/{id}/blobs | Get rollup blobs
 [**GetRollupBySlug**](RollupAPI.md#GetRollupBySlug) | **Get** /rollup/slug/{slug} | Get rollup by slug
 [**GetRollupDistribution**](RollupAPI.md#GetRollupDistribution) | **Get** /rollup/{id}/distribution/{name}/{timeframe} | Get rollup distribution
@@ -91,7 +91,7 @@ No authorization required
 
 ## GetRollupAllSeries
 
-> []ResponsesRollupAllSeriesItem GetRollupAllSeries(ctx).Execute()
+> []map[string][]ResponsesRollupAllSeriesItem GetRollupAllSeries(ctx, timeframe).Execute()
 
 Get series for all rollups
 
@@ -110,31 +110,40 @@ import (
 )
 
 func main() {
+	timeframe := "timeframe_example" // string | Timeframe
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RollupAPI.GetRollupAllSeries(context.Background()).Execute()
+	resp, r, err := apiClient.RollupAPI.GetRollupAllSeries(context.Background(), timeframe).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RollupAPI.GetRollupAllSeries``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRollupAllSeries`: []ResponsesRollupAllSeriesItem
+	// response from `GetRollupAllSeries`: []map[string][]ResponsesRollupAllSeriesItem
 	fmt.Fprintf(os.Stdout, "Response from `RollupAPI.GetRollupAllSeries`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**timeframe** | **string** | Timeframe | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetRollupAllSeriesRequest struct via the builder pattern
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
 ### Return type
 
-[**[]ResponsesRollupAllSeriesItem**](ResponsesRollupAllSeriesItem.md)
+[**[]map[string][]ResponsesRollupAllSeriesItem**](map.md)
 
 ### Authorization
 
