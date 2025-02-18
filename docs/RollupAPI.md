@@ -91,7 +91,7 @@ No authorization required
 
 ## GetRollupAllSeries
 
-> []map[string][]ResponsesRollupAllSeriesItem GetRollupAllSeries(ctx, timeframe).Execute()
+> []ResponsesRollupAllSeriesResponse GetRollupAllSeries(ctx, timeframe).Execute()
 
 Get series for all rollups
 
@@ -119,7 +119,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RollupAPI.GetRollupAllSeries``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRollupAllSeries`: []map[string][]ResponsesRollupAllSeriesItem
+	// response from `GetRollupAllSeries`: []ResponsesRollupAllSeriesResponse
 	fmt.Fprintf(os.Stdout, "Response from `RollupAPI.GetRollupAllSeries`: %v\n", resp)
 }
 ```
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]map[string][]ResponsesRollupAllSeriesItem**](map.md)
+[**[]ResponsesRollupAllSeriesResponse**](ResponsesRollupAllSeriesResponse.md)
 
 ### Authorization
 

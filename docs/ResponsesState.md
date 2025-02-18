@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **TotalAccounts** | Pointer to **int64** |  | [optional] 
 **TotalBlobsSize** | Pointer to **int64** |  | [optional] 
 **TotalFee** | Pointer to **string** |  | [optional] 
+**TotalNamespaces** | Pointer to **int32** |  | [optional] 
 **TotalStake** | Pointer to **string** |  | [optional] 
 **TotalSupply** | Pointer to **string** |  | [optional] 
 **TotalTx** | Pointer to **int64** |  | [optional] 
@@ -288,6 +289,31 @@ SetTotalFee sets TotalFee field to given value.
 `func (o *ResponsesState) HasTotalFee() bool`
 
 HasTotalFee returns a boolean if a field has been set.
+
+### GetTotalNamespaces
+
+`func (o *ResponsesState) GetTotalNamespaces() int32`
+
+GetTotalNamespaces returns the TotalNamespaces field if non-nil, zero value otherwise.
+
+### GetTotalNamespacesOk
+
+`func (o *ResponsesState) GetTotalNamespacesOk() (*int32, bool)`
+
+GetTotalNamespacesOk returns a tuple with the TotalNamespaces field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalNamespaces
+
+`func (o *ResponsesState) SetTotalNamespaces(v int32)`
+
+SetTotalNamespaces sets TotalNamespaces field to given value.
+
+### HasTotalNamespaces
+
+`func (o *ResponsesState) HasTotalNamespaces() bool`
+
+HasTotalNamespaces returns a boolean if a field has been set.
 
 ### GetTotalStake
 

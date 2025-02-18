@@ -31,6 +31,7 @@ type ResponsesState struct {
 	TotalAccounts *int64 `json:"total_accounts,omitempty"`
 	TotalBlobsSize *int64 `json:"total_blobs_size,omitempty"`
 	TotalFee *string `json:"total_fee,omitempty"`
+	TotalNamespaces *int32 `json:"total_namespaces,omitempty"`
 	TotalStake *string `json:"total_stake,omitempty"`
 	TotalSupply *string `json:"total_supply,omitempty"`
 	TotalTx *int64 `json:"total_tx,omitempty"`
@@ -375,6 +376,38 @@ func (o *ResponsesState) SetTotalFee(v string) {
 	o.TotalFee = &v
 }
 
+// GetTotalNamespaces returns the TotalNamespaces field value if set, zero value otherwise.
+func (o *ResponsesState) GetTotalNamespaces() int32 {
+	if o == nil || IsNil(o.TotalNamespaces) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalNamespaces
+}
+
+// GetTotalNamespacesOk returns a tuple with the TotalNamespaces field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesState) GetTotalNamespacesOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalNamespaces) {
+		return nil, false
+	}
+	return o.TotalNamespaces, true
+}
+
+// HasTotalNamespaces returns a boolean if a field has been set.
+func (o *ResponsesState) HasTotalNamespaces() bool {
+	if o != nil && !IsNil(o.TotalNamespaces) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalNamespaces gets a reference to the given int32 and assigns it to the TotalNamespaces field.
+func (o *ResponsesState) SetTotalNamespaces(v int32) {
+	o.TotalNamespaces = &v
+}
+
 // GetTotalStake returns the TotalStake field value if set, zero value otherwise.
 func (o *ResponsesState) GetTotalStake() string {
 	if o == nil || IsNil(o.TotalStake) {
@@ -574,6 +607,9 @@ func (o ResponsesState) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalFee) {
 		toSerialize["total_fee"] = o.TotalFee
+	}
+	if !IsNil(o.TotalNamespaces) {
+		toSerialize["total_namespaces"] = o.TotalNamespaces
 	}
 	if !IsNil(o.TotalStake) {
 		toSerialize["total_stake"] = o.TotalStake

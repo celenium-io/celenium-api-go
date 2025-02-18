@@ -200,6 +200,7 @@ Class | Method | HTTP request | Description
  - [ResponsesRedelegation](docs/ResponsesRedelegation.md)
  - [ResponsesRollup](docs/ResponsesRollup.md)
  - [ResponsesRollupAllSeriesItem](docs/ResponsesRollupAllSeriesItem.md)
+ - [ResponsesRollupAllSeriesResponse](docs/ResponsesRollupAllSeriesResponse.md)
  - [ResponsesRollupGroupedStats](docs/ResponsesRollupGroupedStats.md)
  - [ResponsesRollupStats24h](docs/ResponsesRollupStats24h.md)
  - [ResponsesRollupWithDayStats](docs/ResponsesRollupWithDayStats.md)

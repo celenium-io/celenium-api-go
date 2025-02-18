@@ -2502,11 +2502,7 @@ paths:
             application/json:
               schema:
                 items:
-                  additionalProperties:
-                    items:
-                      $ref: '#/components/schemas/responses.RollupAllSeriesItem'
-                    type: array
-                  type: object
+                  $ref: '#/components/schemas/responses.RollupAllSeriesResponse'
                 type: array
           description: OK
         "400":
@@ -5879,6 +5875,30 @@ components:
           format: integer
           type: integer
       type: object
+    responses.RollupAllSeriesResponse:
+      example:
+        time: 2023-07-04T03:10:57Z
+        items:
+        - blobs_count: 123
+          size: 123
+          fee: "123"
+          name: Rollup name
+          logo: https://some_link.com/image.png
+        - blobs_count: 123
+          size: 123
+          fee: "123"
+          name: Rollup name
+          logo: https://some_link.com/image.png
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/responses.RollupAllSeriesItem'
+          type: array
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+      type: object
     responses.RollupGroupedStats:
       example:
         blobs_count: 2
@@ -6349,6 +6369,7 @@ components:
       example:
         synced: true
         chain_id: mocha-4
+        total_namespaces: 312
         total_supply: "312"
         total_tx: 23456
         total_stake: "312"
@@ -6403,6 +6424,10 @@ components:
           example: "312"
           format: string
           type: string
+        total_namespaces:
+          example: 312
+          format: string
+          type: integer
         total_stake:
           example: "312"
           format: string

@@ -154,7 +154,7 @@ type ApiGetRollupAllSeriesRequest struct {
 	timeframe string
 }
 
-func (r ApiGetRollupAllSeriesRequest) Execute() ([]map[string][]ResponsesRollupAllSeriesItem, *http.Response, error) {
+func (r ApiGetRollupAllSeriesRequest) Execute() ([]ResponsesRollupAllSeriesResponse, *http.Response, error) {
 	return r.ApiService.GetRollupAllSeriesExecute(r)
 }
 
@@ -176,13 +176,13 @@ func (a *RollupAPIService) GetRollupAllSeries(ctx context.Context, timeframe str
 }
 
 // Execute executes the request
-//  @return []map[string][]ResponsesRollupAllSeriesItem
-func (a *RollupAPIService) GetRollupAllSeriesExecute(r ApiGetRollupAllSeriesRequest) ([]map[string][]ResponsesRollupAllSeriesItem, *http.Response, error) {
+//  @return []ResponsesRollupAllSeriesResponse
+func (a *RollupAPIService) GetRollupAllSeriesExecute(r ApiGetRollupAllSeriesRequest) ([]ResponsesRollupAllSeriesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []map[string][]ResponsesRollupAllSeriesItem
+		localVarReturnValue  []ResponsesRollupAllSeriesResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RollupAPIService.GetRollupAllSeries")
