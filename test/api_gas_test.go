@@ -46,4 +46,18 @@ func Test_celenium_GasAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GasAPIService GasPricePriority", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var priority string
+
+		resp, httpRes, err := apiClient.GasAPI.GasPricePriority(context.Background(), priority).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

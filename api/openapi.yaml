@@ -1734,6 +1734,32 @@ paths:
       summary: Get estimated gas price
       tags:
       - gas
+  /gas/price/{priority}:
+    get:
+      description: Get estimated gas price with priority filter based on historical
+        data
+      operationId: gas-price-priority
+      parameters:
+      - description: Priority
+        in: path
+        name: priority
+        required: true
+        schema:
+          enum:
+          - slow
+          - median
+          - fast
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+      summary: Get estimated gas price with priority filter
+      tags:
+      - gas
   /head:
     get:
       description: Get current indexer head
@@ -1818,38 +1844,6 @@ paths:
                 $ref: '#/components/schemas/handler.Error'
           description: Internal Server Error
       summary: List namespace info
-      tags:
-      - namespace
-  /namespace/active:
-    get:
-      description: Get last used namespace
-      operationId: get-namespace-active
-      parameters:
-      - description: "Sort field. Default: time"
-        in: query
-        name: sort
-        schema:
-          enum:
-          - time
-          - pfb_count
-          - size
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/responses.Namespace'
-                type: array
-          description: OK
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/handler.Error'
-          description: Internal Server Error
-      summary: Get last used namespace
       tags:
       - namespace
   /namespace/count:

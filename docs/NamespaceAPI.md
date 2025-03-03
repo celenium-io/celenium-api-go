@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**GetBlobProof**](NamespaceAPI.md#GetBlobProof) | **Get** /blob/proofs | Get blob inclusion proofs
 [**GetBlobs**](NamespaceAPI.md#GetBlobs) | **Get** /blob | List all blobs with filters
 [**GetNamespace**](NamespaceAPI.md#GetNamespace) | **Get** /namespace/{id} | Get namespace info
-[**GetNamespaceActive**](NamespaceAPI.md#GetNamespaceActive) | **Get** /namespace/active | Get last used namespace
 [**GetNamespaceBase64**](NamespaceAPI.md#GetNamespaceBase64) | **Get** /namespace_by_hash/{hash} | Get namespace info by base64
 [**GetNamespaceBlobs**](NamespaceAPI.md#GetNamespaceBlobs) | **Get** /namespace_by_hash/{hash}/{height} | Get namespace blobs on height
 [**GetNamespaceByVersionAndId**](NamespaceAPI.md#GetNamespaceByVersionAndId) | **Get** /namespace/{id}/{version} | Get namespace info by id and version
@@ -447,72 +446,6 @@ Other parameters are passed through a pointer to a apiGetNamespaceRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
-### Return type
-
-[**[]ResponsesNamespace**](ResponsesNamespace.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNamespaceActive
-
-> []ResponsesNamespace GetNamespaceActive(ctx).Sort(sort).Execute()
-
-Get last used namespace
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/celenium-io/celenium-api-go"
-)
-
-func main() {
-	sort := "sort_example" // string | Sort field. Default: time (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NamespaceAPI.GetNamespaceActive(context.Background()).Sort(sort).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamespaceAPI.GetNamespaceActive``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetNamespaceActive`: []ResponsesNamespace
-	fmt.Fprintf(os.Stdout, "Response from `NamespaceAPI.GetNamespaceActive`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNamespaceActiveRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sort** | **string** | Sort field. Default: time | 
 
 ### Return type
 
