@@ -23,6 +23,7 @@ type ResponsesCelestial struct {
 	ImageUrl *string `json:"image_url,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Primary *bool `json:"primary,omitempty"`
+	Status *string `json:"status,omitempty"`
 }
 
 // NewResponsesCelestial instantiates a new ResponsesCelestial object
@@ -138,6 +139,38 @@ func (o *ResponsesCelestial) SetPrimary(v bool) {
 	o.Primary = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ResponsesCelestial) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesCelestial) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *ResponsesCelestial) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *ResponsesCelestial) SetStatus(v string) {
+	o.Status = &v
+}
+
 func (o ResponsesCelestial) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -156,6 +189,9 @@ func (o ResponsesCelestial) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Primary) {
 		toSerialize["primary"] = o.Primary
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }

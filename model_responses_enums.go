@@ -21,6 +21,7 @@ var _ MappedNullable = &ResponsesEnums{}
 // ResponsesEnums struct for ResponsesEnums
 type ResponsesEnums struct {
 	Categories []string `json:"categories,omitempty"`
+	CelestialsStatuses []string `json:"celestials_statuses,omitempty"`
 	EventType []string `json:"event_type,omitempty"`
 	MessageType []string `json:"message_type,omitempty"`
 	RollupType []string `json:"rollup_type,omitempty"`
@@ -75,6 +76,38 @@ func (o *ResponsesEnums) HasCategories() bool {
 // SetCategories gets a reference to the given []string and assigns it to the Categories field.
 func (o *ResponsesEnums) SetCategories(v []string) {
 	o.Categories = v
+}
+
+// GetCelestialsStatuses returns the CelestialsStatuses field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetCelestialsStatuses() []string {
+	if o == nil || IsNil(o.CelestialsStatuses) {
+		var ret []string
+		return ret
+	}
+	return o.CelestialsStatuses
+}
+
+// GetCelestialsStatusesOk returns a tuple with the CelestialsStatuses field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetCelestialsStatusesOk() ([]string, bool) {
+	if o == nil || IsNil(o.CelestialsStatuses) {
+		return nil, false
+	}
+	return o.CelestialsStatuses, true
+}
+
+// HasCelestialsStatuses returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasCelestialsStatuses() bool {
+	if o != nil && !IsNil(o.CelestialsStatuses) {
+		return true
+	}
+
+	return false
+}
+
+// SetCelestialsStatuses gets a reference to the given []string and assigns it to the CelestialsStatuses field.
+func (o *ResponsesEnums) SetCelestialsStatuses(v []string) {
+	o.CelestialsStatuses = v
 }
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
@@ -249,6 +282,9 @@ func (o ResponsesEnums) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Categories) {
 		toSerialize["categories"] = o.Categories
+	}
+	if !IsNil(o.CelestialsStatuses) {
+		toSerialize["celestials_statuses"] = o.CelestialsStatuses
 	}
 	if !IsNil(o.EventType) {
 		toSerialize["event_type"] = o.EventType

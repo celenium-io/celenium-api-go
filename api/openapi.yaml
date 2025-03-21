@@ -1846,26 +1846,6 @@ paths:
       summary: List namespace info
       tags:
       - namespace
-  /namespace/count:
-    get:
-      description: Get count of namespaces in network
-      operationId: get-namespace-count
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: integer
-          description: OK
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/handler.Error'
-          description: Internal Server Error
-      summary: Get count of namespaces in network
-      tags:
-      - namespace
   /namespace/{id}:
     get:
       description: Returns array of namespace versions
@@ -4554,6 +4534,7 @@ components:
           image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
           name: name
           primary: true
+          status: VERIFIED
         id: 321
         first_height: 100
         hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
@@ -4645,11 +4626,13 @@ components:
               image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
               name: name
               primary: true
+              status: VERIFIED
             hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
           - celestials:
               image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
               name: name
               primary: true
+              status: VERIFIED
             hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
           codespace: sdk
           events_count: 2
@@ -4707,6 +4690,7 @@ components:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
             name: name
             primary: true
+            status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
       properties:
         commitment:
@@ -4910,6 +4894,7 @@ components:
         image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
         name: name
         primary: true
+        status: VERIFIED
       properties:
         image_url:
           example: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -4920,6 +4905,9 @@ components:
         primary:
           example: true
           type: boolean
+        status:
+          example: VERIFIED
+          type: string
       type: object
     responses.Change24hBlockStats:
       example:
@@ -5000,6 +4988,7 @@ components:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
             name: name
             primary: true
+            status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         validator:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
@@ -5071,6 +5060,9 @@ components:
         rollup_type:
         - rollup_type
         - rollup_type
+        celestials_statuses:
+        - celestials_statuses
+        - celestials_statuses
         message_type:
         - message_type
         - message_type
@@ -5085,6 +5077,10 @@ components:
         - tags
       properties:
         categories:
+          items:
+            type: string
+          type: array
+        celestials_statuses:
           items:
             type: string
           type: array
@@ -5177,6 +5173,7 @@ components:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
             name: name
             primary: true
+            status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         expiration: 2023-07-04T03:10:57+00:00
         revoke_height: 123123
@@ -5189,6 +5186,7 @@ components:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
             name: name
             primary: true
+            status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         height: 123123
       properties:
@@ -5274,6 +5272,7 @@ components:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
             name: name
             primary: true
+            status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
       properties:
         commitment:
@@ -5514,11 +5513,13 @@ components:
               image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
               name: name
               primary: true
+              status: VERIFIED
             hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
           - celestials:
               image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
               name: name
               primary: true
+              status: VERIFIED
             hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
           codespace: sdk
           events_count: 2
@@ -5701,6 +5702,7 @@ components:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
             name: name
             primary: true
+            status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         destination:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
@@ -6293,6 +6295,7 @@ components:
           image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
           name: name
           primary: true
+          status: VERIFIED
         hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
       properties:
         celestials:
@@ -6489,11 +6492,13 @@ components:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
             name: name
             primary: true
+            status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         - celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
             name: name
             primary: true
+            status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         codespace: sdk
         events_count: 2
@@ -6647,6 +6652,7 @@ components:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
             name: name
             primary: true
+            status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         validator:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
@@ -6680,12 +6686,14 @@ components:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
             name: name
             primary: true
+            status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         delegator:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
             name: name
             primary: true
+            status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         max_rate: "0.1"
         moniker: Easy 2 Stake

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Categories** | Pointer to **[]string** |  | [optional] 
+**CelestialsStatuses** | Pointer to **[]string** |  | [optional] 
 **EventType** | Pointer to **[]string** |  | [optional] 
 **MessageType** | Pointer to **[]string** |  | [optional] 
 **RollupType** | Pointer to **[]string** |  | [optional] 
@@ -54,6 +55,31 @@ SetCategories sets Categories field to given value.
 `func (o *ResponsesEnums) HasCategories() bool`
 
 HasCategories returns a boolean if a field has been set.
+
+### GetCelestialsStatuses
+
+`func (o *ResponsesEnums) GetCelestialsStatuses() []string`
+
+GetCelestialsStatuses returns the CelestialsStatuses field if non-nil, zero value otherwise.
+
+### GetCelestialsStatusesOk
+
+`func (o *ResponsesEnums) GetCelestialsStatusesOk() (*[]string, bool)`
+
+GetCelestialsStatusesOk returns a tuple with the CelestialsStatuses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCelestialsStatuses
+
+`func (o *ResponsesEnums) SetCelestialsStatuses(v []string)`
+
+SetCelestialsStatuses sets CelestialsStatuses field to given value.
+
+### HasCelestialsStatuses
+
+`func (o *ResponsesEnums) HasCelestialsStatuses() bool`
+
+HasCelestialsStatuses returns a boolean if a field has been set.
 
 ### GetEventType
 

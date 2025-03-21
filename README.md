@@ -116,7 +116,6 @@ Class | Method | HTTP request | Description
 *NamespaceAPI* | [**GetNamespaceBase64**](docs/NamespaceAPI.md#getnamespacebase64) | **Get** /namespace_by_hash/{hash} | Get namespace info by base64
 *NamespaceAPI* | [**GetNamespaceBlobs**](docs/NamespaceAPI.md#getnamespaceblobs) | **Get** /namespace_by_hash/{hash}/{height} | Get namespace blobs on height
 *NamespaceAPI* | [**GetNamespaceByVersionAndId**](docs/NamespaceAPI.md#getnamespacebyversionandid) | **Get** /namespace/{id}/{version} | Get namespace info by id and version
-*NamespaceAPI* | [**GetNamespaceCount**](docs/NamespaceAPI.md#getnamespacecount) | **Get** /namespace/count | Get count of namespaces in network
 *NamespaceAPI* | [**GetNamespaceMessages**](docs/NamespaceAPI.md#getnamespacemessages) | **Get** /namespace/{id}/{version}/messages | Get namespace messages by id and version
 *NamespaceAPI* | [**GetNamespaceRollups**](docs/NamespaceAPI.md#getnamespacerollups) | **Get** /namespace/{id}/{version}/rollups | List rollups using the namespace
 *NamespaceAPI* | [**ListNamespace**](docs/NamespaceAPI.md#listnamespace) | **Get** /namespace | List namespace info

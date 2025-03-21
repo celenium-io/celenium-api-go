@@ -13,7 +13,6 @@ Method | HTTP request | Description
 [**GetNamespaceBase64**](NamespaceAPI.md#GetNamespaceBase64) | **Get** /namespace_by_hash/{hash} | Get namespace info by base64
 [**GetNamespaceBlobs**](NamespaceAPI.md#GetNamespaceBlobs) | **Get** /namespace_by_hash/{hash}/{height} | Get namespace blobs on height
 [**GetNamespaceByVersionAndId**](NamespaceAPI.md#GetNamespaceByVersionAndId) | **Get** /namespace/{id}/{version} | Get namespace info by id and version
-[**GetNamespaceCount**](NamespaceAPI.md#GetNamespaceCount) | **Get** /namespace/count | Get count of namespaces in network
 [**GetNamespaceMessages**](NamespaceAPI.md#GetNamespaceMessages) | **Get** /namespace/{id}/{version}/messages | Get namespace messages by id and version
 [**GetNamespaceRollups**](NamespaceAPI.md#GetNamespaceRollups) | **Get** /namespace/{id}/{version}/rollups | List rollups using the namespace
 [**ListNamespace**](NamespaceAPI.md#ListNamespace) | **Get** /namespace | List namespace info
@@ -666,67 +665,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ResponsesNamespace**](ResponsesNamespace.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNamespaceCount
-
-> int32 GetNamespaceCount(ctx).Execute()
-
-Get count of namespaces in network
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/celenium-io/celenium-api-go"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NamespaceAPI.GetNamespaceCount(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamespaceAPI.GetNamespaceCount``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetNamespaceCount`: int32
-	fmt.Fprintf(os.Stdout, "Response from `NamespaceAPI.GetNamespaceCount`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNamespaceCountRequest struct via the builder pattern
-
-
-### Return type
-
-**int32**
 
 ### Authorization
 
