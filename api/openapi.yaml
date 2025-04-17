@@ -2255,6 +2255,16 @@ paths:
         name: tags
         schema:
           type: string
+      - description: Comma-separated rollup stack list
+        in: query
+        name: stack
+        schema:
+          type: string
+      - description: Comma-separated rollup provider list
+        in: query
+        name: provider
+        schema:
+          type: string
       responses:
         "200":
           content:
@@ -2345,6 +2355,16 @@ paths:
       - description: Comma-separated rollup tags list
         in: query
         name: tags
+        schema:
+          type: string
+      - description: Comma-separated rollup stack list
+        in: query
+        name: stack
+        schema:
+          type: string
+      - description: Comma-separated rollup provider list
+        in: query
+        name: provider
         schema:
           type: string
       responses:
@@ -3019,81 +3039,6 @@ paths:
       summary: Get namespaces with sorting by size.
       tags:
       - stats
-  /stats/price/current:
-    get:
-      description: Get current TIA price
-      operationId: stats-price-current
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/responses.Price'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/handler.Error'
-          description: Bad Request
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/handler.Error'
-          description: Internal Server Error
-      summary: Get current TIA price
-      tags:
-      - stats
-  /stats/price/series/{timeframe}:
-    get:
-      description: Get histogram with TIA price
-      operationId: stats-price-series
-      parameters:
-      - description: Timeframe
-        in: path
-        name: timeframe
-        required: true
-        schema:
-          enum:
-          - 1m
-          - 1h
-          - 1d
-          type: string
-      - description: Time from in unix timestamp
-        in: query
-        name: from
-        schema:
-          type: integer
-      - description: Time to in unix timestamp
-        in: query
-        name: to
-        schema:
-          type: integer
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/responses.Price'
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/handler.Error'
-          description: Bad Request
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/handler.Error'
-          description: Internal Server Error
-      summary: Get histogram with TIA price
-      tags:
-      - stats
   /stats/rollup_stats_24h:
     get:
       description: Get rollups stats for last 24 hours
@@ -3261,6 +3206,28 @@ paths:
                 $ref: '#/components/schemas/handler.Error'
           description: Internal Server Error
       summary: Get cumulative histogram with precomputed stats
+      tags:
+      - stats
+  /stats/size_groups:
+    get:
+      description: Get blobs count grouped by size
+      operationId: stats-size-groups
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.SizeGroup'
+                type: array
+          description: OK
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get blobs count grouped by size
       tags:
       - stats
   /stats/square_size:
@@ -5664,35 +5631,6 @@ components:
       additionalProperties:
         type: string
       type: object
-    responses.Price:
-      example:
-        high: "0.17632"
-        low: "0.17632"
-        time: 2023-07-04T03:10:57Z
-        close: "0.17632"
-        open: "0.17632"
-      properties:
-        close:
-          example: "0.17632"
-          format: string
-          type: string
-        high:
-          example: "0.17632"
-          format: string
-          type: string
-        low:
-          example: "0.17632"
-          format: string
-          type: string
-        open:
-          example: "0.17632"
-          format: string
-          type: string
-        time:
-          example: 2023-07-04T03:10:57Z
-          format: date-time
-          type: string
-      type: object
     responses.Redelegation:
       example:
         amount: "0.1"
@@ -6355,6 +6293,30 @@ components:
         signed:
           example: true
           type: boolean
+      type: object
+    responses.SizeGroup:
+      example:
+        size: 123
+        count: 123
+        name: Rollup name
+        avg_size: 123
+      properties:
+        avg_size:
+          example: 123
+          format: integer
+          type: integer
+        count:
+          example: 123
+          format: integer
+          type: integer
+        name:
+          example: Rollup name
+          format: string
+          type: string
+        size:
+          example: 123
+          format: integer
+          type: integer
       type: object
     responses.SquareSizeResponse:
       additionalProperties:

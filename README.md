@@ -136,11 +136,10 @@ Class | Method | HTTP request | Description
 *StatsAPI* | [**StatsMessagesCount24h**](docs/StatsAPI.md#statsmessagescount24h) | **Get** /stats/messages_count_24h | Get messages distribution for the last 24 hours
 *StatsAPI* | [**StatsNamespaceUsage**](docs/StatsAPI.md#statsnamespaceusage) | **Get** /stats/namespace/usage | Get namespaces with sorting by size.
 *StatsAPI* | [**StatsNsSeries**](docs/StatsAPI.md#statsnsseries) | **Get** /stats/namespace/series/{id}/{name}/{timeframe} | Get histogram for namespace with precomputed stats
-*StatsAPI* | [**StatsPriceCurrent**](docs/StatsAPI.md#statspricecurrent) | **Get** /stats/price/current | Get current TIA price
-*StatsAPI* | [**StatsPriceSeries**](docs/StatsAPI.md#statspriceseries) | **Get** /stats/price/series/{timeframe} | Get histogram with TIA price
 *StatsAPI* | [**StatsRollup24h**](docs/StatsAPI.md#statsrollup24h) | **Get** /stats/rollup_stats_24h | Get rollups stats for last 24 hours
 *StatsAPI* | [**StatsSeries**](docs/StatsAPI.md#statsseries) | **Get** /stats/series/{name}/{timeframe} | Get histogram with precomputed stats
 *StatsAPI* | [**StatsSeriesCumulative**](docs/StatsAPI.md#statsseriescumulative) | **Get** /stats/series/{name}/{timeframe}/cumulative | Get cumulative histogram with precomputed stats
+*StatsAPI* | [**StatsSizeGroups**](docs/StatsAPI.md#statssizegroups) | **Get** /stats/size_groups | Get blobs count grouped by size
 *StatsAPI* | [**StatsSquareSize**](docs/StatsAPI.md#statssquaresize) | **Get** /stats/square_size | Get histogram for square size distribution
 *StatsAPI* | [**StatsStakingSeries**](docs/StatsAPI.md#statsstakingseries) | **Get** /stats/staking/series/{id}/{name}/{timeframe} | Get histogram for staking with precomputed stats
 *StatsAPI* | [**StatsSummary**](docs/StatsAPI.md#statssummary) | **Get** /stats/summary/{table}/{function} | Get value by table and function
@@ -195,7 +194,6 @@ Class | Method | HTTP request | Description
  - [ResponsesNamespaceUsage](docs/ResponsesNamespaceUsage.md)
  - [ResponsesODS](docs/ResponsesODS.md)
  - [ResponsesODSItem](docs/ResponsesODSItem.md)
- - [ResponsesPrice](docs/ResponsesPrice.md)
  - [ResponsesRedelegation](docs/ResponsesRedelegation.md)
  - [ResponsesRollup](docs/ResponsesRollup.md)
  - [ResponsesRollupAllSeriesItem](docs/ResponsesRollupAllSeriesItem.md)
@@ -210,6 +208,7 @@ Class | Method | HTTP request | Description
  - [ResponsesShortRollup](docs/ResponsesShortRollup.md)
  - [ResponsesShortValidator](docs/ResponsesShortValidator.md)
  - [ResponsesSignedBlocks](docs/ResponsesSignedBlocks.md)
+ - [ResponsesSizeGroup](docs/ResponsesSizeGroup.md)
  - [ResponsesState](docs/ResponsesState.md)
  - [ResponsesTPS](docs/ResponsesTPS.md)
  - [ResponsesTimeValueItem](docs/ResponsesTimeValueItem.md)

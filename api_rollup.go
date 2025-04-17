@@ -1116,6 +1116,8 @@ type ApiListRollupRequest struct {
 	sortBy *string
 	category *string
 	tags *string
+	stack *string
+	provider *string
 }
 
 // Count of requested entities
@@ -1151,6 +1153,18 @@ func (r ApiListRollupRequest) Category(category string) ApiListRollupRequest {
 // Comma-separated rollup tags list
 func (r ApiListRollupRequest) Tags(tags string) ApiListRollupRequest {
 	r.tags = &tags
+	return r
+}
+
+// Comma-separated rollup stack list
+func (r ApiListRollupRequest) Stack(stack string) ApiListRollupRequest {
+	r.stack = &stack
+	return r
+}
+
+// Comma-separated rollup provider list
+func (r ApiListRollupRequest) Provider(provider string) ApiListRollupRequest {
+	r.provider = &provider
 	return r
 }
 
@@ -1211,6 +1225,12 @@ func (a *RollupAPIService) ListRollupExecute(r ApiListRollupRequest) ([]Response
 	}
 	if r.tags != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "tags", r.tags, "", "")
+	}
+	if r.stack != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stack", r.stack, "", "")
+	}
+	if r.provider != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1296,6 +1316,8 @@ type ApiListRollup24hRequest struct {
 	sortBy *string
 	category *string
 	tags *string
+	stack *string
+	provider *string
 }
 
 // Count of requested entities
@@ -1331,6 +1353,18 @@ func (r ApiListRollup24hRequest) Category(category string) ApiListRollup24hReque
 // Comma-separated rollup tags list
 func (r ApiListRollup24hRequest) Tags(tags string) ApiListRollup24hRequest {
 	r.tags = &tags
+	return r
+}
+
+// Comma-separated rollup stack list
+func (r ApiListRollup24hRequest) Stack(stack string) ApiListRollup24hRequest {
+	r.stack = &stack
+	return r
+}
+
+// Comma-separated rollup provider list
+func (r ApiListRollup24hRequest) Provider(provider string) ApiListRollup24hRequest {
+	r.provider = &provider
 	return r
 }
 
@@ -1391,6 +1425,12 @@ func (a *RollupAPIService) ListRollup24hExecute(r ApiListRollup24hRequest) ([]Re
 	}
 	if r.tags != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "tags", r.tags, "", "")
+	}
+	if r.stack != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stack", r.stack, "", "")
+	}
+	if r.provider != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
