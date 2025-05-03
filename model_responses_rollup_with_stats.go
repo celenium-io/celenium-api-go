@@ -25,6 +25,7 @@ type ResponsesRollupWithStats struct {
 	BlobsCountPct *float32 `json:"blobs_count_pct,omitempty"`
 	Bridge *string `json:"bridge,omitempty"`
 	Category *string `json:"category,omitempty"`
+	Color *string `json:"color,omitempty"`
 	Compression *string `json:"compression,omitempty"`
 	DaPct *float32 `json:"da_pct,omitempty"`
 	DefiLama *string `json:"defi_lama,omitempty"`
@@ -41,6 +42,7 @@ type ResponsesRollupWithStats struct {
 	Logo *string `json:"logo,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Provider *string `json:"provider,omitempty"`
+	SettledOn *string `json:"settled_on,omitempty"`
 	Size *int32 `json:"size,omitempty"`
 	SizePct *float32 `json:"size_pct,omitempty"`
 	Slug *string `json:"slug,omitempty"`
@@ -195,6 +197,38 @@ func (o *ResponsesRollupWithStats) HasCategory() bool {
 // SetCategory gets a reference to the given string and assigns it to the Category field.
 func (o *ResponsesRollupWithStats) SetCategory(v string) {
 	o.Category = &v
+}
+
+// GetColor returns the Color field value if set, zero value otherwise.
+func (o *ResponsesRollupWithStats) GetColor() string {
+	if o == nil || IsNil(o.Color) {
+		var ret string
+		return ret
+	}
+	return *o.Color
+}
+
+// GetColorOk returns a tuple with the Color field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithStats) GetColorOk() (*string, bool) {
+	if o == nil || IsNil(o.Color) {
+		return nil, false
+	}
+	return o.Color, true
+}
+
+// HasColor returns a boolean if a field has been set.
+func (o *ResponsesRollupWithStats) HasColor() bool {
+	if o != nil && !IsNil(o.Color) {
+		return true
+	}
+
+	return false
+}
+
+// SetColor gets a reference to the given string and assigns it to the Color field.
+func (o *ResponsesRollupWithStats) SetColor(v string) {
+	o.Color = &v
 }
 
 // GetCompression returns the Compression field value if set, zero value otherwise.
@@ -709,6 +743,38 @@ func (o *ResponsesRollupWithStats) SetProvider(v string) {
 	o.Provider = &v
 }
 
+// GetSettledOn returns the SettledOn field value if set, zero value otherwise.
+func (o *ResponsesRollupWithStats) GetSettledOn() string {
+	if o == nil || IsNil(o.SettledOn) {
+		var ret string
+		return ret
+	}
+	return *o.SettledOn
+}
+
+// GetSettledOnOk returns a tuple with the SettledOn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithStats) GetSettledOnOk() (*string, bool) {
+	if o == nil || IsNil(o.SettledOn) {
+		return nil, false
+	}
+	return o.SettledOn, true
+}
+
+// HasSettledOn returns a boolean if a field has been set.
+func (o *ResponsesRollupWithStats) HasSettledOn() bool {
+	if o != nil && !IsNil(o.SettledOn) {
+		return true
+	}
+
+	return false
+}
+
+// SetSettledOn gets a reference to the given string and assigns it to the SettledOn field.
+func (o *ResponsesRollupWithStats) SetSettledOn(v string) {
+	o.SettledOn = &v
+}
+
 // GetSize returns the Size field value if set, zero value otherwise.
 func (o *ResponsesRollupWithStats) GetSize() int32 {
 	if o == nil || IsNil(o.Size) {
@@ -1019,6 +1085,9 @@ func (o ResponsesRollupWithStats) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Category) {
 		toSerialize["category"] = o.Category
 	}
+	if !IsNil(o.Color) {
+		toSerialize["color"] = o.Color
+	}
 	if !IsNil(o.Compression) {
 		toSerialize["compression"] = o.Compression
 	}
@@ -1066,6 +1135,9 @@ func (o ResponsesRollupWithStats) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Provider) {
 		toSerialize["provider"] = o.Provider
+	}
+	if !IsNil(o.SettledOn) {
+		toSerialize["settled_on"] = o.SettledOn
 	}
 	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size

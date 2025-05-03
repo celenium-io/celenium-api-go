@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **BlobsPerPfb** | Pointer to **float32** |  | [optional] 
 **Bridge** | Pointer to **string** |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
+**Color** | Pointer to **string** |  | [optional] 
 **Compression** | Pointer to **string** |  | [optional] 
 **DefiLama** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
@@ -23,6 +24,7 @@ Name | Type | Description | Notes
 **NamespaceCount** | Pointer to **int32** |  | [optional] 
 **PfbCount** | Pointer to **int32** |  | [optional] 
 **Provider** | Pointer to **string** |  | [optional] 
+**SettledOn** | Pointer to **string** |  | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 **Stack** | Pointer to **string** |  | [optional] 
 **Throughput** | Pointer to **int32** |  | [optional] 
@@ -176,6 +178,31 @@ SetCategory sets Category field to given value.
 `func (o *ResponsesRollupWithDayStats) HasCategory() bool`
 
 HasCategory returns a boolean if a field has been set.
+
+### GetColor
+
+`func (o *ResponsesRollupWithDayStats) GetColor() string`
+
+GetColor returns the Color field if non-nil, zero value otherwise.
+
+### GetColorOk
+
+`func (o *ResponsesRollupWithDayStats) GetColorOk() (*string, bool)`
+
+GetColorOk returns a tuple with the Color field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetColor
+
+`func (o *ResponsesRollupWithDayStats) SetColor(v string)`
+
+SetColor sets Color field to given value.
+
+### HasColor
+
+`func (o *ResponsesRollupWithDayStats) HasColor() bool`
+
+HasColor returns a boolean if a field has been set.
 
 ### GetCompression
 
@@ -526,6 +553,31 @@ SetProvider sets Provider field to given value.
 `func (o *ResponsesRollupWithDayStats) HasProvider() bool`
 
 HasProvider returns a boolean if a field has been set.
+
+### GetSettledOn
+
+`func (o *ResponsesRollupWithDayStats) GetSettledOn() string`
+
+GetSettledOn returns the SettledOn field if non-nil, zero value otherwise.
+
+### GetSettledOnOk
+
+`func (o *ResponsesRollupWithDayStats) GetSettledOnOk() (*string, bool)`
+
+GetSettledOnOk returns a tuple with the SettledOn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSettledOn
+
+`func (o *ResponsesRollupWithDayStats) SetSettledOn(v string)`
+
+SetSettledOn sets SettledOn field to given value.
+
+### HasSettledOn
+
+`func (o *ResponsesRollupWithDayStats) HasSettledOn() bool`
+
+HasSettledOn returns a boolean if a field has been set.
 
 ### GetSlug
 

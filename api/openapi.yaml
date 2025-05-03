@@ -5678,6 +5678,8 @@ components:
         stack: op_stack
         website: https://website.com
         defi_lama: Manta
+        color: '#123456'
+        settled_on: Ethereum
         description: Long rollup description
         type: settled
         tags:
@@ -5705,6 +5707,10 @@ components:
           type: string
         category:
           example: nft
+          format: string
+          type: string
+        color:
+          example: '#123456'
           format: string
           type: string
         compression:
@@ -5749,6 +5755,10 @@ components:
           type: string
         provider:
           example: name
+          format: string
+          type: string
+        settled_on:
+          example: Ethereum
           format: string
           type: string
         slug:
@@ -5896,6 +5906,8 @@ components:
         namespace_count: 100
         stack: op_stack
         defi_lama: Manta
+        color: '#123456'
+        settled_on: Ethereum
         description: Long rollup description
         type: settled
         blobs_count: 100
@@ -5940,6 +5952,10 @@ components:
           type: string
         category:
           example: nft
+          format: string
+          type: string
+        color:
+          example: '#123456'
           format: string
           type: string
         compression:
@@ -5998,6 +6014,10 @@ components:
           example: name
           format: string
           type: string
+        settled_on:
+          example: Ethereum
+          format: string
+          type: string
         slug:
           example: rollup_slug
           format: string
@@ -6039,7 +6059,9 @@ components:
       example:
         stack: op_stack
         defi_lama: Manta
+        color: '#123456'
         fee: "123.456789"
+        settled_on: Ethereum
         description: Long rollup description
         type: settled
         blobs_count: 2
@@ -6085,6 +6107,10 @@ components:
           type: string
         category:
           example: nft
+          format: string
+          type: string
+        color:
+          example: '#123456'
           format: string
           type: string
         compression:
@@ -6149,6 +6175,10 @@ components:
           type: string
         provider:
           example: name
+          format: string
+          type: string
+        settled_on:
+          example: Ethereum
           format: string
           type: string
         size:
