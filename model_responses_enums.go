@@ -24,6 +24,8 @@ type ResponsesEnums struct {
 	CelestialsStatuses []string `json:"celestials_statuses,omitempty"`
 	EventType []string `json:"event_type,omitempty"`
 	MessageType []string `json:"message_type,omitempty"`
+	ProposalStatus []string `json:"proposal_status,omitempty"`
+	ProposalType []string `json:"proposal_type,omitempty"`
 	RollupType []string `json:"rollup_type,omitempty"`
 	Status []string `json:"status,omitempty"`
 	Tags []string `json:"tags,omitempty"`
@@ -174,6 +176,70 @@ func (o *ResponsesEnums) SetMessageType(v []string) {
 	o.MessageType = v
 }
 
+// GetProposalStatus returns the ProposalStatus field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetProposalStatus() []string {
+	if o == nil || IsNil(o.ProposalStatus) {
+		var ret []string
+		return ret
+	}
+	return o.ProposalStatus
+}
+
+// GetProposalStatusOk returns a tuple with the ProposalStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetProposalStatusOk() ([]string, bool) {
+	if o == nil || IsNil(o.ProposalStatus) {
+		return nil, false
+	}
+	return o.ProposalStatus, true
+}
+
+// HasProposalStatus returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasProposalStatus() bool {
+	if o != nil && !IsNil(o.ProposalStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetProposalStatus gets a reference to the given []string and assigns it to the ProposalStatus field.
+func (o *ResponsesEnums) SetProposalStatus(v []string) {
+	o.ProposalStatus = v
+}
+
+// GetProposalType returns the ProposalType field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetProposalType() []string {
+	if o == nil || IsNil(o.ProposalType) {
+		var ret []string
+		return ret
+	}
+	return o.ProposalType
+}
+
+// GetProposalTypeOk returns a tuple with the ProposalType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetProposalTypeOk() ([]string, bool) {
+	if o == nil || IsNil(o.ProposalType) {
+		return nil, false
+	}
+	return o.ProposalType, true
+}
+
+// HasProposalType returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasProposalType() bool {
+	if o != nil && !IsNil(o.ProposalType) {
+		return true
+	}
+
+	return false
+}
+
+// SetProposalType gets a reference to the given []string and assigns it to the ProposalType field.
+func (o *ResponsesEnums) SetProposalType(v []string) {
+	o.ProposalType = v
+}
+
 // GetRollupType returns the RollupType field value if set, zero value otherwise.
 func (o *ResponsesEnums) GetRollupType() []string {
 	if o == nil || IsNil(o.RollupType) {
@@ -291,6 +357,12 @@ func (o ResponsesEnums) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MessageType) {
 		toSerialize["message_type"] = o.MessageType
+	}
+	if !IsNil(o.ProposalStatus) {
+		toSerialize["proposal_status"] = o.ProposalStatus
+	}
+	if !IsNil(o.ProposalType) {
+		toSerialize["proposal_type"] = o.ProposalType
 	}
 	if !IsNil(o.RollupType) {
 		toSerialize["rollup_type"] = o.RollupType

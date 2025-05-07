@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *NamespaceAPI* | [**GetNamespaceMessages**](docs/NamespaceAPI.md#getnamespacemessages) | **Get** /namespace/{id}/{version}/messages | Get namespace messages by id and version
 *NamespaceAPI* | [**GetNamespaceRollups**](docs/NamespaceAPI.md#getnamespacerollups) | **Get** /namespace/{id}/{version}/rollups | List rollups using the namespace
 *NamespaceAPI* | [**ListNamespace**](docs/NamespaceAPI.md#listnamespace) | **Get** /namespace | List namespace info
+*ProposalAPI* | [**ListProposal**](docs/ProposalAPI.md#listproposal) | **Get** /proposal | List proposal info
 *RollupAPI* | [**GetRollup**](docs/RollupAPI.md#getrollup) | **Get** /rollup/{id} | Get rollup info
 *RollupAPI* | [**GetRollupAllSeries**](docs/RollupAPI.md#getrollupallseries) | **Get** /rollup/stats/series/{timeframe} | Get series for all rollups
 *RollupAPI* | [**GetRollupBlobs**](docs/RollupAPI.md#getrollupblobs) | **Get** /rollup/{id}/blobs | Get rollup blobs
@@ -194,6 +195,7 @@ Class | Method | HTTP request | Description
  - [ResponsesNamespaceUsage](docs/ResponsesNamespaceUsage.md)
  - [ResponsesODS](docs/ResponsesODS.md)
  - [ResponsesODSItem](docs/ResponsesODSItem.md)
+ - [ResponsesProposal](docs/ResponsesProposal.md)
  - [ResponsesRedelegation](docs/ResponsesRedelegation.md)
  - [ResponsesRollup](docs/ResponsesRollup.md)
  - [ResponsesRollupAllSeriesItem](docs/ResponsesRollupAllSeriesItem.md)

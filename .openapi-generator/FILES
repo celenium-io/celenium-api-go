@@ -8,6 +8,7 @@ api_block.go
 api_gas.go
 api_general.go
 api_namespace.go
+api_proposal.go
 api_rollup.go
 api_search.go
 api_stats.go
@@ -24,6 +25,7 @@ docs/GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus.md
 docs/HandlerError.md
 docs/HandlerPostBlobRequest.md
 docs/NamespaceAPI.md
+docs/ProposalAPI.md
 docs/ResponsesAddress.md
 docs/ResponsesBalance.md
 docs/ResponsesBlob.md
@@ -52,6 +54,7 @@ docs/ResponsesNamespaceMessage.md
 docs/ResponsesNamespaceUsage.md
 docs/ResponsesODS.md
 docs/ResponsesODSItem.md
+docs/ResponsesProposal.md
 docs/ResponsesRedelegation.md
 docs/ResponsesRollup.md
 docs/ResponsesRollupAllSeriesItem.md
@@ -121,6 +124,7 @@ model_responses_namespace_message.go
 model_responses_namespace_usage.go
 model_responses_ods.go
 model_responses_ods_item.go
+model_responses_proposal.go
 model_responses_redelegation.go
 model_responses_rollup.go
 model_responses_rollup_all_series_item.go
@@ -156,6 +160,7 @@ test/api_block_test.go
 test/api_gas_test.go
 test/api_general_test.go
 test/api_namespace_test.go
+test/api_proposal_test.go
 test/api_rollup_test.go
 test/api_search_test.go
 test/api_stats_test.go

@@ -32,6 +32,7 @@ type ResponsesState struct {
 	TotalBlobsSize *int64 `json:"total_blobs_size,omitempty"`
 	TotalFee *string `json:"total_fee,omitempty"`
 	TotalNamespaces *int32 `json:"total_namespaces,omitempty"`
+	TotalProposals *int64 `json:"total_proposals,omitempty"`
 	TotalStake *string `json:"total_stake,omitempty"`
 	TotalSupply *string `json:"total_supply,omitempty"`
 	TotalTx *int64 `json:"total_tx,omitempty"`
@@ -408,6 +409,38 @@ func (o *ResponsesState) SetTotalNamespaces(v int32) {
 	o.TotalNamespaces = &v
 }
 
+// GetTotalProposals returns the TotalProposals field value if set, zero value otherwise.
+func (o *ResponsesState) GetTotalProposals() int64 {
+	if o == nil || IsNil(o.TotalProposals) {
+		var ret int64
+		return ret
+	}
+	return *o.TotalProposals
+}
+
+// GetTotalProposalsOk returns a tuple with the TotalProposals field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesState) GetTotalProposalsOk() (*int64, bool) {
+	if o == nil || IsNil(o.TotalProposals) {
+		return nil, false
+	}
+	return o.TotalProposals, true
+}
+
+// HasTotalProposals returns a boolean if a field has been set.
+func (o *ResponsesState) HasTotalProposals() bool {
+	if o != nil && !IsNil(o.TotalProposals) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalProposals gets a reference to the given int64 and assigns it to the TotalProposals field.
+func (o *ResponsesState) SetTotalProposals(v int64) {
+	o.TotalProposals = &v
+}
+
 // GetTotalStake returns the TotalStake field value if set, zero value otherwise.
 func (o *ResponsesState) GetTotalStake() string {
 	if o == nil || IsNil(o.TotalStake) {
@@ -610,6 +643,9 @@ func (o ResponsesState) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalNamespaces) {
 		toSerialize["total_namespaces"] = o.TotalNamespaces
+	}
+	if !IsNil(o.TotalProposals) {
+		toSerialize["total_proposals"] = o.TotalProposals
 	}
 	if !IsNil(o.TotalStake) {
 		toSerialize["total_stake"] = o.TotalStake

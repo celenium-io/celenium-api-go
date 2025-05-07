@@ -60,6 +60,8 @@ type APIClient struct {
 
 	NamespaceAPI *NamespaceAPIService
 
+	ProposalAPI *ProposalAPIService
+
 	RollupAPI *RollupAPIService
 
 	SearchAPI *SearchAPIService
@@ -94,6 +96,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.GasAPI = (*GasAPIService)(&c.common)
 	c.GeneralAPI = (*GeneralAPIService)(&c.common)
 	c.NamespaceAPI = (*NamespaceAPIService)(&c.common)
+	c.ProposalAPI = (*ProposalAPIService)(&c.common)
 	c.RollupAPI = (*RollupAPIService)(&c.common)
 	c.SearchAPI = (*SearchAPIService)(&c.common)
 	c.StatsAPI = (*StatsAPIService)(&c.common)

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **TotalBlobsSize** | Pointer to **int64** |  | [optional] 
 **TotalFee** | Pointer to **string** |  | [optional] 
 **TotalNamespaces** | Pointer to **int32** |  | [optional] 
+**TotalProposals** | Pointer to **int64** |  | [optional] 
 **TotalStake** | Pointer to **string** |  | [optional] 
 **TotalSupply** | Pointer to **string** |  | [optional] 
 **TotalTx** | Pointer to **int64** |  | [optional] 
@@ -314,6 +315,31 @@ SetTotalNamespaces sets TotalNamespaces field to given value.
 `func (o *ResponsesState) HasTotalNamespaces() bool`
 
 HasTotalNamespaces returns a boolean if a field has been set.
+
+### GetTotalProposals
+
+`func (o *ResponsesState) GetTotalProposals() int64`
+
+GetTotalProposals returns the TotalProposals field if non-nil, zero value otherwise.
+
+### GetTotalProposalsOk
+
+`func (o *ResponsesState) GetTotalProposalsOk() (*int64, bool)`
+
+GetTotalProposalsOk returns a tuple with the TotalProposals field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalProposals
+
+`func (o *ResponsesState) SetTotalProposals(v int64)`
+
+SetTotalProposals sets TotalProposals field to given value.
+
+### HasTotalProposals
+
+`func (o *ResponsesState) HasTotalProposals() bool`
+
+HasTotalProposals returns a boolean if a field has been set.
 
 ### GetTotalStake
 

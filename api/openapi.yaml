@@ -2211,6 +2211,71 @@ paths:
       summary: Get namespace blobs on height
       tags:
       - namespace
+  /proposal:
+    get:
+      description: List proposal info
+      operationId: list-proposal
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - description: Proposer celestia address
+        in: query
+        name: proposer
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: Comma-separated proposal status list
+        in: query
+        name: status
+        schema:
+          type: string
+      - description: Comma-separated proposal type list
+        in: query
+        name: type
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.Proposal'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: List proposal info
+      tags:
+      - proposal
   /rollup:
     get:
       description: List rollups info
@@ -5021,9 +5086,15 @@ components:
       type: object
     responses.Enums:
       example:
+        proposal_type:
+        - proposal_type
+        - proposal_type
         event_type:
         - event_type
         - event_type
+        proposal_status:
+        - proposal_status
+        - proposal_status
         rollup_type:
         - rollup_type
         - rollup_type
@@ -5056,6 +5127,14 @@ components:
             type: string
           type: array
         message_type:
+          items:
+            type: string
+          type: array
+        proposal_status:
+          items:
+            type: string
+          type: array
+        proposal_type:
           items:
             type: string
           type: array
@@ -5630,6 +5709,158 @@ components:
     responses.Params:
       additionalProperties:
         type: string
+      type: object
+    responses.Proposal:
+      example:
+        "no": 1234
+        metadata: metadata
+        yes_voting_power: "1000000000"
+        abstain: 1234
+        no_with_veto_addrs: 1234
+        changes:
+        - 0
+        - 0
+        created_at: 2023-07-04T03:10:57Z
+        description: Some proposal description
+        title: Proposal title
+        type: param_changed
+        abstain_vals: 1234
+        votes_count: 12354
+        no_addrs: 1234
+        no_with_veto_vals: 1234
+        no_with_veto_voting_power: "1000000000"
+        id: 321
+        height: 100
+        no_with_veto: 1234
+        abstain_addrs: 1234
+        proposer:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        "yes": 1234
+        deposit_time: 2023-07-04T03:10:57Z
+        activation_time: 2023-07-04T03:10:57Z
+        voting_power: "1000000000"
+        yes_addrs: 1234
+        abstain_voting_power: "1000000000"
+        yes_vals: 1234
+        deposit: "1000000000"
+        no_vals: 1234
+        no_voting_power: "1000000000"
+        status: active
+      properties:
+        abstain:
+          example: 1234
+          type: integer
+        abstain_addrs:
+          example: 1234
+          type: integer
+        abstain_vals:
+          example: 1234
+          type: integer
+        abstain_voting_power:
+          example: "1000000000"
+          format: string
+          type: string
+        activation_time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        changes:
+          items:
+            type: integer
+          type: array
+        created_at:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        deposit:
+          example: "1000000000"
+          format: string
+          type: string
+        deposit_time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        description:
+          example: Some proposal description
+          format: string
+          type: string
+        height:
+          example: 100
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        metadata:
+          example: metadata
+          format: string
+          type: string
+        "no":
+          example: 1234
+          type: integer
+        no_addrs:
+          example: 1234
+          type: integer
+        no_vals:
+          example: 1234
+          type: integer
+        no_voting_power:
+          example: "1000000000"
+          format: string
+          type: string
+        no_with_veto:
+          example: 1234
+          type: integer
+        no_with_veto_addrs:
+          example: 1234
+          type: integer
+        no_with_veto_vals:
+          example: 1234
+          type: integer
+        no_with_veto_voting_power:
+          example: "1000000000"
+          format: string
+          type: string
+        proposer:
+          $ref: '#/components/schemas/responses.ShortAddress'
+        status:
+          example: active
+          format: string
+          type: string
+        title:
+          example: Proposal title
+          format: string
+          type: string
+        type:
+          example: param_changed
+          format: string
+          type: string
+        votes_count:
+          example: 12354
+          type: integer
+        voting_power:
+          example: "1000000000"
+          format: string
+          type: string
+        "yes":
+          example: 1234
+          type: integer
+        yes_addrs:
+          example: 1234
+          type: integer
+        yes_vals:
+          example: 1234
+          type: integer
+        yes_voting_power:
+          example: "1000000000"
+          format: string
+          type: string
       type: object
     responses.Redelegation:
       example:
@@ -6370,6 +6601,7 @@ components:
         name: indexer
         total_voting_power: "312"
         total_blobs_size: 56789
+        total_proposals: 56789
         id: 321
         hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
@@ -6416,6 +6648,10 @@ components:
         total_namespaces:
           example: 312
           format: string
+          type: integer
+        total_proposals:
+          example: 56789
+          format: int64
           type: integer
         total_stake:
           example: "312"

@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **CelestialsStatuses** | Pointer to **[]string** |  | [optional] 
 **EventType** | Pointer to **[]string** |  | [optional] 
 **MessageType** | Pointer to **[]string** |  | [optional] 
+**ProposalStatus** | Pointer to **[]string** |  | [optional] 
+**ProposalType** | Pointer to **[]string** |  | [optional] 
 **RollupType** | Pointer to **[]string** |  | [optional] 
 **Status** | Pointer to **[]string** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -130,6 +132,56 @@ SetMessageType sets MessageType field to given value.
 `func (o *ResponsesEnums) HasMessageType() bool`
 
 HasMessageType returns a boolean if a field has been set.
+
+### GetProposalStatus
+
+`func (o *ResponsesEnums) GetProposalStatus() []string`
+
+GetProposalStatus returns the ProposalStatus field if non-nil, zero value otherwise.
+
+### GetProposalStatusOk
+
+`func (o *ResponsesEnums) GetProposalStatusOk() (*[]string, bool)`
+
+GetProposalStatusOk returns a tuple with the ProposalStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProposalStatus
+
+`func (o *ResponsesEnums) SetProposalStatus(v []string)`
+
+SetProposalStatus sets ProposalStatus field to given value.
+
+### HasProposalStatus
+
+`func (o *ResponsesEnums) HasProposalStatus() bool`
+
+HasProposalStatus returns a boolean if a field has been set.
+
+### GetProposalType
+
+`func (o *ResponsesEnums) GetProposalType() []string`
+
+GetProposalType returns the ProposalType field if non-nil, zero value otherwise.
+
+### GetProposalTypeOk
+
+`func (o *ResponsesEnums) GetProposalTypeOk() (*[]string, bool)`
+
+GetProposalTypeOk returns a tuple with the ProposalType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProposalType
+
+`func (o *ResponsesEnums) SetProposalType(v []string)`
+
+SetProposalType sets ProposalType field to given value.
+
+### HasProposalType
+
+`func (o *ResponsesEnums) HasProposalType() bool`
+
+HasProposalType returns a boolean if a field has been set.
 
 ### GetRollupType
 
