@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **FirstMessageTime** | Pointer to **time.Time** |  | [optional] 
 **Github** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] 
+**IsActive** | Pointer to **bool** |  | [optional] 
 **L2Beat** | Pointer to **string** |  | [optional] 
 **LastMessageTime** | Pointer to **time.Time** |  | [optional] 
 **Links** | Pointer to **[]string** |  | [optional] 
@@ -429,6 +430,31 @@ SetId sets Id field to given value.
 `func (o *ResponsesRollupWithStats) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetIsActive
+
+`func (o *ResponsesRollupWithStats) GetIsActive() bool`
+
+GetIsActive returns the IsActive field if non-nil, zero value otherwise.
+
+### GetIsActiveOk
+
+`func (o *ResponsesRollupWithStats) GetIsActiveOk() (*bool, bool)`
+
+GetIsActiveOk returns a tuple with the IsActive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsActive
+
+`func (o *ResponsesRollupWithStats) SetIsActive(v bool)`
+
+SetIsActive sets IsActive field to given value.
+
+### HasIsActive
+
+`func (o *ResponsesRollupWithStats) HasIsActive() bool`
+
+HasIsActive returns a boolean if a field has been set.
 
 ### GetL2Beat
 

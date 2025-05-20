@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**AddressTransactions**](AddressAPI.md#AddressTransactions) | **Get** /address/{hash}/txs | Get address transactions
 [**AddressUndelegations**](AddressAPI.md#AddressUndelegations) | **Get** /address/{hash}/undelegations | Get undelegations made by address
 [**AddressVesting**](AddressAPI.md#AddressVesting) | **Get** /address/{hash}/vestings | Get vesting for address
+[**AddressVotes**](AddressAPI.md#AddressVotes) | **Get** /address/{hash}/votes | Get list of votes for address
 [**GetAddress**](AddressAPI.md#GetAddress) | **Get** /address/{hash} | Get address info
 [**GetAddressCount**](AddressAPI.md#GetAddressCount) | **Get** /address/count | Get count of addresses in network
 [**ListAddress**](AddressAPI.md#ListAddress) | **Get** /address | List address info
@@ -852,6 +853,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ResponsesVesting**](ResponsesVesting.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AddressVotes
+
+> []ResponsesVote AddressVotes(ctx, hash).Limit(limit).Offset(offset).Execute()
+
+Get list of votes for address
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	hash := "hash_example" // string | Hash
+	limit := int32(56) // int32 | Count of requested entities (optional)
+	offset := int32(56) // int32 | Offset (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AddressAPI.AddressVotes(context.Background(), hash).Limit(limit).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressVotes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AddressVotes`: []ResponsesVote
+	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.AddressVotes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**hash** | **string** | Hash | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddressVotesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Count of requested entities | 
+ **offset** | **int32** | Offset | 
+
+### Return type
+
+[**[]ResponsesVote**](ResponsesVote.md)
 
 ### Authorization
 

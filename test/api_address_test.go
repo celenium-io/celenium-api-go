@@ -178,6 +178,20 @@ func Test_celenium_AddressAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AddressAPIService AddressVotes", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var hash string
+
+		resp, httpRes, err := apiClient.AddressAPI.AddressVotes(context.Background(), hash).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AddressAPIService GetAddress", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

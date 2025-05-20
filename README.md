@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
 *AddressAPI* | [**AddressTransactions**](docs/AddressAPI.md#addresstransactions) | **Get** /address/{hash}/txs | Get address transactions
 *AddressAPI* | [**AddressUndelegations**](docs/AddressAPI.md#addressundelegations) | **Get** /address/{hash}/undelegations | Get undelegations made by address
 *AddressAPI* | [**AddressVesting**](docs/AddressAPI.md#addressvesting) | **Get** /address/{hash}/vestings | Get vesting for address
+*AddressAPI* | [**AddressVotes**](docs/AddressAPI.md#addressvotes) | **Get** /address/{hash}/votes | Get list of votes for address
 *AddressAPI* | [**GetAddress**](docs/AddressAPI.md#getaddress) | **Get** /address/{hash} | Get address info
 *AddressAPI* | [**GetAddressCount**](docs/AddressAPI.md#getaddresscount) | **Get** /address/count | Get count of addresses in network
 *AddressAPI* | [**ListAddress**](docs/AddressAPI.md#listaddress) | **Get** /address | List address info
@@ -119,7 +120,9 @@ Class | Method | HTTP request | Description
 *NamespaceAPI* | [**GetNamespaceMessages**](docs/NamespaceAPI.md#getnamespacemessages) | **Get** /namespace/{id}/{version}/messages | Get namespace messages by id and version
 *NamespaceAPI* | [**GetNamespaceRollups**](docs/NamespaceAPI.md#getnamespacerollups) | **Get** /namespace/{id}/{version}/rollups | List rollups using the namespace
 *NamespaceAPI* | [**ListNamespace**](docs/NamespaceAPI.md#listnamespace) | **Get** /namespace | List namespace info
+*ProposalAPI* | [**GetProposal**](docs/ProposalAPI.md#getproposal) | **Get** /proposal/{id} | Get proposal info
 *ProposalAPI* | [**ListProposal**](docs/ProposalAPI.md#listproposal) | **Get** /proposal | List proposal info
+*ProposalAPI* | [**ProposalVotes**](docs/ProposalAPI.md#proposalvotes) | **Get** /proposal/{id}/votes | Get proposal&#39;s votes
 *RollupAPI* | [**GetRollup**](docs/RollupAPI.md#getrollup) | **Get** /rollup/{id} | Get rollup info
 *RollupAPI* | [**GetRollupAllSeries**](docs/RollupAPI.md#getrollupallseries) | **Get** /rollup/stats/series/{timeframe} | Get series for all rollups
 *RollupAPI* | [**GetRollupBlobs**](docs/RollupAPI.md#getrollupblobs) | **Get** /rollup/{id}/blobs | Get rollup blobs
@@ -159,6 +162,7 @@ Class | Method | HTTP request | Description
 *ValidatorAPI* | [**ValidatorCount**](docs/ValidatorAPI.md#validatorcount) | **Get** /validators/count | Get validator&#39;s count by status
 *ValidatorAPI* | [**ValidatorDelegators**](docs/ValidatorAPI.md#validatordelegators) | **Get** /validators/{id}/delegators | Get validator&#39;s delegators
 *ValidatorAPI* | [**ValidatorJails**](docs/ValidatorAPI.md#validatorjails) | **Get** /validators/{id}/jails | Get validator&#39;s jails
+*ValidatorAPI* | [**ValidatorVotes**](docs/ValidatorAPI.md#validatorvotes) | **Get** /validators/{id}/votes | Get list of votes for validator
 *VestingAPI* | [**GetVestingPeriods**](docs/VestingAPI.md#getvestingperiods) | **Get** /vesting/{id}/periods | Periods vesting periods by id
 
 
@@ -222,6 +226,7 @@ Class | Method | HTTP request | Description
  - [ResponsesValidatorUptime](docs/ResponsesValidatorUptime.md)
  - [ResponsesVesting](docs/ResponsesVesting.md)
  - [ResponsesVestingPeriod](docs/ResponsesVestingPeriod.md)
+ - [ResponsesVote](docs/ResponsesVote.md)
  - [TypesEventType](docs/TypesEventType.md)
  - [TypesMsgAddressType](docs/TypesMsgAddressType.md)
  - [TypesMsgType](docs/TypesMsgType.md)

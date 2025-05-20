@@ -1118,6 +1118,7 @@ type ApiListRollupRequest struct {
 	tags *string
 	stack *string
 	provider *string
+	isActive *bool
 }
 
 // Count of requested entities
@@ -1165,6 +1166,12 @@ func (r ApiListRollupRequest) Stack(stack string) ApiListRollupRequest {
 // Comma-separated rollup provider list
 func (r ApiListRollupRequest) Provider(provider string) ApiListRollupRequest {
 	r.provider = &provider
+	return r
+}
+
+// If true, shows rollups with activity over the last month
+func (r ApiListRollupRequest) IsActive(isActive bool) ApiListRollupRequest {
+	r.isActive = &isActive
 	return r
 }
 
@@ -1231,6 +1238,9 @@ func (a *RollupAPIService) ListRollupExecute(r ApiListRollupRequest) ([]Response
 	}
 	if r.provider != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "", "")
+	}
+	if r.isActive != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is_active", r.isActive, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

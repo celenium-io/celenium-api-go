@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **RollupType** | Pointer to **[]string** |  | [optional] 
 **Status** | Pointer to **[]string** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
+**VoteOption** | Pointer to **[]string** |  | [optional] 
+**VoteType** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -257,6 +259,56 @@ SetTags sets Tags field to given value.
 `func (o *ResponsesEnums) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetVoteOption
+
+`func (o *ResponsesEnums) GetVoteOption() []string`
+
+GetVoteOption returns the VoteOption field if non-nil, zero value otherwise.
+
+### GetVoteOptionOk
+
+`func (o *ResponsesEnums) GetVoteOptionOk() (*[]string, bool)`
+
+GetVoteOptionOk returns a tuple with the VoteOption field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVoteOption
+
+`func (o *ResponsesEnums) SetVoteOption(v []string)`
+
+SetVoteOption sets VoteOption field to given value.
+
+### HasVoteOption
+
+`func (o *ResponsesEnums) HasVoteOption() bool`
+
+HasVoteOption returns a boolean if a field has been set.
+
+### GetVoteType
+
+`func (o *ResponsesEnums) GetVoteType() []string`
+
+GetVoteType returns the VoteType field if non-nil, zero value otherwise.
+
+### GetVoteTypeOk
+
+`func (o *ResponsesEnums) GetVoteTypeOk() (*[]string, bool)`
+
+GetVoteTypeOk returns a tuple with the VoteType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVoteType
+
+`func (o *ResponsesEnums) SetVoteType(v []string)`
+
+SetVoteType sets VoteType field to given value.
+
+### HasVoteType
+
+`func (o *ResponsesEnums) HasVoteType() bool`
+
+HasVoteType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -943,6 +943,56 @@ paths:
       summary: Get vesting for address
       tags:
       - address
+  /address/{hash}/votes:
+    get:
+      description: Get list of votes for address
+      operationId: address-votes
+      parameters:
+      - description: Hash
+        in: path
+        name: hash
+        required: true
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.Vote'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get list of votes for address
+      tags:
+      - address
   /blob:
     get:
       description: Returns blobs
@@ -2276,6 +2326,102 @@ paths:
       summary: List proposal info
       tags:
       - proposal
+  /proposal/{id}:
+    get:
+      description: Get proposal info
+      operationId: get-proposal
+      parameters:
+      - description: Internal identity
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responses.Proposal'
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get proposal info
+      tags:
+      - proposal
+  /proposal/{id}/votes:
+    get:
+      description: Get proposal's votes
+      operationId: proposal-votes
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: Option
+        in: path
+        name: option
+        required: true
+        schema:
+          enum:
+          - "yes"
+          - "no"
+          - no_with_veto
+          - abstain
+          type: string
+      - description: Voter type
+        in: path
+        name: voter
+        required: true
+        schema:
+          enum:
+          - address
+          - validator
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.Vote'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get proposal's votes
+      tags:
+      - proposal
   /rollup:
     get:
       description: List rollups info
@@ -2330,6 +2476,11 @@ paths:
         name: provider
         schema:
           type: string
+      - description: "If true, shows rollups with activity over the last month"
+        in: query
+        name: is_active
+        schema:
+          type: boolean
       responses:
         "200":
           content:
@@ -4383,6 +4534,54 @@ paths:
       summary: Get validator's uptime and history of signed block
       tags:
       - validator
+  /validators/{id}/votes:
+    get:
+      description: Get list of votes for validator
+      operationId: validator-votes
+      parameters:
+      - description: Internal validator id
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.Vote'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get list of votes for validator
+      tags:
+      - validator
   /vesting/{id}/periods:
     get:
       description: Periods vesting periods by id. Returns not empty array only for
@@ -5095,6 +5294,9 @@ components:
         proposal_status:
         - proposal_status
         - proposal_status
+        vote_type:
+        - vote_type
+        - vote_type
         rollup_type:
         - rollup_type
         - rollup_type
@@ -5113,6 +5315,9 @@ components:
         tags:
         - tags
         - tags
+        vote_option:
+        - vote_option
+        - vote_option
       properties:
         categories:
           items:
@@ -5147,6 +5352,14 @@ components:
             type: string
           type: array
         tags:
+          items:
+            type: string
+          type: array
+        vote_option:
+          items:
+            type: string
+          type: array
+        vote_type:
           items:
             type: string
           type: array
@@ -6308,6 +6521,7 @@ components:
         slug: rollup_slug
         github: https://github.com/account
         website: https://website.com
+        is_active: true
         size_pct: 0.9876
         tags:
         - tags
@@ -6384,6 +6598,10 @@ components:
           example: 321
           format: integer
           type: integer
+        is_active:
+          example: true
+          format: boolean
+          type: boolean
         l2_beat:
           example: https://l2beat.com/scaling/projects/karak
           format: string
@@ -7086,6 +7304,60 @@ components:
           example: 2023-07-04T03:10:57Z
           format: date-time
           type: string
+      type: object
+    responses.Vote:
+      example:
+        proposal_id: 2
+        voter_id: 1
+        validator:
+          cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
+          id: 321
+          moniker: Easy 2 Stake
+        weight: 12345678
+        deposit_time: 2023-07-04T03:10:57Z
+        id: 321
+        voter:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        height: 100
+        status: "yes"
+      properties:
+        deposit_time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        height:
+          example: 100
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        proposal_id:
+          example: 2
+          format: int64
+          type: integer
+        status:
+          example: "yes"
+          format: string
+          type: string
+        validator:
+          $ref: '#/components/schemas/responses.ShortValidator'
+        voter:
+          $ref: '#/components/schemas/responses.ShortAddress'
+        voter_id:
+          example: 1
+          format: int64
+          type: integer
+        weight:
+          example: 12345678
+          format: int64
+          type: integer
       type: object
     types.EventType:
       enum:

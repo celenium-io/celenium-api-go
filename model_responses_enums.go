@@ -29,6 +29,8 @@ type ResponsesEnums struct {
 	RollupType []string `json:"rollup_type,omitempty"`
 	Status []string `json:"status,omitempty"`
 	Tags []string `json:"tags,omitempty"`
+	VoteOption []string `json:"vote_option,omitempty"`
+	VoteType []string `json:"vote_type,omitempty"`
 }
 
 // NewResponsesEnums instantiates a new ResponsesEnums object
@@ -336,6 +338,70 @@ func (o *ResponsesEnums) SetTags(v []string) {
 	o.Tags = v
 }
 
+// GetVoteOption returns the VoteOption field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetVoteOption() []string {
+	if o == nil || IsNil(o.VoteOption) {
+		var ret []string
+		return ret
+	}
+	return o.VoteOption
+}
+
+// GetVoteOptionOk returns a tuple with the VoteOption field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetVoteOptionOk() ([]string, bool) {
+	if o == nil || IsNil(o.VoteOption) {
+		return nil, false
+	}
+	return o.VoteOption, true
+}
+
+// HasVoteOption returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasVoteOption() bool {
+	if o != nil && !IsNil(o.VoteOption) {
+		return true
+	}
+
+	return false
+}
+
+// SetVoteOption gets a reference to the given []string and assigns it to the VoteOption field.
+func (o *ResponsesEnums) SetVoteOption(v []string) {
+	o.VoteOption = v
+}
+
+// GetVoteType returns the VoteType field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetVoteType() []string {
+	if o == nil || IsNil(o.VoteType) {
+		var ret []string
+		return ret
+	}
+	return o.VoteType
+}
+
+// GetVoteTypeOk returns a tuple with the VoteType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetVoteTypeOk() ([]string, bool) {
+	if o == nil || IsNil(o.VoteType) {
+		return nil, false
+	}
+	return o.VoteType, true
+}
+
+// HasVoteType returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasVoteType() bool {
+	if o != nil && !IsNil(o.VoteType) {
+		return true
+	}
+
+	return false
+}
+
+// SetVoteType gets a reference to the given []string and assigns it to the VoteType field.
+func (o *ResponsesEnums) SetVoteType(v []string) {
+	o.VoteType = v
+}
+
 func (o ResponsesEnums) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -372,6 +438,12 @@ func (o ResponsesEnums) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.VoteOption) {
+		toSerialize["vote_option"] = o.VoteOption
+	}
+	if !IsNil(o.VoteType) {
+		toSerialize["vote_type"] = o.VoteType
 	}
 	return toSerialize, nil
 }

@@ -81,6 +81,7 @@ docs/ResponsesValidatorCount.md
 docs/ResponsesValidatorUptime.md
 docs/ResponsesVesting.md
 docs/ResponsesVestingPeriod.md
+docs/ResponsesVote.md
 docs/RollupAPI.md
 docs/SearchAPI.md
 docs/StatsAPI.md
@@ -151,6 +152,7 @@ model_responses_validator_count.go
 model_responses_validator_uptime.go
 model_responses_vesting.go
 model_responses_vesting_period.go
+model_responses_vote.go
 model_types_event_type.go
 model_types_msg_address_type.go
 model_types_msg_type.go

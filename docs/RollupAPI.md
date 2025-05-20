@@ -602,7 +602,7 @@ No authorization required
 
 ## ListRollup
 
-> []ResponsesRollupWithStats ListRollup(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).Execute()
+> []ResponsesRollupWithStats ListRollup(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).IsActive(isActive).Execute()
 
 List rollups info
 
@@ -629,10 +629,11 @@ func main() {
 	tags := "tags_example" // string | Comma-separated rollup tags list (optional)
 	stack := "stack_example" // string | Comma-separated rollup stack list (optional)
 	provider := "provider_example" // string | Comma-separated rollup provider list (optional)
+	isActive := true // bool | If true, shows rollups with activity over the last month (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RollupAPI.ListRollup(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).Execute()
+	resp, r, err := apiClient.RollupAPI.ListRollup(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).IsActive(isActive).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RollupAPI.ListRollup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -661,6 +662,7 @@ Name | Type | Description  | Notes
  **tags** | **string** | Comma-separated rollup tags list | 
  **stack** | **string** | Comma-separated rollup stack list | 
  **provider** | **string** | Comma-separated rollup provider list | 
+ **isActive** | **bool** | If true, shows rollups with activity over the last month | 
 
 ### Return type
 

@@ -36,6 +36,7 @@ type ResponsesRollupWithStats struct {
 	FirstMessageTime *time.Time `json:"first_message_time,omitempty"`
 	Github *string `json:"github,omitempty"`
 	Id *int32 `json:"id,omitempty"`
+	IsActive *bool `json:"is_active,omitempty"`
 	L2Beat *string `json:"l2_beat,omitempty"`
 	LastMessageTime *time.Time `json:"last_message_time,omitempty"`
 	Links []string `json:"links,omitempty"`
@@ -549,6 +550,38 @@ func (o *ResponsesRollupWithStats) HasId() bool {
 // SetId gets a reference to the given int32 and assigns it to the Id field.
 func (o *ResponsesRollupWithStats) SetId(v int32) {
 	o.Id = &v
+}
+
+// GetIsActive returns the IsActive field value if set, zero value otherwise.
+func (o *ResponsesRollupWithStats) GetIsActive() bool {
+	if o == nil || IsNil(o.IsActive) {
+		var ret bool
+		return ret
+	}
+	return *o.IsActive
+}
+
+// GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithStats) GetIsActiveOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsActive) {
+		return nil, false
+	}
+	return o.IsActive, true
+}
+
+// HasIsActive returns a boolean if a field has been set.
+func (o *ResponsesRollupWithStats) HasIsActive() bool {
+	if o != nil && !IsNil(o.IsActive) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsActive gets a reference to the given bool and assigns it to the IsActive field.
+func (o *ResponsesRollupWithStats) SetIsActive(v bool) {
+	o.IsActive = &v
 }
 
 // GetL2Beat returns the L2Beat field value if set, zero value otherwise.
@@ -1117,6 +1150,9 @@ func (o ResponsesRollupWithStats) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.IsActive) {
+		toSerialize["is_active"] = o.IsActive
 	}
 	if !IsNil(o.L2Beat) {
 		toSerialize["l2_beat"] = o.L2Beat
