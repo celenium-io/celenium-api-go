@@ -23,6 +23,7 @@ type ResponsesEnums struct {
 	Categories []string `json:"categories,omitempty"`
 	CelestialsStatuses []string `json:"celestials_statuses,omitempty"`
 	EventType []string `json:"event_type,omitempty"`
+	IbcChannelStatus []string `json:"ibc_channel_status,omitempty"`
 	MessageType []string `json:"message_type,omitempty"`
 	ProposalStatus []string `json:"proposal_status,omitempty"`
 	ProposalType []string `json:"proposal_type,omitempty"`
@@ -144,6 +145,38 @@ func (o *ResponsesEnums) HasEventType() bool {
 // SetEventType gets a reference to the given []string and assigns it to the EventType field.
 func (o *ResponsesEnums) SetEventType(v []string) {
 	o.EventType = v
+}
+
+// GetIbcChannelStatus returns the IbcChannelStatus field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetIbcChannelStatus() []string {
+	if o == nil || IsNil(o.IbcChannelStatus) {
+		var ret []string
+		return ret
+	}
+	return o.IbcChannelStatus
+}
+
+// GetIbcChannelStatusOk returns a tuple with the IbcChannelStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetIbcChannelStatusOk() ([]string, bool) {
+	if o == nil || IsNil(o.IbcChannelStatus) {
+		return nil, false
+	}
+	return o.IbcChannelStatus, true
+}
+
+// HasIbcChannelStatus returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasIbcChannelStatus() bool {
+	if o != nil && !IsNil(o.IbcChannelStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetIbcChannelStatus gets a reference to the given []string and assigns it to the IbcChannelStatus field.
+func (o *ResponsesEnums) SetIbcChannelStatus(v []string) {
+	o.IbcChannelStatus = v
 }
 
 // GetMessageType returns the MessageType field value if set, zero value otherwise.
@@ -420,6 +453,9 @@ func (o ResponsesEnums) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EventType) {
 		toSerialize["event_type"] = o.EventType
+	}
+	if !IsNil(o.IbcChannelStatus) {
+		toSerialize["ibc_channel_status"] = o.IbcChannelStatus
 	}
 	if !IsNil(o.MessageType) {
 		toSerialize["message_type"] = o.MessageType

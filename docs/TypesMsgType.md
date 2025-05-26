@@ -123,6 +123,12 @@
 
 * `MsgSubmitMisbehaviour` (value: `"MsgSubmitMisbehaviour"`)
 
+* `MsgRecoverClient` (value: `"MsgRecoverClient"`)
+
+* `MsgIBCSoftwareUpgrade` (value: `"MsgIBCSoftwareUpgrade"`)
+
+* `MsgUpdateParams` (value: `"MsgUpdateParams"`)
+
 * `MsgConnectionOpenInit` (value: `"MsgConnectionOpenInit"`)
 
 * `MsgConnectionOpenTry` (value: `"MsgConnectionOpenTry"`)
@@ -154,6 +160,26 @@
 * `MsgSignalVersion` (value: `"MsgSignalVersion"`)
 
 * `MsgTryUpgrade` (value: `"MsgTryUpgrade"`)
+
+* `MsgCreateMailbox` (value: `"MsgCreateMailbox"`)
+
+* `MsgProcessMessage` (value: `"MsgProcessMessage"`)
+
+* `MsgSetMailbox` (value: `"MsgSetMailbox"`)
+
+* `MsgCreateCollateralToken` (value: `"MsgCreateCollateralToken"`)
+
+* `MsgCreateSyntheticToken` (value: `"MsgCreateSyntheticToken"`)
+
+* `MsgSetToken` (value: `"MsgSetToken"`)
+
+* `MsgEnrollRemoteRouter` (value: `"MsgEnrollRemoteRouter"`)
+
+* `MsgUnrollRemoteRouter` (value: `"MsgUnrollRemoteRouter"`)
+
+* `MsgRemoteTransfer` (value: `"MsgRemoteTransfer"`)
+
+* `MsgUpdateMinfeeParams` (value: `"MsgUpdateMinfeeParams"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

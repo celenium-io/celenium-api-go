@@ -108,6 +108,13 @@ Class | Method | HTTP request | Description
 *GeneralAPI* | [**GetConstants**](docs/GeneralAPI.md#getconstants) | **Get** /constants | Get network constants
 *GeneralAPI* | [**GetEnums**](docs/GeneralAPI.md#getenums) | **Get** /enums | Get celenium enumerators
 *GeneralAPI* | [**Head**](docs/GeneralAPI.md#head) | **Get** /head | Get current indexer head
+*IbcAPI* | [**GetIbcChannel**](docs/IbcAPI.md#getibcchannel) | **Get** /ibc/channel/{id} | Get ibc channel info
+*IbcAPI* | [**GetIbcChannels**](docs/IbcAPI.md#getibcchannels) | **Get** /ibc/channel | Get ibc channels info
+*IbcAPI* | [**GetIbcClient**](docs/IbcAPI.md#getibcclient) | **Get** /ibc/client/{id} | Get ibc client info
+*IbcAPI* | [**GetIbcClients**](docs/IbcAPI.md#getibcclients) | **Get** /ibc/client | Get ibc clients info
+*IbcAPI* | [**GetIbcConn**](docs/IbcAPI.md#getibcconn) | **Get** /ibc/connection/{id} | Get ibc connection info
+*IbcAPI* | [**GetIbcConns**](docs/IbcAPI.md#getibcconns) | **Get** /ibc/connection | Get ibc connections info
+*IbcAPI* | [**GetIbcTransfers**](docs/IbcAPI.md#getibctransfers) | **Get** /ibc/transfer | Get ibc transfers info
 *NamespaceAPI* | [**GetBlob**](docs/NamespaceAPI.md#getblob) | **Post** /blob | Get namespace blob by commitment on height
 *NamespaceAPI* | [**GetBlobLogs**](docs/NamespaceAPI.md#getbloblogs) | **Get** /namespace/{id}/{version}/blobs | Get blob changes for namespace
 *NamespaceAPI* | [**GetBlobMetadata**](docs/NamespaceAPI.md#getblobmetadata) | **Post** /blob/metadata | Get blob metadata by commitment on height
@@ -137,6 +144,8 @@ Class | Method | HTTP request | Description
 *RollupAPI* | [**RollupGroupedStatistics**](docs/RollupAPI.md#rollupgroupedstatistics) | **Get** /rollup/group | Rollup Grouped Statistics
 *SearchAPI* | [**Search**](docs/SearchAPI.md#search) | **Get** /search | Search by hash
 *StatsAPI* | [**Stats24hChanges**](docs/StatsAPI.md#stats24hchanges) | **Get** /stats/changes_24h | Get changes for 24 hours
+*StatsAPI* | [**StatsIbcChains**](docs/StatsAPI.md#statsibcchains) | **Get** /stats/ibc/chains | Get stats for ibc channels splitted by chains
+*StatsAPI* | [**StatsIbcSeries**](docs/StatsAPI.md#statsibcseries) | **Get** /stats/ibc/series/{id}/{name}/{timeframe} | Get histogram for ibc channels with precomputed stats
 *StatsAPI* | [**StatsMessagesCount24h**](docs/StatsAPI.md#statsmessagescount24h) | **Get** /stats/messages_count_24h | Get messages distribution for the last 24 hours
 *StatsAPI* | [**StatsNamespaceUsage**](docs/StatsAPI.md#statsnamespaceusage) | **Get** /stats/namespace/usage | Get namespaces with sorting by size.
 *StatsAPI* | [**StatsNsSeries**](docs/StatsAPI.md#statsnsseries) | **Get** /stats/namespace/series/{id}/{name}/{timeframe} | Get histogram for namespace with precomputed stats
@@ -189,6 +198,11 @@ Class | Method | HTTP request | Description
  - [ResponsesGasPrice](docs/ResponsesGasPrice.md)
  - [ResponsesGrant](docs/ResponsesGrant.md)
  - [ResponsesHistogramItem](docs/ResponsesHistogramItem.md)
+ - [ResponsesIbcChainStats](docs/ResponsesIbcChainStats.md)
+ - [ResponsesIbcChannel](docs/ResponsesIbcChannel.md)
+ - [ResponsesIbcClient](docs/ResponsesIbcClient.md)
+ - [ResponsesIbcConnection](docs/ResponsesIbcConnection.md)
+ - [ResponsesIbcTransfer](docs/ResponsesIbcTransfer.md)
  - [ResponsesJail](docs/ResponsesJail.md)
  - [ResponsesLightBlobLog](docs/ResponsesLightBlobLog.md)
  - [ResponsesMessage](docs/ResponsesMessage.md)
@@ -211,6 +225,7 @@ Class | Method | HTTP request | Description
  - [ResponsesSearchItem](docs/ResponsesSearchItem.md)
  - [ResponsesSeriesItem](docs/ResponsesSeriesItem.md)
  - [ResponsesShortAddress](docs/ResponsesShortAddress.md)
+ - [ResponsesShortIbcClient](docs/ResponsesShortIbcClient.md)
  - [ResponsesShortRollup](docs/ResponsesShortRollup.md)
  - [ResponsesShortValidator](docs/ResponsesShortValidator.md)
  - [ResponsesSignedBlocks](docs/ResponsesSignedBlocks.md)

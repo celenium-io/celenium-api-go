@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Categories** | Pointer to **[]string** |  | [optional] 
 **CelestialsStatuses** | Pointer to **[]string** |  | [optional] 
 **EventType** | Pointer to **[]string** |  | [optional] 
+**IbcChannelStatus** | Pointer to **[]string** |  | [optional] 
 **MessageType** | Pointer to **[]string** |  | [optional] 
 **ProposalStatus** | Pointer to **[]string** |  | [optional] 
 **ProposalType** | Pointer to **[]string** |  | [optional] 
@@ -109,6 +110,31 @@ SetEventType sets EventType field to given value.
 `func (o *ResponsesEnums) HasEventType() bool`
 
 HasEventType returns a boolean if a field has been set.
+
+### GetIbcChannelStatus
+
+`func (o *ResponsesEnums) GetIbcChannelStatus() []string`
+
+GetIbcChannelStatus returns the IbcChannelStatus field if non-nil, zero value otherwise.
+
+### GetIbcChannelStatusOk
+
+`func (o *ResponsesEnums) GetIbcChannelStatusOk() (*[]string, bool)`
+
+GetIbcChannelStatusOk returns a tuple with the IbcChannelStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIbcChannelStatus
+
+`func (o *ResponsesEnums) SetIbcChannelStatus(v []string)`
+
+SetIbcChannelStatus sets IbcChannelStatus field to given value.
+
+### HasIbcChannelStatus
+
+`func (o *ResponsesEnums) HasIbcChannelStatus() bool`
+
+HasIbcChannelStatus returns a boolean if a field has been set.
 
 ### GetMessageType
 

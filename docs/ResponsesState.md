@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **TotalAccounts** | Pointer to **int64** |  | [optional] 
 **TotalBlobsSize** | Pointer to **int64** |  | [optional] 
 **TotalFee** | Pointer to **string** |  | [optional] 
+**TotalIbcClients** | Pointer to **int32** |  | [optional] 
 **TotalNamespaces** | Pointer to **int32** |  | [optional] 
 **TotalProposals** | Pointer to **int64** |  | [optional] 
 **TotalStake** | Pointer to **string** |  | [optional] 
@@ -290,6 +291,31 @@ SetTotalFee sets TotalFee field to given value.
 `func (o *ResponsesState) HasTotalFee() bool`
 
 HasTotalFee returns a boolean if a field has been set.
+
+### GetTotalIbcClients
+
+`func (o *ResponsesState) GetTotalIbcClients() int32`
+
+GetTotalIbcClients returns the TotalIbcClients field if non-nil, zero value otherwise.
+
+### GetTotalIbcClientsOk
+
+`func (o *ResponsesState) GetTotalIbcClientsOk() (*int32, bool)`
+
+GetTotalIbcClientsOk returns a tuple with the TotalIbcClients field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalIbcClients
+
+`func (o *ResponsesState) SetTotalIbcClients(v int32)`
+
+SetTotalIbcClients sets TotalIbcClients field to given value.
+
+### HasTotalIbcClients
+
+`func (o *ResponsesState) HasTotalIbcClients() bool`
+
+HasTotalIbcClients returns a boolean if a field has been set.
 
 ### GetTotalNamespaces
 

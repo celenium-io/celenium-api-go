@@ -7,6 +7,7 @@ api_address.go
 api_block.go
 api_gas.go
 api_general.go
+api_ibc.go
 api_namespace.go
 api_proposal.go
 api_rollup.go
@@ -24,6 +25,7 @@ docs/GeneralAPI.md
 docs/GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus.md
 docs/HandlerError.md
 docs/HandlerPostBlobRequest.md
+docs/IbcAPI.md
 docs/NamespaceAPI.md
 docs/ProposalAPI.md
 docs/ResponsesAddress.md
@@ -44,6 +46,11 @@ docs/ResponsesEvent.md
 docs/ResponsesGasPrice.md
 docs/ResponsesGrant.md
 docs/ResponsesHistogramItem.md
+docs/ResponsesIbcChainStats.md
+docs/ResponsesIbcChannel.md
+docs/ResponsesIbcClient.md
+docs/ResponsesIbcConnection.md
+docs/ResponsesIbcTransfer.md
 docs/ResponsesJail.md
 docs/ResponsesLightBlobLog.md
 docs/ResponsesMessage.md
@@ -66,6 +73,7 @@ docs/ResponsesRollupWithStats.md
 docs/ResponsesSearchItem.md
 docs/ResponsesSeriesItem.md
 docs/ResponsesShortAddress.md
+docs/ResponsesShortIbcClient.md
 docs/ResponsesShortRollup.md
 docs/ResponsesShortValidator.md
 docs/ResponsesSignedBlocks.md
@@ -115,6 +123,11 @@ model_responses_event.go
 model_responses_gas_price.go
 model_responses_grant.go
 model_responses_histogram_item.go
+model_responses_ibc_chain_stats.go
+model_responses_ibc_channel.go
+model_responses_ibc_client.go
+model_responses_ibc_connection.go
+model_responses_ibc_transfer.go
 model_responses_jail.go
 model_responses_light_blob_log.go
 model_responses_message.go
@@ -137,6 +150,7 @@ model_responses_rollup_with_stats.go
 model_responses_search_item.go
 model_responses_series_item.go
 model_responses_short_address.go
+model_responses_short_ibc_client.go
 model_responses_short_rollup.go
 model_responses_short_validator.go
 model_responses_signed_blocks.go
@@ -161,6 +175,7 @@ test/api_address_test.go
 test/api_block_test.go
 test/api_gas_test.go
 test/api_general_test.go
+test/api_ibc_test.go
 test/api_namespace_test.go
 test/api_proposal_test.go
 test/api_rollup_test.go

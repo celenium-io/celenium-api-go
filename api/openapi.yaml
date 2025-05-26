@@ -513,6 +513,9 @@ paths:
           - MsgUpdateClient
           - MsgUpgradeClient
           - MsgSubmitMisbehaviour
+          - MsgRecoverClient
+          - MsgIBCSoftwareUpgrade
+          - MsgUpdateParams
           - MsgConnectionOpenInit
           - MsgConnectionOpenTry
           - MsgConnectionOpenAck
@@ -529,6 +532,16 @@ paths:
           - MsgAcknowledgement
           - MsgSignalVersion
           - MsgTryUpgrade
+          - MsgCreateMailbox
+          - MsgProcessMessage
+          - MsgSetMailbox
+          - MsgCreateCollateralToken
+          - MsgCreateSyntheticToken
+          - MsgSetToken
+          - MsgEnrollRemoteRouter
+          - MsgUnrollRemoteRouter
+          - MsgRemoteTransfer
+          - MsgUpdateMinfeeParams
           type: string
       responses:
         "200":
@@ -779,6 +792,9 @@ paths:
           - MsgUpdateClient
           - MsgUpgradeClient
           - MsgSubmitMisbehaviour
+          - MsgRecoverClient
+          - MsgIBCSoftwareUpgrade
+          - MsgUpdateParams
           - MsgConnectionOpenInit
           - MsgConnectionOpenTry
           - MsgConnectionOpenAck
@@ -795,6 +811,16 @@ paths:
           - MsgAcknowledgement
           - MsgSignalVersion
           - MsgTryUpgrade
+          - MsgCreateMailbox
+          - MsgProcessMessage
+          - MsgSetMailbox
+          - MsgCreateCollateralToken
+          - MsgCreateSyntheticToken
+          - MsgSetToken
+          - MsgEnrollRemoteRouter
+          - MsgUnrollRemoteRouter
+          - MsgRemoteTransfer
+          - MsgUpdateMinfeeParams
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -1507,6 +1533,9 @@ paths:
           - MsgUpdateClient
           - MsgUpgradeClient
           - MsgSubmitMisbehaviour
+          - MsgRecoverClient
+          - MsgIBCSoftwareUpgrade
+          - MsgUpdateParams
           - MsgConnectionOpenInit
           - MsgConnectionOpenTry
           - MsgConnectionOpenAck
@@ -1523,6 +1552,16 @@ paths:
           - MsgAcknowledgement
           - MsgSignalVersion
           - MsgTryUpgrade
+          - MsgCreateMailbox
+          - MsgProcessMessage
+          - MsgSetMailbox
+          - MsgCreateCollateralToken
+          - MsgCreateSyntheticToken
+          - MsgSetToken
+          - MsgEnrollRemoteRouter
+          - MsgUnrollRemoteRouter
+          - MsgRemoteTransfer
+          - MsgUpdateMinfeeParams
           type: string
       - description: Comma-separated message types which should be excluded from list
         in: query
@@ -1589,6 +1628,9 @@ paths:
           - MsgUpdateClient
           - MsgUpgradeClient
           - MsgSubmitMisbehaviour
+          - MsgRecoverClient
+          - MsgIBCSoftwareUpgrade
+          - MsgUpdateParams
           - MsgConnectionOpenInit
           - MsgConnectionOpenTry
           - MsgConnectionOpenAck
@@ -1605,6 +1647,16 @@ paths:
           - MsgAcknowledgement
           - MsgSignalVersion
           - MsgTryUpgrade
+          - MsgCreateMailbox
+          - MsgProcessMessage
+          - MsgSetMailbox
+          - MsgCreateCollateralToken
+          - MsgCreateSyntheticToken
+          - MsgSetToken
+          - MsgEnrollRemoteRouter
+          - MsgUnrollRemoteRouter
+          - MsgRemoteTransfer
+          - MsgUpdateMinfeeParams
           type: string
       responses:
         "200":
@@ -1839,6 +1891,361 @@ paths:
       summary: Get current indexer head
       tags:
       - general
+  /ibc/channel:
+    get:
+      description: Get ibc channels info
+      operationId: get-ibc-channels
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - description: Client id
+        in: query
+        name: client_id
+        schema:
+          type: string
+      - description: Connection id
+        in: query
+        name: connection_id
+        schema:
+          type: string
+      - description: Channel status
+        in: query
+        name: status
+        schema:
+          enum:
+          - initialization
+          - opened
+          - closed
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.IbcChannel'
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get ibc channels info
+      tags:
+      - ibc
+  /ibc/channel/{id}:
+    get:
+      description: Get ibc channel info
+      operationId: get-ibc-channel
+      parameters:
+      - description: IBC channel id
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responses.IbcChannel'
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get ibc channel info
+      tags:
+      - ibc
+  /ibc/client:
+    get:
+      description: Get ibc clients info
+      operationId: get-ibc-clients
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.IbcClient'
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get ibc clients info
+      tags:
+      - ibc
+  /ibc/client/{id}:
+    get:
+      description: Get ibc client info
+      operationId: get-ibc-client
+      parameters:
+      - description: IBC client id
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responses.IbcClient'
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get ibc client info
+      tags:
+      - ibc
+  /ibc/connection:
+    get:
+      description: Get ibc connections info
+      operationId: get-ibc-conns
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - description: Client id
+        in: query
+        name: client_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.IbcConnection'
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get ibc connections info
+      tags:
+      - ibc
+  /ibc/connection/{id}:
+    get:
+      description: Get ibc client info
+      operationId: get-ibc-conn
+      parameters:
+      - description: IBC connection id
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responses.IbcConnection'
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get ibc connection info
+      tags:
+      - ibc
+  /ibc/transfer:
+    get:
+      description: Get ibc transfers info
+      operationId: get-ibc-transfers
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - description: Client id
+        in: query
+        name: client_id
+        schema:
+          type: string
+      - description: Connection id
+        in: query
+        name: connection_id
+        schema:
+          type: string
+      - description: Channel status
+        in: query
+        name: status
+        schema:
+          enum:
+          - initialization
+          - opened
+          - closed
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.IbcTransfer'
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get ibc transfers info
+      tags:
+      - ibc
   /namespace:
     get:
       description: List namespace info
@@ -3134,6 +3541,111 @@ paths:
       summary: Get changes for 24 hours
       tags:
       - stats
+  /stats/ibc/chains:
+    get:
+      description: Get stats for ibc channels splitted by chains
+      operationId: stats-ibc-chains
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.IbcChainStats'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get stats for ibc channels splitted by chains
+      tags:
+      - stats
+  /stats/ibc/series/{id}/{name}/{timeframe}:
+    get:
+      description: Get histogram for ibc channels with precomputed stats by series
+        name and timeframe
+      operationId: stats-ibc-series
+      parameters:
+      - description: Channel id
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Timeframe
+        in: path
+        name: timeframe
+        required: true
+        schema:
+          enum:
+          - hour
+          - day
+          - month
+          type: string
+      - description: Series name
+        in: path
+        name: name
+        required: true
+        schema:
+          enum:
+          - count
+          - amount
+          type: string
+      - description: Time from in unix timestamp
+        in: query
+        name: from
+        schema:
+          type: integer
+      - description: Time to in unix timestamp
+        in: query
+        name: to
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/responses.HistogramItem'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/handler.Error'
+          description: Internal Server Error
+      summary: Get histogram for ibc channels with precomputed stats
+      tags:
+      - stats
   /stats/messages_count_24h:
     get:
       description: Get messages distribution for the last 24 hours
@@ -3796,6 +4308,9 @@ paths:
           - MsgUpdateClient
           - MsgUpgradeClient
           - MsgSubmitMisbehaviour
+          - MsgRecoverClient
+          - MsgIBCSoftwareUpgrade
+          - MsgUpdateParams
           - MsgConnectionOpenInit
           - MsgConnectionOpenTry
           - MsgConnectionOpenAck
@@ -3812,6 +4327,16 @@ paths:
           - MsgAcknowledgement
           - MsgSignalVersion
           - MsgTryUpgrade
+          - MsgCreateMailbox
+          - MsgProcessMessage
+          - MsgSetMailbox
+          - MsgCreateCollateralToken
+          - MsgCreateSyntheticToken
+          - MsgSetToken
+          - MsgEnrollRemoteRouter
+          - MsgUnrollRemoteRouter
+          - MsgRemoteTransfer
+          - MsgUpdateMinfeeParams
           type: string
       - description: Comma-separated message types list which should be excluded
         in: query
@@ -3878,6 +4403,9 @@ paths:
           - MsgUpdateClient
           - MsgUpgradeClient
           - MsgSubmitMisbehaviour
+          - MsgRecoverClient
+          - MsgIBCSoftwareUpgrade
+          - MsgUpdateParams
           - MsgConnectionOpenInit
           - MsgConnectionOpenTry
           - MsgConnectionOpenAck
@@ -3894,6 +4422,16 @@ paths:
           - MsgAcknowledgement
           - MsgSignalVersion
           - MsgTryUpgrade
+          - MsgCreateMailbox
+          - MsgProcessMessage
+          - MsgSetMailbox
+          - MsgCreateCollateralToken
+          - MsgCreateSyntheticToken
+          - MsgSetToken
+          - MsgEnrollRemoteRouter
+          - MsgUnrollRemoteRouter
+          - MsgRemoteTransfer
+          - MsgUpdateMinfeeParams
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -5285,6 +5823,9 @@ components:
       type: object
     responses.Enums:
       example:
+        ibc_channel_status:
+        - ibc_channel_status
+        - ibc_channel_status
         proposal_type:
         - proposal_type
         - proposal_type
@@ -5328,6 +5869,10 @@ components:
             type: string
           type: array
         event_type:
+          items:
+            type: string
+          type: array
+        ibc_channel_status:
           items:
             type: string
           type: array
@@ -5488,6 +6033,364 @@ components:
         value:
           example: "2223424"
           format: string
+          type: string
+      type: object
+    responses.IbcChainStats:
+      example:
+        chain: "123456"
+        received: "123445"
+        sent: "123445"
+        flow: "123445"
+      properties:
+        chain:
+          example: "123456"
+          format: string
+          type: string
+        flow:
+          example: "123445"
+          format: string
+          type: string
+        received:
+          example: "123445"
+          format: string
+          type: string
+        sent:
+          example: "123445"
+          format: string
+          type: string
+      type: object
+    responses.IbcChannel:
+      example:
+        creator:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        confirmation_height: 100
+        ordering: false
+        created_at: 2023-07-04T03:10:57Z
+        version: ics20-1
+        confirmation_tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        counterparty_port_id: transfer
+        connection_id: connection-1
+        counterparty_channel_id: channel-1
+        client:
+          chain_id: osmosis-1
+          id: client-1
+          type: client
+        port_id: transfer
+        created_tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        id: channel-1
+        confirmed_at: 2023-07-04T03:10:57Z
+        height: 100
+        status: opened
+      properties:
+        client:
+          $ref: '#/components/schemas/responses.ShortIbcClient'
+        confirmation_height:
+          example: 100
+          format: integer
+          type: integer
+        confirmation_tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        confirmed_at:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        connection_id:
+          example: connection-1
+          format: string
+          type: string
+        counterparty_channel_id:
+          example: channel-1
+          format: string
+          type: string
+        counterparty_port_id:
+          example: transfer
+          format: string
+          type: string
+        created_at:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        created_tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        creator:
+          $ref: '#/components/schemas/responses.ShortAddress'
+        height:
+          example: 100
+          format: integer
+          type: integer
+        id:
+          example: channel-1
+          format: string
+          type: string
+        ordering:
+          example: false
+          format: boolean
+          type: boolean
+        port_id:
+          example: transfer
+          format: string
+          type: string
+        status:
+          example: opened
+          format: string
+          type: string
+        version:
+          example: ics20-1
+          format: string
+          type: string
+      type: object
+    responses.IbcClient:
+      example:
+        creator:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        chain_id: osmosis-1
+        trusting_period: 100
+        created_at: 2023-07-04T03:10:57Z
+        latest_revision_height: 100
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        trust_level_denominator: 100
+        latest_revision_number: 100
+        type: client
+        frozen_revision_number: 100
+        updated_at: 2023-07-04T03:10:57Z
+        max_clock_drift: 100
+        frozen_revision_height: 100
+        trust_level_numerator: 100
+        connection_count: 100
+        id: client-1
+        unbonding_period: 100
+        height: 100
+      properties:
+        chain_id:
+          example: osmosis-1
+          format: binary
+          type: string
+        connection_count:
+          example: 100
+          format: integer
+          type: integer
+        created_at:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        creator:
+          $ref: '#/components/schemas/responses.ShortAddress'
+        frozen_revision_height:
+          example: 100
+          format: integer
+          type: integer
+        frozen_revision_number:
+          example: 100
+          format: integer
+          type: integer
+        height:
+          example: 100
+          format: integer
+          type: integer
+        id:
+          example: client-1
+          format: string
+          type: string
+        latest_revision_height:
+          example: 100
+          format: integer
+          type: integer
+        latest_revision_number:
+          example: 100
+          format: integer
+          type: integer
+        max_clock_drift:
+          example: 100
+          format: integer
+          type: integer
+        trust_level_denominator:
+          example: 100
+          format: integer
+          type: integer
+        trust_level_numerator:
+          example: 100
+          format: integer
+          type: integer
+        trusting_period:
+          example: 100
+          format: integer
+          type: integer
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        type:
+          example: client
+          format: string
+          type: string
+        unbonding_period:
+          example: 100
+          format: integer
+          type: integer
+        updated_at:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+      type: object
+    responses.IbcConnection:
+      example:
+        channels_count: 100
+        connected_tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        counterparty_connection_id: connection-1
+        client:
+          chain_id: osmosis-1
+          id: client-1
+          type: client
+        created_at: 2023-07-04T03:10:57Z
+        created_tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        connected_at: 2023-07-04T03:10:57Z
+        id: connection-1
+        connected_height: 100
+        counterparty_client_id: client-1
+        height: 100
+      properties:
+        channels_count:
+          example: 100
+          format: integer
+          type: integer
+        client:
+          $ref: '#/components/schemas/responses.ShortIbcClient'
+        connected_at:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        connected_height:
+          example: 100
+          format: integer
+          type: integer
+        connected_tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        counterparty_client_id:
+          example: client-1
+          format: string
+          type: string
+        counterparty_connection_id:
+          example: connection-1
+          format: string
+          type: string
+        created_at:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        created_tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        height:
+          example: 100
+          format: integer
+          type: integer
+        id:
+          example: connection-1
+          format: string
+          type: string
+      type: object
+    responses.IbcTransfer:
+      example:
+        amount: "123445"
+        receiver:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        memo: memo
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        timeout: 2023-07-04T03:10:57Z
+        timeout_height: 100
+        sequence: 123456
+        connection_id: connection-1
+        port: transfer
+        sender:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        denom: utia
+        id: 123456
+        time: 2023-07-04T03:10:57Z
+        channel_id: channel-1
+        height: 100
+      properties:
+        amount:
+          example: "123445"
+          format: string
+          type: string
+        channel_id:
+          example: channel-1
+          format: string
+          type: string
+        connection_id:
+          example: connection-1
+          format: string
+          type: string
+        denom:
+          example: utia
+          format: string
+          type: string
+        height:
+          example: 100
+          format: integer
+          type: integer
+        id:
+          example: 123456
+          format: integer
+          type: integer
+        memo:
+          example: memo
+          format: string
+          type: string
+        port:
+          example: transfer
+          format: string
+          type: string
+        receiver:
+          $ref: '#/components/schemas/responses.ShortAddress'
+        sender:
+          $ref: '#/components/schemas/responses.ShortAddress'
+        sequence:
+          example: 123456
+          format: integer
+          type: integer
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        timeout:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        timeout_height:
+          example: 100
+          format: integer
+          type: integer
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
           type: string
       type: object
     responses.Jail:
@@ -6721,6 +7624,25 @@ components:
           example: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
           type: string
       type: object
+    responses.ShortIbcClient:
+      example:
+        chain_id: osmosis-1
+        id: client-1
+        type: client
+      properties:
+        chain_id:
+          example: osmosis-1
+          format: binary
+          type: string
+        id:
+          example: client-1
+          format: string
+          type: string
+        type:
+          example: client
+          format: string
+          type: string
+      type: object
     responses.ShortRollup:
       example:
         name: Rollup name
@@ -6808,6 +7730,7 @@ components:
         synced: true
         chain_id: mocha-4
         total_namespaces: 312
+        total_ibc_clients: 312
         total_supply: "312"
         total_tx: 23456
         total_stake: "312"
@@ -6863,6 +7786,10 @@ components:
           example: "312"
           format: string
           type: string
+        total_ibc_clients:
+          example: 312
+          format: string
+          type: integer
         total_namespaces:
           example: 312
           format: string
@@ -7601,6 +8528,9 @@ components:
       - MsgUpdateClient
       - MsgUpgradeClient
       - MsgSubmitMisbehaviour
+      - MsgRecoverClient
+      - MsgIBCSoftwareUpgrade
+      - MsgUpdateParams
       - MsgConnectionOpenInit
       - MsgConnectionOpenTry
       - MsgConnectionOpenAck
@@ -7617,6 +8547,16 @@ components:
       - MsgAcknowledgement
       - MsgSignalVersion
       - MsgTryUpgrade
+      - MsgCreateMailbox
+      - MsgProcessMessage
+      - MsgSetMailbox
+      - MsgCreateCollateralToken
+      - MsgCreateSyntheticToken
+      - MsgSetToken
+      - MsgEnrollRemoteRouter
+      - MsgUnrollRemoteRouter
+      - MsgRemoteTransfer
+      - MsgUpdateMinfeeParams
       type: string
       x-enum-varnames:
       - MsgUnknown
@@ -7679,6 +8619,9 @@ components:
       - MsgUpdateClient
       - MsgUpgradeClient
       - MsgSubmitMisbehaviour
+      - MsgRecoverClient
+      - MsgIBCSoftwareUpgrade
+      - MsgUpdateParams
       - MsgConnectionOpenInit
       - MsgConnectionOpenTry
       - MsgConnectionOpenAck
@@ -7695,6 +8638,16 @@ components:
       - MsgAcknowledgement
       - MsgSignalVersion
       - MsgTryUpgrade
+      - MsgCreateMailbox
+      - MsgProcessMessage
+      - MsgSetMailbox
+      - MsgCreateCollateralToken
+      - MsgCreateSyntheticToken
+      - MsgSetToken
+      - MsgEnrollRemoteRouter
+      - MsgUnrollRemoteRouter
+      - MsgRemoteTransfer
+      - MsgUpdateMinfeeParams
   securitySchemes:
     ApiKeyAuth:
       description: To authorize your requests you have to select the required tariff
