@@ -9,14 +9,15 @@ Name | Type | Description | Notes
 **AbstainVals** | Pointer to **int32** |  | [optional] 
 **AbstainVotingPower** | Pointer to **string** |  | [optional] 
 **ActivationTime** | Pointer to **time.Time** |  | [optional] 
-**Changes** | Pointer to **[]int32** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **Deposit** | Pointer to **string** |  | [optional] 
 **DepositTime** | Pointer to **time.Time** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**EndTime** | Pointer to **time.Time** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **Metadata** | Pointer to **string** |  | [optional] 
+**MinDeposit** | Pointer to **string** |  | [optional] 
 **No** | Pointer to **int32** |  | [optional] 
 **NoAddrs** | Pointer to **int32** |  | [optional] 
 **NoVals** | Pointer to **int32** |  | [optional] 
@@ -26,9 +27,13 @@ Name | Type | Description | Notes
 **NoWithVetoVals** | Pointer to **int32** |  | [optional] 
 **NoWithVetoVotingPower** | Pointer to **string** |  | [optional] 
 **Proposer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
+**Quorum** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
+**Threshold** | Pointer to **string** |  | [optional] 
 **Title** | Pointer to **string** |  | [optional] 
+**TotalVotingPower** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**VetoQuorum** | Pointer to **string** |  | [optional] 
 **VotesCount** | Pointer to **int32** |  | [optional] 
 **VotingPower** | Pointer to **string** |  | [optional] 
 **Yes** | Pointer to **int32** |  | [optional] 
@@ -180,31 +185,6 @@ SetActivationTime sets ActivationTime field to given value.
 
 HasActivationTime returns a boolean if a field has been set.
 
-### GetChanges
-
-`func (o *ResponsesProposal) GetChanges() []int32`
-
-GetChanges returns the Changes field if non-nil, zero value otherwise.
-
-### GetChangesOk
-
-`func (o *ResponsesProposal) GetChangesOk() (*[]int32, bool)`
-
-GetChangesOk returns a tuple with the Changes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetChanges
-
-`func (o *ResponsesProposal) SetChanges(v []int32)`
-
-SetChanges sets Changes field to given value.
-
-### HasChanges
-
-`func (o *ResponsesProposal) HasChanges() bool`
-
-HasChanges returns a boolean if a field has been set.
-
 ### GetCreatedAt
 
 `func (o *ResponsesProposal) GetCreatedAt() time.Time`
@@ -305,6 +285,31 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetEndTime
+
+`func (o *ResponsesProposal) GetEndTime() time.Time`
+
+GetEndTime returns the EndTime field if non-nil, zero value otherwise.
+
+### GetEndTimeOk
+
+`func (o *ResponsesProposal) GetEndTimeOk() (*time.Time, bool)`
+
+GetEndTimeOk returns a tuple with the EndTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndTime
+
+`func (o *ResponsesProposal) SetEndTime(v time.Time)`
+
+SetEndTime sets EndTime field to given value.
+
+### HasEndTime
+
+`func (o *ResponsesProposal) HasEndTime() bool`
+
+HasEndTime returns a boolean if a field has been set.
+
 ### GetHeight
 
 `func (o *ResponsesProposal) GetHeight() int64`
@@ -379,6 +384,31 @@ SetMetadata sets Metadata field to given value.
 `func (o *ResponsesProposal) HasMetadata() bool`
 
 HasMetadata returns a boolean if a field has been set.
+
+### GetMinDeposit
+
+`func (o *ResponsesProposal) GetMinDeposit() string`
+
+GetMinDeposit returns the MinDeposit field if non-nil, zero value otherwise.
+
+### GetMinDepositOk
+
+`func (o *ResponsesProposal) GetMinDepositOk() (*string, bool)`
+
+GetMinDepositOk returns a tuple with the MinDeposit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinDeposit
+
+`func (o *ResponsesProposal) SetMinDeposit(v string)`
+
+SetMinDeposit sets MinDeposit field to given value.
+
+### HasMinDeposit
+
+`func (o *ResponsesProposal) HasMinDeposit() bool`
+
+HasMinDeposit returns a boolean if a field has been set.
 
 ### GetNo
 
@@ -605,6 +635,31 @@ SetProposer sets Proposer field to given value.
 
 HasProposer returns a boolean if a field has been set.
 
+### GetQuorum
+
+`func (o *ResponsesProposal) GetQuorum() string`
+
+GetQuorum returns the Quorum field if non-nil, zero value otherwise.
+
+### GetQuorumOk
+
+`func (o *ResponsesProposal) GetQuorumOk() (*string, bool)`
+
+GetQuorumOk returns a tuple with the Quorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuorum
+
+`func (o *ResponsesProposal) SetQuorum(v string)`
+
+SetQuorum sets Quorum field to given value.
+
+### HasQuorum
+
+`func (o *ResponsesProposal) HasQuorum() bool`
+
+HasQuorum returns a boolean if a field has been set.
+
 ### GetStatus
 
 `func (o *ResponsesProposal) GetStatus() string`
@@ -629,6 +684,31 @@ SetStatus sets Status field to given value.
 `func (o *ResponsesProposal) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetThreshold
+
+`func (o *ResponsesProposal) GetThreshold() string`
+
+GetThreshold returns the Threshold field if non-nil, zero value otherwise.
+
+### GetThresholdOk
+
+`func (o *ResponsesProposal) GetThresholdOk() (*string, bool)`
+
+GetThresholdOk returns a tuple with the Threshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetThreshold
+
+`func (o *ResponsesProposal) SetThreshold(v string)`
+
+SetThreshold sets Threshold field to given value.
+
+### HasThreshold
+
+`func (o *ResponsesProposal) HasThreshold() bool`
+
+HasThreshold returns a boolean if a field has been set.
 
 ### GetTitle
 
@@ -655,6 +735,31 @@ SetTitle sets Title field to given value.
 
 HasTitle returns a boolean if a field has been set.
 
+### GetTotalVotingPower
+
+`func (o *ResponsesProposal) GetTotalVotingPower() string`
+
+GetTotalVotingPower returns the TotalVotingPower field if non-nil, zero value otherwise.
+
+### GetTotalVotingPowerOk
+
+`func (o *ResponsesProposal) GetTotalVotingPowerOk() (*string, bool)`
+
+GetTotalVotingPowerOk returns a tuple with the TotalVotingPower field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalVotingPower
+
+`func (o *ResponsesProposal) SetTotalVotingPower(v string)`
+
+SetTotalVotingPower sets TotalVotingPower field to given value.
+
+### HasTotalVotingPower
+
+`func (o *ResponsesProposal) HasTotalVotingPower() bool`
+
+HasTotalVotingPower returns a boolean if a field has been set.
+
 ### GetType
 
 `func (o *ResponsesProposal) GetType() string`
@@ -679,6 +784,31 @@ SetType sets Type field to given value.
 `func (o *ResponsesProposal) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetVetoQuorum
+
+`func (o *ResponsesProposal) GetVetoQuorum() string`
+
+GetVetoQuorum returns the VetoQuorum field if non-nil, zero value otherwise.
+
+### GetVetoQuorumOk
+
+`func (o *ResponsesProposal) GetVetoQuorumOk() (*string, bool)`
+
+GetVetoQuorumOk returns a tuple with the VetoQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVetoQuorum
+
+`func (o *ResponsesProposal) SetVetoQuorum(v string)`
+
+SetVetoQuorum sets VetoQuorum field to given value.
+
+### HasVetoQuorum
+
+`func (o *ResponsesProposal) HasVetoQuorum() bool`
+
+HasVetoQuorum returns a boolean if a field has been set.
 
 ### GetVotesCount
 

@@ -26,14 +26,15 @@ type ResponsesProposal struct {
 	AbstainVals *int32 `json:"abstain_vals,omitempty"`
 	AbstainVotingPower *string `json:"abstain_voting_power,omitempty"`
 	ActivationTime *time.Time `json:"activation_time,omitempty"`
-	Changes []int32 `json:"changes,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	Deposit *string `json:"deposit,omitempty"`
 	DepositTime *time.Time `json:"deposit_time,omitempty"`
 	Description *string `json:"description,omitempty"`
+	EndTime *time.Time `json:"end_time,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Metadata *string `json:"metadata,omitempty"`
+	MinDeposit *string `json:"min_deposit,omitempty"`
 	No *int32 `json:"no,omitempty"`
 	NoAddrs *int32 `json:"no_addrs,omitempty"`
 	NoVals *int32 `json:"no_vals,omitempty"`
@@ -43,9 +44,13 @@ type ResponsesProposal struct {
 	NoWithVetoVals *int32 `json:"no_with_veto_vals,omitempty"`
 	NoWithVetoVotingPower *string `json:"no_with_veto_voting_power,omitempty"`
 	Proposer *ResponsesShortAddress `json:"proposer,omitempty"`
+	Quorum *string `json:"quorum,omitempty"`
 	Status *string `json:"status,omitempty"`
+	Threshold *string `json:"threshold,omitempty"`
 	Title *string `json:"title,omitempty"`
+	TotalVotingPower *string `json:"total_voting_power,omitempty"`
 	Type *string `json:"type,omitempty"`
+	VetoQuorum *string `json:"veto_quorum,omitempty"`
 	VotesCount *int32 `json:"votes_count,omitempty"`
 	VotingPower *string `json:"voting_power,omitempty"`
 	Yes *int32 `json:"yes,omitempty"`
@@ -231,38 +236,6 @@ func (o *ResponsesProposal) SetActivationTime(v time.Time) {
 	o.ActivationTime = &v
 }
 
-// GetChanges returns the Changes field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetChanges() []int32 {
-	if o == nil || IsNil(o.Changes) {
-		var ret []int32
-		return ret
-	}
-	return o.Changes
-}
-
-// GetChangesOk returns a tuple with the Changes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetChangesOk() ([]int32, bool) {
-	if o == nil || IsNil(o.Changes) {
-		return nil, false
-	}
-	return o.Changes, true
-}
-
-// HasChanges returns a boolean if a field has been set.
-func (o *ResponsesProposal) HasChanges() bool {
-	if o != nil && !IsNil(o.Changes) {
-		return true
-	}
-
-	return false
-}
-
-// SetChanges gets a reference to the given []int32 and assigns it to the Changes field.
-func (o *ResponsesProposal) SetChanges(v []int32) {
-	o.Changes = v
-}
-
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ResponsesProposal) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
@@ -391,6 +364,38 @@ func (o *ResponsesProposal) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetEndTime returns the EndTime field value if set, zero value otherwise.
+func (o *ResponsesProposal) GetEndTime() time.Time {
+	if o == nil || IsNil(o.EndTime) {
+		var ret time.Time
+		return ret
+	}
+	return *o.EndTime
+}
+
+// GetEndTimeOk returns a tuple with the EndTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesProposal) GetEndTimeOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.EndTime) {
+		return nil, false
+	}
+	return o.EndTime, true
+}
+
+// HasEndTime returns a boolean if a field has been set.
+func (o *ResponsesProposal) HasEndTime() bool {
+	if o != nil && !IsNil(o.EndTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndTime gets a reference to the given time.Time and assigns it to the EndTime field.
+func (o *ResponsesProposal) SetEndTime(v time.Time) {
+	o.EndTime = &v
+}
+
 // GetHeight returns the Height field value if set, zero value otherwise.
 func (o *ResponsesProposal) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
@@ -485,6 +490,38 @@ func (o *ResponsesProposal) HasMetadata() bool {
 // SetMetadata gets a reference to the given string and assigns it to the Metadata field.
 func (o *ResponsesProposal) SetMetadata(v string) {
 	o.Metadata = &v
+}
+
+// GetMinDeposit returns the MinDeposit field value if set, zero value otherwise.
+func (o *ResponsesProposal) GetMinDeposit() string {
+	if o == nil || IsNil(o.MinDeposit) {
+		var ret string
+		return ret
+	}
+	return *o.MinDeposit
+}
+
+// GetMinDepositOk returns a tuple with the MinDeposit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesProposal) GetMinDepositOk() (*string, bool) {
+	if o == nil || IsNil(o.MinDeposit) {
+		return nil, false
+	}
+	return o.MinDeposit, true
+}
+
+// HasMinDeposit returns a boolean if a field has been set.
+func (o *ResponsesProposal) HasMinDeposit() bool {
+	if o != nil && !IsNil(o.MinDeposit) {
+		return true
+	}
+
+	return false
+}
+
+// SetMinDeposit gets a reference to the given string and assigns it to the MinDeposit field.
+func (o *ResponsesProposal) SetMinDeposit(v string) {
+	o.MinDeposit = &v
 }
 
 // GetNo returns the No field value if set, zero value otherwise.
@@ -775,6 +812,38 @@ func (o *ResponsesProposal) SetProposer(v ResponsesShortAddress) {
 	o.Proposer = &v
 }
 
+// GetQuorum returns the Quorum field value if set, zero value otherwise.
+func (o *ResponsesProposal) GetQuorum() string {
+	if o == nil || IsNil(o.Quorum) {
+		var ret string
+		return ret
+	}
+	return *o.Quorum
+}
+
+// GetQuorumOk returns a tuple with the Quorum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesProposal) GetQuorumOk() (*string, bool) {
+	if o == nil || IsNil(o.Quorum) {
+		return nil, false
+	}
+	return o.Quorum, true
+}
+
+// HasQuorum returns a boolean if a field has been set.
+func (o *ResponsesProposal) HasQuorum() bool {
+	if o != nil && !IsNil(o.Quorum) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuorum gets a reference to the given string and assigns it to the Quorum field.
+func (o *ResponsesProposal) SetQuorum(v string) {
+	o.Quorum = &v
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ResponsesProposal) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -805,6 +874,38 @@ func (o *ResponsesProposal) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *ResponsesProposal) SetStatus(v string) {
 	o.Status = &v
+}
+
+// GetThreshold returns the Threshold field value if set, zero value otherwise.
+func (o *ResponsesProposal) GetThreshold() string {
+	if o == nil || IsNil(o.Threshold) {
+		var ret string
+		return ret
+	}
+	return *o.Threshold
+}
+
+// GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesProposal) GetThresholdOk() (*string, bool) {
+	if o == nil || IsNil(o.Threshold) {
+		return nil, false
+	}
+	return o.Threshold, true
+}
+
+// HasThreshold returns a boolean if a field has been set.
+func (o *ResponsesProposal) HasThreshold() bool {
+	if o != nil && !IsNil(o.Threshold) {
+		return true
+	}
+
+	return false
+}
+
+// SetThreshold gets a reference to the given string and assigns it to the Threshold field.
+func (o *ResponsesProposal) SetThreshold(v string) {
+	o.Threshold = &v
 }
 
 // GetTitle returns the Title field value if set, zero value otherwise.
@@ -839,6 +940,38 @@ func (o *ResponsesProposal) SetTitle(v string) {
 	o.Title = &v
 }
 
+// GetTotalVotingPower returns the TotalVotingPower field value if set, zero value otherwise.
+func (o *ResponsesProposal) GetTotalVotingPower() string {
+	if o == nil || IsNil(o.TotalVotingPower) {
+		var ret string
+		return ret
+	}
+	return *o.TotalVotingPower
+}
+
+// GetTotalVotingPowerOk returns a tuple with the TotalVotingPower field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesProposal) GetTotalVotingPowerOk() (*string, bool) {
+	if o == nil || IsNil(o.TotalVotingPower) {
+		return nil, false
+	}
+	return o.TotalVotingPower, true
+}
+
+// HasTotalVotingPower returns a boolean if a field has been set.
+func (o *ResponsesProposal) HasTotalVotingPower() bool {
+	if o != nil && !IsNil(o.TotalVotingPower) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalVotingPower gets a reference to the given string and assigns it to the TotalVotingPower field.
+func (o *ResponsesProposal) SetTotalVotingPower(v string) {
+	o.TotalVotingPower = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ResponsesProposal) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -869,6 +1002,38 @@ func (o *ResponsesProposal) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ResponsesProposal) SetType(v string) {
 	o.Type = &v
+}
+
+// GetVetoQuorum returns the VetoQuorum field value if set, zero value otherwise.
+func (o *ResponsesProposal) GetVetoQuorum() string {
+	if o == nil || IsNil(o.VetoQuorum) {
+		var ret string
+		return ret
+	}
+	return *o.VetoQuorum
+}
+
+// GetVetoQuorumOk returns a tuple with the VetoQuorum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesProposal) GetVetoQuorumOk() (*string, bool) {
+	if o == nil || IsNil(o.VetoQuorum) {
+		return nil, false
+	}
+	return o.VetoQuorum, true
+}
+
+// HasVetoQuorum returns a boolean if a field has been set.
+func (o *ResponsesProposal) HasVetoQuorum() bool {
+	if o != nil && !IsNil(o.VetoQuorum) {
+		return true
+	}
+
+	return false
+}
+
+// SetVetoQuorum gets a reference to the given string and assigns it to the VetoQuorum field.
+func (o *ResponsesProposal) SetVetoQuorum(v string) {
+	o.VetoQuorum = &v
 }
 
 // GetVotesCount returns the VotesCount field value if set, zero value otherwise.
@@ -1088,9 +1253,6 @@ func (o ResponsesProposal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ActivationTime) {
 		toSerialize["activation_time"] = o.ActivationTime
 	}
-	if !IsNil(o.Changes) {
-		toSerialize["changes"] = o.Changes
-	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}
@@ -1103,6 +1265,9 @@ func (o ResponsesProposal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.EndTime) {
+		toSerialize["end_time"] = o.EndTime
+	}
 	if !IsNil(o.Height) {
 		toSerialize["height"] = o.Height
 	}
@@ -1111,6 +1276,9 @@ func (o ResponsesProposal) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.MinDeposit) {
+		toSerialize["min_deposit"] = o.MinDeposit
 	}
 	if !IsNil(o.No) {
 		toSerialize["no"] = o.No
@@ -1139,14 +1307,26 @@ func (o ResponsesProposal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Proposer) {
 		toSerialize["proposer"] = o.Proposer
 	}
+	if !IsNil(o.Quorum) {
+		toSerialize["quorum"] = o.Quorum
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Threshold) {
+		toSerialize["threshold"] = o.Threshold
 	}
 	if !IsNil(o.Title) {
 		toSerialize["title"] = o.Title
 	}
+	if !IsNil(o.TotalVotingPower) {
+		toSerialize["total_voting_power"] = o.TotalVotingPower
+	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.VetoQuorum) {
+		toSerialize["veto_quorum"] = o.VetoQuorum
 	}
 	if !IsNil(o.VotesCount) {
 		toSerialize["votes_count"] = o.VotesCount

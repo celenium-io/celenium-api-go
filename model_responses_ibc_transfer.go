@@ -13,8 +13,8 @@ package celenium
 
 import (
 	"encoding/json"
-	"time"
 	"os"
+	"time"
 )
 
 // checks if the ResponsesIbcTransfer type satisfies the MappedNullable interface at compile time
@@ -23,6 +23,7 @@ var _ MappedNullable = &ResponsesIbcTransfer{}
 // ResponsesIbcTransfer struct for ResponsesIbcTransfer
 type ResponsesIbcTransfer struct {
 	Amount *string `json:"amount,omitempty"`
+	ChainId **os.File `json:"chain_id,omitempty"`
 	ChannelId *string `json:"channel_id,omitempty"`
 	ConnectionId *string `json:"connection_id,omitempty"`
 	Denom *string `json:"denom,omitempty"`
@@ -86,6 +87,38 @@ func (o *ResponsesIbcTransfer) HasAmount() bool {
 // SetAmount gets a reference to the given string and assigns it to the Amount field.
 func (o *ResponsesIbcTransfer) SetAmount(v string) {
 	o.Amount = &v
+}
+
+// GetChainId returns the ChainId field value if set, zero value otherwise.
+func (o *ResponsesIbcTransfer) GetChainId() *os.File {
+	if o == nil || IsNil(o.ChainId) {
+		var ret *os.File
+		return ret
+	}
+	return *o.ChainId
+}
+
+// GetChainIdOk returns a tuple with the ChainId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesIbcTransfer) GetChainIdOk() (**os.File, bool) {
+	if o == nil || IsNil(o.ChainId) {
+		return nil, false
+	}
+	return o.ChainId, true
+}
+
+// HasChainId returns a boolean if a field has been set.
+func (o *ResponsesIbcTransfer) HasChainId() bool {
+	if o != nil && !IsNil(o.ChainId) {
+		return true
+	}
+
+	return false
+}
+
+// SetChainId gets a reference to the given *os.File and assigns it to the ChainId field.
+func (o *ResponsesIbcTransfer) SetChainId(v *os.File) {
+	o.ChainId = &v
 }
 
 // GetChannelId returns the ChannelId field value if set, zero value otherwise.
@@ -548,6 +581,9 @@ func (o ResponsesIbcTransfer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
+	}
+	if !IsNil(o.ChainId) {
+		toSerialize["chain_id"] = o.ChainId
 	}
 	if !IsNil(o.ChannelId) {
 		toSerialize["channel_id"] = o.ChannelId

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **string** |  | [optional] 
+**ChainId** | Pointer to ***os.File** |  | [optional] 
 **ChannelId** | Pointer to **string** |  | [optional] 
 **ConnectionId** | Pointer to **string** |  | [optional] 
 **Denom** | Pointer to **string** |  | [optional] 
@@ -63,6 +64,31 @@ SetAmount sets Amount field to given value.
 `func (o *ResponsesIbcTransfer) HasAmount() bool`
 
 HasAmount returns a boolean if a field has been set.
+
+### GetChainId
+
+`func (o *ResponsesIbcTransfer) GetChainId() *os.File`
+
+GetChainId returns the ChainId field if non-nil, zero value otherwise.
+
+### GetChainIdOk
+
+`func (o *ResponsesIbcTransfer) GetChainIdOk() (**os.File, bool)`
+
+GetChainIdOk returns a tuple with the ChainId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChainId
+
+`func (o *ResponsesIbcTransfer) SetChainId(v *os.File)`
+
+SetChainId sets ChainId field to given value.
+
+### HasChainId
+
+`func (o *ResponsesIbcTransfer) HasChainId() bool`
+
+HasChainId returns a boolean if a field has been set.
 
 ### GetChannelId
 

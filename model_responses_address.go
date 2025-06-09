@@ -26,6 +26,7 @@ type ResponsesAddress struct {
 	Hash *string `json:"hash,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	LastHeight *int32 `json:"last_height,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewResponsesAddress instantiates a new ResponsesAddress object
@@ -237,6 +238,38 @@ func (o *ResponsesAddress) SetLastHeight(v int32) {
 	o.LastHeight = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *ResponsesAddress) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesAddress) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *ResponsesAddress) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *ResponsesAddress) SetName(v string) {
+	o.Name = &v
+}
+
 func (o ResponsesAddress) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -264,6 +297,9 @@ func (o ResponsesAddress) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LastHeight) {
 		toSerialize["last_height"] = o.LastHeight
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
 }
