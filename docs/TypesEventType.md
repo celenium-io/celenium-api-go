@@ -121,6 +121,46 @@
 
 * `EventTypeChannelCloseConfirm` (value: `"channel_close_confirm"`)
 
+* `EventTypeUpdateClientProposal` (value: `"update_client_proposal"`)
+
+* `EventTypeHyperlanecorev1EventDispatch` (value: `"hyperlane.core.v1.EventDispatch"`)
+
+* `EventTypeHyperlanecorev1EventProcess` (value: `"hyperlane.core.v1.EventProcess"`)
+
+* `EventTypeHyperlanecorev1EventCreateMailbox` (value: `"hyperlane.core.v1.EventCreateMailbox"`)
+
+* `EventTypeHyperlanecorev1EventSetMailbox` (value: `"hyperlane.core.v1.EventSetMailbox"`)
+
+* `EventTypeHyperlanewarpv1EventCreateSyntheticToken` (value: `"hyperlane.warp.v1.EventCreateSyntheticToken"`)
+
+* `EventTypeHyperlanewarpv1EventCreateCollateralToken` (value: `"hyperlane.warp.v1.EventCreateCollateralToken"`)
+
+* `EventTypeHyperlanewarpv1EventSetToken` (value: `"hyperlane.warp.v1.EventSetToken"`)
+
+* `EventTypeHyperlanewarpv1EventEnrollRemoteRouter` (value: `"hyperlane.warp.v1.EventEnrollRemoteRouter"`)
+
+* `EventTypeHyperlanewarpv1EventUnrollRemoteRouter` (value: `"hyperlane.warp.v1.EventUnrollRemoteRouter"`)
+
+* `EventTypeHyperlanewarpv1EventSendRemoteTransfer` (value: `"hyperlane.warp.v1.EventSendRemoteTransfer"`)
+
+* `EventTypeHyperlanewarpv1EventReceiveRemoteTransfer` (value: `"hyperlane.warp.v1.EventReceiveRemoteTransfer"`)
+
+* `EventTypeHyperlanecorepostDispatchv1EventCreateMerkleTreeHook` (value: `"hyperlane.core.post_dispatch.v1.EventCreateMerkleTreeHook"`)
+
+* `EventTypeHyperlanecorepostDispatchv1EventInsertedIntoTree` (value: `"hyperlane.core.post_dispatch.v1.EventInsertedIntoTree"`)
+
+* `EventTypeHyperlanecorepostDispatchv1EventGasPayment` (value: `"hyperlane.core.post_dispatch.v1.EventGasPayment"`)
+
+* `EventTypeHyperlanecorepostDispatchv1EventCreateNoopHook` (value: `"hyperlane.core.post_dispatch.v1.EventCreateNoopHook"`)
+
+* `EventTypeHyperlanecorepostDispatchv1EventCreateIgp` (value: `"hyperlane.core.post_dispatch.v1.EventCreateIgp"`)
+
+* `EventTypeHyperlanecorepostDispatchv1EventSetIgp` (value: `"hyperlane.core.post_dispatch.v1.EventSetIgp"`)
+
+* `EventTypeHyperlanecorepostDispatchv1EventSetDestinationGasConfig` (value: `"hyperlane.core.post_dispatch.v1.EventSetDestinationGasConfig"`)
+
+* `EventTypeHyperlanecorepostDispatchv1EventClaimIgp` (value: `"hyperlane.core.post_dispatch.v1.EventClaimIgp"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

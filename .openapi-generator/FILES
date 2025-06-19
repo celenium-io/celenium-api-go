@@ -7,6 +7,7 @@ api_address.go
 api_block.go
 api_gas.go
 api_general.go
+api_hyperlane.go
 api_ibc.go
 api_namespace.go
 api_proposal.go
@@ -25,6 +26,7 @@ docs/GeneralAPI.md
 docs/GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus.md
 docs/HandlerError.md
 docs/HandlerPostBlobRequest.md
+docs/HyperlaneAPI.md
 docs/IbcAPI.md
 docs/NamespaceAPI.md
 docs/ProposalAPI.md
@@ -46,6 +48,10 @@ docs/ResponsesEvent.md
 docs/ResponsesGasPrice.md
 docs/ResponsesGrant.md
 docs/ResponsesHistogramItem.md
+docs/ResponsesHyperlaneCounterparty.md
+docs/ResponsesHyperlaneMailbox.md
+docs/ResponsesHyperlaneToken.md
+docs/ResponsesHyperlaneTransfer.md
 docs/ResponsesIbcChainStats.md
 docs/ResponsesIbcChannel.md
 docs/ResponsesIbcClient.md
@@ -123,6 +129,10 @@ model_responses_event.go
 model_responses_gas_price.go
 model_responses_grant.go
 model_responses_histogram_item.go
+model_responses_hyperlane_counterparty.go
+model_responses_hyperlane_mailbox.go
+model_responses_hyperlane_token.go
+model_responses_hyperlane_transfer.go
 model_responses_ibc_chain_stats.go
 model_responses_ibc_channel.go
 model_responses_ibc_client.go
@@ -175,6 +185,7 @@ test/api_address_test.go
 test/api_block_test.go
 test/api_gas_test.go
 test/api_general_test.go
+test/api_hyperlane_test.go
 test/api_ibc_test.go
 test/api_namespace_test.go
 test/api_proposal_test.go

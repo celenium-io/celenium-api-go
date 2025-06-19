@@ -58,6 +58,8 @@ type APIClient struct {
 
 	GeneralAPI *GeneralAPIService
 
+	HyperlaneAPI *HyperlaneAPIService
+
 	IbcAPI *IbcAPIService
 
 	NamespaceAPI *NamespaceAPIService
@@ -97,6 +99,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BlockAPI = (*BlockAPIService)(&c.common)
 	c.GasAPI = (*GasAPIService)(&c.common)
 	c.GeneralAPI = (*GeneralAPIService)(&c.common)
+	c.HyperlaneAPI = (*HyperlaneAPIService)(&c.common)
 	c.IbcAPI = (*IbcAPIService)(&c.common)
 	c.NamespaceAPI = (*NamespaceAPIService)(&c.common)
 	c.ProposalAPI = (*ProposalAPIService)(&c.common)

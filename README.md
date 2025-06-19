@@ -108,6 +108,11 @@ Class | Method | HTTP request | Description
 *GeneralAPI* | [**GetConstants**](docs/GeneralAPI.md#getconstants) | **Get** /constants | Get network constants
 *GeneralAPI* | [**GetEnums**](docs/GeneralAPI.md#getenums) | **Get** /enums | Get celenium enumerators
 *GeneralAPI* | [**Head**](docs/GeneralAPI.md#head) | **Get** /head | Get current indexer head
+*HyperlaneAPI* | [**GetHyperlaneMailbox**](docs/HyperlaneAPI.md#gethyperlanemailbox) | **Get** /hyperlane/mailbox/{id} | Get hyperlane mailbox info
+*HyperlaneAPI* | [**GetHyperlaneToken**](docs/HyperlaneAPI.md#gethyperlanetoken) | **Get** /hyperlane/token/{id} | Get hyperlane token info
+*HyperlaneAPI* | [**ListHyperlaneMailbox**](docs/HyperlaneAPI.md#listhyperlanemailbox) | **Get** /hyperlane/mailbox | List hyperlane mailboxes info
+*HyperlaneAPI* | [**ListHyperlaneTokens**](docs/HyperlaneAPI.md#listhyperlanetokens) | **Get** /hyperlane/token | List hyperlane tokens info
+*HyperlaneAPI* | [**ListHyperlaneTransfers**](docs/HyperlaneAPI.md#listhyperlanetransfers) | **Get** /hyperlane/transfer | List hyperlane transfers info
 *IbcAPI* | [**GetIbcChannel**](docs/IbcAPI.md#getibcchannel) | **Get** /ibc/channel/{id} | Get ibc channel info
 *IbcAPI* | [**GetIbcChannels**](docs/IbcAPI.md#getibcchannels) | **Get** /ibc/channel | Get ibc channels info
 *IbcAPI* | [**GetIbcClient**](docs/IbcAPI.md#getibcclient) | **Get** /ibc/client/{id} | Get ibc client info
@@ -198,6 +203,10 @@ Class | Method | HTTP request | Description
  - [ResponsesGasPrice](docs/ResponsesGasPrice.md)
  - [ResponsesGrant](docs/ResponsesGrant.md)
  - [ResponsesHistogramItem](docs/ResponsesHistogramItem.md)
+ - [ResponsesHyperlaneCounterparty](docs/ResponsesHyperlaneCounterparty.md)
+ - [ResponsesHyperlaneMailbox](docs/ResponsesHyperlaneMailbox.md)
+ - [ResponsesHyperlaneToken](docs/ResponsesHyperlaneToken.md)
+ - [ResponsesHyperlaneTransfer](docs/ResponsesHyperlaneTransfer.md)
  - [ResponsesIbcChainStats](docs/ResponsesIbcChainStats.md)
  - [ResponsesIbcChannel](docs/ResponsesIbcChannel.md)
  - [ResponsesIbcClient](docs/ResponsesIbcClient.md)

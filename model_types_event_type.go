@@ -80,6 +80,26 @@ const (
 	EventTypeInactiveProposal TypesEventType = "inactive_proposal"
 	EventTypeIcs27Packet TypesEventType = "ics27_packet"
 	EventTypeChannelCloseConfirm TypesEventType = "channel_close_confirm"
+	EventTypeUpdateClientProposal TypesEventType = "update_client_proposal"
+	EventTypeHyperlanecorev1EventDispatch TypesEventType = "hyperlane.core.v1.EventDispatch"
+	EventTypeHyperlanecorev1EventProcess TypesEventType = "hyperlane.core.v1.EventProcess"
+	EventTypeHyperlanecorev1EventCreateMailbox TypesEventType = "hyperlane.core.v1.EventCreateMailbox"
+	EventTypeHyperlanecorev1EventSetMailbox TypesEventType = "hyperlane.core.v1.EventSetMailbox"
+	EventTypeHyperlanewarpv1EventCreateSyntheticToken TypesEventType = "hyperlane.warp.v1.EventCreateSyntheticToken"
+	EventTypeHyperlanewarpv1EventCreateCollateralToken TypesEventType = "hyperlane.warp.v1.EventCreateCollateralToken"
+	EventTypeHyperlanewarpv1EventSetToken TypesEventType = "hyperlane.warp.v1.EventSetToken"
+	EventTypeHyperlanewarpv1EventEnrollRemoteRouter TypesEventType = "hyperlane.warp.v1.EventEnrollRemoteRouter"
+	EventTypeHyperlanewarpv1EventUnrollRemoteRouter TypesEventType = "hyperlane.warp.v1.EventUnrollRemoteRouter"
+	EventTypeHyperlanewarpv1EventSendRemoteTransfer TypesEventType = "hyperlane.warp.v1.EventSendRemoteTransfer"
+	EventTypeHyperlanewarpv1EventReceiveRemoteTransfer TypesEventType = "hyperlane.warp.v1.EventReceiveRemoteTransfer"
+	EventTypeHyperlanecorepostDispatchv1EventCreateMerkleTreeHook TypesEventType = "hyperlane.core.post_dispatch.v1.EventCreateMerkleTreeHook"
+	EventTypeHyperlanecorepostDispatchv1EventInsertedIntoTree TypesEventType = "hyperlane.core.post_dispatch.v1.EventInsertedIntoTree"
+	EventTypeHyperlanecorepostDispatchv1EventGasPayment TypesEventType = "hyperlane.core.post_dispatch.v1.EventGasPayment"
+	EventTypeHyperlanecorepostDispatchv1EventCreateNoopHook TypesEventType = "hyperlane.core.post_dispatch.v1.EventCreateNoopHook"
+	EventTypeHyperlanecorepostDispatchv1EventCreateIgp TypesEventType = "hyperlane.core.post_dispatch.v1.EventCreateIgp"
+	EventTypeHyperlanecorepostDispatchv1EventSetIgp TypesEventType = "hyperlane.core.post_dispatch.v1.EventSetIgp"
+	EventTypeHyperlanecorepostDispatchv1EventSetDestinationGasConfig TypesEventType = "hyperlane.core.post_dispatch.v1.EventSetDestinationGasConfig"
+	EventTypeHyperlanecorepostDispatchv1EventClaimIgp TypesEventType = "hyperlane.core.post_dispatch.v1.EventClaimIgp"
 )
 
 // All allowed values of TypesEventType enum
@@ -143,6 +163,26 @@ var AllowedTypesEventTypeEnumValues = []TypesEventType{
 	"inactive_proposal",
 	"ics27_packet",
 	"channel_close_confirm",
+	"update_client_proposal",
+	"hyperlane.core.v1.EventDispatch",
+	"hyperlane.core.v1.EventProcess",
+	"hyperlane.core.v1.EventCreateMailbox",
+	"hyperlane.core.v1.EventSetMailbox",
+	"hyperlane.warp.v1.EventCreateSyntheticToken",
+	"hyperlane.warp.v1.EventCreateCollateralToken",
+	"hyperlane.warp.v1.EventSetToken",
+	"hyperlane.warp.v1.EventEnrollRemoteRouter",
+	"hyperlane.warp.v1.EventUnrollRemoteRouter",
+	"hyperlane.warp.v1.EventSendRemoteTransfer",
+	"hyperlane.warp.v1.EventReceiveRemoteTransfer",
+	"hyperlane.core.post_dispatch.v1.EventCreateMerkleTreeHook",
+	"hyperlane.core.post_dispatch.v1.EventInsertedIntoTree",
+	"hyperlane.core.post_dispatch.v1.EventGasPayment",
+	"hyperlane.core.post_dispatch.v1.EventCreateNoopHook",
+	"hyperlane.core.post_dispatch.v1.EventCreateIgp",
+	"hyperlane.core.post_dispatch.v1.EventSetIgp",
+	"hyperlane.core.post_dispatch.v1.EventSetDestinationGasConfig",
+	"hyperlane.core.post_dispatch.v1.EventClaimIgp",
 }
 
 func (v *TypesEventType) UnmarshalJSON(src []byte) error {

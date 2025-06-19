@@ -23,6 +23,8 @@ type ResponsesEnums struct {
 	Categories []string `json:"categories,omitempty"`
 	CelestialsStatuses []string `json:"celestials_statuses,omitempty"`
 	EventType []string `json:"event_type,omitempty"`
+	HyperlaneTokenType []string `json:"hyperlane_token_type,omitempty"`
+	HyperlaneTransferType []string `json:"hyperlane_transfer_type,omitempty"`
 	IbcChannelStatus []string `json:"ibc_channel_status,omitempty"`
 	MessageType []string `json:"message_type,omitempty"`
 	ProposalStatus []string `json:"proposal_status,omitempty"`
@@ -145,6 +147,70 @@ func (o *ResponsesEnums) HasEventType() bool {
 // SetEventType gets a reference to the given []string and assigns it to the EventType field.
 func (o *ResponsesEnums) SetEventType(v []string) {
 	o.EventType = v
+}
+
+// GetHyperlaneTokenType returns the HyperlaneTokenType field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetHyperlaneTokenType() []string {
+	if o == nil || IsNil(o.HyperlaneTokenType) {
+		var ret []string
+		return ret
+	}
+	return o.HyperlaneTokenType
+}
+
+// GetHyperlaneTokenTypeOk returns a tuple with the HyperlaneTokenType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetHyperlaneTokenTypeOk() ([]string, bool) {
+	if o == nil || IsNil(o.HyperlaneTokenType) {
+		return nil, false
+	}
+	return o.HyperlaneTokenType, true
+}
+
+// HasHyperlaneTokenType returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasHyperlaneTokenType() bool {
+	if o != nil && !IsNil(o.HyperlaneTokenType) {
+		return true
+	}
+
+	return false
+}
+
+// SetHyperlaneTokenType gets a reference to the given []string and assigns it to the HyperlaneTokenType field.
+func (o *ResponsesEnums) SetHyperlaneTokenType(v []string) {
+	o.HyperlaneTokenType = v
+}
+
+// GetHyperlaneTransferType returns the HyperlaneTransferType field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetHyperlaneTransferType() []string {
+	if o == nil || IsNil(o.HyperlaneTransferType) {
+		var ret []string
+		return ret
+	}
+	return o.HyperlaneTransferType
+}
+
+// GetHyperlaneTransferTypeOk returns a tuple with the HyperlaneTransferType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetHyperlaneTransferTypeOk() ([]string, bool) {
+	if o == nil || IsNil(o.HyperlaneTransferType) {
+		return nil, false
+	}
+	return o.HyperlaneTransferType, true
+}
+
+// HasHyperlaneTransferType returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasHyperlaneTransferType() bool {
+	if o != nil && !IsNil(o.HyperlaneTransferType) {
+		return true
+	}
+
+	return false
+}
+
+// SetHyperlaneTransferType gets a reference to the given []string and assigns it to the HyperlaneTransferType field.
+func (o *ResponsesEnums) SetHyperlaneTransferType(v []string) {
+	o.HyperlaneTransferType = v
 }
 
 // GetIbcChannelStatus returns the IbcChannelStatus field value if set, zero value otherwise.
@@ -453,6 +519,12 @@ func (o ResponsesEnums) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EventType) {
 		toSerialize["event_type"] = o.EventType
+	}
+	if !IsNil(o.HyperlaneTokenType) {
+		toSerialize["hyperlane_token_type"] = o.HyperlaneTokenType
+	}
+	if !IsNil(o.HyperlaneTransferType) {
+		toSerialize["hyperlane_transfer_type"] = o.HyperlaneTransferType
 	}
 	if !IsNil(o.IbcChannelStatus) {
 		toSerialize["ibc_channel_status"] = o.IbcChannelStatus

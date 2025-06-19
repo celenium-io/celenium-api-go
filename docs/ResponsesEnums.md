@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Categories** | Pointer to **[]string** |  | [optional] 
 **CelestialsStatuses** | Pointer to **[]string** |  | [optional] 
 **EventType** | Pointer to **[]string** |  | [optional] 
+**HyperlaneTokenType** | Pointer to **[]string** |  | [optional] 
+**HyperlaneTransferType** | Pointer to **[]string** |  | [optional] 
 **IbcChannelStatus** | Pointer to **[]string** |  | [optional] 
 **MessageType** | Pointer to **[]string** |  | [optional] 
 **ProposalStatus** | Pointer to **[]string** |  | [optional] 
@@ -110,6 +112,56 @@ SetEventType sets EventType field to given value.
 `func (o *ResponsesEnums) HasEventType() bool`
 
 HasEventType returns a boolean if a field has been set.
+
+### GetHyperlaneTokenType
+
+`func (o *ResponsesEnums) GetHyperlaneTokenType() []string`
+
+GetHyperlaneTokenType returns the HyperlaneTokenType field if non-nil, zero value otherwise.
+
+### GetHyperlaneTokenTypeOk
+
+`func (o *ResponsesEnums) GetHyperlaneTokenTypeOk() (*[]string, bool)`
+
+GetHyperlaneTokenTypeOk returns a tuple with the HyperlaneTokenType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHyperlaneTokenType
+
+`func (o *ResponsesEnums) SetHyperlaneTokenType(v []string)`
+
+SetHyperlaneTokenType sets HyperlaneTokenType field to given value.
+
+### HasHyperlaneTokenType
+
+`func (o *ResponsesEnums) HasHyperlaneTokenType() bool`
+
+HasHyperlaneTokenType returns a boolean if a field has been set.
+
+### GetHyperlaneTransferType
+
+`func (o *ResponsesEnums) GetHyperlaneTransferType() []string`
+
+GetHyperlaneTransferType returns the HyperlaneTransferType field if non-nil, zero value otherwise.
+
+### GetHyperlaneTransferTypeOk
+
+`func (o *ResponsesEnums) GetHyperlaneTransferTypeOk() (*[]string, bool)`
+
+GetHyperlaneTransferTypeOk returns a tuple with the HyperlaneTransferType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHyperlaneTransferType
+
+`func (o *ResponsesEnums) SetHyperlaneTransferType(v []string)`
+
+SetHyperlaneTransferType sets HyperlaneTransferType field to given value.
+
+### HasHyperlaneTransferType
+
+`func (o *ResponsesEnums) HasHyperlaneTransferType() bool`
+
+HasHyperlaneTransferType returns a boolean if a field has been set.
 
 ### GetIbcChannelStatus
 

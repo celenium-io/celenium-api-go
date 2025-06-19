@@ -1891,6 +1891,280 @@ paths:
       summary: Get current indexer head
       tags:
       - general
+  /hyperlane/mailbox:
+    get:
+      description: List hyperlane mailboxes info
+      operationId: list-hyperlane-mailbox
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.HyperlaneMailbox"
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: List hyperlane mailboxes info
+      tags:
+      - hyperlane
+  /hyperlane/mailbox/{id}:
+    get:
+      description: Get hyperlane mailbox info
+      operationId: get-hyperlane-mailbox
+      parameters:
+      - description: Hyperlane mailbox id
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responses.HyperlaneMailbox"
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get hyperlane mailbox info
+      tags:
+      - hyperlane
+  /hyperlane/token:
+    get:
+      description: List hyperlane tokens info
+      operationId: list-hyperlane-tokens
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - description: Owner celestia address
+        in: query
+        name: owner
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: Mailbox hexademical identity
+        in: query
+        name: mailbox
+        schema:
+          type: string
+      - description: Comma-separated string of tokens type
+        in: query
+        name: type
+        schema:
+          enum:
+          - synthetic
+          - collateral
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.HyperlaneToken"
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: List hyperlane tokens info
+      tags:
+      - hyperlane
+  /hyperlane/token/{id}:
+    get:
+      description: Get hyperlane token info
+      operationId: get-hyperlane-token
+      parameters:
+      - description: Hyperlane token id
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responses.HyperlaneToken"
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get hyperlane token info
+      tags:
+      - hyperlane
+  /hyperlane/transfer:
+    get:
+      description: List hyperlane transfers info
+      operationId: list-hyperlane-transfers
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - description: Celestia address
+        in: query
+        name: address
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: Celestia address of relayer
+        in: query
+        name: relayer
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: Mailbox hexademical identity
+        in: query
+        name: mailbox
+        schema:
+          type: string
+      - description: Token hexademical identity
+        in: query
+        name: token
+        schema:
+          type: string
+      - description: Comma-separated string of transfer type
+        in: query
+        name: type
+        schema:
+          enum:
+          - send
+          - receive
+          type: string
+      - description: Domain of counterparty chain
+        in: query
+        name: domain
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.HyperlaneTransfer"
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: List hyperlane transfers info
+      tags:
+      - hyperlane
   /ibc/channel:
     get:
       description: Get ibc channels info
@@ -5827,39 +6101,45 @@ components:
       type: object
     responses.Enums:
       example:
-        ibc_channel_status:
-        - ibc_channel_status
-        - ibc_channel_status
         proposal_type:
         - proposal_type
         - proposal_type
-        event_type:
-        - event_type
-        - event_type
         proposal_status:
         - proposal_status
         - proposal_status
         vote_type:
         - vote_type
         - vote_type
+        message_type:
+        - message_type
+        - message_type
+        hyperlane_transfer_type:
+        - hyperlane_transfer_type
+        - hyperlane_transfer_type
+        tags:
+        - tags
+        - tags
+        ibc_channel_status:
+        - ibc_channel_status
+        - ibc_channel_status
+        event_type:
+        - event_type
+        - event_type
         rollup_type:
         - rollup_type
         - rollup_type
         celestials_statuses:
         - celestials_statuses
         - celestials_statuses
-        message_type:
-        - message_type
-        - message_type
         categories:
         - categories
         - categories
+        hyperlane_token_type:
+        - hyperlane_token_type
+        - hyperlane_token_type
         status:
         - status
         - status
-        tags:
-        - tags
-        - tags
         vote_option:
         - vote_option
         - vote_option
@@ -5873,6 +6153,14 @@ components:
             type: string
           type: array
         event_type:
+          items:
+            type: string
+          type: array
+        hyperlane_token_type:
+          items:
+            type: string
+          type: array
+        hyperlane_transfer_type:
           items:
             type: string
           type: array
@@ -6038,6 +6326,252 @@ components:
           example: "2223424"
           format: string
           type: string
+      type: object
+    responses.HyperlaneCounterparty:
+      example:
+        domain: 100
+        hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+      properties:
+        domain:
+          example: 100
+          format: int64
+          type: integer
+        hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          type: string
+      type: object
+    responses.HyperlaneMailbox:
+      example:
+        owner:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        domain: 100
+        default_hook: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        received_messages: 100
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        id: 321
+        sent_messages: 100
+        time: 2023-07-04T03:10:57Z
+        default_ism: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        required_hook: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        height: 100
+      properties:
+        default_hook:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        default_ism:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        domain:
+          example: 100
+          format: int64
+          type: integer
+        height:
+          example: 100
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        mailbox:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        owner:
+          $ref: "#/components/schemas/responses.ShortAddress"
+        received_messages:
+          example: 100
+          format: int64
+          type: integer
+        required_hook:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        sent_messages:
+          example: 100
+          format: int64
+          type: integer
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+      type: object
+    responses.HyperlaneToken:
+      example:
+        owner:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        sent_transfers: 100
+        received: "123445"
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        type: collateral
+        sent: "123445"
+        mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        token_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        received_transfers: 100
+        denom: utia
+        id: 321
+        time: 2023-07-04T03:10:57Z
+        height: 100
+      properties:
+        denom:
+          example: utia
+          format: string
+          type: string
+        height:
+          example: 100
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        mailbox:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        owner:
+          $ref: "#/components/schemas/responses.ShortAddress"
+        received:
+          example: "123445"
+          format: string
+          type: string
+        received_transfers:
+          example: 100
+          format: int64
+          type: integer
+        sent:
+          example: "123445"
+          format: string
+          type: string
+        sent_transfers:
+          example: 100
+          format: int64
+          type: integer
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        token_id:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        type:
+          example: collateral
+          format: string
+          type: string
+      type: object
+    responses.HyperlaneTransfer:
+      example:
+        relayer:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        metadata: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
+        address:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        received: "123445"
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        body: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
+        type: collateral
+        nonce: 10
+        version: 1
+        mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        token_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        counterparty:
+          domain: 100
+          hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        denom: utia
+        id: 321
+        time: 2023-07-04T03:10:57Z
+        height: 100
+      properties:
+        address:
+          $ref: "#/components/schemas/responses.ShortAddress"
+        body:
+          example: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
+          format: string
+          type: string
+        counterparty:
+          $ref: "#/components/schemas/responses.HyperlaneCounterparty"
+        denom:
+          example: utia
+          format: string
+          type: string
+        height:
+          example: 100
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        mailbox:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        metadata:
+          example: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
+          format: string
+          type: string
+        nonce:
+          example: 10
+          format: int64
+          type: integer
+        received:
+          example: "123445"
+          format: string
+          type: string
+        relayer:
+          $ref: "#/components/schemas/responses.ShortAddress"
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        token_id:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        type:
+          example: collateral
+          format: string
+          type: string
+        version:
+          example: 1
+          format: int64
+          type: integer
       type: object
     responses.IbcChainStats:
       example:
@@ -8379,6 +8913,26 @@ components:
       - inactive_proposal
       - ics27_packet
       - channel_close_confirm
+      - update_client_proposal
+      - hyperlane.core.v1.EventDispatch
+      - hyperlane.core.v1.EventProcess
+      - hyperlane.core.v1.EventCreateMailbox
+      - hyperlane.core.v1.EventSetMailbox
+      - hyperlane.warp.v1.EventCreateSyntheticToken
+      - hyperlane.warp.v1.EventCreateCollateralToken
+      - hyperlane.warp.v1.EventSetToken
+      - hyperlane.warp.v1.EventEnrollRemoteRouter
+      - hyperlane.warp.v1.EventUnrollRemoteRouter
+      - hyperlane.warp.v1.EventSendRemoteTransfer
+      - hyperlane.warp.v1.EventReceiveRemoteTransfer
+      - hyperlane.core.post_dispatch.v1.EventCreateMerkleTreeHook
+      - hyperlane.core.post_dispatch.v1.EventInsertedIntoTree
+      - hyperlane.core.post_dispatch.v1.EventGasPayment
+      - hyperlane.core.post_dispatch.v1.EventCreateNoopHook
+      - hyperlane.core.post_dispatch.v1.EventCreateIgp
+      - hyperlane.core.post_dispatch.v1.EventSetIgp
+      - hyperlane.core.post_dispatch.v1.EventSetDestinationGasConfig
+      - hyperlane.core.post_dispatch.v1.EventClaimIgp
       type: string
       x-enum-varnames:
       - EventTypeUnknown
@@ -8440,6 +8994,26 @@ components:
       - EventTypeInactiveProposal
       - EventTypeIcs27Packet
       - EventTypeChannelCloseConfirm
+      - EventTypeUpdateClientProposal
+      - EventTypeHyperlanecorev1EventDispatch
+      - EventTypeHyperlanecorev1EventProcess
+      - EventTypeHyperlanecorev1EventCreateMailbox
+      - EventTypeHyperlanecorev1EventSetMailbox
+      - EventTypeHyperlanewarpv1EventCreateSyntheticToken
+      - EventTypeHyperlanewarpv1EventCreateCollateralToken
+      - EventTypeHyperlanewarpv1EventSetToken
+      - EventTypeHyperlanewarpv1EventEnrollRemoteRouter
+      - EventTypeHyperlanewarpv1EventUnrollRemoteRouter
+      - EventTypeHyperlanewarpv1EventSendRemoteTransfer
+      - EventTypeHyperlanewarpv1EventReceiveRemoteTransfer
+      - EventTypeHyperlanecorepostDispatchv1EventCreateMerkleTreeHook
+      - EventTypeHyperlanecorepostDispatchv1EventInsertedIntoTree
+      - EventTypeHyperlanecorepostDispatchv1EventGasPayment
+      - EventTypeHyperlanecorepostDispatchv1EventCreateNoopHook
+      - EventTypeHyperlanecorepostDispatchv1EventCreateIgp
+      - EventTypeHyperlanecorepostDispatchv1EventSetIgp
+      - EventTypeHyperlanecorepostDispatchv1EventSetDestinationGasConfig
+      - EventTypeHyperlanecorepostDispatchv1EventClaimIgp
     types.MsgAddressType:
       enum:
       - validator
