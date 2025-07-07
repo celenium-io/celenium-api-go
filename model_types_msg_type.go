@@ -110,6 +110,18 @@ const (
 	MsgUnrollRemoteRouter TypesMsgType = "MsgUnrollRemoteRouter"
 	MsgRemoteTransfer TypesMsgType = "MsgRemoteTransfer"
 	MsgUpdateMinfeeParams TypesMsgType = "MsgUpdateMinfeeParams"
+	MsgCreateIgp TypesMsgType = "MsgCreateIgp"
+	MsgSetIgpOwner TypesMsgType = "MsgSetIgpOwner"
+	MsgSetDestinationGasConfig TypesMsgType = "MsgSetDestinationGasConfig"
+	MsgPayForGas TypesMsgType = "MsgPayForGas"
+	MsgClaim TypesMsgType = "MsgClaim"
+	MsgCreateMerkleTreeHook TypesMsgType = "MsgCreateMerkleTreeHook"
+	MsgCreateNoopHook TypesMsgType = "MsgCreateNoopHook"
+	MsgCreateMessageIdMultisigIsm TypesMsgType = "MsgCreateMessageIdMultisigIsm"
+	MsgCreateMerkleRootMultisigIsm TypesMsgType = "MsgCreateMerkleRootMultisigIsm"
+	MsgCreateNoopIsm TypesMsgType = "MsgCreateNoopIsm"
+	MsgAnnounceValidator TypesMsgType = "MsgAnnounceValidator"
+	MsgCreateRoutingIsm TypesMsgType = "MsgCreateRoutingIsm"
 )
 
 // All allowed values of TypesMsgType enum
@@ -203,6 +215,18 @@ var AllowedTypesMsgTypeEnumValues = []TypesMsgType{
 	"MsgUnrollRemoteRouter",
 	"MsgRemoteTransfer",
 	"MsgUpdateMinfeeParams",
+	"MsgCreateIgp",
+	"MsgSetIgpOwner",
+	"MsgSetDestinationGasConfig",
+	"MsgPayForGas",
+	"MsgClaim",
+	"MsgCreateMerkleTreeHook",
+	"MsgCreateNoopHook",
+	"MsgCreateMessageIdMultisigIsm",
+	"MsgCreateMerkleRootMultisigIsm",
+	"MsgCreateNoopIsm",
+	"MsgAnnounceValidator",
+	"MsgCreateRoutingIsm",
 }
 
 func (v *TypesMsgType) UnmarshalJSON(src []byte) error {

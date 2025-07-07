@@ -181,6 +181,30 @@
 
 * `MsgUpdateMinfeeParams` (value: `"MsgUpdateMinfeeParams"`)
 
+* `MsgCreateIgp` (value: `"MsgCreateIgp"`)
+
+* `MsgSetIgpOwner` (value: `"MsgSetIgpOwner"`)
+
+* `MsgSetDestinationGasConfig` (value: `"MsgSetDestinationGasConfig"`)
+
+* `MsgPayForGas` (value: `"MsgPayForGas"`)
+
+* `MsgClaim` (value: `"MsgClaim"`)
+
+* `MsgCreateMerkleTreeHook` (value: `"MsgCreateMerkleTreeHook"`)
+
+* `MsgCreateNoopHook` (value: `"MsgCreateNoopHook"`)
+
+* `MsgCreateMessageIdMultisigIsm` (value: `"MsgCreateMessageIdMultisigIsm"`)
+
+* `MsgCreateMerkleRootMultisigIsm` (value: `"MsgCreateMerkleRootMultisigIsm"`)
+
+* `MsgCreateNoopIsm` (value: `"MsgCreateNoopIsm"`)
+
+* `MsgAnnounceValidator` (value: `"MsgAnnounceValidator"`)
+
+* `MsgCreateRoutingIsm` (value: `"MsgCreateRoutingIsm"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

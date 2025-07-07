@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DefaultIsm** | Pointer to ***os.File** |  | [optional] 
 **Domain** | Pointer to **int64** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
+**HyperlaneId** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **Mailbox** | Pointer to ***os.File** |  | [optional] 
 **Owner** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
@@ -135,6 +136,31 @@ SetHeight sets Height field to given value.
 `func (o *ResponsesHyperlaneMailbox) HasHeight() bool`
 
 HasHeight returns a boolean if a field has been set.
+
+### GetHyperlaneId
+
+`func (o *ResponsesHyperlaneMailbox) GetHyperlaneId() int64`
+
+GetHyperlaneId returns the HyperlaneId field if non-nil, zero value otherwise.
+
+### GetHyperlaneIdOk
+
+`func (o *ResponsesHyperlaneMailbox) GetHyperlaneIdOk() (*int64, bool)`
+
+GetHyperlaneIdOk returns a tuple with the HyperlaneId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHyperlaneId
+
+`func (o *ResponsesHyperlaneMailbox) SetHyperlaneId(v int64)`
+
+SetHyperlaneId sets HyperlaneId field to given value.
+
+### HasHyperlaneId
+
+`func (o *ResponsesHyperlaneMailbox) HasHyperlaneId() bool`
+
+HasHyperlaneId returns a boolean if a field has been set.
 
 ### GetId
 

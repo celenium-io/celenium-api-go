@@ -542,6 +542,18 @@ paths:
           - MsgUnrollRemoteRouter
           - MsgRemoteTransfer
           - MsgUpdateMinfeeParams
+          - MsgCreateIgp
+          - MsgSetIgpOwner
+          - MsgSetDestinationGasConfig
+          - MsgPayForGas
+          - MsgClaim
+          - MsgCreateMerkleTreeHook
+          - MsgCreateNoopHook
+          - MsgCreateMessageIdMultisigIsm
+          - MsgCreateMerkleRootMultisigIsm
+          - MsgCreateNoopIsm
+          - MsgAnnounceValidator
+          - MsgCreateRoutingIsm
           type: string
       responses:
         "200":
@@ -821,6 +833,18 @@ paths:
           - MsgUnrollRemoteRouter
           - MsgRemoteTransfer
           - MsgUpdateMinfeeParams
+          - MsgCreateIgp
+          - MsgSetIgpOwner
+          - MsgSetDestinationGasConfig
+          - MsgPayForGas
+          - MsgClaim
+          - MsgCreateMerkleTreeHook
+          - MsgCreateNoopHook
+          - MsgCreateMessageIdMultisigIsm
+          - MsgCreateMerkleRootMultisigIsm
+          - MsgCreateNoopIsm
+          - MsgAnnounceValidator
+          - MsgCreateRoutingIsm
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -1562,6 +1586,18 @@ paths:
           - MsgUnrollRemoteRouter
           - MsgRemoteTransfer
           - MsgUpdateMinfeeParams
+          - MsgCreateIgp
+          - MsgSetIgpOwner
+          - MsgSetDestinationGasConfig
+          - MsgPayForGas
+          - MsgClaim
+          - MsgCreateMerkleTreeHook
+          - MsgCreateNoopHook
+          - MsgCreateMessageIdMultisigIsm
+          - MsgCreateMerkleRootMultisigIsm
+          - MsgCreateNoopIsm
+          - MsgAnnounceValidator
+          - MsgCreateRoutingIsm
           type: string
       - description: Comma-separated message types which should be excluded from list
         in: query
@@ -1657,6 +1693,18 @@ paths:
           - MsgUnrollRemoteRouter
           - MsgRemoteTransfer
           - MsgUpdateMinfeeParams
+          - MsgCreateIgp
+          - MsgSetIgpOwner
+          - MsgSetDestinationGasConfig
+          - MsgPayForGas
+          - MsgClaim
+          - MsgCreateMerkleTreeHook
+          - MsgCreateNoopHook
+          - MsgCreateMessageIdMultisigIsm
+          - MsgCreateMerkleRootMultisigIsm
+          - MsgCreateNoopIsm
+          - MsgAnnounceValidator
+          - MsgCreateRoutingIsm
           type: string
       responses:
         "200":
@@ -4611,6 +4659,18 @@ paths:
           - MsgUnrollRemoteRouter
           - MsgRemoteTransfer
           - MsgUpdateMinfeeParams
+          - MsgCreateIgp
+          - MsgSetIgpOwner
+          - MsgSetDestinationGasConfig
+          - MsgPayForGas
+          - MsgClaim
+          - MsgCreateMerkleTreeHook
+          - MsgCreateNoopHook
+          - MsgCreateMessageIdMultisigIsm
+          - MsgCreateMerkleRootMultisigIsm
+          - MsgCreateNoopIsm
+          - MsgAnnounceValidator
+          - MsgCreateRoutingIsm
           type: string
       - description: Comma-separated message types list which should be excluded
         in: query
@@ -4706,6 +4766,18 @@ paths:
           - MsgUnrollRemoteRouter
           - MsgRemoteTransfer
           - MsgUpdateMinfeeParams
+          - MsgCreateIgp
+          - MsgSetIgpOwner
+          - MsgSetDestinationGasConfig
+          - MsgPayForGas
+          - MsgClaim
+          - MsgCreateMerkleTreeHook
+          - MsgCreateNoopHook
+          - MsgCreateMessageIdMultisigIsm
+          - MsgCreateMerkleRootMultisigIsm
+          - MsgCreateNoopIsm
+          - MsgAnnounceValidator
+          - MsgCreateRoutingIsm
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -6349,16 +6421,17 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        sent_messages: 100
+        required_hook: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        hyperlane_id: 321
         mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         domain: 100
         default_hook: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         received_messages: 100
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         id: 321
-        sent_messages: 100
         time: 2023-07-04T03:10:57Z
         default_ism: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        required_hook: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         height: 100
       properties:
         default_hook:
@@ -6375,6 +6448,10 @@ components:
           type: integer
         height:
           example: 100
+          format: int64
+          type: integer
+        hyperlane_id:
+          example: 321
           format: int64
           type: integer
         id:
@@ -9163,6 +9240,18 @@ components:
       - MsgUnrollRemoteRouter
       - MsgRemoteTransfer
       - MsgUpdateMinfeeParams
+      - MsgCreateIgp
+      - MsgSetIgpOwner
+      - MsgSetDestinationGasConfig
+      - MsgPayForGas
+      - MsgClaim
+      - MsgCreateMerkleTreeHook
+      - MsgCreateNoopHook
+      - MsgCreateMessageIdMultisigIsm
+      - MsgCreateMerkleRootMultisigIsm
+      - MsgCreateNoopIsm
+      - MsgAnnounceValidator
+      - MsgCreateRoutingIsm
       type: string
       x-enum-varnames:
       - MsgUnknown
@@ -9254,6 +9343,18 @@ components:
       - MsgUnrollRemoteRouter
       - MsgRemoteTransfer
       - MsgUpdateMinfeeParams
+      - MsgCreateIgp
+      - MsgSetIgpOwner
+      - MsgSetDestinationGasConfig
+      - MsgPayForGas
+      - MsgClaim
+      - MsgCreateMerkleTreeHook
+      - MsgCreateNoopHook
+      - MsgCreateMessageIdMultisigIsm
+      - MsgCreateMerkleRootMultisigIsm
+      - MsgCreateNoopIsm
+      - MsgAnnounceValidator
+      - MsgCreateRoutingIsm
   securitySchemes:
     ApiKeyAuth:
       description: To authorize your requests you have to select the required tariff

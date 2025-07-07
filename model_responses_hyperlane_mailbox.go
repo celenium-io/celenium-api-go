@@ -26,6 +26,7 @@ type ResponsesHyperlaneMailbox struct {
 	DefaultIsm **os.File `json:"default_ism,omitempty"`
 	Domain *int64 `json:"domain,omitempty"`
 	Height *int64 `json:"height,omitempty"`
+	HyperlaneId *int64 `json:"hyperlane_id,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Mailbox **os.File `json:"mailbox,omitempty"`
 	Owner *ResponsesShortAddress `json:"owner,omitempty"`
@@ -179,6 +180,38 @@ func (o *ResponsesHyperlaneMailbox) HasHeight() bool {
 // SetHeight gets a reference to the given int64 and assigns it to the Height field.
 func (o *ResponsesHyperlaneMailbox) SetHeight(v int64) {
 	o.Height = &v
+}
+
+// GetHyperlaneId returns the HyperlaneId field value if set, zero value otherwise.
+func (o *ResponsesHyperlaneMailbox) GetHyperlaneId() int64 {
+	if o == nil || IsNil(o.HyperlaneId) {
+		var ret int64
+		return ret
+	}
+	return *o.HyperlaneId
+}
+
+// GetHyperlaneIdOk returns a tuple with the HyperlaneId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesHyperlaneMailbox) GetHyperlaneIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.HyperlaneId) {
+		return nil, false
+	}
+	return o.HyperlaneId, true
+}
+
+// HasHyperlaneId returns a boolean if a field has been set.
+func (o *ResponsesHyperlaneMailbox) HasHyperlaneId() bool {
+	if o != nil && !IsNil(o.HyperlaneId) {
+		return true
+	}
+
+	return false
+}
+
+// SetHyperlaneId gets a reference to the given int64 and assigns it to the HyperlaneId field.
+func (o *ResponsesHyperlaneMailbox) SetHyperlaneId(v int64) {
+	o.HyperlaneId = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -458,6 +491,9 @@ func (o ResponsesHyperlaneMailbox) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Height) {
 		toSerialize["height"] = o.Height
+	}
+	if !IsNil(o.HyperlaneId) {
+		toSerialize["hyperlane_id"] = o.HyperlaneId
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
