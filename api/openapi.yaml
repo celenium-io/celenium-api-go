@@ -2343,6 +2343,18 @@ paths:
           - asc
           - desc
           type: string
+      - description: Chain id
+        in: query
+        name: chain_id
+        schema:
+          type: string
+      - description: Creator address
+        in: query
+        name: creator
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
       responses:
         "200":
           content:
@@ -2522,24 +2534,36 @@ paths:
           - asc
           - desc
           type: string
-      - description: Client id
+      - description: Channel id
         in: query
-        name: client_id
+        name: channel_id
         schema:
           type: string
-      - description: Connection id
+      - description: Chain id
         in: query
-        name: connection_id
+        name: chain_id
         schema:
           type: string
-      - description: Channel status
+      - description: Receiver address
         in: query
-        name: status
+        name: receiver
         schema:
-          enum:
-          - initialization
-          - opened
-          - closed
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: Sender address
+        in: query
+        name: sender
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: "Address: receiver or sender"
+        in: query
+        name: address
+        schema:
+          maxLength: 47
+          minLength: 47
           type: string
       responses:
         "200":

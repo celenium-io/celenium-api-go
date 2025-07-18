@@ -458,6 +458,8 @@ type ApiGetIbcClientsRequest struct {
 	limit *int32
 	offset *int32
 	sort *string
+	chainId *string
+	creator *string
 }
 
 // Count of requested entities
@@ -475,6 +477,18 @@ func (r ApiGetIbcClientsRequest) Offset(offset int32) ApiGetIbcClientsRequest {
 // Sort order. Default: desc
 func (r ApiGetIbcClientsRequest) Sort(sort string) ApiGetIbcClientsRequest {
 	r.sort = &sort
+	return r
+}
+
+// Chain id
+func (r ApiGetIbcClientsRequest) ChainId(chainId string) ApiGetIbcClientsRequest {
+	r.chainId = &chainId
+	return r
+}
+
+// Creator address
+func (r ApiGetIbcClientsRequest) Creator(creator string) ApiGetIbcClientsRequest {
+	r.creator = &creator
 	return r
 }
 
@@ -526,6 +540,12 @@ func (a *IbcAPIService) GetIbcClientsExecute(r ApiGetIbcClientsRequest) ([]Respo
 	}
 	if r.sort != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "", "")
+	}
+	if r.chainId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "chain_id", r.chainId, "", "")
+	}
+	if r.creator != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "creator", r.creator, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -892,9 +912,11 @@ type ApiGetIbcTransfersRequest struct {
 	limit *int32
 	offset *int32
 	sort *string
-	clientId *string
-	connectionId *string
-	status *string
+	channelId *string
+	chainId *string
+	receiver *string
+	sender *string
+	address *string
 }
 
 // Count of requested entities
@@ -915,21 +937,33 @@ func (r ApiGetIbcTransfersRequest) Sort(sort string) ApiGetIbcTransfersRequest {
 	return r
 }
 
-// Client id
-func (r ApiGetIbcTransfersRequest) ClientId(clientId string) ApiGetIbcTransfersRequest {
-	r.clientId = &clientId
+// Channel id
+func (r ApiGetIbcTransfersRequest) ChannelId(channelId string) ApiGetIbcTransfersRequest {
+	r.channelId = &channelId
 	return r
 }
 
-// Connection id
-func (r ApiGetIbcTransfersRequest) ConnectionId(connectionId string) ApiGetIbcTransfersRequest {
-	r.connectionId = &connectionId
+// Chain id
+func (r ApiGetIbcTransfersRequest) ChainId(chainId string) ApiGetIbcTransfersRequest {
+	r.chainId = &chainId
 	return r
 }
 
-// Channel status
-func (r ApiGetIbcTransfersRequest) Status(status string) ApiGetIbcTransfersRequest {
-	r.status = &status
+// Receiver address
+func (r ApiGetIbcTransfersRequest) Receiver(receiver string) ApiGetIbcTransfersRequest {
+	r.receiver = &receiver
+	return r
+}
+
+// Sender address
+func (r ApiGetIbcTransfersRequest) Sender(sender string) ApiGetIbcTransfersRequest {
+	r.sender = &sender
+	return r
+}
+
+// Address: receiver or sender
+func (r ApiGetIbcTransfersRequest) Address(address string) ApiGetIbcTransfersRequest {
+	r.address = &address
 	return r
 }
 
@@ -982,14 +1016,20 @@ func (a *IbcAPIService) GetIbcTransfersExecute(r ApiGetIbcTransfersRequest) ([]R
 	if r.sort != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "", "")
 	}
-	if r.clientId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "client_id", r.clientId, "", "")
+	if r.channelId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "channel_id", r.channelId, "", "")
 	}
-	if r.connectionId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "connection_id", r.connectionId, "", "")
+	if r.chainId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "chain_id", r.chainId, "", "")
 	}
-	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
+	if r.receiver != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "receiver", r.receiver, "", "")
+	}
+	if r.sender != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sender", r.sender, "", "")
+	}
+	if r.address != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "address", r.address, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -232,7 +232,7 @@ No authorization required
 
 ## GetIbcClients
 
-> []ResponsesIbcClient GetIbcClients(ctx).Limit(limit).Offset(offset).Sort(sort).Execute()
+> []ResponsesIbcClient GetIbcClients(ctx).Limit(limit).Offset(offset).Sort(sort).ChainId(chainId).Creator(creator).Execute()
 
 Get ibc clients info
 
@@ -254,10 +254,12 @@ func main() {
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
+	chainId := "chainId_example" // string | Chain id (optional)
+	creator := "creator_example" // string | Creator address (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IbcAPI.GetIbcClients(context.Background()).Limit(limit).Offset(offset).Sort(sort).Execute()
+	resp, r, err := apiClient.IbcAPI.GetIbcClients(context.Background()).Limit(limit).Offset(offset).Sort(sort).ChainId(chainId).Creator(creator).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IbcAPI.GetIbcClients``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -281,6 +283,8 @@ Name | Type | Description  | Notes
  **limit** | **int32** | Count of requested entities | 
  **offset** | **int32** | Offset | 
  **sort** | **string** | Sort order. Default: desc | 
+ **chainId** | **string** | Chain id | 
+ **creator** | **string** | Creator address | 
 
 ### Return type
 
@@ -444,7 +448,7 @@ No authorization required
 
 ## GetIbcTransfers
 
-> []ResponsesIbcTransfer GetIbcTransfers(ctx).Limit(limit).Offset(offset).Sort(sort).ClientId(clientId).ConnectionId(connectionId).Status(status).Execute()
+> []ResponsesIbcTransfer GetIbcTransfers(ctx).Limit(limit).Offset(offset).Sort(sort).ChannelId(channelId).ChainId(chainId).Receiver(receiver).Sender(sender).Address(address).Execute()
 
 Get ibc transfers info
 
@@ -466,13 +470,15 @@ func main() {
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
-	clientId := "clientId_example" // string | Client id (optional)
-	connectionId := "connectionId_example" // string | Connection id (optional)
-	status := "status_example" // string | Channel status (optional)
+	channelId := "channelId_example" // string | Channel id (optional)
+	chainId := "chainId_example" // string | Chain id (optional)
+	receiver := "receiver_example" // string | Receiver address (optional)
+	sender := "sender_example" // string | Sender address (optional)
+	address := "address_example" // string | Address: receiver or sender (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IbcAPI.GetIbcTransfers(context.Background()).Limit(limit).Offset(offset).Sort(sort).ClientId(clientId).ConnectionId(connectionId).Status(status).Execute()
+	resp, r, err := apiClient.IbcAPI.GetIbcTransfers(context.Background()).Limit(limit).Offset(offset).Sort(sort).ChannelId(channelId).ChainId(chainId).Receiver(receiver).Sender(sender).Address(address).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IbcAPI.GetIbcTransfers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -496,9 +502,11 @@ Name | Type | Description  | Notes
  **limit** | **int32** | Count of requested entities | 
  **offset** | **int32** | Offset | 
  **sort** | **string** | Sort order. Default: desc | 
- **clientId** | **string** | Client id | 
- **connectionId** | **string** | Connection id | 
- **status** | **string** | Channel status | 
+ **channelId** | **string** | Channel id | 
+ **chainId** | **string** | Chain id | 
+ **receiver** | **string** | Receiver address | 
+ **sender** | **string** | Sender address | 
+ **address** | **string** | Address: receiver or sender | 
 
 ### Return type
 
