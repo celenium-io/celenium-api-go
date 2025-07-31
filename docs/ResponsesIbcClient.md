@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChainId** | Pointer to ***os.File** |  | [optional] 
+**ChainId** | Pointer to **string** |  | [optional] 
 **ConnectionCount** | Pointer to **int32** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **Creator** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
@@ -44,20 +44,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetChainId
 
-`func (o *ResponsesIbcClient) GetChainId() *os.File`
+`func (o *ResponsesIbcClient) GetChainId() string`
 
 GetChainId returns the ChainId field if non-nil, zero value otherwise.
 
 ### GetChainIdOk
 
-`func (o *ResponsesIbcClient) GetChainIdOk() (**os.File, bool)`
+`func (o *ResponsesIbcClient) GetChainIdOk() (*string, bool)`
 
 GetChainIdOk returns a tuple with the ChainId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChainId
 
-`func (o *ResponsesIbcClient) SetChainId(v *os.File)`
+`func (o *ResponsesIbcClient) SetChainId(v string)`
 
 SetChainId sets ChainId field to given value.
 

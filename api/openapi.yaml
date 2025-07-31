@@ -554,6 +554,9 @@ paths:
           - MsgCreateNoopIsm
           - MsgAnnounceValidator
           - MsgCreateRoutingIsm
+          - MsgSetRoutingIsmDomain
+          - MsgRemoveRoutingIsmDomain
+          - MsgUpdateRoutingIsmOwner
           type: string
       responses:
         "200":
@@ -845,6 +848,9 @@ paths:
           - MsgCreateNoopIsm
           - MsgAnnounceValidator
           - MsgCreateRoutingIsm
+          - MsgSetRoutingIsmDomain
+          - MsgRemoveRoutingIsmDomain
+          - MsgUpdateRoutingIsmOwner
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -1598,6 +1604,9 @@ paths:
           - MsgCreateNoopIsm
           - MsgAnnounceValidator
           - MsgCreateRoutingIsm
+          - MsgSetRoutingIsmDomain
+          - MsgRemoveRoutingIsmDomain
+          - MsgUpdateRoutingIsmOwner
           type: string
       - description: Comma-separated message types which should be excluded from list
         in: query
@@ -1705,6 +1714,9 @@ paths:
           - MsgCreateNoopIsm
           - MsgAnnounceValidator
           - MsgCreateRoutingIsm
+          - MsgSetRoutingIsmDomain
+          - MsgRemoveRoutingIsmDomain
+          - MsgUpdateRoutingIsmOwner
           type: string
       responses:
         "200":
@@ -3992,6 +4004,35 @@ paths:
       summary: Get histogram for ibc channels with precomputed stats
       tags:
       - stats
+  /stats/ibc/summary:
+    get:
+      description: Get stats for ibc the largest transfer and busiest channel per
+        day
+      operationId: stats-ibc-summary
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.IbcSummaryStats"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get stats for ibc the largest transfer and busiest channel per day
+      tags:
+      - stats
   /stats/messages_count_24h:
     get:
       description: Get messages distribution for the last 24 hours
@@ -4695,6 +4736,9 @@ paths:
           - MsgCreateNoopIsm
           - MsgAnnounceValidator
           - MsgCreateRoutingIsm
+          - MsgSetRoutingIsmDomain
+          - MsgRemoveRoutingIsmDomain
+          - MsgUpdateRoutingIsmOwner
           type: string
       - description: Comma-separated message types list which should be excluded
         in: query
@@ -4802,6 +4846,9 @@ paths:
           - MsgCreateNoopIsm
           - MsgAnnounceValidator
           - MsgCreateRoutingIsm
+          - MsgSetRoutingIsmDomain
+          - MsgRemoveRoutingIsmDomain
+          - MsgUpdateRoutingIsmOwner
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -5967,6 +6014,30 @@ components:
           example: "11"
           type: string
       type: object
+    responses.BlockExplorer:
+      example:
+        api_url: https://api.scan.url.io
+        name: Block explorer
+        family: etherscan
+        url: https://scan.url.io
+      properties:
+        api_url:
+          example: https://api.scan.url.io
+          format: string
+          type: string
+        family:
+          example: etherscan
+          format: string
+          type: string
+        name:
+          example: Block explorer
+          format: string
+          type: string
+        url:
+          example: https://scan.url.io
+          format: string
+          type: string
+      type: object
     responses.BlockStats:
       example:
         fill_rate: "0.0800"
@@ -6031,6 +6102,25 @@ components:
           example: 12
           type: integer
       type: object
+    responses.BusiestChannel:
+      example:
+        chain_id: osmosis-1
+        transfers_count: 100
+        channel_id: channel-1
+      properties:
+        chain_id:
+          example: osmosis-1
+          format: string
+          type: string
+        channel_id:
+          example: channel-1
+          format: string
+          type: string
+        transfers_count:
+          example: 100
+          format: integer
+          type: integer
+      type: object
     responses.Celestial:
       description: Linked celestial id
       example:
@@ -6051,6 +6141,33 @@ components:
         status:
           example: VERIFIED
           type: string
+      type: object
+    responses.ChainMetadata:
+      example:
+        name: name
+        native_token:
+          symbol: ETH
+          decimals: 18
+          name: Ether
+        block_explorers:
+        - api_url: https://api.scan.url.io
+          name: Block explorer
+          family: etherscan
+          url: https://scan.url.io
+        - api_url: https://api.scan.url.io
+          name: Block explorer
+          family: etherscan
+          url: https://scan.url.io
+      properties:
+        block_explorers:
+          items:
+            $ref: "#/components/schemas/responses.BlockExplorer"
+          type: array
+        name:
+          example: name
+          type: string
+        native_token:
+          $ref: "#/components/schemas/responses.NativeToken"
       type: object
     responses.Change24hBlockStats:
       example:
@@ -6425,9 +6542,26 @@ components:
       type: object
     responses.HyperlaneCounterparty:
       example:
+        chain_metadata:
+          name: name
+          native_token:
+            symbol: ETH
+            decimals: 18
+            name: Ether
+          block_explorers:
+          - api_url: https://api.scan.url.io
+            name: Block explorer
+            family: etherscan
+            url: https://scan.url.io
+          - api_url: https://api.scan.url.io
+            name: Block explorer
+            family: etherscan
+            url: https://scan.url.io
         domain: 100
         hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
+        chain_metadata:
+          $ref: "#/components/schemas/responses.ChainMetadata"
         domain:
           example: 100
           format: int64
@@ -6608,6 +6742,21 @@ components:
         mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         token_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         counterparty:
+          chain_metadata:
+            name: name
+            native_token:
+              symbol: ETH
+              decimals: 18
+              name: Ether
+            block_explorers:
+            - api_url: https://api.scan.url.io
+              name: Block explorer
+              family: etherscan
+              url: https://scan.url.io
+            - api_url: https://api.scan.url.io
+              name: Block explorer
+              family: etherscan
+              url: https://scan.url.io
           domain: 100
           hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         denom: utia
@@ -6816,7 +6965,7 @@ components:
       properties:
         chain_id:
           example: osmosis-1
-          format: binary
+          format: string
           type: string
         connection_count:
           example: 100
@@ -6944,6 +7093,47 @@ components:
           example: connection-1
           format: string
           type: string
+      type: object
+    responses.IbcSummaryStats:
+      example:
+        largest_transfer:
+          amount: "123445"
+          chain_id: osmosis-1
+          receiver:
+            celestials:
+              image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+              name: name
+              primary: true
+              status: VERIFIED
+            hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+          memo: memo
+          tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          timeout: 2023-07-04T03:10:57Z
+          timeout_height: 100
+          sequence: 123456
+          connection_id: connection-1
+          port: transfer
+          sender:
+            celestials:
+              image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+              name: name
+              primary: true
+              status: VERIFIED
+            hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+          denom: utia
+          id: 123456
+          time: 2023-07-04T03:10:57Z
+          channel_id: channel-1
+          height: 100
+        busiest_channel:
+          chain_id: osmosis-1
+          transfers_count: 100
+          channel_id: channel-1
+      properties:
+        busiest_channel:
+          $ref: "#/components/schemas/responses.BusiestChannel"
+        largest_transfer:
+          $ref: "#/components/schemas/responses.IbcTransfer"
       type: object
     responses.IbcTransfer:
       example:
@@ -7440,6 +7630,25 @@ components:
         version:
           format: byte
           type: integer
+      type: object
+    responses.NativeToken:
+      example:
+        symbol: ETH
+        decimals: 18
+        name: Ether
+      properties:
+        decimals:
+          example: 18
+          format: int64
+          type: integer
+        name:
+          example: Ether
+          format: string
+          type: string
+        symbol:
+          example: ETH
+          format: string
+          type: string
       type: object
     responses.ODS:
       properties:
@@ -9034,6 +9243,10 @@ components:
       - hyperlane.core.post_dispatch.v1.EventSetIgp
       - hyperlane.core.post_dispatch.v1.EventSetDestinationGasConfig
       - hyperlane.core.post_dispatch.v1.EventClaimIgp
+      - hyperlane.core.interchain_security.v1.EventCreateNoopIsm
+      - hyperlane.core.interchain_security.v1.EventSetRoutingIsmDomain
+      - hyperlane.core.interchain_security.v1.EventSetRoutingIsm
+      - hyperlane.core.interchain_security.v1.EventCreateRoutingIsm
       type: string
       x-enum-varnames:
       - EventTypeUnknown
@@ -9115,6 +9328,10 @@ components:
       - EventTypeHyperlanecorepostDispatchv1EventSetIgp
       - EventTypeHyperlanecorepostDispatchv1EventSetDestinationGasConfig
       - EventTypeHyperlanecorepostDispatchv1EventClaimIgp
+      - EventTypeHyperlanecoreinterchainSecurityv1EventCreateNoopIsm
+      - EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsmDomain
+      - EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsm
+      - EventTypeHyperlanecoreinterchainSecurityv1EventCreateRoutingIsm
     types.MsgAddressType:
       enum:
       - validator
@@ -9276,6 +9493,9 @@ components:
       - MsgCreateNoopIsm
       - MsgAnnounceValidator
       - MsgCreateRoutingIsm
+      - MsgSetRoutingIsmDomain
+      - MsgRemoveRoutingIsmDomain
+      - MsgUpdateRoutingIsmOwner
       type: string
       x-enum-varnames:
       - MsgUnknown
@@ -9379,6 +9599,9 @@ components:
       - MsgCreateNoopIsm
       - MsgAnnounceValidator
       - MsgCreateRoutingIsm
+      - MsgSetRoutingIsmDomain
+      - MsgRemoveRoutingIsmDomain
+      - MsgUpdateRoutingIsmOwner
   securitySchemes:
     ApiKeyAuth:
       description: To authorize your requests you have to select the required tariff

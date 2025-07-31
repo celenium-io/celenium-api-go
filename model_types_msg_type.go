@@ -122,6 +122,9 @@ const (
 	MsgCreateNoopIsm TypesMsgType = "MsgCreateNoopIsm"
 	MsgAnnounceValidator TypesMsgType = "MsgAnnounceValidator"
 	MsgCreateRoutingIsm TypesMsgType = "MsgCreateRoutingIsm"
+	MsgSetRoutingIsmDomain TypesMsgType = "MsgSetRoutingIsmDomain"
+	MsgRemoveRoutingIsmDomain TypesMsgType = "MsgRemoveRoutingIsmDomain"
+	MsgUpdateRoutingIsmOwner TypesMsgType = "MsgUpdateRoutingIsmOwner"
 )
 
 // All allowed values of TypesMsgType enum
@@ -227,6 +230,9 @@ var AllowedTypesMsgTypeEnumValues = []TypesMsgType{
 	"MsgCreateNoopIsm",
 	"MsgAnnounceValidator",
 	"MsgCreateRoutingIsm",
+	"MsgSetRoutingIsmDomain",
+	"MsgRemoveRoutingIsmDomain",
+	"MsgUpdateRoutingIsmOwner",
 }
 
 func (v *TypesMsgType) UnmarshalJSON(src []byte) error {

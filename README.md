@@ -151,6 +151,7 @@ Class | Method | HTTP request | Description
 *StatsAPI* | [**Stats24hChanges**](docs/StatsAPI.md#stats24hchanges) | **Get** /stats/changes_24h | Get changes for 24 hours
 *StatsAPI* | [**StatsIbcChains**](docs/StatsAPI.md#statsibcchains) | **Get** /stats/ibc/chains | Get stats for ibc channels splitted by chains
 *StatsAPI* | [**StatsIbcSeries**](docs/StatsAPI.md#statsibcseries) | **Get** /stats/ibc/series/{id}/{name}/{timeframe} | Get histogram for ibc channels with precomputed stats
+*StatsAPI* | [**StatsIbcSummary**](docs/StatsAPI.md#statsibcsummary) | **Get** /stats/ibc/summary | Get stats for ibc the largest transfer and busiest channel per day
 *StatsAPI* | [**StatsMessagesCount24h**](docs/StatsAPI.md#statsmessagescount24h) | **Get** /stats/messages_count_24h | Get messages distribution for the last 24 hours
 *StatsAPI* | [**StatsNamespaceUsage**](docs/StatsAPI.md#statsnamespaceusage) | **Get** /stats/namespace/usage | Get namespaces with sorting by size.
 *StatsAPI* | [**StatsNsSeries**](docs/StatsAPI.md#statsnsseries) | **Get** /stats/namespace/series/{id}/{name}/{timeframe} | Get histogram for namespace with precomputed stats
@@ -190,8 +191,11 @@ Class | Method | HTTP request | Description
  - [ResponsesBlob](docs/ResponsesBlob.md)
  - [ResponsesBlobLog](docs/ResponsesBlobLog.md)
  - [ResponsesBlock](docs/ResponsesBlock.md)
+ - [ResponsesBlockExplorer](docs/ResponsesBlockExplorer.md)
  - [ResponsesBlockStats](docs/ResponsesBlockStats.md)
+ - [ResponsesBusiestChannel](docs/ResponsesBusiestChannel.md)
  - [ResponsesCelestial](docs/ResponsesCelestial.md)
+ - [ResponsesChainMetadata](docs/ResponsesChainMetadata.md)
  - [ResponsesChange24hBlockStats](docs/ResponsesChange24hBlockStats.md)
  - [ResponsesConstants](docs/ResponsesConstants.md)
  - [ResponsesCountItem](docs/ResponsesCountItem.md)
@@ -211,6 +215,7 @@ Class | Method | HTTP request | Description
  - [ResponsesIbcChannel](docs/ResponsesIbcChannel.md)
  - [ResponsesIbcClient](docs/ResponsesIbcClient.md)
  - [ResponsesIbcConnection](docs/ResponsesIbcConnection.md)
+ - [ResponsesIbcSummaryStats](docs/ResponsesIbcSummaryStats.md)
  - [ResponsesIbcTransfer](docs/ResponsesIbcTransfer.md)
  - [ResponsesJail](docs/ResponsesJail.md)
  - [ResponsesLightBlobLog](docs/ResponsesLightBlobLog.md)
@@ -220,6 +225,7 @@ Class | Method | HTTP request | Description
  - [ResponsesNamespaceKind](docs/ResponsesNamespaceKind.md)
  - [ResponsesNamespaceMessage](docs/ResponsesNamespaceMessage.md)
  - [ResponsesNamespaceUsage](docs/ResponsesNamespaceUsage.md)
+ - [ResponsesNativeToken](docs/ResponsesNativeToken.md)
  - [ResponsesODS](docs/ResponsesODS.md)
  - [ResponsesODSItem](docs/ResponsesODSItem.md)
  - [ResponsesProposal](docs/ResponsesProposal.md)

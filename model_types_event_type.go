@@ -100,6 +100,10 @@ const (
 	EventTypeHyperlanecorepostDispatchv1EventSetIgp TypesEventType = "hyperlane.core.post_dispatch.v1.EventSetIgp"
 	EventTypeHyperlanecorepostDispatchv1EventSetDestinationGasConfig TypesEventType = "hyperlane.core.post_dispatch.v1.EventSetDestinationGasConfig"
 	EventTypeHyperlanecorepostDispatchv1EventClaimIgp TypesEventType = "hyperlane.core.post_dispatch.v1.EventClaimIgp"
+	EventTypeHyperlanecoreinterchainSecurityv1EventCreateNoopIsm TypesEventType = "hyperlane.core.interchain_security.v1.EventCreateNoopIsm"
+	EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsmDomain TypesEventType = "hyperlane.core.interchain_security.v1.EventSetRoutingIsmDomain"
+	EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsm TypesEventType = "hyperlane.core.interchain_security.v1.EventSetRoutingIsm"
+	EventTypeHyperlanecoreinterchainSecurityv1EventCreateRoutingIsm TypesEventType = "hyperlane.core.interchain_security.v1.EventCreateRoutingIsm"
 )
 
 // All allowed values of TypesEventType enum
@@ -183,6 +187,10 @@ var AllowedTypesEventTypeEnumValues = []TypesEventType{
 	"hyperlane.core.post_dispatch.v1.EventSetIgp",
 	"hyperlane.core.post_dispatch.v1.EventSetDestinationGasConfig",
 	"hyperlane.core.post_dispatch.v1.EventClaimIgp",
+	"hyperlane.core.interchain_security.v1.EventCreateNoopIsm",
+	"hyperlane.core.interchain_security.v1.EventSetRoutingIsmDomain",
+	"hyperlane.core.interchain_security.v1.EventSetRoutingIsm",
+	"hyperlane.core.interchain_security.v1.EventCreateRoutingIsm",
 }
 
 func (v *TypesEventType) UnmarshalJSON(src []byte) error {

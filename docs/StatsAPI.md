@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**Stats24hChanges**](StatsAPI.md#Stats24hChanges) | **Get** /stats/changes_24h | Get changes for 24 hours
 [**StatsIbcChains**](StatsAPI.md#StatsIbcChains) | **Get** /stats/ibc/chains | Get stats for ibc channels splitted by chains
 [**StatsIbcSeries**](StatsAPI.md#StatsIbcSeries) | **Get** /stats/ibc/series/{id}/{name}/{timeframe} | Get histogram for ibc channels with precomputed stats
+[**StatsIbcSummary**](StatsAPI.md#StatsIbcSummary) | **Get** /stats/ibc/summary | Get stats for ibc the largest transfer and busiest channel per day
 [**StatsMessagesCount24h**](StatsAPI.md#StatsMessagesCount24h) | **Get** /stats/messages_count_24h | Get messages distribution for the last 24 hours
 [**StatsNamespaceUsage**](StatsAPI.md#StatsNamespaceUsage) | **Get** /stats/namespace/usage | Get namespaces with sorting by size.
 [**StatsNsSeries**](StatsAPI.md#StatsNsSeries) | **Get** /stats/namespace/series/{id}/{name}/{timeframe} | Get histogram for namespace with precomputed stats
@@ -214,6 +215,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ResponsesHistogramItem**](ResponsesHistogramItem.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StatsIbcSummary
+
+> []ResponsesIbcSummaryStats StatsIbcSummary(ctx).Execute()
+
+Get stats for ibc the largest transfer and busiest channel per day
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StatsAPI.StatsIbcSummary(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StatsAPI.StatsIbcSummary``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StatsIbcSummary`: []ResponsesIbcSummaryStats
+	fmt.Fprintf(os.Stdout, "Response from `StatsAPI.StatsIbcSummary`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStatsIbcSummaryRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]ResponsesIbcSummaryStats**](ResponsesIbcSummaryStats.md)
 
 ### Authorization
 

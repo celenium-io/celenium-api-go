@@ -161,6 +161,14 @@
 
 * `EventTypeHyperlanecorepostDispatchv1EventClaimIgp` (value: `"hyperlane.core.post_dispatch.v1.EventClaimIgp"`)
 
+* `EventTypeHyperlanecoreinterchainSecurityv1EventCreateNoopIsm` (value: `"hyperlane.core.interchain_security.v1.EventCreateNoopIsm"`)
+
+* `EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsmDomain` (value: `"hyperlane.core.interchain_security.v1.EventSetRoutingIsmDomain"`)
+
+* `EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsm` (value: `"hyperlane.core.interchain_security.v1.EventSetRoutingIsm"`)
+
+* `EventTypeHyperlanecoreinterchainSecurityv1EventCreateRoutingIsm` (value: `"hyperlane.core.interchain_security.v1.EventCreateRoutingIsm"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

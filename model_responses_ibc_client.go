@@ -13,8 +13,8 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 	"time"
+	"os"
 )
 
 // checks if the ResponsesIbcClient type satisfies the MappedNullable interface at compile time
@@ -22,7 +22,7 @@ var _ MappedNullable = &ResponsesIbcClient{}
 
 // ResponsesIbcClient struct for ResponsesIbcClient
 type ResponsesIbcClient struct {
-	ChainId **os.File `json:"chain_id,omitempty"`
+	ChainId *string `json:"chain_id,omitempty"`
 	ConnectionCount *int32 `json:"connection_count,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	Creator *ResponsesShortAddress `json:"creator,omitempty"`
@@ -60,9 +60,9 @@ func NewResponsesIbcClientWithDefaults() *ResponsesIbcClient {
 }
 
 // GetChainId returns the ChainId field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetChainId() *os.File {
+func (o *ResponsesIbcClient) GetChainId() string {
 	if o == nil || IsNil(o.ChainId) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.ChainId
@@ -70,7 +70,7 @@ func (o *ResponsesIbcClient) GetChainId() *os.File {
 
 // GetChainIdOk returns a tuple with the ChainId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetChainIdOk() (**os.File, bool) {
+func (o *ResponsesIbcClient) GetChainIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ChainId) {
 		return nil, false
 	}
@@ -86,8 +86,8 @@ func (o *ResponsesIbcClient) HasChainId() bool {
 	return false
 }
 
-// SetChainId gets a reference to the given *os.File and assigns it to the ChainId field.
-func (o *ResponsesIbcClient) SetChainId(v *os.File) {
+// SetChainId gets a reference to the given string and assigns it to the ChainId field.
+func (o *ResponsesIbcClient) SetChainId(v string) {
 	o.ChainId = &v
 }
 

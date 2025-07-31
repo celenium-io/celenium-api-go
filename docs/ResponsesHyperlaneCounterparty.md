@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ChainMetadata** | Pointer to [**ResponsesChainMetadata**](ResponsesChainMetadata.md) |  | [optional] 
 **Domain** | Pointer to **int64** |  | [optional] 
 **Hash** | Pointer to **string** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewResponsesHyperlaneCounterpartyWithDefaults instantiates a new ResponsesHyperlaneCounterparty object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetChainMetadata
+
+`func (o *ResponsesHyperlaneCounterparty) GetChainMetadata() ResponsesChainMetadata`
+
+GetChainMetadata returns the ChainMetadata field if non-nil, zero value otherwise.
+
+### GetChainMetadataOk
+
+`func (o *ResponsesHyperlaneCounterparty) GetChainMetadataOk() (*ResponsesChainMetadata, bool)`
+
+GetChainMetadataOk returns a tuple with the ChainMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChainMetadata
+
+`func (o *ResponsesHyperlaneCounterparty) SetChainMetadata(v ResponsesChainMetadata)`
+
+SetChainMetadata sets ChainMetadata field to given value.
+
+### HasChainMetadata
+
+`func (o *ResponsesHyperlaneCounterparty) HasChainMetadata() bool`
+
+HasChainMetadata returns a boolean if a field has been set.
 
 ### GetDomain
 

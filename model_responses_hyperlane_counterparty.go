@@ -20,6 +20,7 @@ var _ MappedNullable = &ResponsesHyperlaneCounterparty{}
 
 // ResponsesHyperlaneCounterparty struct for ResponsesHyperlaneCounterparty
 type ResponsesHyperlaneCounterparty struct {
+	ChainMetadata *ResponsesChainMetadata `json:"chain_metadata,omitempty"`
 	Domain *int64 `json:"domain,omitempty"`
 	Hash *string `json:"hash,omitempty"`
 }
@@ -39,6 +40,38 @@ func NewResponsesHyperlaneCounterparty() *ResponsesHyperlaneCounterparty {
 func NewResponsesHyperlaneCounterpartyWithDefaults() *ResponsesHyperlaneCounterparty {
 	this := ResponsesHyperlaneCounterparty{}
 	return &this
+}
+
+// GetChainMetadata returns the ChainMetadata field value if set, zero value otherwise.
+func (o *ResponsesHyperlaneCounterparty) GetChainMetadata() ResponsesChainMetadata {
+	if o == nil || IsNil(o.ChainMetadata) {
+		var ret ResponsesChainMetadata
+		return ret
+	}
+	return *o.ChainMetadata
+}
+
+// GetChainMetadataOk returns a tuple with the ChainMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesHyperlaneCounterparty) GetChainMetadataOk() (*ResponsesChainMetadata, bool) {
+	if o == nil || IsNil(o.ChainMetadata) {
+		return nil, false
+	}
+	return o.ChainMetadata, true
+}
+
+// HasChainMetadata returns a boolean if a field has been set.
+func (o *ResponsesHyperlaneCounterparty) HasChainMetadata() bool {
+	if o != nil && !IsNil(o.ChainMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetChainMetadata gets a reference to the given ResponsesChainMetadata and assigns it to the ChainMetadata field.
+func (o *ResponsesHyperlaneCounterparty) SetChainMetadata(v ResponsesChainMetadata) {
+	o.ChainMetadata = &v
 }
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
@@ -115,6 +148,9 @@ func (o ResponsesHyperlaneCounterparty) MarshalJSON() ([]byte, error) {
 
 func (o ResponsesHyperlaneCounterparty) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ChainMetadata) {
+		toSerialize["chain_metadata"] = o.ChainMetadata
+	}
 	if !IsNil(o.Domain) {
 		toSerialize["domain"] = o.Domain
 	}

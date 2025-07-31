@@ -62,6 +62,18 @@ func Test_celenium_StatsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test StatsAPIService StatsIbcSummary", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.StatsAPI.StatsIbcSummary(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test StatsAPIService StatsMessagesCount24h", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
