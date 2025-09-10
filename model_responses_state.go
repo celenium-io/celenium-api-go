@@ -34,7 +34,6 @@ type ResponsesState struct {
 	TotalIbcClients *int32 `json:"total_ibc_clients,omitempty"`
 	TotalNamespaces *int32 `json:"total_namespaces,omitempty"`
 	TotalProposals *int64 `json:"total_proposals,omitempty"`
-	TotalStake *string `json:"total_stake,omitempty"`
 	TotalSupply *string `json:"total_supply,omitempty"`
 	TotalTx *int64 `json:"total_tx,omitempty"`
 	TotalValidators *int64 `json:"total_validators,omitempty"`
@@ -474,38 +473,6 @@ func (o *ResponsesState) SetTotalProposals(v int64) {
 	o.TotalProposals = &v
 }
 
-// GetTotalStake returns the TotalStake field value if set, zero value otherwise.
-func (o *ResponsesState) GetTotalStake() string {
-	if o == nil || IsNil(o.TotalStake) {
-		var ret string
-		return ret
-	}
-	return *o.TotalStake
-}
-
-// GetTotalStakeOk returns a tuple with the TotalStake field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResponsesState) GetTotalStakeOk() (*string, bool) {
-	if o == nil || IsNil(o.TotalStake) {
-		return nil, false
-	}
-	return o.TotalStake, true
-}
-
-// HasTotalStake returns a boolean if a field has been set.
-func (o *ResponsesState) HasTotalStake() bool {
-	if o != nil && !IsNil(o.TotalStake) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalStake gets a reference to the given string and assigns it to the TotalStake field.
-func (o *ResponsesState) SetTotalStake(v string) {
-	o.TotalStake = &v
-}
-
 // GetTotalSupply returns the TotalSupply field value if set, zero value otherwise.
 func (o *ResponsesState) GetTotalSupply() string {
 	if o == nil || IsNil(o.TotalSupply) {
@@ -682,9 +649,6 @@ func (o ResponsesState) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalProposals) {
 		toSerialize["total_proposals"] = o.TotalProposals
-	}
-	if !IsNil(o.TotalStake) {
-		toSerialize["total_stake"] = o.TotalStake
 	}
 	if !IsNil(o.TotalSupply) {
 		toSerialize["total_supply"] = o.TotalSupply

@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetHyperlaneMailbox**](HyperlaneAPI.md#GetHyperlaneMailbox) | **Get** /hyperlane/mailbox/{id} | Get hyperlane mailbox info
 [**GetHyperlaneToken**](HyperlaneAPI.md#GetHyperlaneToken) | **Get** /hyperlane/token/{id} | Get hyperlane token info
+[**GetHyperlaneTransfer**](HyperlaneAPI.md#GetHyperlaneTransfer) | **Get** /hyperlane/transfer/{id} | Get transfer by id
+[**ListHyperlaneDomains**](HyperlaneAPI.md#ListHyperlaneDomains) | **Get** /hyperlane/domains | List hyperlane domains info
 [**ListHyperlaneMailbox**](HyperlaneAPI.md#ListHyperlaneMailbox) | **Get** /hyperlane/mailbox | List hyperlane mailboxes info
 [**ListHyperlaneTokens**](HyperlaneAPI.md#ListHyperlaneTokens) | **Get** /hyperlane/token | List hyperlane tokens info
 [**ListHyperlaneTransfers**](HyperlaneAPI.md#ListHyperlaneTransfers) | **Get** /hyperlane/transfer | List hyperlane transfers info
@@ -137,6 +139,137 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ResponsesHyperlaneToken**](ResponsesHyperlaneToken.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetHyperlaneTransfer
+
+> ResponsesHyperlaneTransfer GetHyperlaneTransfer(ctx, id).Execute()
+
+Get transfer by id
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	id := int32(56) // int32 | Internal identity
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HyperlaneAPI.GetHyperlaneTransfer(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HyperlaneAPI.GetHyperlaneTransfer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetHyperlaneTransfer`: ResponsesHyperlaneTransfer
+	fmt.Fprintf(os.Stdout, "Response from `HyperlaneAPI.GetHyperlaneTransfer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Internal identity | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetHyperlaneTransferRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ResponsesHyperlaneTransfer**](ResponsesHyperlaneTransfer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListHyperlaneDomains
+
+> []ResponsesDomainMetadata ListHyperlaneDomains(ctx).Execute()
+
+List hyperlane domains info
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HyperlaneAPI.ListHyperlaneDomains(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HyperlaneAPI.ListHyperlaneDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListHyperlaneDomains`: []ResponsesDomainMetadata
+	fmt.Fprintf(os.Stdout, "Response from `HyperlaneAPI.ListHyperlaneDomains`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListHyperlaneDomainsRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]ResponsesDomainMetadata**](ResponsesDomainMetadata.md)
 
 ### Authorization
 
@@ -298,7 +431,7 @@ No authorization required
 
 ## ListHyperlaneTransfers
 
-> []ResponsesHyperlaneTransfer ListHyperlaneTransfers(ctx).Limit(limit).Offset(offset).Sort(sort).Address(address).Relayer(relayer).Mailbox(mailbox).Token(token).Type_(type_).Domain(domain).Execute()
+> []ResponsesHyperlaneTransfer ListHyperlaneTransfers(ctx).Limit(limit).Offset(offset).Sort(sort).Address(address).Relayer(relayer).Mailbox(mailbox).Token(token).Type_(type_).Domain(domain).Hash(hash).Execute()
 
 List hyperlane transfers info
 
@@ -326,10 +459,11 @@ func main() {
 	token := "token_example" // string | Token hexademical identity (optional)
 	type_ := "type__example" // string | Comma-separated string of transfer type (optional)
 	domain := int32(56) // int32 | Domain of counterparty chain (optional)
+	hash := "hash_example" // string | Transaction hash in hexadecimal (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HyperlaneAPI.ListHyperlaneTransfers(context.Background()).Limit(limit).Offset(offset).Sort(sort).Address(address).Relayer(relayer).Mailbox(mailbox).Token(token).Type_(type_).Domain(domain).Execute()
+	resp, r, err := apiClient.HyperlaneAPI.ListHyperlaneTransfers(context.Background()).Limit(limit).Offset(offset).Sort(sort).Address(address).Relayer(relayer).Mailbox(mailbox).Token(token).Type_(type_).Domain(domain).Hash(hash).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `HyperlaneAPI.ListHyperlaneTransfers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -359,6 +493,7 @@ Name | Type | Description  | Notes
  **token** | **string** | Token hexademical identity | 
  **type_** | **string** | Comma-separated string of transfer type | 
  **domain** | **int32** | Domain of counterparty chain | 
+ **hash** | **string** | Transaction hash in hexadecimal | 
 
 ### Return type
 

@@ -1951,6 +1951,37 @@ paths:
       summary: Get current indexer head
       tags:
       - general
+  /hyperlane/domains:
+    get:
+      description: List hyperlane domains info
+      operationId: list-hyperlane-domains
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.DomainMetadata"
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: List hyperlane domains info
+      tags:
+      - hyperlane
   /hyperlane/mailbox:
     get:
       description: List hyperlane mailboxes info
@@ -2198,6 +2229,13 @@ paths:
         name: domain
         schema:
           type: integer
+      - description: Transaction hash in hexadecimal
+        in: query
+        name: hash
+        schema:
+          maxLength: 64
+          minLength: 64
+          type: string
       responses:
         "200":
           content:
@@ -2223,6 +2261,42 @@ paths:
                 $ref: "#/components/schemas/handler.Error"
           description: Internal Server Error
       summary: List hyperlane transfers info
+      tags:
+      - hyperlane
+  /hyperlane/transfer/{id}:
+    get:
+      description: Get transfer by id
+      operationId: get-hyperlane-transfer
+      parameters:
+      - description: Internal identity
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responses.HyperlaneTransfer"
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get transfer by id
       tags:
       - hyperlane
   /ibc/channel:
@@ -2522,6 +2596,34 @@ paths:
       summary: Get ibc connection info
       tags:
       - ibc
+  /ibc/relayers:
+    get:
+      description: List ibc relayers
+      operationId: get-ibc-relayers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.Relayer"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: List ibc relayers
+      tags:
+      - ibc
   /ibc/transfer:
     get:
       description: Get ibc transfers info
@@ -2577,6 +2679,13 @@ paths:
           maxLength: 47
           minLength: 47
           type: string
+      - description: Transaction hash in hexadecimal
+        in: query
+        name: hash
+        schema:
+          maxLength: 64
+          minLength: 64
+          type: string
       responses:
         "200":
           content:
@@ -2602,6 +2711,42 @@ paths:
                 $ref: "#/components/schemas/handler.Error"
           description: Internal Server Error
       summary: Get ibc transfers info
+      tags:
+      - ibc
+  /ibc/transfer/{id}:
+    get:
+      description: Get transfer by id
+      operationId: get-ibc-transfer
+      parameters:
+      - description: Internal identity
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responses.IbcTransfer"
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get transfer by id
       tags:
       - ibc
   /namespace:
@@ -3877,6 +4022,142 @@ paths:
       summary: Search by hash
       tags:
       - search
+  /signal:
+    get:
+      description: List signals
+      operationId: list-signal
+      parameters:
+      - description: Version
+        in: query
+        name: version
+        schema:
+          type: integer
+      - description: Validator internal id
+        in: query
+        name: validator_id
+        schema:
+          type: integer
+      - description: Transaction hash
+        in: query
+        name: tx_hash
+        schema:
+          type: string
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: Time from in unix timestamp
+        in: query
+        name: from
+        schema:
+          type: integer
+      - description: Time to in unix timestamp
+        in: query
+        name: to
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.SignalVersion"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: List signals
+      tags:
+      - signal
+  /signal/upgrade:
+    get:
+      description: List upgrades
+      operationId: list-upgrades
+      parameters:
+      - description: Number of block
+        in: query
+        name: height
+        schema:
+          type: integer
+      - description: Transaction hash
+        in: query
+        name: tx_hash
+        schema:
+          type: string
+      - description: Signer address
+        in: query
+        name: signer
+        schema:
+          type: string
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.Upgrade"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: List upgrades
+      tags:
+      - signal
   /stats/changes_24h:
     get:
       description: Get changes for 24 hours
@@ -3897,6 +4178,170 @@ paths:
                 $ref: "#/components/schemas/handler.Error"
           description: Internal Server Error
       summary: Get changes for 24 hours
+      tags:
+      - stats
+  /stats/hyperlane/chains:
+    get:
+      description: Get stats for hyperlane transfers splitted by domain
+      operationId: stats-hl-domains
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.HlDomainStats"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get stats for hyperlane transfers splitted by domain
+      tags:
+      - stats
+  /stats/hyperlane/chains/{name}/{timeframe}:
+    get:
+      description: Get histogram for aggregated hyperlane domains with precomputed
+        stats by series name and timeframe
+      operationId: stats-hl-total-series
+      parameters:
+      - description: Timeframe
+        in: path
+        name: timeframe
+        required: true
+        schema:
+          enum:
+          - hour
+          - day
+          - month
+          type: string
+      - description: Series name
+        in: path
+        name: name
+        required: true
+        schema:
+          enum:
+          - count
+          - amount
+          type: string
+      - description: Time from in unix timestamp
+        in: query
+        name: from
+        schema:
+          type: integer
+      - description: Time to in unix timestamp
+        in: query
+        name: to
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.HistogramItem"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get histogram for aggregated hyperlane domains with precomputed stats
+      tags:
+      - stats
+  /stats/hyperlane/series/{id}/{name}/{timeframe}:
+    get:
+      description: Get histogram for hyperlane domains with precomputed stats by series
+        name and timeframe
+      operationId: stats-hl-series
+      parameters:
+      - description: Domain id
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - description: Timeframe
+        in: path
+        name: timeframe
+        required: true
+        schema:
+          enum:
+          - hour
+          - day
+          - month
+          type: string
+      - description: Series name
+        in: path
+        name: name
+        required: true
+        schema:
+          enum:
+          - count
+          - amount
+          type: string
+      - description: Time from in unix timestamp
+        in: query
+        name: from
+        schema:
+          type: integer
+      - description: Time to in unix timestamp
+        in: query
+        name: to
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.HistogramItem"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get histogram for hyperlane domains with precomputed stats
       tags:
       - stats
   /stats/ibc/chains:
@@ -6226,6 +6671,34 @@ components:
             $ref: "#/components/schemas/responses.Params"
           type: object
       type: object
+    responses.Contact:
+      example:
+        github: https://github.com/cosmosrescue
+        twitter: https://x.com/cosmosrescue
+        website: https://cosmosrescue.com
+        discord: https://discord.cosmosrescue.com
+        telegram: https://t.me/cosmosrescue
+        medium: https://medium.com/cosmosrescue
+      properties:
+        discord:
+          example: https://discord.cosmosrescue.com
+          type: string
+        github:
+          example: https://github.com/cosmosrescue
+          type: string
+        medium:
+          example: https://medium.com/cosmosrescue
+          type: string
+        telegram:
+          example: https://t.me/cosmosrescue
+          type: string
+        twitter:
+          example: https://x.com/cosmosrescue
+          type: string
+        website:
+          example: https://cosmosrescue.com
+          type: string
+      type: object
     responses.CountItem:
       example:
         name: test
@@ -6311,6 +6784,37 @@ components:
           example: "0.17632"
           format: string
           type: string
+      type: object
+    responses.DomainMetadata:
+      example:
+        domain: 1488
+        name: name
+        native_token:
+          symbol: ETH
+          decimals: 18
+          name: Ether
+        block_explorers:
+        - api_url: https://api.scan.url.io
+          name: Block explorer
+          family: etherscan
+          url: https://scan.url.io
+        - api_url: https://api.scan.url.io
+          name: Block explorer
+          family: etherscan
+          url: https://scan.url.io
+      properties:
+        block_explorers:
+          items:
+            $ref: "#/components/schemas/responses.BlockExplorer"
+          type: array
+        domain:
+          example: 1488
+          type: integer
+        name:
+          example: name
+          type: string
+        native_token:
+          $ref: "#/components/schemas/responses.NativeToken"
       type: object
     responses.Enums:
       example:
@@ -6539,6 +7043,42 @@ components:
           example: "2223424"
           format: string
           type: string
+      type: object
+    responses.HlDomainStats:
+      example:
+        chain_metadata:
+          name: name
+          native_token:
+            symbol: ETH
+            decimals: 18
+            name: Ether
+          block_explorers:
+          - api_url: https://api.scan.url.io
+            name: Block explorer
+            family: etherscan
+            url: https://scan.url.io
+          - api_url: https://api.scan.url.io
+            name: Block explorer
+            family: etherscan
+            url: https://scan.url.io
+        domain_id: 123456
+        amount: "1234.5678"
+        transfers_count: 123445
+      properties:
+        amount:
+          example: "1234.5678"
+          format: string
+          type: string
+        chain_metadata:
+          $ref: "#/components/schemas/responses.ChainMetadata"
+        domain_id:
+          example: 123456
+          format: integer
+          type: integer
+        transfers_count:
+          example: 123445
+          format: integer
+          type: integer
       type: object
     responses.HyperlaneCounterparty:
       example:
@@ -7097,6 +7637,18 @@ components:
     responses.IbcSummaryStats:
       example:
         largest_transfer:
+          relayer:
+            addresses:
+            - celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+            contact:
+              github: https://github.com/cosmosrescue
+              twitter: https://x.com/cosmosrescue
+              website: https://cosmosrescue.com
+              discord: https://discord.cosmosrescue.com
+              telegram: https://t.me/cosmosrescue
+              medium: https://medium.com/cosmosrescue
+            name: cosmosrescue
+            logo: https://raw.githubusercontent.com/irisnet/iob-registry/main/relayers/cosmosrescue/logo.png
           amount: "123445"
           chain_id: osmosis-1
           receiver:
@@ -7137,6 +7689,18 @@ components:
       type: object
     responses.IbcTransfer:
       example:
+        relayer:
+          addresses:
+          - celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+          contact:
+            github: https://github.com/cosmosrescue
+            twitter: https://x.com/cosmosrescue
+            website: https://cosmosrescue.com
+            discord: https://discord.cosmosrescue.com
+            telegram: https://t.me/cosmosrescue
+            medium: https://medium.com/cosmosrescue
+          name: cosmosrescue
+          logo: https://raw.githubusercontent.com/irisnet/iob-registry/main/relayers/cosmosrescue/logo.png
         amount: "123445"
         chain_id: osmosis-1
         receiver:
@@ -7204,6 +7768,8 @@ components:
           type: string
         receiver:
           $ref: "#/components/schemas/responses.ShortAddress"
+        relayer:
+          $ref: "#/components/schemas/responses.Relayer"
         sender:
           $ref: "#/components/schemas/responses.ShortAddress"
         sequence:
@@ -7895,6 +8461,37 @@ components:
           example: 2023-07-04T03:10:57+00:00
           type: string
       type: object
+    responses.Relayer:
+      example:
+        addresses:
+        - celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        contact:
+          github: https://github.com/cosmosrescue
+          twitter: https://x.com/cosmosrescue
+          website: https://cosmosrescue.com
+          discord: https://discord.cosmosrescue.com
+          telegram: https://t.me/cosmosrescue
+          medium: https://medium.com/cosmosrescue
+        name: cosmosrescue
+        logo: https://raw.githubusercontent.com/irisnet/iob-registry/main/relayers/cosmosrescue/logo.png
+      properties:
+        addresses:
+          example:
+          - celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+          items:
+            type: string
+          type: array
+        contact:
+          $ref: "#/components/schemas/responses.Contact"
+        logo:
+          example: https://raw.githubusercontent.com/irisnet/iob-registry/main/relayers/cosmosrescue/logo.png
+          format: string
+          type: string
+        name:
+          example: cosmosrescue
+          format: string
+          type: string
+      type: object
     responses.Rollup:
       example:
         github: https://github.com/account
@@ -8559,6 +9156,46 @@ components:
           example: Easy 2 Stake
           type: string
       type: object
+    responses.SignalVersion:
+      example:
+        validator:
+          cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
+          id: 321
+          moniker: Easy 2 Stake
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        id: 321
+        time: 2025-07-04T03:10:57Z
+        version: 1
+        height: 100
+        voting_power: "9348"
+      properties:
+        height:
+          example: 100
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        time:
+          example: 2025-07-04T03:10:57Z
+          format: date-time
+          type: string
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        validator:
+          $ref: "#/components/schemas/responses.ShortValidator"
+        version:
+          example: 1
+          format: int64
+          type: integer
+        voting_power:
+          example: "9348"
+          format: int64
+          type: string
+      type: object
     responses.SignedBlocks:
       example:
         signed: true
@@ -8609,7 +9246,6 @@ components:
         total_ibc_clients: 312
         total_supply: "312"
         total_tx: 23456
-        total_stake: "312"
         total_validators: 100
         last_height: 100
         total_accounts: 43
@@ -8674,10 +9310,6 @@ components:
           example: 56789
           format: int64
           type: integer
-        total_stake:
-          example: "312"
-          format: string
-          type: string
         total_supply:
           example: "312"
           format: string
@@ -8926,6 +9558,49 @@ components:
           type: string
         validator:
           $ref: "#/components/schemas/responses.ShortValidator"
+      type: object
+    responses.Upgrade:
+      example:
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        id: 321
+        time: 2025-07-04T03:10:57Z
+        msg_id: 2
+        version: 1
+        height: 100
+        signer:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+      properties:
+        height:
+          example: 100
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        msg_id:
+          example: 2
+          format: int64
+          type: integer
+        signer:
+          $ref: "#/components/schemas/responses.ShortAddress"
+        time:
+          example: 2025-07-04T03:10:57Z
+          format: date-time
+          type: string
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        version:
+          example: 1
+          format: int64
+          type: integer
       type: object
     responses.Validator:
       example:

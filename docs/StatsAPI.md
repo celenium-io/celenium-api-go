@@ -5,6 +5,9 @@ All URIs are relative to *https://api-mainnet.celenium.io/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Stats24hChanges**](StatsAPI.md#Stats24hChanges) | **Get** /stats/changes_24h | Get changes for 24 hours
+[**StatsHlDomains**](StatsAPI.md#StatsHlDomains) | **Get** /stats/hyperlane/chains | Get stats for hyperlane transfers splitted by domain
+[**StatsHlSeries**](StatsAPI.md#StatsHlSeries) | **Get** /stats/hyperlane/series/{id}/{name}/{timeframe} | Get histogram for hyperlane domains with precomputed stats
+[**StatsHlTotalSeries**](StatsAPI.md#StatsHlTotalSeries) | **Get** /stats/hyperlane/chains/{name}/{timeframe} | Get histogram for aggregated hyperlane domains with precomputed stats
 [**StatsIbcChains**](StatsAPI.md#StatsIbcChains) | **Get** /stats/ibc/chains | Get stats for ibc channels splitted by chains
 [**StatsIbcSeries**](StatsAPI.md#StatsIbcSeries) | **Get** /stats/ibc/series/{id}/{name}/{timeframe} | Get histogram for ibc channels with precomputed stats
 [**StatsIbcSummary**](StatsAPI.md#StatsIbcSummary) | **Get** /stats/ibc/summary | Get stats for ibc the largest transfer and busiest channel per day
@@ -67,6 +70,231 @@ Other parameters are passed through a pointer to a apiStats24hChangesRequest str
 ### Return type
 
 [**[]ResponsesChange24hBlockStats**](ResponsesChange24hBlockStats.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StatsHlDomains
+
+> []ResponsesHlDomainStats StatsHlDomains(ctx).Limit(limit).Offset(offset).Execute()
+
+Get stats for hyperlane transfers splitted by domain
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	limit := int32(56) // int32 | Count of requested entities (optional)
+	offset := int32(56) // int32 | Offset (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StatsAPI.StatsHlDomains(context.Background()).Limit(limit).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StatsAPI.StatsHlDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StatsHlDomains`: []ResponsesHlDomainStats
+	fmt.Fprintf(os.Stdout, "Response from `StatsAPI.StatsHlDomains`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStatsHlDomainsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Count of requested entities | 
+ **offset** | **int32** | Offset | 
+
+### Return type
+
+[**[]ResponsesHlDomainStats**](ResponsesHlDomainStats.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StatsHlSeries
+
+> []ResponsesHistogramItem StatsHlSeries(ctx, id, timeframe, name).From(from).To(to).Execute()
+
+Get histogram for hyperlane domains with precomputed stats
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	id := int32(56) // int32 | Domain id
+	timeframe := "timeframe_example" // string | Timeframe
+	name := "name_example" // string | Series name
+	from := int32(56) // int32 | Time from in unix timestamp (optional)
+	to := int32(56) // int32 | Time to in unix timestamp (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StatsAPI.StatsHlSeries(context.Background(), id, timeframe, name).From(from).To(to).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StatsAPI.StatsHlSeries``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StatsHlSeries`: []ResponsesHistogramItem
+	fmt.Fprintf(os.Stdout, "Response from `StatsAPI.StatsHlSeries`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Domain id | 
+**timeframe** | **string** | Timeframe | 
+**name** | **string** | Series name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStatsHlSeriesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **from** | **int32** | Time from in unix timestamp | 
+ **to** | **int32** | Time to in unix timestamp | 
+
+### Return type
+
+[**[]ResponsesHistogramItem**](ResponsesHistogramItem.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StatsHlTotalSeries
+
+> []ResponsesHistogramItem StatsHlTotalSeries(ctx, timeframe, name).From(from).To(to).Execute()
+
+Get histogram for aggregated hyperlane domains with precomputed stats
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	timeframe := "timeframe_example" // string | Timeframe
+	name := "name_example" // string | Series name
+	from := int32(56) // int32 | Time from in unix timestamp (optional)
+	to := int32(56) // int32 | Time to in unix timestamp (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StatsAPI.StatsHlTotalSeries(context.Background(), timeframe, name).From(from).To(to).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StatsAPI.StatsHlTotalSeries``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StatsHlTotalSeries`: []ResponsesHistogramItem
+	fmt.Fprintf(os.Stdout, "Response from `StatsAPI.StatsHlTotalSeries`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**timeframe** | **string** | Timeframe | 
+**name** | **string** | Series name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStatsHlTotalSeriesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **from** | **int32** | Time from in unix timestamp | 
+ **to** | **int32** | Time to in unix timestamp | 
+
+### Return type
+
+[**[]ResponsesHistogramItem**](ResponsesHistogramItem.md)
 
 ### Authorization
 

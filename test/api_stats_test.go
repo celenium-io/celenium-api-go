@@ -34,6 +34,49 @@ func Test_celenium_StatsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test StatsAPIService StatsHlDomains", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.StatsAPI.StatsHlDomains(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test StatsAPIService StatsHlSeries", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+		var timeframe string
+		var name string
+
+		resp, httpRes, err := apiClient.StatsAPI.StatsHlSeries(context.Background(), id, timeframe, name).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test StatsAPIService StatsHlTotalSeries", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var timeframe string
+		var name string
+
+		resp, httpRes, err := apiClient.StatsAPI.StatsHlTotalSeries(context.Background(), timeframe, name).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test StatsAPIService StatsIbcChains", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -110,6 +110,8 @@ Class | Method | HTTP request | Description
 *GeneralAPI* | [**Head**](docs/GeneralAPI.md#head) | **Get** /head | Get current indexer head
 *HyperlaneAPI* | [**GetHyperlaneMailbox**](docs/HyperlaneAPI.md#gethyperlanemailbox) | **Get** /hyperlane/mailbox/{id} | Get hyperlane mailbox info
 *HyperlaneAPI* | [**GetHyperlaneToken**](docs/HyperlaneAPI.md#gethyperlanetoken) | **Get** /hyperlane/token/{id} | Get hyperlane token info
+*HyperlaneAPI* | [**GetHyperlaneTransfer**](docs/HyperlaneAPI.md#gethyperlanetransfer) | **Get** /hyperlane/transfer/{id} | Get transfer by id
+*HyperlaneAPI* | [**ListHyperlaneDomains**](docs/HyperlaneAPI.md#listhyperlanedomains) | **Get** /hyperlane/domains | List hyperlane domains info
 *HyperlaneAPI* | [**ListHyperlaneMailbox**](docs/HyperlaneAPI.md#listhyperlanemailbox) | **Get** /hyperlane/mailbox | List hyperlane mailboxes info
 *HyperlaneAPI* | [**ListHyperlaneTokens**](docs/HyperlaneAPI.md#listhyperlanetokens) | **Get** /hyperlane/token | List hyperlane tokens info
 *HyperlaneAPI* | [**ListHyperlaneTransfers**](docs/HyperlaneAPI.md#listhyperlanetransfers) | **Get** /hyperlane/transfer | List hyperlane transfers info
@@ -119,6 +121,8 @@ Class | Method | HTTP request | Description
 *IbcAPI* | [**GetIbcClients**](docs/IbcAPI.md#getibcclients) | **Get** /ibc/client | Get ibc clients info
 *IbcAPI* | [**GetIbcConn**](docs/IbcAPI.md#getibcconn) | **Get** /ibc/connection/{id} | Get ibc connection info
 *IbcAPI* | [**GetIbcConns**](docs/IbcAPI.md#getibcconns) | **Get** /ibc/connection | Get ibc connections info
+*IbcAPI* | [**GetIbcRelayers**](docs/IbcAPI.md#getibcrelayers) | **Get** /ibc/relayers | List ibc relayers
+*IbcAPI* | [**GetIbcTransfer**](docs/IbcAPI.md#getibctransfer) | **Get** /ibc/transfer/{id} | Get transfer by id
 *IbcAPI* | [**GetIbcTransfers**](docs/IbcAPI.md#getibctransfers) | **Get** /ibc/transfer | Get ibc transfers info
 *NamespaceAPI* | [**GetBlob**](docs/NamespaceAPI.md#getblob) | **Post** /blob | Get namespace blob by commitment on height
 *NamespaceAPI* | [**GetBlobLogs**](docs/NamespaceAPI.md#getbloblogs) | **Get** /namespace/{id}/{version}/blobs | Get blob changes for namespace
@@ -148,7 +152,12 @@ Class | Method | HTTP request | Description
 *RollupAPI* | [**RollupExport**](docs/RollupAPI.md#rollupexport) | **Get** /rollup/{id}/export | Export rollup blobs
 *RollupAPI* | [**RollupGroupedStatistics**](docs/RollupAPI.md#rollupgroupedstatistics) | **Get** /rollup/group | Rollup Grouped Statistics
 *SearchAPI* | [**Search**](docs/SearchAPI.md#search) | **Get** /search | Search by hash
+*SignalAPI* | [**ListSignal**](docs/SignalAPI.md#listsignal) | **Get** /signal | List signals
+*SignalAPI* | [**ListUpgrades**](docs/SignalAPI.md#listupgrades) | **Get** /signal/upgrade | List upgrades
 *StatsAPI* | [**Stats24hChanges**](docs/StatsAPI.md#stats24hchanges) | **Get** /stats/changes_24h | Get changes for 24 hours
+*StatsAPI* | [**StatsHlDomains**](docs/StatsAPI.md#statshldomains) | **Get** /stats/hyperlane/chains | Get stats for hyperlane transfers splitted by domain
+*StatsAPI* | [**StatsHlSeries**](docs/StatsAPI.md#statshlseries) | **Get** /stats/hyperlane/series/{id}/{name}/{timeframe} | Get histogram for hyperlane domains with precomputed stats
+*StatsAPI* | [**StatsHlTotalSeries**](docs/StatsAPI.md#statshltotalseries) | **Get** /stats/hyperlane/chains/{name}/{timeframe} | Get histogram for aggregated hyperlane domains with precomputed stats
 *StatsAPI* | [**StatsIbcChains**](docs/StatsAPI.md#statsibcchains) | **Get** /stats/ibc/chains | Get stats for ibc channels splitted by chains
 *StatsAPI* | [**StatsIbcSeries**](docs/StatsAPI.md#statsibcseries) | **Get** /stats/ibc/series/{id}/{name}/{timeframe} | Get histogram for ibc channels with precomputed stats
 *StatsAPI* | [**StatsIbcSummary**](docs/StatsAPI.md#statsibcsummary) | **Get** /stats/ibc/summary | Get stats for ibc the largest transfer and busiest channel per day
@@ -198,15 +207,18 @@ Class | Method | HTTP request | Description
  - [ResponsesChainMetadata](docs/ResponsesChainMetadata.md)
  - [ResponsesChange24hBlockStats](docs/ResponsesChange24hBlockStats.md)
  - [ResponsesConstants](docs/ResponsesConstants.md)
+ - [ResponsesContact](docs/ResponsesContact.md)
  - [ResponsesCountItem](docs/ResponsesCountItem.md)
  - [ResponsesDelegation](docs/ResponsesDelegation.md)
  - [ResponsesDenomMetadata](docs/ResponsesDenomMetadata.md)
  - [ResponsesDistributionItem](docs/ResponsesDistributionItem.md)
+ - [ResponsesDomainMetadata](docs/ResponsesDomainMetadata.md)
  - [ResponsesEnums](docs/ResponsesEnums.md)
  - [ResponsesEvent](docs/ResponsesEvent.md)
  - [ResponsesGasPrice](docs/ResponsesGasPrice.md)
  - [ResponsesGrant](docs/ResponsesGrant.md)
  - [ResponsesHistogramItem](docs/ResponsesHistogramItem.md)
+ - [ResponsesHlDomainStats](docs/ResponsesHlDomainStats.md)
  - [ResponsesHyperlaneCounterparty](docs/ResponsesHyperlaneCounterparty.md)
  - [ResponsesHyperlaneMailbox](docs/ResponsesHyperlaneMailbox.md)
  - [ResponsesHyperlaneToken](docs/ResponsesHyperlaneToken.md)
@@ -230,6 +242,7 @@ Class | Method | HTTP request | Description
  - [ResponsesODSItem](docs/ResponsesODSItem.md)
  - [ResponsesProposal](docs/ResponsesProposal.md)
  - [ResponsesRedelegation](docs/ResponsesRedelegation.md)
+ - [ResponsesRelayer](docs/ResponsesRelayer.md)
  - [ResponsesRollup](docs/ResponsesRollup.md)
  - [ResponsesRollupAllSeriesItem](docs/ResponsesRollupAllSeriesItem.md)
  - [ResponsesRollupAllSeriesResponse](docs/ResponsesRollupAllSeriesResponse.md)
@@ -243,6 +256,7 @@ Class | Method | HTTP request | Description
  - [ResponsesShortIbcClient](docs/ResponsesShortIbcClient.md)
  - [ResponsesShortRollup](docs/ResponsesShortRollup.md)
  - [ResponsesShortValidator](docs/ResponsesShortValidator.md)
+ - [ResponsesSignalVersion](docs/ResponsesSignalVersion.md)
  - [ResponsesSignedBlocks](docs/ResponsesSignedBlocks.md)
  - [ResponsesSizeGroup](docs/ResponsesSizeGroup.md)
  - [ResponsesState](docs/ResponsesState.md)
@@ -251,6 +265,7 @@ Class | Method | HTTP request | Description
  - [ResponsesTx](docs/ResponsesTx.md)
  - [ResponsesTxForAddress](docs/ResponsesTxForAddress.md)
  - [ResponsesUndelegation](docs/ResponsesUndelegation.md)
+ - [ResponsesUpgrade](docs/ResponsesUpgrade.md)
  - [ResponsesValidator](docs/ResponsesValidator.md)
  - [ResponsesValidatorCount](docs/ResponsesValidatorCount.md)
  - [ResponsesValidatorUptime](docs/ResponsesValidatorUptime.md)

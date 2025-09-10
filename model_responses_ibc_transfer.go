@@ -32,6 +32,7 @@ type ResponsesIbcTransfer struct {
 	Memo *string `json:"memo,omitempty"`
 	Port *string `json:"port,omitempty"`
 	Receiver *ResponsesShortAddress `json:"receiver,omitempty"`
+	Relayer *ResponsesRelayer `json:"relayer,omitempty"`
 	Sender *ResponsesShortAddress `json:"sender,omitempty"`
 	Sequence *int32 `json:"sequence,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
@@ -377,6 +378,38 @@ func (o *ResponsesIbcTransfer) SetReceiver(v ResponsesShortAddress) {
 	o.Receiver = &v
 }
 
+// GetRelayer returns the Relayer field value if set, zero value otherwise.
+func (o *ResponsesIbcTransfer) GetRelayer() ResponsesRelayer {
+	if o == nil || IsNil(o.Relayer) {
+		var ret ResponsesRelayer
+		return ret
+	}
+	return *o.Relayer
+}
+
+// GetRelayerOk returns a tuple with the Relayer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesIbcTransfer) GetRelayerOk() (*ResponsesRelayer, bool) {
+	if o == nil || IsNil(o.Relayer) {
+		return nil, false
+	}
+	return o.Relayer, true
+}
+
+// HasRelayer returns a boolean if a field has been set.
+func (o *ResponsesIbcTransfer) HasRelayer() bool {
+	if o != nil && !IsNil(o.Relayer) {
+		return true
+	}
+
+	return false
+}
+
+// SetRelayer gets a reference to the given ResponsesRelayer and assigns it to the Relayer field.
+func (o *ResponsesIbcTransfer) SetRelayer(v ResponsesRelayer) {
+	o.Relayer = &v
+}
+
 // GetSender returns the Sender field value if set, zero value otherwise.
 func (o *ResponsesIbcTransfer) GetSender() ResponsesShortAddress {
 	if o == nil || IsNil(o.Sender) {
@@ -608,6 +641,9 @@ func (o ResponsesIbcTransfer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Receiver) {
 		toSerialize["receiver"] = o.Receiver
+	}
+	if !IsNil(o.Relayer) {
+		toSerialize["relayer"] = o.Relayer
 	}
 	if !IsNil(o.Sender) {
 		toSerialize["sender"] = o.Sender

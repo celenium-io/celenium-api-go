@@ -70,6 +70,8 @@ type APIClient struct {
 
 	SearchAPI *SearchAPIService
 
+	SignalAPI *SignalAPIService
+
 	StatsAPI *StatsAPIService
 
 	TransactionsAPI *TransactionsAPIService
@@ -105,6 +107,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProposalAPI = (*ProposalAPIService)(&c.common)
 	c.RollupAPI = (*RollupAPIService)(&c.common)
 	c.SearchAPI = (*SearchAPIService)(&c.common)
+	c.SignalAPI = (*SignalAPIService)(&c.common)
 	c.StatsAPI = (*StatsAPIService)(&c.common)
 	c.TransactionsAPI = (*TransactionsAPIService)(&c.common)
 	c.ValidatorAPI = (*ValidatorAPIService)(&c.common)

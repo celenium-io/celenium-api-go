@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **TotalIbcClients** | Pointer to **int32** |  | [optional] 
 **TotalNamespaces** | Pointer to **int32** |  | [optional] 
 **TotalProposals** | Pointer to **int64** |  | [optional] 
-**TotalStake** | Pointer to **string** |  | [optional] 
 **TotalSupply** | Pointer to **string** |  | [optional] 
 **TotalTx** | Pointer to **int64** |  | [optional] 
 **TotalValidators** | Pointer to **int64** |  | [optional] 
@@ -366,31 +365,6 @@ SetTotalProposals sets TotalProposals field to given value.
 `func (o *ResponsesState) HasTotalProposals() bool`
 
 HasTotalProposals returns a boolean if a field has been set.
-
-### GetTotalStake
-
-`func (o *ResponsesState) GetTotalStake() string`
-
-GetTotalStake returns the TotalStake field if non-nil, zero value otherwise.
-
-### GetTotalStakeOk
-
-`func (o *ResponsesState) GetTotalStakeOk() (*string, bool)`
-
-GetTotalStakeOk returns a tuple with the TotalStake field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTotalStake
-
-`func (o *ResponsesState) SetTotalStake(v string)`
-
-SetTotalStake sets TotalStake field to given value.
-
-### HasTotalStake
-
-`func (o *ResponsesState) HasTotalStake() bool`
-
-HasTotalStake returns a boolean if a field has been set.
 
 ### GetTotalSupply
 

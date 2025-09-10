@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Memo** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **Receiver** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
+**Relayer** | Pointer to [**ResponsesRelayer**](ResponsesRelayer.md) |  | [optional] 
 **Sender** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Sequence** | Pointer to **int32** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
@@ -289,6 +290,31 @@ SetReceiver sets Receiver field to given value.
 `func (o *ResponsesIbcTransfer) HasReceiver() bool`
 
 HasReceiver returns a boolean if a field has been set.
+
+### GetRelayer
+
+`func (o *ResponsesIbcTransfer) GetRelayer() ResponsesRelayer`
+
+GetRelayer returns the Relayer field if non-nil, zero value otherwise.
+
+### GetRelayerOk
+
+`func (o *ResponsesIbcTransfer) GetRelayerOk() (*ResponsesRelayer, bool)`
+
+GetRelayerOk returns a tuple with the Relayer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRelayer
+
+`func (o *ResponsesIbcTransfer) SetRelayer(v ResponsesRelayer)`
+
+SetRelayer sets Relayer field to given value.
+
+### HasRelayer
+
+`func (o *ResponsesIbcTransfer) HasRelayer() bool`
+
+HasRelayer returns a boolean if a field has been set.
 
 ### GetSender
 

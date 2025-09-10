@@ -13,6 +13,7 @@ api_namespace.go
 api_proposal.go
 api_rollup.go
 api_search.go
+api_signal.go
 api_stats.go
 api_transactions.go
 api_validator.go
@@ -42,15 +43,18 @@ docs/ResponsesCelestial.md
 docs/ResponsesChainMetadata.md
 docs/ResponsesChange24hBlockStats.md
 docs/ResponsesConstants.md
+docs/ResponsesContact.md
 docs/ResponsesCountItem.md
 docs/ResponsesDelegation.md
 docs/ResponsesDenomMetadata.md
 docs/ResponsesDistributionItem.md
+docs/ResponsesDomainMetadata.md
 docs/ResponsesEnums.md
 docs/ResponsesEvent.md
 docs/ResponsesGasPrice.md
 docs/ResponsesGrant.md
 docs/ResponsesHistogramItem.md
+docs/ResponsesHlDomainStats.md
 docs/ResponsesHyperlaneCounterparty.md
 docs/ResponsesHyperlaneMailbox.md
 docs/ResponsesHyperlaneToken.md
@@ -74,6 +78,7 @@ docs/ResponsesODS.md
 docs/ResponsesODSItem.md
 docs/ResponsesProposal.md
 docs/ResponsesRedelegation.md
+docs/ResponsesRelayer.md
 docs/ResponsesRollup.md
 docs/ResponsesRollupAllSeriesItem.md
 docs/ResponsesRollupAllSeriesResponse.md
@@ -87,6 +92,7 @@ docs/ResponsesShortAddress.md
 docs/ResponsesShortIbcClient.md
 docs/ResponsesShortRollup.md
 docs/ResponsesShortValidator.md
+docs/ResponsesSignalVersion.md
 docs/ResponsesSignedBlocks.md
 docs/ResponsesSizeGroup.md
 docs/ResponsesState.md
@@ -95,6 +101,7 @@ docs/ResponsesTimeValueItem.md
 docs/ResponsesTx.md
 docs/ResponsesTxForAddress.md
 docs/ResponsesUndelegation.md
+docs/ResponsesUpgrade.md
 docs/ResponsesValidator.md
 docs/ResponsesValidatorCount.md
 docs/ResponsesValidatorUptime.md
@@ -103,6 +110,7 @@ docs/ResponsesVestingPeriod.md
 docs/ResponsesVote.md
 docs/RollupAPI.md
 docs/SearchAPI.md
+docs/SignalAPI.md
 docs/StatsAPI.md
 docs/TransactionsAPI.md
 docs/TypesEventType.md
@@ -128,15 +136,18 @@ model_responses_celestial.go
 model_responses_chain_metadata.go
 model_responses_change24h_block_stats.go
 model_responses_constants.go
+model_responses_contact.go
 model_responses_count_item.go
 model_responses_delegation.go
 model_responses_denom_metadata.go
 model_responses_distribution_item.go
+model_responses_domain_metadata.go
 model_responses_enums.go
 model_responses_event.go
 model_responses_gas_price.go
 model_responses_grant.go
 model_responses_histogram_item.go
+model_responses_hl_domain_stats.go
 model_responses_hyperlane_counterparty.go
 model_responses_hyperlane_mailbox.go
 model_responses_hyperlane_token.go
@@ -160,6 +171,7 @@ model_responses_ods.go
 model_responses_ods_item.go
 model_responses_proposal.go
 model_responses_redelegation.go
+model_responses_relayer.go
 model_responses_rollup.go
 model_responses_rollup_all_series_item.go
 model_responses_rollup_all_series_response.go
@@ -173,6 +185,7 @@ model_responses_short_address.go
 model_responses_short_ibc_client.go
 model_responses_short_rollup.go
 model_responses_short_validator.go
+model_responses_signal_version.go
 model_responses_signed_blocks.go
 model_responses_size_group.go
 model_responses_state.go
@@ -181,6 +194,7 @@ model_responses_tps.go
 model_responses_tx.go
 model_responses_tx_for_address.go
 model_responses_undelegation.go
+model_responses_upgrade.go
 model_responses_validator.go
 model_responses_validator_count.go
 model_responses_validator_uptime.go
@@ -201,6 +215,7 @@ test/api_namespace_test.go
 test/api_proposal_test.go
 test/api_rollup_test.go
 test/api_search_test.go
+test/api_signal_test.go
 test/api_stats_test.go
 test/api_transactions_test.go
 test/api_validator_test.go

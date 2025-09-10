@@ -50,6 +50,32 @@ func Test_celenium_HyperlaneAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test HyperlaneAPIService GetHyperlaneTransfer", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		resp, httpRes, err := apiClient.HyperlaneAPI.GetHyperlaneTransfer(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test HyperlaneAPIService ListHyperlaneDomains", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.HyperlaneAPI.ListHyperlaneDomains(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test HyperlaneAPIService ListHyperlaneMailbox", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

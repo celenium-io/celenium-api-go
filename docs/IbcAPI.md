@@ -10,6 +10,8 @@ Method | HTTP request | Description
 [**GetIbcClients**](IbcAPI.md#GetIbcClients) | **Get** /ibc/client | Get ibc clients info
 [**GetIbcConn**](IbcAPI.md#GetIbcConn) | **Get** /ibc/connection/{id} | Get ibc connection info
 [**GetIbcConns**](IbcAPI.md#GetIbcConns) | **Get** /ibc/connection | Get ibc connections info
+[**GetIbcRelayers**](IbcAPI.md#GetIbcRelayers) | **Get** /ibc/relayers | List ibc relayers
+[**GetIbcTransfer**](IbcAPI.md#GetIbcTransfer) | **Get** /ibc/transfer/{id} | Get transfer by id
 [**GetIbcTransfers**](IbcAPI.md#GetIbcTransfers) | **Get** /ibc/transfer | Get ibc transfers info
 
 
@@ -446,9 +448,140 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetIbcRelayers
+
+> []ResponsesRelayer GetIbcRelayers(ctx).Execute()
+
+List ibc relayers
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IbcAPI.GetIbcRelayers(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IbcAPI.GetIbcRelayers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetIbcRelayers`: []ResponsesRelayer
+	fmt.Fprintf(os.Stdout, "Response from `IbcAPI.GetIbcRelayers`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetIbcRelayersRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]ResponsesRelayer**](ResponsesRelayer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetIbcTransfer
+
+> ResponsesIbcTransfer GetIbcTransfer(ctx, id).Execute()
+
+Get transfer by id
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	id := int32(56) // int32 | Internal identity
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IbcAPI.GetIbcTransfer(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IbcAPI.GetIbcTransfer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetIbcTransfer`: ResponsesIbcTransfer
+	fmt.Fprintf(os.Stdout, "Response from `IbcAPI.GetIbcTransfer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Internal identity | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetIbcTransferRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ResponsesIbcTransfer**](ResponsesIbcTransfer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetIbcTransfers
 
-> []ResponsesIbcTransfer GetIbcTransfers(ctx).Limit(limit).Offset(offset).Sort(sort).ChannelId(channelId).ChainId(chainId).Receiver(receiver).Sender(sender).Address(address).Execute()
+> []ResponsesIbcTransfer GetIbcTransfers(ctx).Limit(limit).Offset(offset).Sort(sort).ChannelId(channelId).ChainId(chainId).Receiver(receiver).Sender(sender).Address(address).Hash(hash).Execute()
 
 Get ibc transfers info
 
@@ -475,10 +608,11 @@ func main() {
 	receiver := "receiver_example" // string | Receiver address (optional)
 	sender := "sender_example" // string | Sender address (optional)
 	address := "address_example" // string | Address: receiver or sender (optional)
+	hash := "hash_example" // string | Transaction hash in hexadecimal (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IbcAPI.GetIbcTransfers(context.Background()).Limit(limit).Offset(offset).Sort(sort).ChannelId(channelId).ChainId(chainId).Receiver(receiver).Sender(sender).Address(address).Execute()
+	resp, r, err := apiClient.IbcAPI.GetIbcTransfers(context.Background()).Limit(limit).Offset(offset).Sort(sort).ChannelId(channelId).ChainId(chainId).Receiver(receiver).Sender(sender).Address(address).Hash(hash).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IbcAPI.GetIbcTransfers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -507,6 +641,7 @@ Name | Type | Description  | Notes
  **receiver** | **string** | Receiver address | 
  **sender** | **string** | Sender address | 
  **address** | **string** | Address: receiver or sender | 
+ **hash** | **string** | Transaction hash in hexadecimal | 
 
 ### Return type
 
