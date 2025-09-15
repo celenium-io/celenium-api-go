@@ -31,6 +31,7 @@ type ResponsesProposal struct {
 	DepositTime *time.Time `json:"deposit_time,omitempty"`
 	Description *string `json:"description,omitempty"`
 	EndTime *time.Time `json:"end_time,omitempty"`
+	Error *string `json:"error,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Metadata *string `json:"metadata,omitempty"`
@@ -394,6 +395,38 @@ func (o *ResponsesProposal) HasEndTime() bool {
 // SetEndTime gets a reference to the given time.Time and assigns it to the EndTime field.
 func (o *ResponsesProposal) SetEndTime(v time.Time) {
 	o.EndTime = &v
+}
+
+// GetError returns the Error field value if set, zero value otherwise.
+func (o *ResponsesProposal) GetError() string {
+	if o == nil || IsNil(o.Error) {
+		var ret string
+		return ret
+	}
+	return *o.Error
+}
+
+// GetErrorOk returns a tuple with the Error field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesProposal) GetErrorOk() (*string, bool) {
+	if o == nil || IsNil(o.Error) {
+		return nil, false
+	}
+	return o.Error, true
+}
+
+// HasError returns a boolean if a field has been set.
+func (o *ResponsesProposal) HasError() bool {
+	if o != nil && !IsNil(o.Error) {
+		return true
+	}
+
+	return false
+}
+
+// SetError gets a reference to the given string and assigns it to the Error field.
+func (o *ResponsesProposal) SetError(v string) {
+	o.Error = &v
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
@@ -1267,6 +1300,9 @@ func (o ResponsesProposal) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EndTime) {
 		toSerialize["end_time"] = o.EndTime
+	}
+	if !IsNil(o.Error) {
+		toSerialize["error"] = o.Error
 	}
 	if !IsNil(o.Height) {
 		toSerialize["height"] = o.Height

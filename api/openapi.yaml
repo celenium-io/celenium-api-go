@@ -3277,6 +3277,12 @@ paths:
       description: Get proposal's votes
       operationId: proposal-votes
       parameters:
+      - description: Internal identity
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
       - description: Count of requested entities
         in: query
         name: limit
@@ -3289,7 +3295,7 @@ paths:
         schema:
           type: integer
       - description: Option
-        in: path
+        in: query
         name: option
         required: true
         schema:
@@ -3300,13 +3306,27 @@ paths:
           - abstain
           type: string
       - description: Voter type
-        in: path
+        in: query
         name: voter
         required: true
         schema:
           enum:
           - address
           - validator
+          type: string
+      - description: Voter address
+        in: query
+        name: address
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: Voter address
+        in: query
+        name: validator
+        schema:
+          maxLength: 54
+          minLength: 54
           type: string
       responses:
         "200":
@@ -8255,6 +8275,7 @@ components:
         created_at: 2023-07-04T03:10:57Z
         description: Some proposal description
         threshold: "0.33"
+        error: Some error text
         title: Proposal title
         type: param_changed
         abstain_vals: 1234
@@ -8326,6 +8347,10 @@ components:
         end_time:
           example: 2023-07-04T03:10:57Z
           format: date-time
+          type: string
+        error:
+          example: Some error text
+          format: string
           type: string
         height:
           example: 100

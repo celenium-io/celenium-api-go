@@ -158,7 +158,7 @@ No authorization required
 
 ## ProposalVotes
 
-> []ResponsesVote ProposalVotes(ctx, option, voter).Limit(limit).Offset(offset).Execute()
+> []ResponsesVote ProposalVotes(ctx, id).Option(option).Voter(voter).Limit(limit).Offset(offset).Address(address).Validator(validator).Execute()
 
 Get proposal's votes
 
@@ -177,14 +177,17 @@ import (
 )
 
 func main() {
+	id := int32(56) // int32 | Internal identity
 	option := "option_example" // string | Option
 	voter := "voter_example" // string | Voter type
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
+	address := "address_example" // string | Voter address (optional)
+	validator := "validator_example" // string | Voter address (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProposalAPI.ProposalVotes(context.Background(), option, voter).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.ProposalAPI.ProposalVotes(context.Background(), id).Option(option).Voter(voter).Limit(limit).Offset(offset).Address(address).Validator(validator).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProposalAPI.ProposalVotes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -200,8 +203,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**option** | **string** | Option | 
-**voter** | **string** | Voter type | 
+**id** | **int32** | Internal identity | 
 
 ### Other Parameters
 
@@ -211,9 +213,12 @@ Other parameters are passed through a pointer to a apiProposalVotesRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
+ **option** | **string** | Option | 
+ **voter** | **string** | Voter type | 
  **limit** | **int32** | Count of requested entities | 
  **offset** | **int32** | Offset | 
+ **address** | **string** | Voter address | 
+ **validator** | **string** | Voter address | 
 
 ### Return type
 

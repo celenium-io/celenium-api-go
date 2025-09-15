@@ -52,10 +52,9 @@ func Test_celenium_ProposalAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var option string
-		var voter string
+		var id int32
 
-		resp, httpRes, err := apiClient.ProposalAPI.ProposalVotes(context.Background(), option, voter).Execute()
+		resp, httpRes, err := apiClient.ProposalAPI.ProposalVotes(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

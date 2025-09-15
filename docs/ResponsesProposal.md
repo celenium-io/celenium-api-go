@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **DepositTime** | Pointer to **time.Time** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **EndTime** | Pointer to **time.Time** |  | [optional] 
+**Error** | Pointer to **string** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **Metadata** | Pointer to **string** |  | [optional] 
@@ -309,6 +310,31 @@ SetEndTime sets EndTime field to given value.
 `func (o *ResponsesProposal) HasEndTime() bool`
 
 HasEndTime returns a boolean if a field has been set.
+
+### GetError
+
+`func (o *ResponsesProposal) GetError() string`
+
+GetError returns the Error field if non-nil, zero value otherwise.
+
+### GetErrorOk
+
+`func (o *ResponsesProposal) GetErrorOk() (*string, bool)`
+
+GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetError
+
+`func (o *ResponsesProposal) SetError(v string)`
+
+SetError sets Error field to given value.
+
+### HasError
+
+`func (o *ResponsesProposal) HasError() bool`
+
+HasError returns a boolean if a field has been set.
 
 ### GetHeight
 

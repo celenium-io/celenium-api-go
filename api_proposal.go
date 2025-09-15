@@ -331,10 +331,25 @@ func (a *ProposalAPIService) ListProposalExecute(r ApiListProposalRequest) ([]Re
 type ApiProposalVotesRequest struct {
 	ctx context.Context
 	ApiService *ProposalAPIService
-	option string
-	voter string
+	id int32
+	option *string
+	voter *string
 	limit *int32
 	offset *int32
+	address *string
+	validator *string
+}
+
+// Option
+func (r ApiProposalVotesRequest) Option(option string) ApiProposalVotesRequest {
+	r.option = &option
+	return r
+}
+
+// Voter type
+func (r ApiProposalVotesRequest) Voter(voter string) ApiProposalVotesRequest {
+	r.voter = &voter
+	return r
 }
 
 // Count of requested entities
@@ -349,6 +364,18 @@ func (r ApiProposalVotesRequest) Offset(offset int32) ApiProposalVotesRequest {
 	return r
 }
 
+// Voter address
+func (r ApiProposalVotesRequest) Address(address string) ApiProposalVotesRequest {
+	r.address = &address
+	return r
+}
+
+// Voter address
+func (r ApiProposalVotesRequest) Validator(validator string) ApiProposalVotesRequest {
+	r.validator = &validator
+	return r
+}
+
 func (r ApiProposalVotesRequest) Execute() ([]ResponsesVote, *http.Response, error) {
 	return r.ApiService.ProposalVotesExecute(r)
 }
@@ -359,16 +386,14 @@ ProposalVotes Get proposal's votes
 Get proposal's votes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param option Option
- @param voter Voter type
+ @param id Internal identity
  @return ApiProposalVotesRequest
 */
-func (a *ProposalAPIService) ProposalVotes(ctx context.Context, option string, voter string) ApiProposalVotesRequest {
+func (a *ProposalAPIService) ProposalVotes(ctx context.Context, id int32) ApiProposalVotesRequest {
 	return ApiProposalVotesRequest{
 		ApiService: a,
 		ctx: ctx,
-		option: option,
-		voter: voter,
+		id: id,
 	}
 }
 
@@ -388,18 +413,31 @@ func (a *ProposalAPIService) ProposalVotesExecute(r ApiProposalVotesRequest) ([]
 	}
 
 	localVarPath := localBasePath + "/proposal/{id}/votes"
-	localVarPath = strings.Replace(localVarPath, "{"+"option"+"}", url.PathEscape(parameterValueToString(r.option, "option")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"voter"+"}", url.PathEscape(parameterValueToString(r.voter, "voter")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.option == nil {
+		return localVarReturnValue, nil, reportError("option is required and must be specified")
+	}
+	if r.voter == nil {
+		return localVarReturnValue, nil, reportError("voter is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "option", r.option, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "voter", r.voter, "", "")
+	if r.address != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "address", r.address, "", "")
+	}
+	if r.validator != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "validator", r.validator, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
