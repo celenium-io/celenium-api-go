@@ -31,11 +31,13 @@ type ResponsesValidator struct {
 	Jailed *bool `json:"jailed,omitempty"`
 	MaxChangeRate *string `json:"max_change_rate,omitempty"`
 	MaxRate *string `json:"max_rate,omitempty"`
+	MessagesCount *int32 `json:"messages_count,omitempty"`
 	MinSelfDelegation *string `json:"min_self_delegation,omitempty"`
 	Moniker *string `json:"moniker,omitempty"`
 	Rate *string `json:"rate,omitempty"`
 	Rewards *string `json:"rewards,omitempty"`
 	Stake *string `json:"stake,omitempty"`
+	Version *int32 `json:"version,omitempty"`
 	VotingPower *string `json:"voting_power,omitempty"`
 	Website *string `json:"website,omitempty"`
 }
@@ -409,6 +411,38 @@ func (o *ResponsesValidator) SetMaxRate(v string) {
 	o.MaxRate = &v
 }
 
+// GetMessagesCount returns the MessagesCount field value if set, zero value otherwise.
+func (o *ResponsesValidator) GetMessagesCount() int32 {
+	if o == nil || IsNil(o.MessagesCount) {
+		var ret int32
+		return ret
+	}
+	return *o.MessagesCount
+}
+
+// GetMessagesCountOk returns a tuple with the MessagesCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesValidator) GetMessagesCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.MessagesCount) {
+		return nil, false
+	}
+	return o.MessagesCount, true
+}
+
+// HasMessagesCount returns a boolean if a field has been set.
+func (o *ResponsesValidator) HasMessagesCount() bool {
+	if o != nil && !IsNil(o.MessagesCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessagesCount gets a reference to the given int32 and assigns it to the MessagesCount field.
+func (o *ResponsesValidator) SetMessagesCount(v int32) {
+	o.MessagesCount = &v
+}
+
 // GetMinSelfDelegation returns the MinSelfDelegation field value if set, zero value otherwise.
 func (o *ResponsesValidator) GetMinSelfDelegation() string {
 	if o == nil || IsNil(o.MinSelfDelegation) {
@@ -569,6 +603,38 @@ func (o *ResponsesValidator) SetStake(v string) {
 	o.Stake = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *ResponsesValidator) GetVersion() int32 {
+	if o == nil || IsNil(o.Version) {
+		var ret int32
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesValidator) GetVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.Version) {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *ResponsesValidator) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int32 and assigns it to the Version field.
+func (o *ResponsesValidator) SetVersion(v int32) {
+	o.Version = &v
+}
+
 // GetVotingPower returns the VotingPower field value if set, zero value otherwise.
 func (o *ResponsesValidator) GetVotingPower() string {
 	if o == nil || IsNil(o.VotingPower) {
@@ -676,6 +742,9 @@ func (o ResponsesValidator) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaxRate) {
 		toSerialize["max_rate"] = o.MaxRate
 	}
+	if !IsNil(o.MessagesCount) {
+		toSerialize["messages_count"] = o.MessagesCount
+	}
 	if !IsNil(o.MinSelfDelegation) {
 		toSerialize["min_self_delegation"] = o.MinSelfDelegation
 	}
@@ -690,6 +759,9 @@ func (o ResponsesValidator) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Stake) {
 		toSerialize["stake"] = o.Stake
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	if !IsNil(o.VotingPower) {
 		toSerialize["voting_power"] = o.VotingPower

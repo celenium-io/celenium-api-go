@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**ValidatorCount**](ValidatorAPI.md#ValidatorCount) | **Get** /validators/count | Get validator&#39;s count by status
 [**ValidatorDelegators**](ValidatorAPI.md#ValidatorDelegators) | **Get** /validators/{id}/delegators | Get validator&#39;s delegators
 [**ValidatorJails**](ValidatorAPI.md#ValidatorJails) | **Get** /validators/{id}/jails | Get validator&#39;s jails
+[**ValidatorMessages**](ValidatorAPI.md#ValidatorMessages) | **Get** /validators/{id}/messages | Get validator messages
 [**ValidatorVotes**](ValidatorAPI.md#ValidatorVotes) | **Get** /validators/{id}/votes | Get list of votes for validator
 
 
@@ -497,6 +498,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ResponsesJail**](ResponsesJail.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ValidatorMessages
+
+> []ResponsesMessage ValidatorMessages(ctx, id).Limit(limit).Offset(offset).Sort(sort).From(from).To(to).Execute()
+
+Get validator messages
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	id := int32(56) // int32 | Internal validator id
+	limit := int32(56) // int32 | Count of requested entities (optional)
+	offset := int32(56) // int32 | Offset (optional)
+	sort := "sort_example" // string | Sort order (optional)
+	from := int32(56) // int32 | Time from in unix timestamp (optional)
+	to := int32(56) // int32 | Time to in unix timestamp (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ValidatorAPI.ValidatorMessages(context.Background(), id).Limit(limit).Offset(offset).Sort(sort).From(from).To(to).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ValidatorAPI.ValidatorMessages``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ValidatorMessages`: []ResponsesMessage
+	fmt.Fprintf(os.Stdout, "Response from `ValidatorAPI.ValidatorMessages`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Internal validator id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiValidatorMessagesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Count of requested entities | 
+ **offset** | **int32** | Offset | 
+ **sort** | **string** | Sort order | 
+ **from** | **int32** | Time from in unix timestamp | 
+ **to** | **int32** | Time to in unix timestamp | 
+
+### Return type
+
+[**[]ResponsesMessage**](ResponsesMessage.md)
 
 ### Authorization
 

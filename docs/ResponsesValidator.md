@@ -15,11 +15,13 @@ Name | Type | Description | Notes
 **Jailed** | Pointer to **bool** |  | [optional] 
 **MaxChangeRate** | Pointer to **string** |  | [optional] 
 **MaxRate** | Pointer to **string** |  | [optional] 
+**MessagesCount** | Pointer to **int32** |  | [optional] 
 **MinSelfDelegation** | Pointer to **string** |  | [optional] 
 **Moniker** | Pointer to **string** |  | [optional] 
 **Rate** | Pointer to **string** |  | [optional] 
 **Rewards** | Pointer to **string** |  | [optional] 
 **Stake** | Pointer to **string** |  | [optional] 
+**Version** | Pointer to **int32** |  | [optional] 
 **VotingPower** | Pointer to **string** |  | [optional] 
 **Website** | Pointer to **string** |  | [optional] 
 
@@ -317,6 +319,31 @@ SetMaxRate sets MaxRate field to given value.
 
 HasMaxRate returns a boolean if a field has been set.
 
+### GetMessagesCount
+
+`func (o *ResponsesValidator) GetMessagesCount() int32`
+
+GetMessagesCount returns the MessagesCount field if non-nil, zero value otherwise.
+
+### GetMessagesCountOk
+
+`func (o *ResponsesValidator) GetMessagesCountOk() (*int32, bool)`
+
+GetMessagesCountOk returns a tuple with the MessagesCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessagesCount
+
+`func (o *ResponsesValidator) SetMessagesCount(v int32)`
+
+SetMessagesCount sets MessagesCount field to given value.
+
+### HasMessagesCount
+
+`func (o *ResponsesValidator) HasMessagesCount() bool`
+
+HasMessagesCount returns a boolean if a field has been set.
+
 ### GetMinSelfDelegation
 
 `func (o *ResponsesValidator) GetMinSelfDelegation() string`
@@ -441,6 +468,31 @@ SetStake sets Stake field to given value.
 `func (o *ResponsesValidator) HasStake() bool`
 
 HasStake returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *ResponsesValidator) GetVersion() int32`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *ResponsesValidator) GetVersionOk() (*int32, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *ResponsesValidator) SetVersion(v int32)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *ResponsesValidator) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 ### GetVotingPower
 

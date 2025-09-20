@@ -186,6 +186,7 @@ Class | Method | HTTP request | Description
 *ValidatorAPI* | [**ValidatorCount**](docs/ValidatorAPI.md#validatorcount) | **Get** /validators/count | Get validator&#39;s count by status
 *ValidatorAPI* | [**ValidatorDelegators**](docs/ValidatorAPI.md#validatordelegators) | **Get** /validators/{id}/delegators | Get validator&#39;s delegators
 *ValidatorAPI* | [**ValidatorJails**](docs/ValidatorAPI.md#validatorjails) | **Get** /validators/{id}/jails | Get validator&#39;s jails
+*ValidatorAPI* | [**ValidatorMessages**](docs/ValidatorAPI.md#validatormessages) | **Get** /validators/{id}/messages | Get validator messages
 *ValidatorAPI* | [**ValidatorVotes**](docs/ValidatorAPI.md#validatorvotes) | **Get** /validators/{id}/votes | Get list of votes for validator
 *VestingAPI* | [**GetVestingPeriods**](docs/VestingAPI.md#getvestingperiods) | **Get** /vesting/{id}/periods | Periods vesting periods by id
 

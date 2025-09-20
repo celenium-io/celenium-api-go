@@ -125,6 +125,13 @@ const (
 	MsgSetRoutingIsmDomain TypesMsgType = "MsgSetRoutingIsmDomain"
 	MsgRemoveRoutingIsmDomain TypesMsgType = "MsgRemoveRoutingIsmDomain"
 	MsgUpdateRoutingIsmOwner TypesMsgType = "MsgUpdateRoutingIsmOwner"
+	MsgUpdateBlobParams TypesMsgType = "MsgUpdateBlobParams"
+	MsgPruneExpiredGrants TypesMsgType = "MsgPruneExpiredGrants"
+	MsgSetSendEnabled TypesMsgType = "MsgSetSendEnabled"
+	MsgAuthorizeCircuitBreaker TypesMsgType = "MsgAuthorizeCircuitBreaker"
+	MsgResetCircuitBreaker TypesMsgType = "MsgResetCircuitBreaker"
+	MsgTripCircuitBreaker TypesMsgType = "MsgTripCircuitBreaker"
+	MsgModuleQuerySafe TypesMsgType = "MsgModuleQuerySafe"
 )
 
 // All allowed values of TypesMsgType enum
@@ -233,6 +240,13 @@ var AllowedTypesMsgTypeEnumValues = []TypesMsgType{
 	"MsgSetRoutingIsmDomain",
 	"MsgRemoveRoutingIsmDomain",
 	"MsgUpdateRoutingIsmOwner",
+	"MsgUpdateBlobParams",
+	"MsgPruneExpiredGrants",
+	"MsgSetSendEnabled",
+	"MsgAuthorizeCircuitBreaker",
+	"MsgResetCircuitBreaker",
+	"MsgTripCircuitBreaker",
+	"MsgModuleQuerySafe",
 }
 
 func (v *TypesMsgType) UnmarshalJSON(src []byte) error {

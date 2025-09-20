@@ -104,6 +104,7 @@ const (
 	EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsmDomain TypesEventType = "hyperlane.core.interchain_security.v1.EventSetRoutingIsmDomain"
 	EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsm TypesEventType = "hyperlane.core.interchain_security.v1.EventSetRoutingIsm"
 	EventTypeHyperlanecoreinterchainSecurityv1EventCreateRoutingIsm TypesEventType = "hyperlane.core.interchain_security.v1.EventCreateRoutingIsm"
+	EventTypeSignalVersion TypesEventType = "signal_version"
 )
 
 // All allowed values of TypesEventType enum
@@ -191,6 +192,7 @@ var AllowedTypesEventTypeEnumValues = []TypesEventType{
 	"hyperlane.core.interchain_security.v1.EventSetRoutingIsmDomain",
 	"hyperlane.core.interchain_security.v1.EventSetRoutingIsm",
 	"hyperlane.core.interchain_security.v1.EventCreateRoutingIsm",
+	"signal_version",
 }
 
 func (v *TypesEventType) UnmarshalJSON(src []byte) error {

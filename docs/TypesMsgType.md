@@ -211,6 +211,20 @@
 
 * `MsgUpdateRoutingIsmOwner` (value: `"MsgUpdateRoutingIsmOwner"`)
 
+* `MsgUpdateBlobParams` (value: `"MsgUpdateBlobParams"`)
+
+* `MsgPruneExpiredGrants` (value: `"MsgPruneExpiredGrants"`)
+
+* `MsgSetSendEnabled` (value: `"MsgSetSendEnabled"`)
+
+* `MsgAuthorizeCircuitBreaker` (value: `"MsgAuthorizeCircuitBreaker"`)
+
+* `MsgResetCircuitBreaker` (value: `"MsgResetCircuitBreaker"`)
+
+* `MsgTripCircuitBreaker` (value: `"MsgTripCircuitBreaker"`)
+
+* `MsgModuleQuerySafe` (value: `"MsgModuleQuerySafe"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

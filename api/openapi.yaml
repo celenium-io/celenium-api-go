@@ -557,6 +557,13 @@ paths:
           - MsgSetRoutingIsmDomain
           - MsgRemoveRoutingIsmDomain
           - MsgUpdateRoutingIsmOwner
+          - MsgUpdateBlobParams
+          - MsgPruneExpiredGrants
+          - MsgSetSendEnabled
+          - MsgAuthorizeCircuitBreaker
+          - MsgResetCircuitBreaker
+          - MsgTripCircuitBreaker
+          - MsgModuleQuerySafe
           type: string
       responses:
         "200":
@@ -851,6 +858,13 @@ paths:
           - MsgSetRoutingIsmDomain
           - MsgRemoveRoutingIsmDomain
           - MsgUpdateRoutingIsmOwner
+          - MsgUpdateBlobParams
+          - MsgPruneExpiredGrants
+          - MsgSetSendEnabled
+          - MsgAuthorizeCircuitBreaker
+          - MsgResetCircuitBreaker
+          - MsgTripCircuitBreaker
+          - MsgModuleQuerySafe
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -1607,6 +1621,13 @@ paths:
           - MsgSetRoutingIsmDomain
           - MsgRemoveRoutingIsmDomain
           - MsgUpdateRoutingIsmOwner
+          - MsgUpdateBlobParams
+          - MsgPruneExpiredGrants
+          - MsgSetSendEnabled
+          - MsgAuthorizeCircuitBreaker
+          - MsgResetCircuitBreaker
+          - MsgTripCircuitBreaker
+          - MsgModuleQuerySafe
           type: string
       - description: Comma-separated message types which should be excluded from list
         in: query
@@ -1717,6 +1738,13 @@ paths:
           - MsgSetRoutingIsmDomain
           - MsgRemoveRoutingIsmDomain
           - MsgUpdateRoutingIsmOwner
+          - MsgUpdateBlobParams
+          - MsgPruneExpiredGrants
+          - MsgSetSendEnabled
+          - MsgAuthorizeCircuitBreaker
+          - MsgResetCircuitBreaker
+          - MsgTripCircuitBreaker
+          - MsgModuleQuerySafe
           type: string
       responses:
         "200":
@@ -4882,6 +4910,11 @@ paths:
           - rewards
           - commissions
           - flow
+          - delegations
+          - unbondings
+          - delegations_count
+          - unbondings_count
+          - cumulative_flow
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -5204,6 +5237,13 @@ paths:
           - MsgSetRoutingIsmDomain
           - MsgRemoveRoutingIsmDomain
           - MsgUpdateRoutingIsmOwner
+          - MsgUpdateBlobParams
+          - MsgPruneExpiredGrants
+          - MsgSetSendEnabled
+          - MsgAuthorizeCircuitBreaker
+          - MsgResetCircuitBreaker
+          - MsgTripCircuitBreaker
+          - MsgModuleQuerySafe
           type: string
       - description: Comma-separated message types list which should be excluded
         in: query
@@ -5314,6 +5354,13 @@ paths:
           - MsgSetRoutingIsmDomain
           - MsgRemoveRoutingIsmDomain
           - MsgUpdateRoutingIsmOwner
+          - MsgUpdateBlobParams
+          - MsgPruneExpiredGrants
+          - MsgSetSendEnabled
+          - MsgAuthorizeCircuitBreaker
+          - MsgResetCircuitBreaker
+          - MsgTripCircuitBreaker
+          - MsgModuleQuerySafe
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -5910,6 +5957,72 @@ paths:
                 $ref: "#/components/schemas/handler.Error"
           description: Internal Server Error
       summary: Get validator's jails
+      tags:
+      - validator
+  /validators/{id}/messages:
+    get:
+      description: Get validator messages
+      operationId: validator-messages
+      parameters:
+      - description: Internal validator id
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          minimum: 1
+          type: integer
+      - description: Sort order
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - description: Time from in unix timestamp
+        in: query
+        name: from
+        schema:
+          type: integer
+      - description: Time to in unix timestamp
+        in: query
+        name: to
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.Message"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get validator messages
       tags:
       - validator
   /validators/{id}/uptime:
@@ -9272,6 +9385,7 @@ components:
         total_supply: "312"
         total_tx: 23456
         total_validators: 100
+        version: 5
         last_height: 100
         total_accounts: 43
         last_time: 2023-07-04T03:10:57Z
@@ -9351,6 +9465,10 @@ components:
           example: "312"
           format: string
           type: string
+        version:
+          example: 5
+          format: int64
+          type: integer
       type: object
     responses.TPS:
       properties:
@@ -9646,9 +9764,11 @@ components:
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         max_rate: "0.1"
         moniker: Easy 2 Stake
+        version: 5
         voting_power: "1"
         jailed: false
         stake: "1"
+        messages_count: 1
         rate: "0.03"
         commissions: "1"
         cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
@@ -9691,6 +9811,9 @@ components:
         max_rate:
           example: "0.1"
           type: string
+        messages_count:
+          example: 1
+          type: integer
         min_self_delegation:
           example: "1"
           type: string
@@ -9706,6 +9829,9 @@ components:
         stake:
           example: "1"
           type: string
+        version:
+          example: 5
+          type: integer
         voting_power:
           example: "1"
           type: string
@@ -9947,6 +10073,7 @@ components:
       - hyperlane.core.interchain_security.v1.EventSetRoutingIsmDomain
       - hyperlane.core.interchain_security.v1.EventSetRoutingIsm
       - hyperlane.core.interchain_security.v1.EventCreateRoutingIsm
+      - signal_version
       type: string
       x-enum-varnames:
       - EventTypeUnknown
@@ -10032,6 +10159,7 @@ components:
       - EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsmDomain
       - EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsm
       - EventTypeHyperlanecoreinterchainSecurityv1EventCreateRoutingIsm
+      - EventTypeSignalVersion
     types.MsgAddressType:
       enum:
       - validator
@@ -10196,6 +10324,13 @@ components:
       - MsgSetRoutingIsmDomain
       - MsgRemoveRoutingIsmDomain
       - MsgUpdateRoutingIsmOwner
+      - MsgUpdateBlobParams
+      - MsgPruneExpiredGrants
+      - MsgSetSendEnabled
+      - MsgAuthorizeCircuitBreaker
+      - MsgResetCircuitBreaker
+      - MsgTripCircuitBreaker
+      - MsgModuleQuerySafe
       type: string
       x-enum-varnames:
       - MsgUnknown
@@ -10302,6 +10437,13 @@ components:
       - MsgSetRoutingIsmDomain
       - MsgRemoveRoutingIsmDomain
       - MsgUpdateRoutingIsmOwner
+      - MsgUpdateBlobParams
+      - MsgPruneExpiredGrants
+      - MsgSetSendEnabled
+      - MsgAuthorizeCircuitBreaker
+      - MsgResetCircuitBreaker
+      - MsgTripCircuitBreaker
+      - MsgModuleQuerySafe
   securitySchemes:
     ApiKeyAuth:
       description: To authorize your requests you have to select the required tariff

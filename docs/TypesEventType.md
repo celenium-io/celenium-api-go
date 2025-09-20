@@ -169,6 +169,8 @@
 
 * `EventTypeHyperlanecoreinterchainSecurityv1EventCreateRoutingIsm` (value: `"hyperlane.core.interchain_security.v1.EventCreateRoutingIsm"`)
 
+* `EventTypeSignalVersion` (value: `"signal_version"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

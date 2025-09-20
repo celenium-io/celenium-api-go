@@ -38,6 +38,7 @@ type ResponsesState struct {
 	TotalTx *int64 `json:"total_tx,omitempty"`
 	TotalValidators *int64 `json:"total_validators,omitempty"`
 	TotalVotingPower *string `json:"total_voting_power,omitempty"`
+	Version *int64 `json:"version,omitempty"`
 }
 
 // NewResponsesState instantiates a new ResponsesState object
@@ -601,6 +602,38 @@ func (o *ResponsesState) SetTotalVotingPower(v string) {
 	o.TotalVotingPower = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *ResponsesState) GetVersion() int64 {
+	if o == nil || IsNil(o.Version) {
+		var ret int64
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesState) GetVersionOk() (*int64, bool) {
+	if o == nil || IsNil(o.Version) {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *ResponsesState) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int64 and assigns it to the Version field.
+func (o *ResponsesState) SetVersion(v int64) {
+	o.Version = &v
+}
+
 func (o ResponsesState) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -661,6 +694,9 @@ func (o ResponsesState) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalVotingPower) {
 		toSerialize["total_voting_power"] = o.TotalVotingPower
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil
 }

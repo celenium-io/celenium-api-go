@@ -116,6 +116,20 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ValidatorAPIService ValidatorMessages", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		resp, httpRes, err := apiClient.ValidatorAPI.ValidatorMessages(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ValidatorAPIService ValidatorVotes", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
