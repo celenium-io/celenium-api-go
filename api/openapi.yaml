@@ -1888,6 +1888,11 @@ paths:
         required: true
         schema:
           type: string
+      - description: Comma-separated array of share versions. Default is 0
+        in: query
+        name: versions
+        schema:
+          type: string
       responses:
         "200":
           content:
@@ -4877,6 +4882,43 @@ paths:
       summary: Get histogram for square size distribution
       tags:
       - stats
+  /stats/staking/distribution:
+    get:
+      description: Get histogram for staking
+      operationId: stats-staking-distribution
+      parameters:
+      - description: Time from in unix timestamp
+        in: query
+        name: from
+        schema:
+          type: integer
+      - description: Time to in unix timestamp
+        in: query
+        name: to
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responses.StakingDistribution"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get histogram for staking
+      tags:
+      - stats
   /stats/staking/series/{id}/{name}/{timeframe}:
     get:
       description: Get histogram for staking with precomputed stats by series name
@@ -6453,6 +6495,7 @@ components:
           logo: https://some_link.com/image.png
           id: 321
           slug: rollup_slug
+        share_version: 0
         signer:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -6481,6 +6524,10 @@ components:
           $ref: "#/components/schemas/responses.Namespace"
         rollup:
           $ref: "#/components/schemas/responses.ShortRollup"
+        share_version:
+          example: 0
+          format: integer
+          type: integer
         signer:
           $ref: "#/components/schemas/responses.ShortAddress"
         size:
@@ -7962,6 +8009,7 @@ components:
         id: 200
         time: 2023-07-04T03:10:57Z
         height: 100
+        share_version: 0
         signer:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -7990,6 +8038,10 @@ components:
           example: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
           format: base64
           type: string
+        share_version:
+          example: 0
+          format: integer
+          type: integer
         signer:
           $ref: "#/components/schemas/responses.ShortAddress"
         size:
@@ -9376,6 +9428,27 @@ components:
           $ref: "#/components/schemas/responses.TimeValueItem"
         type: array
       type: object
+    responses.StakingDistribution:
+      additionalProperties:
+        items:
+          $ref: "#/components/schemas/responses.StakingDistributionItem"
+        type: array
+      type: object
+    responses.StakingDistributionItem:
+      properties:
+        percent:
+          example: "0.17632"
+          format: string
+          type: string
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        value:
+          example: "0.17632"
+          format: string
+          type: string
+      type: object
     responses.State:
       example:
         synced: true
@@ -9747,6 +9820,7 @@ components:
       type: object
     responses.Validator:
       example:
+        creation_time: 2025-07-04T03:10:57Z
         website: https://www.easy2stake.com/
         address:
           celestials:
@@ -9790,6 +9864,10 @@ components:
           type: string
         contacts:
           example: security@0xfury.com
+          type: string
+        creation_time:
+          example: 2025-07-04T03:10:57Z
+          format: date-time
           type: string
         delegator:
           $ref: "#/components/schemas/responses.ShortAddress"

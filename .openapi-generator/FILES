@@ -95,6 +95,7 @@ docs/ResponsesShortValidator.md
 docs/ResponsesSignalVersion.md
 docs/ResponsesSignedBlocks.md
 docs/ResponsesSizeGroup.md
+docs/ResponsesStakingDistributionItem.md
 docs/ResponsesState.md
 docs/ResponsesTPS.md
 docs/ResponsesTimeValueItem.md
@@ -188,6 +189,7 @@ model_responses_short_validator.go
 model_responses_signal_version.go
 model_responses_signed_blocks.go
 model_responses_size_group.go
+model_responses_staking_distribution_item.go
 model_responses_state.go
 model_responses_time_value_item.go
 model_responses_tps.go

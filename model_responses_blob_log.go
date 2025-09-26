@@ -27,6 +27,7 @@ type ResponsesBlobLog struct {
 	Id *int32 `json:"id,omitempty"`
 	Namespace *ResponsesNamespace `json:"namespace,omitempty"`
 	Rollup *ResponsesShortRollup `json:"rollup,omitempty"`
+	ShareVersion *int32 `json:"share_version,omitempty"`
 	Signer *ResponsesShortAddress `json:"signer,omitempty"`
 	Size *int32 `json:"size,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
@@ -242,6 +243,38 @@ func (o *ResponsesBlobLog) SetRollup(v ResponsesShortRollup) {
 	o.Rollup = &v
 }
 
+// GetShareVersion returns the ShareVersion field value if set, zero value otherwise.
+func (o *ResponsesBlobLog) GetShareVersion() int32 {
+	if o == nil || IsNil(o.ShareVersion) {
+		var ret int32
+		return ret
+	}
+	return *o.ShareVersion
+}
+
+// GetShareVersionOk returns a tuple with the ShareVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesBlobLog) GetShareVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.ShareVersion) {
+		return nil, false
+	}
+	return o.ShareVersion, true
+}
+
+// HasShareVersion returns a boolean if a field has been set.
+func (o *ResponsesBlobLog) HasShareVersion() bool {
+	if o != nil && !IsNil(o.ShareVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetShareVersion gets a reference to the given int32 and assigns it to the ShareVersion field.
+func (o *ResponsesBlobLog) SetShareVersion(v int32) {
+	o.ShareVersion = &v
+}
+
 // GetSigner returns the Signer field value if set, zero value otherwise.
 func (o *ResponsesBlobLog) GetSigner() ResponsesShortAddress {
 	if o == nil || IsNil(o.Signer) {
@@ -397,6 +430,9 @@ func (o ResponsesBlobLog) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Rollup) {
 		toSerialize["rollup"] = o.Rollup
+	}
+	if !IsNil(o.ShareVersion) {
+		toSerialize["share_version"] = o.ShareVersion
 	}
 	if !IsNil(o.Signer) {
 		toSerialize["signer"] = o.Signer

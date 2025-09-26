@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Height** | Pointer to **int32** |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
+**ShareVersion** | Pointer to **int32** |  | [optional] 
 **Signer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Size** | Pointer to **int32** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
@@ -157,6 +158,31 @@ SetNamespace sets Namespace field to given value.
 `func (o *ResponsesLightBlobLog) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
+
+### GetShareVersion
+
+`func (o *ResponsesLightBlobLog) GetShareVersion() int32`
+
+GetShareVersion returns the ShareVersion field if non-nil, zero value otherwise.
+
+### GetShareVersionOk
+
+`func (o *ResponsesLightBlobLog) GetShareVersionOk() (*int32, bool)`
+
+GetShareVersionOk returns a tuple with the ShareVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShareVersion
+
+`func (o *ResponsesLightBlobLog) SetShareVersion(v int32)`
+
+SetShareVersion sets ShareVersion field to given value.
+
+### HasShareVersion
+
+`func (o *ResponsesLightBlobLog) HasShareVersion() bool`
+
+HasShareVersion returns a boolean if a field has been set.
 
 ### GetSigner
 

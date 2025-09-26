@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## GasEstimateForPfb
 
-> int32 GasEstimateForPfb(ctx).Sizes(sizes).Execute()
+> int32 GasEstimateForPfb(ctx).Sizes(sizes).Versions(versions).Execute()
 
 Get estimated gas for pay for blob
 
@@ -32,10 +32,11 @@ import (
 
 func main() {
 	sizes := "sizes_example" // string | Comma-separated array of blob sizes
+	versions := "versions_example" // string | Comma-separated array of share versions. Default is 0 (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GasAPI.GasEstimateForPfb(context.Background()).Sizes(sizes).Execute()
+	resp, r, err := apiClient.GasAPI.GasEstimateForPfb(context.Background()).Sizes(sizes).Versions(versions).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `GasAPI.GasEstimateForPfb``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -57,6 +58,7 @@ Other parameters are passed through a pointer to a apiGasEstimateForPfbRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sizes** | **string** | Comma-separated array of blob sizes | 
+ **versions** | **string** | Comma-separated array of share versions. Default is 0 | 
 
 ### Return type
 

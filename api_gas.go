@@ -28,11 +28,18 @@ type ApiGasEstimateForPfbRequest struct {
 	ctx context.Context
 	ApiService *GasAPIService
 	sizes *string
+	versions *string
 }
 
 // Comma-separated array of blob sizes
 func (r ApiGasEstimateForPfbRequest) Sizes(sizes string) ApiGasEstimateForPfbRequest {
 	r.sizes = &sizes
+	return r
+}
+
+// Comma-separated array of share versions. Default is 0
+func (r ApiGasEstimateForPfbRequest) Versions(versions string) ApiGasEstimateForPfbRequest {
+	r.versions = &versions
 	return r
 }
 
@@ -80,6 +87,9 @@ func (a *GasAPIService) GasEstimateForPfbExecute(r ApiGasEstimateForPfbRequest) 
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "sizes", r.sizes, "", "")
+	if r.versions != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "versions", r.versions, "", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

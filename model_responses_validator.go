@@ -13,6 +13,7 @@ package celenium
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the ResponsesValidator type satisfies the MappedNullable interface at compile time
@@ -24,6 +25,7 @@ type ResponsesValidator struct {
 	Commissions *string `json:"commissions,omitempty"`
 	ConsAddress *string `json:"cons_address,omitempty"`
 	Contacts *string `json:"contacts,omitempty"`
+	CreationTime *time.Time `json:"creation_time,omitempty"`
 	Delegator *ResponsesShortAddress `json:"delegator,omitempty"`
 	Details *string `json:"details,omitempty"`
 	Id *int32 `json:"id,omitempty"`
@@ -185,6 +187,38 @@ func (o *ResponsesValidator) HasContacts() bool {
 // SetContacts gets a reference to the given string and assigns it to the Contacts field.
 func (o *ResponsesValidator) SetContacts(v string) {
 	o.Contacts = &v
+}
+
+// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
+func (o *ResponsesValidator) GetCreationTime() time.Time {
+	if o == nil || IsNil(o.CreationTime) {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreationTime
+}
+
+// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesValidator) GetCreationTimeOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.CreationTime) {
+		return nil, false
+	}
+	return o.CreationTime, true
+}
+
+// HasCreationTime returns a boolean if a field has been set.
+func (o *ResponsesValidator) HasCreationTime() bool {
+	if o != nil && !IsNil(o.CreationTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
+func (o *ResponsesValidator) SetCreationTime(v time.Time) {
+	o.CreationTime = &v
 }
 
 // GetDelegator returns the Delegator field value if set, zero value otherwise.
@@ -720,6 +754,9 @@ func (o ResponsesValidator) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Contacts) {
 		toSerialize["contacts"] = o.Contacts
+	}
+	if !IsNil(o.CreationTime) {
+		toSerialize["creation_time"] = o.CreationTime
 	}
 	if !IsNil(o.Delegator) {
 		toSerialize["delegator"] = o.Delegator

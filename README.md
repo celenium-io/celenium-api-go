@@ -169,6 +169,7 @@ Class | Method | HTTP request | Description
 *StatsAPI* | [**StatsSeriesCumulative**](docs/StatsAPI.md#statsseriescumulative) | **Get** /stats/series/{name}/{timeframe}/cumulative | Get cumulative histogram with precomputed stats
 *StatsAPI* | [**StatsSizeGroups**](docs/StatsAPI.md#statssizegroups) | **Get** /stats/size_groups | Get blobs count grouped by size
 *StatsAPI* | [**StatsSquareSize**](docs/StatsAPI.md#statssquaresize) | **Get** /stats/square_size | Get histogram for square size distribution
+*StatsAPI* | [**StatsStakingDistribution**](docs/StatsAPI.md#statsstakingdistribution) | **Get** /stats/staking/distribution | Get histogram for staking
 *StatsAPI* | [**StatsStakingSeries**](docs/StatsAPI.md#statsstakingseries) | **Get** /stats/staking/series/{id}/{name}/{timeframe} | Get histogram for staking with precomputed stats
 *StatsAPI* | [**StatsSummary**](docs/StatsAPI.md#statssummary) | **Get** /stats/summary/{table}/{function} | Get value by table and function
 *TransactionsAPI* | [**GetTransaction**](docs/TransactionsAPI.md#gettransaction) | **Get** /tx/{hash} | Get transaction by hash
@@ -260,6 +261,7 @@ Class | Method | HTTP request | Description
  - [ResponsesSignalVersion](docs/ResponsesSignalVersion.md)
  - [ResponsesSignedBlocks](docs/ResponsesSignedBlocks.md)
  - [ResponsesSizeGroup](docs/ResponsesSizeGroup.md)
+ - [ResponsesStakingDistributionItem](docs/ResponsesStakingDistributionItem.md)
  - [ResponsesState](docs/ResponsesState.md)
  - [ResponsesTPS](docs/ResponsesTPS.md)
  - [ResponsesTimeValueItem](docs/ResponsesTimeValueItem.md)

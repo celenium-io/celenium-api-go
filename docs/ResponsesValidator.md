@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Commissions** | Pointer to **string** |  | [optional] 
 **ConsAddress** | Pointer to **string** |  | [optional] 
 **Contacts** | Pointer to **string** |  | [optional] 
+**CreationTime** | Pointer to **time.Time** |  | [optional] 
 **Delegator** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Details** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] 
@@ -143,6 +144,31 @@ SetContacts sets Contacts field to given value.
 `func (o *ResponsesValidator) HasContacts() bool`
 
 HasContacts returns a boolean if a field has been set.
+
+### GetCreationTime
+
+`func (o *ResponsesValidator) GetCreationTime() time.Time`
+
+GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+
+### GetCreationTimeOk
+
+`func (o *ResponsesValidator) GetCreationTimeOk() (*time.Time, bool)`
+
+GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreationTime
+
+`func (o *ResponsesValidator) SetCreationTime(v time.Time)`
+
+SetCreationTime sets CreationTime field to given value.
+
+### HasCreationTime
+
+`func (o *ResponsesValidator) HasCreationTime() bool`
+
+HasCreationTime returns a boolean if a field has been set.
 
 ### GetDelegator
 

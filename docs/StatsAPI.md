@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**StatsSeriesCumulative**](StatsAPI.md#StatsSeriesCumulative) | **Get** /stats/series/{name}/{timeframe}/cumulative | Get cumulative histogram with precomputed stats
 [**StatsSizeGroups**](StatsAPI.md#StatsSizeGroups) | **Get** /stats/size_groups | Get blobs count grouped by size
 [**StatsSquareSize**](StatsAPI.md#StatsSquareSize) | **Get** /stats/square_size | Get histogram for square size distribution
+[**StatsStakingDistribution**](StatsAPI.md#StatsStakingDistribution) | **Get** /stats/staking/distribution | Get histogram for staking
 [**StatsStakingSeries**](StatsAPI.md#StatsStakingSeries) | **Get** /stats/staking/series/{id}/{name}/{timeframe} | Get histogram for staking with precomputed stats
 [**StatsSummary**](StatsAPI.md#StatsSummary) | **Get** /stats/summary/{table}/{function} | Get value by table and function
 
@@ -1055,6 +1056,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]map[string][]ResponsesTimeValueItem**](map.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StatsStakingDistribution
+
+> map[string][]ResponsesStakingDistributionItem StatsStakingDistribution(ctx).From(from).To(to).Execute()
+
+Get histogram for staking
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	from := int32(56) // int32 | Time from in unix timestamp (optional)
+	to := int32(56) // int32 | Time to in unix timestamp (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StatsAPI.StatsStakingDistribution(context.Background()).From(from).To(to).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StatsAPI.StatsStakingDistribution``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StatsStakingDistribution`: map[string][]ResponsesStakingDistributionItem
+	fmt.Fprintf(os.Stdout, "Response from `StatsAPI.StatsStakingDistribution`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStatsStakingDistributionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **int32** | Time from in unix timestamp | 
+ **to** | **int32** | Time to in unix timestamp | 
+
+### Return type
+
+[**map[string][]ResponsesStakingDistributionItem**](array.md)
 
 ### Authorization
 
