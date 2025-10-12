@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Body** | Pointer to **string** |  | [optional] 
 **Counterparty** | Pointer to [**ResponsesHyperlaneCounterparty**](ResponsesHyperlaneCounterparty.md) |  | [optional] 
 **Denom** | Pointer to **string** |  | [optional] 
+**GasPayment** | Pointer to [**ResponsesGasPayment**](ResponsesGasPayment.md) |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **Mailbox** | Pointer to ***os.File** |  | [optional] 
@@ -139,6 +140,31 @@ SetDenom sets Denom field to given value.
 `func (o *ResponsesHyperlaneTransfer) HasDenom() bool`
 
 HasDenom returns a boolean if a field has been set.
+
+### GetGasPayment
+
+`func (o *ResponsesHyperlaneTransfer) GetGasPayment() ResponsesGasPayment`
+
+GetGasPayment returns the GasPayment field if non-nil, zero value otherwise.
+
+### GetGasPaymentOk
+
+`func (o *ResponsesHyperlaneTransfer) GetGasPaymentOk() (*ResponsesGasPayment, bool)`
+
+GetGasPaymentOk returns a tuple with the GasPayment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGasPayment
+
+`func (o *ResponsesHyperlaneTransfer) SetGasPayment(v ResponsesGasPayment)`
+
+SetGasPayment sets GasPayment field to given value.
+
+### HasGasPayment
+
+`func (o *ResponsesHyperlaneTransfer) HasGasPayment() bool`
+
+HasGasPayment returns a boolean if a field has been set.
 
 ### GetHeight
 

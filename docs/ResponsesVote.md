@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **DepositTime** | Pointer to **time.Time** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
+**Proposal** | Pointer to [**ResponsesShortProposal**](ResponsesShortProposal.md) |  | [optional] 
 **ProposalId** | Pointer to **int64** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **Validator** | Pointer to [**ResponsesShortValidator**](ResponsesShortValidator.md) |  | [optional] 
@@ -107,6 +108,31 @@ SetId sets Id field to given value.
 `func (o *ResponsesVote) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetProposal
+
+`func (o *ResponsesVote) GetProposal() ResponsesShortProposal`
+
+GetProposal returns the Proposal field if non-nil, zero value otherwise.
+
+### GetProposalOk
+
+`func (o *ResponsesVote) GetProposalOk() (*ResponsesShortProposal, bool)`
+
+GetProposalOk returns a tuple with the Proposal field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProposal
+
+`func (o *ResponsesVote) SetProposal(v ResponsesShortProposal)`
+
+SetProposal sets Proposal field to given value.
+
+### HasProposal
+
+`func (o *ResponsesVote) HasProposal() bool`
+
+HasProposal returns a boolean if a field has been set.
 
 ### GetProposalId
 

@@ -130,6 +130,20 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ValidatorAPIService ValidatorMetrics", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		resp, httpRes, err := apiClient.ValidatorAPI.ValidatorMetrics(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ValidatorAPIService ValidatorVotes", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -137,6 +151,18 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 		var id int32
 
 		resp, httpRes, err := apiClient.ValidatorAPI.ValidatorVotes(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ValidatorAPIService ValidatorsMetrics", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ValidatorAPI.ValidatorsMetrics(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

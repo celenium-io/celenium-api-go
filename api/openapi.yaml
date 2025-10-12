@@ -2015,6 +2015,93 @@ paths:
       summary: List hyperlane domains info
       tags:
       - hyperlane
+  /hyperlane/igp:
+    get:
+      description: List hyperlane Interchain Gas Paymaster (IGP)
+      operationId: list-hyperlane-igps
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.HyperlaneIgp"
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: List hyperlane Interchain Gas Paymaster (IGP)
+      tags:
+      - hyperlane
+  /hyperlane/igp/{id}:
+    get:
+      description: Get IGP by id
+      operationId: get-hyperlane-igp
+      parameters:
+      - description: Internal identity
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responses.HyperlaneIgp"
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get IGP by id
+      tags:
+      - hyperlane
   /hyperlane/mailbox:
     get:
       description: List hyperlane mailboxes info
@@ -3938,6 +4025,41 @@ paths:
       summary: Get rollup namespaces info
       tags:
       - rollup
+  /rollup/{id}/providers:
+    get:
+      description: Get rollup providers info
+      operationId: get-rollup-providers
+      parameters:
+      - description: Internal identity
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.RollupProvider"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get rollup providers info
+      tags:
+      - rollup
   /rollup/{id}/stats/{name}/{timeframe}:
     get:
       description: Get rollup stats
@@ -5820,6 +5942,38 @@ paths:
       summary: Get validator's count by status
       tags:
       - validator
+  /validators/metrics:
+    get:
+      description: Get validators metrics
+      operationId: validators-metrics
+      parameters:
+      - description: Count of aggregated entities
+        in: query
+        name: count
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responses.TopNMetrics"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get validators metrics
+      tags:
+      - validator
   /validators/{id}:
     get:
       description: Get validator info
@@ -6065,6 +6219,39 @@ paths:
                 $ref: "#/components/schemas/handler.Error"
           description: Internal Server Error
       summary: Get validator messages
+      tags:
+      - validator
+  /validators/{id}/metrics:
+    get:
+      description: Get validator's metrics
+      operationId: validator-metrics
+      parameters:
+      - description: Internal validator id
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responses.Metrics"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get validator's metrics
       tags:
       - validator
   /validators/{id}/uptime:
@@ -7139,6 +7326,25 @@ components:
           example: commission
           type: object
       type: object
+    responses.GasPayment:
+      example:
+        amount: "12345"
+        gas_amount: "123"
+        igp_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+      properties:
+        amount:
+          example: "12345"
+          format: string
+          type: string
+        gas_amount:
+          example: "123"
+          format: string
+          type: string
+        igp_id:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+      type: object
     responses.GasPrice:
       example:
         fast: "0.1234"
@@ -7290,6 +7496,127 @@ components:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
           type: string
       type: object
+    responses.HyperlaneIgp:
+      example:
+        owner:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        configs:
+        - gas_price: "1"
+          counterparty:
+            chain_metadata:
+              name: name
+              native_token:
+                symbol: ETH
+                decimals: 18
+                name: Ether
+              block_explorers:
+              - api_url: https://api.scan.url.io
+                name: Block explorer
+                family: etherscan
+                url: https://scan.url.io
+              - api_url: https://api.scan.url.io
+                name: Block explorer
+                family: etherscan
+                url: https://scan.url.io
+            remote_domain: 100
+          token_exchange_rate: "12345678"
+          gas_overhead: "100000"
+        - gas_price: "1"
+          counterparty:
+            chain_metadata:
+              name: name
+              native_token:
+                symbol: ETH
+                decimals: 18
+                name: Ether
+              block_explorers:
+              - api_url: https://api.scan.url.io
+                name: Block explorer
+                family: etherscan
+                url: https://scan.url.io
+              - api_url: https://api.scan.url.io
+                name: Block explorer
+                family: etherscan
+                url: https://scan.url.io
+            remote_domain: 100
+          token_exchange_rate: "12345678"
+          gas_overhead: "100000"
+        igp_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        denom: utia
+        id: 321
+        time: 2023-07-04T03:10:57Z
+        height: 1488
+      properties:
+        configs:
+          items:
+            $ref: "#/components/schemas/responses.HyperlaneIgpConfig"
+          type: array
+        denom:
+          example: utia
+          format: string
+          type: string
+        height:
+          example: 1488
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        igp_id:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        owner:
+          $ref: "#/components/schemas/responses.ShortAddress"
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+      type: object
+    responses.HyperlaneIgpConfig:
+      example:
+        gas_price: "1"
+        counterparty:
+          chain_metadata:
+            name: name
+            native_token:
+              symbol: ETH
+              decimals: 18
+              name: Ether
+            block_explorers:
+            - api_url: https://api.scan.url.io
+              name: Block explorer
+              family: etherscan
+              url: https://scan.url.io
+            - api_url: https://api.scan.url.io
+              name: Block explorer
+              family: etherscan
+              url: https://scan.url.io
+          remote_domain: 100
+        token_exchange_rate: "12345678"
+        gas_overhead: "100000"
+      properties:
+        counterparty:
+          $ref: "#/components/schemas/responses.HyperlaneRemoteDomain"
+        gas_overhead:
+          example: "100000"
+          format: int64
+          type: string
+        gas_price:
+          example: "1"
+          format: int64
+          type: string
+        token_exchange_rate:
+          example: "12345678"
+          format: int64
+          type: string
+      type: object
     responses.HyperlaneMailbox:
       example:
         owner:
@@ -7362,6 +7689,32 @@ components:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
           format: binary
           type: string
+      type: object
+    responses.HyperlaneRemoteDomain:
+      example:
+        chain_metadata:
+          name: name
+          native_token:
+            symbol: ETH
+            decimals: 18
+            name: Ether
+          block_explorers:
+          - api_url: https://api.scan.url.io
+            name: Block explorer
+            family: etherscan
+            url: https://scan.url.io
+          - api_url: https://api.scan.url.io
+            name: Block explorer
+            family: etherscan
+            url: https://scan.url.io
+        remote_domain: 100
+      properties:
+        chain_metadata:
+          $ref: "#/components/schemas/responses.ChainMetadata"
+        remote_domain:
+          example: 100
+          format: int64
+          type: integer
       type: object
     responses.HyperlaneToken:
       example:
@@ -7438,6 +7791,10 @@ components:
       type: object
     responses.HyperlaneTransfer:
       example:
+        gas_payment:
+          amount: "12345"
+          gas_amount: "123"
+          igp_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         relayer:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -7496,6 +7853,8 @@ components:
           example: utia
           format: string
           type: string
+        gas_payment:
+          $ref: "#/components/schemas/responses.GasPayment"
         height:
           example: 100
           format: int64
@@ -8167,6 +8526,71 @@ components:
           - $ref: "#/components/schemas/types.MsgType"
           example: MsgCreatePeriodicVestingAccount
           type: object
+      type: object
+    responses.Metrics:
+      example:
+        creation_time: 2025-07-04T03:10:57Z
+        block_missed_metric: "1"
+        max_rate: "0.1"
+        votes_metric: "1"
+        moniker: Easy 2 Stake
+        self_delegation_amount: "1"
+        self_delegation_metric: "1"
+        stake: "1"
+        commission_metric: "1"
+        votes_count: 321
+        applied_proposals_count: 321
+        block_missed_count: 321
+        max_change_rate: "0.01"
+        id: 321
+        operation_time_metric: "1"
+      properties:
+        applied_proposals_count:
+          example: 321
+          type: integer
+        block_missed_count:
+          example: 321
+          type: integer
+        block_missed_metric:
+          example: "1"
+          type: string
+        commission_metric:
+          example: "1"
+          type: string
+        creation_time:
+          example: 2025-07-04T03:10:57Z
+          format: date-time
+          type: string
+        id:
+          example: 321
+          type: integer
+        max_change_rate:
+          example: "0.01"
+          type: string
+        max_rate:
+          example: "0.1"
+          type: string
+        moniker:
+          example: Easy 2 Stake
+          type: string
+        operation_time_metric:
+          example: "1"
+          type: string
+        self_delegation_amount:
+          example: "1"
+          type: string
+        self_delegation_metric:
+          example: "1"
+          type: string
+        stake:
+          example: "1"
+          type: string
+        votes_count:
+          example: 321
+          type: integer
+        votes_metric:
+          example: "1"
+          type: string
       type: object
     responses.Namespace:
       example:
@@ -8877,6 +9301,20 @@ components:
           format: integer
           type: integer
       type: object
+    responses.RollupProvider:
+      example:
+        address: 0x1234567890abcdef1234567890abcdef12345678
+        namespace: U3dhZ2dlciByb2Nrcw==
+      properties:
+        address:
+          example: 0x1234567890abcdef1234567890abcdef12345678
+          format: string
+          type: string
+        namespace:
+          example: U3dhZ2dlciByb2Nrcw==
+          format: string
+          type: string
+      type: object
     responses.RollupStats24h:
       example:
         blobs_count: 123
@@ -9306,6 +9744,30 @@ components:
           format: string
           type: string
       type: object
+    responses.ShortProposal:
+      example:
+        description: Some proposal description
+        id: 321
+        title: Proposal title
+        status: active
+      properties:
+        description:
+          example: Some proposal description
+          format: string
+          type: string
+        id:
+          example: 321
+          format: int64
+          type: integer
+        status:
+          example: active
+          format: string
+          type: string
+        title:
+          example: Proposal title
+          format: string
+          type: string
+      type: object
     responses.ShortRollup:
       example:
         name: Rollup name
@@ -9571,6 +10033,30 @@ components:
         value:
           example: "0.17632"
           format: string
+          type: string
+      type: object
+    responses.TopNMetrics:
+      example:
+        commission_metric: "1"
+        block_missed_metric: "1"
+        votes_metric: "1"
+        operation_time_metric: "1"
+        self_delegation_metric: "1"
+      properties:
+        block_missed_metric:
+          example: "1"
+          type: string
+        commission_metric:
+          example: "1"
+          type: string
+        operation_time_metric:
+          example: "1"
+          type: string
+        self_delegation_metric:
+          example: "1"
+          type: string
+        votes_metric:
+          example: "1"
           type: string
       type: object
     responses.Tx:
@@ -10014,6 +10500,11 @@ components:
       type: object
     responses.Vote:
       example:
+        proposal:
+          description: Some proposal description
+          id: 321
+          title: Proposal title
+          status: active
         proposal_id: 2
         voter_id: 1
         validator:
@@ -10045,6 +10536,8 @@ components:
           example: 321
           format: int64
           type: integer
+        proposal:
+          $ref: "#/components/schemas/responses.ShortProposal"
         proposal_id:
           example: 2
           format: int64

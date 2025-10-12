@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetRollupBySlug**](RollupAPI.md#GetRollupBySlug) | **Get** /rollup/slug/{slug} | Get rollup by slug
 [**GetRollupDistribution**](RollupAPI.md#GetRollupDistribution) | **Get** /rollup/{id}/distribution/{name}/{timeframe} | Get rollup distribution
 [**GetRollupNamespaces**](RollupAPI.md#GetRollupNamespaces) | **Get** /rollup/{id}/namespaces | Get rollup namespaces info
+[**GetRollupProviders**](RollupAPI.md#GetRollupProviders) | **Get** /rollup/{id}/providers | Get rollup providers info
 [**GetRollupStats**](RollupAPI.md#GetRollupStats) | **Get** /rollup/{id}/stats/{name}/{timeframe} | Get rollup stats
 [**GetRollupsCount**](RollupAPI.md#GetRollupsCount) | **Get** /rollup/count | Get count of rollups in network
 [**ListRollup**](RollupAPI.md#ListRollup) | **Get** /rollup | List rollups info
@@ -444,6 +445,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ResponsesNamespace**](ResponsesNamespace.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRollupProviders
+
+> []ResponsesRollupProvider GetRollupProviders(ctx, id).Execute()
+
+Get rollup providers info
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	id := int32(56) // int32 | Internal identity
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RollupAPI.GetRollupProviders(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RollupAPI.GetRollupProviders``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRollupProviders`: []ResponsesRollupProvider
+	fmt.Fprintf(os.Stdout, "Response from `RollupAPI.GetRollupProviders`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Internal identity | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRollupProvidersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]ResponsesRollupProvider**](ResponsesRollupProvider.md)
 
 ### Authorization
 

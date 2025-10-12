@@ -26,6 +26,7 @@ type ResponsesHyperlaneTransfer struct {
 	Body *string `json:"body,omitempty"`
 	Counterparty *ResponsesHyperlaneCounterparty `json:"counterparty,omitempty"`
 	Denom *string `json:"denom,omitempty"`
+	GasPayment *ResponsesGasPayment `json:"gas_payment,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Mailbox **os.File `json:"mailbox,omitempty"`
@@ -183,6 +184,38 @@ func (o *ResponsesHyperlaneTransfer) HasDenom() bool {
 // SetDenom gets a reference to the given string and assigns it to the Denom field.
 func (o *ResponsesHyperlaneTransfer) SetDenom(v string) {
 	o.Denom = &v
+}
+
+// GetGasPayment returns the GasPayment field value if set, zero value otherwise.
+func (o *ResponsesHyperlaneTransfer) GetGasPayment() ResponsesGasPayment {
+	if o == nil || IsNil(o.GasPayment) {
+		var ret ResponsesGasPayment
+		return ret
+	}
+	return *o.GasPayment
+}
+
+// GetGasPaymentOk returns a tuple with the GasPayment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesHyperlaneTransfer) GetGasPaymentOk() (*ResponsesGasPayment, bool) {
+	if o == nil || IsNil(o.GasPayment) {
+		return nil, false
+	}
+	return o.GasPayment, true
+}
+
+// HasGasPayment returns a boolean if a field has been set.
+func (o *ResponsesHyperlaneTransfer) HasGasPayment() bool {
+	if o != nil && !IsNil(o.GasPayment) {
+		return true
+	}
+
+	return false
+}
+
+// SetGasPayment gets a reference to the given ResponsesGasPayment and assigns it to the GasPayment field.
+func (o *ResponsesHyperlaneTransfer) SetGasPayment(v ResponsesGasPayment) {
+	o.GasPayment = &v
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
@@ -590,6 +623,9 @@ func (o ResponsesHyperlaneTransfer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Denom) {
 		toSerialize["denom"] = o.Denom
+	}
+	if !IsNil(o.GasPayment) {
+		toSerialize["gas_payment"] = o.GasPayment
 	}
 	if !IsNil(o.Height) {
 		toSerialize["height"] = o.Height

@@ -108,6 +108,20 @@ func Test_celenium_RollupAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RollupAPIService GetRollupProviders", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		resp, httpRes, err := apiClient.RollupAPI.GetRollupProviders(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RollupAPIService GetRollupStats", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

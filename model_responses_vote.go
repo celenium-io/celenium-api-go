@@ -24,6 +24,7 @@ type ResponsesVote struct {
 	DepositTime *time.Time `json:"deposit_time,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
+	Proposal *ResponsesShortProposal `json:"proposal,omitempty"`
 	ProposalId *int64 `json:"proposal_id,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Validator *ResponsesShortValidator `json:"validator,omitempty"`
@@ -143,6 +144,38 @@ func (o *ResponsesVote) HasId() bool {
 // SetId gets a reference to the given int64 and assigns it to the Id field.
 func (o *ResponsesVote) SetId(v int64) {
 	o.Id = &v
+}
+
+// GetProposal returns the Proposal field value if set, zero value otherwise.
+func (o *ResponsesVote) GetProposal() ResponsesShortProposal {
+	if o == nil || IsNil(o.Proposal) {
+		var ret ResponsesShortProposal
+		return ret
+	}
+	return *o.Proposal
+}
+
+// GetProposalOk returns a tuple with the Proposal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesVote) GetProposalOk() (*ResponsesShortProposal, bool) {
+	if o == nil || IsNil(o.Proposal) {
+		return nil, false
+	}
+	return o.Proposal, true
+}
+
+// HasProposal returns a boolean if a field has been set.
+func (o *ResponsesVote) HasProposal() bool {
+	if o != nil && !IsNil(o.Proposal) {
+		return true
+	}
+
+	return false
+}
+
+// SetProposal gets a reference to the given ResponsesShortProposal and assigns it to the Proposal field.
+func (o *ResponsesVote) SetProposal(v ResponsesShortProposal) {
+	o.Proposal = &v
 }
 
 // GetProposalId returns the ProposalId field value if set, zero value otherwise.
@@ -355,6 +388,9 @@ func (o ResponsesVote) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Proposal) {
+		toSerialize["proposal"] = o.Proposal
 	}
 	if !IsNil(o.ProposalId) {
 		toSerialize["proposal_id"] = o.ProposalId

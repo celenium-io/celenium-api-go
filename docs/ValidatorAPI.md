@@ -12,7 +12,9 @@ Method | HTTP request | Description
 [**ValidatorDelegators**](ValidatorAPI.md#ValidatorDelegators) | **Get** /validators/{id}/delegators | Get validator&#39;s delegators
 [**ValidatorJails**](ValidatorAPI.md#ValidatorJails) | **Get** /validators/{id}/jails | Get validator&#39;s jails
 [**ValidatorMessages**](ValidatorAPI.md#ValidatorMessages) | **Get** /validators/{id}/messages | Get validator messages
+[**ValidatorMetrics**](ValidatorAPI.md#ValidatorMetrics) | **Get** /validators/{id}/metrics | Get validator&#39;s metrics
 [**ValidatorVotes**](ValidatorAPI.md#ValidatorVotes) | **Get** /validators/{id}/votes | Get list of votes for validator
+[**ValidatorsMetrics**](ValidatorAPI.md#ValidatorsMetrics) | **Get** /validators/metrics | Get validators metrics
 
 
 
@@ -593,6 +595,76 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## ValidatorMetrics
+
+> ResponsesMetrics ValidatorMetrics(ctx, id).Execute()
+
+Get validator's metrics
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	id := int32(56) // int32 | Internal validator id
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ValidatorAPI.ValidatorMetrics(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ValidatorAPI.ValidatorMetrics``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ValidatorMetrics`: ResponsesMetrics
+	fmt.Fprintf(os.Stdout, "Response from `ValidatorAPI.ValidatorMetrics`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Internal validator id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiValidatorMetricsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ResponsesMetrics**](ResponsesMetrics.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ValidatorVotes
 
 > []ResponsesVote ValidatorVotes(ctx, id).Limit(limit).Offset(offset).Execute()
@@ -652,6 +724,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ResponsesVote**](ResponsesVote.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ValidatorsMetrics
+
+> ResponsesTopNMetrics ValidatorsMetrics(ctx).Count(count).Execute()
+
+Get validators metrics
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	count := int32(56) // int32 | Count of aggregated entities (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ValidatorAPI.ValidatorsMetrics(context.Background()).Count(count).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ValidatorAPI.ValidatorsMetrics``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ValidatorsMetrics`: ResponsesTopNMetrics
+	fmt.Fprintf(os.Stdout, "Response from `ValidatorAPI.ValidatorsMetrics`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiValidatorsMetricsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **count** | **int32** | Count of aggregated entities | 
+
+### Return type
+
+[**ResponsesTopNMetrics**](ResponsesTopNMetrics.md)
 
 ### Authorization
 
