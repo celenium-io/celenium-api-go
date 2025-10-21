@@ -432,6 +432,7 @@ type ApiListValidatorRequest struct {
 	limit *int32
 	offset *int32
 	jailed *bool
+	version *int32
 }
 
 // Count of requested entities
@@ -449,6 +450,12 @@ func (r ApiListValidatorRequest) Offset(offset int32) ApiListValidatorRequest {
 // Return only jailed validators
 func (r ApiListValidatorRequest) Jailed(jailed bool) ApiListValidatorRequest {
 	r.jailed = &jailed
+	return r
+}
+
+// Current validator app version
+func (r ApiListValidatorRequest) Version(version int32) ApiListValidatorRequest {
+	r.version = &version
 	return r
 }
 
@@ -500,6 +507,9 @@ func (a *ValidatorAPIService) ListValidatorExecute(r ApiListValidatorRequest) ([
 	}
 	if r.jailed != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "jailed", r.jailed, "", "")
+	}
+	if r.version != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "version", r.version, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -4,9 +4,80 @@ All URIs are relative to *https://api-mainnet.celenium.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetUpgrade**](SignalAPI.md#GetUpgrade) | **Get** /signal/upgrade/{version} | Get upgrade by version
 [**ListSignal**](SignalAPI.md#ListSignal) | **Get** /signal | List signals
 [**ListUpgrades**](SignalAPI.md#ListUpgrades) | **Get** /signal/upgrade | List upgrades
 
+
+
+## GetUpgrade
+
+> ResponsesUpgrade GetUpgrade(ctx, version).Execute()
+
+Get upgrade by version
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	version := int32(56) // int32 | Upgrade version
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SignalAPI.GetUpgrade(context.Background(), version).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SignalAPI.GetUpgrade``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetUpgrade`: ResponsesUpgrade
+	fmt.Fprintf(os.Stdout, "Response from `SignalAPI.GetUpgrade`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**version** | **int32** | Upgrade version | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetUpgradeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ResponsesUpgrade**](ResponsesUpgrade.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ListSignal

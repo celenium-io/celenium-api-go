@@ -236,7 +236,7 @@ No authorization required
 
 ## ListValidator
 
-> []ResponsesValidator ListValidator(ctx).Limit(limit).Offset(offset).Jailed(jailed).Execute()
+> []ResponsesValidator ListValidator(ctx).Limit(limit).Offset(offset).Jailed(jailed).Version(version).Execute()
 
 List validators
 
@@ -258,10 +258,11 @@ func main() {
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 	jailed := true // bool | Return only jailed validators (optional)
+	version := int32(56) // int32 | Current validator app version (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ValidatorAPI.ListValidator(context.Background()).Limit(limit).Offset(offset).Jailed(jailed).Execute()
+	resp, r, err := apiClient.ValidatorAPI.ListValidator(context.Background()).Limit(limit).Offset(offset).Jailed(jailed).Version(version).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ValidatorAPI.ListValidator``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -285,6 +286,7 @@ Name | Type | Description  | Notes
  **limit** | **int32** | Count of requested entities | 
  **offset** | **int32** | Offset | 
  **jailed** | **bool** | Return only jailed validators | 
+ **version** | **int32** | Current validator app version | 
 
 ### Return type
 

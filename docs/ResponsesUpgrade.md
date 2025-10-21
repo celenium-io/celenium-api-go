@@ -4,13 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**EndHeight** | Pointer to **int64** |  | [optional] 
+**EndTime** | Pointer to **time.Time** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
-**Id** | Pointer to **int64** |  | [optional] 
 **MsgId** | Pointer to **int64** |  | [optional] 
+**SignalsCount** | Pointer to **int64** |  | [optional] 
 **Signer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **TxHash** | Pointer to ***os.File** |  | [optional] 
 **Version** | Pointer to **int64** |  | [optional] 
+**VotedPower** | Pointer to **string** |  | [optional] 
+**VotingPower** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -30,6 +34,56 @@ will change when the set of required properties is changed
 NewResponsesUpgradeWithDefaults instantiates a new ResponsesUpgrade object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEndHeight
+
+`func (o *ResponsesUpgrade) GetEndHeight() int64`
+
+GetEndHeight returns the EndHeight field if non-nil, zero value otherwise.
+
+### GetEndHeightOk
+
+`func (o *ResponsesUpgrade) GetEndHeightOk() (*int64, bool)`
+
+GetEndHeightOk returns a tuple with the EndHeight field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndHeight
+
+`func (o *ResponsesUpgrade) SetEndHeight(v int64)`
+
+SetEndHeight sets EndHeight field to given value.
+
+### HasEndHeight
+
+`func (o *ResponsesUpgrade) HasEndHeight() bool`
+
+HasEndHeight returns a boolean if a field has been set.
+
+### GetEndTime
+
+`func (o *ResponsesUpgrade) GetEndTime() time.Time`
+
+GetEndTime returns the EndTime field if non-nil, zero value otherwise.
+
+### GetEndTimeOk
+
+`func (o *ResponsesUpgrade) GetEndTimeOk() (*time.Time, bool)`
+
+GetEndTimeOk returns a tuple with the EndTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndTime
+
+`func (o *ResponsesUpgrade) SetEndTime(v time.Time)`
+
+SetEndTime sets EndTime field to given value.
+
+### HasEndTime
+
+`func (o *ResponsesUpgrade) HasEndTime() bool`
+
+HasEndTime returns a boolean if a field has been set.
 
 ### GetHeight
 
@@ -56,31 +110,6 @@ SetHeight sets Height field to given value.
 
 HasHeight returns a boolean if a field has been set.
 
-### GetId
-
-`func (o *ResponsesUpgrade) GetId() int64`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *ResponsesUpgrade) GetIdOk() (*int64, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *ResponsesUpgrade) SetId(v int64)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *ResponsesUpgrade) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
 ### GetMsgId
 
 `func (o *ResponsesUpgrade) GetMsgId() int64`
@@ -105,6 +134,31 @@ SetMsgId sets MsgId field to given value.
 `func (o *ResponsesUpgrade) HasMsgId() bool`
 
 HasMsgId returns a boolean if a field has been set.
+
+### GetSignalsCount
+
+`func (o *ResponsesUpgrade) GetSignalsCount() int64`
+
+GetSignalsCount returns the SignalsCount field if non-nil, zero value otherwise.
+
+### GetSignalsCountOk
+
+`func (o *ResponsesUpgrade) GetSignalsCountOk() (*int64, bool)`
+
+GetSignalsCountOk returns a tuple with the SignalsCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignalsCount
+
+`func (o *ResponsesUpgrade) SetSignalsCount(v int64)`
+
+SetSignalsCount sets SignalsCount field to given value.
+
+### HasSignalsCount
+
+`func (o *ResponsesUpgrade) HasSignalsCount() bool`
+
+HasSignalsCount returns a boolean if a field has been set.
 
 ### GetSigner
 
@@ -205,6 +259,56 @@ SetVersion sets Version field to given value.
 `func (o *ResponsesUpgrade) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
+
+### GetVotedPower
+
+`func (o *ResponsesUpgrade) GetVotedPower() string`
+
+GetVotedPower returns the VotedPower field if non-nil, zero value otherwise.
+
+### GetVotedPowerOk
+
+`func (o *ResponsesUpgrade) GetVotedPowerOk() (*string, bool)`
+
+GetVotedPowerOk returns a tuple with the VotedPower field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVotedPower
+
+`func (o *ResponsesUpgrade) SetVotedPower(v string)`
+
+SetVotedPower sets VotedPower field to given value.
+
+### HasVotedPower
+
+`func (o *ResponsesUpgrade) HasVotedPower() bool`
+
+HasVotedPower returns a boolean if a field has been set.
+
+### GetVotingPower
+
+`func (o *ResponsesUpgrade) GetVotingPower() string`
+
+GetVotingPower returns the VotingPower field if non-nil, zero value otherwise.
+
+### GetVotingPowerOk
+
+`func (o *ResponsesUpgrade) GetVotingPowerOk() (*string, bool)`
+
+GetVotingPowerOk returns a tuple with the VotingPower field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVotingPower
+
+`func (o *ResponsesUpgrade) SetVotingPower(v string)`
+
+SetVotingPower sets VotingPower field to given value.
+
+### HasVotingPower
+
+`func (o *ResponsesUpgrade) HasVotingPower() bool`
+
+HasVotingPower returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

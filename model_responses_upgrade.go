@@ -22,13 +22,17 @@ var _ MappedNullable = &ResponsesUpgrade{}
 
 // ResponsesUpgrade struct for ResponsesUpgrade
 type ResponsesUpgrade struct {
+	EndHeight *int64 `json:"end_height,omitempty"`
+	EndTime *time.Time `json:"end_time,omitempty"`
 	Height *int64 `json:"height,omitempty"`
-	Id *int64 `json:"id,omitempty"`
 	MsgId *int64 `json:"msg_id,omitempty"`
+	SignalsCount *int64 `json:"signals_count,omitempty"`
 	Signer *ResponsesShortAddress `json:"signer,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	TxHash **os.File `json:"tx_hash,omitempty"`
 	Version *int64 `json:"version,omitempty"`
+	VotedPower *string `json:"voted_power,omitempty"`
+	VotingPower *string `json:"voting_power,omitempty"`
 }
 
 // NewResponsesUpgrade instantiates a new ResponsesUpgrade object
@@ -46,6 +50,70 @@ func NewResponsesUpgrade() *ResponsesUpgrade {
 func NewResponsesUpgradeWithDefaults() *ResponsesUpgrade {
 	this := ResponsesUpgrade{}
 	return &this
+}
+
+// GetEndHeight returns the EndHeight field value if set, zero value otherwise.
+func (o *ResponsesUpgrade) GetEndHeight() int64 {
+	if o == nil || IsNil(o.EndHeight) {
+		var ret int64
+		return ret
+	}
+	return *o.EndHeight
+}
+
+// GetEndHeightOk returns a tuple with the EndHeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesUpgrade) GetEndHeightOk() (*int64, bool) {
+	if o == nil || IsNil(o.EndHeight) {
+		return nil, false
+	}
+	return o.EndHeight, true
+}
+
+// HasEndHeight returns a boolean if a field has been set.
+func (o *ResponsesUpgrade) HasEndHeight() bool {
+	if o != nil && !IsNil(o.EndHeight) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndHeight gets a reference to the given int64 and assigns it to the EndHeight field.
+func (o *ResponsesUpgrade) SetEndHeight(v int64) {
+	o.EndHeight = &v
+}
+
+// GetEndTime returns the EndTime field value if set, zero value otherwise.
+func (o *ResponsesUpgrade) GetEndTime() time.Time {
+	if o == nil || IsNil(o.EndTime) {
+		var ret time.Time
+		return ret
+	}
+	return *o.EndTime
+}
+
+// GetEndTimeOk returns a tuple with the EndTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesUpgrade) GetEndTimeOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.EndTime) {
+		return nil, false
+	}
+	return o.EndTime, true
+}
+
+// HasEndTime returns a boolean if a field has been set.
+func (o *ResponsesUpgrade) HasEndTime() bool {
+	if o != nil && !IsNil(o.EndTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndTime gets a reference to the given time.Time and assigns it to the EndTime field.
+func (o *ResponsesUpgrade) SetEndTime(v time.Time) {
+	o.EndTime = &v
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
@@ -80,38 +148,6 @@ func (o *ResponsesUpgrade) SetHeight(v int64) {
 	o.Height = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesUpgrade) GetId() int64 {
-	if o == nil || IsNil(o.Id) {
-		var ret int64
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResponsesUpgrade) GetIdOk() (*int64, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *ResponsesUpgrade) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int64 and assigns it to the Id field.
-func (o *ResponsesUpgrade) SetId(v int64) {
-	o.Id = &v
-}
-
 // GetMsgId returns the MsgId field value if set, zero value otherwise.
 func (o *ResponsesUpgrade) GetMsgId() int64 {
 	if o == nil || IsNil(o.MsgId) {
@@ -142,6 +178,38 @@ func (o *ResponsesUpgrade) HasMsgId() bool {
 // SetMsgId gets a reference to the given int64 and assigns it to the MsgId field.
 func (o *ResponsesUpgrade) SetMsgId(v int64) {
 	o.MsgId = &v
+}
+
+// GetSignalsCount returns the SignalsCount field value if set, zero value otherwise.
+func (o *ResponsesUpgrade) GetSignalsCount() int64 {
+	if o == nil || IsNil(o.SignalsCount) {
+		var ret int64
+		return ret
+	}
+	return *o.SignalsCount
+}
+
+// GetSignalsCountOk returns a tuple with the SignalsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesUpgrade) GetSignalsCountOk() (*int64, bool) {
+	if o == nil || IsNil(o.SignalsCount) {
+		return nil, false
+	}
+	return o.SignalsCount, true
+}
+
+// HasSignalsCount returns a boolean if a field has been set.
+func (o *ResponsesUpgrade) HasSignalsCount() bool {
+	if o != nil && !IsNil(o.SignalsCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetSignalsCount gets a reference to the given int64 and assigns it to the SignalsCount field.
+func (o *ResponsesUpgrade) SetSignalsCount(v int64) {
+	o.SignalsCount = &v
 }
 
 // GetSigner returns the Signer field value if set, zero value otherwise.
@@ -272,6 +340,70 @@ func (o *ResponsesUpgrade) SetVersion(v int64) {
 	o.Version = &v
 }
 
+// GetVotedPower returns the VotedPower field value if set, zero value otherwise.
+func (o *ResponsesUpgrade) GetVotedPower() string {
+	if o == nil || IsNil(o.VotedPower) {
+		var ret string
+		return ret
+	}
+	return *o.VotedPower
+}
+
+// GetVotedPowerOk returns a tuple with the VotedPower field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesUpgrade) GetVotedPowerOk() (*string, bool) {
+	if o == nil || IsNil(o.VotedPower) {
+		return nil, false
+	}
+	return o.VotedPower, true
+}
+
+// HasVotedPower returns a boolean if a field has been set.
+func (o *ResponsesUpgrade) HasVotedPower() bool {
+	if o != nil && !IsNil(o.VotedPower) {
+		return true
+	}
+
+	return false
+}
+
+// SetVotedPower gets a reference to the given string and assigns it to the VotedPower field.
+func (o *ResponsesUpgrade) SetVotedPower(v string) {
+	o.VotedPower = &v
+}
+
+// GetVotingPower returns the VotingPower field value if set, zero value otherwise.
+func (o *ResponsesUpgrade) GetVotingPower() string {
+	if o == nil || IsNil(o.VotingPower) {
+		var ret string
+		return ret
+	}
+	return *o.VotingPower
+}
+
+// GetVotingPowerOk returns a tuple with the VotingPower field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesUpgrade) GetVotingPowerOk() (*string, bool) {
+	if o == nil || IsNil(o.VotingPower) {
+		return nil, false
+	}
+	return o.VotingPower, true
+}
+
+// HasVotingPower returns a boolean if a field has been set.
+func (o *ResponsesUpgrade) HasVotingPower() bool {
+	if o != nil && !IsNil(o.VotingPower) {
+		return true
+	}
+
+	return false
+}
+
+// SetVotingPower gets a reference to the given string and assigns it to the VotingPower field.
+func (o *ResponsesUpgrade) SetVotingPower(v string) {
+	o.VotingPower = &v
+}
+
 func (o ResponsesUpgrade) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -282,14 +414,20 @@ func (o ResponsesUpgrade) MarshalJSON() ([]byte, error) {
 
 func (o ResponsesUpgrade) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.EndHeight) {
+		toSerialize["end_height"] = o.EndHeight
+	}
+	if !IsNil(o.EndTime) {
+		toSerialize["end_time"] = o.EndTime
+	}
 	if !IsNil(o.Height) {
 		toSerialize["height"] = o.Height
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	if !IsNil(o.MsgId) {
 		toSerialize["msg_id"] = o.MsgId
+	}
+	if !IsNil(o.SignalsCount) {
+		toSerialize["signals_count"] = o.SignalsCount
 	}
 	if !IsNil(o.Signer) {
 		toSerialize["signer"] = o.Signer
@@ -302,6 +440,12 @@ func (o ResponsesUpgrade) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.VotedPower) {
+		toSerialize["voted_power"] = o.VotedPower
+	}
+	if !IsNil(o.VotingPower) {
+		toSerialize["voting_power"] = o.VotingPower
 	}
 	return toSerialize, nil
 }

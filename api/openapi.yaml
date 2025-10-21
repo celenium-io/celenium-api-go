@@ -4333,6 +4333,39 @@ paths:
       summary: List upgrades
       tags:
       - signal
+  /signal/upgrade/{version}:
+    get:
+      description: Get upgrade by version
+      operationId: get-upgrade
+      parameters:
+      - description: Upgrade version
+        in: path
+        name: version
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responses.Upgrade"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get upgrade by version
+      tags:
+      - signal
   /stats/changes_24h:
     get:
       description: Get changes for 24 hours
@@ -5892,6 +5925,11 @@ paths:
         name: jailed
         schema:
           type: boolean
+      - description: Current validator app version
+        in: query
+        name: version
+        schema:
+          type: integer
       responses:
         "200":
           content:
@@ -10263,8 +10301,11 @@ components:
       type: object
     responses.Upgrade:
       example:
+        signals_count: 2
+        end_height: 100
+        voted_power: "9348"
+        end_time: 2025-07-04T03:10:57Z
         tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        id: 321
         time: 2025-07-04T03:10:57Z
         msg_id: 2
         version: 1
@@ -10276,16 +10317,25 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        voting_power: "9348"
       properties:
+        end_height:
+          example: 100
+          format: int64
+          type: integer
+        end_time:
+          example: 2025-07-04T03:10:57Z
+          format: date-time
+          type: string
         height:
           example: 100
           format: int64
           type: integer
-        id:
-          example: 321
+        msg_id:
+          example: 2
           format: int64
           type: integer
-        msg_id:
+        signals_count:
           example: 2
           format: int64
           type: integer
@@ -10303,6 +10353,14 @@ components:
           example: 1
           format: int64
           type: integer
+        voted_power:
+          example: "9348"
+          format: int64
+          type: string
+        voting_power:
+          example: "9348"
+          format: int64
+          type: string
       type: object
     responses.Validator:
       example:

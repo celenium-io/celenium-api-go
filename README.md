@@ -155,6 +155,7 @@ Class | Method | HTTP request | Description
 *RollupAPI* | [**RollupExport**](docs/RollupAPI.md#rollupexport) | **Get** /rollup/{id}/export | Export rollup blobs
 *RollupAPI* | [**RollupGroupedStatistics**](docs/RollupAPI.md#rollupgroupedstatistics) | **Get** /rollup/group | Rollup Grouped Statistics
 *SearchAPI* | [**Search**](docs/SearchAPI.md#search) | **Get** /search | Search by hash
+*SignalAPI* | [**GetUpgrade**](docs/SignalAPI.md#getupgrade) | **Get** /signal/upgrade/{version} | Get upgrade by version
 *SignalAPI* | [**ListSignal**](docs/SignalAPI.md#listsignal) | **Get** /signal | List signals
 *SignalAPI* | [**ListUpgrades**](docs/SignalAPI.md#listupgrades) | **Get** /signal/upgrade | List upgrades
 *StatsAPI* | [**Stats24hChanges**](docs/StatsAPI.md#stats24hchanges) | **Get** /stats/changes_24h | Get changes for 24 hours
