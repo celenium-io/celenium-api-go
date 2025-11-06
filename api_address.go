@@ -110,8 +110,8 @@ func (a *AddressAPIService) AddressBlobsExecute(r ApiAddressBlobsRequest) ([]Res
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.limit != nil {
@@ -269,8 +269,8 @@ func (a *AddressAPIService) AddressCelestialsExecute(r ApiAddressCelestialsReque
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.limit != nil {
@@ -426,8 +426,8 @@ func (a *AddressAPIService) AddressDelegationsExecute(r ApiAddressDelegationsReq
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.limit != nil {
@@ -579,8 +579,8 @@ func (a *AddressAPIService) AddressGranteeExecute(r ApiAddressGranteeRequest) ([
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.limit != nil {
@@ -729,8 +729,8 @@ func (a *AddressAPIService) AddressGrantsExecute(r ApiAddressGrantsRequest) ([]R
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.limit != nil {
@@ -893,8 +893,8 @@ func (a *AddressAPIService) AddressMessagesExecute(r ApiAddressMessagesRequest) 
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.limit != nil {
@@ -1049,8 +1049,8 @@ func (a *AddressAPIService) AddressRedelegationsExecute(r ApiAddressRedelegation
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.limit != nil {
@@ -1207,8 +1207,8 @@ func (a *AddressAPIService) AddressStatsExecute(r ApiAddressStatsRequest) ([]Res
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.from != nil {
@@ -1399,8 +1399,8 @@ func (a *AddressAPIService) AddressTransactionsExecute(r ApiAddressTransactionsR
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.limit != nil {
@@ -1567,8 +1567,8 @@ func (a *AddressAPIService) AddressUndelegationsExecute(r ApiAddressUndelegation
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.limit != nil {
@@ -1724,8 +1724,8 @@ func (a *AddressAPIService) AddressVestingExecute(r ApiAddressVestingRequest) ([
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.limit != nil {
@@ -1877,8 +1877,8 @@ func (a *AddressAPIService) AddressVotesExecute(r ApiAddressVotesRequest) ([]Res
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	if r.limit != nil {
@@ -2013,8 +2013,8 @@ func (a *AddressAPIService) GetAddressExecute(r ApiGetAddressRequest) (*Response
 	if strlen(r.hash) < 47 {
 		return localVarReturnValue, nil, reportError("hash must have at least 47 elements")
 	}
-	if strlen(r.hash) > 47 {
-		return localVarReturnValue, nil, reportError("hash must have less than 47 elements")
+	if strlen(r.hash) > 128 {
+		return localVarReturnValue, nil, reportError("hash must have less than 128 elements")
 	}
 
 	// to determine the Content-Type header

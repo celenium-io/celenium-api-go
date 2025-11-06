@@ -109,7 +109,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       responses:
@@ -147,7 +147,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Count of requested entities
@@ -219,7 +219,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Count of requested entities
@@ -269,7 +269,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Count of requested entities
@@ -324,7 +324,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Count of requested entities
@@ -374,7 +374,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Count of requested entities
@@ -424,7 +424,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Count of requested entities
@@ -599,7 +599,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Count of requested entities
@@ -649,7 +649,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Series name
@@ -717,7 +717,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Count of requested entities
@@ -918,7 +918,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Count of requested entities
@@ -968,7 +968,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Count of requested entities
@@ -1023,7 +1023,7 @@ paths:
         name: hash
         required: true
         schema:
-          maxLength: 47
+          maxLength: 128
           minLength: 47
           type: string
       - description: Count of requested entities
