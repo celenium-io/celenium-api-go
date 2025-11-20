@@ -22,12 +22,15 @@ var _ MappedNullable = &ResponsesUpgrade{}
 
 // ResponsesUpgrade struct for ResponsesUpgrade
 type ResponsesUpgrade struct {
+	AppliedAt *time.Time `json:"applied_at,omitempty"`
+	AppliedAtLevel *int64 `json:"applied_at_level,omitempty"`
 	EndHeight *int64 `json:"end_height,omitempty"`
 	EndTime *time.Time `json:"end_time,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	MsgId *int64 `json:"msg_id,omitempty"`
 	SignalsCount *int64 `json:"signals_count,omitempty"`
 	Signer *ResponsesShortAddress `json:"signer,omitempty"`
+	Status *string `json:"status,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	TxHash **os.File `json:"tx_hash,omitempty"`
 	Version *int64 `json:"version,omitempty"`
@@ -50,6 +53,70 @@ func NewResponsesUpgrade() *ResponsesUpgrade {
 func NewResponsesUpgradeWithDefaults() *ResponsesUpgrade {
 	this := ResponsesUpgrade{}
 	return &this
+}
+
+// GetAppliedAt returns the AppliedAt field value if set, zero value otherwise.
+func (o *ResponsesUpgrade) GetAppliedAt() time.Time {
+	if o == nil || IsNil(o.AppliedAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.AppliedAt
+}
+
+// GetAppliedAtOk returns a tuple with the AppliedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesUpgrade) GetAppliedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.AppliedAt) {
+		return nil, false
+	}
+	return o.AppliedAt, true
+}
+
+// HasAppliedAt returns a boolean if a field has been set.
+func (o *ResponsesUpgrade) HasAppliedAt() bool {
+	if o != nil && !IsNil(o.AppliedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppliedAt gets a reference to the given time.Time and assigns it to the AppliedAt field.
+func (o *ResponsesUpgrade) SetAppliedAt(v time.Time) {
+	o.AppliedAt = &v
+}
+
+// GetAppliedAtLevel returns the AppliedAtLevel field value if set, zero value otherwise.
+func (o *ResponsesUpgrade) GetAppliedAtLevel() int64 {
+	if o == nil || IsNil(o.AppliedAtLevel) {
+		var ret int64
+		return ret
+	}
+	return *o.AppliedAtLevel
+}
+
+// GetAppliedAtLevelOk returns a tuple with the AppliedAtLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesUpgrade) GetAppliedAtLevelOk() (*int64, bool) {
+	if o == nil || IsNil(o.AppliedAtLevel) {
+		return nil, false
+	}
+	return o.AppliedAtLevel, true
+}
+
+// HasAppliedAtLevel returns a boolean if a field has been set.
+func (o *ResponsesUpgrade) HasAppliedAtLevel() bool {
+	if o != nil && !IsNil(o.AppliedAtLevel) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppliedAtLevel gets a reference to the given int64 and assigns it to the AppliedAtLevel field.
+func (o *ResponsesUpgrade) SetAppliedAtLevel(v int64) {
+	o.AppliedAtLevel = &v
 }
 
 // GetEndHeight returns the EndHeight field value if set, zero value otherwise.
@@ -244,6 +311,38 @@ func (o *ResponsesUpgrade) SetSigner(v ResponsesShortAddress) {
 	o.Signer = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ResponsesUpgrade) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesUpgrade) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *ResponsesUpgrade) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *ResponsesUpgrade) SetStatus(v string) {
+	o.Status = &v
+}
+
 // GetTime returns the Time field value if set, zero value otherwise.
 func (o *ResponsesUpgrade) GetTime() time.Time {
 	if o == nil || IsNil(o.Time) {
@@ -414,6 +513,12 @@ func (o ResponsesUpgrade) MarshalJSON() ([]byte, error) {
 
 func (o ResponsesUpgrade) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AppliedAt) {
+		toSerialize["applied_at"] = o.AppliedAt
+	}
+	if !IsNil(o.AppliedAtLevel) {
+		toSerialize["applied_at_level"] = o.AppliedAtLevel
+	}
 	if !IsNil(o.EndHeight) {
 		toSerialize["end_height"] = o.EndHeight
 	}
@@ -431,6 +536,9 @@ func (o ResponsesUpgrade) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Signer) {
 		toSerialize["signer"] = o.Signer
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.Time) {
 		toSerialize["time"] = o.Time

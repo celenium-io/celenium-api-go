@@ -32,6 +32,7 @@ type ResponsesEnums struct {
 	RollupType []string `json:"rollup_type,omitempty"`
 	Status []string `json:"status,omitempty"`
 	Tags []string `json:"tags,omitempty"`
+	UpgradeStatus []string `json:"upgrade_status,omitempty"`
 	VoteOption []string `json:"vote_option,omitempty"`
 	VoteType []string `json:"vote_type,omitempty"`
 }
@@ -437,6 +438,38 @@ func (o *ResponsesEnums) SetTags(v []string) {
 	o.Tags = v
 }
 
+// GetUpgradeStatus returns the UpgradeStatus field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetUpgradeStatus() []string {
+	if o == nil || IsNil(o.UpgradeStatus) {
+		var ret []string
+		return ret
+	}
+	return o.UpgradeStatus
+}
+
+// GetUpgradeStatusOk returns a tuple with the UpgradeStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetUpgradeStatusOk() ([]string, bool) {
+	if o == nil || IsNil(o.UpgradeStatus) {
+		return nil, false
+	}
+	return o.UpgradeStatus, true
+}
+
+// HasUpgradeStatus returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasUpgradeStatus() bool {
+	if o != nil && !IsNil(o.UpgradeStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpgradeStatus gets a reference to the given []string and assigns it to the UpgradeStatus field.
+func (o *ResponsesEnums) SetUpgradeStatus(v []string) {
+	o.UpgradeStatus = v
+}
+
 // GetVoteOption returns the VoteOption field value if set, zero value otherwise.
 func (o *ResponsesEnums) GetVoteOption() []string {
 	if o == nil || IsNil(o.VoteOption) {
@@ -546,6 +579,9 @@ func (o ResponsesEnums) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.UpgradeStatus) {
+		toSerialize["upgrade_status"] = o.UpgradeStatus
 	}
 	if !IsNil(o.VoteOption) {
 		toSerialize["vote_option"] = o.VoteOption

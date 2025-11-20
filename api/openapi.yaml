@@ -7241,6 +7241,9 @@ components:
         tags:
         - tags
         - tags
+        upgrade_status:
+        - upgrade_status
+        - upgrade_status
         ibc_channel_status:
         - ibc_channel_status
         - ibc_channel_status
@@ -7311,6 +7314,10 @@ components:
             type: string
           type: array
         tags:
+          items:
+            type: string
+          type: array
+        upgrade_status:
           items:
             type: string
           type: array
@@ -10301,14 +10308,17 @@ components:
       type: object
     responses.Upgrade:
       example:
-        signals_count: 2
-        end_height: 100
+        applied_at: 2025-07-04T03:10:57Z
         voted_power: "9348"
         end_time: 2025-07-04T03:10:57Z
         tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        version: 1
+        voting_power: "9348"
+        signals_count: 2
+        end_height: 100
+        applied_at_level: 100
         time: 2025-07-04T03:10:57Z
         msg_id: 2
-        version: 1
         height: 100
         signer:
           celestials:
@@ -10317,8 +10327,16 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        voting_power: "9348"
+        status: applied
       properties:
+        applied_at:
+          example: 2025-07-04T03:10:57Z
+          format: date-time
+          type: string
+        applied_at_level:
+          example: 100
+          format: int64
+          type: integer
         end_height:
           example: 100
           format: int64
@@ -10341,6 +10359,10 @@ components:
           type: integer
         signer:
           $ref: "#/components/schemas/responses.ShortAddress"
+        status:
+          example: applied
+          format: string
+          type: string
         time:
           example: 2025-07-04T03:10:57Z
           format: date-time

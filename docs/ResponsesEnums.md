@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **RollupType** | Pointer to **[]string** |  | [optional] 
 **Status** | Pointer to **[]string** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
+**UpgradeStatus** | Pointer to **[]string** |  | [optional] 
 **VoteOption** | Pointer to **[]string** |  | [optional] 
 **VoteType** | Pointer to **[]string** |  | [optional] 
 
@@ -337,6 +338,31 @@ SetTags sets Tags field to given value.
 `func (o *ResponsesEnums) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetUpgradeStatus
+
+`func (o *ResponsesEnums) GetUpgradeStatus() []string`
+
+GetUpgradeStatus returns the UpgradeStatus field if non-nil, zero value otherwise.
+
+### GetUpgradeStatusOk
+
+`func (o *ResponsesEnums) GetUpgradeStatusOk() (*[]string, bool)`
+
+GetUpgradeStatusOk returns a tuple with the UpgradeStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpgradeStatus
+
+`func (o *ResponsesEnums) SetUpgradeStatus(v []string)`
+
+SetUpgradeStatus sets UpgradeStatus field to given value.
+
+### HasUpgradeStatus
+
+`func (o *ResponsesEnums) HasUpgradeStatus() bool`
+
+HasUpgradeStatus returns a boolean if a field has been set.
 
 ### GetVoteOption
 

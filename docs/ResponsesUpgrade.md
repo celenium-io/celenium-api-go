@@ -4,12 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AppliedAt** | Pointer to **time.Time** |  | [optional] 
+**AppliedAtLevel** | Pointer to **int64** |  | [optional] 
 **EndHeight** | Pointer to **int64** |  | [optional] 
 **EndTime** | Pointer to **time.Time** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **MsgId** | Pointer to **int64** |  | [optional] 
 **SignalsCount** | Pointer to **int64** |  | [optional] 
 **Signer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
+**Status** | Pointer to **string** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **TxHash** | Pointer to ***os.File** |  | [optional] 
 **Version** | Pointer to **int64** |  | [optional] 
@@ -34,6 +37,56 @@ will change when the set of required properties is changed
 NewResponsesUpgradeWithDefaults instantiates a new ResponsesUpgrade object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAppliedAt
+
+`func (o *ResponsesUpgrade) GetAppliedAt() time.Time`
+
+GetAppliedAt returns the AppliedAt field if non-nil, zero value otherwise.
+
+### GetAppliedAtOk
+
+`func (o *ResponsesUpgrade) GetAppliedAtOk() (*time.Time, bool)`
+
+GetAppliedAtOk returns a tuple with the AppliedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppliedAt
+
+`func (o *ResponsesUpgrade) SetAppliedAt(v time.Time)`
+
+SetAppliedAt sets AppliedAt field to given value.
+
+### HasAppliedAt
+
+`func (o *ResponsesUpgrade) HasAppliedAt() bool`
+
+HasAppliedAt returns a boolean if a field has been set.
+
+### GetAppliedAtLevel
+
+`func (o *ResponsesUpgrade) GetAppliedAtLevel() int64`
+
+GetAppliedAtLevel returns the AppliedAtLevel field if non-nil, zero value otherwise.
+
+### GetAppliedAtLevelOk
+
+`func (o *ResponsesUpgrade) GetAppliedAtLevelOk() (*int64, bool)`
+
+GetAppliedAtLevelOk returns a tuple with the AppliedAtLevel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppliedAtLevel
+
+`func (o *ResponsesUpgrade) SetAppliedAtLevel(v int64)`
+
+SetAppliedAtLevel sets AppliedAtLevel field to given value.
+
+### HasAppliedAtLevel
+
+`func (o *ResponsesUpgrade) HasAppliedAtLevel() bool`
+
+HasAppliedAtLevel returns a boolean if a field has been set.
 
 ### GetEndHeight
 
@@ -184,6 +237,31 @@ SetSigner sets Signer field to given value.
 `func (o *ResponsesUpgrade) HasSigner() bool`
 
 HasSigner returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *ResponsesUpgrade) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *ResponsesUpgrade) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *ResponsesUpgrade) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *ResponsesUpgrade) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 ### GetTime
 
