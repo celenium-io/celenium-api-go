@@ -105,6 +105,7 @@ const (
 	EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsm TypesEventType = "hyperlane.core.interchain_security.v1.EventSetRoutingIsm"
 	EventTypeHyperlanecoreinterchainSecurityv1EventCreateRoutingIsm TypesEventType = "hyperlane.core.interchain_security.v1.EventCreateRoutingIsm"
 	EventTypeSignalVersion TypesEventType = "signal_version"
+	EventTypeIbccallbackerrorIcs27Packet TypesEventType = "ibccallbackerror-ics27_packet"
 )
 
 // All allowed values of TypesEventType enum
@@ -193,6 +194,7 @@ var AllowedTypesEventTypeEnumValues = []TypesEventType{
 	"hyperlane.core.interchain_security.v1.EventSetRoutingIsm",
 	"hyperlane.core.interchain_security.v1.EventCreateRoutingIsm",
 	"signal_version",
+	"ibccallbackerror-ics27_packet",
 }
 
 func (v *TypesEventType) UnmarshalJSON(src []byte) error {

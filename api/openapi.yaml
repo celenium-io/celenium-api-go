@@ -10725,6 +10725,7 @@ components:
       - hyperlane.core.interchain_security.v1.EventSetRoutingIsm
       - hyperlane.core.interchain_security.v1.EventCreateRoutingIsm
       - signal_version
+      - ibccallbackerror-ics27_packet
       type: string
       x-enum-varnames:
       - EventTypeUnknown
@@ -10811,6 +10812,7 @@ components:
       - EventTypeHyperlanecoreinterchainSecurityv1EventSetRoutingIsm
       - EventTypeHyperlanecoreinterchainSecurityv1EventCreateRoutingIsm
       - EventTypeSignalVersion
+      - EventTypeIbccallbackerrorIcs27Packet
     types.MsgAddressType:
       enum:
       - validator
