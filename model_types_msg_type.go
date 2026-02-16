@@ -132,6 +132,10 @@ const (
 	MsgResetCircuitBreaker TypesMsgType = "MsgResetCircuitBreaker"
 	MsgTripCircuitBreaker TypesMsgType = "MsgTripCircuitBreaker"
 	MsgModuleQuerySafe TypesMsgType = "MsgModuleQuerySafe"
+	MsgForward TypesMsgType = "MsgForward"
+	MsgCreateInterchainSecurityModule TypesMsgType = "MsgCreateInterchainSecurityModule"
+	MsgUpdateInterchainSecurityModule TypesMsgType = "MsgUpdateInterchainSecurityModule"
+	MsgSubmitMessages TypesMsgType = "MsgSubmitMessages"
 )
 
 // All allowed values of TypesMsgType enum
@@ -247,6 +251,10 @@ var AllowedTypesMsgTypeEnumValues = []TypesMsgType{
 	"MsgResetCircuitBreaker",
 	"MsgTripCircuitBreaker",
 	"MsgModuleQuerySafe",
+	"MsgForward",
+	"MsgCreateInterchainSecurityModule",
+	"MsgUpdateInterchainSecurityModule",
+	"MsgSubmitMessages",
 }
 
 func (v *TypesMsgType) UnmarshalJSON(src []byte) error {

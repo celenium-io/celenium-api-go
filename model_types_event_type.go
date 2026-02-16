@@ -106,6 +106,11 @@ const (
 	EventTypeHyperlanecoreinterchainSecurityv1EventCreateRoutingIsm TypesEventType = "hyperlane.core.interchain_security.v1.EventCreateRoutingIsm"
 	EventTypeSignalVersion TypesEventType = "signal_version"
 	EventTypeIbccallbackerrorIcs27Packet TypesEventType = "ibccallbackerror-ics27_packet"
+	EventTypeCelestiaforwardingv1EventTokenForwarded TypesEventType = "celestia.forwarding.v1.EventTokenForwarded"
+	EventTypeCelestiaforwardingv1EventForwardingComplete TypesEventType = "celestia.forwarding.v1.EventForwardingComplete"
+	EventTypeCelestiazkismv1EventCreateInterchainSecurityModule TypesEventType = "celestia.zkism.v1.EventCreateInterchainSecurityModule"
+	EventTypeCelestiazkismv1EventUpdateInterchainSecurityModule TypesEventType = "celestia.zkism.v1.EventUpdateInterchainSecurityModule"
+	EventTypeCelestiazkismv1EventSubmitMessages TypesEventType = "celestia.zkism.v1.EventSubmitMessages"
 )
 
 // All allowed values of TypesEventType enum
@@ -195,6 +200,11 @@ var AllowedTypesEventTypeEnumValues = []TypesEventType{
 	"hyperlane.core.interchain_security.v1.EventCreateRoutingIsm",
 	"signal_version",
 	"ibccallbackerror-ics27_packet",
+	"celestia.forwarding.v1.EventTokenForwarded",
+	"celestia.forwarding.v1.EventForwardingComplete",
+	"celestia.zkism.v1.EventCreateInterchainSecurityModule",
+	"celestia.zkism.v1.EventUpdateInterchainSecurityModule",
+	"celestia.zkism.v1.EventSubmitMessages",
 }
 
 func (v *TypesEventType) UnmarshalJSON(src []byte) error {

@@ -564,6 +564,10 @@ paths:
           - MsgResetCircuitBreaker
           - MsgTripCircuitBreaker
           - MsgModuleQuerySafe
+          - MsgForward
+          - MsgCreateInterchainSecurityModule
+          - MsgUpdateInterchainSecurityModule
+          - MsgSubmitMessages
           type: string
       responses:
         "200":
@@ -865,6 +869,10 @@ paths:
           - MsgResetCircuitBreaker
           - MsgTripCircuitBreaker
           - MsgModuleQuerySafe
+          - MsgForward
+          - MsgCreateInterchainSecurityModule
+          - MsgUpdateInterchainSecurityModule
+          - MsgSubmitMessages
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -1628,6 +1636,10 @@ paths:
           - MsgResetCircuitBreaker
           - MsgTripCircuitBreaker
           - MsgModuleQuerySafe
+          - MsgForward
+          - MsgCreateInterchainSecurityModule
+          - MsgUpdateInterchainSecurityModule
+          - MsgSubmitMessages
           type: string
       - description: Comma-separated message types which should be excluded from list
         in: query
@@ -1745,6 +1757,10 @@ paths:
           - MsgResetCircuitBreaker
           - MsgTripCircuitBreaker
           - MsgModuleQuerySafe
+          - MsgForward
+          - MsgCreateInterchainSecurityModule
+          - MsgUpdateInterchainSecurityModule
+          - MsgSubmitMessages
           type: string
       responses:
         "200":
@@ -5441,6 +5457,10 @@ paths:
           - MsgResetCircuitBreaker
           - MsgTripCircuitBreaker
           - MsgModuleQuerySafe
+          - MsgForward
+          - MsgCreateInterchainSecurityModule
+          - MsgUpdateInterchainSecurityModule
+          - MsgSubmitMessages
           type: string
       - description: Comma-separated message types list which should be excluded
         in: query
@@ -5558,6 +5578,10 @@ paths:
           - MsgResetCircuitBreaker
           - MsgTripCircuitBreaker
           - MsgModuleQuerySafe
+          - MsgForward
+          - MsgCreateInterchainSecurityModule
+          - MsgUpdateInterchainSecurityModule
+          - MsgSubmitMessages
           type: string
       - description: Time from in unix timestamp
         in: query
@@ -10726,6 +10750,11 @@ components:
       - hyperlane.core.interchain_security.v1.EventCreateRoutingIsm
       - signal_version
       - ibccallbackerror-ics27_packet
+      - celestia.forwarding.v1.EventTokenForwarded
+      - celestia.forwarding.v1.EventForwardingComplete
+      - celestia.zkism.v1.EventCreateInterchainSecurityModule
+      - celestia.zkism.v1.EventUpdateInterchainSecurityModule
+      - celestia.zkism.v1.EventSubmitMessages
       type: string
       x-enum-varnames:
       - EventTypeUnknown
@@ -10813,6 +10842,11 @@ components:
       - EventTypeHyperlanecoreinterchainSecurityv1EventCreateRoutingIsm
       - EventTypeSignalVersion
       - EventTypeIbccallbackerrorIcs27Packet
+      - EventTypeCelestiaforwardingv1EventTokenForwarded
+      - EventTypeCelestiaforwardingv1EventForwardingComplete
+      - EventTypeCelestiazkismv1EventCreateInterchainSecurityModule
+      - EventTypeCelestiazkismv1EventUpdateInterchainSecurityModule
+      - EventTypeCelestiazkismv1EventSubmitMessages
     types.MsgAddressType:
       enum:
       - validator
@@ -10984,6 +11018,10 @@ components:
       - MsgResetCircuitBreaker
       - MsgTripCircuitBreaker
       - MsgModuleQuerySafe
+      - MsgForward
+      - MsgCreateInterchainSecurityModule
+      - MsgUpdateInterchainSecurityModule
+      - MsgSubmitMessages
       type: string
       x-enum-varnames:
       - MsgUnknown
@@ -11097,6 +11135,10 @@ components:
       - MsgResetCircuitBreaker
       - MsgTripCircuitBreaker
       - MsgModuleQuerySafe
+      - MsgForward
+      - MsgCreateInterchainSecurityModule
+      - MsgUpdateInterchainSecurityModule
+      - MsgSubmitMessages
   securitySchemes:
     ApiKeyAuth:
       description: To authorize your requests you have to select the required tariff

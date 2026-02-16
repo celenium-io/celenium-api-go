@@ -173,6 +173,16 @@
 
 * `EventTypeIbccallbackerrorIcs27Packet` (value: `"ibccallbackerror-ics27_packet"`)
 
+* `EventTypeCelestiaforwardingv1EventTokenForwarded` (value: `"celestia.forwarding.v1.EventTokenForwarded"`)
+
+* `EventTypeCelestiaforwardingv1EventForwardingComplete` (value: `"celestia.forwarding.v1.EventForwardingComplete"`)
+
+* `EventTypeCelestiazkismv1EventCreateInterchainSecurityModule` (value: `"celestia.zkism.v1.EventCreateInterchainSecurityModule"`)
+
+* `EventTypeCelestiazkismv1EventUpdateInterchainSecurityModule` (value: `"celestia.zkism.v1.EventUpdateInterchainSecurityModule"`)
+
+* `EventTypeCelestiazkismv1EventSubmitMessages` (value: `"celestia.zkism.v1.EventSubmitMessages"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

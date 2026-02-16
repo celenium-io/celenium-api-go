@@ -225,6 +225,14 @@
 
 * `MsgModuleQuerySafe` (value: `"MsgModuleQuerySafe"`)
 
+* `MsgForward` (value: `"MsgForward"`)
+
+* `MsgCreateInterchainSecurityModule` (value: `"MsgCreateInterchainSecurityModule"`)
+
+* `MsgUpdateInterchainSecurityModule` (value: `"MsgUpdateInterchainSecurityModule"`)
+
+* `MsgSubmitMessages` (value: `"MsgSubmitMessages"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
