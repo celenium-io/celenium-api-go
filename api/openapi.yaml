@@ -1892,6 +1892,127 @@ paths:
       summary: Get celenium enumerators
       tags:
       - general
+  /forwarding:
+    get:
+      description: |-
+        Returns a paginated list of forwarding events. Forwarding events represent cross-domain token transfers
+        where tokens are forwarded from a Celestia address to a destination address on another domain.
+        Results can be filtered by transaction hash, address, or block height.
+      operationId: list-forwarding
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset for pagination
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - description: Filter by transaction hash (hex)
+        in: query
+        name: tx_hash
+        schema:
+          maxLength: 64
+          minLength: 64
+          type: string
+      - description: Filter by Celestia address
+        in: query
+        name: address
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: Filter by block height
+        in: query
+        name: height
+        schema:
+          type: integer
+      - description: Filter by start time (Unix timestamp)
+        in: query
+        name: from
+        schema:
+          minimum: 1
+          type: integer
+      - description: Filter by end time (Unix timestamp)
+        in: query
+        name: to
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.Forwarding"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: List forwarding events
+      tags:
+      - forwarding
+  /forwarding/{id}:
+    get:
+      description: |-
+        Returns a single forwarding event by its internal ID. The response includes details about
+        the cross-domain token transfer such as destination domain, destination address,
+        forwarding address, success/failed counts, and the list of individual transfers.
+      operationId: get-forwarding
+      parameters:
+      - description: Internal forwarding event ID
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responses.Forwarding"
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get forwarding event by ID
+      tags:
+      - forwarding
   /gas/estimate_for_pfb:
     get:
       description: Get estimated gas for pay for blob message with certain values
@@ -2433,6 +2554,287 @@ paths:
                 $ref: "#/components/schemas/handler.Error"
           description: Internal Server Error
       summary: Get transfer by id
+      tags:
+      - hyperlane
+  /hyperlane/zkism:
+    get:
+      description: |-
+        Returns a paginated list of ZK Interchain Security Modules (ZK ISMs). ZK ISMs use
+        Groth16 zero-knowledge proofs to trustlessly verify cross-chain messages from external
+        chains. Results can be filtered by transaction hash or creator address.
+      operationId: list-zkism
+      parameters:
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset for pagination
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - description: Filter by transaction hash (hex)
+        in: query
+        name: tx_hash
+        schema:
+          maxLength: 64
+          minLength: 64
+          type: string
+      - description: Filter by creator Celestia address
+        in: query
+        name: address
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.ZkISM"
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: List ZK Interchain Security Modules
+      tags:
+      - hyperlane
+  /hyperlane/zkism/{id}:
+    get:
+      description: |-
+        Returns a single ZK Interchain Security Module by its internal id. The response includes
+        the current trusted state, state root, merkle tree address, and verifier key commitments
+        used for ZK proof verification.
+      operationId: get-zkism
+      parameters:
+      - description: Internal ZK ISM identity
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responses.ZkISM"
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get ZK ISM by id
+      tags:
+      - hyperlane
+  /hyperlane/zkism/{id}/messages:
+    get:
+      description: |-
+        Returns the list of Hyperlane messages that were authorized via a given ZK ISM through
+        MsgSubmitMessages transactions. Each entry contains the message id, state root used for
+        the membership proof, and the signer who submitted the authorization. Results can be
+        filtered by signer address, transaction hash, or time range.
+      operationId: get-zkism-messages
+      parameters:
+      - description: Internal ZK ISM identity
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset for pagination
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - description: Filter by transaction hash (hex)
+        in: query
+        name: tx_hash
+        schema:
+          maxLength: 64
+          minLength: 64
+          type: string
+      - description: Filter by signer Celestia address
+        in: query
+        name: address
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: Filter by start time (Unix timestamp)
+        in: query
+        name: from
+        schema:
+          minimum: 1
+          type: integer
+      - description: Filter by end time (Unix timestamp)
+        in: query
+        name: to
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.ZkISMMessage"
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get ZK ISM authorized messages
+      tags:
+      - hyperlane
+  /hyperlane/zkism/{id}/updates:
+    get:
+      description: |-
+        Returns the history of state updates for a given ZK ISM. Each update corresponds to a
+        MsgUpdateInterchainSecurityModule transaction that advanced the trusted state of the ISM
+        via a Groth16 state-transition ZK proof. Results can be filtered by signer address,
+        transaction hash, or time range.
+      operationId: get-zkism-updates
+      parameters:
+      - description: Internal ZK ISM identity
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          type: integer
+      - description: Offset for pagination
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: "Sort order. Default: desc"
+        in: query
+        name: sort
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - description: Filter by transaction hash (hex)
+        in: query
+        name: tx_hash
+        schema:
+          maxLength: 64
+          minLength: 64
+          type: string
+      - description: Filter by signer Celestia address
+        in: query
+        name: address
+        schema:
+          maxLength: 47
+          minLength: 47
+          type: string
+      - description: Filter by start time (Unix timestamp)
+        in: query
+        name: from
+        schema:
+          minimum: 1
+          type: integer
+      - description: Filter by end time (Unix timestamp)
+        in: query
+        name: to
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.ZkISMUpdate"
+                type: array
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get ZK ISM state update history
       tags:
       - hyperlane
   /ibc/channel:
@@ -7395,6 +7797,181 @@ components:
           example: commission
           type: object
       type: object
+    responses.Forwarding:
+      example:
+        dest_address: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+        chain:
+          name: name
+          native_token:
+            symbol: ETH
+            decimals: 18
+            name: Ether
+          block_explorers:
+          - api_url: https://api.scan.url.io
+            name: Block explorer
+            family: etherscan
+            url: https://scan.url.io
+          - api_url: https://api.scan.url.io
+            name: Block explorer
+            family: etherscan
+            url: https://scan.url.io
+        inputs:
+        - chain:
+            name: name
+            native_token:
+              symbol: ETH
+              decimals: 18
+              name: Ether
+            block_explorers:
+            - api_url: https://api.scan.url.io
+              name: Block explorer
+              family: etherscan
+              url: https://scan.url.io
+            - api_url: https://api.scan.url.io
+              name: Block explorer
+              family: etherscan
+              url: https://scan.url.io
+          from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+          received: "123445"
+          tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          denom: utia
+          time: 2023-07-04T03:10:57Z
+          height: 100
+        - chain:
+            name: name
+            native_token:
+              symbol: ETH
+              decimals: 18
+              name: Ether
+            block_explorers:
+            - api_url: https://api.scan.url.io
+              name: Block explorer
+              family: etherscan
+              url: https://scan.url.io
+            - api_url: https://api.scan.url.io
+              name: Block explorer
+              family: etherscan
+              url: https://scan.url.io
+          from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+          received: "123445"
+          tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          denom: utia
+          time: 2023-07-04T03:10:57Z
+          height: 100
+        transfers:
+        - 0
+        - 0
+        dest_domain: 123456789
+        forward_address:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        success_count: 100
+        failed_count: 10
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        id: 321
+        time: 2023-07-04T03:10:57Z
+        height: 100
+      properties:
+        chain:
+          $ref: "#/components/schemas/responses.ChainMetadata"
+        dest_address:
+          example: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+          format: binary
+          type: string
+        dest_domain:
+          example: 123456789
+          format: int64
+          type: integer
+        failed_count:
+          example: 10
+          format: int64
+          type: integer
+        forward_address:
+          $ref: "#/components/schemas/responses.ShortAddress"
+        height:
+          example: 100
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        inputs:
+          items:
+            $ref: "#/components/schemas/responses.ForwardingInput"
+          type: array
+        success_count:
+          example: 100
+          format: int64
+          type: integer
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        transfers:
+          items:
+            type: integer
+          type: array
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+      type: object
+    responses.ForwardingInput:
+      example:
+        chain:
+          name: name
+          native_token:
+            symbol: ETH
+            decimals: 18
+            name: Ether
+          block_explorers:
+          - api_url: https://api.scan.url.io
+            name: Block explorer
+            family: etherscan
+            url: https://scan.url.io
+          - api_url: https://api.scan.url.io
+            name: Block explorer
+            family: etherscan
+            url: https://scan.url.io
+        from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+        received: "123445"
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        denom: utia
+        time: 2023-07-04T03:10:57Z
+        height: 100
+      properties:
+        chain:
+          $ref: "#/components/schemas/responses.ChainMetadata"
+        denom:
+          example: utia
+          format: string
+          type: string
+        from:
+          example: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+          format: string
+          type: string
+        height:
+          example: 100
+          format: int64
+          type: integer
+        received:
+          example: "123445"
+          format: string
+          type: string
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+      type: object
     responses.GasPayment:
       example:
         amount: "12345"
@@ -10662,6 +11239,160 @@ components:
           example: 12345678
           format: int64
           type: integer
+      type: object
+    responses.ZkISM:
+      example:
+        creator:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        groth16_vkey: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        merkle_tree_address: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        external_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        id: 321
+        state: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        time: 2023-07-04T03:10:57Z
+        state_membership_vkey: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        state_transition_vkey: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        state_root: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        height: 100
+      properties:
+        creator:
+          $ref: "#/components/schemas/responses.ShortAddress"
+        external_id:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        groth16_vkey:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        height:
+          example: 100
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        merkle_tree_address:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        state:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        state_membership_vkey:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        state_root:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        state_transition_vkey:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+      type: object
+    responses.ZkISMMessage:
+      example:
+        message_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        id: 321
+        time: 2023-07-04T03:10:57Z
+        state_root: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        height: 100
+        signer:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+      properties:
+        height:
+          example: 100
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        message_id:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        signer:
+          $ref: "#/components/schemas/responses.ShortAddress"
+        state_root:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+      type: object
+    responses.ZkISMUpdate:
+      example:
+        new_state_root: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        new_state: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        id: 321
+        time: 2023-07-04T03:10:57Z
+        height: 100
+        signer:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+      properties:
+        height:
+          example: 100
+          format: int64
+          type: integer
+        id:
+          example: 321
+          format: int64
+          type: integer
+        new_state:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        new_state_root:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
+        signer:
+          $ref: "#/components/schemas/responses.ShortAddress"
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
+        tx_hash:
+          example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          format: binary
+          type: string
       type: object
     types.EventType:
       enum:

@@ -102,6 +102,8 @@ Class | Method | HTTP request | Description
 *BlockAPI* | [**GetBlockMessages**](docs/BlockAPI.md#getblockmessages) | **Get** /block/{height}/messages | Get messages contained in the block
 *BlockAPI* | [**GetBlockStats**](docs/BlockAPI.md#getblockstats) | **Get** /block/{height}/stats | Get block stats by height
 *BlockAPI* | [**ListBlock**](docs/BlockAPI.md#listblock) | **Get** /block | List blocks info
+*ForwardingAPI* | [**GetForwarding**](docs/ForwardingAPI.md#getforwarding) | **Get** /forwarding/{id} | Get forwarding event by ID
+*ForwardingAPI* | [**ListForwarding**](docs/ForwardingAPI.md#listforwarding) | **Get** /forwarding | List forwarding events
 *GasAPI* | [**GasEstimateForPfb**](docs/GasAPI.md#gasestimateforpfb) | **Get** /gas/estimate_for_pfb | Get estimated gas for pay for blob
 *GasAPI* | [**GasPrice**](docs/GasAPI.md#gasprice) | **Get** /gas/price | Get estimated gas price
 *GasAPI* | [**GasPricePriority**](docs/GasAPI.md#gaspricepriority) | **Get** /gas/price/{priority} | Get estimated gas price with priority filter
@@ -112,11 +114,15 @@ Class | Method | HTTP request | Description
 *HyperlaneAPI* | [**GetHyperlaneMailbox**](docs/HyperlaneAPI.md#gethyperlanemailbox) | **Get** /hyperlane/mailbox/{id} | Get hyperlane mailbox info
 *HyperlaneAPI* | [**GetHyperlaneToken**](docs/HyperlaneAPI.md#gethyperlanetoken) | **Get** /hyperlane/token/{id} | Get hyperlane token info
 *HyperlaneAPI* | [**GetHyperlaneTransfer**](docs/HyperlaneAPI.md#gethyperlanetransfer) | **Get** /hyperlane/transfer/{id} | Get transfer by id
+*HyperlaneAPI* | [**GetZkism**](docs/HyperlaneAPI.md#getzkism) | **Get** /hyperlane/zkism/{id} | Get ZK ISM by id
+*HyperlaneAPI* | [**GetZkismMessages**](docs/HyperlaneAPI.md#getzkismmessages) | **Get** /hyperlane/zkism/{id}/messages | Get ZK ISM authorized messages
+*HyperlaneAPI* | [**GetZkismUpdates**](docs/HyperlaneAPI.md#getzkismupdates) | **Get** /hyperlane/zkism/{id}/updates | Get ZK ISM state update history
 *HyperlaneAPI* | [**ListHyperlaneDomains**](docs/HyperlaneAPI.md#listhyperlanedomains) | **Get** /hyperlane/domains | List hyperlane domains info
 *HyperlaneAPI* | [**ListHyperlaneIgps**](docs/HyperlaneAPI.md#listhyperlaneigps) | **Get** /hyperlane/igp | List hyperlane Interchain Gas Paymaster (IGP)
 *HyperlaneAPI* | [**ListHyperlaneMailbox**](docs/HyperlaneAPI.md#listhyperlanemailbox) | **Get** /hyperlane/mailbox | List hyperlane mailboxes info
 *HyperlaneAPI* | [**ListHyperlaneTokens**](docs/HyperlaneAPI.md#listhyperlanetokens) | **Get** /hyperlane/token | List hyperlane tokens info
 *HyperlaneAPI* | [**ListHyperlaneTransfers**](docs/HyperlaneAPI.md#listhyperlanetransfers) | **Get** /hyperlane/transfer | List hyperlane transfers info
+*HyperlaneAPI* | [**ListZkism**](docs/HyperlaneAPI.md#listzkism) | **Get** /hyperlane/zkism | List ZK Interchain Security Modules
 *IbcAPI* | [**GetIbcChannel**](docs/IbcAPI.md#getibcchannel) | **Get** /ibc/channel/{id} | Get ibc channel info
 *IbcAPI* | [**GetIbcChannels**](docs/IbcAPI.md#getibcchannels) | **Get** /ibc/channel | Get ibc channels info
 *IbcAPI* | [**GetIbcClient**](docs/IbcAPI.md#getibcclient) | **Get** /ibc/client/{id} | Get ibc client info
@@ -223,6 +229,8 @@ Class | Method | HTTP request | Description
  - [ResponsesDomainMetadata](docs/ResponsesDomainMetadata.md)
  - [ResponsesEnums](docs/ResponsesEnums.md)
  - [ResponsesEvent](docs/ResponsesEvent.md)
+ - [ResponsesForwarding](docs/ResponsesForwarding.md)
+ - [ResponsesForwardingInput](docs/ResponsesForwardingInput.md)
  - [ResponsesGasPayment](docs/ResponsesGasPayment.md)
  - [ResponsesGasPrice](docs/ResponsesGasPrice.md)
  - [ResponsesGrant](docs/ResponsesGrant.md)
@@ -289,6 +297,9 @@ Class | Method | HTTP request | Description
  - [ResponsesVesting](docs/ResponsesVesting.md)
  - [ResponsesVestingPeriod](docs/ResponsesVestingPeriod.md)
  - [ResponsesVote](docs/ResponsesVote.md)
+ - [ResponsesZkISM](docs/ResponsesZkISM.md)
+ - [ResponsesZkISMMessage](docs/ResponsesZkISMMessage.md)
+ - [ResponsesZkISMUpdate](docs/ResponsesZkISMUpdate.md)
  - [TypesEventType](docs/TypesEventType.md)
  - [TypesMsgAddressType](docs/TypesMsgAddressType.md)
  - [TypesMsgType](docs/TypesMsgType.md)

@@ -520,6 +520,526 @@ func (a *HyperlaneAPIService) GetHyperlaneTransferExecute(r ApiGetHyperlaneTrans
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetZkismRequest struct {
+	ctx context.Context
+	ApiService *HyperlaneAPIService
+	id int32
+}
+
+func (r ApiGetZkismRequest) Execute() (*ResponsesZkISM, *http.Response, error) {
+	return r.ApiService.GetZkismExecute(r)
+}
+
+/*
+GetZkism Get ZK ISM by id
+
+Returns a single ZK Interchain Security Module by its internal id. The response includes
+the current trusted state, state root, merkle tree address, and verifier key commitments
+used for ZK proof verification.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Internal ZK ISM identity
+ @return ApiGetZkismRequest
+*/
+func (a *HyperlaneAPIService) GetZkism(ctx context.Context, id int32) ApiGetZkismRequest {
+	return ApiGetZkismRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ResponsesZkISM
+func (a *HyperlaneAPIService) GetZkismExecute(r ApiGetZkismRequest) (*ResponsesZkISM, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ResponsesZkISM
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HyperlaneAPIService.GetZkism")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/hyperlane/zkism/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetZkismMessagesRequest struct {
+	ctx context.Context
+	ApiService *HyperlaneAPIService
+	id int32
+	limit *int32
+	offset *int32
+	sort *string
+	txHash *string
+	address *string
+	from *int32
+	to *int32
+}
+
+// Count of requested entities
+func (r ApiGetZkismMessagesRequest) Limit(limit int32) ApiGetZkismMessagesRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset for pagination
+func (r ApiGetZkismMessagesRequest) Offset(offset int32) ApiGetZkismMessagesRequest {
+	r.offset = &offset
+	return r
+}
+
+// Sort order. Default: desc
+func (r ApiGetZkismMessagesRequest) Sort(sort string) ApiGetZkismMessagesRequest {
+	r.sort = &sort
+	return r
+}
+
+// Filter by transaction hash (hex)
+func (r ApiGetZkismMessagesRequest) TxHash(txHash string) ApiGetZkismMessagesRequest {
+	r.txHash = &txHash
+	return r
+}
+
+// Filter by signer Celestia address
+func (r ApiGetZkismMessagesRequest) Address(address string) ApiGetZkismMessagesRequest {
+	r.address = &address
+	return r
+}
+
+// Filter by start time (Unix timestamp)
+func (r ApiGetZkismMessagesRequest) From(from int32) ApiGetZkismMessagesRequest {
+	r.from = &from
+	return r
+}
+
+// Filter by end time (Unix timestamp)
+func (r ApiGetZkismMessagesRequest) To(to int32) ApiGetZkismMessagesRequest {
+	r.to = &to
+	return r
+}
+
+func (r ApiGetZkismMessagesRequest) Execute() ([]ResponsesZkISMMessage, *http.Response, error) {
+	return r.ApiService.GetZkismMessagesExecute(r)
+}
+
+/*
+GetZkismMessages Get ZK ISM authorized messages
+
+Returns the list of Hyperlane messages that were authorized via a given ZK ISM through
+MsgSubmitMessages transactions. Each entry contains the message id, state root used for
+the membership proof, and the signer who submitted the authorization. Results can be
+filtered by signer address, transaction hash, or time range.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Internal ZK ISM identity
+ @return ApiGetZkismMessagesRequest
+*/
+func (a *HyperlaneAPIService) GetZkismMessages(ctx context.Context, id int32) ApiGetZkismMessagesRequest {
+	return ApiGetZkismMessagesRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return []ResponsesZkISMMessage
+func (a *HyperlaneAPIService) GetZkismMessagesExecute(r ApiGetZkismMessagesRequest) ([]ResponsesZkISMMessage, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ResponsesZkISMMessage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HyperlaneAPIService.GetZkismMessages")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/hyperlane/zkism/{id}/messages"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "", "")
+	}
+	if r.txHash != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tx_hash", r.txHash, "", "")
+	}
+	if r.address != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "address", r.address, "", "")
+	}
+	if r.from != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "", "")
+	}
+	if r.to != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetZkismUpdatesRequest struct {
+	ctx context.Context
+	ApiService *HyperlaneAPIService
+	id int32
+	limit *int32
+	offset *int32
+	sort *string
+	txHash *string
+	address *string
+	from *int32
+	to *int32
+}
+
+// Count of requested entities
+func (r ApiGetZkismUpdatesRequest) Limit(limit int32) ApiGetZkismUpdatesRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset for pagination
+func (r ApiGetZkismUpdatesRequest) Offset(offset int32) ApiGetZkismUpdatesRequest {
+	r.offset = &offset
+	return r
+}
+
+// Sort order. Default: desc
+func (r ApiGetZkismUpdatesRequest) Sort(sort string) ApiGetZkismUpdatesRequest {
+	r.sort = &sort
+	return r
+}
+
+// Filter by transaction hash (hex)
+func (r ApiGetZkismUpdatesRequest) TxHash(txHash string) ApiGetZkismUpdatesRequest {
+	r.txHash = &txHash
+	return r
+}
+
+// Filter by signer Celestia address
+func (r ApiGetZkismUpdatesRequest) Address(address string) ApiGetZkismUpdatesRequest {
+	r.address = &address
+	return r
+}
+
+// Filter by start time (Unix timestamp)
+func (r ApiGetZkismUpdatesRequest) From(from int32) ApiGetZkismUpdatesRequest {
+	r.from = &from
+	return r
+}
+
+// Filter by end time (Unix timestamp)
+func (r ApiGetZkismUpdatesRequest) To(to int32) ApiGetZkismUpdatesRequest {
+	r.to = &to
+	return r
+}
+
+func (r ApiGetZkismUpdatesRequest) Execute() ([]ResponsesZkISMUpdate, *http.Response, error) {
+	return r.ApiService.GetZkismUpdatesExecute(r)
+}
+
+/*
+GetZkismUpdates Get ZK ISM state update history
+
+Returns the history of state updates for a given ZK ISM. Each update corresponds to a
+MsgUpdateInterchainSecurityModule transaction that advanced the trusted state of the ISM
+via a Groth16 state-transition ZK proof. Results can be filtered by signer address,
+transaction hash, or time range.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Internal ZK ISM identity
+ @return ApiGetZkismUpdatesRequest
+*/
+func (a *HyperlaneAPIService) GetZkismUpdates(ctx context.Context, id int32) ApiGetZkismUpdatesRequest {
+	return ApiGetZkismUpdatesRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return []ResponsesZkISMUpdate
+func (a *HyperlaneAPIService) GetZkismUpdatesExecute(r ApiGetZkismUpdatesRequest) ([]ResponsesZkISMUpdate, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ResponsesZkISMUpdate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HyperlaneAPIService.GetZkismUpdates")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/hyperlane/zkism/{id}/updates"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "", "")
+	}
+	if r.txHash != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tx_hash", r.txHash, "", "")
+	}
+	if r.address != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "address", r.address, "", "")
+	}
+	if r.from != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "", "")
+	}
+	if r.to != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListHyperlaneDomainsRequest struct {
 	ctx context.Context
 	ApiService *HyperlaneAPIService
@@ -1254,6 +1774,178 @@ func (a *HyperlaneAPIService) ListHyperlaneTransfersExecute(r ApiListHyperlaneTr
 	}
 	if r.hash != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "hash", r.hash, "", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListZkismRequest struct {
+	ctx context.Context
+	ApiService *HyperlaneAPIService
+	limit *int32
+	offset *int32
+	sort *string
+	txHash *string
+	address *string
+}
+
+// Count of requested entities
+func (r ApiListZkismRequest) Limit(limit int32) ApiListZkismRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset for pagination
+func (r ApiListZkismRequest) Offset(offset int32) ApiListZkismRequest {
+	r.offset = &offset
+	return r
+}
+
+// Sort order. Default: desc
+func (r ApiListZkismRequest) Sort(sort string) ApiListZkismRequest {
+	r.sort = &sort
+	return r
+}
+
+// Filter by transaction hash (hex)
+func (r ApiListZkismRequest) TxHash(txHash string) ApiListZkismRequest {
+	r.txHash = &txHash
+	return r
+}
+
+// Filter by creator Celestia address
+func (r ApiListZkismRequest) Address(address string) ApiListZkismRequest {
+	r.address = &address
+	return r
+}
+
+func (r ApiListZkismRequest) Execute() ([]ResponsesZkISM, *http.Response, error) {
+	return r.ApiService.ListZkismExecute(r)
+}
+
+/*
+ListZkism List ZK Interchain Security Modules
+
+Returns a paginated list of ZK Interchain Security Modules (ZK ISMs). ZK ISMs use
+Groth16 zero-knowledge proofs to trustlessly verify cross-chain messages from external
+chains. Results can be filtered by transaction hash or creator address.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListZkismRequest
+*/
+func (a *HyperlaneAPIService) ListZkism(ctx context.Context) ApiListZkismRequest {
+	return ApiListZkismRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []ResponsesZkISM
+func (a *HyperlaneAPIService) ListZkismExecute(r ApiListZkismRequest) ([]ResponsesZkISM, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ResponsesZkISM
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HyperlaneAPIService.ListZkism")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/hyperlane/zkism"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "", "")
+	}
+	if r.txHash != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tx_hash", r.txHash, "", "")
+	}
+	if r.address != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "address", r.address, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

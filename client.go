@@ -54,6 +54,8 @@ type APIClient struct {
 
 	BlockAPI *BlockAPIService
 
+	ForwardingAPI *ForwardingAPIService
+
 	GasAPI *GasAPIService
 
 	GeneralAPI *GeneralAPIService
@@ -99,6 +101,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AddressAPI = (*AddressAPIService)(&c.common)
 	c.BlockAPI = (*BlockAPIService)(&c.common)
+	c.ForwardingAPI = (*ForwardingAPIService)(&c.common)
 	c.GasAPI = (*GasAPIService)(&c.common)
 	c.GeneralAPI = (*GeneralAPIService)(&c.common)
 	c.HyperlaneAPI = (*HyperlaneAPIService)(&c.common)

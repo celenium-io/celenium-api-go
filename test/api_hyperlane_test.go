@@ -78,6 +78,48 @@ func Test_celenium_HyperlaneAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test HyperlaneAPIService GetZkism", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		resp, httpRes, err := apiClient.HyperlaneAPI.GetZkism(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test HyperlaneAPIService GetZkismMessages", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		resp, httpRes, err := apiClient.HyperlaneAPI.GetZkismMessages(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test HyperlaneAPIService GetZkismUpdates", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		resp, httpRes, err := apiClient.HyperlaneAPI.GetZkismUpdates(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test HyperlaneAPIService ListHyperlaneDomains", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -131,6 +173,18 @@ func Test_celenium_HyperlaneAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.HyperlaneAPI.ListHyperlaneTransfers(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test HyperlaneAPIService ListZkism", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.HyperlaneAPI.ListZkism(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

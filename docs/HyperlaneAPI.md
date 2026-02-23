@@ -8,11 +8,15 @@ Method | HTTP request | Description
 [**GetHyperlaneMailbox**](HyperlaneAPI.md#GetHyperlaneMailbox) | **Get** /hyperlane/mailbox/{id} | Get hyperlane mailbox info
 [**GetHyperlaneToken**](HyperlaneAPI.md#GetHyperlaneToken) | **Get** /hyperlane/token/{id} | Get hyperlane token info
 [**GetHyperlaneTransfer**](HyperlaneAPI.md#GetHyperlaneTransfer) | **Get** /hyperlane/transfer/{id} | Get transfer by id
+[**GetZkism**](HyperlaneAPI.md#GetZkism) | **Get** /hyperlane/zkism/{id} | Get ZK ISM by id
+[**GetZkismMessages**](HyperlaneAPI.md#GetZkismMessages) | **Get** /hyperlane/zkism/{id}/messages | Get ZK ISM authorized messages
+[**GetZkismUpdates**](HyperlaneAPI.md#GetZkismUpdates) | **Get** /hyperlane/zkism/{id}/updates | Get ZK ISM state update history
 [**ListHyperlaneDomains**](HyperlaneAPI.md#ListHyperlaneDomains) | **Get** /hyperlane/domains | List hyperlane domains info
 [**ListHyperlaneIgps**](HyperlaneAPI.md#ListHyperlaneIgps) | **Get** /hyperlane/igp | List hyperlane Interchain Gas Paymaster (IGP)
 [**ListHyperlaneMailbox**](HyperlaneAPI.md#ListHyperlaneMailbox) | **Get** /hyperlane/mailbox | List hyperlane mailboxes info
 [**ListHyperlaneTokens**](HyperlaneAPI.md#ListHyperlaneTokens) | **Get** /hyperlane/token | List hyperlane tokens info
 [**ListHyperlaneTransfers**](HyperlaneAPI.md#ListHyperlaneTransfers) | **Get** /hyperlane/transfer | List hyperlane transfers info
+[**ListZkism**](HyperlaneAPI.md#ListZkism) | **Get** /hyperlane/zkism | List ZK Interchain Security Modules
 
 
 
@@ -281,6 +285,244 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ResponsesHyperlaneTransfer**](ResponsesHyperlaneTransfer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetZkism
+
+> ResponsesZkISM GetZkism(ctx, id).Execute()
+
+Get ZK ISM by id
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	id := int32(56) // int32 | Internal ZK ISM identity
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HyperlaneAPI.GetZkism(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HyperlaneAPI.GetZkism``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetZkism`: ResponsesZkISM
+	fmt.Fprintf(os.Stdout, "Response from `HyperlaneAPI.GetZkism`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Internal ZK ISM identity | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetZkismRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ResponsesZkISM**](ResponsesZkISM.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetZkismMessages
+
+> []ResponsesZkISMMessage GetZkismMessages(ctx, id).Limit(limit).Offset(offset).Sort(sort).TxHash(txHash).Address(address).From(from).To(to).Execute()
+
+Get ZK ISM authorized messages
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	id := int32(56) // int32 | Internal ZK ISM identity
+	limit := int32(56) // int32 | Count of requested entities (optional)
+	offset := int32(56) // int32 | Offset for pagination (optional)
+	sort := "sort_example" // string | Sort order. Default: desc (optional)
+	txHash := "txHash_example" // string | Filter by transaction hash (hex) (optional)
+	address := "address_example" // string | Filter by signer Celestia address (optional)
+	from := int32(56) // int32 | Filter by start time (Unix timestamp) (optional)
+	to := int32(56) // int32 | Filter by end time (Unix timestamp) (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HyperlaneAPI.GetZkismMessages(context.Background(), id).Limit(limit).Offset(offset).Sort(sort).TxHash(txHash).Address(address).From(from).To(to).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HyperlaneAPI.GetZkismMessages``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetZkismMessages`: []ResponsesZkISMMessage
+	fmt.Fprintf(os.Stdout, "Response from `HyperlaneAPI.GetZkismMessages`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Internal ZK ISM identity | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetZkismMessagesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Count of requested entities | 
+ **offset** | **int32** | Offset for pagination | 
+ **sort** | **string** | Sort order. Default: desc | 
+ **txHash** | **string** | Filter by transaction hash (hex) | 
+ **address** | **string** | Filter by signer Celestia address | 
+ **from** | **int32** | Filter by start time (Unix timestamp) | 
+ **to** | **int32** | Filter by end time (Unix timestamp) | 
+
+### Return type
+
+[**[]ResponsesZkISMMessage**](ResponsesZkISMMessage.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetZkismUpdates
+
+> []ResponsesZkISMUpdate GetZkismUpdates(ctx, id).Limit(limit).Offset(offset).Sort(sort).TxHash(txHash).Address(address).From(from).To(to).Execute()
+
+Get ZK ISM state update history
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	id := int32(56) // int32 | Internal ZK ISM identity
+	limit := int32(56) // int32 | Count of requested entities (optional)
+	offset := int32(56) // int32 | Offset for pagination (optional)
+	sort := "sort_example" // string | Sort order. Default: desc (optional)
+	txHash := "txHash_example" // string | Filter by transaction hash (hex) (optional)
+	address := "address_example" // string | Filter by signer Celestia address (optional)
+	from := int32(56) // int32 | Filter by start time (Unix timestamp) (optional)
+	to := int32(56) // int32 | Filter by end time (Unix timestamp) (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HyperlaneAPI.GetZkismUpdates(context.Background(), id).Limit(limit).Offset(offset).Sort(sort).TxHash(txHash).Address(address).From(from).To(to).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HyperlaneAPI.GetZkismUpdates``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetZkismUpdates`: []ResponsesZkISMUpdate
+	fmt.Fprintf(os.Stdout, "Response from `HyperlaneAPI.GetZkismUpdates`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | Internal ZK ISM identity | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetZkismUpdatesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Count of requested entities | 
+ **offset** | **int32** | Offset for pagination | 
+ **sort** | **string** | Sort order. Default: desc | 
+ **txHash** | **string** | Filter by transaction hash (hex) | 
+ **address** | **string** | Filter by signer Celestia address | 
+ **from** | **int32** | Filter by start time (Unix timestamp) | 
+ **to** | **int32** | Filter by end time (Unix timestamp) | 
+
+### Return type
+
+[**[]ResponsesZkISMUpdate**](ResponsesZkISMUpdate.md)
 
 ### Authorization
 
@@ -640,6 +882,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ResponsesHyperlaneTransfer**](ResponsesHyperlaneTransfer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListZkism
+
+> []ResponsesZkISM ListZkism(ctx).Limit(limit).Offset(offset).Sort(sort).TxHash(txHash).Address(address).Execute()
+
+List ZK Interchain Security Modules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	limit := int32(56) // int32 | Count of requested entities (optional)
+	offset := int32(56) // int32 | Offset for pagination (optional)
+	sort := "sort_example" // string | Sort order. Default: desc (optional)
+	txHash := "txHash_example" // string | Filter by transaction hash (hex) (optional)
+	address := "address_example" // string | Filter by creator Celestia address (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HyperlaneAPI.ListZkism(context.Background()).Limit(limit).Offset(offset).Sort(sort).TxHash(txHash).Address(address).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HyperlaneAPI.ListZkism``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListZkism`: []ResponsesZkISM
+	fmt.Fprintf(os.Stdout, "Response from `HyperlaneAPI.ListZkism`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListZkismRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Count of requested entities | 
+ **offset** | **int32** | Offset for pagination | 
+ **sort** | **string** | Sort order. Default: desc | 
+ **txHash** | **string** | Filter by transaction hash (hex) | 
+ **address** | **string** | Filter by creator Celestia address | 
+
+### Return type
+
+[**[]ResponsesZkISM**](ResponsesZkISM.md)
 
 ### Authorization
 
