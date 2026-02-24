@@ -49,9 +49,9 @@ func (r ApiGetVestingPeriodsRequest) Execute() (*ResponsesVestingPeriod, *http.R
 }
 
 /*
-GetVestingPeriods Periods vesting periods by id
+GetVestingPeriods Get vesting periods by id
 
-Periods vesting periods by id. Returns not empty array only for periodic vestings.
+Returns vesting periods by vesting id. Returns a non-empty array only for periodic vestings.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity

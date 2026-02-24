@@ -74,6 +74,9 @@ func (a *ForwardingAPIService) GetForwardingExecute(r ApiGetForwardingRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

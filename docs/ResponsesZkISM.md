@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **MerkleTreeAddress** | Pointer to ***os.File** |  | [optional] 
 **State** | Pointer to ***os.File** |  | [optional] 
 **StateMembershipVkey** | Pointer to ***os.File** |  | [optional] 
-**StateRoot** | Pointer to ***os.File** |  | [optional] 
 **StateTransitionVkey** | Pointer to ***os.File** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **TxHash** | Pointer to ***os.File** |  | [optional] 
@@ -235,31 +234,6 @@ SetStateMembershipVkey sets StateMembershipVkey field to given value.
 `func (o *ResponsesZkISM) HasStateMembershipVkey() bool`
 
 HasStateMembershipVkey returns a boolean if a field has been set.
-
-### GetStateRoot
-
-`func (o *ResponsesZkISM) GetStateRoot() *os.File`
-
-GetStateRoot returns the StateRoot field if non-nil, zero value otherwise.
-
-### GetStateRootOk
-
-`func (o *ResponsesZkISM) GetStateRootOk() (**os.File, bool)`
-
-GetStateRootOk returns a tuple with the StateRoot field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStateRoot
-
-`func (o *ResponsesZkISM) SetStateRoot(v *os.File)`
-
-SetStateRoot sets StateRoot field to given value.
-
-### HasStateRoot
-
-`func (o *ResponsesZkISM) HasStateRoot() bool`
-
-HasStateRoot returns a boolean if a field has been set.
 
 ### GetStateTransitionVkey
 

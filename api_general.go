@@ -35,7 +35,7 @@ func (r ApiGetConstantsRequest) Execute() (*ResponsesConstants, *http.Response, 
 /*
 GetConstants Get network constants
 
-Get network constants
+Returns all on-chain governance and module parameters for the Celestia network, including staking, slashing, blob, and other module constants, along with denomination metadata.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetConstantsRequest
@@ -144,7 +144,7 @@ func (r ApiGetEnumsRequest) Execute() (*ResponsesEnums, *http.Response, error) {
 /*
 GetEnums Get celenium enumerators
 
-Get celenium enumerators
+Returns all enumeration values used across the API, including rollup tags, categories, stacks, providers, message types, and other typed string constants.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetEnumsRequest
@@ -243,7 +243,7 @@ func (r ApiHeadRequest) Execute() (*ResponsesState, *http.Response, error) {
 /*
 Head Get current indexer head
 
-Get current indexer head
+Returns the current indexer state: the last indexed block height, total accounts, total blobs size, total voting power, and other network-wide counters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiHeadRequest

@@ -72,7 +72,7 @@ func (r ApiAddressBlobsRequest) Execute() ([]ResponsesBlobLog, *http.Response, e
 /*
 AddressBlobs Get blobs pushed by address
 
-Get blobs pushed by address
+Returns a paginated list of blobs submitted via PayForBlobs transactions from the given address. Supports sorting by time or size, and optional join of transaction and namespace entities.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -231,7 +231,7 @@ func (r ApiAddressCelestialsRequest) Execute() ([]ResponsesCelestial, *http.Resp
 /*
 AddressCelestials Get list of celestial id for address
 
-Get list of celestial id for address
+Returns a paginated list of Celestials NFT identities linked to the given address, including image URLs and associated metadata.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -388,7 +388,7 @@ func (r ApiAddressDelegationsRequest) Execute() ([]ResponsesDelegation, *http.Re
 /*
 AddressDelegations Get delegations made by address
 
-Get delegations made by address
+Returns a paginated list of active staking delegations from the given address to validators. Use show_zero=true to include delegations with zero amount.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -541,7 +541,7 @@ func (r ApiAddressGranteeRequest) Execute() ([]ResponsesGrant, *http.Response, e
 /*
 AddressGrantee Get grants where address is grantee
 
-Get grants where address is grantee
+Returns a paginated list of authz grants where the given address is the grantee — i.e., grants that other accounts have authorized to this address.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -691,7 +691,7 @@ func (r ApiAddressGrantsRequest) Execute() ([]ResponsesGrant, *http.Response, er
 /*
 AddressGrants Get grants made by address
 
-Get grants made by address
+Returns a paginated list of authz grants where the given address is the granter — i.e., grants that this address has authorized to other accounts.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -855,7 +855,7 @@ func (r ApiAddressMessagesRequest) Execute() ([]ResponsesMessageForAddress, *htt
 /*
 AddressMessages Get address messages
 
-Get address messages
+Returns a paginated list of Cosmos SDK messages associated with the given address. Supports filtering by message type.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -1011,7 +1011,7 @@ func (r ApiAddressRedelegationsRequest) Execute() ([]ResponsesRedelegation, *htt
 /*
 AddressRedelegations Get redelegations made by address
 
-Get redelegations made by address
+Returns a paginated list of redelegation records where the given address moved stake from one validator to another.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -1163,7 +1163,7 @@ func (r ApiAddressStatsRequest) Execute() ([]ResponsesHistogramItem, *http.Respo
 /*
 AddressStats Get address stats
 
-Get address stats
+Returns a time-series histogram of per-address statistics for the selected metric (gas_used, gas_wanted, fee, or tx_count) aggregated by the given timeframe.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -1361,7 +1361,7 @@ func (r ApiAddressTransactionsRequest) Execute() ([]ResponsesTx, *http.Response,
 /*
 AddressTransactions Get address transactions
 
-Get address transactions
+Returns a paginated list of transactions sent or signed by the given address. Supports filtering by status, message type, time range, and block height.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -1529,7 +1529,7 @@ func (r ApiAddressUndelegationsRequest) Execute() ([]ResponsesUndelegation, *htt
 /*
 AddressUndelegations Get undelegations made by address
 
-Get undelegations made by address
+Returns a paginated list of pending unbonding (undelegation) records for the given address. Tokens are locked during the unbonding period before they become available.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -1686,7 +1686,7 @@ func (r ApiAddressVestingRequest) Execute() ([]ResponsesVesting, *http.Response,
 /*
 AddressVesting Get vesting for address
 
-Get vesting for address
+Returns a paginated list of vesting accounts associated with the given address. Use show_ended=true to also include vestings whose end time has already passed.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -1839,7 +1839,7 @@ func (r ApiAddressVotesRequest) Execute() ([]ResponsesVote, *http.Response, erro
 /*
 AddressVotes Get list of votes for address
 
-Get list of votes for address
+Returns a paginated list of governance votes cast by the given address on on-chain proposals.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -1975,7 +1975,7 @@ func (r ApiGetAddressRequest) Execute() (*ResponsesAddress, *http.Response, erro
 /*
 GetAddress Get address info
 
-Get address info
+Returns detailed information about a Celestia address including balances, delegation amounts, and linked Celestial identity. Returns 204 if the address is not found.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -2104,7 +2104,7 @@ func (r ApiGetAddressCountRequest) Execute() (int32, *http.Response, error) {
 /*
 GetAddressCount Get count of addresses in network
 
-Get count of addresses in network
+Returns the total number of unique addresses that have ever appeared on the Celestia network, sourced from the indexer state.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAddressCountRequest
@@ -2239,9 +2239,9 @@ func (r ApiListAddressRequest) Execute() ([]ResponsesAddress, *http.Response, er
 }
 
 /*
-ListAddress List address info
+ListAddress List addresses
 
-List address info
+Returns a paginated list of Celestia addresses with their balances. Supports sorting by balance fields, delegation amounts, and block activity.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAddressRequest

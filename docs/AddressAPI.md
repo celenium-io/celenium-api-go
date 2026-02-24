@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**AddressVotes**](AddressAPI.md#AddressVotes) | **Get** /address/{hash}/votes | Get list of votes for address
 [**GetAddress**](AddressAPI.md#GetAddress) | **Get** /address/{hash} | Get address info
 [**GetAddressCount**](AddressAPI.md#GetAddressCount) | **Get** /address/count | Get count of addresses in network
-[**ListAddress**](AddressAPI.md#ListAddress) | **Get** /address | List address info
+[**ListAddress**](AddressAPI.md#ListAddress) | **Get** /address | List addresses
 
 
 
@@ -1077,7 +1077,7 @@ No authorization required
 
 > []ResponsesAddress ListAddress(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Execute()
 
-List address info
+List addresses
 
 
 

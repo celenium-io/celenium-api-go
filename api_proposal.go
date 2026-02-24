@@ -37,7 +37,7 @@ func (r ApiGetProposalRequest) Execute() (*ResponsesProposal, *http.Response, er
 /*
 GetProposal Get proposal info
 
-Get proposal info
+Returns detailed information about a single governance proposal by its internal ID, including proposer, status, votes summary, and deposit information.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -72,6 +72,9 @@ func (a *ProposalAPIService) GetProposalExecute(r ApiGetProposalRequest) (*Respo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -202,7 +205,7 @@ func (r ApiListProposalRequest) Execute() ([]ResponsesProposal, *http.Response, 
 /*
 ListProposal List proposal info
 
-List proposal info
+Returns a paginated list of governance proposals. Supports filtering by proposer address, status, and type.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListProposalRequest
@@ -332,24 +335,12 @@ type ApiProposalVotesRequest struct {
 	ctx context.Context
 	ApiService *ProposalAPIService
 	id int32
-	option *string
-	voter *string
 	limit *int32
 	offset *int32
+	option *string
+	voter *string
 	address *string
 	validator *string
-}
-
-// Option
-func (r ApiProposalVotesRequest) Option(option string) ApiProposalVotesRequest {
-	r.option = &option
-	return r
-}
-
-// Voter type
-func (r ApiProposalVotesRequest) Voter(voter string) ApiProposalVotesRequest {
-	r.voter = &voter
-	return r
 }
 
 // Count of requested entities
@@ -361,6 +352,18 @@ func (r ApiProposalVotesRequest) Limit(limit int32) ApiProposalVotesRequest {
 // Offset
 func (r ApiProposalVotesRequest) Offset(offset int32) ApiProposalVotesRequest {
 	r.offset = &offset
+	return r
+}
+
+// Option
+func (r ApiProposalVotesRequest) Option(option string) ApiProposalVotesRequest {
+	r.option = &option
+	return r
+}
+
+// Voter type
+func (r ApiProposalVotesRequest) Voter(voter string) ApiProposalVotesRequest {
+	r.voter = &voter
 	return r
 }
 
@@ -383,7 +386,7 @@ func (r ApiProposalVotesRequest) Execute() ([]ResponsesVote, *http.Response, err
 /*
 ProposalVotes Get proposal's votes
 
-Get proposal's votes
+Returns a paginated list of governance votes for the given proposal. Can be filtered by vote option (yes/no/no_with_veto/abstain), voter type (address or validator), and specific voter address.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -418,11 +421,8 @@ func (a *ProposalAPIService) ProposalVotesExecute(r ApiProposalVotesRequest) ([]
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.option == nil {
-		return localVarReturnValue, nil, reportError("option is required and must be specified")
-	}
-	if r.voter == nil {
-		return localVarReturnValue, nil, reportError("voter is required and must be specified")
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
 	}
 
 	if r.limit != nil {
@@ -431,8 +431,12 @@ func (a *ProposalAPIService) ProposalVotesExecute(r ApiProposalVotesRequest) ([]
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "option", r.option, "", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "voter", r.voter, "", "")
+	if r.option != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "option", r.option, "", "")
+	}
+	if r.voter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "voter", r.voter, "", "")
+	}
 	if r.address != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "address", r.address, "", "")
 	}

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **FirstHeight** | Pointer to **int32** |  | [optional] 
 **Hash** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] 
+**IsForwarding** | Pointer to **bool** |  | [optional] 
 **LastHeight** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 
@@ -155,6 +156,31 @@ SetId sets Id field to given value.
 `func (o *ResponsesAddress) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetIsForwarding
+
+`func (o *ResponsesAddress) GetIsForwarding() bool`
+
+GetIsForwarding returns the IsForwarding field if non-nil, zero value otherwise.
+
+### GetIsForwardingOk
+
+`func (o *ResponsesAddress) GetIsForwardingOk() (*bool, bool)`
+
+GetIsForwardingOk returns a tuple with the IsForwarding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsForwarding
+
+`func (o *ResponsesAddress) SetIsForwarding(v bool)`
+
+SetIsForwarding sets IsForwarding field to given value.
+
+### HasIsForwarding
+
+`func (o *ResponsesAddress) HasIsForwarding() bool`
+
+HasIsForwarding returns a boolean if a field has been set.
 
 ### GetLastHeight
 

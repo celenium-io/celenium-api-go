@@ -25,6 +25,7 @@ type ResponsesAddress struct {
 	FirstHeight *int32 `json:"first_height,omitempty"`
 	Hash *string `json:"hash,omitempty"`
 	Id *int32 `json:"id,omitempty"`
+	IsForwarding *bool `json:"is_forwarding,omitempty"`
 	LastHeight *int32 `json:"last_height,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -206,6 +207,38 @@ func (o *ResponsesAddress) SetId(v int32) {
 	o.Id = &v
 }
 
+// GetIsForwarding returns the IsForwarding field value if set, zero value otherwise.
+func (o *ResponsesAddress) GetIsForwarding() bool {
+	if o == nil || IsNil(o.IsForwarding) {
+		var ret bool
+		return ret
+	}
+	return *o.IsForwarding
+}
+
+// GetIsForwardingOk returns a tuple with the IsForwarding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesAddress) GetIsForwardingOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsForwarding) {
+		return nil, false
+	}
+	return o.IsForwarding, true
+}
+
+// HasIsForwarding returns a boolean if a field has been set.
+func (o *ResponsesAddress) HasIsForwarding() bool {
+	if o != nil && !IsNil(o.IsForwarding) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsForwarding gets a reference to the given bool and assigns it to the IsForwarding field.
+func (o *ResponsesAddress) SetIsForwarding(v bool) {
+	o.IsForwarding = &v
+}
+
 // GetLastHeight returns the LastHeight field value if set, zero value otherwise.
 func (o *ResponsesAddress) GetLastHeight() int32 {
 	if o == nil || IsNil(o.LastHeight) {
@@ -294,6 +327,9 @@ func (o ResponsesAddress) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.IsForwarding) {
+		toSerialize["is_forwarding"] = o.IsForwarding
 	}
 	if !IsNil(o.LastHeight) {
 		toSerialize["last_height"] = o.LastHeight

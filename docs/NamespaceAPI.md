@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**GetBlob**](NamespaceAPI.md#GetBlob) | **Post** /blob | Get namespace blob by commitment on height
 [**GetBlobLogs**](NamespaceAPI.md#GetBlobLogs) | **Get** /namespace/{id}/{version}/blobs | Get blob changes for namespace
 [**GetBlobMetadata**](NamespaceAPI.md#GetBlobMetadata) | **Post** /blob/metadata | Get blob metadata by commitment on height
-[**GetBlobProof**](NamespaceAPI.md#GetBlobProof) | **Get** /blob/proofs | Get blob inclusion proofs
+[**GetBlobProof**](NamespaceAPI.md#GetBlobProof) | **Post** /blob/proofs | Get blob inclusion proofs
 [**GetBlobs**](NamespaceAPI.md#GetBlobs) | **Get** /blob | List all blobs with filters
 [**GetNamespace**](NamespaceAPI.md#GetNamespace) | **Get** /namespace/{id} | Get namespace info
 [**GetNamespaceBase64**](NamespaceAPI.md#GetNamespaceBase64) | **Get** /namespace_by_hash/{hash} | Get namespace info by base64
@@ -556,7 +556,7 @@ import (
 
 func main() {
 	hash := "hash_example" // string | Base64-encoded namespace id and version
-	height := int32(56) // int32 | Block heigth
+	height := int32(56) // int32 | Block height
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -577,7 +577,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **hash** | **string** | Base64-encoded namespace id and version | 
-**height** | **int32** | Block heigth | 
+**height** | **int32** | Block height | 
 
 ### Other Parameters
 

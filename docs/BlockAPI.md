@@ -4,7 +4,7 @@ All URIs are relative to *https://api-mainnet.celenium.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BlockBlobsCount**](BlockAPI.md#BlockBlobsCount) | **Get** /block/{height}/blobs/count | Count of blobs which was pushed by transaction
+[**BlockBlobsCount**](BlockAPI.md#BlockBlobsCount) | **Get** /block/{height}/blobs/count | Count of blobs which was pushed in the block
 [**GetBlock**](BlockAPI.md#GetBlock) | **Get** /block/{height} | Get block info
 [**GetBlockBlobs**](BlockAPI.md#GetBlockBlobs) | **Get** /block/{height}/blobs | List blobs which was pushed in the block
 [**GetBlockCount**](BlockAPI.md#GetBlockCount) | **Get** /block/count | Get count of blocks in network
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 > int32 BlockBlobsCount(ctx, height).Execute()
 
-Count of blobs which was pushed by transaction
+Count of blobs which was pushed in the block
 
 
 

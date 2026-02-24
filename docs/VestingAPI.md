@@ -4,7 +4,7 @@ All URIs are relative to *https://api-mainnet.celenium.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetVestingPeriods**](VestingAPI.md#GetVestingPeriods) | **Get** /vesting/{id}/periods | Periods vesting periods by id
+[**GetVestingPeriods**](VestingAPI.md#GetVestingPeriods) | **Get** /vesting/{id}/periods | Get vesting periods by id
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > ResponsesVestingPeriod GetVestingPeriods(ctx, id).Limit(limit).Offset(offset).Execute()
 
-Periods vesting periods by id
+Get vesting periods by id
 
 
 

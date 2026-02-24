@@ -37,7 +37,7 @@ func (r ApiGetValidatorRequest) Execute() (*ResponsesValidator, *http.Response, 
 /*
 GetValidator Get validator info
 
-Get validator info
+Returns detailed information about a validator by internal id, including moniker, consensus address, voting power, commission rates, and current status.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal validator id
@@ -168,14 +168,14 @@ func (r ApiGetValidatorBlocksRequest) Offset(offset int32) ApiGetValidatorBlocks
 	return r
 }
 
-func (r ApiGetValidatorBlocksRequest) Execute() (*ResponsesBlock, *http.Response, error) {
+func (r ApiGetValidatorBlocksRequest) Execute() ([]ResponsesBlock, *http.Response, error) {
 	return r.ApiService.GetValidatorBlocksExecute(r)
 }
 
 /*
 GetValidatorBlocks Get blocks which was proposed by validator
 
-Get blocks which was proposed by validator
+Returns a paginated list of blocks proposed by the given validator.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal validator id
@@ -190,13 +190,13 @@ func (a *ValidatorAPIService) GetValidatorBlocks(ctx context.Context, id int32) 
 }
 
 // Execute executes the request
-//  @return ResponsesBlock
-func (a *ValidatorAPIService) GetValidatorBlocksExecute(r ApiGetValidatorBlocksRequest) (*ResponsesBlock, *http.Response, error) {
+//  @return []ResponsesBlock
+func (a *ValidatorAPIService) GetValidatorBlocksExecute(r ApiGetValidatorBlocksRequest) ([]ResponsesBlock, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponsesBlock
+		localVarReturnValue  []ResponsesBlock
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ValidatorAPIService.GetValidatorBlocks")
@@ -312,7 +312,7 @@ func (r ApiGetValidatorUptimeRequest) Execute() (*ResponsesValidatorUptime, *htt
 /*
 GetValidatorUptime Get validator's uptime and history of signed block
 
-Get validator's uptime and history of signed block
+Returns the validator's uptime percentage and a history of the last N blocks indicating whether each was signed.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal validator id
@@ -466,7 +466,7 @@ func (r ApiListValidatorRequest) Execute() ([]ResponsesValidator, *http.Response
 /*
 ListValidator List validators
 
-List validators
+Returns a paginated list of validators ordered by voting power. Supports filtering by jailed status and app version.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListValidatorRequest
@@ -598,7 +598,7 @@ func (r ApiValidatorCountRequest) Execute() (*ResponsesValidatorCount, *http.Res
 /*
 ValidatorCount Get validator's count by status
 
-Get validator's count by status
+Returns the total validator count broken down by status: total, active, jailed, and inactive.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiValidatorCountRequest
@@ -740,7 +740,7 @@ func (r ApiValidatorDelegatorsRequest) Execute() ([]ResponsesDelegation, *http.R
 /*
 ValidatorDelegators Get validator's delegators
 
-Get validator's delegators
+Returns a paginated list of delegators staking with this validator, including their delegated amounts. Pass show_zero=true to include delegators with zero balance.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal validator id
@@ -887,7 +887,7 @@ func (r ApiValidatorJailsRequest) Execute() ([]ResponsesJail, *http.Response, er
 /*
 ValidatorJails Get validator's jails
 
-Get validator's jails
+Returns a paginated list of jail events for this validator, including the jail reason and block height at which each jail occurred.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal validator id
@@ -1052,7 +1052,7 @@ func (r ApiValidatorMessagesRequest) Execute() ([]ResponsesMessage, *http.Respon
 /*
 ValidatorMessages Get validator messages
 
-Get validator messages
+Returns a paginated list of messages submitted by the validator's operator address, filterable by time range.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal validator id
@@ -1191,7 +1191,7 @@ func (r ApiValidatorMetricsRequest) Execute() (*ResponsesMetrics, *http.Response
 /*
 ValidatorMetrics Get validator's metrics
 
-Get validator's metrics
+Returns performance metrics for a single validator including uptime, missed blocks, and block signing efficiency.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal validator id
@@ -1329,7 +1329,7 @@ func (r ApiValidatorVotesRequest) Execute() ([]ResponsesVote, *http.Response, er
 /*
 ValidatorVotes Get list of votes for validator
 
-Get list of votes for validator
+Returns a paginated list of governance votes cast by this validator on on-chain proposals.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal validator id
@@ -1465,7 +1465,7 @@ func (r ApiValidatorsMetricsRequest) Execute() (*ResponsesTopNMetrics, *http.Res
 /*
 ValidatorsMetrics Get validators metrics
 
-Get validators metrics
+Returns aggregated performance metrics for the top N validators by voting power, useful for comparing signing efficiency across the active set.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiValidatorsMetricsRequest

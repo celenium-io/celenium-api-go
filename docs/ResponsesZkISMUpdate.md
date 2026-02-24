@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **NewState** | Pointer to ***os.File** |  | [optional] 
-**NewStateRoot** | Pointer to ***os.File** |  | [optional] 
 **Signer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **TxHash** | Pointer to ***os.File** |  | [optional] 
@@ -105,31 +104,6 @@ SetNewState sets NewState field to given value.
 `func (o *ResponsesZkISMUpdate) HasNewState() bool`
 
 HasNewState returns a boolean if a field has been set.
-
-### GetNewStateRoot
-
-`func (o *ResponsesZkISMUpdate) GetNewStateRoot() *os.File`
-
-GetNewStateRoot returns the NewStateRoot field if non-nil, zero value otherwise.
-
-### GetNewStateRootOk
-
-`func (o *ResponsesZkISMUpdate) GetNewStateRootOk() (**os.File, bool)`
-
-GetNewStateRootOk returns a tuple with the NewStateRoot field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNewStateRoot
-
-`func (o *ResponsesZkISMUpdate) SetNewStateRoot(v *os.File)`
-
-SetNewStateRoot sets NewStateRoot field to given value.
-
-### HasNewStateRoot
-
-`func (o *ResponsesZkISMUpdate) HasNewStateRoot() bool`
-
-HasNewStateRoot returns a boolean if a field has been set.
 
 ### GetSigner
 

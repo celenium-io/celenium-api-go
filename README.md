@@ -93,8 +93,8 @@ Class | Method | HTTP request | Description
 *AddressAPI* | [**AddressVotes**](docs/AddressAPI.md#addressvotes) | **Get** /address/{hash}/votes | Get list of votes for address
 *AddressAPI* | [**GetAddress**](docs/AddressAPI.md#getaddress) | **Get** /address/{hash} | Get address info
 *AddressAPI* | [**GetAddressCount**](docs/AddressAPI.md#getaddresscount) | **Get** /address/count | Get count of addresses in network
-*AddressAPI* | [**ListAddress**](docs/AddressAPI.md#listaddress) | **Get** /address | List address info
-*BlockAPI* | [**BlockBlobsCount**](docs/BlockAPI.md#blockblobscount) | **Get** /block/{height}/blobs/count | Count of blobs which was pushed by transaction
+*AddressAPI* | [**ListAddress**](docs/AddressAPI.md#listaddress) | **Get** /address | List addresses
+*BlockAPI* | [**BlockBlobsCount**](docs/BlockAPI.md#blockblobscount) | **Get** /block/{height}/blobs/count | Count of blobs which was pushed in the block
 *BlockAPI* | [**GetBlock**](docs/BlockAPI.md#getblock) | **Get** /block/{height} | Get block info
 *BlockAPI* | [**GetBlockBlobs**](docs/BlockAPI.md#getblockblobs) | **Get** /block/{height}/blobs | List blobs which was pushed in the block
 *BlockAPI* | [**GetBlockCount**](docs/BlockAPI.md#getblockcount) | **Get** /block/count | Get count of blocks in network
@@ -135,7 +135,7 @@ Class | Method | HTTP request | Description
 *NamespaceAPI* | [**GetBlob**](docs/NamespaceAPI.md#getblob) | **Post** /blob | Get namespace blob by commitment on height
 *NamespaceAPI* | [**GetBlobLogs**](docs/NamespaceAPI.md#getbloblogs) | **Get** /namespace/{id}/{version}/blobs | Get blob changes for namespace
 *NamespaceAPI* | [**GetBlobMetadata**](docs/NamespaceAPI.md#getblobmetadata) | **Post** /blob/metadata | Get blob metadata by commitment on height
-*NamespaceAPI* | [**GetBlobProof**](docs/NamespaceAPI.md#getblobproof) | **Get** /blob/proofs | Get blob inclusion proofs
+*NamespaceAPI* | [**GetBlobProof**](docs/NamespaceAPI.md#getblobproof) | **Post** /blob/proofs | Get blob inclusion proofs
 *NamespaceAPI* | [**GetBlobs**](docs/NamespaceAPI.md#getblobs) | **Get** /blob | List all blobs with filters
 *NamespaceAPI* | [**GetNamespace**](docs/NamespaceAPI.md#getnamespace) | **Get** /namespace/{id} | Get namespace info
 *NamespaceAPI* | [**GetNamespaceBase64**](docs/NamespaceAPI.md#getnamespacebase64) | **Get** /namespace_by_hash/{hash} | Get namespace info by base64
@@ -201,7 +201,7 @@ Class | Method | HTTP request | Description
 *ValidatorAPI* | [**ValidatorMetrics**](docs/ValidatorAPI.md#validatormetrics) | **Get** /validators/{id}/metrics | Get validator&#39;s metrics
 *ValidatorAPI* | [**ValidatorVotes**](docs/ValidatorAPI.md#validatorvotes) | **Get** /validators/{id}/votes | Get list of votes for validator
 *ValidatorAPI* | [**ValidatorsMetrics**](docs/ValidatorAPI.md#validatorsmetrics) | **Get** /validators/metrics | Get validators metrics
-*VestingAPI* | [**GetVestingPeriods**](docs/VestingAPI.md#getvestingperiods) | **Get** /vesting/{id}/periods | Periods vesting periods by id
+*VestingAPI* | [**GetVestingPeriods**](docs/VestingAPI.md#getvestingperiods) | **Get** /vesting/{id}/periods | Get vesting periods by id
 
 
 ## Documentation For Models

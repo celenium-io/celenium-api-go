@@ -37,7 +37,7 @@ func (r ApiGetTransactionRequest) Execute() (*ResponsesTx, *http.Response, error
 /*
 GetTransaction Get transaction by hash
 
-Get transaction by hash
+Returns detailed information about a transaction identified by its hexadecimal hash, including status, gas, fees, and signer. Returns 204 if the transaction is not found.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Transaction hash in hexadecimal
@@ -181,7 +181,7 @@ func (r ApiGetTransactionEventsRequest) Execute() ([]ResponsesEvent, *http.Respo
 /*
 GetTransactionEvents Get transaction events
 
-Get transaction events
+Returns a paginated list of ABCI events emitted during transaction execution for the given transaction hash.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Transaction hash in hexadecimal
@@ -331,7 +331,7 @@ func (r ApiGetTransactionMessagesRequest) Execute() ([]ResponsesMessage, *http.R
 /*
 GetTransactionMessages Get transaction messages
 
-Get transaction messages
+Returns a paginated list of Cosmos SDK messages contained in the transaction identified by the given hash.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Transaction hash in hexadecimal
@@ -466,7 +466,7 @@ func (r ApiGetTransactionsCountRequest) Execute() (int32, *http.Response, error)
 /*
 GetTransactionsCount Get count of transactions in network
 
-Get count of transactions in network
+Returns the total number of transactions indexed, sourced from the current indexer state.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetTransactionsCountRequest
@@ -596,7 +596,7 @@ func (r ApiListGenesisTransactionsRequest) Execute() ([]ResponsesTx, *http.Respo
 /*
 ListGenesisTransactions List genesis transactions info
 
-List genesis transactions info
+Returns a paginated list of transactions included in the genesis block (block 0). These are the initial state transactions that bootstrapped the chain.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListGenesisTransactionsRequest
@@ -754,7 +754,7 @@ func (r ApiListTransactionBlobsRequest) Execute() ([]ResponsesBlobLog, *http.Res
 /*
 ListTransactionBlobs List blobs which was pushed by transaction
 
-List blobs which was pushed by transaction
+Returns a paginated list of blobs submitted via the PayForBlobs message in the given transaction. Supports sorting by time or blob size.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Transaction hash in hexadecimal
@@ -965,7 +965,7 @@ func (r ApiListTransactionsRequest) Execute() ([]ResponsesTx, *http.Response, er
 /*
 ListTransactions List transactions info
 
-List transactions info
+Returns a paginated list of transactions. Supports filtering by status, message type, time range, and block height. Pass messages=true to include message details in each result.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListTransactionsRequest
@@ -1116,7 +1116,7 @@ func (r ApiTransactionBlobsCountRequest) Execute() (int32, *http.Response, error
 /*
 TransactionBlobsCount Count of blobs which was pushed by transaction
 
-Count of blobs which was pushed by transaction
+Returns the total number of blobs submitted via the PayForBlobs message in the given transaction.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Transaction hash in hexadecimal

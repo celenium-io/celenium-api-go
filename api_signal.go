@@ -37,7 +37,7 @@ func (r ApiGetUpgradeRequest) Execute() (*ResponsesUpgrade, *http.Response, erro
 /*
 GetUpgrade Get upgrade by version
 
-Get upgrade by version
+Returns details of the on-chain network upgrade for the given software version number, including the activation block height and quorum of signals received.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param version Upgrade version
@@ -216,7 +216,7 @@ func (r ApiListSignalRequest) Execute() ([]ResponsesSignalVersion, *http.Respons
 /*
 ListSignal List signals
 
-List signals
+Returns a paginated list of validator upgrade signals (MsgSignalVersion messages) indicating readiness to upgrade to a new software version. Supports filtering by version, validator, transaction hash, and time range.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSignalRequest
@@ -402,7 +402,7 @@ func (r ApiListUpgradesRequest) Execute() ([]ResponsesUpgrade, *http.Response, e
 /*
 ListUpgrades List upgrades
 
-List upgrades
+Returns a paginated list of on-chain network upgrades that were activated. Supports filtering by block height, transaction hash, and signer address.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListUpgradesRequest

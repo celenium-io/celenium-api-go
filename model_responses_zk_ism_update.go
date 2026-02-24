@@ -25,7 +25,6 @@ type ResponsesZkISMUpdate struct {
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	NewState **os.File `json:"new_state,omitempty"`
-	NewStateRoot **os.File `json:"new_state_root,omitempty"`
 	Signer *ResponsesShortAddress `json:"signer,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	TxHash **os.File `json:"tx_hash,omitempty"`
@@ -144,38 +143,6 @@ func (o *ResponsesZkISMUpdate) SetNewState(v *os.File) {
 	o.NewState = &v
 }
 
-// GetNewStateRoot returns the NewStateRoot field value if set, zero value otherwise.
-func (o *ResponsesZkISMUpdate) GetNewStateRoot() *os.File {
-	if o == nil || IsNil(o.NewStateRoot) {
-		var ret *os.File
-		return ret
-	}
-	return *o.NewStateRoot
-}
-
-// GetNewStateRootOk returns a tuple with the NewStateRoot field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResponsesZkISMUpdate) GetNewStateRootOk() (**os.File, bool) {
-	if o == nil || IsNil(o.NewStateRoot) {
-		return nil, false
-	}
-	return o.NewStateRoot, true
-}
-
-// HasNewStateRoot returns a boolean if a field has been set.
-func (o *ResponsesZkISMUpdate) HasNewStateRoot() bool {
-	if o != nil && !IsNil(o.NewStateRoot) {
-		return true
-	}
-
-	return false
-}
-
-// SetNewStateRoot gets a reference to the given *os.File and assigns it to the NewStateRoot field.
-func (o *ResponsesZkISMUpdate) SetNewStateRoot(v *os.File) {
-	o.NewStateRoot = &v
-}
-
 // GetSigner returns the Signer field value if set, zero value otherwise.
 func (o *ResponsesZkISMUpdate) GetSigner() ResponsesShortAddress {
 	if o == nil || IsNil(o.Signer) {
@@ -290,9 +257,6 @@ func (o ResponsesZkISMUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NewState) {
 		toSerialize["new_state"] = o.NewState
-	}
-	if !IsNil(o.NewStateRoot) {
-		toSerialize["new_state_root"] = o.NewStateRoot
 	}
 	if !IsNil(o.Signer) {
 		toSerialize["signer"] = o.Signer

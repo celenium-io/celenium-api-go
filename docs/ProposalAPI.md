@@ -158,7 +158,7 @@ No authorization required
 
 ## ProposalVotes
 
-> []ResponsesVote ProposalVotes(ctx, id).Option(option).Voter(voter).Limit(limit).Offset(offset).Address(address).Validator(validator).Execute()
+> []ResponsesVote ProposalVotes(ctx, id).Limit(limit).Offset(offset).Option(option).Voter(voter).Address(address).Validator(validator).Execute()
 
 Get proposal's votes
 
@@ -178,16 +178,16 @@ import (
 
 func main() {
 	id := int32(56) // int32 | Internal identity
-	option := "option_example" // string | Option
-	voter := "voter_example" // string | Voter type
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
+	option := "option_example" // string | Option (optional)
+	voter := "voter_example" // string | Voter type (optional)
 	address := "address_example" // string | Voter address (optional)
 	validator := "validator_example" // string | Voter address (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProposalAPI.ProposalVotes(context.Background(), id).Option(option).Voter(voter).Limit(limit).Offset(offset).Address(address).Validator(validator).Execute()
+	resp, r, err := apiClient.ProposalAPI.ProposalVotes(context.Background(), id).Limit(limit).Offset(offset).Option(option).Voter(voter).Address(address).Validator(validator).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProposalAPI.ProposalVotes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -213,10 +213,10 @@ Other parameters are passed through a pointer to a apiProposalVotesRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **option** | **string** | Option | 
- **voter** | **string** | Voter type | 
  **limit** | **int32** | Count of requested entities | 
  **offset** | **int32** | Offset | 
+ **option** | **string** | Option | 
+ **voter** | **string** | Voter type | 
  **address** | **string** | Voter address | 
  **validator** | **string** | Voter address | 
 

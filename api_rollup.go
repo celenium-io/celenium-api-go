@@ -37,7 +37,7 @@ func (r ApiGetRollupRequest) Execute() (*ResponsesRollup, *http.Response, error)
 /*
 GetRollup Get rollup info
 
-Get rollup info
+Returns detailed information and cumulative statistics for the rollup identified by its internal id, including name, description, social links, namespaces, and providers.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -72,6 +72,9 @@ func (a *RollupAPIService) GetRollupExecute(r ApiGetRollupRequest) (*ResponsesRo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -161,7 +164,7 @@ func (r ApiGetRollupAllSeriesRequest) Execute() ([]ResponsesRollupAllSeriesRespo
 /*
 GetRollupAllSeries Get series for all rollups
 
-Get series for all rollups
+Returns time-series data for all rollups combined, grouped by the selected timeframe. Useful for rendering aggregate charts showing total DA usage across all indexed rollups.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param timeframe Timeframe
@@ -320,7 +323,7 @@ func (r ApiGetRollupBlobsRequest) Execute() ([]ResponsesBlobLog, *http.Response,
 /*
 GetRollupBlobs Get rollup blobs
 
-Get rollup blobs
+Returns a paginated list of blobs submitted by the rollup. Supports sorting by time or size and optionally joining transaction and signer entities.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -355,6 +358,9 @@ func (a *RollupAPIService) GetRollupBlobsExecute(r ApiGetRollupBlobsRequest) ([]
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -459,7 +465,7 @@ func (r ApiGetRollupBySlugRequest) Execute() (*ResponsesRollup, *http.Response, 
 /*
 GetRollupBySlug Get rollup by slug
 
-Get rollup by slug
+Returns rollup information by its human-readable slug identifier (e.g. "eclipse"). Returns 204 if no rollup with the given slug is found.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug Slug
@@ -585,7 +591,7 @@ func (r ApiGetRollupDistributionRequest) Execute() ([]ResponsesDistributionItem,
 /*
 GetRollupDistribution Get rollup distribution
 
-Get rollup distribution
+Returns the intra-timeframe distribution (e.g. by hour-of-day) for the selected rollup metric, useful for identifying activity patterns.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -626,6 +632,9 @@ func (a *RollupAPIService) GetRollupDistributionExecute(r ApiGetRollupDistributi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -729,7 +738,7 @@ func (r ApiGetRollupNamespacesRequest) Execute() ([]ResponsesNamespace, *http.Re
 /*
 GetRollupNamespaces Get rollup namespaces info
 
-Get rollup namespaces info
+Returns a paginated list of namespaces that the rollup has submitted blobs to.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -764,6 +773,9 @@ func (a *RollupAPIService) GetRollupNamespacesExecute(r ApiGetRollupNamespacesRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -859,7 +871,7 @@ func (r ApiGetRollupProvidersRequest) Execute() ([]ResponsesRollupProvider, *htt
 /*
 GetRollupProviders Get rollup providers info
 
-Get rollup providers info
+Returns a list of data availability providers associated with the rollup (e.g. Celestia addresses used for blob submission).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -894,6 +906,9 @@ func (a *RollupAPIService) GetRollupProvidersExecute(r ApiGetRollupProvidersRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -999,7 +1014,7 @@ func (r ApiGetRollupStatsRequest) Execute() ([]ResponsesHistogramItem, *http.Res
 /*
 GetRollupStats Get rollup stats
 
-Get rollup stats
+Returns a time-series histogram for the rollup with the selected metric (blobs_count, size, size_per_blob, or fee) aggregated by the given timeframe.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -1040,6 +1055,9 @@ func (a *RollupAPIService) GetRollupStatsExecute(r ApiGetRollupStatsRequest) ([]
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	if r.from != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "", "")
@@ -1134,7 +1152,7 @@ func (r ApiGetRollupsCountRequest) Execute() (int32, *http.Response, error) {
 /*
 GetRollupsCount Get count of rollups in network
 
-Get count of rollups in network
+Returns the total number of rollups indexed in the Celenium database.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetRollupsCountRequest
@@ -1306,7 +1324,7 @@ func (r ApiListRollupRequest) Execute() ([]ResponsesRollupWithStats, *http.Respo
 /*
 ListRollup List rollups info
 
-List rollups info
+Returns a paginated leaderboard of rollups with their cumulative statistics. Supports filtering by category, tags, stack, and provider. Sorting by blob count, total size, or fee.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListRollupRequest
@@ -1509,7 +1527,7 @@ func (r ApiListRollup24hRequest) Execute() ([]ResponsesRollupWithDayStats, *http
 /*
 ListRollup24h List rollups info with stats by previous 24 hours
 
-List rollups info with stats by previous 24 hours
+Returns a paginated leaderboard of rollups with statistics aggregated over the previous 24 hours. Useful for ranking rollups by recent activity such as throughput, blob count, or fee.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListRollup24hRequest
@@ -1668,7 +1686,7 @@ func (r ApiRollupExportRequest) Execute() (*http.Response, error) {
 /*
 RollupExport Export rollup blobs
 
-Export rollup blobs
+Streams a plain-text export of blob metadata submitted by the rollup, optionally filtered by a time range. The response is streamed line by line.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -1701,6 +1719,9 @@ func (a *RollupAPIService) RollupExportExecute(r ApiRollupExportRequest) (*http.
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return nil, reportError("id must be greater than 1")
+	}
 
 	if r.from != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "", "")
@@ -1800,7 +1821,7 @@ func (r ApiRollupGroupedStatisticsRequest) Execute() ([]ResponsesRollupGroupedSt
 /*
 RollupGroupedStatistics Rollup Grouped Statistics
 
-Rollup Grouped Statistics
+Returns rollup statistics aggregated by the selected column (stack, type, category, vm, or provider), using the chosen aggregate function (sum or avg).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiRollupGroupedStatisticsRequest

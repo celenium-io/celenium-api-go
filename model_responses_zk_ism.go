@@ -30,7 +30,6 @@ type ResponsesZkISM struct {
 	MerkleTreeAddress **os.File `json:"merkle_tree_address,omitempty"`
 	State **os.File `json:"state,omitempty"`
 	StateMembershipVkey **os.File `json:"state_membership_vkey,omitempty"`
-	StateRoot **os.File `json:"state_root,omitempty"`
 	StateTransitionVkey **os.File `json:"state_transition_vkey,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	TxHash **os.File `json:"tx_hash,omitempty"`
@@ -309,38 +308,6 @@ func (o *ResponsesZkISM) SetStateMembershipVkey(v *os.File) {
 	o.StateMembershipVkey = &v
 }
 
-// GetStateRoot returns the StateRoot field value if set, zero value otherwise.
-func (o *ResponsesZkISM) GetStateRoot() *os.File {
-	if o == nil || IsNil(o.StateRoot) {
-		var ret *os.File
-		return ret
-	}
-	return *o.StateRoot
-}
-
-// GetStateRootOk returns a tuple with the StateRoot field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResponsesZkISM) GetStateRootOk() (**os.File, bool) {
-	if o == nil || IsNil(o.StateRoot) {
-		return nil, false
-	}
-	return o.StateRoot, true
-}
-
-// HasStateRoot returns a boolean if a field has been set.
-func (o *ResponsesZkISM) HasStateRoot() bool {
-	if o != nil && !IsNil(o.StateRoot) {
-		return true
-	}
-
-	return false
-}
-
-// SetStateRoot gets a reference to the given *os.File and assigns it to the StateRoot field.
-func (o *ResponsesZkISM) SetStateRoot(v *os.File) {
-	o.StateRoot = &v
-}
-
 // GetStateTransitionVkey returns the StateTransitionVkey field value if set, zero value otherwise.
 func (o *ResponsesZkISM) GetStateTransitionVkey() *os.File {
 	if o == nil || IsNil(o.StateTransitionVkey) {
@@ -470,9 +437,6 @@ func (o ResponsesZkISM) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.StateMembershipVkey) {
 		toSerialize["state_membership_vkey"] = o.StateMembershipVkey
-	}
-	if !IsNil(o.StateRoot) {
-		toSerialize["state_root"] = o.StateRoot
 	}
 	if !IsNil(o.StateTransitionVkey) {
 		toSerialize["state_transition_vkey"] = o.StateTransitionVkey

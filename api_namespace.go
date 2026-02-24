@@ -43,7 +43,7 @@ func (r ApiGetBlobRequest) Execute() (*ResponsesBlob, *http.Response, error) {
 /*
 GetBlob Get namespace blob by commitment on height
 
-Returns blob.
+Returns the raw blob data from the Celestia DA layer for the given block height, namespace hash, and commitment. Requires API key authorization.
 To authorize your requests you have to select the required tariff on our site. Then you receive api key to authorize. Api key should be passed via request header `apikey`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -230,7 +230,7 @@ func (r ApiGetBlobLogsRequest) Execute() ([]ResponsesBlobLog, *http.Response, er
 /*
 GetBlobLogs Get blob changes for namespace
 
-Returns blob changes for namespace
+Returns a paginated list of blob log entries for the specified namespace version. Supports filtering by commitment, time range, signer addresses, and cursor-based pagination.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Namespace id in hexadecimal
@@ -399,7 +399,7 @@ func (r ApiGetBlobMetadataRequest) Execute() (*ResponsesBlobLog, *http.Response,
 /*
 GetBlobMetadata Get blob metadata by commitment on height
 
-Returns blob metadata
+Returns indexed metadata for a blob (namespace, size, signer, share version, etc.) identified by block height, namespace hash, and commitment. Does not return raw blob data.
 To authorize your requests you have to select the required tariff on our site. Then you receive api key to authorize. Api key should be passed via request header `apikey`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -521,7 +521,7 @@ func (r ApiGetBlobProofRequest) Execute() (*ResponsesBlobLog, *http.Response, er
 /*
 GetBlobProof Get blob inclusion proofs
 
-Returns blob inclusion proofs
+Returns NMT inclusion proofs for a blob identified by block height, namespace hash, and commitment. Proofs can be used to verify that the blob is included in the block's data square.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetBlobProofRequest
@@ -537,7 +537,7 @@ func (a *NamespaceAPIService) GetBlobProof(ctx context.Context) ApiGetBlobProofR
 //  @return ResponsesBlobLog
 func (a *NamespaceAPIService) GetBlobProofExecute(r ApiGetBlobProofRequest) (*ResponsesBlobLog, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 		localVarReturnValue  *ResponsesBlobLog
@@ -705,7 +705,7 @@ func (r ApiGetBlobsRequest) Execute() ([]ResponsesLightBlobLog, *http.Response, 
 /*
 GetBlobs List all blobs with filters
 
-Returns blobs
+Returns a paginated list of blob log entries across all namespaces. Supports filtering by commitment, time range, signer addresses, and namespace identifiers. Cursor-based pagination is available via the cursor parameter.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetBlobsRequest
@@ -845,7 +845,7 @@ func (r ApiGetNamespaceRequest) Execute() ([]ResponsesNamespace, *http.Response,
 /*
 GetNamespace Get namespace info
 
-Returns array of namespace versions
+Returns all versions of the namespace identified by the given 28-byte hex namespace id. Each namespace version is returned as a separate entry.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Namespace id in hexadecimal
@@ -975,7 +975,7 @@ func (r ApiGetNamespaceBase64Request) Execute() (*ResponsesNamespace, *http.Resp
 /*
 GetNamespaceBase64 Get namespace info by base64
 
-Returns namespace by base64 encoded identity
+Returns namespace details for the given base64-encoded namespace identity (version byte + namespace id). Returns 204 if the namespace is not found.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Base64-encoded namespace id and version
@@ -1100,11 +1100,11 @@ func (r ApiGetNamespaceBlobsRequest) Execute() ([]ResponsesBlob, *http.Response,
 /*
 GetNamespaceBlobs Get namespace blobs on height
 
-Returns blobs
+Returns all blobs submitted to the given namespace (identified by base64-encoded hash) at the specified block height, fetched directly from the DA node.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Base64-encoded namespace id and version
- @param height Block heigth
+ @param height Block height
  @return ApiGetNamespaceBlobsRequest
 */
 func (a *NamespaceAPIService) GetNamespaceBlobs(ctx context.Context, hash string, height int32) ApiGetNamespaceBlobsRequest {
@@ -1220,7 +1220,7 @@ func (r ApiGetNamespaceByVersionAndIdRequest) Execute() (*ResponsesNamespace, *h
 /*
 GetNamespaceByVersionAndId Get namespace info by id and version
 
-Returns namespace by version byte and namespace id
+Returns namespace details for the specific combination of namespace id (28 hex bytes) and version byte. Returns 204 if the namespace is not found.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Namespace id in hexadecimal
@@ -1368,7 +1368,7 @@ func (r ApiGetNamespaceMessagesRequest) Execute() ([]ResponsesNamespaceMessage, 
 /*
 GetNamespaceMessages Get namespace messages by id and version
 
-Returns namespace messages by version byte and namespace id
+Returns a paginated list of Cosmos SDK messages (e.g. MsgPayForBlobs) that referenced this namespace, identified by version byte and namespace id.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Namespace id in hexadecimal
@@ -1522,7 +1522,7 @@ func (r ApiGetNamespaceRollupsRequest) Execute() ([]ResponsesRollup, *http.Respo
 /*
 GetNamespaceRollups List rollups using the namespace
 
-List rollups using the namespace
+Returns a paginated list of rollups that have submitted blobs to the given namespace (identified by hex id and version).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Namespace id in hexadecimal
@@ -1688,7 +1688,7 @@ func (r ApiListNamespaceRequest) Execute() ([]ResponsesNamespace, *http.Response
 /*
 ListNamespace List namespace info
 
-List namespace info
+Returns a paginated list of namespaces. Supports sorting by creation time, PayForBlobs count, or total blob size.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNamespaceRequest

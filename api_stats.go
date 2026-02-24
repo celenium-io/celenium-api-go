@@ -36,7 +36,7 @@ func (r ApiStats24hChangesRequest) Execute() ([]ResponsesChange24hBlockStats, *h
 /*
 Stats24hChanges Get changes for 24 hours
 
-Get changes for 24 hours
+Returns comparative statistics showing how key block metrics (blob size, tx count, fee, block time) changed over the last 24 hours versus the prior 24 hours.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStats24hChangesRequest
@@ -159,7 +159,7 @@ func (r ApiStatsHlDomainsRequest) Execute() ([]ResponsesHlDomainStats, *http.Res
 /*
 StatsHlDomains Get stats for hyperlane transfers splitted by domain
 
-Get stats for hyperlane transfers splitted by domain
+Returns a paginated list of Hyperlane transfer statistics grouped by counterparty domain (chain), including transfer count and total volume.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStatsHlDomainsRequest
@@ -302,7 +302,7 @@ func (r ApiStatsHlSeriesRequest) Execute() ([]ResponsesHistogramItem, *http.Resp
 /*
 StatsHlSeries Get histogram for hyperlane domains with precomputed stats
 
-Get histogram for hyperlane domains with precomputed stats by series name and timeframe
+Returns a time-series histogram of Hyperlane transfer statistics (count or amount) for the specified domain, filtered by timeframe and optional time range.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Domain id
@@ -453,7 +453,7 @@ func (r ApiStatsHlTotalSeriesRequest) Execute() ([]ResponsesHistogramItem, *http
 /*
 StatsHlTotalSeries Get histogram for aggregated hyperlane domains with precomputed stats
 
-Get histogram for aggregated hyperlane domains with precomputed stats by series name and timeframe
+Returns a time-series histogram of aggregated Hyperlane transfer statistics (count or amount) across all domains, filtered by timeframe and optional time range.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param timeframe Timeframe
@@ -599,7 +599,7 @@ func (r ApiStatsIbcChainsRequest) Execute() ([]ResponsesIbcChainStats, *http.Res
 /*
 StatsIbcChains Get stats for ibc channels splitted by chains
 
-Get stats for ibc channels splitted by chains
+Returns a paginated list of IBC transfer statistics grouped by counterparty chain, including total transfer count, volume, and active channels.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStatsIbcChainsRequest
@@ -742,7 +742,7 @@ func (r ApiStatsIbcSeriesRequest) Execute() ([]ResponsesHistogramItem, *http.Res
 /*
 StatsIbcSeries Get histogram for ibc channels with precomputed stats
 
-Get histogram for ibc channels with precomputed stats by series name and timeframe
+Returns a time-series histogram of IBC transfer statistics (count or amount) for the specified channel, filtered by timeframe and optional time range.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Channel id
@@ -877,7 +877,7 @@ func (r ApiStatsIbcSummaryRequest) Execute() ([]ResponsesIbcSummaryStats, *http.
 /*
 StatsIbcSummary Get stats for ibc the largest transfer and busiest channel per day
 
-Get stats for ibc the largest transfer and busiest channel per day
+Returns a summary of IBC activity over the last 24 hours: the single largest token transfer and the most active (busiest) IBC channel by transfer count.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStatsIbcSummaryRequest
@@ -997,7 +997,7 @@ func (r ApiStatsMessagesCount24hRequest) Execute() ([]ResponsesCountItem, *http.
 /*
 StatsMessagesCount24h Get messages distribution for the last 24 hours
 
-Get messages distribution for the last 24 hours
+Returns the count of each Cosmos SDK message type observed in the last 24 hours, useful for understanding network activity composition.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStatsMessagesCount24hRequest
@@ -1113,7 +1113,7 @@ func (r ApiStatsNamespaceUsageRequest) Execute() ([]ResponsesNamespaceUsage, *ht
 /*
 StatsNamespaceUsage Get namespaces with sorting by size.
 
-Get namespaces with sorting by size. Returns top 100 namespaces. Namespaces which is not included to top 100 grouped into 'others' item
+Returns the top N namespaces sorted by total blob size in descending order. Namespaces outside the top N are aggregated into a single 'others' entry showing the remaining total size.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStatsNamespaceUsageRequest
@@ -1242,7 +1242,7 @@ func (r ApiStatsNsSeriesRequest) Execute() ([]ResponsesSeriesItem, *http.Respons
 /*
 StatsNsSeries Get histogram for namespace with precomputed stats
 
-Get histogram for namespace with precomputed stats by series name and timeframe
+Returns a time-series histogram of precomputed blob statistics (pfb_count or size) for the specified namespace, filtered by timeframe and optional time range.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Namespace id in hexadecimal
@@ -1383,7 +1383,7 @@ func (r ApiStatsRollup24hRequest) Execute() ([]ResponsesRollupStats24h, *http.Re
 /*
 StatsRollup24h Get rollups stats for last 24 hours
 
-Get rollups stats for last 24 hours
+Returns aggregated rollup statistics for the previous 24 hours: total blobs, total size, total fee, and throughput across all indexed rollups.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStatsRollup24hRequest
@@ -1519,7 +1519,7 @@ func (r ApiStatsSeriesRequest) Execute() ([]ResponsesSeriesItem, *http.Response,
 /*
 StatsSeries Get histogram with precomputed stats
 
-Get histogram with precomputed stats by series name and timeframe
+Returns a time-series histogram of precomputed network statistics for the selected metric and timeframe. Supports filtering by time range.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param timeframe Timeframe
@@ -1667,7 +1667,7 @@ func (r ApiStatsSeriesCumulativeRequest) Execute() ([]ResponsesSeriesItem, *http
 /*
 StatsSeriesCumulative Get cumulative histogram with precomputed stats
 
-Get cumulative histogram with precomputed stats by series name and timeframe
+Returns a running total (cumulative sum) time-series of the selected network metric for the given timeframe. Useful for tracking all-time growth trends.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param timeframe Timeframe
@@ -1799,7 +1799,7 @@ func (r ApiStatsSizeGroupsRequest) Execute() ([]ResponsesSizeGroup, *http.Respon
 /*
 StatsSizeGroups Get blobs count grouped by size
 
-Get blobs count grouped by size
+Returns the distribution of blobs across predefined size buckets (e.g. <1KB, 1-16KB, 16-256KB, etc.), showing how many blobs fall into each size group.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStatsSizeGroupsRequest
@@ -1922,7 +1922,7 @@ func (r ApiStatsSquareSizeRequest) Execute() ([]map[string][]ResponsesTimeValueI
 /*
 StatsSquareSize Get histogram for square size distribution
 
-Get histogram for square size distribution
+Returns the frequency distribution of data availability square sizes (number of rows/columns) used across blocks in the selected time range.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStatsSquareSizeRequest
@@ -2062,7 +2062,7 @@ func (r ApiStatsStakingDistributionRequest) Execute() (*map[string][]ResponsesSt
 /*
 StatsStakingDistribution Get histogram for staking
 
-Get histogram for staking
+Returns the distribution of delegated stake across validators grouped by delegation size buckets, useful for understanding stake concentration over the selected time range.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStatsStakingDistributionRequest
@@ -2205,7 +2205,7 @@ func (r ApiStatsStakingSeriesRequest) Execute() ([]ResponsesSeriesItem, *http.Re
 /*
 StatsStakingSeries Get histogram for staking with precomputed stats
 
-Get histogram for staking with precomputed stats by series name and timeframe
+Returns a time-series histogram of staking metrics (rewards, commissions, delegation flows, etc.) for the specified validator and timeframe.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Validator id

@@ -90,7 +90,7 @@ No authorization required
 
 ## GetValidatorBlocks
 
-> ResponsesBlock GetValidatorBlocks(ctx, id).Limit(limit).Offset(offset).Execute()
+> []ResponsesBlock GetValidatorBlocks(ctx, id).Limit(limit).Offset(offset).Execute()
 
 Get blocks which was proposed by validator
 
@@ -120,7 +120,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ValidatorAPI.GetValidatorBlocks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetValidatorBlocks`: ResponsesBlock
+	// response from `GetValidatorBlocks`: []ResponsesBlock
 	fmt.Fprintf(os.Stdout, "Response from `ValidatorAPI.GetValidatorBlocks`: %v\n", resp)
 }
 ```
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponsesBlock**](ResponsesBlock.md)
+[**[]ResponsesBlock**](ResponsesBlock.md)
 
 ### Authorization
 

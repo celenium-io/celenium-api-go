@@ -37,7 +37,7 @@ func (r ApiGetIbcChannelRequest) Execute() (*ResponsesIbcChannel, *http.Response
 /*
 GetIbcChannel Get ibc channel info
 
-Get ibc channel info
+Returns information about an IBC channel by its channel ID, including ordering, state, connection, and counterparty port/channel.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id IBC channel id
@@ -202,7 +202,7 @@ func (r ApiGetIbcChannelsRequest) Execute() ([]ResponsesIbcChannel, *http.Respon
 /*
 GetIbcChannels Get ibc channels info
 
-Get ibc channels info
+Returns a paginated list of IBC channels. Supports filtering by client ID, connection ID, and channel status (initialization, opened, closed).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIbcChannelsRequest
@@ -341,7 +341,7 @@ func (r ApiGetIbcClientRequest) Execute() (*ResponsesIbcClient, *http.Response, 
 /*
 GetIbcClient Get ibc client info
 
-Get ibc client info
+Returns information about an IBC light client identified by its client ID, including the counterparty chain ID, client state type, and trusting period.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id IBC client id
@@ -499,7 +499,7 @@ func (r ApiGetIbcClientsRequest) Execute() ([]ResponsesIbcClient, *http.Response
 /*
 GetIbcClients Get ibc clients info
 
-Get ibc clients info
+Returns a paginated list of IBC light clients. Supports filtering by chain ID and creator address.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIbcClientsRequest
@@ -635,7 +635,7 @@ func (r ApiGetIbcConnRequest) Execute() (*ResponsesIbcConnection, *http.Response
 /*
 GetIbcConn Get ibc connection info
 
-Get ibc client info
+Returns information about an IBC connection identified by its connection ID, including linked client ID and counterparty connection details.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id IBC connection id
@@ -786,7 +786,7 @@ func (r ApiGetIbcConnsRequest) Execute() ([]ResponsesIbcConnection, *http.Respon
 /*
 GetIbcConns Get ibc connections info
 
-Get ibc connections info
+Returns a paginated list of IBC connections. Supports filtering by client ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIbcConnsRequest
@@ -918,7 +918,7 @@ func (r ApiGetIbcRelayersRequest) Execute() ([]ResponsesRelayer, *http.Response,
 /*
 GetIbcRelayers List ibc relayers
 
-List ibc relayers
+Returns the list of known IBC relayers with their Celestia address and associated chain metadata, sourced from the static relayer registry.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIbcRelayersRequest
@@ -1039,7 +1039,7 @@ func (r ApiGetIbcTransferRequest) Execute() (*ResponsesIbcTransfer, *http.Respon
 /*
 GetIbcTransfer Get transfer by id
 
-Get transfer by id
+Returns a single IBC token transfer by its internal id, including sender, receiver, amount, denom, and transaction reference.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -1074,6 +1074,9 @@ func (a *IbcAPIService) GetIbcTransferExecute(r ApiGetIbcTransferRequest) (*Resp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1225,7 +1228,7 @@ func (r ApiGetIbcTransfersRequest) Execute() ([]ResponsesIbcTransfer, *http.Resp
 /*
 GetIbcTransfers Get ibc transfers info
 
-Get ibc transfers info
+Returns a paginated list of IBC token transfers. Supports filtering by channel, chain ID, sender, receiver, either-party address, and transaction hash.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIbcTransfersRequest

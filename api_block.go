@@ -35,9 +35,9 @@ func (r ApiBlockBlobsCountRequest) Execute() (int32, *http.Response, error) {
 }
 
 /*
-BlockBlobsCount Count of blobs which was pushed by transaction
+BlockBlobsCount Count of blobs which was pushed in the block
 
-Count of blobs which was pushed by transaction
+Returns the total number of blobs included in the block at the given height
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param height Block height
@@ -171,7 +171,7 @@ func (r ApiGetBlockRequest) Execute() (*ResponsesBlock, *http.Response, error) {
 /*
 GetBlock Get block info
 
-Get block info
+Returns detailed information about the block at the given height, including proposer, hash, time, and transaction count. Pass stats=true to also include aggregated block statistics.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param height Block height
@@ -329,7 +329,7 @@ func (r ApiGetBlockBlobsRequest) Execute() ([]ResponsesBlobLog, *http.Response, 
 /*
 GetBlockBlobs List blobs which was pushed in the block
 
-List blobs which was pushed in the block
+Returns a paginated list of blobs submitted via PayForBlobs transactions included in the block at the given height. Supports sorting by time or size.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param height Block height
@@ -467,7 +467,7 @@ func (r ApiGetBlockCountRequest) Execute() (int32, *http.Response, error) {
 /*
 GetBlockCount Get count of blocks in network
 
-Get count of blocks in network
+Returns the total number of blocks indexed, including the genesis block.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetBlockCountRequest
@@ -591,7 +591,7 @@ func (r ApiGetBlockEventsRequest) Execute() ([]ResponsesEvent, *http.Response, e
 /*
 GetBlockEvents Get events from begin and end of block
 
-Get events from begin and end of block
+Returns begin-block and end-block ABCI events for the block at the given height. These events are emitted by the Cosmos SDK before and after transaction execution.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param height Block height
@@ -752,7 +752,7 @@ func (r ApiGetBlockMessagesRequest) Execute() ([]ResponsesMessage, *http.Respons
 /*
 GetBlockMessages Get messages contained in the block
 
-Get messages contained in the block
+Returns a paginated list of Cosmos SDK messages included in transactions within the given block. Supports filtering by message type and exclusion list.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param height Block height
@@ -891,7 +891,7 @@ func (r ApiGetBlockStatsRequest) Execute() (*ResponsesBlockStats, *http.Response
 /*
 GetBlockStats Get block stats by height
 
-Get block stats by height
+Returns aggregated statistics for the block at the given height: blob count, total blob size, total fee, gas used/limit, transactions count, and more.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param height Block height
@@ -1045,7 +1045,7 @@ func (r ApiListBlockRequest) Execute() ([]ResponsesBlock, *http.Response, error)
 /*
 ListBlock List blocks info
 
-List blocks info
+Returns a paginated list of blocks. Supports ascending or descending sort by height. Pass stats=true to include aggregated statistics for each block.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListBlockRequest

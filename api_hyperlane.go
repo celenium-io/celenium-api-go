@@ -37,7 +37,7 @@ func (r ApiGetHyperlaneIgpRequest) Execute() (*ResponsesHyperlaneIgp, *http.Resp
 /*
 GetHyperlaneIgp Get IGP by id
 
-Get IGP by id
+Returns a single Hyperlane Interchain Gas Paymaster (IGP) by its hexadecimal identity, including its owner and destination gas configs.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -72,6 +72,9 @@ func (a *HyperlaneAPIService) GetHyperlaneIgpExecute(r ApiGetHyperlaneIgpRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -161,7 +164,7 @@ func (r ApiGetHyperlaneMailboxRequest) Execute() (*ResponsesHyperlaneMailbox, *h
 /*
 GetHyperlaneMailbox Get hyperlane mailbox info
 
-Get hyperlane mailbox info
+Returns detailed information about a Hyperlane mailbox identified by its hexadecimal identity, including its domain, owner, and linked token/ISM counts.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Hyperlane mailbox id
@@ -285,7 +288,7 @@ func (r ApiGetHyperlaneTokenRequest) Execute() (*ResponsesHyperlaneToken, *http.
 /*
 GetHyperlaneToken Get hyperlane token info
 
-Get hyperlane token info
+Returns detailed information about a Hyperlane token (synthetic or collateral) identified by its hexadecimal identity, including owner, mailbox, and token type.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Hyperlane token id
@@ -409,7 +412,7 @@ func (r ApiGetHyperlaneTransferRequest) Execute() (*ResponsesHyperlaneTransfer, 
 /*
 GetHyperlaneTransfer Get transfer by id
 
-Get transfer by id
+Returns a single Hyperlane cross-chain token transfer by its internal id, including source/destination domain, amount, and associated transaction.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal identity
@@ -444,6 +447,9 @@ func (a *HyperlaneAPIService) GetHyperlaneTransferExecute(r ApiGetHyperlaneTrans
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -570,6 +576,9 @@ func (a *HyperlaneAPIService) GetZkismExecute(r ApiGetZkismRequest) (*ResponsesZ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -746,6 +755,9 @@ func (a *HyperlaneAPIService) GetZkismMessagesExecute(r ApiGetZkismMessagesReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -943,6 +955,9 @@ func (a *HyperlaneAPIService) GetZkismUpdatesExecute(r ApiGetZkismUpdatesRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
@@ -1052,7 +1067,7 @@ func (r ApiListHyperlaneDomainsRequest) Execute() ([]ResponsesDomainMetadata, *h
 /*
 ListHyperlaneDomains List hyperlane domains info
 
-List hyperlane domains info
+Returns metadata for all known Hyperlane domains (counterparty chains), keyed by domain ID. Each entry contains the chain name, logo, and domain identifier.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListHyperlaneDomainsRequest
@@ -1193,7 +1208,7 @@ func (r ApiListHyperlaneIgpsRequest) Execute() ([]ResponsesHyperlaneIgp, *http.R
 /*
 ListHyperlaneIgps List hyperlane Interchain Gas Paymaster (IGP)
 
-List hyperlane Interchain Gas Paymaster (IGP)
+Returns a paginated list of Hyperlane Interchain Gas Paymasters (IGPs) indexed on Celestia. IGPs allow message senders to pay for destination chain gas fees from the origin chain.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListHyperlaneIgpsRequest
@@ -1336,7 +1351,7 @@ func (r ApiListHyperlaneMailboxRequest) Execute() ([]ResponsesHyperlaneMailbox, 
 /*
 ListHyperlaneMailbox List hyperlane mailboxes info
 
-List hyperlane mailboxes info
+Returns a paginated list of all Hyperlane mailboxes indexed on Celestia, each identified by a hexadecimal identity.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListHyperlaneMailboxRequest
@@ -1504,7 +1519,7 @@ func (r ApiListHyperlaneTokensRequest) Execute() ([]ResponsesHyperlaneToken, *ht
 /*
 ListHyperlaneTokens List hyperlane tokens info
 
-List hyperlane tokens info
+Returns a paginated list of Hyperlane tokens indexed on Celestia. Supports filtering by owner address, mailbox identity, and token type (synthetic or collateral).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListHyperlaneTokensRequest
@@ -1712,7 +1727,7 @@ func (r ApiListHyperlaneTransfersRequest) Execute() ([]ResponsesHyperlaneTransfe
 /*
 ListHyperlaneTransfers List hyperlane transfers info
 
-List hyperlane transfers info
+Returns a paginated list of Hyperlane cross-chain token transfers. Supports filtering by sender/receiver address, relayer, mailbox, token, transfer type (send/receive), domain, and transaction hash.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListHyperlaneTransfersRequest

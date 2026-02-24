@@ -50,7 +50,7 @@ func (r ApiGasEstimateForPfbRequest) Execute() (int32, *http.Response, error) {
 /*
 GasEstimateForPfb Get estimated gas for pay for blob
 
-Get estimated gas for pay for blob message with certain values of blob sizes
+Returns the estimated gas required to submit a MsgPayForBlobs transaction for the given blob sizes and share versions, using current on-chain gas parameters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGasEstimateForPfbRequest
@@ -177,7 +177,7 @@ func (r ApiGasPriceRequest) Execute() (*ResponsesGasPrice, *http.Response, error
 /*
 GasPrice Get estimated gas price
 
-Get estimated gas price based on historical data
+Returns estimated gas prices (slow, median, fast) derived from recent transaction history. Useful for setting the gas price when submitting new transactions.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGasPriceRequest
@@ -277,7 +277,7 @@ func (r ApiGasPricePriorityRequest) Execute() (string, *http.Response, error) {
 /*
 GasPricePriority Get estimated gas price with priority filter
 
-Get estimated gas price with priority filter based on historical data
+Returns a single estimated gas price string for the selected priority level (slow, median, or fast) based on recent transaction history.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param priority Priority
