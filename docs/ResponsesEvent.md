@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Data** | Pointer to **map[string]string** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **Position** | Pointer to **int64** |  | [optional] 
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ResponsesEvent) GetData() map[string]map[string]interface{}`
+`func (o *ResponsesEvent) GetData() map[string]string`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ResponsesEvent) GetDataOk() (*map[string]map[string]interface{}, bool)`
+`func (o *ResponsesEvent) GetDataOk() (*map[string]string, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ResponsesEvent) SetData(v map[string]map[string]interface{})`
+`func (o *ResponsesEvent) SetData(v map[string]string)`
 
 SetData sets Data field to given value.
 

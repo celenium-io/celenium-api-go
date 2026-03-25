@@ -37,7 +37,7 @@ type ResponsesTx struct {
 	MessagesCount *int64 `json:"messages_count,omitempty"`
 	Position *int64 `json:"position,omitempty"`
 	Signers []ResponsesShortAddress `json:"signers,omitempty"`
-	Status *GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus `json:"status,omitempty"`
+	Status *TypesStatus `json:"status,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	TimeoutHeight *int64 `json:"timeout_height,omitempty"`
 }
@@ -540,9 +540,9 @@ func (o *ResponsesTx) SetSigners(v []ResponsesShortAddress) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ResponsesTx) GetStatus() GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus {
+func (o *ResponsesTx) GetStatus() TypesStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus
+		var ret TypesStatus
 		return ret
 	}
 	return *o.Status
@@ -550,7 +550,7 @@ func (o *ResponsesTx) GetStatus() GithubComCeleniumIoCelestiaIndexerInternalStor
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesTx) GetStatusOk() (*GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus, bool) {
+func (o *ResponsesTx) GetStatusOk() (*TypesStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -566,8 +566,8 @@ func (o *ResponsesTx) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus and assigns it to the Status field.
-func (o *ResponsesTx) SetStatus(v GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus) {
+// SetStatus gets a reference to the given TypesStatus and assigns it to the Status field.
+func (o *ResponsesTx) SetStatus(v TypesStatus) {
 	o.Status = &v
 }
 

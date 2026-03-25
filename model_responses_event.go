@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponsesEvent{}
 
 // ResponsesEvent struct for ResponsesEvent
 type ResponsesEvent struct {
-	Data map[string]map[string]interface{} `json:"data,omitempty"`
+	Data *map[string]string `json:"data,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Position *int64 `json:"position,omitempty"`
@@ -48,19 +48,19 @@ func NewResponsesEventWithDefaults() *ResponsesEvent {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ResponsesEvent) GetData() map[string]map[string]interface{} {
+func (o *ResponsesEvent) GetData() map[string]string {
 	if o == nil || IsNil(o.Data) {
-		var ret map[string]map[string]interface{}
+		var ret map[string]string
 		return ret
 	}
-	return o.Data
+	return *o.Data
 }
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesEvent) GetDataOk() (map[string]map[string]interface{}, bool) {
+func (o *ResponsesEvent) GetDataOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Data) {
-		return map[string]map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Data, true
 }
@@ -74,9 +74,9 @@ func (o *ResponsesEvent) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given map[string]map[string]interface{} and assigns it to the Data field.
-func (o *ResponsesEvent) SetData(v map[string]map[string]interface{}) {
-	o.Data = v
+// SetData gets a reference to the given map[string]string and assigns it to the Data field.
+func (o *ResponsesEvent) SetData(v map[string]string) {
+	o.Data = &v
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.

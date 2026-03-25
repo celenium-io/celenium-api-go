@@ -26,7 +26,6 @@ docs/BlockAPI.md
 docs/ForwardingAPI.md
 docs/GasAPI.md
 docs/GeneralAPI.md
-docs/GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus.md
 docs/HandlerError.md
 docs/HandlerPostBlobRequest.md
 docs/HyperlaneAPI.md
@@ -132,12 +131,12 @@ docs/TransactionsAPI.md
 docs/TypesEventType.md
 docs/TypesMsgAddressType.md
 docs/TypesMsgType.md
+docs/TypesStatus.md
 docs/ValidatorAPI.md
 docs/VestingAPI.md
 git_push.sh
 go.mod
 go.sum
-model_github_com_celenium_io_celestia_indexer_internal_storage_types_status.go
 model_handler_error.go
 model_handler_post_blob_request.go
 model_responses_address.go
@@ -234,6 +233,7 @@ model_responses_zk_ism_update.go
 model_types_event_type.go
 model_types_msg_address_type.go
 model_types_msg_type.go
+model_types_status.go
 response.go
 test/api_address_test.go
 test/api_block_test.go

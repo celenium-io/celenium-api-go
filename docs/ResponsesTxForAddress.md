@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Hash** | Pointer to ***os.File** |  | [optional] 
 **MessageTypes** | Pointer to [**[]TypesMsgType**](TypesMsgType.md) |  | [optional] 
 **MessagesCount** | Pointer to **int64** |  | [optional] 
-**Status** | Pointer to [**GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus**](GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus.md) |  | [optional] 
+**Status** | Pointer to [**TypesStatus**](TypesStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasMessagesCount returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *ResponsesTxForAddress) GetStatus() GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus`
+`func (o *ResponsesTxForAddress) GetStatus() TypesStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *ResponsesTxForAddress) GetStatusOk() (*GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus, bool)`
+`func (o *ResponsesTxForAddress) GetStatusOk() (*TypesStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *ResponsesTxForAddress) SetStatus(v GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus)`
+`func (o *ResponsesTxForAddress) SetStatus(v TypesStatus)`
 
 SetStatus sets Status field to given value.
 

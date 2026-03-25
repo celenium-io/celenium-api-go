@@ -25,7 +25,7 @@ type ResponsesTxForAddress struct {
 	Hash **os.File `json:"hash,omitempty"`
 	MessageTypes []TypesMsgType `json:"message_types,omitempty"`
 	MessagesCount *int64 `json:"messages_count,omitempty"`
-	Status *GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus `json:"status,omitempty"`
+	Status *TypesStatus `json:"status,omitempty"`
 }
 
 // NewResponsesTxForAddress instantiates a new ResponsesTxForAddress object
@@ -174,9 +174,9 @@ func (o *ResponsesTxForAddress) SetMessagesCount(v int64) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ResponsesTxForAddress) GetStatus() GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus {
+func (o *ResponsesTxForAddress) GetStatus() TypesStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus
+		var ret TypesStatus
 		return ret
 	}
 	return *o.Status
@@ -184,7 +184,7 @@ func (o *ResponsesTxForAddress) GetStatus() GithubComCeleniumIoCelestiaIndexerIn
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesTxForAddress) GetStatusOk() (*GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus, bool) {
+func (o *ResponsesTxForAddress) GetStatusOk() (*TypesStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -200,8 +200,8 @@ func (o *ResponsesTxForAddress) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus and assigns it to the Status field.
-func (o *ResponsesTxForAddress) SetStatus(v GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus) {
+// SetStatus gets a reference to the given TypesStatus and assigns it to the Status field.
+func (o *ResponsesTxForAddress) SetStatus(v TypesStatus) {
 	o.Status = &v
 }
 

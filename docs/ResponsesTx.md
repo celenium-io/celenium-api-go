@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **MessagesCount** | Pointer to **int64** |  | [optional] 
 **Position** | Pointer to **int64** |  | [optional] 
 **Signers** | Pointer to [**[]ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
-**Status** | Pointer to [**GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus**](GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus.md) |  | [optional] 
+**Status** | Pointer to [**TypesStatus**](TypesStatus.md) |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **TimeoutHeight** | Pointer to **int64** |  | [optional] 
 
@@ -419,20 +419,20 @@ HasSigners returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *ResponsesTx) GetStatus() GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus`
+`func (o *ResponsesTx) GetStatus() TypesStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *ResponsesTx) GetStatusOk() (*GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus, bool)`
+`func (o *ResponsesTx) GetStatusOk() (*TypesStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *ResponsesTx) SetStatus(v GithubComCeleniumIoCelestiaIndexerInternalStorageTypesStatus)`
+`func (o *ResponsesTx) SetStatus(v TypesStatus)`
 
 SetStatus sets Status field to given value.
 

@@ -7249,14 +7249,6 @@ paths:
       x-internal: true
 components:
   schemas:
-    github_com_celenium-io_celestia-indexer_internal_storage_types.Status:
-      enum:
-      - success
-      - failed
-      type: string
-      x-enum-varnames:
-      - StatusSuccess
-      - StatusFailed
     handler.Error:
       example:
         message: message
@@ -8065,7 +8057,7 @@ components:
     responses.Event:
       example:
         data:
-          key: "{}"
+          key: data
         id: 321
         position: 1
         time: 2023-07-04T03:10:57Z
@@ -8075,7 +8067,7 @@ components:
       properties:
         data:
           additionalProperties:
-            type: object
+            type: string
           type: object
         height:
           example: 100
@@ -11131,7 +11123,7 @@ components:
           type: array
         status:
           allOf:
-          - $ref: "#/components/schemas/github_com_celenium-io_celestia-indexer_internal_storage_types.Status"
+          - $ref: "#/components/schemas/types.Status"
           example: success
           type: object
         time:
@@ -11174,7 +11166,7 @@ components:
           type: integer
         status:
           allOf:
-          - $ref: "#/components/schemas/github_com_celenium-io_celestia-indexer_internal_storage_types.Status"
+          - $ref: "#/components/schemas/types.Status"
           example: success
           type: object
       type: object
@@ -12166,6 +12158,14 @@ components:
       - MsgCreateInterchainSecurityModule
       - MsgUpdateInterchainSecurityModule
       - MsgSubmitMessages
+    types.Status:
+      enum:
+      - success
+      - failed
+      type: string
+      x-enum-varnames:
+      - StatusSuccess
+      - StatusFailed
   securitySchemes:
     ApiKeyAuth:
       description: To authorize your requests you have to select the required tariff
