@@ -22,17 +22,18 @@ var _ MappedNullable = &ResponsesForwarding{}
 
 // ResponsesForwarding struct for ResponsesForwarding
 type ResponsesForwarding struct {
+	Amount *string `json:"amount,omitempty"`
 	Chain *ResponsesChainMetadata `json:"chain,omitempty"`
+	Denom *string `json:"denom,omitempty"`
 	DestAddress **os.File `json:"dest_address,omitempty"`
 	DestDomain *int64 `json:"dest_domain,omitempty"`
-	FailedCount *int64 `json:"failed_count,omitempty"`
 	ForwardAddress *ResponsesShortAddress `json:"forward_address,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Inputs []ResponsesForwardingInput `json:"inputs,omitempty"`
-	SuccessCount *int64 `json:"success_count,omitempty"`
+	MessageId *string `json:"message_id,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
-	Transfers []int32 `json:"transfers,omitempty"`
+	TokenId *string `json:"token_id,omitempty"`
 	TxHash **os.File `json:"tx_hash,omitempty"`
 }
 
@@ -51,6 +52,38 @@ func NewResponsesForwarding() *ResponsesForwarding {
 func NewResponsesForwardingWithDefaults() *ResponsesForwarding {
 	this := ResponsesForwarding{}
 	return &this
+}
+
+// GetAmount returns the Amount field value if set, zero value otherwise.
+func (o *ResponsesForwarding) GetAmount() string {
+	if o == nil || IsNil(o.Amount) {
+		var ret string
+		return ret
+	}
+	return *o.Amount
+}
+
+// GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesForwarding) GetAmountOk() (*string, bool) {
+	if o == nil || IsNil(o.Amount) {
+		return nil, false
+	}
+	return o.Amount, true
+}
+
+// HasAmount returns a boolean if a field has been set.
+func (o *ResponsesForwarding) HasAmount() bool {
+	if o != nil && !IsNil(o.Amount) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmount gets a reference to the given string and assigns it to the Amount field.
+func (o *ResponsesForwarding) SetAmount(v string) {
+	o.Amount = &v
 }
 
 // GetChain returns the Chain field value if set, zero value otherwise.
@@ -83,6 +116,38 @@ func (o *ResponsesForwarding) HasChain() bool {
 // SetChain gets a reference to the given ResponsesChainMetadata and assigns it to the Chain field.
 func (o *ResponsesForwarding) SetChain(v ResponsesChainMetadata) {
 	o.Chain = &v
+}
+
+// GetDenom returns the Denom field value if set, zero value otherwise.
+func (o *ResponsesForwarding) GetDenom() string {
+	if o == nil || IsNil(o.Denom) {
+		var ret string
+		return ret
+	}
+	return *o.Denom
+}
+
+// GetDenomOk returns a tuple with the Denom field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesForwarding) GetDenomOk() (*string, bool) {
+	if o == nil || IsNil(o.Denom) {
+		return nil, false
+	}
+	return o.Denom, true
+}
+
+// HasDenom returns a boolean if a field has been set.
+func (o *ResponsesForwarding) HasDenom() bool {
+	if o != nil && !IsNil(o.Denom) {
+		return true
+	}
+
+	return false
+}
+
+// SetDenom gets a reference to the given string and assigns it to the Denom field.
+func (o *ResponsesForwarding) SetDenom(v string) {
+	o.Denom = &v
 }
 
 // GetDestAddress returns the DestAddress field value if set, zero value otherwise.
@@ -147,38 +212,6 @@ func (o *ResponsesForwarding) HasDestDomain() bool {
 // SetDestDomain gets a reference to the given int64 and assigns it to the DestDomain field.
 func (o *ResponsesForwarding) SetDestDomain(v int64) {
 	o.DestDomain = &v
-}
-
-// GetFailedCount returns the FailedCount field value if set, zero value otherwise.
-func (o *ResponsesForwarding) GetFailedCount() int64 {
-	if o == nil || IsNil(o.FailedCount) {
-		var ret int64
-		return ret
-	}
-	return *o.FailedCount
-}
-
-// GetFailedCountOk returns a tuple with the FailedCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResponsesForwarding) GetFailedCountOk() (*int64, bool) {
-	if o == nil || IsNil(o.FailedCount) {
-		return nil, false
-	}
-	return o.FailedCount, true
-}
-
-// HasFailedCount returns a boolean if a field has been set.
-func (o *ResponsesForwarding) HasFailedCount() bool {
-	if o != nil && !IsNil(o.FailedCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetFailedCount gets a reference to the given int64 and assigns it to the FailedCount field.
-func (o *ResponsesForwarding) SetFailedCount(v int64) {
-	o.FailedCount = &v
 }
 
 // GetForwardAddress returns the ForwardAddress field value if set, zero value otherwise.
@@ -309,36 +342,36 @@ func (o *ResponsesForwarding) SetInputs(v []ResponsesForwardingInput) {
 	o.Inputs = v
 }
 
-// GetSuccessCount returns the SuccessCount field value if set, zero value otherwise.
-func (o *ResponsesForwarding) GetSuccessCount() int64 {
-	if o == nil || IsNil(o.SuccessCount) {
-		var ret int64
+// GetMessageId returns the MessageId field value if set, zero value otherwise.
+func (o *ResponsesForwarding) GetMessageId() string {
+	if o == nil || IsNil(o.MessageId) {
+		var ret string
 		return ret
 	}
-	return *o.SuccessCount
+	return *o.MessageId
 }
 
-// GetSuccessCountOk returns a tuple with the SuccessCount field value if set, nil otherwise
+// GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesForwarding) GetSuccessCountOk() (*int64, bool) {
-	if o == nil || IsNil(o.SuccessCount) {
+func (o *ResponsesForwarding) GetMessageIdOk() (*string, bool) {
+	if o == nil || IsNil(o.MessageId) {
 		return nil, false
 	}
-	return o.SuccessCount, true
+	return o.MessageId, true
 }
 
-// HasSuccessCount returns a boolean if a field has been set.
-func (o *ResponsesForwarding) HasSuccessCount() bool {
-	if o != nil && !IsNil(o.SuccessCount) {
+// HasMessageId returns a boolean if a field has been set.
+func (o *ResponsesForwarding) HasMessageId() bool {
+	if o != nil && !IsNil(o.MessageId) {
 		return true
 	}
 
 	return false
 }
 
-// SetSuccessCount gets a reference to the given int64 and assigns it to the SuccessCount field.
-func (o *ResponsesForwarding) SetSuccessCount(v int64) {
-	o.SuccessCount = &v
+// SetMessageId gets a reference to the given string and assigns it to the MessageId field.
+func (o *ResponsesForwarding) SetMessageId(v string) {
+	o.MessageId = &v
 }
 
 // GetTime returns the Time field value if set, zero value otherwise.
@@ -373,36 +406,36 @@ func (o *ResponsesForwarding) SetTime(v time.Time) {
 	o.Time = &v
 }
 
-// GetTransfers returns the Transfers field value if set, zero value otherwise.
-func (o *ResponsesForwarding) GetTransfers() []int32 {
-	if o == nil || IsNil(o.Transfers) {
-		var ret []int32
+// GetTokenId returns the TokenId field value if set, zero value otherwise.
+func (o *ResponsesForwarding) GetTokenId() string {
+	if o == nil || IsNil(o.TokenId) {
+		var ret string
 		return ret
 	}
-	return o.Transfers
+	return *o.TokenId
 }
 
-// GetTransfersOk returns a tuple with the Transfers field value if set, nil otherwise
+// GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesForwarding) GetTransfersOk() ([]int32, bool) {
-	if o == nil || IsNil(o.Transfers) {
+func (o *ResponsesForwarding) GetTokenIdOk() (*string, bool) {
+	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
-	return o.Transfers, true
+	return o.TokenId, true
 }
 
-// HasTransfers returns a boolean if a field has been set.
-func (o *ResponsesForwarding) HasTransfers() bool {
-	if o != nil && !IsNil(o.Transfers) {
+// HasTokenId returns a boolean if a field has been set.
+func (o *ResponsesForwarding) HasTokenId() bool {
+	if o != nil && !IsNil(o.TokenId) {
 		return true
 	}
 
 	return false
 }
 
-// SetTransfers gets a reference to the given []int32 and assigns it to the Transfers field.
-func (o *ResponsesForwarding) SetTransfers(v []int32) {
-	o.Transfers = v
+// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
+func (o *ResponsesForwarding) SetTokenId(v string) {
+	o.TokenId = &v
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
@@ -447,17 +480,20 @@ func (o ResponsesForwarding) MarshalJSON() ([]byte, error) {
 
 func (o ResponsesForwarding) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Amount) {
+		toSerialize["amount"] = o.Amount
+	}
 	if !IsNil(o.Chain) {
 		toSerialize["chain"] = o.Chain
+	}
+	if !IsNil(o.Denom) {
+		toSerialize["denom"] = o.Denom
 	}
 	if !IsNil(o.DestAddress) {
 		toSerialize["dest_address"] = o.DestAddress
 	}
 	if !IsNil(o.DestDomain) {
 		toSerialize["dest_domain"] = o.DestDomain
-	}
-	if !IsNil(o.FailedCount) {
-		toSerialize["failed_count"] = o.FailedCount
 	}
 	if !IsNil(o.ForwardAddress) {
 		toSerialize["forward_address"] = o.ForwardAddress
@@ -471,14 +507,14 @@ func (o ResponsesForwarding) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Inputs) {
 		toSerialize["inputs"] = o.Inputs
 	}
-	if !IsNil(o.SuccessCount) {
-		toSerialize["success_count"] = o.SuccessCount
+	if !IsNil(o.MessageId) {
+		toSerialize["message_id"] = o.MessageId
 	}
 	if !IsNil(o.Time) {
 		toSerialize["time"] = o.Time
 	}
-	if !IsNil(o.Transfers) {
-		toSerialize["transfers"] = o.Transfers
+	if !IsNil(o.TokenId) {
+		toSerialize["token_id"] = o.TokenId
 	}
 	if !IsNil(o.TxHash) {
 		toSerialize["tx_hash"] = o.TxHash

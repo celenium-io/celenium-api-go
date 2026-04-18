@@ -8097,7 +8097,7 @@ components:
       type: object
     responses.Forwarding:
       example:
-        dest_address: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+        amount: "1000000"
         chain:
           name: name
           native_token:
@@ -8156,10 +8156,11 @@ components:
           denom: utia
           time: 2023-07-04T03:10:57Z
           height: 100
-        transfers:
-        - 0
-        - 0
-        dest_domain: 123456789
+        message_id: 0xac8852bd411c0c88cdadfe9b2386b2bcd702f35479c25a4b2d2cc3fb49d095d4
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        dest_address: 0x000000000000000000000000d5e85e86fc692cedad6d6992f1f0ccf273e39913
+        token_id: 12652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF345
+        dest_domain: 11155111
         forward_address:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -8167,25 +8168,27 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        success_count: 100
-        failed_count: 10
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        denom: hyperlane/0x726f757465725f61707000000000000000000000000000020000000000000024
         id: 321
         time: 2023-07-04T03:10:57Z
         height: 100
       properties:
+        amount:
+          example: "1000000"
+          format: string
+          type: string
         chain:
           $ref: "#/components/schemas/responses.ChainMetadata"
+        denom:
+          example: hyperlane/0x726f757465725f61707000000000000000000000000000020000000000000024
+          format: string
+          type: string
         dest_address:
-          example: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+          example: 0x000000000000000000000000d5e85e86fc692cedad6d6992f1f0ccf273e39913
           format: binary
           type: string
         dest_domain:
-          example: 123456789
-          format: int64
-          type: integer
-        failed_count:
-          example: 10
+          example: 11155111
           format: int64
           type: integer
         forward_address:
@@ -8202,18 +8205,18 @@ components:
           items:
             $ref: "#/components/schemas/responses.ForwardingInput"
           type: array
-        success_count:
-          example: 100
-          format: int64
-          type: integer
+        message_id:
+          example: 0xac8852bd411c0c88cdadfe9b2386b2bcd702f35479c25a4b2d2cc3fb49d095d4
+          format: string
+          type: string
         time:
           example: 2023-07-04T03:10:57Z
           format: date-time
           type: string
-        transfers:
-          items:
-            type: integer
-          type: array
+        token_id:
+          example: 12652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF345
+          format: string
+          type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
           format: binary
@@ -11769,6 +11772,7 @@ components:
       - hyperlane.core.interchain_security.v1.EventCreateRoutingIsm
       - signal_version
       - ibccallbackerror-ics27_packet
+      - ibccallbackerror-fungible_token_packet
       - celestia.forwarding.v1.EventTokenForwarded
       - celestia.forwarding.v1.EventForwardingComplete
       - celestia.zkism.v1.EventCreateInterchainSecurityModule
@@ -11861,6 +11865,7 @@ components:
       - EventTypeHyperlanecoreinterchainSecurityv1EventCreateRoutingIsm
       - EventTypeSignalVersion
       - EventTypeIbccallbackerrorIcs27Packet
+      - EventTypeIbccallbackerrorFungibleTokenPacket
       - EventTypeCelestiaforwardingv1EventTokenForwarded
       - EventTypeCelestiaforwardingv1EventForwardingComplete
       - EventTypeCelestiazkismv1EventCreateInterchainSecurityModule

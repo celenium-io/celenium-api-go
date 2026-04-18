@@ -4,17 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Amount** | Pointer to **string** |  | [optional] 
 **Chain** | Pointer to [**ResponsesChainMetadata**](ResponsesChainMetadata.md) |  | [optional] 
+**Denom** | Pointer to **string** |  | [optional] 
 **DestAddress** | Pointer to ***os.File** |  | [optional] 
 **DestDomain** | Pointer to **int64** |  | [optional] 
-**FailedCount** | Pointer to **int64** |  | [optional] 
 **ForwardAddress** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **Inputs** | Pointer to [**[]ResponsesForwardingInput**](ResponsesForwardingInput.md) |  | [optional] 
-**SuccessCount** | Pointer to **int64** |  | [optional] 
+**MessageId** | Pointer to **string** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
-**Transfers** | Pointer to **[]int32** |  | [optional] 
+**TokenId** | Pointer to **string** |  | [optional] 
 **TxHash** | Pointer to ***os.File** |  | [optional] 
 
 ## Methods
@@ -35,6 +36,31 @@ will change when the set of required properties is changed
 NewResponsesForwardingWithDefaults instantiates a new ResponsesForwarding object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAmount
+
+`func (o *ResponsesForwarding) GetAmount() string`
+
+GetAmount returns the Amount field if non-nil, zero value otherwise.
+
+### GetAmountOk
+
+`func (o *ResponsesForwarding) GetAmountOk() (*string, bool)`
+
+GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAmount
+
+`func (o *ResponsesForwarding) SetAmount(v string)`
+
+SetAmount sets Amount field to given value.
+
+### HasAmount
+
+`func (o *ResponsesForwarding) HasAmount() bool`
+
+HasAmount returns a boolean if a field has been set.
 
 ### GetChain
 
@@ -60,6 +86,31 @@ SetChain sets Chain field to given value.
 `func (o *ResponsesForwarding) HasChain() bool`
 
 HasChain returns a boolean if a field has been set.
+
+### GetDenom
+
+`func (o *ResponsesForwarding) GetDenom() string`
+
+GetDenom returns the Denom field if non-nil, zero value otherwise.
+
+### GetDenomOk
+
+`func (o *ResponsesForwarding) GetDenomOk() (*string, bool)`
+
+GetDenomOk returns a tuple with the Denom field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDenom
+
+`func (o *ResponsesForwarding) SetDenom(v string)`
+
+SetDenom sets Denom field to given value.
+
+### HasDenom
+
+`func (o *ResponsesForwarding) HasDenom() bool`
+
+HasDenom returns a boolean if a field has been set.
 
 ### GetDestAddress
 
@@ -110,31 +161,6 @@ SetDestDomain sets DestDomain field to given value.
 `func (o *ResponsesForwarding) HasDestDomain() bool`
 
 HasDestDomain returns a boolean if a field has been set.
-
-### GetFailedCount
-
-`func (o *ResponsesForwarding) GetFailedCount() int64`
-
-GetFailedCount returns the FailedCount field if non-nil, zero value otherwise.
-
-### GetFailedCountOk
-
-`func (o *ResponsesForwarding) GetFailedCountOk() (*int64, bool)`
-
-GetFailedCountOk returns a tuple with the FailedCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFailedCount
-
-`func (o *ResponsesForwarding) SetFailedCount(v int64)`
-
-SetFailedCount sets FailedCount field to given value.
-
-### HasFailedCount
-
-`func (o *ResponsesForwarding) HasFailedCount() bool`
-
-HasFailedCount returns a boolean if a field has been set.
 
 ### GetForwardAddress
 
@@ -236,30 +262,30 @@ SetInputs sets Inputs field to given value.
 
 HasInputs returns a boolean if a field has been set.
 
-### GetSuccessCount
+### GetMessageId
 
-`func (o *ResponsesForwarding) GetSuccessCount() int64`
+`func (o *ResponsesForwarding) GetMessageId() string`
 
-GetSuccessCount returns the SuccessCount field if non-nil, zero value otherwise.
+GetMessageId returns the MessageId field if non-nil, zero value otherwise.
 
-### GetSuccessCountOk
+### GetMessageIdOk
 
-`func (o *ResponsesForwarding) GetSuccessCountOk() (*int64, bool)`
+`func (o *ResponsesForwarding) GetMessageIdOk() (*string, bool)`
 
-GetSuccessCountOk returns a tuple with the SuccessCount field if it's non-nil, zero value otherwise
+GetMessageIdOk returns a tuple with the MessageId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSuccessCount
+### SetMessageId
 
-`func (o *ResponsesForwarding) SetSuccessCount(v int64)`
+`func (o *ResponsesForwarding) SetMessageId(v string)`
 
-SetSuccessCount sets SuccessCount field to given value.
+SetMessageId sets MessageId field to given value.
 
-### HasSuccessCount
+### HasMessageId
 
-`func (o *ResponsesForwarding) HasSuccessCount() bool`
+`func (o *ResponsesForwarding) HasMessageId() bool`
 
-HasSuccessCount returns a boolean if a field has been set.
+HasMessageId returns a boolean if a field has been set.
 
 ### GetTime
 
@@ -286,30 +312,30 @@ SetTime sets Time field to given value.
 
 HasTime returns a boolean if a field has been set.
 
-### GetTransfers
+### GetTokenId
 
-`func (o *ResponsesForwarding) GetTransfers() []int32`
+`func (o *ResponsesForwarding) GetTokenId() string`
 
-GetTransfers returns the Transfers field if non-nil, zero value otherwise.
+GetTokenId returns the TokenId field if non-nil, zero value otherwise.
 
-### GetTransfersOk
+### GetTokenIdOk
 
-`func (o *ResponsesForwarding) GetTransfersOk() (*[]int32, bool)`
+`func (o *ResponsesForwarding) GetTokenIdOk() (*string, bool)`
 
-GetTransfersOk returns a tuple with the Transfers field if it's non-nil, zero value otherwise
+GetTokenIdOk returns a tuple with the TokenId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTransfers
+### SetTokenId
 
-`func (o *ResponsesForwarding) SetTransfers(v []int32)`
+`func (o *ResponsesForwarding) SetTokenId(v string)`
 
-SetTransfers sets Transfers field to given value.
+SetTokenId sets TokenId field to given value.
 
-### HasTransfers
+### HasTokenId
 
-`func (o *ResponsesForwarding) HasTransfers() bool`
+`func (o *ResponsesForwarding) HasTokenId() bool`
 
-HasTransfers returns a boolean if a field has been set.
+HasTokenId returns a boolean if a field has been set.
 
 ### GetTxHash
 

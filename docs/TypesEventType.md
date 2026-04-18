@@ -173,6 +173,8 @@
 
 * `EventTypeIbccallbackerrorIcs27Packet` (value: `"ibccallbackerror-ics27_packet"`)
 
+* `EventTypeIbccallbackerrorFungibleTokenPacket` (value: `"ibccallbackerror-fungible_token_packet"`)
+
 * `EventTypeCelestiaforwardingv1EventTokenForwarded` (value: `"celestia.forwarding.v1.EventTokenForwarded"`)
 
 * `EventTypeCelestiaforwardingv1EventForwardingComplete` (value: `"celestia.forwarding.v1.EventForwardingComplete"`)
