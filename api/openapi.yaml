@@ -7277,21 +7277,21 @@ components:
       description: Celestia address information
       example:
         balance:
-          spendable: "10000000000"
-          unbonding: "10000000000"
           currency: utia
           delegated: "10000000000"
+          spendable: "10000000000"
+          unbonding: "10000000000"
         celestials:
           image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
           name: name
           primary: true
           status: VERIFIED
-        name: bonded_tokens_pool
-        id: 321
-        is_forwarding: true
         first_height: 100
         hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        id: 321
+        is_forwarding: true
         last_height: 100
+        name: bonded_tokens_pool
       properties:
         balance:
           $ref: "#/components/schemas/responses.Balance"
@@ -7319,10 +7319,10 @@ components:
     responses.Balance:
       description: Balance of address information
       example:
-        spendable: "10000000000"
-        unbonding: "10000000000"
         currency: utia
         delegated: "10000000000"
+        spendable: "10000000000"
+        unbonding: "10000000000"
       properties:
         currency:
           example: utia
@@ -7339,10 +7339,10 @@ components:
       type: object
     responses.Blob:
       example:
+        commitment: vbGakK59+Non81TE3ULg5Ve5ufT9SFm/bCyY+WLR3gg=
         content_type: image/png
         data: b2sgZGVtbyBkYQ==
         namespace: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
-        commitment: vbGakK59+Non81TE3ULg5Ve5ufT9SFm/bCyY+WLR3gg=
         share_version: 0
       properties:
         commitment:
@@ -7368,18 +7368,74 @@ components:
       type: object
     responses.BlobLog:
       example:
+        commitment: vbGakK59+Non81TE3ULg5Ve5ufT9SFm/bCyY+WLR3gg=
         content_type: image/png
+        height: 100
+        id: 200
+        namespace:
+          blobs_count: 10000
+          hash: U3dhZ2dlciByb2Nrcw==
+          id: 321
+          last_height: 100
+          last_message_time: 2023-07-04T03:10:57Z
+          name: name
+          namespace_id: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
+          pfb_count: 12
+          reserved: true
+          size: 12345
+          version: 0
+        rollup:
+          id: 321
+          logo: https://some_link.com/image.png
+          name: Rollup name
+          slug: rollup_slug
+        share_version: 0
+        signer:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         size: 10
+        time: 2023-07-04T03:10:57Z
         tx:
+          codespace: sdk
+          error: ""
+          events_count: 2
           fee: "9348"
           gas_used: 4253
+          gas_wanted: 9348
+          hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          height: 100
+          id: 321
           memo: Transfer to private account
-          error: ""
           message_types:
           - MsgSend
           - MsgUnjail
-          timeout_height: 0
+          messages:
+          - data:
+              key: "{}"
+            height: 100
+            id: 321
+            position: 2
+            size: 2
+            time: 2023-07-04T03:10:57Z
+            tx: null
+            tx_id: 11
+            type: MsgCreatePeriodicVestingAccount
+          - data:
+              key: "{}"
+            height: 100
+            id: 321
+            position: 2
+            size: 2
+            time: 2023-07-04T03:10:57Z
+            tx: null
+            tx_id: 11
+            type: MsgCreatePeriodicVestingAccount
           messages_count: 1
+          position: 11
           signers:
           - celestials:
               image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -7393,65 +7449,9 @@ components:
               primary: true
               status: VERIFIED
             hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          codespace: sdk
-          events_count: 2
-          gas_wanted: 9348
-          messages:
-          - data:
-              key: "{}"
-            size: 2
-            tx: null
-            id: 321
-            position: 2
-            time: 2023-07-04T03:10:57Z
-            tx_id: 11
-            type: MsgCreatePeriodicVestingAccount
-            height: 100
-          - data:
-              key: "{}"
-            size: 2
-            tx: null
-            id: 321
-            position: 2
-            time: 2023-07-04T03:10:57Z
-            tx_id: 11
-            type: MsgCreatePeriodicVestingAccount
-            height: 100
-          id: 321
-          position: 11
-          time: 2023-07-04T03:10:57Z
-          hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          height: 100
           status: success
-        namespace:
-          blobs_count: 10000
-          pfb_count: 12
-          namespace_id: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
-          size: 12345
-          reserved: true
-          last_message_time: 2023-07-04T03:10:57Z
-          name: name
-          id: 321
-          version: 0
-          hash: U3dhZ2dlciByb2Nrcw==
-          last_height: 100
-        commitment: vbGakK59+Non81TE3ULg5Ve5ufT9SFm/bCyY+WLR3gg=
-        id: 200
-        time: 2023-07-04T03:10:57Z
-        height: 100
-        rollup:
-          name: Rollup name
-          logo: https://some_link.com/image.png
-          id: 321
-          slug: rollup_slug
-        share_version: 0
-        signer:
-          celestials:
-            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
-            name: name
-            primary: true
-            status: VERIFIED
-          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+          time: 2023-07-04T03:10:57Z
+          timeout_height: 0
       properties:
         commitment:
           example: vbGakK59+Non81TE3ULg5Ve5ufT9SFm/bCyY+WLR3gg=
@@ -7492,44 +7492,44 @@ components:
       type: object
     responses.Block:
       example:
-        version_block: "11"
-        validators_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        app_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         consensus_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        data_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        evidence_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        height: 100
+        id: 321
+        last_commit_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        last_results_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        message_types:
+        - MsgSend
+        - MsgUnjail
+        next_validators_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        parent_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         proposer:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
           moniker: Easy 2 Stake
-        next_validators_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        version_app: "1"
-        message_types:
-        - MsgSend
-        - MsgUnjail
-        data_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        last_results_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         stats:
-          fill_rate: "0.0800"
-          tx_count: 12
+          blobs_count: 100
           blobs_size: 12354
+          block_time: 12354
+          bytes_in_block: 1234
+          commissions: "123133"
+          events_count: 18
           fee: "28347628346"
+          fill_rate: "0.0800"
+          gas_limit: 1234
           gas_used: 1234
           inflation_rate: "0.0800000"
-          bytes_in_block: 1234
-          block_time: 12354
-          supply_change: "8635234"
-          blobs_count: 100
-          events_count: 18
-          gas_limit: 1234
-          square_size: 16
-          commissions: "123133"
           rewards: "102102812"
-        evidence_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        app_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        id: 321
+          square_size: 16
+          supply_change: "8635234"
+          tx_count: 12
         time: 2023-07-04T03:10:57+00:00
-        hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        parent_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        height: 100
-        last_commit_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        validators_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        version_app: "1"
+        version_block: "11"
       properties:
         app_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
@@ -7591,8 +7591,8 @@ components:
     responses.BlockExplorer:
       example:
         api_url: https://api.scan.url.io
-        name: Block explorer
         family: etherscan
+        name: Block explorer
         url: https://scan.url.io
       properties:
         api_url:
@@ -7614,21 +7614,21 @@ components:
       type: object
     responses.BlockStats:
       example:
-        fill_rate: "0.0800"
-        tx_count: 12
+        blobs_count: 100
         blobs_size: 12354
+        block_time: 12354
+        bytes_in_block: 1234
+        commissions: "123133"
+        events_count: 18
         fee: "28347628346"
+        fill_rate: "0.0800"
+        gas_limit: 1234
         gas_used: 1234
         inflation_rate: "0.0800000"
-        bytes_in_block: 1234
-        block_time: 12354
-        supply_change: "8635234"
-        blobs_count: 100
-        events_count: 18
-        gas_limit: 1234
-        square_size: 16
-        commissions: "123133"
         rewards: "102102812"
+        square_size: 16
+        supply_change: "8635234"
+        tx_count: 12
       properties:
         blobs_count:
           example: 100
@@ -7679,8 +7679,8 @@ components:
     responses.BusiestChannel:
       example:
         chain_id: osmosis-1
-        transfers_count: 100
         channel_id: channel-1
+        transfers_count: 100
       properties:
         chain_id:
           example: osmosis-1
@@ -7718,20 +7718,20 @@ components:
       type: object
     responses.ChainMetadata:
       example:
-        name: name
-        native_token:
-          symbol: ETH
-          decimals: 18
-          name: Ether
         block_explorers:
         - api_url: https://api.scan.url.io
-          name: Block explorer
           family: etherscan
+          name: Block explorer
           url: https://scan.url.io
         - api_url: https://api.scan.url.io
-          name: Block explorer
           family: etherscan
+          name: Block explorer
           url: https://scan.url.io
+        name: name
+        native_token:
+          decimals: 18
+          name: Ether
+          symbol: ETH
       properties:
         block_explorers:
           items:
@@ -7746,9 +7746,9 @@ components:
     responses.Change24hBlockStats:
       example:
         blobs_size_24h: 0.1234
-        tx_count_24h: 0.1234
         bytes_in_block_24h: 0.1234
         fee_24h: 0.1234
+        tx_count_24h: 0.1234
       properties:
         blobs_size_24h:
           example: 0.1234
@@ -7769,27 +7769,27 @@ components:
       type: object
     responses.Constants:
       example:
+        denom_metadata:
+        - base: utia
+          description: Some description
+          display: TIA
+          name: TIA
+          symbol: TIA
+          units:
+          - 0
+          - 0
+          uri: https://example.com
+        - base: utia
+          description: Some description
+          display: TIA
+          name: TIA
+          symbol: TIA
+          units:
+          - 0
+          - 0
+          uri: https://example.com
         module:
           key: null
-        denom_metadata:
-        - symbol: TIA
-          display: TIA
-          name: TIA
-          description: Some description
-          units:
-          - 0
-          - 0
-          uri: https://example.com
-          base: utia
-        - symbol: TIA
-          display: TIA
-          name: TIA
-          description: Some description
-          units:
-          - 0
-          - 0
-          uri: https://example.com
-          base: utia
       properties:
         denom_metadata:
           items:
@@ -7802,12 +7802,12 @@ components:
       type: object
     responses.Contact:
       example:
+        discord: https://discord.cosmosrescue.com
         github: https://github.com/cosmosrescue
+        medium: https://medium.com/cosmosrescue
+        telegram: https://t.me/cosmosrescue
         twitter: https://x.com/cosmosrescue
         website: https://cosmosrescue.com
-        discord: https://discord.cosmosrescue.com
-        telegram: https://t.me/cosmosrescue
-        medium: https://medium.com/cosmosrescue
       properties:
         discord:
           example: https://discord.cosmosrescue.com
@@ -7867,15 +7867,15 @@ components:
       type: object
     responses.DenomMetadata:
       example:
-        symbol: TIA
+        base: utia
+        description: Some description
         display: TIA
         name: TIA
-        description: Some description
+        symbol: TIA
         units:
         - 0
         - 0
         uri: https://example.com
-        base: utia
       properties:
         base:
           example: utia
@@ -7916,21 +7916,21 @@ components:
       type: object
     responses.DomainMetadata:
       example:
+        block_explorers:
+        - api_url: https://api.scan.url.io
+          family: etherscan
+          name: Block explorer
+          url: https://scan.url.io
+        - api_url: https://api.scan.url.io
+          family: etherscan
+          name: Block explorer
+          url: https://scan.url.io
         domain: 1488
         name: name
         native_token:
-          symbol: ETH
           decimals: 18
           name: Ether
-        block_explorers:
-        - api_url: https://api.scan.url.io
-          name: Block explorer
-          family: etherscan
-          url: https://scan.url.io
-        - api_url: https://api.scan.url.io
-          name: Block explorer
-          family: etherscan
-          url: https://scan.url.io
+          symbol: ETH
       properties:
         block_explorers:
           items:
@@ -7947,51 +7947,51 @@ components:
       type: object
     responses.Enums:
       example:
-        proposal_type:
-        - proposal_type
-        - proposal_type
-        proposal_status:
-        - proposal_status
-        - proposal_status
-        vote_type:
-        - vote_type
-        - vote_type
-        message_type:
-        - message_type
-        - message_type
+        categories:
+        - categories
+        - categories
+        celestials_statuses:
+        - celestials_statuses
+        - celestials_statuses
+        event_type:
+        - event_type
+        - event_type
+        hyperlane_token_type:
+        - hyperlane_token_type
+        - hyperlane_token_type
         hyperlane_transfer_type:
         - hyperlane_transfer_type
         - hyperlane_transfer_type
+        ibc_channel_status:
+        - ibc_channel_status
+        - ibc_channel_status
+        message_type:
+        - message_type
+        - message_type
+        proposal_status:
+        - proposal_status
+        - proposal_status
+        proposal_type:
+        - proposal_type
+        - proposal_type
+        rollup_type:
+        - rollup_type
+        - rollup_type
+        status:
+        - status
+        - status
         tags:
         - tags
         - tags
         upgrade_status:
         - upgrade_status
         - upgrade_status
-        ibc_channel_status:
-        - ibc_channel_status
-        - ibc_channel_status
-        event_type:
-        - event_type
-        - event_type
-        rollup_type:
-        - rollup_type
-        - rollup_type
-        celestials_statuses:
-        - celestials_statuses
-        - celestials_statuses
-        categories:
-        - categories
-        - categories
-        hyperlane_token_type:
-        - hyperlane_token_type
-        - hyperlane_token_type
-        status:
-        - status
-        - status
         vote_option:
         - vote_option
         - vote_option
+        vote_type:
+        - vote_type
+        - vote_type
       properties:
         categories:
           items:
@@ -8058,12 +8058,12 @@ components:
       example:
         data:
           key: data
+        height: 100
         id: 321
         position: 1
         time: 2023-07-04T03:10:57Z
         tx_id: 11
         type: commission
-        height: 100
       properties:
         data:
           additionalProperties:
@@ -8099,67 +8099,22 @@ components:
       example:
         amount: "1000000"
         chain:
-          name: name
-          native_token:
-            symbol: ETH
-            decimals: 18
-            name: Ether
           block_explorers:
           - api_url: https://api.scan.url.io
-            name: Block explorer
             family: etherscan
+            name: Block explorer
             url: https://scan.url.io
           - api_url: https://api.scan.url.io
-            name: Block explorer
             family: etherscan
+            name: Block explorer
             url: https://scan.url.io
-        inputs:
-        - chain:
-            name: name
-            native_token:
-              symbol: ETH
-              decimals: 18
-              name: Ether
-            block_explorers:
-            - api_url: https://api.scan.url.io
-              name: Block explorer
-              family: etherscan
-              url: https://scan.url.io
-            - api_url: https://api.scan.url.io
-              name: Block explorer
-              family: etherscan
-              url: https://scan.url.io
-          from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
-          received: "123445"
-          tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          denom: utia
-          time: 2023-07-04T03:10:57Z
-          height: 100
-        - chain:
-            name: name
-            native_token:
-              symbol: ETH
-              decimals: 18
-              name: Ether
-            block_explorers:
-            - api_url: https://api.scan.url.io
-              name: Block explorer
-              family: etherscan
-              url: https://scan.url.io
-            - api_url: https://api.scan.url.io
-              name: Block explorer
-              family: etherscan
-              url: https://scan.url.io
-          from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
-          received: "123445"
-          tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          denom: utia
-          time: 2023-07-04T03:10:57Z
-          height: 100
-        message_id: 0xac8852bd411c0c88cdadfe9b2386b2bcd702f35479c25a4b2d2cc3fb49d095d4
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          name: name
+          native_token:
+            decimals: 18
+            name: Ether
+            symbol: ETH
+        denom: hyperlane/0x726f757465725f61707000000000000000000000000000020000000000000024
         dest_address: 0x000000000000000000000000d5e85e86fc692cedad6d6992f1f0ccf273e39913
-        token_id: 12652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF345
         dest_domain: 11155111
         forward_address:
           celestials:
@@ -8168,10 +8123,55 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        denom: hyperlane/0x726f757465725f61707000000000000000000000000000020000000000000024
-        id: 321
-        time: 2023-07-04T03:10:57Z
         height: 100
+        id: 321
+        inputs:
+        - chain:
+            block_explorers:
+            - api_url: https://api.scan.url.io
+              family: etherscan
+              name: Block explorer
+              url: https://scan.url.io
+            - api_url: https://api.scan.url.io
+              family: etherscan
+              name: Block explorer
+              url: https://scan.url.io
+            name: name
+            native_token:
+              decimals: 18
+              name: Ether
+              symbol: ETH
+          denom: utia
+          from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+          height: 100
+          received: "123445"
+          time: 2023-07-04T03:10:57Z
+          tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        - chain:
+            block_explorers:
+            - api_url: https://api.scan.url.io
+              family: etherscan
+              name: Block explorer
+              url: https://scan.url.io
+            - api_url: https://api.scan.url.io
+              family: etherscan
+              name: Block explorer
+              url: https://scan.url.io
+            name: name
+            native_token:
+              decimals: 18
+              name: Ether
+              symbol: ETH
+          denom: utia
+          from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+          height: 100
+          received: "123445"
+          time: 2023-07-04T03:10:57Z
+          tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        message_id: 0xac8852bd411c0c88cdadfe9b2386b2bcd702f35479c25a4b2d2cc3fb49d095d4
+        time: 2023-07-04T03:10:57Z
+        token_id: 12652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF345
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
         amount:
           example: "1000000"
@@ -8225,26 +8225,26 @@ components:
     responses.ForwardingInput:
       example:
         chain:
-          name: name
-          native_token:
-            symbol: ETH
-            decimals: 18
-            name: Ether
           block_explorers:
           - api_url: https://api.scan.url.io
-            name: Block explorer
             family: etherscan
+            name: Block explorer
             url: https://scan.url.io
           - api_url: https://api.scan.url.io
-            name: Block explorer
             family: etherscan
+            name: Block explorer
             url: https://scan.url.io
-        from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
-        received: "123445"
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          name: name
+          native_token:
+            decimals: 18
+            name: Ether
+            symbol: ETH
         denom: utia
-        time: 2023-07-04T03:10:57Z
+        from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
         height: 100
+        received: "123445"
+        time: 2023-07-04T03:10:57Z
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
         chain:
           $ref: "#/components/schemas/responses.ChainMetadata"
@@ -8314,6 +8314,7 @@ components:
     responses.Grant:
       example:
         authorization: /cosmos.staking.v1beta1.MsgDelegate
+        expiration: 2023-07-04T03:10:57+00:00
         grantee:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -8321,12 +8322,6 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        expiration: 2023-07-04T03:10:57+00:00
-        revoke_height: 123123
-        time: 2023-07-04T03:10:57+00:00
-        params:
-          key: "{}"
-        revoked: true
         granter:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -8335,6 +8330,11 @@ components:
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         height: 123123
+        params:
+          key: "{}"
+        revoke_height: 123123
+        revoked: true
+        time: 2023-07-04T03:10:57+00:00
       properties:
         authorization:
           example: /cosmos.staking.v1beta1.MsgDelegate
@@ -8379,23 +8379,23 @@ components:
       type: object
     responses.HlDomainStats:
       example:
+        amount: "1234.5678"
         chain_metadata:
-          name: name
-          native_token:
-            symbol: ETH
-            decimals: 18
-            name: Ether
           block_explorers:
           - api_url: https://api.scan.url.io
-            name: Block explorer
             family: etherscan
+            name: Block explorer
             url: https://scan.url.io
           - api_url: https://api.scan.url.io
-            name: Block explorer
             family: etherscan
+            name: Block explorer
             url: https://scan.url.io
+          name: name
+          native_token:
+            decimals: 18
+            name: Ether
+            symbol: ETH
         domain_id: 123456
-        amount: "1234.5678"
         transfers_count: 123445
       properties:
         amount:
@@ -8416,20 +8416,20 @@ components:
     responses.HyperlaneCounterparty:
       example:
         chain_metadata:
-          name: name
-          native_token:
-            symbol: ETH
-            decimals: 18
-            name: Ether
           block_explorers:
           - api_url: https://api.scan.url.io
-            name: Block explorer
             family: etherscan
+            name: Block explorer
             url: https://scan.url.io
           - api_url: https://api.scan.url.io
-            name: Block explorer
             family: etherscan
+            name: Block explorer
             url: https://scan.url.io
+          name: name
+          native_token:
+            decimals: 18
+            name: Ether
+            symbol: ETH
         domain: 100
         hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
@@ -8445,6 +8445,51 @@ components:
       type: object
     responses.HyperlaneIgp:
       example:
+        configs:
+        - counterparty:
+            chain_metadata:
+              block_explorers:
+              - api_url: https://api.scan.url.io
+                family: etherscan
+                name: Block explorer
+                url: https://scan.url.io
+              - api_url: https://api.scan.url.io
+                family: etherscan
+                name: Block explorer
+                url: https://scan.url.io
+              name: name
+              native_token:
+                decimals: 18
+                name: Ether
+                symbol: ETH
+            remote_domain: 100
+          gas_overhead: "100000"
+          gas_price: "1"
+          token_exchange_rate: "12345678"
+        - counterparty:
+            chain_metadata:
+              block_explorers:
+              - api_url: https://api.scan.url.io
+                family: etherscan
+                name: Block explorer
+                url: https://scan.url.io
+              - api_url: https://api.scan.url.io
+                family: etherscan
+                name: Block explorer
+                url: https://scan.url.io
+              name: name
+              native_token:
+                decimals: 18
+                name: Ether
+                symbol: ETH
+            remote_domain: 100
+          gas_overhead: "100000"
+          gas_price: "1"
+          token_exchange_rate: "12345678"
+        denom: utia
+        height: 1488
+        id: 321
+        igp_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         owner:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -8452,52 +8497,7 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        configs:
-        - gas_price: "1"
-          counterparty:
-            chain_metadata:
-              name: name
-              native_token:
-                symbol: ETH
-                decimals: 18
-                name: Ether
-              block_explorers:
-              - api_url: https://api.scan.url.io
-                name: Block explorer
-                family: etherscan
-                url: https://scan.url.io
-              - api_url: https://api.scan.url.io
-                name: Block explorer
-                family: etherscan
-                url: https://scan.url.io
-            remote_domain: 100
-          token_exchange_rate: "12345678"
-          gas_overhead: "100000"
-        - gas_price: "1"
-          counterparty:
-            chain_metadata:
-              name: name
-              native_token:
-                symbol: ETH
-                decimals: 18
-                name: Ether
-              block_explorers:
-              - api_url: https://api.scan.url.io
-                name: Block explorer
-                family: etherscan
-                url: https://scan.url.io
-              - api_url: https://api.scan.url.io
-                name: Block explorer
-                family: etherscan
-                url: https://scan.url.io
-            remote_domain: 100
-          token_exchange_rate: "12345678"
-          gas_overhead: "100000"
-        igp_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        denom: utia
-        id: 321
         time: 2023-07-04T03:10:57Z
-        height: 1488
       properties:
         configs:
           items:
@@ -8528,26 +8528,26 @@ components:
       type: object
     responses.HyperlaneIgpConfig:
       example:
-        gas_price: "1"
         counterparty:
           chain_metadata:
-            name: name
-            native_token:
-              symbol: ETH
-              decimals: 18
-              name: Ether
             block_explorers:
             - api_url: https://api.scan.url.io
-              name: Block explorer
               family: etherscan
+              name: Block explorer
               url: https://scan.url.io
             - api_url: https://api.scan.url.io
-              name: Block explorer
               family: etherscan
+              name: Block explorer
               url: https://scan.url.io
+            name: name
+            native_token:
+              decimals: 18
+              name: Ether
+              symbol: ETH
           remote_domain: 100
-        token_exchange_rate: "12345678"
         gas_overhead: "100000"
+        gas_price: "1"
+        token_exchange_rate: "12345678"
       properties:
         counterparty:
           $ref: "#/components/schemas/responses.HyperlaneRemoteDomain"
@@ -8566,6 +8566,13 @@ components:
       type: object
     responses.HyperlaneMailbox:
       example:
+        default_hook: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        default_ism: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        domain: 100
+        height: 100
+        hyperlane_id: 321
+        id: 321
+        mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         owner:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -8573,18 +8580,11 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        sent_messages: 100
-        required_hook: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        hyperlane_id: 321
-        mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        domain: 100
-        default_hook: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         received_messages: 100
-        id: 321
+        required_hook: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        sent_messages: 100
         time: 2023-07-04T03:10:57Z
-        default_ism: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        height: 100
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
         default_hook:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
@@ -8640,20 +8640,20 @@ components:
     responses.HyperlaneRemoteDomain:
       example:
         chain_metadata:
-          name: name
-          native_token:
-            symbol: ETH
-            decimals: 18
-            name: Ether
           block_explorers:
           - api_url: https://api.scan.url.io
-            name: Block explorer
             family: etherscan
+            name: Block explorer
             url: https://scan.url.io
           - api_url: https://api.scan.url.io
-            name: Block explorer
             family: etherscan
+            name: Block explorer
             url: https://scan.url.io
+          name: name
+          native_token:
+            decimals: 18
+            name: Ether
+            symbol: ETH
         remote_domain: 100
       properties:
         chain_metadata:
@@ -8665,6 +8665,10 @@ components:
       type: object
     responses.HyperlaneToken:
       example:
+        denom: utia
+        height: 100
+        id: 321
+        mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         owner:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -8672,18 +8676,14 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        sent_transfers: 100
         received: "123445"
+        received_transfers: 100
+        sent: "123445"
+        sent_transfers: 100
+        time: 2023-07-04T03:10:57Z
+        token_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         type: collateral
-        sent: "123445"
-        mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        token_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        received_transfers: 100
-        denom: utia
-        id: 321
-        time: 2023-07-04T03:10:57Z
-        height: 100
       properties:
         denom:
           example: utia
@@ -8738,18 +8738,6 @@ components:
       type: object
     responses.HyperlaneTransfer:
       example:
-        gas_payment:
-          amount: "12345"
-          gas_amount: "123"
-          igp_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        relayer:
-          celestials:
-            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
-            name: name
-            primary: true
-            status: VERIFIED
-          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        metadata: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
         address:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -8757,36 +8745,48 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        received: "123445"
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         body: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
-        type: collateral
-        nonce: 10
-        version: 1
-        mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        token_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         counterparty:
           chain_metadata:
-            name: name
-            native_token:
-              symbol: ETH
-              decimals: 18
-              name: Ether
             block_explorers:
             - api_url: https://api.scan.url.io
-              name: Block explorer
               family: etherscan
+              name: Block explorer
               url: https://scan.url.io
             - api_url: https://api.scan.url.io
-              name: Block explorer
               family: etherscan
+              name: Block explorer
               url: https://scan.url.io
+            name: name
+            native_token:
+              decimals: 18
+              name: Ether
+              symbol: ETH
           domain: 100
           hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         denom: utia
-        id: 321
-        time: 2023-07-04T03:10:57Z
+        gas_payment:
+          amount: "12345"
+          gas_amount: "123"
+          igp_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         height: 100
+        id: 321
+        mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        metadata: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
+        nonce: 10
+        received: "123445"
+        relayer:
+          celestials:
+            image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
+            name: name
+            primary: true
+            status: VERIFIED
+          hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        time: 2023-07-04T03:10:57Z
+        token_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        type: collateral
+        version: 1
       properties:
         address:
           $ref: "#/components/schemas/responses.ShortAddress"
@@ -8852,9 +8852,9 @@ components:
     responses.IbcChainStats:
       example:
         chain: "123456"
+        flow: "123445"
         received: "123445"
         sent: "123445"
-        flow: "123445"
       properties:
         chain:
           example: "123456"
@@ -8875,6 +8875,18 @@ components:
       type: object
     responses.IbcChannel:
       example:
+        client:
+          chain_id: osmosis-1
+          id: client-1
+          type: client
+        confirmation_height: 100
+        confirmation_tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        confirmed_at: 2023-07-04T03:10:57Z
+        connection_id: connection-1
+        counterparty_channel_id: channel-1
+        counterparty_port_id: transfer
+        created_at: 2023-07-04T03:10:57Z
+        created_tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         creator:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -8882,24 +8894,12 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        confirmation_height: 100
-        ordering: false
-        created_at: 2023-07-04T03:10:57Z
-        version: ics20-1
-        confirmation_tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        counterparty_port_id: transfer
-        connection_id: connection-1
-        counterparty_channel_id: channel-1
-        client:
-          chain_id: osmosis-1
-          id: client-1
-          type: client
-        port_id: transfer
-        created_tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        id: channel-1
-        confirmed_at: 2023-07-04T03:10:57Z
         height: 100
+        id: channel-1
+        ordering: false
+        port_id: transfer
         status: opened
+        version: ics20-1
       properties:
         client:
           $ref: "#/components/schemas/responses.ShortIbcClient"
@@ -8964,6 +8964,9 @@ components:
       type: object
     responses.IbcClient:
       example:
+        chain_id: osmosis-1
+        connection_count: 100
+        created_at: 2023-07-04T03:10:57Z
         creator:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -8971,23 +8974,20 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        chain_id: osmosis-1
-        trusting_period: 100
-        created_at: 2023-07-04T03:10:57Z
-        latest_revision_height: 100
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        trust_level_denominator: 100
-        latest_revision_number: 100
-        type: client
-        frozen_revision_number: 100
-        updated_at: 2023-07-04T03:10:57Z
-        max_clock_drift: 100
         frozen_revision_height: 100
-        trust_level_numerator: 100
-        connection_count: 100
-        id: client-1
-        unbonding_period: 100
+        frozen_revision_number: 100
         height: 100
+        id: client-1
+        latest_revision_height: 100
+        latest_revision_number: 100
+        max_clock_drift: 100
+        trust_level_denominator: 100
+        trust_level_numerator: 100
+        trusting_period: 100
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        type: client
+        unbonding_period: 100
+        updated_at: 2023-07-04T03:10:57Z
       properties:
         chain_id:
           example: osmosis-1
@@ -9063,19 +9063,19 @@ components:
     responses.IbcConnection:
       example:
         channels_count: 100
-        connected_tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        counterparty_connection_id: connection-1
         client:
           chain_id: osmosis-1
           id: client-1
           type: client
+        connected_at: 2023-07-04T03:10:57Z
+        connected_height: 100
+        connected_tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        counterparty_client_id: client-1
+        counterparty_connection_id: connection-1
         created_at: 2023-07-04T03:10:57Z
         created_tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        connected_at: 2023-07-04T03:10:57Z
-        id: connection-1
-        connected_height: 100
-        counterparty_client_id: client-1
         height: 100
+        id: connection-1
       properties:
         channels_count:
           example: 100
@@ -9122,21 +9122,20 @@ components:
       type: object
     responses.IbcSummaryStats:
       example:
+        busiest_channel:
+          chain_id: osmosis-1
+          channel_id: channel-1
+          transfers_count: 100
         largest_transfer:
-          relayer:
-            addresses:
-            - celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-            contact:
-              github: https://github.com/cosmosrescue
-              twitter: https://x.com/cosmosrescue
-              website: https://cosmosrescue.com
-              discord: https://discord.cosmosrescue.com
-              telegram: https://t.me/cosmosrescue
-              medium: https://medium.com/cosmosrescue
-            name: cosmosrescue
-            logo: https://raw.githubusercontent.com/irisnet/iob-registry/main/relayers/cosmosrescue/logo.png
           amount: "123445"
           chain_id: osmosis-1
+          channel_id: channel-1
+          connection_id: connection-1
+          denom: utia
+          height: 100
+          id: 123456
+          memo: memo
+          port: transfer
           receiver:
             celestials:
               image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -9144,13 +9143,18 @@ components:
               primary: true
               status: VERIFIED
             hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          memo: memo
-          tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          timeout: 2023-07-04T03:10:57Z
-          timeout_height: 100
-          sequence: 123456
-          connection_id: connection-1
-          port: transfer
+          relayer:
+            addresses:
+            - celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+            contact:
+              discord: https://discord.cosmosrescue.com
+              github: https://github.com/cosmosrescue
+              medium: https://medium.com/cosmosrescue
+              telegram: https://t.me/cosmosrescue
+              twitter: https://x.com/cosmosrescue
+              website: https://cosmosrescue.com
+            logo: https://raw.githubusercontent.com/irisnet/iob-registry/main/relayers/cosmosrescue/logo.png
+            name: cosmosrescue
           sender:
             celestials:
               image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -9158,15 +9162,11 @@ components:
               primary: true
               status: VERIFIED
             hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          denom: utia
-          id: 123456
+          sequence: 123456
           time: 2023-07-04T03:10:57Z
-          channel_id: channel-1
-          height: 100
-        busiest_channel:
-          chain_id: osmosis-1
-          transfers_count: 100
-          channel_id: channel-1
+          timeout: 2023-07-04T03:10:57Z
+          timeout_height: 100
+          tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
         busiest_channel:
           $ref: "#/components/schemas/responses.BusiestChannel"
@@ -9175,20 +9175,15 @@ components:
       type: object
     responses.IbcTransfer:
       example:
-        relayer:
-          addresses:
-          - celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          contact:
-            github: https://github.com/cosmosrescue
-            twitter: https://x.com/cosmosrescue
-            website: https://cosmosrescue.com
-            discord: https://discord.cosmosrescue.com
-            telegram: https://t.me/cosmosrescue
-            medium: https://medium.com/cosmosrescue
-          name: cosmosrescue
-          logo: https://raw.githubusercontent.com/irisnet/iob-registry/main/relayers/cosmosrescue/logo.png
         amount: "123445"
         chain_id: osmosis-1
+        channel_id: channel-1
+        connection_id: connection-1
+        denom: utia
+        height: 100
+        id: 123456
+        memo: memo
+        port: transfer
         receiver:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -9196,13 +9191,18 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        memo: memo
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        timeout: 2023-07-04T03:10:57Z
-        timeout_height: 100
-        sequence: 123456
-        connection_id: connection-1
-        port: transfer
+        relayer:
+          addresses:
+          - celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+          contact:
+            discord: https://discord.cosmosrescue.com
+            github: https://github.com/cosmosrescue
+            medium: https://medium.com/cosmosrescue
+            telegram: https://t.me/cosmosrescue
+            twitter: https://x.com/cosmosrescue
+            website: https://cosmosrescue.com
+          logo: https://raw.githubusercontent.com/irisnet/iob-registry/main/relayers/cosmosrescue/logo.png
+          name: cosmosrescue
         sender:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -9210,11 +9210,11 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        denom: utia
-        id: 123456
+        sequence: 123456
         time: 2023-07-04T03:10:57Z
-        channel_id: channel-1
-        height: 100
+        timeout: 2023-07-04T03:10:57Z
+        timeout_height: 100
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
         amount:
           example: "123445"
@@ -9281,14 +9281,14 @@ components:
       type: object
     responses.Jail:
       example:
+        burned: "10000000000"
+        height: 100
         reason: double_sign
+        time: 2023-07-04T03:10:57+00:00
         validator:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
           moniker: Easy 2 Stake
-        time: 2023-07-04T03:10:57+00:00
-        burned: "10000000000"
-        height: 100
       properties:
         burned:
           example: "10000000000"
@@ -9307,14 +9307,11 @@ components:
       type: object
     responses.LightBlobLog:
       example:
-        content_type: image/png
-        size: 10
-        namespace: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
         commitment: vbGakK59+Non81TE3ULg5Ve5ufT9SFm/bCyY+WLR3gg=
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        id: 200
-        time: 2023-07-04T03:10:57Z
+        content_type: image/png
         height: 100
+        id: 200
+        namespace: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
         share_version: 0
         signer:
           celestials:
@@ -9323,6 +9320,9 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        size: 10
+        time: 2023-07-04T03:10:57Z
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
         commitment:
           example: vbGakK59+Non81TE3ULg5Ve5ufT9SFm/bCyY+WLR3gg=
@@ -9367,14 +9367,14 @@ components:
       example:
         data:
           key: "{}"
-        size: 2
-        tx: null
+        height: 100
         id: 321
         position: 2
+        size: 2
         time: 2023-07-04T03:10:57Z
+        tx: null
         tx_id: 11
         type: MsgCreatePeriodicVestingAccount
-        height: 100
       properties:
         data:
           additionalProperties:
@@ -9416,22 +9416,22 @@ components:
       example:
         data:
           key: "{}"
+        height: 100
+        id: 321
+        invocation_type: fromAddress
+        position: 2
         size: 2
+        time: 2023-07-04T03:10:57Z
         tx:
-          messages_count: 1
           fee: "9348"
           hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
           message_types:
           - MsgSend
           - MsgUnjail
+          messages_count: 1
           status: success
-        invocation_type: fromAddress
-        id: 321
-        position: 2
-        time: 2023-07-04T03:10:57Z
         tx_id: 11
         type: MsgCreatePeriodicVestingAccount
-        height: 100
       properties:
         data:
           additionalProperties:
@@ -9476,21 +9476,21 @@ components:
       type: object
     responses.Metrics:
       example:
-        creation_time: 2025-07-04T03:10:57Z
+        applied_proposals_count: 321
+        block_missed_count: 321
         block_missed_metric: "1"
+        commission_metric: "1"
+        creation_time: 2025-07-04T03:10:57Z
+        id: 321
+        max_change_rate: "0.01"
         max_rate: "0.1"
-        votes_metric: "1"
         moniker: Easy 2 Stake
+        operation_time_metric: "1"
         self_delegation_amount: "1"
         self_delegation_metric: "1"
         stake: "1"
-        commission_metric: "1"
         votes_count: 321
-        applied_proposals_count: 321
-        block_missed_count: 321
-        max_change_rate: "0.01"
-        id: 321
-        operation_time_metric: "1"
+        votes_metric: "1"
       properties:
         applied_proposals_count:
           example: 321
@@ -9542,16 +9542,16 @@ components:
     responses.Namespace:
       example:
         blobs_count: 10000
-        pfb_count: 12
-        namespace_id: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
-        size: 12345
-        reserved: true
+        hash: U3dhZ2dlciByb2Nrcw==
+        id: 321
+        last_height: 100
         last_message_time: 2023-07-04T03:10:57Z
         name: name
-        id: 321
+        namespace_id: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
+        pfb_count: 12
+        reserved: true
+        size: 12345
         version: 0
-        hash: U3dhZ2dlciByb2Nrcw==
-        last_height: 100
       properties:
         blobs_count:
           example: 10000
@@ -9616,16 +9616,59 @@ components:
       example:
         data:
           key: "{}"
+        height: 100
+        id: 321
+        namespace:
+          blobs_count: 10000
+          hash: U3dhZ2dlciByb2Nrcw==
+          id: 321
+          last_height: 100
+          last_message_time: 2023-07-04T03:10:57Z
+          name: name
+          namespace_id: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
+          pfb_count: 12
+          reserved: true
+          size: 12345
+          version: 0
+        position: 2
+        time: 2023-07-04T03:10:57Z
         tx:
+          codespace: sdk
+          error: ""
+          events_count: 2
           fee: "9348"
           gas_used: 4253
+          gas_wanted: 9348
+          hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          height: 100
+          id: 321
           memo: Transfer to private account
-          error: ""
           message_types:
           - MsgSend
           - MsgUnjail
-          timeout_height: 0
+          messages:
+          - data:
+              key: "{}"
+            height: 100
+            id: 321
+            position: 2
+            size: 2
+            time: 2023-07-04T03:10:57Z
+            tx: null
+            tx_id: 11
+            type: MsgCreatePeriodicVestingAccount
+          - data:
+              key: "{}"
+            height: 100
+            id: 321
+            position: 2
+            size: 2
+            time: 2023-07-04T03:10:57Z
+            tx: null
+            tx_id: 11
+            type: MsgCreatePeriodicVestingAccount
           messages_count: 1
+          position: 11
           signers:
           - celestials:
               image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -9639,53 +9682,10 @@ components:
               primary: true
               status: VERIFIED
             hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-          codespace: sdk
-          events_count: 2
-          gas_wanted: 9348
-          messages:
-          - data:
-              key: "{}"
-            size: 2
-            tx: null
-            id: 321
-            position: 2
-            time: 2023-07-04T03:10:57Z
-            tx_id: 11
-            type: MsgCreatePeriodicVestingAccount
-            height: 100
-          - data:
-              key: "{}"
-            size: 2
-            tx: null
-            id: 321
-            position: 2
-            time: 2023-07-04T03:10:57Z
-            tx_id: 11
-            type: MsgCreatePeriodicVestingAccount
-            height: 100
-          id: 321
-          position: 11
-          time: 2023-07-04T03:10:57Z
-          hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          height: 100
           status: success
-        namespace:
-          blobs_count: 10000
-          pfb_count: 12
-          namespace_id: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
-          size: 12345
-          reserved: true
-          last_message_time: 2023-07-04T03:10:57Z
-          name: name
-          id: 321
-          version: 0
-          hash: U3dhZ2dlciByb2Nrcw==
-          last_height: 100
-        id: 321
-        position: 2
-        time: 2023-07-04T03:10:57Z
+          time: 2023-07-04T03:10:57Z
+          timeout_height: 0
         type: MsgCreatePeriodicVestingAccount
-        height: 100
       properties:
         data:
           additionalProperties:
@@ -9732,9 +9732,9 @@ components:
       type: object
     responses.NamespaceUsage:
       example:
+        name: "00112233"
         namespace_id: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
         size: 1283518.0
-        name: "00112233"
         version: 0
       properties:
         name:
@@ -9755,9 +9755,9 @@ components:
       type: object
     responses.NativeToken:
       example:
-        symbol: ETH
         decimals: 18
         name: Ether
+        symbol: ETH
       properties:
         decimals:
           example: 18
@@ -9803,27 +9803,29 @@ components:
       type: object
     responses.Proposal:
       example:
-        "no": 1234
-        metadata: metadata
-        yes_voting_power: "1000000000"
         abstain: 1234
-        no_with_veto_addrs: 1234
-        created_at: 2023-07-04T03:10:57Z
-        description: Some proposal description
-        threshold: "0.33"
-        error: Some error text
-        title: Proposal title
-        type: param_changed
+        abstain_addrs: 1234
         abstain_vals: 1234
-        votes_count: 12354
+        abstain_voting_power: "1000000000"
+        activation_time: 2023-07-04T03:10:57Z
+        created_at: 2023-07-04T03:10:57Z
+        deposit: "1000000000"
+        deposit_time: 2023-07-04T03:10:57Z
+        description: Some proposal description
+        end_time: 2023-07-04T03:10:57Z
+        error: Some error text
+        height: 100
+        id: 321
+        metadata: metadata
+        min_deposit: "0.33"
+        "no": 1234
         no_addrs: 1234
+        no_vals: 1234
+        no_voting_power: "1000000000"
+        no_with_veto: 1234
+        no_with_veto_addrs: 1234
         no_with_veto_vals: 1234
         no_with_veto_voting_power: "1000000000"
-        id: 321
-        height: 100
-        no_with_veto: 1234
-        abstain_addrs: 1234
-        veto_quorum: "0.33"
         proposer:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -9831,21 +9833,19 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        "yes": 1234
         quorum: "0.33"
-        end_time: 2023-07-04T03:10:57Z
-        deposit_time: 2023-07-04T03:10:57Z
-        min_deposit: "0.33"
-        activation_time: 2023-07-04T03:10:57Z
-        voting_power: "1000000000"
-        yes_addrs: 1234
-        abstain_voting_power: "1000000000"
-        total_voting_power: "1000000000"
-        yes_vals: 1234
-        deposit: "1000000000"
-        no_vals: 1234
-        no_voting_power: "1000000000"
         status: active
+        threshold: "0.33"
+        title: Proposal title
+        total_voting_power: "1000000000"
+        type: param_changed
+        veto_quorum: "0.33"
+        votes_count: 12354
+        voting_power: "1000000000"
+        "yes": 1234
+        yes_addrs: 1234
+        yes_vals: 1234
+        yes_voting_power: "1000000000"
       properties:
         abstain:
           example: 1234
@@ -9996,12 +9996,12 @@ components:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
           moniker: Easy 2 Stake
+        height: 100
         source:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
           moniker: Easy 2 Stake
         time: 2023-07-04T03:10:57+00:00
-        height: 100
       properties:
         amount:
           example: "0.1"
@@ -10027,14 +10027,14 @@ components:
         addresses:
         - celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         contact:
+          discord: https://discord.cosmosrescue.com
           github: https://github.com/cosmosrescue
+          medium: https://medium.com/cosmosrescue
+          telegram: https://t.me/cosmosrescue
           twitter: https://x.com/cosmosrescue
           website: https://cosmosrescue.com
-          discord: https://discord.cosmosrescue.com
-          telegram: https://t.me/cosmosrescue
-          medium: https://medium.com/cosmosrescue
-        name: cosmosrescue
         logo: https://raw.githubusercontent.com/irisnet/iob-registry/main/relayers/cosmosrescue/logo.png
+        name: cosmosrescue
       properties:
         addresses:
           example:
@@ -10055,32 +10055,32 @@ components:
       type: object
     responses.Rollup:
       example:
-        github: https://github.com/account
-        stack: op_stack
-        website: https://website.com
-        defi_lama: Manta
+        bridge: https://github.com/account
+        category: nft
         color: "#123456"
-        settled_on: Ethereum
+        compression: zip
+        defi_lama: Manta
         description: Long rollup description
-        type: settled
+        explorer: https://explorer.karak.network/
+        github: https://github.com/account
+        id: 321
+        l2_beat: https://github.com/account
+        links:
+        - links
+        - links
+        logo: https://some_link.com/image.png
+        name: Rollup name
+        provider: name
+        settled_on: Ethereum
+        slug: rollup_slug
+        stack: op_stack
         tags:
         - tags
         - tags
         twitter: https://x.com/account
-        l2_beat: https://github.com/account
-        provider: name
+        type: settled
         vm: evm
-        explorer: https://explorer.karak.network/
-        name: Rollup name
-        logo: https://some_link.com/image.png
-        links:
-        - links
-        - links
-        bridge: https://github.com/account
-        id: 321
-        category: nft
-        compression: zip
-        slug: rollup_slug
+        website: https://website.com
       properties:
         bridge:
           example: https://github.com/account
@@ -10174,10 +10174,10 @@ components:
     responses.RollupAllSeriesItem:
       example:
         blobs_count: 123
-        size: 123
         fee: "123"
-        name: Rollup name
         logo: https://some_link.com/image.png
+        name: Rollup name
+        size: 123
       properties:
         blobs_count:
           example: 123
@@ -10202,18 +10202,18 @@ components:
       type: object
     responses.RollupAllSeriesResponse:
       example:
-        time: 2023-07-04T03:10:57Z
         items:
         - blobs_count: 123
-          size: 123
           fee: "123"
-          name: Rollup name
           logo: https://some_link.com/image.png
+          name: Rollup name
+          size: 123
         - blobs_count: 123
-          size: 123
           fee: "123"
-          name: Rollup name
           logo: https://some_link.com/image.png
+          name: Rollup name
+          size: 123
+        time: 2023-07-04T03:10:57Z
       properties:
         items:
           items:
@@ -10227,9 +10227,9 @@ components:
     responses.RollupGroupedStats:
       example:
         blobs_count: 2
-        size: 1000
         fee: "123.456789"
         group: group
+        size: 1000
       properties:
         blobs_count:
           example: 2
@@ -10265,11 +10265,11 @@ components:
     responses.RollupStats24h:
       example:
         blobs_count: 123
-        size: 123
         fee: 123
-        name: Rollup name
-        logo: https://some_link.com/image.png
         id: 321
+        logo: https://some_link.com/image.png
+        name: Rollup name
+        size: 123
       properties:
         blobs_count:
           example: 123
@@ -10298,36 +10298,36 @@ components:
       type: object
     responses.RollupWithDayStats:
       example:
-        namespace_count: 100
-        stack: op_stack
-        defi_lama: Manta
-        color: "#123456"
-        settled_on: Ethereum
-        description: Long rollup description
-        type: settled
-        blobs_count: 100
-        twitter: https://x.com/account
-        l2_beat: https://l2beat.com/scaling/projects/karak
-        provider: name
-        total_fee: "100"
-        logo: https://some_link.com/image.png
-        id: 321
-        throughput: 100
-        slug: rollup_slug
-        mb_price: "100"
-        github: https://github.com/account
-        website: https://website.com
-        total_size: 100
         avg_size: 100
-        pfb_count: 100
+        blobs_count: 100
         blobs_per_pfb: 100.0
-        vm: evm
-        explorer: https://explorer.karak.network/
-        name: Rollup name
         bridge: https://github.com/account
         category: nft
+        color: "#123456"
         compression: zip
+        defi_lama: Manta
+        description: Long rollup description
+        explorer: https://explorer.karak.network/
         fee_per_pfb: "100"
+        github: https://github.com/account
+        id: 321
+        l2_beat: https://l2beat.com/scaling/projects/karak
+        logo: https://some_link.com/image.png
+        mb_price: "100"
+        name: Rollup name
+        namespace_count: 100
+        pfb_count: 100
+        provider: name
+        settled_on: Ethereum
+        slug: rollup_slug
+        stack: op_stack
+        throughput: 100
+        total_fee: "100"
+        total_size: 100
+        twitter: https://x.com/account
+        type: settled
+        vm: evm
+        website: https://website.com
       properties:
         avg_size:
           example: 100
@@ -10452,42 +10452,42 @@ components:
       type: object
     responses.RollupWithStats:
       example:
-        stack: op_stack
-        defi_lama: Manta
-        color: "#123456"
-        fee: "123.456789"
-        settled_on: Ethereum
-        description: Long rollup description
-        type: settled
         blobs_count: 2
-        twitter: https://x.com/account
+        blobs_count_pct: 0.9876
+        bridge: https://github.com/account
+        category: nft
+        color: "#123456"
+        compression: zip
+        da_pct: 0.9876
+        defi_lama: Manta
+        description: Long rollup description
+        explorer: https://explorer.karak.network/
+        fee: "123.456789"
+        fee_pct: 0.9876
+        first_message_time: 2023-07-04T03:10:57Z
+        github: https://github.com/account
+        id: 321
+        is_active: true
         l2_beat: https://l2beat.com/scaling/projects/karak
-        provider: name
-        logo: https://some_link.com/image.png
+        last_message_time: 2023-07-04T03:10:57Z
         links:
         - links
         - links
-        id: 321
-        blobs_count_pct: 0.9876
-        slug: rollup_slug
-        github: https://github.com/account
-        website: https://website.com
-        is_active: true
+        logo: https://some_link.com/image.png
+        name: Rollup name
+        provider: name
+        settled_on: Ethereum
+        size: 1000
         size_pct: 0.9876
+        slug: rollup_slug
+        stack: op_stack
         tags:
         - tags
         - tags
-        size: 1000
-        da_pct: 0.9876
+        twitter: https://x.com/account
+        type: settled
         vm: evm
-        explorer: https://explorer.karak.network/
-        last_message_time: 2023-07-04T03:10:57Z
-        name: Rollup name
-        fee_pct: 0.9876
-        bridge: https://github.com/account
-        category: nft
-        compression: zip
-        first_message_time: 2023-07-04T03:10:57Z
+        website: https://website.com
       properties:
         blobs_count:
           example: 2
@@ -10635,8 +10635,8 @@ components:
       type: object
     responses.SeriesItem:
       example:
-        min: "0.17632"
         max: "0.17632"
+        min: "0.17632"
         time: 2023-07-04T03:10:57Z
         value: "0.17632"
       properties:
@@ -10695,8 +10695,8 @@ components:
       example:
         description: Some proposal description
         id: 321
-        title: Proposal title
         status: active
+        title: Proposal title
       properties:
         description:
           example: Some proposal description
@@ -10717,9 +10717,9 @@ components:
       type: object
     responses.ShortRollup:
       example:
-        name: Rollup name
-        logo: https://some_link.com/image.png
         id: 321
+        logo: https://some_link.com/image.png
+        name: Rollup name
         slug: rollup_slug
       properties:
         id:
@@ -10757,15 +10757,15 @@ components:
       type: object
     responses.SignalVersion:
       example:
+        height: 100
+        id: 321
+        time: 2025-07-04T03:10:57Z
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         validator:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
           moniker: Easy 2 Stake
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        id: 321
-        time: 2025-07-04T03:10:57Z
         version: 1
-        height: 100
         voting_power: "9348"
       properties:
         height:
@@ -10797,8 +10797,8 @@ components:
       type: object
     responses.SignedBlocks:
       example:
-        signed: true
         height: 100
+        signed: true
       properties:
         height:
           example: 100
@@ -10809,10 +10809,10 @@ components:
       type: object
     responses.SizeGroup:
       example:
-        size: 123
+        avg_size: 123
         count: 123
         name: Rollup name
-        avg_size: 123
+        size: 123
       properties:
         avg_size:
           example: 123
@@ -10860,24 +10860,24 @@ components:
       type: object
     responses.State:
       example:
-        synced: true
         chain_id: mocha-4
-        total_namespaces: 312
+        hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        id: 321
+        last_height: 100
+        last_time: 2023-07-04T03:10:57Z
+        name: indexer
+        synced: true
+        total_accounts: 43
+        total_blobs_size: 56789
+        total_fee: "312"
         total_ibc_clients: 312
+        total_namespaces: 312
+        total_proposals: 56789
         total_supply: "312"
         total_tx: 23456
         total_validators: 100
-        version: 5
-        last_height: 100
-        total_accounts: 43
-        last_time: 2023-07-04T03:10:57Z
-        total_fee: "312"
-        name: indexer
         total_voting_power: "312"
-        total_blobs_size: 56789
-        total_proposals: 56789
-        id: 321
-        hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        version: 5
       properties:
         chain_id:
           example: mocha-4
@@ -10984,11 +10984,11 @@ components:
       type: object
     responses.TopNMetrics:
       example:
-        commission_metric: "1"
         block_missed_metric: "1"
-        votes_metric: "1"
+        commission_metric: "1"
         operation_time_metric: "1"
         self_delegation_metric: "1"
+        votes_metric: "1"
       properties:
         block_missed_metric:
           example: "1"
@@ -11008,15 +11008,42 @@ components:
       type: object
     responses.Tx:
       example:
+        codespace: sdk
+        error: ""
+        events_count: 2
         fee: "9348"
         gas_used: 4253
+        gas_wanted: 9348
+        hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        height: 100
+        id: 321
         memo: Transfer to private account
-        error: ""
         message_types:
         - MsgSend
         - MsgUnjail
-        timeout_height: 0
+        messages:
+        - data:
+            key: "{}"
+          height: 100
+          id: 321
+          position: 2
+          size: 2
+          time: 2023-07-04T03:10:57Z
+          tx: null
+          tx_id: 11
+          type: MsgCreatePeriodicVestingAccount
+        - data:
+            key: "{}"
+          height: 100
+          id: 321
+          position: 2
+          size: 2
+          time: 2023-07-04T03:10:57Z
+          tx: null
+          tx_id: 11
+          type: MsgCreatePeriodicVestingAccount
         messages_count: 1
+        position: 11
         signers:
         - celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -11030,36 +11057,9 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        codespace: sdk
-        events_count: 2
-        gas_wanted: 9348
-        messages:
-        - data:
-            key: "{}"
-          size: 2
-          tx: null
-          id: 321
-          position: 2
-          time: 2023-07-04T03:10:57Z
-          tx_id: 11
-          type: MsgCreatePeriodicVestingAccount
-          height: 100
-        - data:
-            key: "{}"
-          size: 2
-          tx: null
-          id: 321
-          position: 2
-          time: 2023-07-04T03:10:57Z
-          tx_id: 11
-          type: MsgCreatePeriodicVestingAccount
-          height: 100
-        id: 321
-        position: 11
-        time: 2023-07-04T03:10:57Z
-        hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        height: 100
         status: success
+        time: 2023-07-04T03:10:57Z
+        timeout_height: 0
       properties:
         codespace:
           example: sdk
@@ -11140,12 +11140,12 @@ components:
       type: object
     responses.TxForAddress:
       example:
-        messages_count: 1
         fee: "9348"
         hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         message_types:
         - MsgSend
         - MsgUnjail
+        messages_count: 1
         status: success
       properties:
         fee:
@@ -11184,12 +11184,12 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        height: 100
+        time: 2023-07-04T03:10:57+00:00
         validator:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
           moniker: Easy 2 Stake
-        time: 2023-07-04T03:10:57+00:00
-        height: 100
       properties:
         amount:
           example: "0.1"
@@ -11211,17 +11211,12 @@ components:
     responses.Upgrade:
       example:
         applied_at: 2025-07-04T03:10:57Z
-        voted_power: "9348"
-        end_time: 2025-07-04T03:10:57Z
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        version: 1
-        voting_power: "9348"
-        signals_count: 2
-        end_height: 100
         applied_at_level: 100
-        time: 2025-07-04T03:10:57Z
-        msg_id: 2
+        end_height: 100
+        end_time: 2025-07-04T03:10:57Z
         height: 100
+        msg_id: 2
+        signals_count: 2
         signer:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -11230,6 +11225,11 @@ components:
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         status: applied
+        time: 2025-07-04T03:10:57Z
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        version: 1
+        voted_power: "9348"
+        voting_power: "9348"
       properties:
         applied_at:
           example: 2025-07-04T03:10:57Z
@@ -11288,8 +11288,6 @@ components:
       type: object
     responses.Validator:
       example:
-        creation_time: 2025-07-04T03:10:57Z
-        website: https://www.easy2stake.com/
         address:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -11297,6 +11295,10 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        commissions: "1"
+        cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
+        contacts: security@0xfury.com
+        creation_time: 2025-07-04T03:10:57Z
         delegator:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -11304,23 +11306,21 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        details: Some long text about validator
+        id: 321
+        identity: 2C877AC873132C91
+        jailed: false
+        max_change_rate: "0.01"
         max_rate: "0.1"
+        messages_count: 1
+        min_self_delegation: "1"
         moniker: Easy 2 Stake
+        rate: "0.03"
+        rewards: "1"
+        stake: "1"
         version: 5
         voting_power: "1"
-        jailed: false
-        stake: "1"
-        messages_count: 1
-        rate: "0.03"
-        commissions: "1"
-        cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
-        identity: 2C877AC873132C91
-        details: Some long text about validator
-        max_change_rate: "0.01"
-        id: 321
-        min_self_delegation: "1"
-        contacts: security@0xfury.com
-        rewards: "1"
+        website: https://www.easy2stake.com/
       properties:
         address:
           $ref: "#/components/schemas/responses.ShortAddress"
@@ -11387,10 +11387,10 @@ components:
       type: object
     responses.ValidatorCount:
       example:
+        active: 100
+        inactive: 100
         jailed: 100
         total: 100
-        inactive: 100
-        active: 100
       properties:
         active:
           example: 100
@@ -11408,10 +11408,10 @@ components:
     responses.ValidatorUptime:
       example:
         blocks:
-        - signed: true
-          height: 100
-        - signed: true
-          height: 100
+        - height: 100
+          signed: true
+        - height: 100
+          signed: true
         uptime: "0.97"
       properties:
         blocks:
@@ -11424,14 +11424,14 @@ components:
       type: object
     responses.Vesting:
       example:
-        start_time: 2023-07-04T03:10:57Z
         amount: "123.13333"
         end_time: 2023-07-04T03:10:57Z
-        id: 12
-        time: 2023-07-04T03:10:57Z
-        type: delayed
         hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         height: 100
+        id: 12
+        start_time: 2023-07-04T03:10:57Z
+        time: 2023-07-04T03:10:57Z
+        type: delayed
       properties:
         amount:
           example: "123.13333"
@@ -11482,20 +11482,20 @@ components:
       type: object
     responses.Vote:
       example:
+        deposit_time: 2023-07-04T03:10:57Z
+        height: 100
+        id: 321
         proposal:
           description: Some proposal description
           id: 321
-          title: Proposal title
           status: active
+          title: Proposal title
         proposal_id: 2
-        voter_id: 1
+        status: "yes"
         validator:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
           moniker: Easy 2 Stake
-        weight: 12345678
-        deposit_time: 2023-07-04T03:10:57Z
-        id: 321
         voter:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -11503,8 +11503,8 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        height: 100
-        status: "yes"
+        voter_id: 1
+        weight: 12345678
       properties:
         deposit_time:
           example: 2023-07-04T03:10:57Z
@@ -11550,16 +11550,16 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
-        groth16_vkey: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        merkle_tree_address: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         external_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        groth16_vkey: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        height: 100
         id: 321
+        merkle_tree_address: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         state: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        time: 2023-07-04T03:10:57Z
         state_membership_vkey: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         state_transition_vkey: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        height: 100
+        time: 2023-07-04T03:10:57Z
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
         creator:
           $ref: "#/components/schemas/responses.ShortAddress"
@@ -11606,12 +11606,9 @@ components:
       type: object
     responses.ZkISMMessage:
       example:
-        message_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        id: 321
-        time: 2023-07-04T03:10:57Z
-        state_root: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         height: 100
+        id: 321
+        message_id: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         signer:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -11619,6 +11616,9 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        state_root: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        time: 2023-07-04T03:10:57Z
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
         height:
           example: 100
@@ -11649,11 +11649,9 @@ components:
       type: object
     responses.ZkISMUpdate:
       example:
-        new_state: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        id: 321
-        time: 2023-07-04T03:10:57Z
         height: 100
+        id: 321
+        new_state: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         signer:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -11661,6 +11659,8 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        time: 2023-07-04T03:10:57Z
+        tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
         height:
           example: 100
