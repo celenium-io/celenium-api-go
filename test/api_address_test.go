@@ -22,6 +22,20 @@ func Test_celenium_AddressAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test AddressAPIService AddressBalances", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var hash string
+
+		resp, httpRes, err := apiClient.AddressAPI.AddressBalances(context.Background(), hash).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AddressAPIService AddressBlobs", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

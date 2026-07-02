@@ -4,6 +4,7 @@ All URIs are relative to *https://api-mainnet.celenium.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AddressBalances**](AddressAPI.md#AddressBalances) | **Get** /address/{hash}/balances | Get list of balances for address
 [**AddressBlobs**](AddressAPI.md#AddressBlobs) | **Get** /address/{hash}/blobs | Get blobs pushed by address
 [**AddressCelestials**](AddressAPI.md#AddressCelestials) | **Get** /address/{hash}/celestials | Get list of celestial id for address
 [**AddressDelegations**](AddressAPI.md#AddressDelegations) | **Get** /address/{hash}/delegations | Get delegations made by address
@@ -20,6 +21,80 @@ Method | HTTP request | Description
 [**GetAddressCount**](AddressAPI.md#GetAddressCount) | **Get** /address/count | Get count of addresses in network
 [**ListAddress**](AddressAPI.md#ListAddress) | **Get** /address | List addresses
 
+
+
+## AddressBalances
+
+> []ResponsesBalance AddressBalances(ctx, hash).Limit(limit).Offset(offset).Execute()
+
+Get list of balances for address
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	hash := "hash_example" // string | Hash
+	limit := int32(56) // int32 | Count of requested entities (optional)
+	offset := int32(56) // int32 | Offset (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AddressAPI.AddressBalances(context.Background(), hash).Limit(limit).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressBalances``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AddressBalances`: []ResponsesBalance
+	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.AddressBalances`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**hash** | **string** | Hash | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddressBalancesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Count of requested entities | 
+ **offset** | **int32** | Offset | 
+
+### Return type
+
+[**[]ResponsesBalance**](ResponsesBalance.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## AddressBlobs

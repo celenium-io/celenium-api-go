@@ -143,6 +143,64 @@ paths:
       summary: Get address info
       tags:
       - address
+  /address/{hash}/balances:
+    get:
+      description: "Returns a paginated list of all token balances held by the given\
+        \ address, including native and IBC tokens. Results are ordered by currency\
+        \ name."
+      operationId: address-balances
+      parameters:
+      - description: Hash
+        in: path
+        name: hash
+        required: true
+        schema:
+          maxLength: 128
+          minLength: 47
+          type: string
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.Balance"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get list of balances for address
+      tags:
+      - address
   /address/{hash}/blobs:
     get:
       description: "Returns a paginated list of blobs submitted via PayForBlobs transactions\
