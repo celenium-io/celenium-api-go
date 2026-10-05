@@ -6,14 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Commitment** | Pointer to **string** |  | [optional] 
 **ContentType** | Pointer to **string** |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
 **ShareVersion** | Pointer to **int32** |  | [optional] 
 **Signer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
-**Size** | Pointer to **int32** |  | [optional] 
+**Size** | Pointer to **int64** |  | [optional] 
+**Source** | Pointer to **string** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -86,20 +87,20 @@ HasContentType returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesLightBlobLog) GetHeight() int32`
+`func (o *ResponsesLightBlobLog) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesLightBlobLog) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesLightBlobLog) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesLightBlobLog) SetHeight(v int32)`
+`func (o *ResponsesLightBlobLog) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 
@@ -111,20 +112,20 @@ HasHeight returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesLightBlobLog) GetId() int32`
+`func (o *ResponsesLightBlobLog) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesLightBlobLog) GetIdOk() (*int32, bool)`
+`func (o *ResponsesLightBlobLog) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesLightBlobLog) SetId(v int32)`
+`func (o *ResponsesLightBlobLog) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -211,20 +212,20 @@ HasSigner returns a boolean if a field has been set.
 
 ### GetSize
 
-`func (o *ResponsesLightBlobLog) GetSize() int32`
+`func (o *ResponsesLightBlobLog) GetSize() int64`
 
 GetSize returns the Size field if non-nil, zero value otherwise.
 
 ### GetSizeOk
 
-`func (o *ResponsesLightBlobLog) GetSizeOk() (*int32, bool)`
+`func (o *ResponsesLightBlobLog) GetSizeOk() (*int64, bool)`
 
 GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSize
 
-`func (o *ResponsesLightBlobLog) SetSize(v int32)`
+`func (o *ResponsesLightBlobLog) SetSize(v int64)`
 
 SetSize sets Size field to given value.
 
@@ -233,6 +234,31 @@ SetSize sets Size field to given value.
 `func (o *ResponsesLightBlobLog) HasSize() bool`
 
 HasSize returns a boolean if a field has been set.
+
+### GetSource
+
+`func (o *ResponsesLightBlobLog) GetSource() string`
+
+GetSource returns the Source field if non-nil, zero value otherwise.
+
+### GetSourceOk
+
+`func (o *ResponsesLightBlobLog) GetSourceOk() (*string, bool)`
+
+GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSource
+
+`func (o *ResponsesLightBlobLog) SetSource(v string)`
+
+SetSource sets Source field to given value.
+
+### HasSource
+
+`func (o *ResponsesLightBlobLog) HasSource() bool`
+
+HasSource returns a boolean if a field has been set.
 
 ### GetTime
 
@@ -261,20 +287,20 @@ HasTime returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesLightBlobLog) GetTxHash() *os.File`
+`func (o *ResponsesLightBlobLog) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesLightBlobLog) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesLightBlobLog) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesLightBlobLog) SetTxHash(v *os.File)`
+`func (o *ResponsesLightBlobLog) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 

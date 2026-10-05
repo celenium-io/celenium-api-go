@@ -14,7 +14,6 @@ package celenium
 import (
 	"encoding/json"
 	"time"
-	"os"
 )
 
 // checks if the ResponsesSignalVersion type satisfies the MappedNullable interface at compile time
@@ -25,7 +24,7 @@ type ResponsesSignalVersion struct {
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
 	Validator *ResponsesShortValidator `json:"validator,omitempty"`
 	Version *int64 `json:"version,omitempty"`
 	VotingPower *string `json:"voting_power,omitempty"`
@@ -145,9 +144,9 @@ func (o *ResponsesSignalVersion) SetTime(v time.Time) {
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesSignalVersion) GetTxHash() *os.File {
+func (o *ResponsesSignalVersion) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -155,7 +154,7 @@ func (o *ResponsesSignalVersion) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesSignalVersion) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesSignalVersion) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -171,8 +170,8 @@ func (o *ResponsesSignalVersion) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesSignalVersion) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesSignalVersion) SetTxHash(v string) {
 	o.TxHash = &v
 }
 

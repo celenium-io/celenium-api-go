@@ -22,7 +22,7 @@ var _ MappedNullable = &ResponsesBusiestChannel{}
 type ResponsesBusiestChannel struct {
 	ChainId *string `json:"chain_id,omitempty"`
 	ChannelId *string `json:"channel_id,omitempty"`
-	TransfersCount *int32 `json:"transfers_count,omitempty"`
+	TransfersCount *int64 `json:"transfers_count,omitempty"`
 }
 
 // NewResponsesBusiestChannel instantiates a new ResponsesBusiestChannel object
@@ -107,9 +107,9 @@ func (o *ResponsesBusiestChannel) SetChannelId(v string) {
 }
 
 // GetTransfersCount returns the TransfersCount field value if set, zero value otherwise.
-func (o *ResponsesBusiestChannel) GetTransfersCount() int32 {
+func (o *ResponsesBusiestChannel) GetTransfersCount() int64 {
 	if o == nil || IsNil(o.TransfersCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TransfersCount
@@ -117,7 +117,7 @@ func (o *ResponsesBusiestChannel) GetTransfersCount() int32 {
 
 // GetTransfersCountOk returns a tuple with the TransfersCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBusiestChannel) GetTransfersCountOk() (*int32, bool) {
+func (o *ResponsesBusiestChannel) GetTransfersCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.TransfersCount) {
 		return nil, false
 	}
@@ -133,8 +133,8 @@ func (o *ResponsesBusiestChannel) HasTransfersCount() bool {
 	return false
 }
 
-// SetTransfersCount gets a reference to the given int32 and assigns it to the TransfersCount field.
-func (o *ResponsesBusiestChannel) SetTransfersCount(v int32) {
+// SetTransfersCount gets a reference to the given int64 and assigns it to the TransfersCount field.
+func (o *ResponsesBusiestChannel) SetTransfersCount(v int64) {
 	o.TransfersCount = &v
 }
 

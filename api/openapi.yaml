@@ -18,6 +18,8 @@ externalDocs:
   url: https://api-docs.celenium.io/
 servers:
 - url: https://api-mainnet.celenium.io/v1
+security:
+- ApiKeyAuth: []
 paths:
   /address:
     get:
@@ -36,7 +38,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Sort order
         in: query
@@ -92,6 +94,7 @@ paths:
           content:
             application/json:
               schema:
+                format: int64
                 type: integer
           description: OK
         "500":
@@ -169,7 +172,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -203,9 +206,9 @@ paths:
       - address
   /address/{hash}/blobs:
     get:
-      description: "Returns a paginated list of blobs submitted via PayForBlobs transactions\
-        \ from the given address. Supports sorting by time or size, and optional join\
-        \ of transaction and namespace entities."
+      description: "Returns a paginated list of blobs submitted via PayForBlobs or\
+        \ PayForFibre transactions from the given address. Supports sorting by time\
+        \ or size, and optional join of transaction and namespace entities."
       operationId: address-blobs
       parameters:
       - description: Hash
@@ -227,7 +230,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -251,6 +254,14 @@ paths:
         name: joins
         schema:
           type: boolean
+      - description: Blob source. If it's empty both sources are returned
+        in: query
+        name: source
+        schema:
+          enum:
+          - pfb
+          - fibre
+          type: string
       responses:
         "200":
           content:
@@ -300,7 +311,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -352,7 +363,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Show zero delegations
         in: query
@@ -409,7 +420,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -461,7 +472,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -512,7 +523,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Sort order
         in: query
@@ -523,126 +534,137 @@ paths:
           - desc
           type: string
       - description: Comma-separated message types list
+        explode: false
         in: query
         name: msg_type
         schema:
-          enum:
-          - MsgUnknown
-          - MsgSetWithdrawAddress
-          - MsgWithdrawDelegatorReward
-          - MsgWithdrawValidatorCommission
-          - MsgFundCommunityPool
-          - MsgCreateValidator
-          - MsgEditValidator
-          - MsgDelegate
-          - MsgBeginRedelegate
-          - MsgUndelegate
-          - MsgCancelUnbondingDelegation
-          - MsgUnjail
-          - MsgSend
-          - MsgMultiSend
-          - MsgCreateVestingAccount
-          - MsgCreatePermanentLockedAccount
-          - MsgCreatePeriodicVestingAccount
-          - MsgPayForBlobs
-          - MsgGrant
-          - MsgExec
-          - MsgRevoke
-          - MsgGrantAllowance
-          - MsgRevokeAllowance
-          - MsgRegisterEVMAddress
-          - MsgSubmitProposal
-          - MsgExecLegacyContent
-          - MsgVote
-          - MsgVoteWeighted
-          - MsgDeposit
-          - IBCTransfer
-          - MsgVerifyInvariant
-          - MsgSubmitEvidence
-          - MsgSendNFT
-          - MsgCreateGroup
-          - MsgUpdateGroupMembers
-          - MsgUpdateGroupAdmin
-          - MsgUpdateGroupMetadata
-          - MsgCreateGroupPolicy
-          - MsgUpdateGroupPolicyAdmin
-          - MsgCreateGroupWithPolicy
-          - MsgUpdateGroupPolicyDecisionPolicy
-          - MsgUpdateGroupPolicyMetadata
-          - MsgSubmitProposalGroup
-          - MsgWithdrawProposal
-          - MsgVoteGroup
-          - MsgExecGroup
-          - MsgLeaveGroup
-          - MsgSoftwareUpgrade
-          - MsgCancelUpgrade
-          - MsgRegisterInterchainAccount
-          - MsgSendTx
-          - MsgRegisterPayee
-          - MsgRegisterCounterpartyPayee
-          - MsgPayPacketFee
-          - MsgPayPacketFeeAsync
-          - MsgTransfer
-          - MsgCreateClient
-          - MsgUpdateClient
-          - MsgUpgradeClient
-          - MsgSubmitMisbehaviour
-          - MsgRecoverClient
-          - MsgIBCSoftwareUpgrade
-          - MsgUpdateParams
-          - MsgConnectionOpenInit
-          - MsgConnectionOpenTry
-          - MsgConnectionOpenAck
-          - MsgConnectionOpenConfirm
-          - MsgChannelOpenInit
-          - MsgChannelOpenTry
-          - MsgChannelOpenAck
-          - MsgChannelOpenConfirm
-          - MsgChannelCloseInit
-          - MsgChannelCloseConfirm
-          - MsgRecvPacket
-          - MsgTimeout
-          - MsgTimeoutOnClose
-          - MsgAcknowledgement
-          - MsgSignalVersion
-          - MsgTryUpgrade
-          - MsgCreateMailbox
-          - MsgProcessMessage
-          - MsgSetMailbox
-          - MsgCreateCollateralToken
-          - MsgCreateSyntheticToken
-          - MsgSetToken
-          - MsgEnrollRemoteRouter
-          - MsgUnrollRemoteRouter
-          - MsgRemoteTransfer
-          - MsgUpdateMinfeeParams
-          - MsgCreateIgp
-          - MsgSetIgpOwner
-          - MsgSetDestinationGasConfig
-          - MsgPayForGas
-          - MsgClaim
-          - MsgCreateMerkleTreeHook
-          - MsgCreateNoopHook
-          - MsgCreateMessageIdMultisigIsm
-          - MsgCreateMerkleRootMultisigIsm
-          - MsgCreateNoopIsm
-          - MsgAnnounceValidator
-          - MsgCreateRoutingIsm
-          - MsgSetRoutingIsmDomain
-          - MsgRemoveRoutingIsmDomain
-          - MsgUpdateRoutingIsmOwner
-          - MsgUpdateBlobParams
-          - MsgPruneExpiredGrants
-          - MsgSetSendEnabled
-          - MsgAuthorizeCircuitBreaker
-          - MsgResetCircuitBreaker
-          - MsgTripCircuitBreaker
-          - MsgModuleQuerySafe
-          - MsgForward
-          - MsgCreateInterchainSecurityModule
-          - MsgUpdateInterchainSecurityModule
-          - MsgSubmitMessages
-          type: string
+          items:
+            enum:
+            - MsgUnknown
+            - MsgSetWithdrawAddress
+            - MsgWithdrawDelegatorReward
+            - MsgWithdrawValidatorCommission
+            - MsgFundCommunityPool
+            - MsgCreateValidator
+            - MsgEditValidator
+            - MsgDelegate
+            - MsgBeginRedelegate
+            - MsgUndelegate
+            - MsgCancelUnbondingDelegation
+            - MsgUnjail
+            - MsgSend
+            - MsgMultiSend
+            - MsgCreateVestingAccount
+            - MsgCreatePermanentLockedAccount
+            - MsgCreatePeriodicVestingAccount
+            - MsgPayForBlobs
+            - MsgGrant
+            - MsgExec
+            - MsgRevoke
+            - MsgGrantAllowance
+            - MsgRevokeAllowance
+            - MsgRegisterEVMAddress
+            - MsgSubmitProposal
+            - MsgExecLegacyContent
+            - MsgVote
+            - MsgVoteWeighted
+            - MsgDeposit
+            - IBCTransfer
+            - MsgVerifyInvariant
+            - MsgSubmitEvidence
+            - MsgSendNFT
+            - MsgCreateGroup
+            - MsgUpdateGroupMembers
+            - MsgUpdateGroupAdmin
+            - MsgUpdateGroupMetadata
+            - MsgCreateGroupPolicy
+            - MsgUpdateGroupPolicyAdmin
+            - MsgCreateGroupWithPolicy
+            - MsgUpdateGroupPolicyDecisionPolicy
+            - MsgUpdateGroupPolicyMetadata
+            - MsgSubmitProposalGroup
+            - MsgWithdrawProposal
+            - MsgVoteGroup
+            - MsgExecGroup
+            - MsgLeaveGroup
+            - MsgSoftwareUpgrade
+            - MsgCancelUpgrade
+            - MsgRegisterInterchainAccount
+            - MsgSendTx
+            - MsgRegisterPayee
+            - MsgRegisterCounterpartyPayee
+            - MsgPayPacketFee
+            - MsgPayPacketFeeAsync
+            - MsgTransfer
+            - MsgCreateClient
+            - MsgUpdateClient
+            - MsgUpgradeClient
+            - MsgSubmitMisbehaviour
+            - MsgRecoverClient
+            - MsgIBCSoftwareUpgrade
+            - MsgUpdateParams
+            - MsgConnectionOpenInit
+            - MsgConnectionOpenTry
+            - MsgConnectionOpenAck
+            - MsgConnectionOpenConfirm
+            - MsgChannelOpenInit
+            - MsgChannelOpenTry
+            - MsgChannelOpenAck
+            - MsgChannelOpenConfirm
+            - MsgChannelCloseInit
+            - MsgChannelCloseConfirm
+            - MsgRecvPacket
+            - MsgTimeout
+            - MsgTimeoutOnClose
+            - MsgAcknowledgement
+            - MsgSignalVersion
+            - MsgTryUpgrade
+            - MsgCreateMailbox
+            - MsgProcessMessage
+            - MsgSetMailbox
+            - MsgCreateCollateralToken
+            - MsgCreateSyntheticToken
+            - MsgSetToken
+            - MsgEnrollRemoteRouter
+            - MsgUnrollRemoteRouter
+            - MsgRemoteTransfer
+            - MsgUpdateMinfeeParams
+            - MsgCreateIgp
+            - MsgSetIgpOwner
+            - MsgSetDestinationGasConfig
+            - MsgPayForGas
+            - MsgClaim
+            - MsgCreateMerkleTreeHook
+            - MsgCreateNoopHook
+            - MsgCreateMessageIdMultisigIsm
+            - MsgCreateMerkleRootMultisigIsm
+            - MsgCreateNoopIsm
+            - MsgAnnounceValidator
+            - MsgCreateRoutingIsm
+            - MsgSetRoutingIsmDomain
+            - MsgRemoveRoutingIsmDomain
+            - MsgUpdateRoutingIsmOwner
+            - MsgUpdateBlobParams
+            - MsgPruneExpiredGrants
+            - MsgSetSendEnabled
+            - MsgAuthorizeCircuitBreaker
+            - MsgResetCircuitBreaker
+            - MsgTripCircuitBreaker
+            - MsgModuleQuerySafe
+            - MsgForward
+            - MsgCreateInterchainSecurityModule
+            - MsgUpdateInterchainSecurityModule
+            - MsgSubmitMessages
+            - MsgDepositToEscrow
+            - MsgRequestWithdrawal
+            - MsgPayForFibre
+            - MsgPaymentPromiseTimeout
+            - MsgUpdateFibreParams
+            - MsgSetFibreProviderInfo
+            - MsgCancelProposal
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -692,7 +714,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -758,12 +780,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -816,7 +840,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Sort order
         in: query
@@ -827,151 +851,169 @@ paths:
           - desc
           type: string
       - description: Comma-separated status list
+        explode: false
         in: query
         name: status
         schema:
-          enum:
-          - success
-          - failed
-          type: string
+          items:
+            enum:
+            - success
+            - failed
+            type: string
+          type: array
+        style: form
       - description: Comma-separated message types list
+        explode: false
         in: query
         name: msg_type
         schema:
-          enum:
-          - MsgUnknown
-          - MsgSetWithdrawAddress
-          - MsgWithdrawDelegatorReward
-          - MsgWithdrawValidatorCommission
-          - MsgFundCommunityPool
-          - MsgCreateValidator
-          - MsgEditValidator
-          - MsgDelegate
-          - MsgBeginRedelegate
-          - MsgUndelegate
-          - MsgCancelUnbondingDelegation
-          - MsgUnjail
-          - MsgSend
-          - MsgMultiSend
-          - MsgCreateVestingAccount
-          - MsgCreatePermanentLockedAccount
-          - MsgCreatePeriodicVestingAccount
-          - MsgPayForBlobs
-          - MsgGrant
-          - MsgExec
-          - MsgRevoke
-          - MsgGrantAllowance
-          - MsgRevokeAllowance
-          - MsgRegisterEVMAddress
-          - MsgSubmitProposal
-          - MsgExecLegacyContent
-          - MsgVote
-          - MsgVoteWeighted
-          - MsgDeposit
-          - IBCTransfer
-          - MsgVerifyInvariant
-          - MsgSubmitEvidence
-          - MsgSendNFT
-          - MsgCreateGroup
-          - MsgUpdateGroupMembers
-          - MsgUpdateGroupAdmin
-          - MsgUpdateGroupMetadata
-          - MsgCreateGroupPolicy
-          - MsgUpdateGroupPolicyAdmin
-          - MsgCreateGroupWithPolicy
-          - MsgUpdateGroupPolicyDecisionPolicy
-          - MsgUpdateGroupPolicyMetadata
-          - MsgSubmitProposalGroup
-          - MsgWithdrawProposal
-          - MsgVoteGroup
-          - MsgExecGroup
-          - MsgLeaveGroup
-          - MsgSoftwareUpgrade
-          - MsgCancelUpgrade
-          - MsgRegisterInterchainAccount
-          - MsgSendTx
-          - MsgRegisterPayee
-          - MsgRegisterCounterpartyPayee
-          - MsgPayPacketFee
-          - MsgPayPacketFeeAsync
-          - MsgTransfer
-          - MsgCreateClient
-          - MsgUpdateClient
-          - MsgUpgradeClient
-          - MsgSubmitMisbehaviour
-          - MsgRecoverClient
-          - MsgIBCSoftwareUpgrade
-          - MsgUpdateParams
-          - MsgConnectionOpenInit
-          - MsgConnectionOpenTry
-          - MsgConnectionOpenAck
-          - MsgConnectionOpenConfirm
-          - MsgChannelOpenInit
-          - MsgChannelOpenTry
-          - MsgChannelOpenAck
-          - MsgChannelOpenConfirm
-          - MsgChannelCloseInit
-          - MsgChannelCloseConfirm
-          - MsgRecvPacket
-          - MsgTimeout
-          - MsgTimeoutOnClose
-          - MsgAcknowledgement
-          - MsgSignalVersion
-          - MsgTryUpgrade
-          - MsgCreateMailbox
-          - MsgProcessMessage
-          - MsgSetMailbox
-          - MsgCreateCollateralToken
-          - MsgCreateSyntheticToken
-          - MsgSetToken
-          - MsgEnrollRemoteRouter
-          - MsgUnrollRemoteRouter
-          - MsgRemoteTransfer
-          - MsgUpdateMinfeeParams
-          - MsgCreateIgp
-          - MsgSetIgpOwner
-          - MsgSetDestinationGasConfig
-          - MsgPayForGas
-          - MsgClaim
-          - MsgCreateMerkleTreeHook
-          - MsgCreateNoopHook
-          - MsgCreateMessageIdMultisigIsm
-          - MsgCreateMerkleRootMultisigIsm
-          - MsgCreateNoopIsm
-          - MsgAnnounceValidator
-          - MsgCreateRoutingIsm
-          - MsgSetRoutingIsmDomain
-          - MsgRemoveRoutingIsmDomain
-          - MsgUpdateRoutingIsmOwner
-          - MsgUpdateBlobParams
-          - MsgPruneExpiredGrants
-          - MsgSetSendEnabled
-          - MsgAuthorizeCircuitBreaker
-          - MsgResetCircuitBreaker
-          - MsgTripCircuitBreaker
-          - MsgModuleQuerySafe
-          - MsgForward
-          - MsgCreateInterchainSecurityModule
-          - MsgUpdateInterchainSecurityModule
-          - MsgSubmitMessages
-          type: string
+          items:
+            enum:
+            - MsgUnknown
+            - MsgSetWithdrawAddress
+            - MsgWithdrawDelegatorReward
+            - MsgWithdrawValidatorCommission
+            - MsgFundCommunityPool
+            - MsgCreateValidator
+            - MsgEditValidator
+            - MsgDelegate
+            - MsgBeginRedelegate
+            - MsgUndelegate
+            - MsgCancelUnbondingDelegation
+            - MsgUnjail
+            - MsgSend
+            - MsgMultiSend
+            - MsgCreateVestingAccount
+            - MsgCreatePermanentLockedAccount
+            - MsgCreatePeriodicVestingAccount
+            - MsgPayForBlobs
+            - MsgGrant
+            - MsgExec
+            - MsgRevoke
+            - MsgGrantAllowance
+            - MsgRevokeAllowance
+            - MsgRegisterEVMAddress
+            - MsgSubmitProposal
+            - MsgExecLegacyContent
+            - MsgVote
+            - MsgVoteWeighted
+            - MsgDeposit
+            - IBCTransfer
+            - MsgVerifyInvariant
+            - MsgSubmitEvidence
+            - MsgSendNFT
+            - MsgCreateGroup
+            - MsgUpdateGroupMembers
+            - MsgUpdateGroupAdmin
+            - MsgUpdateGroupMetadata
+            - MsgCreateGroupPolicy
+            - MsgUpdateGroupPolicyAdmin
+            - MsgCreateGroupWithPolicy
+            - MsgUpdateGroupPolicyDecisionPolicy
+            - MsgUpdateGroupPolicyMetadata
+            - MsgSubmitProposalGroup
+            - MsgWithdrawProposal
+            - MsgVoteGroup
+            - MsgExecGroup
+            - MsgLeaveGroup
+            - MsgSoftwareUpgrade
+            - MsgCancelUpgrade
+            - MsgRegisterInterchainAccount
+            - MsgSendTx
+            - MsgRegisterPayee
+            - MsgRegisterCounterpartyPayee
+            - MsgPayPacketFee
+            - MsgPayPacketFeeAsync
+            - MsgTransfer
+            - MsgCreateClient
+            - MsgUpdateClient
+            - MsgUpgradeClient
+            - MsgSubmitMisbehaviour
+            - MsgRecoverClient
+            - MsgIBCSoftwareUpgrade
+            - MsgUpdateParams
+            - MsgConnectionOpenInit
+            - MsgConnectionOpenTry
+            - MsgConnectionOpenAck
+            - MsgConnectionOpenConfirm
+            - MsgChannelOpenInit
+            - MsgChannelOpenTry
+            - MsgChannelOpenAck
+            - MsgChannelOpenConfirm
+            - MsgChannelCloseInit
+            - MsgChannelCloseConfirm
+            - MsgRecvPacket
+            - MsgTimeout
+            - MsgTimeoutOnClose
+            - MsgAcknowledgement
+            - MsgSignalVersion
+            - MsgTryUpgrade
+            - MsgCreateMailbox
+            - MsgProcessMessage
+            - MsgSetMailbox
+            - MsgCreateCollateralToken
+            - MsgCreateSyntheticToken
+            - MsgSetToken
+            - MsgEnrollRemoteRouter
+            - MsgUnrollRemoteRouter
+            - MsgRemoteTransfer
+            - MsgUpdateMinfeeParams
+            - MsgCreateIgp
+            - MsgSetIgpOwner
+            - MsgSetDestinationGasConfig
+            - MsgPayForGas
+            - MsgClaim
+            - MsgCreateMerkleTreeHook
+            - MsgCreateNoopHook
+            - MsgCreateMessageIdMultisigIsm
+            - MsgCreateMerkleRootMultisigIsm
+            - MsgCreateNoopIsm
+            - MsgAnnounceValidator
+            - MsgCreateRoutingIsm
+            - MsgSetRoutingIsmDomain
+            - MsgRemoveRoutingIsmDomain
+            - MsgUpdateRoutingIsmOwner
+            - MsgUpdateBlobParams
+            - MsgPruneExpiredGrants
+            - MsgSetSendEnabled
+            - MsgAuthorizeCircuitBreaker
+            - MsgResetCircuitBreaker
+            - MsgTripCircuitBreaker
+            - MsgModuleQuerySafe
+            - MsgForward
+            - MsgCreateInterchainSecurityModule
+            - MsgUpdateInterchainSecurityModule
+            - MsgSubmitMessages
+            - MsgDepositToEscrow
+            - MsgRequestWithdrawal
+            - MsgPayForFibre
+            - MsgPaymentPromiseTimeout
+            - MsgUpdateFibreParams
+            - MsgSetFibreProviderInfo
+            - MsgCancelProposal
+            type: string
+          type: array
+        style: form
       - description: Time from in unix timestamp
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Block number
         in: query
         name: height
         schema:
-          minimum: 1
+          format: int64
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -1023,7 +1065,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -1075,7 +1117,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Show finished vestings delegations
         in: query
@@ -1131,7 +1173,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -1175,7 +1217,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -1202,30 +1244,49 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Comma-separated celestia addresses
+        explode: false
         in: query
         name: signers
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
       - description: Comma-separated celestia namespaces
+        explode: false
         in: query
         name: namespaces
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
       - description: Last entity id which is used for cursor pagination
         in: query
         name: cursor
         schema:
-          minimum: 1
+          format: int64
+          minimum: 0
           type: integer
+      - description: Blob source. If it's empty both sources are returned
+        in: query
+        name: source
+        schema:
+          enum:
+          - pfb
+          - fibre
+          type: string
       responses:
         "200":
           content:
@@ -1321,7 +1382,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/responses.BlobLog"
+                items:
+                  $ref: "#/components/schemas/responses.BlobProof"
+                type: array
           description: OK
         "400":
           content:
@@ -1351,7 +1414,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Sort order
         in: query
@@ -1400,6 +1463,7 @@ paths:
           content:
             application/json:
               schema:
+                format: int64
                 type: integer
           description: OK
         "500":
@@ -1423,7 +1487,8 @@ paths:
         name: height
         required: true
         schema:
-          minimum: 1
+          format: int64
+          minimum: 0
           type: integer
       - description: Need join stats for block
         in: query
@@ -1457,8 +1522,9 @@ paths:
       - block
   /block/{height}/blobs:
     get:
-      description: Returns a paginated list of blobs submitted via PayForBlobs transactions
-        included in the block at the given height. Supports sorting by time or size.
+      description: Returns a paginated list of blobs submitted via PayForBlobs or
+        PayForFibre transactions included in the block at the given height. Supports
+        sorting by time or size.
       operationId: get-block-blobs
       parameters:
       - description: Block height
@@ -1466,7 +1532,8 @@ paths:
         name: height
         required: true
         schema:
-          minimum: 1
+          format: int64
+          minimum: 0
           type: integer
       - description: Count of requested entities
         in: query
@@ -1479,7 +1546,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -1496,6 +1563,14 @@ paths:
           enum:
           - time
           - size
+          type: string
+      - description: Blob source. If it's empty both sources are returned
+        in: query
+        name: source
+        schema:
+          enum:
+          - pfb
+          - fibre
           type: string
       responses:
         "200":
@@ -1532,13 +1607,15 @@ paths:
         name: height
         required: true
         schema:
-          minimum: 1
+          format: int64
+          minimum: 0
           type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
+                format: int64
                 type: integer
           description: OK
         "400":
@@ -1568,7 +1645,8 @@ paths:
         name: height
         required: true
         schema:
-          minimum: 1
+          format: int64
+          minimum: 0
           type: integer
       - description: Count of requested entities
         in: query
@@ -1581,7 +1659,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -1618,6 +1696,7 @@ paths:
         name: height
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Count of requested entities
@@ -1631,250 +1710,272 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Comma-separated message types list
+        explode: false
         in: query
         name: msg_type
         schema:
-          enum:
-          - MsgUnknown
-          - MsgSetWithdrawAddress
-          - MsgWithdrawDelegatorReward
-          - MsgWithdrawValidatorCommission
-          - MsgFundCommunityPool
-          - MsgCreateValidator
-          - MsgEditValidator
-          - MsgDelegate
-          - MsgBeginRedelegate
-          - MsgUndelegate
-          - MsgCancelUnbondingDelegation
-          - MsgUnjail
-          - MsgSend
-          - MsgMultiSend
-          - MsgCreateVestingAccount
-          - MsgCreatePermanentLockedAccount
-          - MsgCreatePeriodicVestingAccount
-          - MsgPayForBlobs
-          - MsgGrant
-          - MsgExec
-          - MsgRevoke
-          - MsgGrantAllowance
-          - MsgRevokeAllowance
-          - MsgRegisterEVMAddress
-          - MsgSubmitProposal
-          - MsgExecLegacyContent
-          - MsgVote
-          - MsgVoteWeighted
-          - MsgDeposit
-          - IBCTransfer
-          - MsgVerifyInvariant
-          - MsgSubmitEvidence
-          - MsgSendNFT
-          - MsgCreateGroup
-          - MsgUpdateGroupMembers
-          - MsgUpdateGroupAdmin
-          - MsgUpdateGroupMetadata
-          - MsgCreateGroupPolicy
-          - MsgUpdateGroupPolicyAdmin
-          - MsgCreateGroupWithPolicy
-          - MsgUpdateGroupPolicyDecisionPolicy
-          - MsgUpdateGroupPolicyMetadata
-          - MsgSubmitProposalGroup
-          - MsgWithdrawProposal
-          - MsgVoteGroup
-          - MsgExecGroup
-          - MsgLeaveGroup
-          - MsgSoftwareUpgrade
-          - MsgCancelUpgrade
-          - MsgRegisterInterchainAccount
-          - MsgSendTx
-          - MsgRegisterPayee
-          - MsgRegisterCounterpartyPayee
-          - MsgPayPacketFee
-          - MsgPayPacketFeeAsync
-          - MsgTransfer
-          - MsgCreateClient
-          - MsgUpdateClient
-          - MsgUpgradeClient
-          - MsgSubmitMisbehaviour
-          - MsgRecoverClient
-          - MsgIBCSoftwareUpgrade
-          - MsgUpdateParams
-          - MsgConnectionOpenInit
-          - MsgConnectionOpenTry
-          - MsgConnectionOpenAck
-          - MsgConnectionOpenConfirm
-          - MsgChannelOpenInit
-          - MsgChannelOpenTry
-          - MsgChannelOpenAck
-          - MsgChannelOpenConfirm
-          - MsgChannelCloseInit
-          - MsgChannelCloseConfirm
-          - MsgRecvPacket
-          - MsgTimeout
-          - MsgTimeoutOnClose
-          - MsgAcknowledgement
-          - MsgSignalVersion
-          - MsgTryUpgrade
-          - MsgCreateMailbox
-          - MsgProcessMessage
-          - MsgSetMailbox
-          - MsgCreateCollateralToken
-          - MsgCreateSyntheticToken
-          - MsgSetToken
-          - MsgEnrollRemoteRouter
-          - MsgUnrollRemoteRouter
-          - MsgRemoteTransfer
-          - MsgUpdateMinfeeParams
-          - MsgCreateIgp
-          - MsgSetIgpOwner
-          - MsgSetDestinationGasConfig
-          - MsgPayForGas
-          - MsgClaim
-          - MsgCreateMerkleTreeHook
-          - MsgCreateNoopHook
-          - MsgCreateMessageIdMultisigIsm
-          - MsgCreateMerkleRootMultisigIsm
-          - MsgCreateNoopIsm
-          - MsgAnnounceValidator
-          - MsgCreateRoutingIsm
-          - MsgSetRoutingIsmDomain
-          - MsgRemoveRoutingIsmDomain
-          - MsgUpdateRoutingIsmOwner
-          - MsgUpdateBlobParams
-          - MsgPruneExpiredGrants
-          - MsgSetSendEnabled
-          - MsgAuthorizeCircuitBreaker
-          - MsgResetCircuitBreaker
-          - MsgTripCircuitBreaker
-          - MsgModuleQuerySafe
-          - MsgForward
-          - MsgCreateInterchainSecurityModule
-          - MsgUpdateInterchainSecurityModule
-          - MsgSubmitMessages
-          type: string
+          items:
+            enum:
+            - MsgUnknown
+            - MsgSetWithdrawAddress
+            - MsgWithdrawDelegatorReward
+            - MsgWithdrawValidatorCommission
+            - MsgFundCommunityPool
+            - MsgCreateValidator
+            - MsgEditValidator
+            - MsgDelegate
+            - MsgBeginRedelegate
+            - MsgUndelegate
+            - MsgCancelUnbondingDelegation
+            - MsgUnjail
+            - MsgSend
+            - MsgMultiSend
+            - MsgCreateVestingAccount
+            - MsgCreatePermanentLockedAccount
+            - MsgCreatePeriodicVestingAccount
+            - MsgPayForBlobs
+            - MsgGrant
+            - MsgExec
+            - MsgRevoke
+            - MsgGrantAllowance
+            - MsgRevokeAllowance
+            - MsgRegisterEVMAddress
+            - MsgSubmitProposal
+            - MsgExecLegacyContent
+            - MsgVote
+            - MsgVoteWeighted
+            - MsgDeposit
+            - IBCTransfer
+            - MsgVerifyInvariant
+            - MsgSubmitEvidence
+            - MsgSendNFT
+            - MsgCreateGroup
+            - MsgUpdateGroupMembers
+            - MsgUpdateGroupAdmin
+            - MsgUpdateGroupMetadata
+            - MsgCreateGroupPolicy
+            - MsgUpdateGroupPolicyAdmin
+            - MsgCreateGroupWithPolicy
+            - MsgUpdateGroupPolicyDecisionPolicy
+            - MsgUpdateGroupPolicyMetadata
+            - MsgSubmitProposalGroup
+            - MsgWithdrawProposal
+            - MsgVoteGroup
+            - MsgExecGroup
+            - MsgLeaveGroup
+            - MsgSoftwareUpgrade
+            - MsgCancelUpgrade
+            - MsgRegisterInterchainAccount
+            - MsgSendTx
+            - MsgRegisterPayee
+            - MsgRegisterCounterpartyPayee
+            - MsgPayPacketFee
+            - MsgPayPacketFeeAsync
+            - MsgTransfer
+            - MsgCreateClient
+            - MsgUpdateClient
+            - MsgUpgradeClient
+            - MsgSubmitMisbehaviour
+            - MsgRecoverClient
+            - MsgIBCSoftwareUpgrade
+            - MsgUpdateParams
+            - MsgConnectionOpenInit
+            - MsgConnectionOpenTry
+            - MsgConnectionOpenAck
+            - MsgConnectionOpenConfirm
+            - MsgChannelOpenInit
+            - MsgChannelOpenTry
+            - MsgChannelOpenAck
+            - MsgChannelOpenConfirm
+            - MsgChannelCloseInit
+            - MsgChannelCloseConfirm
+            - MsgRecvPacket
+            - MsgTimeout
+            - MsgTimeoutOnClose
+            - MsgAcknowledgement
+            - MsgSignalVersion
+            - MsgTryUpgrade
+            - MsgCreateMailbox
+            - MsgProcessMessage
+            - MsgSetMailbox
+            - MsgCreateCollateralToken
+            - MsgCreateSyntheticToken
+            - MsgSetToken
+            - MsgEnrollRemoteRouter
+            - MsgUnrollRemoteRouter
+            - MsgRemoteTransfer
+            - MsgUpdateMinfeeParams
+            - MsgCreateIgp
+            - MsgSetIgpOwner
+            - MsgSetDestinationGasConfig
+            - MsgPayForGas
+            - MsgClaim
+            - MsgCreateMerkleTreeHook
+            - MsgCreateNoopHook
+            - MsgCreateMessageIdMultisigIsm
+            - MsgCreateMerkleRootMultisigIsm
+            - MsgCreateNoopIsm
+            - MsgAnnounceValidator
+            - MsgCreateRoutingIsm
+            - MsgSetRoutingIsmDomain
+            - MsgRemoveRoutingIsmDomain
+            - MsgUpdateRoutingIsmOwner
+            - MsgUpdateBlobParams
+            - MsgPruneExpiredGrants
+            - MsgSetSendEnabled
+            - MsgAuthorizeCircuitBreaker
+            - MsgResetCircuitBreaker
+            - MsgTripCircuitBreaker
+            - MsgModuleQuerySafe
+            - MsgForward
+            - MsgCreateInterchainSecurityModule
+            - MsgUpdateInterchainSecurityModule
+            - MsgSubmitMessages
+            - MsgDepositToEscrow
+            - MsgRequestWithdrawal
+            - MsgPayForFibre
+            - MsgPaymentPromiseTimeout
+            - MsgUpdateFibreParams
+            - MsgSetFibreProviderInfo
+            - MsgCancelProposal
+            type: string
+          type: array
+        style: form
       - description: Comma-separated message types which should be excluded from list
+        explode: false
         in: query
         name: excluded_msg_type
         schema:
-          enum:
-          - MsgUnknown
-          - MsgSetWithdrawAddress
-          - MsgWithdrawDelegatorReward
-          - MsgWithdrawValidatorCommission
-          - MsgFundCommunityPool
-          - MsgCreateValidator
-          - MsgEditValidator
-          - MsgDelegate
-          - MsgBeginRedelegate
-          - MsgUndelegate
-          - MsgCancelUnbondingDelegation
-          - MsgUnjail
-          - MsgSend
-          - MsgMultiSend
-          - MsgCreateVestingAccount
-          - MsgCreatePermanentLockedAccount
-          - MsgCreatePeriodicVestingAccount
-          - MsgPayForBlobs
-          - MsgGrant
-          - MsgExec
-          - MsgRevoke
-          - MsgGrantAllowance
-          - MsgRevokeAllowance
-          - MsgRegisterEVMAddress
-          - MsgSubmitProposal
-          - MsgExecLegacyContent
-          - MsgVote
-          - MsgVoteWeighted
-          - MsgDeposit
-          - IBCTransfer
-          - MsgVerifyInvariant
-          - MsgSubmitEvidence
-          - MsgSendNFT
-          - MsgCreateGroup
-          - MsgUpdateGroupMembers
-          - MsgUpdateGroupAdmin
-          - MsgUpdateGroupMetadata
-          - MsgCreateGroupPolicy
-          - MsgUpdateGroupPolicyAdmin
-          - MsgCreateGroupWithPolicy
-          - MsgUpdateGroupPolicyDecisionPolicy
-          - MsgUpdateGroupPolicyMetadata
-          - MsgSubmitProposalGroup
-          - MsgWithdrawProposal
-          - MsgVoteGroup
-          - MsgExecGroup
-          - MsgLeaveGroup
-          - MsgSoftwareUpgrade
-          - MsgCancelUpgrade
-          - MsgRegisterInterchainAccount
-          - MsgSendTx
-          - MsgRegisterPayee
-          - MsgRegisterCounterpartyPayee
-          - MsgPayPacketFee
-          - MsgPayPacketFeeAsync
-          - MsgTransfer
-          - MsgCreateClient
-          - MsgUpdateClient
-          - MsgUpgradeClient
-          - MsgSubmitMisbehaviour
-          - MsgRecoverClient
-          - MsgIBCSoftwareUpgrade
-          - MsgUpdateParams
-          - MsgConnectionOpenInit
-          - MsgConnectionOpenTry
-          - MsgConnectionOpenAck
-          - MsgConnectionOpenConfirm
-          - MsgChannelOpenInit
-          - MsgChannelOpenTry
-          - MsgChannelOpenAck
-          - MsgChannelOpenConfirm
-          - MsgChannelCloseInit
-          - MsgChannelCloseConfirm
-          - MsgRecvPacket
-          - MsgTimeout
-          - MsgTimeoutOnClose
-          - MsgAcknowledgement
-          - MsgSignalVersion
-          - MsgTryUpgrade
-          - MsgCreateMailbox
-          - MsgProcessMessage
-          - MsgSetMailbox
-          - MsgCreateCollateralToken
-          - MsgCreateSyntheticToken
-          - MsgSetToken
-          - MsgEnrollRemoteRouter
-          - MsgUnrollRemoteRouter
-          - MsgRemoteTransfer
-          - MsgUpdateMinfeeParams
-          - MsgCreateIgp
-          - MsgSetIgpOwner
-          - MsgSetDestinationGasConfig
-          - MsgPayForGas
-          - MsgClaim
-          - MsgCreateMerkleTreeHook
-          - MsgCreateNoopHook
-          - MsgCreateMessageIdMultisigIsm
-          - MsgCreateMerkleRootMultisigIsm
-          - MsgCreateNoopIsm
-          - MsgAnnounceValidator
-          - MsgCreateRoutingIsm
-          - MsgSetRoutingIsmDomain
-          - MsgRemoveRoutingIsmDomain
-          - MsgUpdateRoutingIsmOwner
-          - MsgUpdateBlobParams
-          - MsgPruneExpiredGrants
-          - MsgSetSendEnabled
-          - MsgAuthorizeCircuitBreaker
-          - MsgResetCircuitBreaker
-          - MsgTripCircuitBreaker
-          - MsgModuleQuerySafe
-          - MsgForward
-          - MsgCreateInterchainSecurityModule
-          - MsgUpdateInterchainSecurityModule
-          - MsgSubmitMessages
-          type: string
+          items:
+            enum:
+            - MsgUnknown
+            - MsgSetWithdrawAddress
+            - MsgWithdrawDelegatorReward
+            - MsgWithdrawValidatorCommission
+            - MsgFundCommunityPool
+            - MsgCreateValidator
+            - MsgEditValidator
+            - MsgDelegate
+            - MsgBeginRedelegate
+            - MsgUndelegate
+            - MsgCancelUnbondingDelegation
+            - MsgUnjail
+            - MsgSend
+            - MsgMultiSend
+            - MsgCreateVestingAccount
+            - MsgCreatePermanentLockedAccount
+            - MsgCreatePeriodicVestingAccount
+            - MsgPayForBlobs
+            - MsgGrant
+            - MsgExec
+            - MsgRevoke
+            - MsgGrantAllowance
+            - MsgRevokeAllowance
+            - MsgRegisterEVMAddress
+            - MsgSubmitProposal
+            - MsgExecLegacyContent
+            - MsgVote
+            - MsgVoteWeighted
+            - MsgDeposit
+            - IBCTransfer
+            - MsgVerifyInvariant
+            - MsgSubmitEvidence
+            - MsgSendNFT
+            - MsgCreateGroup
+            - MsgUpdateGroupMembers
+            - MsgUpdateGroupAdmin
+            - MsgUpdateGroupMetadata
+            - MsgCreateGroupPolicy
+            - MsgUpdateGroupPolicyAdmin
+            - MsgCreateGroupWithPolicy
+            - MsgUpdateGroupPolicyDecisionPolicy
+            - MsgUpdateGroupPolicyMetadata
+            - MsgSubmitProposalGroup
+            - MsgWithdrawProposal
+            - MsgVoteGroup
+            - MsgExecGroup
+            - MsgLeaveGroup
+            - MsgSoftwareUpgrade
+            - MsgCancelUpgrade
+            - MsgRegisterInterchainAccount
+            - MsgSendTx
+            - MsgRegisterPayee
+            - MsgRegisterCounterpartyPayee
+            - MsgPayPacketFee
+            - MsgPayPacketFeeAsync
+            - MsgTransfer
+            - MsgCreateClient
+            - MsgUpdateClient
+            - MsgUpgradeClient
+            - MsgSubmitMisbehaviour
+            - MsgRecoverClient
+            - MsgIBCSoftwareUpgrade
+            - MsgUpdateParams
+            - MsgConnectionOpenInit
+            - MsgConnectionOpenTry
+            - MsgConnectionOpenAck
+            - MsgConnectionOpenConfirm
+            - MsgChannelOpenInit
+            - MsgChannelOpenTry
+            - MsgChannelOpenAck
+            - MsgChannelOpenConfirm
+            - MsgChannelCloseInit
+            - MsgChannelCloseConfirm
+            - MsgRecvPacket
+            - MsgTimeout
+            - MsgTimeoutOnClose
+            - MsgAcknowledgement
+            - MsgSignalVersion
+            - MsgTryUpgrade
+            - MsgCreateMailbox
+            - MsgProcessMessage
+            - MsgSetMailbox
+            - MsgCreateCollateralToken
+            - MsgCreateSyntheticToken
+            - MsgSetToken
+            - MsgEnrollRemoteRouter
+            - MsgUnrollRemoteRouter
+            - MsgRemoteTransfer
+            - MsgUpdateMinfeeParams
+            - MsgCreateIgp
+            - MsgSetIgpOwner
+            - MsgSetDestinationGasConfig
+            - MsgPayForGas
+            - MsgClaim
+            - MsgCreateMerkleTreeHook
+            - MsgCreateNoopHook
+            - MsgCreateMessageIdMultisigIsm
+            - MsgCreateMerkleRootMultisigIsm
+            - MsgCreateNoopIsm
+            - MsgAnnounceValidator
+            - MsgCreateRoutingIsm
+            - MsgSetRoutingIsmDomain
+            - MsgRemoveRoutingIsmDomain
+            - MsgUpdateRoutingIsmOwner
+            - MsgUpdateBlobParams
+            - MsgPruneExpiredGrants
+            - MsgSetSendEnabled
+            - MsgAuthorizeCircuitBreaker
+            - MsgResetCircuitBreaker
+            - MsgTripCircuitBreaker
+            - MsgModuleQuerySafe
+            - MsgForward
+            - MsgCreateInterchainSecurityModule
+            - MsgUpdateInterchainSecurityModule
+            - MsgSubmitMessages
+            - MsgDepositToEscrow
+            - MsgRequestWithdrawal
+            - MsgPayForFibre
+            - MsgPaymentPromiseTimeout
+            - MsgUpdateFibreParams
+            - MsgSetFibreProviderInfo
+            - MsgCancelProposal
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -1911,7 +2012,8 @@ paths:
         name: height
         required: true
         schema:
-          minimum: 1
+          format: int64
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -1948,7 +2050,8 @@ paths:
         name: height
         required: true
         schema:
-          minimum: 1
+          format: int64
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -2060,18 +2163,21 @@ paths:
         in: query
         name: height
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Filter by start time (Unix timestamp)
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Filter by end time (Unix timestamp)
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -2102,8 +2208,9 @@ paths:
     get:
       description: |-
         Returns a single forwarding event by its internal ID. The response includes details about
-        the cross-domain token transfer such as destination domain, destination address,
-        forwarding address, success/failed counts, and the list of individual transfers.
+        the cross-domain token transfer such as destination domain, destination address and
+        forwarding address, and the inputs: deposits to the forwarding address since its previous
+        forwarding (MsgSend, Hyperlane and IBC transfers).
       operationId: get-forwarding
       parameters:
       - description: Internal forwarding event ID
@@ -2111,6 +2218,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -2146,21 +2254,30 @@ paths:
       operationId: gas-estimate-for-pfb
       parameters:
       - description: Comma-separated array of blob sizes
+        explode: false
         in: query
         name: sizes
         required: true
         schema:
-          type: string
+          items:
+            type: integer
+          type: array
+        style: form
       - description: Comma-separated array of share versions. Default is 0
+        explode: false
         in: query
         name: versions
         schema:
-          type: string
+          items:
+            type: integer
+          type: array
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
+                format: int64
                 type: integer
           description: OK
         "400":
@@ -2262,9 +2379,9 @@ paths:
           content:
             application/json:
               schema:
-                items:
+                additionalProperties:
                   $ref: "#/components/schemas/responses.DomainMetadata"
-                type: array
+                type: object
           description: OK
         "204":
           content: {}
@@ -2302,7 +2419,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -2345,13 +2462,12 @@ paths:
         \ hexadecimal identity, including its owner and destination gas configs."
       operationId: get-hyperlane-igp
       parameters:
-      - description: Internal identity
+      - description: Hyperlane IGP id
         in: path
         name: id
         required: true
         schema:
-          minimum: 1
-          type: integer
+          type: string
       responses:
         "200":
           content:
@@ -2394,7 +2510,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -2479,7 +2595,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -2502,13 +2618,17 @@ paths:
         schema:
           type: string
       - description: Comma-separated string of tokens type
+        explode: false
         in: query
         name: type
         schema:
-          enum:
-          - synthetic
-          - collateral
-          type: string
+          items:
+            enum:
+            - synthetic
+            - collateral
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -2592,7 +2712,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -2627,17 +2747,22 @@ paths:
         schema:
           type: string
       - description: Comma-separated string of transfer type
+        explode: false
         in: query
         name: type
         schema:
-          enum:
-          - send
-          - receive
-          type: string
+          items:
+            enum:
+            - send
+            - receive
+            type: string
+          type: array
+        style: form
       - description: Domain of counterparty chain
         in: query
         name: domain
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Transaction hash in hexadecimal
@@ -2685,6 +2810,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -2795,6 +2921,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -2836,6 +2963,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Count of requested entities
@@ -2877,12 +3005,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Filter by end time (Unix timestamp)
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -2926,6 +3056,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Count of requested entities
@@ -2967,12 +3098,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Filter by end time (Unix timestamp)
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -3019,7 +3152,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -3129,7 +3262,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -3233,7 +3366,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -3359,7 +3492,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -3445,6 +3578,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -3489,7 +3623,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -3506,6 +3640,7 @@ paths:
           enum:
           - time
           - pfb_count
+          - pff_count
           - size
           type: string
       responses:
@@ -3647,7 +3782,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -3674,12 +3809,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: "Flag indicating whether entities of rollup, transaction and\
@@ -3689,16 +3826,29 @@ paths:
         schema:
           type: boolean
       - description: Comma-separated celestia addresses
+        explode: false
         in: query
         name: signers
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
       - description: Last entity id which is used for cursor pagination
         in: query
         name: cursor
         schema:
-          minimum: 1
+          format: int64
+          minimum: 0
           type: integer
+      - description: Blob source. If it's empty both sources are returned
+        in: query
+        name: source
+        schema:
+          enum:
+          - pfb
+          - fibre
+          type: string
       responses:
         "200":
           content:
@@ -3755,7 +3905,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -3815,7 +3965,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -3897,6 +4047,7 @@ paths:
         name: height
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -3934,7 +4085,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -3952,15 +4103,23 @@ paths:
           minLength: 47
           type: string
       - description: Comma-separated proposal status list
+        explode: false
         in: query
         name: status
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
       - description: Comma-separated proposal type list
+        explode: false
         in: query
         name: type
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -3997,6 +4156,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -4036,6 +4196,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Count of requested entities
@@ -4049,18 +4210,22 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Option
+        explode: false
         in: query
         name: option
         schema:
-          enum:
-          - "yes"
-          - "no"
-          - no_with_veto
-          - abstain
-          type: string
+          items:
+            enum:
+            - "yes"
+            - "no"
+            - no_with_veto
+            - abstain
+            type: string
+          type: array
+        style: form
       - description: Voter type
         in: query
         name: voter
@@ -4125,7 +4290,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -4146,25 +4311,54 @@ paths:
           - fee
           type: string
       - description: Comma-separated rollup category list
+        explode: false
         in: query
         name: category
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
       - description: Comma-separated rollup tags list
+        explode: false
         in: query
         name: tags
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
       - description: Comma-separated rollup stack list
+        explode: false
         in: query
         name: stack
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
       - description: Comma-separated rollup provider list
+        explode: false
         in: query
         name: provider
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Comma-separated rollup type list
+        explode: false
+        in: query
+        name: type
+        schema:
+          items:
+            enum:
+            - sovereign
+            - settled
+            - other
+            type: string
+          type: array
+        style: form
       - description: "If true, shows rollups with activity over the last month"
         in: query
         name: is_active
@@ -4203,6 +4397,7 @@ paths:
           content:
             application/json:
               schema:
+                format: int64
                 type: integer
           description: OK
         "500":
@@ -4232,7 +4427,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -4249,33 +4444,64 @@ paths:
           enum:
           - avg_size
           - blobs_count
+          - fibre_blobs_count
           - total_size
           - total_fee
           - throughput
           - namespace_count
           - pfb_count
+          - pff_count
           - mb_price
           type: string
       - description: Comma-separated rollup category list
+        explode: false
         in: query
         name: category
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
       - description: Comma-separated rollup tags list
+        explode: false
         in: query
         name: tags
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
       - description: Comma-separated rollup stack list
+        explode: false
         in: query
         name: stack
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
       - description: Comma-separated rollup provider list
+        explode: false
         in: query
         name: provider
         schema:
-          type: string
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Comma-separated rollup type list
+        explode: false
+        in: query
+        name: type
+        schema:
+          items:
+            enum:
+            - sovereign
+            - settled
+            - other
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -4440,6 +4666,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -4478,6 +4705,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Count of requested entities
@@ -4491,7 +4719,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -4550,6 +4778,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Series name
@@ -4608,18 +4837,21 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time from in unix timestamp
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -4628,13 +4860,13 @@ paths:
           description: OK
         "400":
           content:
-            '*/*':
+            text/plain:
               schema:
                 $ref: "#/components/schemas/handler.Error"
           description: Bad Request
         "500":
           content:
-            '*/*':
+            text/plain:
               schema:
                 $ref: "#/components/schemas/handler.Error"
           description: Internal Server Error
@@ -4652,6 +4884,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Count of requested entities
@@ -4665,7 +4898,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -4702,6 +4935,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -4740,6 +4974,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Series name
@@ -4767,12 +5002,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -4881,11 +5118,13 @@ paths:
         in: query
         name: version
         schema:
+          format: int64
           type: integer
       - description: Validator internal id
         in: query
         name: validator_id
         schema:
+          format: int64
           type: integer
       - description: Transaction hash
         in: query
@@ -4903,18 +5142,20 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Time from in unix timestamp
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: "Sort order. Default: desc"
@@ -4960,6 +5201,7 @@ paths:
         in: query
         name: height
         schema:
+          format: int64
           type: integer
       - description: Transaction hash
         in: query
@@ -4982,7 +5224,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -5028,6 +5270,7 @@ paths:
         name: version
         required: true
         schema:
+          format: int64
           type: integer
       responses:
         "200":
@@ -5062,9 +5305,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: "#/components/schemas/responses.Change24hBlockStats"
-                type: array
+                $ref: "#/components/schemas/responses.Change24hBlockStats"
           description: OK
         "500":
           content:
@@ -5092,7 +5333,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -5148,12 +5389,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -5192,6 +5435,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           type: integer
       - description: Timeframe
         in: path
@@ -5216,12 +5460,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -5265,7 +5511,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -5327,12 +5573,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -5370,9 +5618,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: "#/components/schemas/responses.IbcSummaryStats"
-                type: array
+                $ref: "#/components/schemas/responses.IbcSummaryStats"
           description: OK
         "400":
           content:
@@ -5415,8 +5661,8 @@ paths:
   /stats/namespace/series/{id}/{name}/{timeframe}:
     get:
       description: "Returns a time-series histogram of precomputed blob statistics\
-        \ (pfb_count or size) for the specified namespace, filtered by timeframe and\
-        \ optional time range."
+        \ (pfb_count, pff_count or size) for the specified namespace, filtered by\
+        \ timeframe and optional time range."
       operationId: stats-ns-series
       parameters:
       - description: Namespace id in hexadecimal
@@ -5446,18 +5692,21 @@ paths:
         schema:
           enum:
           - pfb_count
+          - pff_count
           - size
           type: string
       - description: Time from in unix timestamp
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -5590,12 +5839,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -5660,12 +5911,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -5726,12 +5979,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -5739,9 +5994,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: "#/components/schemas/responses.SquareSizeResponse"
-                type: array
+                $ref: "#/components/schemas/responses.SquareSizeResponse"
           description: OK
         "400":
           content:
@@ -5769,12 +6022,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -5805,14 +6060,14 @@ paths:
         \ delegation flows, etc.) for the specified validator and timeframe."
       operationId: stats-staking-series
       parameters:
-      - description: Validator id
+      - description: Internal validator id
         in: path
         name: id
         required: true
         schema:
-          maxLength: 56
-          minLength: 56
-          type: string
+          format: int64
+          minimum: 1
+          type: integer
       - description: Timeframe
         in: path
         name: timeframe
@@ -5842,12 +6097,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -5971,12 +6228,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -6040,7 +6299,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Sort order
         in: query
@@ -6051,278 +6310,314 @@ paths:
           - desc
           type: string
       - description: Comma-separated status list
+        explode: false
         in: query
         name: status
         schema:
-          enum:
-          - success
-          - failed
-          type: string
+          items:
+            enum:
+            - success
+            - failed
+            type: string
+          type: array
+        style: form
       - description: Comma-separated message types list
+        explode: false
         in: query
         name: msg_type
         schema:
-          enum:
-          - MsgUnknown
-          - MsgSetWithdrawAddress
-          - MsgWithdrawDelegatorReward
-          - MsgWithdrawValidatorCommission
-          - MsgFundCommunityPool
-          - MsgCreateValidator
-          - MsgEditValidator
-          - MsgDelegate
-          - MsgBeginRedelegate
-          - MsgUndelegate
-          - MsgCancelUnbondingDelegation
-          - MsgUnjail
-          - MsgSend
-          - MsgMultiSend
-          - MsgCreateVestingAccount
-          - MsgCreatePermanentLockedAccount
-          - MsgCreatePeriodicVestingAccount
-          - MsgPayForBlobs
-          - MsgGrant
-          - MsgExec
-          - MsgRevoke
-          - MsgGrantAllowance
-          - MsgRevokeAllowance
-          - MsgRegisterEVMAddress
-          - MsgSubmitProposal
-          - MsgExecLegacyContent
-          - MsgVote
-          - MsgVoteWeighted
-          - MsgDeposit
-          - IBCTransfer
-          - MsgVerifyInvariant
-          - MsgSubmitEvidence
-          - MsgSendNFT
-          - MsgCreateGroup
-          - MsgUpdateGroupMembers
-          - MsgUpdateGroupAdmin
-          - MsgUpdateGroupMetadata
-          - MsgCreateGroupPolicy
-          - MsgUpdateGroupPolicyAdmin
-          - MsgCreateGroupWithPolicy
-          - MsgUpdateGroupPolicyDecisionPolicy
-          - MsgUpdateGroupPolicyMetadata
-          - MsgSubmitProposalGroup
-          - MsgWithdrawProposal
-          - MsgVoteGroup
-          - MsgExecGroup
-          - MsgLeaveGroup
-          - MsgSoftwareUpgrade
-          - MsgCancelUpgrade
-          - MsgRegisterInterchainAccount
-          - MsgSendTx
-          - MsgRegisterPayee
-          - MsgRegisterCounterpartyPayee
-          - MsgPayPacketFee
-          - MsgPayPacketFeeAsync
-          - MsgTransfer
-          - MsgCreateClient
-          - MsgUpdateClient
-          - MsgUpgradeClient
-          - MsgSubmitMisbehaviour
-          - MsgRecoverClient
-          - MsgIBCSoftwareUpgrade
-          - MsgUpdateParams
-          - MsgConnectionOpenInit
-          - MsgConnectionOpenTry
-          - MsgConnectionOpenAck
-          - MsgConnectionOpenConfirm
-          - MsgChannelOpenInit
-          - MsgChannelOpenTry
-          - MsgChannelOpenAck
-          - MsgChannelOpenConfirm
-          - MsgChannelCloseInit
-          - MsgChannelCloseConfirm
-          - MsgRecvPacket
-          - MsgTimeout
-          - MsgTimeoutOnClose
-          - MsgAcknowledgement
-          - MsgSignalVersion
-          - MsgTryUpgrade
-          - MsgCreateMailbox
-          - MsgProcessMessage
-          - MsgSetMailbox
-          - MsgCreateCollateralToken
-          - MsgCreateSyntheticToken
-          - MsgSetToken
-          - MsgEnrollRemoteRouter
-          - MsgUnrollRemoteRouter
-          - MsgRemoteTransfer
-          - MsgUpdateMinfeeParams
-          - MsgCreateIgp
-          - MsgSetIgpOwner
-          - MsgSetDestinationGasConfig
-          - MsgPayForGas
-          - MsgClaim
-          - MsgCreateMerkleTreeHook
-          - MsgCreateNoopHook
-          - MsgCreateMessageIdMultisigIsm
-          - MsgCreateMerkleRootMultisigIsm
-          - MsgCreateNoopIsm
-          - MsgAnnounceValidator
-          - MsgCreateRoutingIsm
-          - MsgSetRoutingIsmDomain
-          - MsgRemoveRoutingIsmDomain
-          - MsgUpdateRoutingIsmOwner
-          - MsgUpdateBlobParams
-          - MsgPruneExpiredGrants
-          - MsgSetSendEnabled
-          - MsgAuthorizeCircuitBreaker
-          - MsgResetCircuitBreaker
-          - MsgTripCircuitBreaker
-          - MsgModuleQuerySafe
-          - MsgForward
-          - MsgCreateInterchainSecurityModule
-          - MsgUpdateInterchainSecurityModule
-          - MsgSubmitMessages
-          type: string
+          items:
+            enum:
+            - MsgUnknown
+            - MsgSetWithdrawAddress
+            - MsgWithdrawDelegatorReward
+            - MsgWithdrawValidatorCommission
+            - MsgFundCommunityPool
+            - MsgCreateValidator
+            - MsgEditValidator
+            - MsgDelegate
+            - MsgBeginRedelegate
+            - MsgUndelegate
+            - MsgCancelUnbondingDelegation
+            - MsgUnjail
+            - MsgSend
+            - MsgMultiSend
+            - MsgCreateVestingAccount
+            - MsgCreatePermanentLockedAccount
+            - MsgCreatePeriodicVestingAccount
+            - MsgPayForBlobs
+            - MsgGrant
+            - MsgExec
+            - MsgRevoke
+            - MsgGrantAllowance
+            - MsgRevokeAllowance
+            - MsgRegisterEVMAddress
+            - MsgSubmitProposal
+            - MsgExecLegacyContent
+            - MsgVote
+            - MsgVoteWeighted
+            - MsgDeposit
+            - IBCTransfer
+            - MsgVerifyInvariant
+            - MsgSubmitEvidence
+            - MsgSendNFT
+            - MsgCreateGroup
+            - MsgUpdateGroupMembers
+            - MsgUpdateGroupAdmin
+            - MsgUpdateGroupMetadata
+            - MsgCreateGroupPolicy
+            - MsgUpdateGroupPolicyAdmin
+            - MsgCreateGroupWithPolicy
+            - MsgUpdateGroupPolicyDecisionPolicy
+            - MsgUpdateGroupPolicyMetadata
+            - MsgSubmitProposalGroup
+            - MsgWithdrawProposal
+            - MsgVoteGroup
+            - MsgExecGroup
+            - MsgLeaveGroup
+            - MsgSoftwareUpgrade
+            - MsgCancelUpgrade
+            - MsgRegisterInterchainAccount
+            - MsgSendTx
+            - MsgRegisterPayee
+            - MsgRegisterCounterpartyPayee
+            - MsgPayPacketFee
+            - MsgPayPacketFeeAsync
+            - MsgTransfer
+            - MsgCreateClient
+            - MsgUpdateClient
+            - MsgUpgradeClient
+            - MsgSubmitMisbehaviour
+            - MsgRecoverClient
+            - MsgIBCSoftwareUpgrade
+            - MsgUpdateParams
+            - MsgConnectionOpenInit
+            - MsgConnectionOpenTry
+            - MsgConnectionOpenAck
+            - MsgConnectionOpenConfirm
+            - MsgChannelOpenInit
+            - MsgChannelOpenTry
+            - MsgChannelOpenAck
+            - MsgChannelOpenConfirm
+            - MsgChannelCloseInit
+            - MsgChannelCloseConfirm
+            - MsgRecvPacket
+            - MsgTimeout
+            - MsgTimeoutOnClose
+            - MsgAcknowledgement
+            - MsgSignalVersion
+            - MsgTryUpgrade
+            - MsgCreateMailbox
+            - MsgProcessMessage
+            - MsgSetMailbox
+            - MsgCreateCollateralToken
+            - MsgCreateSyntheticToken
+            - MsgSetToken
+            - MsgEnrollRemoteRouter
+            - MsgUnrollRemoteRouter
+            - MsgRemoteTransfer
+            - MsgUpdateMinfeeParams
+            - MsgCreateIgp
+            - MsgSetIgpOwner
+            - MsgSetDestinationGasConfig
+            - MsgPayForGas
+            - MsgClaim
+            - MsgCreateMerkleTreeHook
+            - MsgCreateNoopHook
+            - MsgCreateMessageIdMultisigIsm
+            - MsgCreateMerkleRootMultisigIsm
+            - MsgCreateNoopIsm
+            - MsgAnnounceValidator
+            - MsgCreateRoutingIsm
+            - MsgSetRoutingIsmDomain
+            - MsgRemoveRoutingIsmDomain
+            - MsgUpdateRoutingIsmOwner
+            - MsgUpdateBlobParams
+            - MsgPruneExpiredGrants
+            - MsgSetSendEnabled
+            - MsgAuthorizeCircuitBreaker
+            - MsgResetCircuitBreaker
+            - MsgTripCircuitBreaker
+            - MsgModuleQuerySafe
+            - MsgForward
+            - MsgCreateInterchainSecurityModule
+            - MsgUpdateInterchainSecurityModule
+            - MsgSubmitMessages
+            - MsgDepositToEscrow
+            - MsgRequestWithdrawal
+            - MsgPayForFibre
+            - MsgPaymentPromiseTimeout
+            - MsgUpdateFibreParams
+            - MsgSetFibreProviderInfo
+            - MsgCancelProposal
+            type: string
+          type: array
+        style: form
       - description: Comma-separated message types list which should be excluded
+        explode: false
         in: query
         name: excluded_msg_type
         schema:
-          enum:
-          - MsgUnknown
-          - MsgSetWithdrawAddress
-          - MsgWithdrawDelegatorReward
-          - MsgWithdrawValidatorCommission
-          - MsgFundCommunityPool
-          - MsgCreateValidator
-          - MsgEditValidator
-          - MsgDelegate
-          - MsgBeginRedelegate
-          - MsgUndelegate
-          - MsgCancelUnbondingDelegation
-          - MsgUnjail
-          - MsgSend
-          - MsgMultiSend
-          - MsgCreateVestingAccount
-          - MsgCreatePermanentLockedAccount
-          - MsgCreatePeriodicVestingAccount
-          - MsgPayForBlobs
-          - MsgGrant
-          - MsgExec
-          - MsgRevoke
-          - MsgGrantAllowance
-          - MsgRevokeAllowance
-          - MsgRegisterEVMAddress
-          - MsgSubmitProposal
-          - MsgExecLegacyContent
-          - MsgVote
-          - MsgVoteWeighted
-          - MsgDeposit
-          - IBCTransfer
-          - MsgVerifyInvariant
-          - MsgSubmitEvidence
-          - MsgSendNFT
-          - MsgCreateGroup
-          - MsgUpdateGroupMembers
-          - MsgUpdateGroupAdmin
-          - MsgUpdateGroupMetadata
-          - MsgCreateGroupPolicy
-          - MsgUpdateGroupPolicyAdmin
-          - MsgCreateGroupWithPolicy
-          - MsgUpdateGroupPolicyDecisionPolicy
-          - MsgUpdateGroupPolicyMetadata
-          - MsgSubmitProposalGroup
-          - MsgWithdrawProposal
-          - MsgVoteGroup
-          - MsgExecGroup
-          - MsgLeaveGroup
-          - MsgSoftwareUpgrade
-          - MsgCancelUpgrade
-          - MsgRegisterInterchainAccount
-          - MsgSendTx
-          - MsgRegisterPayee
-          - MsgRegisterCounterpartyPayee
-          - MsgPayPacketFee
-          - MsgPayPacketFeeAsync
-          - MsgTransfer
-          - MsgCreateClient
-          - MsgUpdateClient
-          - MsgUpgradeClient
-          - MsgSubmitMisbehaviour
-          - MsgRecoverClient
-          - MsgIBCSoftwareUpgrade
-          - MsgUpdateParams
-          - MsgConnectionOpenInit
-          - MsgConnectionOpenTry
-          - MsgConnectionOpenAck
-          - MsgConnectionOpenConfirm
-          - MsgChannelOpenInit
-          - MsgChannelOpenTry
-          - MsgChannelOpenAck
-          - MsgChannelOpenConfirm
-          - MsgChannelCloseInit
-          - MsgChannelCloseConfirm
-          - MsgRecvPacket
-          - MsgTimeout
-          - MsgTimeoutOnClose
-          - MsgAcknowledgement
-          - MsgSignalVersion
-          - MsgTryUpgrade
-          - MsgCreateMailbox
-          - MsgProcessMessage
-          - MsgSetMailbox
-          - MsgCreateCollateralToken
-          - MsgCreateSyntheticToken
-          - MsgSetToken
-          - MsgEnrollRemoteRouter
-          - MsgUnrollRemoteRouter
-          - MsgRemoteTransfer
-          - MsgUpdateMinfeeParams
-          - MsgCreateIgp
-          - MsgSetIgpOwner
-          - MsgSetDestinationGasConfig
-          - MsgPayForGas
-          - MsgClaim
-          - MsgCreateMerkleTreeHook
-          - MsgCreateNoopHook
-          - MsgCreateMessageIdMultisigIsm
-          - MsgCreateMerkleRootMultisigIsm
-          - MsgCreateNoopIsm
-          - MsgAnnounceValidator
-          - MsgCreateRoutingIsm
-          - MsgSetRoutingIsmDomain
-          - MsgRemoveRoutingIsmDomain
-          - MsgUpdateRoutingIsmOwner
-          - MsgUpdateBlobParams
-          - MsgPruneExpiredGrants
-          - MsgSetSendEnabled
-          - MsgAuthorizeCircuitBreaker
-          - MsgResetCircuitBreaker
-          - MsgTripCircuitBreaker
-          - MsgModuleQuerySafe
-          - MsgForward
-          - MsgCreateInterchainSecurityModule
-          - MsgUpdateInterchainSecurityModule
-          - MsgSubmitMessages
-          type: string
+          items:
+            enum:
+            - MsgUnknown
+            - MsgSetWithdrawAddress
+            - MsgWithdrawDelegatorReward
+            - MsgWithdrawValidatorCommission
+            - MsgFundCommunityPool
+            - MsgCreateValidator
+            - MsgEditValidator
+            - MsgDelegate
+            - MsgBeginRedelegate
+            - MsgUndelegate
+            - MsgCancelUnbondingDelegation
+            - MsgUnjail
+            - MsgSend
+            - MsgMultiSend
+            - MsgCreateVestingAccount
+            - MsgCreatePermanentLockedAccount
+            - MsgCreatePeriodicVestingAccount
+            - MsgPayForBlobs
+            - MsgGrant
+            - MsgExec
+            - MsgRevoke
+            - MsgGrantAllowance
+            - MsgRevokeAllowance
+            - MsgRegisterEVMAddress
+            - MsgSubmitProposal
+            - MsgExecLegacyContent
+            - MsgVote
+            - MsgVoteWeighted
+            - MsgDeposit
+            - IBCTransfer
+            - MsgVerifyInvariant
+            - MsgSubmitEvidence
+            - MsgSendNFT
+            - MsgCreateGroup
+            - MsgUpdateGroupMembers
+            - MsgUpdateGroupAdmin
+            - MsgUpdateGroupMetadata
+            - MsgCreateGroupPolicy
+            - MsgUpdateGroupPolicyAdmin
+            - MsgCreateGroupWithPolicy
+            - MsgUpdateGroupPolicyDecisionPolicy
+            - MsgUpdateGroupPolicyMetadata
+            - MsgSubmitProposalGroup
+            - MsgWithdrawProposal
+            - MsgVoteGroup
+            - MsgExecGroup
+            - MsgLeaveGroup
+            - MsgSoftwareUpgrade
+            - MsgCancelUpgrade
+            - MsgRegisterInterchainAccount
+            - MsgSendTx
+            - MsgRegisterPayee
+            - MsgRegisterCounterpartyPayee
+            - MsgPayPacketFee
+            - MsgPayPacketFeeAsync
+            - MsgTransfer
+            - MsgCreateClient
+            - MsgUpdateClient
+            - MsgUpgradeClient
+            - MsgSubmitMisbehaviour
+            - MsgRecoverClient
+            - MsgIBCSoftwareUpgrade
+            - MsgUpdateParams
+            - MsgConnectionOpenInit
+            - MsgConnectionOpenTry
+            - MsgConnectionOpenAck
+            - MsgConnectionOpenConfirm
+            - MsgChannelOpenInit
+            - MsgChannelOpenTry
+            - MsgChannelOpenAck
+            - MsgChannelOpenConfirm
+            - MsgChannelCloseInit
+            - MsgChannelCloseConfirm
+            - MsgRecvPacket
+            - MsgTimeout
+            - MsgTimeoutOnClose
+            - MsgAcknowledgement
+            - MsgSignalVersion
+            - MsgTryUpgrade
+            - MsgCreateMailbox
+            - MsgProcessMessage
+            - MsgSetMailbox
+            - MsgCreateCollateralToken
+            - MsgCreateSyntheticToken
+            - MsgSetToken
+            - MsgEnrollRemoteRouter
+            - MsgUnrollRemoteRouter
+            - MsgRemoteTransfer
+            - MsgUpdateMinfeeParams
+            - MsgCreateIgp
+            - MsgSetIgpOwner
+            - MsgSetDestinationGasConfig
+            - MsgPayForGas
+            - MsgClaim
+            - MsgCreateMerkleTreeHook
+            - MsgCreateNoopHook
+            - MsgCreateMessageIdMultisigIsm
+            - MsgCreateMerkleRootMultisigIsm
+            - MsgCreateNoopIsm
+            - MsgAnnounceValidator
+            - MsgCreateRoutingIsm
+            - MsgSetRoutingIsmDomain
+            - MsgRemoveRoutingIsmDomain
+            - MsgUpdateRoutingIsmOwner
+            - MsgUpdateBlobParams
+            - MsgPruneExpiredGrants
+            - MsgSetSendEnabled
+            - MsgAuthorizeCircuitBreaker
+            - MsgResetCircuitBreaker
+            - MsgTripCircuitBreaker
+            - MsgModuleQuerySafe
+            - MsgForward
+            - MsgCreateInterchainSecurityModule
+            - MsgUpdateInterchainSecurityModule
+            - MsgSubmitMessages
+            - MsgDepositToEscrow
+            - MsgRequestWithdrawal
+            - MsgPayForFibre
+            - MsgPaymentPromiseTimeout
+            - MsgUpdateFibreParams
+            - MsgSetFibreProviderInfo
+            - MsgCancelProposal
+            type: string
+          type: array
+        style: form
       - description: Time from in unix timestamp
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Block number
         in: query
         name: height
         schema:
-          minimum: 1
+          format: int64
+          minimum: 0
           type: integer
       - description: If true join messages
         in: query
         name: messages
         schema:
           type: boolean
+      - description: Last entity id which is used for cursor pagination
+        in: query
+        name: cursor
+        schema:
+          format: int64
+          minimum: 1
+          type: integer
       responses:
         "200":
           content:
@@ -6357,6 +6652,7 @@ paths:
           content:
             application/json:
               schema:
+                format: int64
                 type: integer
           description: OK
         "500":
@@ -6386,7 +6682,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Sort order
         in: query
@@ -6463,7 +6759,8 @@ paths:
   /tx/{hash}/blobs:
     get:
       description: Returns a paginated list of blobs submitted via the PayForBlobs
-        message in the given transaction. Supports sorting by time or blob size.
+        or PayForFibre message in the given transaction. Supports sorting by time
+        or blob size.
       operationId: list-transaction-blobs
       parameters:
       - description: Transaction hash in hexadecimal
@@ -6485,7 +6782,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: "Sort order. Default: desc"
         in: query
@@ -6502,6 +6799,14 @@ paths:
           enum:
           - time
           - size
+          type: string
+      - description: Blob source. If it's empty both sources are returned
+        in: query
+        name: source
+        schema:
+          enum:
+          - pfb
+          - fibre
           type: string
       responses:
         "200":
@@ -6546,6 +6851,7 @@ paths:
           content:
             application/json:
               schema:
+                format: int64
                 type: integer
           description: OK
         "400":
@@ -6588,7 +6894,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -6639,7 +6945,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -6695,6 +7001,15 @@ paths:
         schema:
           minimum: 0
           type: integer
+      - description: Validator status
+        in: query
+        name: status
+        schema:
+          enum:
+          - active
+          - not_active
+          - jailed
+          type: string
       responses:
         "200":
           content:
@@ -6792,6 +7107,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           type: integer
       responses:
         "200":
@@ -6828,6 +7144,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           type: integer
       - description: Count of requested entities
         in: query
@@ -6840,7 +7157,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -6866,18 +7183,19 @@ paths:
       summary: Get blocks which was proposed by validator
       tags:
       - validator
-  /validators/{id}/delegators:
+  /validators/{id}/bond_updates:
     get:
-      description: "Returns a paginated list of delegators staking with this validator,\
-        \ including their delegated amounts. Pass show_zero=true to include delegators\
-        \ with zero balance."
-      operationId: validator-delegators
+      description: Returns a paginated history of validator's voting power changes
+        taken from validator_updates of block results. Power 0 means the validator
+        left the active set.
+      operationId: validator-bond-updates
       parameters:
       - description: Internal validator id
         in: path
         name: id
         required: true
         schema:
+          format: int64
           type: integer
       - description: Count of requested entities
         in: query
@@ -6890,7 +7208,67 @@ paths:
         in: query
         name: offset
         schema:
+          minimum: 0
+          type: integer
+      - description: Sort order by time
+        in: query
+        name: sort
+        schema:
+          default: asc
+          enum:
+          - asc
+          - desc
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/responses.BondUpdate"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler.Error"
+          description: Internal Server Error
+      summary: Get validator's bond updates
+      tags:
+      - validator
+  /validators/{id}/delegators:
+    get:
+      description: "Returns a paginated list of delegators staking with this validator,\
+        \ including their delegated amounts. Pass show_zero=true to include delegators\
+        \ with zero balance."
+      operationId: validator-delegators
+      parameters:
+      - description: Internal validator id
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: Count of requested entities
+        in: query
+        name: limit
+        schema:
+          maximum: 100
           minimum: 1
+          type: integer
+      - description: Offset
+        in: query
+        name: offset
+        schema:
+          minimum: 0
           type: integer
       - description: Show zero delegations
         in: query
@@ -6932,6 +7310,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           type: integer
       - description: Count of requested entities
         in: query
@@ -6944,7 +7323,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -6981,6 +7360,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           type: integer
       - description: Count of requested entities
         in: query
@@ -6993,7 +7373,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       - description: Sort order
         in: query
@@ -7007,12 +7387,14 @@ paths:
         in: query
         name: from
         schema:
+          format: int64
           minimum: 1
           type: integer
       - description: Time to in unix timestamp
         in: query
         name: to
         schema:
+          format: int64
           minimum: 1
           type: integer
       responses:
@@ -7050,6 +7432,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           type: integer
       responses:
         "200":
@@ -7084,6 +7467,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           type: integer
       - description: Count of requested blocks
         in: query
@@ -7128,6 +7512,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           type: integer
       - description: Count of requested entities
         in: query
@@ -7140,7 +7525,7 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
@@ -7177,6 +7562,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           type: integer
       - description: Count of requested entities
         in: query
@@ -7189,14 +7575,16 @@ paths:
         in: query
         name: offset
         schema:
-          minimum: 1
+          minimum: 0
           type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/responses.VestingPeriod"
+                items:
+                  $ref: "#/components/schemas/responses.VestingPeriod"
+                type: array
           description: OK
         "400":
           content:
@@ -7300,7 +7688,36 @@ paths:
             }
         }
         ```
+
+        ### Errors
+
+        If an incoming message can not be handled (malformed payload, unknown method or unknown channel), the server replies with a notification in the `error` channel. The connection stays open. Internal error details are never exposed; only a stable error code and a generic message are sent.
+
+        ```json
+        {
+            "channel": "error",
+            "body": {
+                "code": 2,
+                "message": "unknown method"
+            }
+        }
+        ```
+
+        Supported error codes:
+
+        | Code | Message           | Description                                                          |
+        |------|-------------------|---------------------------------------------------------------------|
+        | 1    | `invalid message` | The message could not be parsed (malformed JSON or invalid payload). |
+        | 2    | `unknown method`  | The `method` field is not `subscribe` or `unsubscribe`.             |
+        | 3    | `unknown channel` | The requested channel is not one of `head`, `blocks`, `gas_price`.  |
       operationId: websocket
+      responses:
+        "101":
+          content: {}
+          description: "Switching Protocols: connection is upgraded to websocket"
+        "500":
+          content: {}
+          description: Too many websocket connections from this IP or upgrade failed
       summary: Websocket API
       tags:
       - websocket
@@ -7357,18 +7774,21 @@ components:
           $ref: "#/components/schemas/responses.Celestial"
         first_height:
           example: 100
+          format: int64
           type: integer
         hash:
           example: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
           type: string
         id:
           example: 321
+          format: int64
           type: integer
         is_forwarding:
           example: true
           type: boolean
         last_height:
           example: 100
+          format: int64
           type: integer
         name:
           example: bonded_tokens_pool
@@ -7432,6 +7852,7 @@ components:
         id: 200
         namespace:
           blobs_count: 10000
+          fibre_size: 12345
           hash: U3dhZ2dlciByb2Nrcw==
           id: 321
           last_height: 100
@@ -7439,9 +7860,10 @@ components:
           name: name
           namespace_id: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
           pfb_count: 12
+          pff_count: 10000
           reserved: true
           size: 12345
-          version: 0
+          version: 1
         rollup:
           id: 321
           logo: https://some_link.com/image.png
@@ -7456,6 +7878,7 @@ components:
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         size: 10
+        source: fibre
         time: 2023-07-04T03:10:57Z
         tx:
           codespace: sdk
@@ -7472,8 +7895,7 @@ components:
           - MsgSend
           - MsgUnjail
           messages:
-          - data:
-              key: "{}"
+          - data: "{}"
             height: 100
             id: 321
             position: 2
@@ -7482,8 +7904,7 @@ components:
             tx: null
             tx_id: 11
             type: MsgCreatePeriodicVestingAccount
-          - data:
-              key: "{}"
+          - data: "{}"
             height: 100
             id: 321
             position: 2
@@ -7521,11 +7942,11 @@ components:
           type: string
         height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         id:
           example: 200
-          format: integer
+          format: int64
           type: integer
         namespace:
           $ref: "#/components/schemas/responses.Namespace"
@@ -7539,14 +7960,39 @@ components:
           $ref: "#/components/schemas/responses.ShortAddress"
         size:
           example: 10
-          format: integer
+          format: int64
           type: integer
+        source:
+          example: fibre
+          format: string
+          type: string
         time:
           example: 2023-07-04T03:10:57Z
           format: date-time
           type: string
         tx:
           $ref: "#/components/schemas/responses.Tx"
+      type: object
+    responses.BlobProof:
+      example:
+        end: 16
+        nodes:
+        - nodes
+        - nodes
+        start: 0
+      properties:
+        end:
+          example: 16
+          format: integer
+          type: integer
+        nodes:
+          items:
+            type: string
+          type: array
+        start:
+          example: 0
+          format: integer
+          type: integer
       type: object
     responses.Block:
       example:
@@ -7584,7 +8030,7 @@ components:
           square_size: 16
           supply_change: "8635234"
           tx_count: 12
-        time: 2023-07-04T03:10:57+00:00
+        time: 2023-07-04T03:10:57Z
         validators_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
         version_app: "1"
         version_block: "11"
@@ -7606,9 +8052,11 @@ components:
           type: string
         height:
           example: 100
+          format: int64
           type: integer
         id:
           example: 321
+          format: int64
           type: integer
         last_commit_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
@@ -7634,7 +8082,8 @@ components:
         stats:
           $ref: "#/components/schemas/responses.BlockStats"
         time:
-          example: 2023-07-04T03:10:57+00:00
+          example: 2023-07-04T03:10:57Z
+          format: date-time
           type: string
         validators_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
@@ -7693,18 +8142,22 @@ components:
           type: integer
         blobs_size:
           example: 12354
+          format: int64
           type: integer
         block_time:
           example: 12354
+          format: int64
           type: integer
         bytes_in_block:
           example: 1234
+          format: int64
           type: integer
         commissions:
           example: "123133"
           type: string
         events_count:
           example: 18
+          format: int64
           type: integer
         fee:
           example: "28347628346"
@@ -7714,9 +8167,11 @@ components:
           type: string
         gas_limit:
           example: 1234
+          format: int64
           type: integer
         gas_used:
           example: 1234
+          format: int64
           type: integer
         inflation_rate:
           example: "0.0800000"
@@ -7726,13 +8181,33 @@ components:
           type: string
         square_size:
           example: 16
+          format: int64
           type: integer
         supply_change:
           example: "8635234"
           type: string
         tx_count:
           example: 12
+          format: int64
           type: integer
+      type: object
+    responses.BondUpdate:
+      example:
+        height: 100
+        power: "123123"
+        time: 2023-07-04T03:10:57Z
+      properties:
+        height:
+          example: 100
+          format: int64
+          type: integer
+        power:
+          example: "123123"
+          type: string
+        time:
+          example: 2023-07-04T03:10:57Z
+          format: date-time
+          type: string
       type: object
     responses.BusiestChannel:
       example:
@@ -7750,7 +8225,7 @@ components:
           type: string
         transfers_count:
           example: 100
-          format: integer
+          format: int64
           type: integer
       type: object
     responses.Celestial:
@@ -7810,19 +8285,19 @@ components:
       properties:
         blobs_size_24h:
           example: 0.1234
-          format: float
+          format: double
           type: number
         bytes_in_block_24h:
           example: 0.1234
-          format: float
+          format: double
           type: number
         fee_24h:
           example: 0.1234
-          format: float
+          format: double
           type: number
         tx_count_24h:
           example: 0.1234
-          format: float
+          format: double
           type: number
       type: object
     responses.Constants:
@@ -7834,8 +8309,8 @@ components:
           name: TIA
           symbol: TIA
           units:
-          - 0
-          - 0
+          - "{}"
+          - "{}"
           uri: https://example.com
         - base: utia
           description: Some description
@@ -7843,8 +8318,8 @@ components:
           name: TIA
           symbol: TIA
           units:
-          - 0
-          - 0
+          - "{}"
+          - "{}"
           uri: https://example.com
         module:
           key: null
@@ -7889,16 +8364,16 @@ components:
     responses.CountItem:
       example:
         name: test
-        value: "17632"
+        value: 17632
       properties:
         name:
           example: test
           format: string
           type: string
         value:
-          example: "17632"
-          format: string
-          type: string
+          example: 17632
+          format: int64
+          type: integer
       type: object
     responses.Delegation:
       example:
@@ -7931,8 +8406,8 @@ components:
         name: TIA
         symbol: TIA
         units:
-        - 0
-        - 0
+        - "{}"
+        - "{}"
         uri: https://example.com
       properties:
         base:
@@ -7952,7 +8427,8 @@ components:
           type: string
         units:
           items:
-            type: integer
+            properties: {}
+            type: object
           type: array
         uri:
           example: https://example.com
@@ -7973,22 +8449,6 @@ components:
           type: string
       type: object
     responses.DomainMetadata:
-      example:
-        block_explorers:
-        - api_url: https://api.scan.url.io
-          family: etherscan
-          name: Block explorer
-          url: https://scan.url.io
-        - api_url: https://api.scan.url.io
-          family: etherscan
-          name: Block explorer
-          url: https://scan.url.io
-        domain: 1488
-        name: name
-        native_token:
-          decimals: 18
-          name: Ether
-          symbol: ETH
       properties:
         block_explorers:
           items:
@@ -7996,6 +8456,7 @@ components:
           type: array
         domain:
           example: 1488
+          format: int64
           type: integer
         name:
           example: name
@@ -8005,6 +8466,9 @@ components:
       type: object
     responses.Enums:
       example:
+        blob_source:
+        - blob_source
+        - blob_source
         categories:
         - categories
         - categories
@@ -8051,6 +8515,10 @@ components:
         - vote_type
         - vote_type
       properties:
+        blob_source:
+          items:
+            type: string
+          type: array
         categories:
           items:
             type: string
@@ -8153,6 +8621,19 @@ components:
           example: commission
           type: object
       type: object
+    responses.Fibre:
+      example:
+        height: 100
+        host: 100.100.100.100:12345
+      properties:
+        height:
+          example: 100
+          format: int64
+          type: integer
+        host:
+          example: 100.100.100.100:12345
+          type: string
+      type: object
     responses.Forwarding:
       example:
         amount: "1000000"
@@ -8199,12 +8680,15 @@ components:
               decimals: 18
               name: Ether
               symbol: ETH
+          chain_id: osmosis-1
+          channel_id: channel-2
           denom: utia
           from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
           height: 100
           received: "123445"
           time: 2023-07-04T03:10:57Z
           tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+          type: ibc
         - chain:
             block_explorers:
             - api_url: https://api.scan.url.io
@@ -8220,13 +8704,16 @@ components:
               decimals: 18
               name: Ether
               symbol: ETH
+          chain_id: osmosis-1
+          channel_id: channel-2
           denom: utia
           from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
           height: 100
           received: "123445"
           time: 2023-07-04T03:10:57Z
           tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-        message_id: 0xac8852bd411c0c88cdadfe9b2386b2bcd702f35479c25a4b2d2cc3fb49d095d4
+          type: ibc
+        message_id: ₀xac8852bd411c₀c88cdadfe9b2386b2bcd7₀2f35479c25a4b2d2cc3fb49d₀95d4
         time: 2023-07-04T03:10:57Z
         token_id: 12652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF345
         tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
@@ -8239,11 +8726,11 @@ components:
           $ref: "#/components/schemas/responses.ChainMetadata"
         denom:
           example: hyperlane/0x726f757465725f61707000000000000000000000000000020000000000000024
-          format: string
+          format: hex
           type: string
         dest_address:
           example: 0x000000000000000000000000d5e85e86fc692cedad6d6992f1f0ccf273e39913
-          format: binary
+          format: hex
           type: string
         dest_domain:
           example: 11155111
@@ -8264,8 +8751,8 @@ components:
             $ref: "#/components/schemas/responses.ForwardingInput"
           type: array
         message_id:
-          example: 0xac8852bd411c0c88cdadfe9b2386b2bcd702f35479c25a4b2d2cc3fb49d095d4
-          format: string
+          example: ₀xac8852bd411c₀c88cdadfe9b2386b2bcd7₀2f35479c25a4b2d2cc3fb49d₀95d4
+          format: hex
           type: string
         time:
           example: 2023-07-04T03:10:57Z
@@ -8273,11 +8760,11 @@ components:
           type: string
         token_id:
           example: 12652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF345
-          format: string
+          format: hex
           type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
       type: object
     responses.ForwardingInput:
@@ -8297,15 +8784,26 @@ components:
             decimals: 18
             name: Ether
             symbol: ETH
+        chain_id: osmosis-1
+        channel_id: channel-2
         denom: utia
         from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
         height: 100
         received: "123445"
         time: 2023-07-04T03:10:57Z
         tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        type: ibc
       properties:
         chain:
           $ref: "#/components/schemas/responses.ChainMetadata"
+        chain_id:
+          example: osmosis-1
+          format: string
+          type: string
+        channel_id:
+          example: channel-2
+          format: string
+          type: string
         denom:
           example: utia
           format: string
@@ -8328,7 +8826,15 @@ components:
           type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
+          type: string
+        type:
+          enum:
+          - send
+          - hyperlane
+          - ibc
+          example: ibc
+          format: string
           type: string
       type: object
     responses.GasPayment:
@@ -8347,7 +8853,7 @@ components:
           type: string
         igp_id:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
       type: object
     responses.GasPrice:
@@ -8372,7 +8878,7 @@ components:
     responses.Grant:
       example:
         authorization: /cosmos.staking.v1beta1.MsgDelegate
-        expiration: 2023-07-04T03:10:57+00:00
+        expiration: 2023-07-04T03:10:57Z
         grantee:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -8388,17 +8894,17 @@ components:
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         height: 123123
-        params:
-          key: "{}"
+        params: "{}"
         revoke_height: 123123
         revoked: true
-        time: 2023-07-04T03:10:57+00:00
+        time: 2023-07-04T03:10:57Z
       properties:
         authorization:
           example: /cosmos.staking.v1beta1.MsgDelegate
           type: string
         expiration:
-          example: 2023-07-04T03:10:57+00:00
+          example: 2023-07-04T03:10:57Z
+          format: date-time
           type: string
         grantee:
           $ref: "#/components/schemas/responses.ShortAddress"
@@ -8406,19 +8912,21 @@ components:
           $ref: "#/components/schemas/responses.ShortAddress"
         height:
           example: 123123
+          format: int64
           type: integer
         params:
-          additionalProperties:
-            type: object
+          properties: {}
           type: object
         revoke_height:
           example: 123123
+          format: int64
           type: integer
         revoked:
           example: true
           type: boolean
         time:
-          example: 2023-07-04T03:10:57+00:00
+          example: 2023-07-04T03:10:57Z
+          format: date-time
           type: string
       type: object
     responses.HistogramItem:
@@ -8464,11 +8972,11 @@ components:
           $ref: "#/components/schemas/responses.ChainMetadata"
         domain_id:
           example: 123456
-          format: integer
+          format: int64
           type: integer
         transfers_count:
           example: 123445
-          format: integer
+          format: int64
           type: integer
       type: object
     responses.HyperlaneCounterparty:
@@ -8575,7 +9083,7 @@ components:
           type: integer
         igp_id:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         owner:
           $ref: "#/components/schemas/responses.ShortAddress"
@@ -8646,11 +9154,11 @@ components:
       properties:
         default_hook:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         default_ism:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         domain:
           example: 100
@@ -8670,7 +9178,7 @@ components:
           type: integer
         mailbox:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         owner:
           $ref: "#/components/schemas/responses.ShortAddress"
@@ -8680,7 +9188,7 @@ components:
           type: integer
         required_hook:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         sent_messages:
           example: 100
@@ -8692,7 +9200,7 @@ components:
           type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
       type: object
     responses.HyperlaneRemoteDomain:
@@ -8757,7 +9265,7 @@ components:
           type: integer
         mailbox:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         owner:
           $ref: "#/components/schemas/responses.ShortAddress"
@@ -8783,11 +9291,11 @@ components:
           type: string
         token_id:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         type:
           example: collateral
@@ -8830,6 +9338,7 @@ components:
         height: 100
         id: 321
         mailbox: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
+        message_id: 652452a670018d629cc116e510ba88c1cabe061336661b1f3d206d248bd558af
         metadata: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
         nonce: 10
         received: "123445"
@@ -8870,7 +9379,11 @@ components:
           type: integer
         mailbox:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
+          type: string
+        message_id:
+          example: 652452a670018d629cc116e510ba88c1cabe061336661b1f3d206d248bd558af
+          format: hex
           type: string
         metadata:
           example: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
@@ -8892,11 +9405,11 @@ components:
           type: string
         token_id:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         type:
           example: collateral
@@ -8963,11 +9476,11 @@ components:
           $ref: "#/components/schemas/responses.ShortIbcClient"
         confirmation_height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         confirmation_tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         confirmed_at:
           example: 2023-07-04T03:10:57Z
@@ -8991,13 +9504,13 @@ components:
           type: string
         created_tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         creator:
           $ref: "#/components/schemas/responses.ShortAddress"
         height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         id:
           example: channel-1
@@ -9053,7 +9566,7 @@ components:
           type: string
         connection_count:
           example: 100
-          format: integer
+          format: int64
           type: integer
         created_at:
           example: 2023-07-04T03:10:57Z
@@ -9063,15 +9576,15 @@ components:
           $ref: "#/components/schemas/responses.ShortAddress"
         frozen_revision_height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         frozen_revision_number:
           example: 100
-          format: integer
+          format: int64
           type: integer
         height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         id:
           example: client-1
@@ -9079,31 +9592,31 @@ components:
           type: string
         latest_revision_height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         latest_revision_number:
           example: 100
-          format: integer
+          format: int64
           type: integer
         max_clock_drift:
           example: 100
-          format: integer
+          format: int64
           type: integer
         trust_level_denominator:
           example: 100
-          format: integer
+          format: int64
           type: integer
         trust_level_numerator:
           example: 100
-          format: integer
+          format: int64
           type: integer
         trusting_period:
           example: 100
-          format: integer
+          format: int64
           type: integer
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         type:
           example: client
@@ -9111,7 +9624,7 @@ components:
           type: string
         unbonding_period:
           example: 100
-          format: integer
+          format: int64
           type: integer
         updated_at:
           example: 2023-07-04T03:10:57Z
@@ -9137,7 +9650,7 @@ components:
       properties:
         channels_count:
           example: 100
-          format: integer
+          format: int64
           type: integer
         client:
           $ref: "#/components/schemas/responses.ShortIbcClient"
@@ -9147,11 +9660,11 @@ components:
           type: string
         connected_height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         connected_tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         counterparty_client_id:
           example: client-1
@@ -9167,11 +9680,11 @@ components:
           type: string
         created_tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         id:
           example: connection-1
@@ -9280,7 +9793,7 @@ components:
           type: string
         chain_id:
           example: osmosis-1
-          format: binary
+          format: string
           type: string
         channel_id:
           example: channel-1
@@ -9296,11 +9809,11 @@ components:
           type: string
         height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         id:
           example: 123456
-          format: integer
+          format: int64
           type: integer
         memo:
           example: memo
@@ -9318,7 +9831,7 @@ components:
           $ref: "#/components/schemas/responses.ShortAddress"
         sequence:
           example: 123456
-          format: integer
+          format: int64
           type: integer
         time:
           example: 2023-07-04T03:10:57Z
@@ -9330,11 +9843,11 @@ components:
           type: string
         timeout_height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
       type: object
     responses.Jail:
@@ -9342,7 +9855,7 @@ components:
         burned: "10000000000"
         height: 100
         reason: double_sign
-        time: 2023-07-04T03:10:57+00:00
+        time: 2023-07-04T03:10:57Z
         validator:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
@@ -9353,12 +9866,14 @@ components:
           type: string
         height:
           example: 100
+          format: int64
           type: integer
         reason:
           example: double_sign
           type: string
         time:
-          example: 2023-07-04T03:10:57+00:00
+          example: 2023-07-04T03:10:57Z
+          format: date-time
           type: string
         validator:
           $ref: "#/components/schemas/responses.ShortValidator"
@@ -9379,6 +9894,7 @@ components:
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         size: 10
+        source: fibre
         time: 2023-07-04T03:10:57Z
         tx_hash: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
       properties:
@@ -9392,11 +9908,11 @@ components:
           type: string
         height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         id:
           example: 200
-          format: integer
+          format: int64
           type: integer
         namespace:
           example: AAAAAAAAAAAAAAAAAAAAAAAAAAAAs2bWWU6FOB0=
@@ -9410,21 +9926,24 @@ components:
           $ref: "#/components/schemas/responses.ShortAddress"
         size:
           example: 10
-          format: integer
+          format: int64
           type: integer
+        source:
+          example: fibre
+          format: string
+          type: string
         time:
           example: 2023-07-04T03:10:57Z
           format: date-time
           type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
       type: object
     responses.Message:
       example:
-        data:
-          key: "{}"
+        data: "{}"
         height: 100
         id: 321
         position: 2
@@ -9435,8 +9954,7 @@ components:
         type: MsgCreatePeriodicVestingAccount
       properties:
         data:
-          additionalProperties:
-            type: object
+          properties: {}
           type: object
         height:
           example: 100
@@ -9472,8 +9990,7 @@ components:
       type: object
     responses.MessageForAddress:
       example:
-        data:
-          key: "{}"
+        data: "{}"
         height: 100
         id: 321
         invocation_type: fromAddress
@@ -9492,8 +10009,7 @@ components:
         type: MsgCreatePeriodicVestingAccount
       properties:
         data:
-          additionalProperties:
-            type: object
+          properties: {}
           type: object
         height:
           example: 100
@@ -9552,9 +10068,11 @@ components:
       properties:
         applied_proposals_count:
           example: 321
+          format: int64
           type: integer
         block_missed_count:
           example: 321
+          format: int64
           type: integer
         block_missed_metric:
           example: "1"
@@ -9568,6 +10086,7 @@ components:
           type: string
         id:
           example: 321
+          format: int64
           type: integer
         max_change_rate:
           example: "0.01"
@@ -9592,6 +10111,7 @@ components:
           type: string
         votes_count:
           example: 321
+          format: int64
           type: integer
         votes_metric:
           example: "1"
@@ -9600,6 +10120,7 @@ components:
     responses.Namespace:
       example:
         blobs_count: 10000
+        fibre_size: 12345
         hash: U3dhZ2dlciByb2Nrcw==
         id: 321
         last_height: 100
@@ -9607,13 +10128,18 @@ components:
         name: name
         namespace_id: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
         pfb_count: 12
+        pff_count: 10000
         reserved: true
         size: 12345
-        version: 0
+        version: 1
       properties:
         blobs_count:
           example: 10000
-          format: integer
+          format: int64
+          type: integer
+        fibre_size:
+          example: 12345
+          format: int64
           type: integer
         hash:
           example: U3dhZ2dlciByb2Nrcw==
@@ -9621,7 +10147,7 @@ components:
           type: string
         id:
           example: 321
-          format: integer
+          format: int64
           type: integer
         last_height:
           example: 100
@@ -9637,20 +10163,25 @@ components:
           type: string
         namespace_id:
           example: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
-          format: binary
+          format: hex
           type: string
         pfb_count:
           example: 12
-          format: integer
+          format: int64
+          type: integer
+        pff_count:
+          example: 10000
+          format: int64
           type: integer
         reserved:
           example: true
           type: boolean
         size:
           example: 12345
-          format: integer
+          format: int64
           type: integer
         version:
+          example: 1
           format: byte
           type: integer
       type: object
@@ -9672,12 +10203,12 @@ components:
       - DefaultNamespace
     responses.NamespaceMessage:
       example:
-        data:
-          key: "{}"
+        data: "{}"
         height: 100
         id: 321
         namespace:
           blobs_count: 10000
+          fibre_size: 12345
           hash: U3dhZ2dlciByb2Nrcw==
           id: 321
           last_height: 100
@@ -9685,10 +10216,12 @@ components:
           name: name
           namespace_id: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
           pfb_count: 12
+          pff_count: 10000
           reserved: true
           size: 12345
-          version: 0
+          version: 1
         position: 2
+        source: fibre
         time: 2023-07-04T03:10:57Z
         tx:
           codespace: sdk
@@ -9705,8 +10238,7 @@ components:
           - MsgSend
           - MsgUnjail
           messages:
-          - data:
-              key: "{}"
+          - data: "{}"
             height: 100
             id: 321
             position: 2
@@ -9715,8 +10247,7 @@ components:
             tx: null
             tx_id: 11
             type: MsgCreatePeriodicVestingAccount
-          - data:
-              key: "{}"
+          - data: "{}"
             height: 100
             id: 321
             position: 2
@@ -9746,8 +10277,7 @@ components:
         type: MsgCreatePeriodicVestingAccount
       properties:
         data:
-          additionalProperties:
-            type: object
+          properties: {}
           type: object
         height:
           example: 100
@@ -9763,6 +10293,10 @@ components:
           example: 2
           format: int64
           type: integer
+        source:
+          example: fibre
+          format: string
+          type: string
         time:
           example: 2023-07-04T03:10:57Z
           format: date-time
@@ -9792,8 +10326,8 @@ components:
       example:
         name: "00112233"
         namespace_id: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
-        size: 1283518.0
-        version: 0
+        size: 1283518
+        version: 1
       properties:
         name:
           example: "00112233"
@@ -9801,13 +10335,14 @@ components:
           type: string
         namespace_id:
           example: 4723ce10b187716adfc55ff7e6d9179c226e6b5440b02577cca49d02
-          format: binary
+          format: hex
           type: string
         size:
-          example: 1283518.0
-          format: integer
-          type: number
+          example: 1283518
+          format: int64
+          type: integer
         version:
+          example: 1
           format: byte
           type: integer
       type: object
@@ -9838,6 +10373,7 @@ components:
           type: array
         width:
           example: 2
+          format: int64
           type: integer
       type: object
     responses.ODSItem:
@@ -9872,6 +10408,7 @@ components:
         description: Some proposal description
         end_time: 2023-07-04T03:10:57Z
         error: Some error text
+        expedited: true
         height: 100
         id: 321
         metadata: metadata
@@ -9907,12 +10444,15 @@ components:
       properties:
         abstain:
           example: 1234
+          format: int64
           type: integer
         abstain_addrs:
           example: 1234
+          format: int64
           type: integer
         abstain_vals:
           example: 1234
+          format: int64
           type: integer
         abstain_voting_power:
           example: "1000000000"
@@ -9946,6 +10486,9 @@ components:
           example: Some error text
           format: string
           type: string
+        expedited:
+          example: true
+          type: boolean
         height:
           example: 100
           format: int64
@@ -9964,12 +10507,15 @@ components:
           type: string
         "no":
           example: 1234
+          format: int64
           type: integer
         no_addrs:
           example: 1234
+          format: int64
           type: integer
         no_vals:
           example: 1234
+          format: int64
           type: integer
         no_voting_power:
           example: "1000000000"
@@ -9977,12 +10523,15 @@ components:
           type: string
         no_with_veto:
           example: 1234
+          format: int64
           type: integer
         no_with_veto_addrs:
           example: 1234
+          format: int64
           type: integer
         no_with_veto_vals:
           example: 1234
+          format: int64
           type: integer
         no_with_veto_voting_power:
           example: "1000000000"
@@ -10020,6 +10569,7 @@ components:
           type: string
         votes_count:
           example: 12354
+          format: int64
           type: integer
         voting_power:
           example: "1000000000"
@@ -10027,12 +10577,15 @@ components:
           type: string
         "yes":
           example: 1234
+          format: int64
           type: integer
         yes_addrs:
           example: 1234
+          format: int64
           type: integer
         yes_vals:
           example: 1234
+          format: int64
           type: integer
         yes_voting_power:
           example: "1000000000"
@@ -10042,7 +10595,7 @@ components:
     responses.Redelegation:
       example:
         amount: "0.1"
-        completion_time: 2023-07-04T03:10:57+00:00
+        completion_time: 2023-07-04T03:10:57Z
         delegator:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -10059,13 +10612,14 @@ components:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
           moniker: Easy 2 Stake
-        time: 2023-07-04T03:10:57+00:00
+        time: 2023-07-04T03:10:57Z
       properties:
         amount:
           example: "0.1"
           type: string
         completion_time:
-          example: 2023-07-04T03:10:57+00:00
+          example: 2023-07-04T03:10:57Z
+          format: date-time
           type: string
         delegator:
           $ref: "#/components/schemas/responses.ShortAddress"
@@ -10073,11 +10627,13 @@ components:
           $ref: "#/components/schemas/responses.ShortValidator"
         height:
           example: 100
+          format: int64
           type: integer
         source:
           $ref: "#/components/schemas/responses.ShortValidator"
         time:
-          example: 2023-07-04T03:10:57+00:00
+          example: 2023-07-04T03:10:57Z
+          format: date-time
           type: string
       type: object
     responses.Relayer:
@@ -10174,7 +10730,7 @@ components:
           type: string
         id:
           example: 321
-          format: integer
+          format: int64
           type: integer
         l2_beat:
           example: https://github.com/account
@@ -10239,7 +10795,7 @@ components:
       properties:
         blobs_count:
           example: 123
-          format: integer
+          format: int64
           type: integer
         fee:
           example: "123"
@@ -10255,7 +10811,7 @@ components:
           type: string
         size:
           example: 123
-          format: integer
+          format: int64
           type: integer
       type: object
     responses.RollupAllSeriesResponse:
@@ -10285,26 +10841,26 @@ components:
     responses.RollupGroupedStats:
       example:
         blobs_count: 2
-        fee: "123.456789"
+        fee: 123.456789
         group: group
-        size: 1000
+        size: 1000.0
       properties:
         blobs_count:
           example: 2
-          format: integer
+          format: int64
           type: integer
         fee:
-          example: "123.456789"
-          format: string
-          type: string
+          example: 123.456789
+          format: double
+          type: number
         group:
           example: group
           format: string
           type: string
         size:
-          example: 1000
-          format: integer
-          type: integer
+          example: 1000.0
+          format: double
+          type: number
       type: object
     responses.RollupProvider:
       example:
@@ -10323,7 +10879,7 @@ components:
     responses.RollupStats24h:
       example:
         blobs_count: 123
-        fee: 123
+        fee: 123.0
         id: 321
         logo: https://some_link.com/image.png
         name: Rollup name
@@ -10331,15 +10887,15 @@ components:
       properties:
         blobs_count:
           example: 123
-          format: integer
+          format: int64
           type: integer
         fee:
-          example: 123
-          format: number
-          type: integer
+          example: 123.0
+          format: double
+          type: number
         id:
           example: 321
-          format: integer
+          format: int64
           type: integer
         logo:
           example: https://some_link.com/image.png
@@ -10351,7 +10907,7 @@ components:
           type: string
         size:
           example: 123
-          format: integer
+          format: int64
           type: integer
       type: object
     responses.RollupWithDayStats:
@@ -10367,6 +10923,7 @@ components:
         description: Long rollup description
         explorer: https://explorer.karak.network/
         fee_per_pfb: "100"
+        fibre_blobs_count: 100
         github: https://github.com/account
         id: 321
         l2_beat: https://l2beat.com/scaling/projects/karak
@@ -10375,6 +10932,7 @@ components:
         name: Rollup name
         namespace_count: 100
         pfb_count: 100
+        pff_count: 100
         provider: name
         settled_on: Ethereum
         slug: rollup_slug
@@ -10389,15 +10947,15 @@ components:
       properties:
         avg_size:
           example: 100
-          format: integer
+          format: int64
           type: integer
         blobs_count:
           example: 100
-          format: integer
+          format: int64
           type: integer
         blobs_per_pfb:
           example: 100.0
-          format: float
+          format: double
           type: number
         bridge:
           example: https://github.com/account
@@ -10431,13 +10989,17 @@ components:
           example: "100"
           format: string
           type: string
+        fibre_blobs_count:
+          example: 100
+          format: int64
+          type: integer
         github:
           example: https://github.com/account
           format: string
           type: string
         id:
           example: 321
-          format: integer
+          format: int64
           type: integer
         l2_beat:
           example: https://l2beat.com/scaling/projects/karak
@@ -10457,11 +11019,15 @@ components:
           type: string
         namespace_count:
           example: 100
-          format: integer
+          format: int64
           type: integer
         pfb_count:
           example: 100
-          format: integer
+          format: int64
+          type: integer
+        pff_count:
+          example: 100
+          format: int64
           type: integer
         provider:
           example: name
@@ -10481,7 +11047,7 @@ components:
           type: string
         throughput:
           example: 100
-          format: integer
+          format: int64
           type: integer
         total_fee:
           example: "100"
@@ -10489,7 +11055,7 @@ components:
           type: string
         total_size:
           example: 100
-          format: integer
+          format: int64
           type: integer
         twitter:
           example: https://x.com/account
@@ -10522,6 +11088,7 @@ components:
         explorer: https://explorer.karak.network/
         fee: "123.456789"
         fee_pct: 0.9876
+        fibre_blobs_count: 2
         first_message_time: 2023-07-04T03:10:57Z
         github: https://github.com/account
         id: 321
@@ -10549,11 +11116,11 @@ components:
       properties:
         blobs_count:
           example: 2
-          format: integer
+          format: int64
           type: integer
         blobs_count_pct:
           example: 0.9876
-          format: float
+          format: double
           type: number
         bridge:
           example: https://github.com/account
@@ -10573,7 +11140,7 @@ components:
           type: string
         da_pct:
           example: 0.9876
-          format: float
+          format: double
           type: number
         defi_lama:
           example: Manta
@@ -10593,8 +11160,12 @@ components:
           type: string
         fee_pct:
           example: 0.9876
-          format: float
+          format: double
           type: number
+        fibre_blobs_count:
+          example: 2
+          format: int64
+          type: integer
         first_message_time:
           example: 2023-07-04T03:10:57Z
           format: date-time
@@ -10605,7 +11176,7 @@ components:
           type: string
         id:
           example: 321
-          format: integer
+          format: int64
           type: integer
         is_active:
           example: true
@@ -10641,11 +11212,11 @@ components:
           type: string
         size:
           example: 1000
-          format: integer
+          format: int64
           type: integer
         size_pct:
           example: 0.9876
-          format: float
+          format: double
           type: number
         slug:
           example: rollup_slug
@@ -10738,7 +11309,7 @@ components:
       properties:
         chain_id:
           example: osmosis-1
-          format: binary
+          format: string
           type: string
         id:
           example: client-1
@@ -10782,7 +11353,7 @@ components:
       properties:
         id:
           example: 321
-          format: integer
+          format: int64
           type: integer
         logo:
           example: https://some_link.com/image.png
@@ -10808,6 +11379,7 @@ components:
           type: string
         id:
           example: 321
+          format: int64
           type: integer
         moniker:
           example: Easy 2 Stake
@@ -10840,7 +11412,7 @@ components:
           type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         validator:
           $ref: "#/components/schemas/responses.ShortValidator"
@@ -10860,6 +11432,7 @@ components:
       properties:
         height:
           example: 100
+          format: int64
           type: integer
         signed:
           example: true
@@ -10874,11 +11447,11 @@ components:
       properties:
         avg_size:
           example: 123
-          format: integer
+          format: int64
           type: integer
         count:
           example: 123
-          format: integer
+          format: int64
           type: integer
         name:
           example: Rollup name
@@ -10886,7 +11459,7 @@ components:
           type: string
         size:
           example: 123
-          format: integer
+          format: int64
           type: integer
       type: object
     responses.SquareSizeResponse:
@@ -10979,11 +11552,11 @@ components:
           type: string
         total_ibc_clients:
           example: 312
-          format: string
+          format: int64
           type: integer
         total_namespaces:
           example: 312
-          format: string
+          format: int64
           type: integer
         total_proposals:
           example: 56789
@@ -11014,19 +11587,19 @@ components:
       properties:
         change_last_hour_pct:
           example: 0.275
-          format: float
+          format: double
           type: number
         current:
           example: 0.567
-          format: float
+          format: double
           type: number
         high:
           example: 1.023
-          format: float
+          format: double
           type: number
         low:
           example: 0.123
-          format: float
+          format: double
           type: number
       type: object
     responses.TimeValueItem:
@@ -11080,8 +11653,7 @@ components:
         - MsgSend
         - MsgUnjail
         messages:
-        - data:
-            key: "{}"
+        - data: "{}"
           height: 100
           id: 321
           position: 2
@@ -11090,8 +11662,7 @@ components:
           tx: null
           tx_id: 11
           type: MsgCreatePeriodicVestingAccount
-        - data:
-            key: "{}"
+        - data: "{}"
           height: 100
           id: 321
           position: 2
@@ -11145,7 +11716,7 @@ components:
           type: integer
         hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         height:
           example: 100
@@ -11212,7 +11783,7 @@ components:
           type: string
         hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         message_types:
           example:
@@ -11234,7 +11805,7 @@ components:
     responses.Undelegation:
       example:
         amount: "0.1"
-        completion_time: 2023-07-04T03:10:57+00:00
+        completion_time: 2023-07-04T03:10:57Z
         delegator:
           celestials:
             image_url: https://ipfs.io/ipfs/QmUi269vE25fagqhyMCCTNSoiW6x4LHCwwQb3keSrEXAmC
@@ -11243,7 +11814,7 @@ components:
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         height: 100
-        time: 2023-07-04T03:10:57+00:00
+        time: 2023-07-04T03:10:57Z
         validator:
           cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
           id: 321
@@ -11253,15 +11824,18 @@ components:
           example: "0.1"
           type: string
         completion_time:
-          example: 2023-07-04T03:10:57+00:00
+          example: 2023-07-04T03:10:57Z
+          format: date-time
           type: string
         delegator:
           $ref: "#/components/schemas/responses.ShortAddress"
         height:
           example: 100
+          format: int64
           type: integer
         time:
-          example: 2023-07-04T03:10:57+00:00
+          example: 2023-07-04T03:10:57Z
+          format: date-time
           type: string
         validator:
           $ref: "#/components/schemas/responses.ShortValidator"
@@ -11272,6 +11846,7 @@ components:
         applied_at_level: 100
         end_height: 100
         end_time: 2025-07-04T03:10:57Z
+        expected_upgrade_height: 100
         height: 100
         msg_id: 2
         signals_count: 2
@@ -11305,6 +11880,10 @@ components:
           example: 2025-07-04T03:10:57Z
           format: date-time
           type: string
+        expected_upgrade_height:
+          example: 100
+          format: int64
+          type: integer
         height:
           example: 100
           format: int64
@@ -11329,7 +11908,7 @@ components:
           type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         version:
           example: 1
@@ -11353,6 +11932,7 @@ components:
             primary: true
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
+        bond_updates_count: 1
         commissions: "1"
         cons_address: E641C7A2C964833E556AEF934FBF166B712874B6
         contacts: security@0xfury.com
@@ -11365,6 +11945,9 @@ components:
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         details: Some long text about validator
+        fibre:
+          height: 100
+          host: 100.100.100.100:12345
         id: 321
         identity: 2C877AC873132C91
         jailed: false
@@ -11376,12 +11959,17 @@ components:
         rate: "0.03"
         rewards: "1"
         stake: "1"
+        status: active
         version: 5
         voting_power: "1"
         website: https://www.easy2stake.com/
       properties:
         address:
           $ref: "#/components/schemas/responses.ShortAddress"
+        bond_updates_count:
+          example: 1
+          format: int64
+          type: integer
         commissions:
           example: "1"
           type: string
@@ -11400,8 +11988,11 @@ components:
         details:
           example: Some long text about validator
           type: string
+        fibre:
+          $ref: "#/components/schemas/responses.Fibre"
         id:
           example: 321
+          format: int64
           type: integer
         identity:
           example: 2C877AC873132C91
@@ -11417,6 +12008,7 @@ components:
           type: string
         messages_count:
           example: 1
+          format: int64
           type: integer
         min_self_delegation:
           example: "1"
@@ -11433,8 +12025,12 @@ components:
         stake:
           example: "1"
           type: string
+        status:
+          example: active
+          type: string
         version:
           example: 5
+          format: int64
           type: integer
         voting_power:
           example: "1"
@@ -11501,15 +12097,15 @@ components:
           type: string
         hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         height:
           example: 100
-          format: integer
+          format: int64
           type: integer
         id:
           example: 12
-          format: integer
+          format: int64
           type: integer
         start_time:
           example: 2023-07-04T03:10:57Z
@@ -11562,7 +12158,7 @@ components:
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         voter_id: 1
-        weight: 12345678
+        weight: "12345678"
       properties:
         deposit_time:
           example: 2023-07-04T03:10:57Z
@@ -11595,9 +12191,9 @@ components:
           format: int64
           type: integer
         weight:
-          example: 12345678
-          format: int64
-          type: integer
+          example: "12345678"
+          format: string
+          type: string
       type: object
     responses.ZkISM:
       example:
@@ -11623,11 +12219,11 @@ components:
           $ref: "#/components/schemas/responses.ShortAddress"
         external_id:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         groth16_vkey:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         height:
           example: 100
@@ -11639,19 +12235,19 @@ components:
           type: integer
         merkle_tree_address:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         state:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         state_membership_vkey:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         state_transition_vkey:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         time:
           example: 2023-07-04T03:10:57Z
@@ -11659,7 +12255,7 @@ components:
           type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
       type: object
     responses.ZkISMMessage:
@@ -11688,13 +12284,13 @@ components:
           type: integer
         message_id:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         signer:
           $ref: "#/components/schemas/responses.ShortAddress"
         state_root:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         time:
           example: 2023-07-04T03:10:57Z
@@ -11702,7 +12298,7 @@ components:
           type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
       type: object
     responses.ZkISMUpdate:
@@ -11730,7 +12326,7 @@ components:
           type: integer
         new_state:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
         signer:
           $ref: "#/components/schemas/responses.ShortAddress"
@@ -11740,7 +12336,7 @@ components:
           type: string
         tx_hash:
           example: 652452A670018D629CC116E510BA88C1CABE061336661B1F3D206D248BD558AF
-          format: binary
+          format: hex
           type: string
       type: object
     types.EventType:
@@ -11836,6 +12432,38 @@ components:
       - celestia.zkism.v1.EventCreateInterchainSecurityModule
       - celestia.zkism.v1.EventUpdateInterchainSecurityModule
       - celestia.zkism.v1.EventSubmitMessages
+      - celestia.fibre.v1.EventDepositToEscrow
+      - celestia.fibre.v1.EventWithdrawFromEscrowRequest
+      - celestia.fibre.v1.EventWithdrawFromEscrowExecuted
+      - celestia.fibre.v1.EventPayForFibre
+      - celestia.fibre.v1.EventPaymentPromiseTimeout
+      - celestia.fibre.v1.EventUpdateFibreParams
+      - celestia.fibre.v1.EventProcessedPaymentPruned
+      - set_fibre_provider_info
+      - client_misbehaviour
+      - upgrade_client
+      - recover_client
+      - schedule_ibc_software_upgrade
+      - upgrade_chain
+      - channel_close_init
+      - channel_close
+      - channel_upgrade_init
+      - channel_upgrade_try
+      - channel_upgrade_ack
+      - channel_upgrade_confirm
+      - channel_upgrade_open
+      - channel_upgrade_timeout
+      - channel_upgrade_cancelled
+      - channel_upgrade_error
+      - channel_flush_complete
+      - channel_closed
+      - denomination_trace
+      - ibccallbackerror-denomination_trace
+      - cancel_proposal
+      - hyperlane.core.ism.v1.EventRemoveRoutingIsmDomain
+      - hyperlane.core.ism.v1.EventAnnounceStorageLocation
+      - hyperlane.core.ism.v1.EventCreateMessageIdMultisigIsm
+      - hyperlane.core.ism.v1.EventCreateMerkleRootMultisigIsm
       type: string
       x-enum-varnames:
       - EventTypeUnknown
@@ -11929,6 +12557,38 @@ components:
       - EventTypeCelestiazkismv1EventCreateInterchainSecurityModule
       - EventTypeCelestiazkismv1EventUpdateInterchainSecurityModule
       - EventTypeCelestiazkismv1EventSubmitMessages
+      - EventTypeCelestiafibrev1EventDepositToEscrow
+      - EventTypeCelestiafibrev1EventWithdrawFromEscrowRequest
+      - EventTypeCelestiafibrev1EventWithdrawFromEscrowExecuted
+      - EventTypeCelestiafibrev1EventPayForFibre
+      - EventTypeCelestiafibrev1EventPaymentPromiseTimeout
+      - EventTypeCelestiafibrev1EventUpdateFibreParams
+      - EventTypeCelestiafibrev1EventProcessedPaymentPruned
+      - EventTypeSetFibreProviderInfo
+      - EventTypeClientMisbehaviour
+      - EventTypeUpgradeClient
+      - EventTypeRecoverClient
+      - EventTypeScheduleIbcSoftwareUpgrade
+      - EventTypeUpgradeChain
+      - EventTypeChannelCloseInit
+      - EventTypeChannelClose
+      - EventTypeChannelUpgradeInit
+      - EventTypeChannelUpgradeTry
+      - EventTypeChannelUpgradeAck
+      - EventTypeChannelUpgradeConfirm
+      - EventTypeChannelUpgradeOpen
+      - EventTypeChannelUpgradeTimeout
+      - EventTypeChannelUpgradeCancelled
+      - EventTypeChannelUpgradeError
+      - EventTypeChannelFlushComplete
+      - EventTypeChannelClosed
+      - EventTypeDenominationTrace
+      - EventTypeIbccallbackerrorDenominationTrace
+      - EventTypeCancelProposal
+      - EventTypeHyperlanecoreismv1EventRemoveRoutingIsmDomain
+      - EventTypeHyperlanecoreismv1EventAnnounceStorageLocation
+      - EventTypeHyperlanecoreismv1EventCreateMessageIdMultisigIsm
+      - EventTypeHyperlanecoreismv1EventCreateMerkleRootMultisigIsm
     types.MsgAddressType:
       enum:
       - validator
@@ -12104,6 +12764,13 @@ components:
       - MsgCreateInterchainSecurityModule
       - MsgUpdateInterchainSecurityModule
       - MsgSubmitMessages
+      - MsgDepositToEscrow
+      - MsgRequestWithdrawal
+      - MsgPayForFibre
+      - MsgPaymentPromiseTimeout
+      - MsgUpdateFibreParams
+      - MsgSetFibreProviderInfo
+      - MsgCancelProposal
       type: string
       x-enum-varnames:
       - MsgUnknown
@@ -12221,6 +12888,13 @@ components:
       - MsgCreateInterchainSecurityModule
       - MsgUpdateInterchainSecurityModule
       - MsgSubmitMessages
+      - MsgDepositToEscrow
+      - MsgRequestWithdrawal
+      - MsgPayForFibre
+      - MsgPaymentPromiseTimeout
+      - MsgUpdateFibreParams
+      - MsgSetFibreProviderInfo
+      - MsgCancelProposal
     types.Status:
       enum:
       - success
@@ -12242,6 +12916,4 @@ x-servers:
   url: api-mainnet.celenium.io
 - description: Celenium Mocha API
   url: api-mocha.celenium.io
-- description: Celenium Arabica API
-  url: api-arabica.celenium.io
 x-original-swagger-version: "2.0"

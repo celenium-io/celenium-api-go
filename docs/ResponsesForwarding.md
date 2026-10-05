@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Amount** | Pointer to **string** |  | [optional] 
 **Chain** | Pointer to [**ResponsesChainMetadata**](ResponsesChainMetadata.md) |  | [optional] 
 **Denom** | Pointer to **string** |  | [optional] 
-**DestAddress** | Pointer to ***os.File** |  | [optional] 
+**DestAddress** | Pointer to **string** |  | [optional] 
 **DestDomain** | Pointer to **int64** |  | [optional] 
 **ForwardAddress** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **MessageId** | Pointer to **string** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **TokenId** | Pointer to **string** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -114,20 +114,20 @@ HasDenom returns a boolean if a field has been set.
 
 ### GetDestAddress
 
-`func (o *ResponsesForwarding) GetDestAddress() *os.File`
+`func (o *ResponsesForwarding) GetDestAddress() string`
 
 GetDestAddress returns the DestAddress field if non-nil, zero value otherwise.
 
 ### GetDestAddressOk
 
-`func (o *ResponsesForwarding) GetDestAddressOk() (**os.File, bool)`
+`func (o *ResponsesForwarding) GetDestAddressOk() (*string, bool)`
 
 GetDestAddressOk returns a tuple with the DestAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDestAddress
 
-`func (o *ResponsesForwarding) SetDestAddress(v *os.File)`
+`func (o *ResponsesForwarding) SetDestAddress(v string)`
 
 SetDestAddress sets DestAddress field to given value.
 
@@ -339,20 +339,20 @@ HasTokenId returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesForwarding) GetTxHash() *os.File`
+`func (o *ResponsesForwarding) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesForwarding) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesForwarding) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesForwarding) SetTxHash(v *os.File)`
+`func (o *ResponsesForwarding) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 

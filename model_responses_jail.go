@@ -13,6 +13,7 @@ package celenium
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the ResponsesJail type satisfies the MappedNullable interface at compile time
@@ -21,9 +22,9 @@ var _ MappedNullable = &ResponsesJail{}
 // ResponsesJail struct for ResponsesJail
 type ResponsesJail struct {
 	Burned *string `json:"burned,omitempty"`
-	Height *int32 `json:"height,omitempty"`
+	Height *int64 `json:"height,omitempty"`
 	Reason *string `json:"reason,omitempty"`
-	Time *string `json:"time,omitempty"`
+	Time *time.Time `json:"time,omitempty"`
 	Validator *ResponsesShortValidator `json:"validator,omitempty"`
 }
 
@@ -77,9 +78,9 @@ func (o *ResponsesJail) SetBurned(v string) {
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ResponsesJail) GetHeight() int32 {
+func (o *ResponsesJail) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Height
@@ -87,7 +88,7 @@ func (o *ResponsesJail) GetHeight() int32 {
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesJail) GetHeightOk() (*int32, bool) {
+func (o *ResponsesJail) GetHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.Height) {
 		return nil, false
 	}
@@ -103,8 +104,8 @@ func (o *ResponsesJail) HasHeight() bool {
 	return false
 }
 
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ResponsesJail) SetHeight(v int32) {
+// SetHeight gets a reference to the given int64 and assigns it to the Height field.
+func (o *ResponsesJail) SetHeight(v int64) {
 	o.Height = &v
 }
 
@@ -141,9 +142,9 @@ func (o *ResponsesJail) SetReason(v string) {
 }
 
 // GetTime returns the Time field value if set, zero value otherwise.
-func (o *ResponsesJail) GetTime() string {
+func (o *ResponsesJail) GetTime() time.Time {
 	if o == nil || IsNil(o.Time) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.Time
@@ -151,7 +152,7 @@ func (o *ResponsesJail) GetTime() string {
 
 // GetTimeOk returns a tuple with the Time field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesJail) GetTimeOk() (*string, bool) {
+func (o *ResponsesJail) GetTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Time) {
 		return nil, false
 	}
@@ -167,8 +168,8 @@ func (o *ResponsesJail) HasTime() bool {
 	return false
 }
 
-// SetTime gets a reference to the given string and assigns it to the Time field.
-func (o *ResponsesJail) SetTime(v string) {
+// SetTime gets a reference to the given time.Time and assigns it to the Time field.
+func (o *ResponsesJail) SetTime(v time.Time) {
 	o.Time = &v
 }
 

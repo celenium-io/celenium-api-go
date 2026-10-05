@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 )
 
 // checks if the ResponsesTxForAddress type satisfies the MappedNullable interface at compile time
@@ -22,7 +21,7 @@ var _ MappedNullable = &ResponsesTxForAddress{}
 // ResponsesTxForAddress struct for ResponsesTxForAddress
 type ResponsesTxForAddress struct {
 	Fee *string `json:"fee,omitempty"`
-	Hash **os.File `json:"hash,omitempty"`
+	Hash *string `json:"hash,omitempty"`
 	MessageTypes []TypesMsgType `json:"message_types,omitempty"`
 	MessagesCount *int64 `json:"messages_count,omitempty"`
 	Status *TypesStatus `json:"status,omitempty"`
@@ -78,9 +77,9 @@ func (o *ResponsesTxForAddress) SetFee(v string) {
 }
 
 // GetHash returns the Hash field value if set, zero value otherwise.
-func (o *ResponsesTxForAddress) GetHash() *os.File {
+func (o *ResponsesTxForAddress) GetHash() string {
 	if o == nil || IsNil(o.Hash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.Hash
@@ -88,7 +87,7 @@ func (o *ResponsesTxForAddress) GetHash() *os.File {
 
 // GetHashOk returns a tuple with the Hash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesTxForAddress) GetHashOk() (**os.File, bool) {
+func (o *ResponsesTxForAddress) GetHashOk() (*string, bool) {
 	if o == nil || IsNil(o.Hash) {
 		return nil, false
 	}
@@ -104,8 +103,8 @@ func (o *ResponsesTxForAddress) HasHash() bool {
 	return false
 }
 
-// SetHash gets a reference to the given *os.File and assigns it to the Hash field.
-func (o *ResponsesTxForAddress) SetHash(v *os.File) {
+// SetHash gets a reference to the given string and assigns it to the Hash field.
+func (o *ResponsesTxForAddress) SetHash(v string) {
 	o.Hash = &v
 }
 

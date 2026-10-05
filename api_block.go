@@ -27,10 +27,10 @@ type BlockAPIService service
 type ApiBlockBlobsCountRequest struct {
 	ctx context.Context
 	ApiService *BlockAPIService
-	height int32
+	height int64
 }
 
-func (r ApiBlockBlobsCountRequest) Execute() (int32, *http.Response, error) {
+func (r ApiBlockBlobsCountRequest) Execute() (int64, *http.Response, error) {
 	return r.ApiService.BlockBlobsCountExecute(r)
 }
 
@@ -43,7 +43,7 @@ Returns the total number of blobs included in the block at the given height
  @param height Block height
  @return ApiBlockBlobsCountRequest
 */
-func (a *BlockAPIService) BlockBlobsCount(ctx context.Context, height int32) ApiBlockBlobsCountRequest {
+func (a *BlockAPIService) BlockBlobsCount(ctx context.Context, height int64) ApiBlockBlobsCountRequest {
 	return ApiBlockBlobsCountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -52,13 +52,13 @@ func (a *BlockAPIService) BlockBlobsCount(ctx context.Context, height int32) Api
 }
 
 // Execute executes the request
-//  @return int32
-func (a *BlockAPIService) BlockBlobsCountExecute(r ApiBlockBlobsCountRequest) (int32, *http.Response, error) {
+//  @return int64
+func (a *BlockAPIService) BlockBlobsCountExecute(r ApiBlockBlobsCountRequest) (int64, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarReturnValue  int64
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BlockAPIService.BlockBlobsCount")
@@ -72,8 +72,8 @@ func (a *BlockAPIService) BlockBlobsCountExecute(r ApiBlockBlobsCountRequest) (i
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.height < 1 {
-		return localVarReturnValue, nil, reportError("height must be greater than 1")
+	if r.height < 0 {
+		return localVarReturnValue, nil, reportError("height must be greater than 0")
 	}
 
 	// to determine the Content-Type header
@@ -92,6 +92,20 @@ func (a *BlockAPIService) BlockBlobsCountExecute(r ApiBlockBlobsCountRequest) (i
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -154,7 +168,7 @@ func (a *BlockAPIService) BlockBlobsCountExecute(r ApiBlockBlobsCountRequest) (i
 type ApiGetBlockRequest struct {
 	ctx context.Context
 	ApiService *BlockAPIService
-	height int32
+	height int64
 	stats *bool
 }
 
@@ -177,7 +191,7 @@ Returns detailed information about the block at the given height, including prop
  @param height Block height
  @return ApiGetBlockRequest
 */
-func (a *BlockAPIService) GetBlock(ctx context.Context, height int32) ApiGetBlockRequest {
+func (a *BlockAPIService) GetBlock(ctx context.Context, height int64) ApiGetBlockRequest {
 	return ApiGetBlockRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -206,8 +220,8 @@ func (a *BlockAPIService) GetBlockExecute(r ApiGetBlockRequest) (*ResponsesBlock
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.height < 1 {
-		return localVarReturnValue, nil, reportError("height must be greater than 1")
+	if r.height < 0 {
+		return localVarReturnValue, nil, reportError("height must be greater than 0")
 	}
 
 	if r.stats != nil {
@@ -229,6 +243,20 @@ func (a *BlockAPIService) GetBlockExecute(r ApiGetBlockRequest) (*ResponsesBlock
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -291,11 +319,12 @@ func (a *BlockAPIService) GetBlockExecute(r ApiGetBlockRequest) (*ResponsesBlock
 type ApiGetBlockBlobsRequest struct {
 	ctx context.Context
 	ApiService *BlockAPIService
-	height int32
+	height int64
 	limit *int32
 	offset *int32
 	sort *string
 	sortBy *string
+	source *string
 }
 
 // Count of requested entities
@@ -322,6 +351,12 @@ func (r ApiGetBlockBlobsRequest) SortBy(sortBy string) ApiGetBlockBlobsRequest {
 	return r
 }
 
+// Blob source. If it&#39;s empty both sources are returned
+func (r ApiGetBlockBlobsRequest) Source(source string) ApiGetBlockBlobsRequest {
+	r.source = &source
+	return r
+}
+
 func (r ApiGetBlockBlobsRequest) Execute() ([]ResponsesBlobLog, *http.Response, error) {
 	return r.ApiService.GetBlockBlobsExecute(r)
 }
@@ -329,13 +364,13 @@ func (r ApiGetBlockBlobsRequest) Execute() ([]ResponsesBlobLog, *http.Response, 
 /*
 GetBlockBlobs List blobs which was pushed in the block
 
-Returns a paginated list of blobs submitted via PayForBlobs transactions included in the block at the given height. Supports sorting by time or size.
+Returns a paginated list of blobs submitted via PayForBlobs or PayForFibre transactions included in the block at the given height. Supports sorting by time or size.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param height Block height
  @return ApiGetBlockBlobsRequest
 */
-func (a *BlockAPIService) GetBlockBlobs(ctx context.Context, height int32) ApiGetBlockBlobsRequest {
+func (a *BlockAPIService) GetBlockBlobs(ctx context.Context, height int64) ApiGetBlockBlobsRequest {
 	return ApiGetBlockBlobsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -364,8 +399,8 @@ func (a *BlockAPIService) GetBlockBlobsExecute(r ApiGetBlockBlobsRequest) ([]Res
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.height < 1 {
-		return localVarReturnValue, nil, reportError("height must be greater than 1")
+	if r.height < 0 {
+		return localVarReturnValue, nil, reportError("height must be greater than 0")
 	}
 
 	if r.limit != nil {
@@ -379,6 +414,9 @@ func (a *BlockAPIService) GetBlockBlobsExecute(r ApiGetBlockBlobsRequest) ([]Res
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "", "")
+	}
+	if r.source != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -396,6 +434,20 @@ func (a *BlockAPIService) GetBlockBlobsExecute(r ApiGetBlockBlobsRequest) ([]Res
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -460,7 +512,7 @@ type ApiGetBlockCountRequest struct {
 	ApiService *BlockAPIService
 }
 
-func (r ApiGetBlockCountRequest) Execute() (int32, *http.Response, error) {
+func (r ApiGetBlockCountRequest) Execute() (int64, *http.Response, error) {
 	return r.ApiService.GetBlockCountExecute(r)
 }
 
@@ -480,13 +532,13 @@ func (a *BlockAPIService) GetBlockCount(ctx context.Context) ApiGetBlockCountReq
 }
 
 // Execute executes the request
-//  @return int32
-func (a *BlockAPIService) GetBlockCountExecute(r ApiGetBlockCountRequest) (int32, *http.Response, error) {
+//  @return int64
+func (a *BlockAPIService) GetBlockCountExecute(r ApiGetBlockCountRequest) (int64, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarReturnValue  int64
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BlockAPIService.GetBlockCount")
@@ -516,6 +568,20 @@ func (a *BlockAPIService) GetBlockCountExecute(r ApiGetBlockCountRequest) (int32
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -567,7 +633,7 @@ func (a *BlockAPIService) GetBlockCountExecute(r ApiGetBlockCountRequest) (int32
 type ApiGetBlockEventsRequest struct {
 	ctx context.Context
 	ApiService *BlockAPIService
-	height int32
+	height int64
 	limit *int32
 	offset *int32
 }
@@ -597,7 +663,7 @@ Returns begin-block and end-block ABCI events for the block at the given height.
  @param height Block height
  @return ApiGetBlockEventsRequest
 */
-func (a *BlockAPIService) GetBlockEvents(ctx context.Context, height int32) ApiGetBlockEventsRequest {
+func (a *BlockAPIService) GetBlockEvents(ctx context.Context, height int64) ApiGetBlockEventsRequest {
 	return ApiGetBlockEventsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -626,8 +692,8 @@ func (a *BlockAPIService) GetBlockEventsExecute(r ApiGetBlockEventsRequest) ([]R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.height < 1 {
-		return localVarReturnValue, nil, reportError("height must be greater than 1")
+	if r.height < 0 {
+		return localVarReturnValue, nil, reportError("height must be greater than 0")
 	}
 
 	if r.limit != nil {
@@ -652,6 +718,20 @@ func (a *BlockAPIService) GetBlockEventsExecute(r ApiGetBlockEventsRequest) ([]R
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -714,11 +794,11 @@ func (a *BlockAPIService) GetBlockEventsExecute(r ApiGetBlockEventsRequest) ([]R
 type ApiGetBlockMessagesRequest struct {
 	ctx context.Context
 	ApiService *BlockAPIService
-	height int32
+	height int64
 	limit *int32
 	offset *int32
-	msgType *string
-	excludedMsgType *string
+	msgType *[]string
+	excludedMsgType *[]string
 }
 
 // Count of requested entities
@@ -734,13 +814,13 @@ func (r ApiGetBlockMessagesRequest) Offset(offset int32) ApiGetBlockMessagesRequ
 }
 
 // Comma-separated message types list
-func (r ApiGetBlockMessagesRequest) MsgType(msgType string) ApiGetBlockMessagesRequest {
+func (r ApiGetBlockMessagesRequest) MsgType(msgType []string) ApiGetBlockMessagesRequest {
 	r.msgType = &msgType
 	return r
 }
 
 // Comma-separated message types which should be excluded from list
-func (r ApiGetBlockMessagesRequest) ExcludedMsgType(excludedMsgType string) ApiGetBlockMessagesRequest {
+func (r ApiGetBlockMessagesRequest) ExcludedMsgType(excludedMsgType []string) ApiGetBlockMessagesRequest {
 	r.excludedMsgType = &excludedMsgType
 	return r
 }
@@ -758,7 +838,7 @@ Returns a paginated list of Cosmos SDK messages included in transactions within 
  @param height Block height
  @return ApiGetBlockMessagesRequest
 */
-func (a *BlockAPIService) GetBlockMessages(ctx context.Context, height int32) ApiGetBlockMessagesRequest {
+func (a *BlockAPIService) GetBlockMessages(ctx context.Context, height int64) ApiGetBlockMessagesRequest {
 	return ApiGetBlockMessagesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -798,10 +878,10 @@ func (a *BlockAPIService) GetBlockMessagesExecute(r ApiGetBlockMessagesRequest) 
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	}
 	if r.msgType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "msg_type", r.msgType, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "msg_type", r.msgType, "form", "csv")
 	}
 	if r.excludedMsgType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "excluded_msg_type", r.excludedMsgType, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "excluded_msg_type", r.excludedMsgType, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -819,6 +899,20 @@ func (a *BlockAPIService) GetBlockMessagesExecute(r ApiGetBlockMessagesRequest) 
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -881,7 +975,7 @@ func (a *BlockAPIService) GetBlockMessagesExecute(r ApiGetBlockMessagesRequest) 
 type ApiGetBlockStatsRequest struct {
 	ctx context.Context
 	ApiService *BlockAPIService
-	height int32
+	height int64
 }
 
 func (r ApiGetBlockStatsRequest) Execute() (*ResponsesBlockStats, *http.Response, error) {
@@ -897,7 +991,7 @@ Returns aggregated statistics for the block at the given height: blob count, tot
  @param height Block height
  @return ApiGetBlockStatsRequest
 */
-func (a *BlockAPIService) GetBlockStats(ctx context.Context, height int32) ApiGetBlockStatsRequest {
+func (a *BlockAPIService) GetBlockStats(ctx context.Context, height int64) ApiGetBlockStatsRequest {
 	return ApiGetBlockStatsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -926,8 +1020,8 @@ func (a *BlockAPIService) GetBlockStatsExecute(r ApiGetBlockStatsRequest) (*Resp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.height < 1 {
-		return localVarReturnValue, nil, reportError("height must be greater than 1")
+	if r.height < 0 {
+		return localVarReturnValue, nil, reportError("height must be greater than 0")
 	}
 
 	// to determine the Content-Type header
@@ -946,6 +1040,20 @@ func (a *BlockAPIService) GetBlockStatsExecute(r ApiGetBlockStatsRequest) (*Resp
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1106,6 +1214,20 @@ func (a *BlockAPIService) ListBlockExecute(r ApiListBlockRequest) ([]ResponsesBl
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

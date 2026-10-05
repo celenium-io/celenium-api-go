@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BlobsCount** | Pointer to **int32** |  | [optional] 
-**Fee** | Pointer to **string** |  | [optional] 
+**BlobsCount** | Pointer to **int64** |  | [optional] 
+**Fee** | Pointer to **float64** |  | [optional] 
 **Group** | Pointer to **string** |  | [optional] 
-**Size** | Pointer to **int32** |  | [optional] 
+**Size** | Pointer to **float64** |  | [optional] 
 
 ## Methods
 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetBlobsCount
 
-`func (o *ResponsesRollupGroupedStats) GetBlobsCount() int32`
+`func (o *ResponsesRollupGroupedStats) GetBlobsCount() int64`
 
 GetBlobsCount returns the BlobsCount field if non-nil, zero value otherwise.
 
 ### GetBlobsCountOk
 
-`func (o *ResponsesRollupGroupedStats) GetBlobsCountOk() (*int32, bool)`
+`func (o *ResponsesRollupGroupedStats) GetBlobsCountOk() (*int64, bool)`
 
 GetBlobsCountOk returns a tuple with the BlobsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlobsCount
 
-`func (o *ResponsesRollupGroupedStats) SetBlobsCount(v int32)`
+`func (o *ResponsesRollupGroupedStats) SetBlobsCount(v int64)`
 
 SetBlobsCount sets BlobsCount field to given value.
 
@@ -55,20 +55,20 @@ HasBlobsCount returns a boolean if a field has been set.
 
 ### GetFee
 
-`func (o *ResponsesRollupGroupedStats) GetFee() string`
+`func (o *ResponsesRollupGroupedStats) GetFee() float64`
 
 GetFee returns the Fee field if non-nil, zero value otherwise.
 
 ### GetFeeOk
 
-`func (o *ResponsesRollupGroupedStats) GetFeeOk() (*string, bool)`
+`func (o *ResponsesRollupGroupedStats) GetFeeOk() (*float64, bool)`
 
 GetFeeOk returns a tuple with the Fee field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFee
 
-`func (o *ResponsesRollupGroupedStats) SetFee(v string)`
+`func (o *ResponsesRollupGroupedStats) SetFee(v float64)`
 
 SetFee sets Fee field to given value.
 
@@ -105,20 +105,20 @@ HasGroup returns a boolean if a field has been set.
 
 ### GetSize
 
-`func (o *ResponsesRollupGroupedStats) GetSize() int32`
+`func (o *ResponsesRollupGroupedStats) GetSize() float64`
 
 GetSize returns the Size field if non-nil, zero value otherwise.
 
 ### GetSizeOk
 
-`func (o *ResponsesRollupGroupedStats) GetSizeOk() (*int32, bool)`
+`func (o *ResponsesRollupGroupedStats) GetSizeOk() (*float64, bool)`
 
 GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSize
 
-`func (o *ResponsesRollupGroupedStats) SetSize(v int32)`
+`func (o *ResponsesRollupGroupedStats) SetSize(v float64)`
 
 SetSize sets Size field to given value.
 

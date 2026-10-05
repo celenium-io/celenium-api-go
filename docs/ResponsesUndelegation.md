@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **string** |  | [optional] 
-**CompletionTime** | Pointer to **string** |  | [optional] 
+**CompletionTime** | Pointer to **time.Time** |  | [optional] 
 **Delegator** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
-**Time** | Pointer to **string** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
+**Time** | Pointer to **time.Time** |  | [optional] 
 **Validator** | Pointer to [**ResponsesShortValidator**](ResponsesShortValidator.md) |  | [optional] 
 
 ## Methods
@@ -57,20 +57,20 @@ HasAmount returns a boolean if a field has been set.
 
 ### GetCompletionTime
 
-`func (o *ResponsesUndelegation) GetCompletionTime() string`
+`func (o *ResponsesUndelegation) GetCompletionTime() time.Time`
 
 GetCompletionTime returns the CompletionTime field if non-nil, zero value otherwise.
 
 ### GetCompletionTimeOk
 
-`func (o *ResponsesUndelegation) GetCompletionTimeOk() (*string, bool)`
+`func (o *ResponsesUndelegation) GetCompletionTimeOk() (*time.Time, bool)`
 
 GetCompletionTimeOk returns a tuple with the CompletionTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompletionTime
 
-`func (o *ResponsesUndelegation) SetCompletionTime(v string)`
+`func (o *ResponsesUndelegation) SetCompletionTime(v time.Time)`
 
 SetCompletionTime sets CompletionTime field to given value.
 
@@ -107,20 +107,20 @@ HasDelegator returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesUndelegation) GetHeight() int32`
+`func (o *ResponsesUndelegation) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesUndelegation) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesUndelegation) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesUndelegation) SetHeight(v int32)`
+`func (o *ResponsesUndelegation) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 
@@ -132,20 +132,20 @@ HasHeight returns a boolean if a field has been set.
 
 ### GetTime
 
-`func (o *ResponsesUndelegation) GetTime() string`
+`func (o *ResponsesUndelegation) GetTime() time.Time`
 
 GetTime returns the Time field if non-nil, zero value otherwise.
 
 ### GetTimeOk
 
-`func (o *ResponsesUndelegation) GetTimeOk() (*string, bool)`
+`func (o *ResponsesUndelegation) GetTimeOk() (*time.Time, bool)`
 
 GetTimeOk returns a tuple with the Time field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTime
 
-`func (o *ResponsesUndelegation) SetTime(v string)`
+`func (o *ResponsesUndelegation) SetTime(v time.Time)`
 
 SetTime sets Time field to given value.
 

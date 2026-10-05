@@ -14,7 +14,6 @@ package celenium
 import (
 	"encoding/json"
 	"time"
-	"os"
 )
 
 // checks if the ResponsesVesting type satisfies the MappedNullable interface at compile time
@@ -24,9 +23,9 @@ var _ MappedNullable = &ResponsesVesting{}
 type ResponsesVesting struct {
 	Amount *string `json:"amount,omitempty"`
 	EndTime *time.Time `json:"end_time,omitempty"`
-	Hash **os.File `json:"hash,omitempty"`
-	Height *int32 `json:"height,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Hash *string `json:"hash,omitempty"`
+	Height *int64 `json:"height,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	StartTime *time.Time `json:"start_time,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	Type *string `json:"type,omitempty"`
@@ -114,9 +113,9 @@ func (o *ResponsesVesting) SetEndTime(v time.Time) {
 }
 
 // GetHash returns the Hash field value if set, zero value otherwise.
-func (o *ResponsesVesting) GetHash() *os.File {
+func (o *ResponsesVesting) GetHash() string {
 	if o == nil || IsNil(o.Hash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.Hash
@@ -124,7 +123,7 @@ func (o *ResponsesVesting) GetHash() *os.File {
 
 // GetHashOk returns a tuple with the Hash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesVesting) GetHashOk() (**os.File, bool) {
+func (o *ResponsesVesting) GetHashOk() (*string, bool) {
 	if o == nil || IsNil(o.Hash) {
 		return nil, false
 	}
@@ -140,15 +139,15 @@ func (o *ResponsesVesting) HasHash() bool {
 	return false
 }
 
-// SetHash gets a reference to the given *os.File and assigns it to the Hash field.
-func (o *ResponsesVesting) SetHash(v *os.File) {
+// SetHash gets a reference to the given string and assigns it to the Hash field.
+func (o *ResponsesVesting) SetHash(v string) {
 	o.Hash = &v
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ResponsesVesting) GetHeight() int32 {
+func (o *ResponsesVesting) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Height
@@ -156,7 +155,7 @@ func (o *ResponsesVesting) GetHeight() int32 {
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesVesting) GetHeightOk() (*int32, bool) {
+func (o *ResponsesVesting) GetHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.Height) {
 		return nil, false
 	}
@@ -172,15 +171,15 @@ func (o *ResponsesVesting) HasHeight() bool {
 	return false
 }
 
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ResponsesVesting) SetHeight(v int32) {
+// SetHeight gets a reference to the given int64 and assigns it to the Height field.
+func (o *ResponsesVesting) SetHeight(v int64) {
 	o.Height = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesVesting) GetId() int32 {
+func (o *ResponsesVesting) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -188,7 +187,7 @@ func (o *ResponsesVesting) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesVesting) GetIdOk() (*int32, bool) {
+func (o *ResponsesVesting) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -204,8 +203,8 @@ func (o *ResponsesVesting) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesVesting) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesVesting) SetId(v int64) {
 	o.Id = &v
 }
 

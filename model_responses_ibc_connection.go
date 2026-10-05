@@ -14,7 +14,6 @@ package celenium
 import (
 	"encoding/json"
 	"time"
-	"os"
 )
 
 // checks if the ResponsesIbcConnection type satisfies the MappedNullable interface at compile time
@@ -22,16 +21,16 @@ var _ MappedNullable = &ResponsesIbcConnection{}
 
 // ResponsesIbcConnection struct for ResponsesIbcConnection
 type ResponsesIbcConnection struct {
-	ChannelsCount *int32 `json:"channels_count,omitempty"`
+	ChannelsCount *int64 `json:"channels_count,omitempty"`
 	Client *ResponsesShortIbcClient `json:"client,omitempty"`
 	ConnectedAt *time.Time `json:"connected_at,omitempty"`
-	ConnectedHeight *int32 `json:"connected_height,omitempty"`
-	ConnectedTxHash **os.File `json:"connected_tx_hash,omitempty"`
+	ConnectedHeight *int64 `json:"connected_height,omitempty"`
+	ConnectedTxHash *string `json:"connected_tx_hash,omitempty"`
 	CounterpartyClientId *string `json:"counterparty_client_id,omitempty"`
 	CounterpartyConnectionId *string `json:"counterparty_connection_id,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
-	CreatedTxHash **os.File `json:"created_tx_hash,omitempty"`
-	Height *int32 `json:"height,omitempty"`
+	CreatedTxHash *string `json:"created_tx_hash,omitempty"`
+	Height *int64 `json:"height,omitempty"`
 	Id *string `json:"id,omitempty"`
 }
 
@@ -53,9 +52,9 @@ func NewResponsesIbcConnectionWithDefaults() *ResponsesIbcConnection {
 }
 
 // GetChannelsCount returns the ChannelsCount field value if set, zero value otherwise.
-func (o *ResponsesIbcConnection) GetChannelsCount() int32 {
+func (o *ResponsesIbcConnection) GetChannelsCount() int64 {
 	if o == nil || IsNil(o.ChannelsCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ChannelsCount
@@ -63,7 +62,7 @@ func (o *ResponsesIbcConnection) GetChannelsCount() int32 {
 
 // GetChannelsCountOk returns a tuple with the ChannelsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcConnection) GetChannelsCountOk() (*int32, bool) {
+func (o *ResponsesIbcConnection) GetChannelsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.ChannelsCount) {
 		return nil, false
 	}
@@ -79,8 +78,8 @@ func (o *ResponsesIbcConnection) HasChannelsCount() bool {
 	return false
 }
 
-// SetChannelsCount gets a reference to the given int32 and assigns it to the ChannelsCount field.
-func (o *ResponsesIbcConnection) SetChannelsCount(v int32) {
+// SetChannelsCount gets a reference to the given int64 and assigns it to the ChannelsCount field.
+func (o *ResponsesIbcConnection) SetChannelsCount(v int64) {
 	o.ChannelsCount = &v
 }
 
@@ -149,9 +148,9 @@ func (o *ResponsesIbcConnection) SetConnectedAt(v time.Time) {
 }
 
 // GetConnectedHeight returns the ConnectedHeight field value if set, zero value otherwise.
-func (o *ResponsesIbcConnection) GetConnectedHeight() int32 {
+func (o *ResponsesIbcConnection) GetConnectedHeight() int64 {
 	if o == nil || IsNil(o.ConnectedHeight) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ConnectedHeight
@@ -159,7 +158,7 @@ func (o *ResponsesIbcConnection) GetConnectedHeight() int32 {
 
 // GetConnectedHeightOk returns a tuple with the ConnectedHeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcConnection) GetConnectedHeightOk() (*int32, bool) {
+func (o *ResponsesIbcConnection) GetConnectedHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.ConnectedHeight) {
 		return nil, false
 	}
@@ -175,15 +174,15 @@ func (o *ResponsesIbcConnection) HasConnectedHeight() bool {
 	return false
 }
 
-// SetConnectedHeight gets a reference to the given int32 and assigns it to the ConnectedHeight field.
-func (o *ResponsesIbcConnection) SetConnectedHeight(v int32) {
+// SetConnectedHeight gets a reference to the given int64 and assigns it to the ConnectedHeight field.
+func (o *ResponsesIbcConnection) SetConnectedHeight(v int64) {
 	o.ConnectedHeight = &v
 }
 
 // GetConnectedTxHash returns the ConnectedTxHash field value if set, zero value otherwise.
-func (o *ResponsesIbcConnection) GetConnectedTxHash() *os.File {
+func (o *ResponsesIbcConnection) GetConnectedTxHash() string {
 	if o == nil || IsNil(o.ConnectedTxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.ConnectedTxHash
@@ -191,7 +190,7 @@ func (o *ResponsesIbcConnection) GetConnectedTxHash() *os.File {
 
 // GetConnectedTxHashOk returns a tuple with the ConnectedTxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcConnection) GetConnectedTxHashOk() (**os.File, bool) {
+func (o *ResponsesIbcConnection) GetConnectedTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.ConnectedTxHash) {
 		return nil, false
 	}
@@ -207,8 +206,8 @@ func (o *ResponsesIbcConnection) HasConnectedTxHash() bool {
 	return false
 }
 
-// SetConnectedTxHash gets a reference to the given *os.File and assigns it to the ConnectedTxHash field.
-func (o *ResponsesIbcConnection) SetConnectedTxHash(v *os.File) {
+// SetConnectedTxHash gets a reference to the given string and assigns it to the ConnectedTxHash field.
+func (o *ResponsesIbcConnection) SetConnectedTxHash(v string) {
 	o.ConnectedTxHash = &v
 }
 
@@ -309,9 +308,9 @@ func (o *ResponsesIbcConnection) SetCreatedAt(v time.Time) {
 }
 
 // GetCreatedTxHash returns the CreatedTxHash field value if set, zero value otherwise.
-func (o *ResponsesIbcConnection) GetCreatedTxHash() *os.File {
+func (o *ResponsesIbcConnection) GetCreatedTxHash() string {
 	if o == nil || IsNil(o.CreatedTxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.CreatedTxHash
@@ -319,7 +318,7 @@ func (o *ResponsesIbcConnection) GetCreatedTxHash() *os.File {
 
 // GetCreatedTxHashOk returns a tuple with the CreatedTxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcConnection) GetCreatedTxHashOk() (**os.File, bool) {
+func (o *ResponsesIbcConnection) GetCreatedTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.CreatedTxHash) {
 		return nil, false
 	}
@@ -335,15 +334,15 @@ func (o *ResponsesIbcConnection) HasCreatedTxHash() bool {
 	return false
 }
 
-// SetCreatedTxHash gets a reference to the given *os.File and assigns it to the CreatedTxHash field.
-func (o *ResponsesIbcConnection) SetCreatedTxHash(v *os.File) {
+// SetCreatedTxHash gets a reference to the given string and assigns it to the CreatedTxHash field.
+func (o *ResponsesIbcConnection) SetCreatedTxHash(v string) {
 	o.CreatedTxHash = &v
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ResponsesIbcConnection) GetHeight() int32 {
+func (o *ResponsesIbcConnection) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Height
@@ -351,7 +350,7 @@ func (o *ResponsesIbcConnection) GetHeight() int32 {
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcConnection) GetHeightOk() (*int32, bool) {
+func (o *ResponsesIbcConnection) GetHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.Height) {
 		return nil, false
 	}
@@ -367,8 +366,8 @@ func (o *ResponsesIbcConnection) HasHeight() bool {
 	return false
 }
 
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ResponsesIbcConnection) SetHeight(v int32) {
+// SetHeight gets a reference to the given int64 and assigns it to the Height field.
+func (o *ResponsesIbcConnection) SetHeight(v int64) {
 	o.Height = &v
 }
 

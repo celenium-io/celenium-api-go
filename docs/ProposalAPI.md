@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
+	id := int64(789) // int64 | Internal identity
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -51,7 +51,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **int64** | Internal identity | 
 
 ### Other Parameters
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -105,8 +105,8 @@ func main() {
 	offset := int32(56) // int32 | Offset (optional)
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	proposer := "proposer_example" // string | Proposer celestia address (optional)
-	status := "status_example" // string | Comma-separated proposal status list (optional)
-	type_ := "type__example" // string | Comma-separated proposal type list (optional)
+	status := []string{"Inner_example"} // []string | Comma-separated proposal status list (optional)
+	type_ := []string{"Inner_example"} // []string | Comma-separated proposal type list (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -135,8 +135,8 @@ Name | Type | Description  | Notes
  **offset** | **int32** | Offset | 
  **sort** | **string** | Sort order. Default: desc | 
  **proposer** | **string** | Proposer celestia address | 
- **status** | **string** | Comma-separated proposal status list | 
- **type_** | **string** | Comma-separated proposal type list | 
+ **status** | **[]string** | Comma-separated proposal status list | 
+ **type_** | **[]string** | Comma-separated proposal type list | 
 
 ### Return type
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -177,10 +177,10 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
+	id := int64(789) // int64 | Internal identity
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
-	option := "option_example" // string | Option (optional)
+	option := []string{"Option_example"} // []string | Option (optional)
 	voter := "voter_example" // string | Voter type (optional)
 	address := "address_example" // string | Voter address (optional)
 	validator := "validator_example" // string | Voter address (optional)
@@ -203,7 +203,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **int64** | Internal identity | 
 
 ### Other Parameters
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
  **limit** | **int32** | Count of requested entities | 
  **offset** | **int32** | Offset | 
- **option** | **string** | Option | 
+ **option** | **[]string** | Option | 
  **voter** | **string** | Voter type | 
  **address** | **string** | Voter address | 
  **validator** | **string** | Voter address | 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

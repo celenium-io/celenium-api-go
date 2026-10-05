@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponsesCountItem{}
 // ResponsesCountItem struct for ResponsesCountItem
 type ResponsesCountItem struct {
 	Name *string `json:"name,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Value *int64 `json:"value,omitempty"`
 }
 
 // NewResponsesCountItem instantiates a new ResponsesCountItem object
@@ -74,9 +74,9 @@ func (o *ResponsesCountItem) SetName(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *ResponsesCountItem) GetValue() string {
+func (o *ResponsesCountItem) GetValue() int64 {
 	if o == nil || IsNil(o.Value) {
-		var ret string
+		var ret int64
 		return ret
 	}
 	return *o.Value
@@ -84,7 +84,7 @@ func (o *ResponsesCountItem) GetValue() string {
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesCountItem) GetValueOk() (*string, bool) {
+func (o *ResponsesCountItem) GetValueOk() (*int64, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *ResponsesCountItem) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
-func (o *ResponsesCountItem) SetValue(v string) {
+// SetValue gets a reference to the given int64 and assigns it to the Value field.
+func (o *ResponsesCountItem) SetValue(v int64) {
 	o.Value = &v
 }
 

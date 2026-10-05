@@ -233,6 +233,20 @@
 
 * `MsgSubmitMessages` (value: `"MsgSubmitMessages"`)
 
+* `MsgDepositToEscrow` (value: `"MsgDepositToEscrow"`)
+
+* `MsgRequestWithdrawal` (value: `"MsgRequestWithdrawal"`)
+
+* `MsgPayForFibre` (value: `"MsgPayForFibre"`)
+
+* `MsgPaymentPromiseTimeout` (value: `"MsgPaymentPromiseTimeout"`)
+
+* `MsgUpdateFibreParams` (value: `"MsgUpdateFibreParams"`)
+
+* `MsgSetFibreProviderInfo` (value: `"MsgSetFibreProviderInfo"`)
+
+* `MsgCancelProposal` (value: `"MsgCancelProposal"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

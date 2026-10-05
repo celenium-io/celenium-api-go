@@ -20,9 +20,9 @@ var _ MappedNullable = &ResponsesRollupWithDayStats{}
 
 // ResponsesRollupWithDayStats struct for ResponsesRollupWithDayStats
 type ResponsesRollupWithDayStats struct {
-	AvgSize *int32 `json:"avg_size,omitempty"`
-	BlobsCount *int32 `json:"blobs_count,omitempty"`
-	BlobsPerPfb *float32 `json:"blobs_per_pfb,omitempty"`
+	AvgSize *int64 `json:"avg_size,omitempty"`
+	BlobsCount *int64 `json:"blobs_count,omitempty"`
+	BlobsPerPfb *float64 `json:"blobs_per_pfb,omitempty"`
 	Bridge *string `json:"bridge,omitempty"`
 	Category *string `json:"category,omitempty"`
 	Color *string `json:"color,omitempty"`
@@ -31,21 +31,23 @@ type ResponsesRollupWithDayStats struct {
 	Description *string `json:"description,omitempty"`
 	Explorer *string `json:"explorer,omitempty"`
 	FeePerPfb *string `json:"fee_per_pfb,omitempty"`
+	FibreBlobsCount *int64 `json:"fibre_blobs_count,omitempty"`
 	Github *string `json:"github,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	L2Beat *string `json:"l2_beat,omitempty"`
 	Logo *string `json:"logo,omitempty"`
 	MbPrice *string `json:"mb_price,omitempty"`
 	Name *string `json:"name,omitempty"`
-	NamespaceCount *int32 `json:"namespace_count,omitempty"`
-	PfbCount *int32 `json:"pfb_count,omitempty"`
+	NamespaceCount *int64 `json:"namespace_count,omitempty"`
+	PfbCount *int64 `json:"pfb_count,omitempty"`
+	PffCount *int64 `json:"pff_count,omitempty"`
 	Provider *string `json:"provider,omitempty"`
 	SettledOn *string `json:"settled_on,omitempty"`
 	Slug *string `json:"slug,omitempty"`
 	Stack *string `json:"stack,omitempty"`
-	Throughput *int32 `json:"throughput,omitempty"`
+	Throughput *int64 `json:"throughput,omitempty"`
 	TotalFee *string `json:"total_fee,omitempty"`
-	TotalSize *int32 `json:"total_size,omitempty"`
+	TotalSize *int64 `json:"total_size,omitempty"`
 	Twitter *string `json:"twitter,omitempty"`
 	Type *string `json:"type,omitempty"`
 	Vm *string `json:"vm,omitempty"`
@@ -70,9 +72,9 @@ func NewResponsesRollupWithDayStatsWithDefaults() *ResponsesRollupWithDayStats {
 }
 
 // GetAvgSize returns the AvgSize field value if set, zero value otherwise.
-func (o *ResponsesRollupWithDayStats) GetAvgSize() int32 {
+func (o *ResponsesRollupWithDayStats) GetAvgSize() int64 {
 	if o == nil || IsNil(o.AvgSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AvgSize
@@ -80,7 +82,7 @@ func (o *ResponsesRollupWithDayStats) GetAvgSize() int32 {
 
 // GetAvgSizeOk returns a tuple with the AvgSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithDayStats) GetAvgSizeOk() (*int32, bool) {
+func (o *ResponsesRollupWithDayStats) GetAvgSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.AvgSize) {
 		return nil, false
 	}
@@ -96,15 +98,15 @@ func (o *ResponsesRollupWithDayStats) HasAvgSize() bool {
 	return false
 }
 
-// SetAvgSize gets a reference to the given int32 and assigns it to the AvgSize field.
-func (o *ResponsesRollupWithDayStats) SetAvgSize(v int32) {
+// SetAvgSize gets a reference to the given int64 and assigns it to the AvgSize field.
+func (o *ResponsesRollupWithDayStats) SetAvgSize(v int64) {
 	o.AvgSize = &v
 }
 
 // GetBlobsCount returns the BlobsCount field value if set, zero value otherwise.
-func (o *ResponsesRollupWithDayStats) GetBlobsCount() int32 {
+func (o *ResponsesRollupWithDayStats) GetBlobsCount() int64 {
 	if o == nil || IsNil(o.BlobsCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BlobsCount
@@ -112,7 +114,7 @@ func (o *ResponsesRollupWithDayStats) GetBlobsCount() int32 {
 
 // GetBlobsCountOk returns a tuple with the BlobsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithDayStats) GetBlobsCountOk() (*int32, bool) {
+func (o *ResponsesRollupWithDayStats) GetBlobsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlobsCount) {
 		return nil, false
 	}
@@ -128,15 +130,15 @@ func (o *ResponsesRollupWithDayStats) HasBlobsCount() bool {
 	return false
 }
 
-// SetBlobsCount gets a reference to the given int32 and assigns it to the BlobsCount field.
-func (o *ResponsesRollupWithDayStats) SetBlobsCount(v int32) {
+// SetBlobsCount gets a reference to the given int64 and assigns it to the BlobsCount field.
+func (o *ResponsesRollupWithDayStats) SetBlobsCount(v int64) {
 	o.BlobsCount = &v
 }
 
 // GetBlobsPerPfb returns the BlobsPerPfb field value if set, zero value otherwise.
-func (o *ResponsesRollupWithDayStats) GetBlobsPerPfb() float32 {
+func (o *ResponsesRollupWithDayStats) GetBlobsPerPfb() float64 {
 	if o == nil || IsNil(o.BlobsPerPfb) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.BlobsPerPfb
@@ -144,7 +146,7 @@ func (o *ResponsesRollupWithDayStats) GetBlobsPerPfb() float32 {
 
 // GetBlobsPerPfbOk returns a tuple with the BlobsPerPfb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithDayStats) GetBlobsPerPfbOk() (*float32, bool) {
+func (o *ResponsesRollupWithDayStats) GetBlobsPerPfbOk() (*float64, bool) {
 	if o == nil || IsNil(o.BlobsPerPfb) {
 		return nil, false
 	}
@@ -160,8 +162,8 @@ func (o *ResponsesRollupWithDayStats) HasBlobsPerPfb() bool {
 	return false
 }
 
-// SetBlobsPerPfb gets a reference to the given float32 and assigns it to the BlobsPerPfb field.
-func (o *ResponsesRollupWithDayStats) SetBlobsPerPfb(v float32) {
+// SetBlobsPerPfb gets a reference to the given float64 and assigns it to the BlobsPerPfb field.
+func (o *ResponsesRollupWithDayStats) SetBlobsPerPfb(v float64) {
 	o.BlobsPerPfb = &v
 }
 
@@ -421,6 +423,38 @@ func (o *ResponsesRollupWithDayStats) SetFeePerPfb(v string) {
 	o.FeePerPfb = &v
 }
 
+// GetFibreBlobsCount returns the FibreBlobsCount field value if set, zero value otherwise.
+func (o *ResponsesRollupWithDayStats) GetFibreBlobsCount() int64 {
+	if o == nil || IsNil(o.FibreBlobsCount) {
+		var ret int64
+		return ret
+	}
+	return *o.FibreBlobsCount
+}
+
+// GetFibreBlobsCountOk returns a tuple with the FibreBlobsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithDayStats) GetFibreBlobsCountOk() (*int64, bool) {
+	if o == nil || IsNil(o.FibreBlobsCount) {
+		return nil, false
+	}
+	return o.FibreBlobsCount, true
+}
+
+// HasFibreBlobsCount returns a boolean if a field has been set.
+func (o *ResponsesRollupWithDayStats) HasFibreBlobsCount() bool {
+	if o != nil && !IsNil(o.FibreBlobsCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetFibreBlobsCount gets a reference to the given int64 and assigns it to the FibreBlobsCount field.
+func (o *ResponsesRollupWithDayStats) SetFibreBlobsCount(v int64) {
+	o.FibreBlobsCount = &v
+}
+
 // GetGithub returns the Github field value if set, zero value otherwise.
 func (o *ResponsesRollupWithDayStats) GetGithub() string {
 	if o == nil || IsNil(o.Github) {
@@ -454,9 +488,9 @@ func (o *ResponsesRollupWithDayStats) SetGithub(v string) {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesRollupWithDayStats) GetId() int32 {
+func (o *ResponsesRollupWithDayStats) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -464,7 +498,7 @@ func (o *ResponsesRollupWithDayStats) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithDayStats) GetIdOk() (*int32, bool) {
+func (o *ResponsesRollupWithDayStats) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -480,8 +514,8 @@ func (o *ResponsesRollupWithDayStats) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesRollupWithDayStats) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesRollupWithDayStats) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -614,9 +648,9 @@ func (o *ResponsesRollupWithDayStats) SetName(v string) {
 }
 
 // GetNamespaceCount returns the NamespaceCount field value if set, zero value otherwise.
-func (o *ResponsesRollupWithDayStats) GetNamespaceCount() int32 {
+func (o *ResponsesRollupWithDayStats) GetNamespaceCount() int64 {
 	if o == nil || IsNil(o.NamespaceCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.NamespaceCount
@@ -624,7 +658,7 @@ func (o *ResponsesRollupWithDayStats) GetNamespaceCount() int32 {
 
 // GetNamespaceCountOk returns a tuple with the NamespaceCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithDayStats) GetNamespaceCountOk() (*int32, bool) {
+func (o *ResponsesRollupWithDayStats) GetNamespaceCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.NamespaceCount) {
 		return nil, false
 	}
@@ -640,15 +674,15 @@ func (o *ResponsesRollupWithDayStats) HasNamespaceCount() bool {
 	return false
 }
 
-// SetNamespaceCount gets a reference to the given int32 and assigns it to the NamespaceCount field.
-func (o *ResponsesRollupWithDayStats) SetNamespaceCount(v int32) {
+// SetNamespaceCount gets a reference to the given int64 and assigns it to the NamespaceCount field.
+func (o *ResponsesRollupWithDayStats) SetNamespaceCount(v int64) {
 	o.NamespaceCount = &v
 }
 
 // GetPfbCount returns the PfbCount field value if set, zero value otherwise.
-func (o *ResponsesRollupWithDayStats) GetPfbCount() int32 {
+func (o *ResponsesRollupWithDayStats) GetPfbCount() int64 {
 	if o == nil || IsNil(o.PfbCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PfbCount
@@ -656,7 +690,7 @@ func (o *ResponsesRollupWithDayStats) GetPfbCount() int32 {
 
 // GetPfbCountOk returns a tuple with the PfbCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithDayStats) GetPfbCountOk() (*int32, bool) {
+func (o *ResponsesRollupWithDayStats) GetPfbCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.PfbCount) {
 		return nil, false
 	}
@@ -672,9 +706,41 @@ func (o *ResponsesRollupWithDayStats) HasPfbCount() bool {
 	return false
 }
 
-// SetPfbCount gets a reference to the given int32 and assigns it to the PfbCount field.
-func (o *ResponsesRollupWithDayStats) SetPfbCount(v int32) {
+// SetPfbCount gets a reference to the given int64 and assigns it to the PfbCount field.
+func (o *ResponsesRollupWithDayStats) SetPfbCount(v int64) {
 	o.PfbCount = &v
+}
+
+// GetPffCount returns the PffCount field value if set, zero value otherwise.
+func (o *ResponsesRollupWithDayStats) GetPffCount() int64 {
+	if o == nil || IsNil(o.PffCount) {
+		var ret int64
+		return ret
+	}
+	return *o.PffCount
+}
+
+// GetPffCountOk returns a tuple with the PffCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithDayStats) GetPffCountOk() (*int64, bool) {
+	if o == nil || IsNil(o.PffCount) {
+		return nil, false
+	}
+	return o.PffCount, true
+}
+
+// HasPffCount returns a boolean if a field has been set.
+func (o *ResponsesRollupWithDayStats) HasPffCount() bool {
+	if o != nil && !IsNil(o.PffCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetPffCount gets a reference to the given int64 and assigns it to the PffCount field.
+func (o *ResponsesRollupWithDayStats) SetPffCount(v int64) {
+	o.PffCount = &v
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
@@ -806,9 +872,9 @@ func (o *ResponsesRollupWithDayStats) SetStack(v string) {
 }
 
 // GetThroughput returns the Throughput field value if set, zero value otherwise.
-func (o *ResponsesRollupWithDayStats) GetThroughput() int32 {
+func (o *ResponsesRollupWithDayStats) GetThroughput() int64 {
 	if o == nil || IsNil(o.Throughput) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Throughput
@@ -816,7 +882,7 @@ func (o *ResponsesRollupWithDayStats) GetThroughput() int32 {
 
 // GetThroughputOk returns a tuple with the Throughput field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithDayStats) GetThroughputOk() (*int32, bool) {
+func (o *ResponsesRollupWithDayStats) GetThroughputOk() (*int64, bool) {
 	if o == nil || IsNil(o.Throughput) {
 		return nil, false
 	}
@@ -832,8 +898,8 @@ func (o *ResponsesRollupWithDayStats) HasThroughput() bool {
 	return false
 }
 
-// SetThroughput gets a reference to the given int32 and assigns it to the Throughput field.
-func (o *ResponsesRollupWithDayStats) SetThroughput(v int32) {
+// SetThroughput gets a reference to the given int64 and assigns it to the Throughput field.
+func (o *ResponsesRollupWithDayStats) SetThroughput(v int64) {
 	o.Throughput = &v
 }
 
@@ -870,9 +936,9 @@ func (o *ResponsesRollupWithDayStats) SetTotalFee(v string) {
 }
 
 // GetTotalSize returns the TotalSize field value if set, zero value otherwise.
-func (o *ResponsesRollupWithDayStats) GetTotalSize() int32 {
+func (o *ResponsesRollupWithDayStats) GetTotalSize() int64 {
 	if o == nil || IsNil(o.TotalSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TotalSize
@@ -880,7 +946,7 @@ func (o *ResponsesRollupWithDayStats) GetTotalSize() int32 {
 
 // GetTotalSizeOk returns a tuple with the TotalSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithDayStats) GetTotalSizeOk() (*int32, bool) {
+func (o *ResponsesRollupWithDayStats) GetTotalSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.TotalSize) {
 		return nil, false
 	}
@@ -896,8 +962,8 @@ func (o *ResponsesRollupWithDayStats) HasTotalSize() bool {
 	return false
 }
 
-// SetTotalSize gets a reference to the given int32 and assigns it to the TotalSize field.
-func (o *ResponsesRollupWithDayStats) SetTotalSize(v int32) {
+// SetTotalSize gets a reference to the given int64 and assigns it to the TotalSize field.
+func (o *ResponsesRollupWithDayStats) SetTotalSize(v int64) {
 	o.TotalSize = &v
 }
 
@@ -1072,6 +1138,9 @@ func (o ResponsesRollupWithDayStats) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FeePerPfb) {
 		toSerialize["fee_per_pfb"] = o.FeePerPfb
 	}
+	if !IsNil(o.FibreBlobsCount) {
+		toSerialize["fibre_blobs_count"] = o.FibreBlobsCount
+	}
 	if !IsNil(o.Github) {
 		toSerialize["github"] = o.Github
 	}
@@ -1095,6 +1164,9 @@ func (o ResponsesRollupWithDayStats) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PfbCount) {
 		toSerialize["pfb_count"] = o.PfbCount
+	}
+	if !IsNil(o.PffCount) {
+		toSerialize["pff_count"] = o.PffCount
 	}
 	if !IsNil(o.Provider) {
 		toSerialize["provider"] = o.Provider

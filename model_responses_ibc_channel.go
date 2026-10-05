@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 	"time"
 )
 
@@ -23,16 +22,16 @@ var _ MappedNullable = &ResponsesIbcChannel{}
 // ResponsesIbcChannel struct for ResponsesIbcChannel
 type ResponsesIbcChannel struct {
 	Client *ResponsesShortIbcClient `json:"client,omitempty"`
-	ConfirmationHeight *int32 `json:"confirmation_height,omitempty"`
-	ConfirmationTxHash **os.File `json:"confirmation_tx_hash,omitempty"`
+	ConfirmationHeight *int64 `json:"confirmation_height,omitempty"`
+	ConfirmationTxHash *string `json:"confirmation_tx_hash,omitempty"`
 	ConfirmedAt *time.Time `json:"confirmed_at,omitempty"`
 	ConnectionId *string `json:"connection_id,omitempty"`
 	CounterpartyChannelId *string `json:"counterparty_channel_id,omitempty"`
 	CounterpartyPortId *string `json:"counterparty_port_id,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
-	CreatedTxHash **os.File `json:"created_tx_hash,omitempty"`
+	CreatedTxHash *string `json:"created_tx_hash,omitempty"`
 	Creator *ResponsesShortAddress `json:"creator,omitempty"`
-	Height *int32 `json:"height,omitempty"`
+	Height *int64 `json:"height,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Ordering *bool `json:"ordering,omitempty"`
 	PortId *string `json:"port_id,omitempty"`
@@ -90,9 +89,9 @@ func (o *ResponsesIbcChannel) SetClient(v ResponsesShortIbcClient) {
 }
 
 // GetConfirmationHeight returns the ConfirmationHeight field value if set, zero value otherwise.
-func (o *ResponsesIbcChannel) GetConfirmationHeight() int32 {
+func (o *ResponsesIbcChannel) GetConfirmationHeight() int64 {
 	if o == nil || IsNil(o.ConfirmationHeight) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ConfirmationHeight
@@ -100,7 +99,7 @@ func (o *ResponsesIbcChannel) GetConfirmationHeight() int32 {
 
 // GetConfirmationHeightOk returns a tuple with the ConfirmationHeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcChannel) GetConfirmationHeightOk() (*int32, bool) {
+func (o *ResponsesIbcChannel) GetConfirmationHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.ConfirmationHeight) {
 		return nil, false
 	}
@@ -116,15 +115,15 @@ func (o *ResponsesIbcChannel) HasConfirmationHeight() bool {
 	return false
 }
 
-// SetConfirmationHeight gets a reference to the given int32 and assigns it to the ConfirmationHeight field.
-func (o *ResponsesIbcChannel) SetConfirmationHeight(v int32) {
+// SetConfirmationHeight gets a reference to the given int64 and assigns it to the ConfirmationHeight field.
+func (o *ResponsesIbcChannel) SetConfirmationHeight(v int64) {
 	o.ConfirmationHeight = &v
 }
 
 // GetConfirmationTxHash returns the ConfirmationTxHash field value if set, zero value otherwise.
-func (o *ResponsesIbcChannel) GetConfirmationTxHash() *os.File {
+func (o *ResponsesIbcChannel) GetConfirmationTxHash() string {
 	if o == nil || IsNil(o.ConfirmationTxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.ConfirmationTxHash
@@ -132,7 +131,7 @@ func (o *ResponsesIbcChannel) GetConfirmationTxHash() *os.File {
 
 // GetConfirmationTxHashOk returns a tuple with the ConfirmationTxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcChannel) GetConfirmationTxHashOk() (**os.File, bool) {
+func (o *ResponsesIbcChannel) GetConfirmationTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.ConfirmationTxHash) {
 		return nil, false
 	}
@@ -148,8 +147,8 @@ func (o *ResponsesIbcChannel) HasConfirmationTxHash() bool {
 	return false
 }
 
-// SetConfirmationTxHash gets a reference to the given *os.File and assigns it to the ConfirmationTxHash field.
-func (o *ResponsesIbcChannel) SetConfirmationTxHash(v *os.File) {
+// SetConfirmationTxHash gets a reference to the given string and assigns it to the ConfirmationTxHash field.
+func (o *ResponsesIbcChannel) SetConfirmationTxHash(v string) {
 	o.ConfirmationTxHash = &v
 }
 
@@ -314,9 +313,9 @@ func (o *ResponsesIbcChannel) SetCreatedAt(v time.Time) {
 }
 
 // GetCreatedTxHash returns the CreatedTxHash field value if set, zero value otherwise.
-func (o *ResponsesIbcChannel) GetCreatedTxHash() *os.File {
+func (o *ResponsesIbcChannel) GetCreatedTxHash() string {
 	if o == nil || IsNil(o.CreatedTxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.CreatedTxHash
@@ -324,7 +323,7 @@ func (o *ResponsesIbcChannel) GetCreatedTxHash() *os.File {
 
 // GetCreatedTxHashOk returns a tuple with the CreatedTxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcChannel) GetCreatedTxHashOk() (**os.File, bool) {
+func (o *ResponsesIbcChannel) GetCreatedTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.CreatedTxHash) {
 		return nil, false
 	}
@@ -340,8 +339,8 @@ func (o *ResponsesIbcChannel) HasCreatedTxHash() bool {
 	return false
 }
 
-// SetCreatedTxHash gets a reference to the given *os.File and assigns it to the CreatedTxHash field.
-func (o *ResponsesIbcChannel) SetCreatedTxHash(v *os.File) {
+// SetCreatedTxHash gets a reference to the given string and assigns it to the CreatedTxHash field.
+func (o *ResponsesIbcChannel) SetCreatedTxHash(v string) {
 	o.CreatedTxHash = &v
 }
 
@@ -378,9 +377,9 @@ func (o *ResponsesIbcChannel) SetCreator(v ResponsesShortAddress) {
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ResponsesIbcChannel) GetHeight() int32 {
+func (o *ResponsesIbcChannel) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Height
@@ -388,7 +387,7 @@ func (o *ResponsesIbcChannel) GetHeight() int32 {
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcChannel) GetHeightOk() (*int32, bool) {
+func (o *ResponsesIbcChannel) GetHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.Height) {
 		return nil, false
 	}
@@ -404,8 +403,8 @@ func (o *ResponsesIbcChannel) HasHeight() bool {
 	return false
 }
 
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ResponsesIbcChannel) SetHeight(v int32) {
+// SetHeight gets a reference to the given int64 and assigns it to the Height field.
+func (o *ResponsesIbcChannel) SetHeight(v int64) {
 	o.Height = &v
 }
 

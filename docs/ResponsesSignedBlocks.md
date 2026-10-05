@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Height** | Pointer to **int32** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
 **Signed** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetHeight
 
-`func (o *ResponsesSignedBlocks) GetHeight() int32`
+`func (o *ResponsesSignedBlocks) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesSignedBlocks) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesSignedBlocks) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesSignedBlocks) SetHeight(v int32)`
+`func (o *ResponsesSignedBlocks) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 

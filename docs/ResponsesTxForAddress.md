@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Fee** | Pointer to **string** |  | [optional] 
-**Hash** | Pointer to ***os.File** |  | [optional] 
+**Hash** | Pointer to **string** |  | [optional] 
 **MessageTypes** | Pointer to [**[]TypesMsgType**](TypesMsgType.md) |  | [optional] 
 **MessagesCount** | Pointer to **int64** |  | [optional] 
 **Status** | Pointer to [**TypesStatus**](TypesStatus.md) |  | [optional] 
@@ -56,20 +56,20 @@ HasFee returns a boolean if a field has been set.
 
 ### GetHash
 
-`func (o *ResponsesTxForAddress) GetHash() *os.File`
+`func (o *ResponsesTxForAddress) GetHash() string`
 
 GetHash returns the Hash field if non-nil, zero value otherwise.
 
 ### GetHashOk
 
-`func (o *ResponsesTxForAddress) GetHashOk() (**os.File, bool)`
+`func (o *ResponsesTxForAddress) GetHashOk() (*string, bool)`
 
 GetHashOk returns a tuple with the Hash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHash
 
-`func (o *ResponsesTxForAddress) SetHash(v *os.File)`
+`func (o *ResponsesTxForAddress) SetHash(v string)`
 
 SetHash sets Hash field to given value.
 

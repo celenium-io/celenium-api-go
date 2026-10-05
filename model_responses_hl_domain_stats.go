@@ -22,8 +22,8 @@ var _ MappedNullable = &ResponsesHlDomainStats{}
 type ResponsesHlDomainStats struct {
 	Amount *string `json:"amount,omitempty"`
 	ChainMetadata *ResponsesChainMetadata `json:"chain_metadata,omitempty"`
-	DomainId *int32 `json:"domain_id,omitempty"`
-	TransfersCount *int32 `json:"transfers_count,omitempty"`
+	DomainId *int64 `json:"domain_id,omitempty"`
+	TransfersCount *int64 `json:"transfers_count,omitempty"`
 }
 
 // NewResponsesHlDomainStats instantiates a new ResponsesHlDomainStats object
@@ -108,9 +108,9 @@ func (o *ResponsesHlDomainStats) SetChainMetadata(v ResponsesChainMetadata) {
 }
 
 // GetDomainId returns the DomainId field value if set, zero value otherwise.
-func (o *ResponsesHlDomainStats) GetDomainId() int32 {
+func (o *ResponsesHlDomainStats) GetDomainId() int64 {
 	if o == nil || IsNil(o.DomainId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.DomainId
@@ -118,7 +118,7 @@ func (o *ResponsesHlDomainStats) GetDomainId() int32 {
 
 // GetDomainIdOk returns a tuple with the DomainId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesHlDomainStats) GetDomainIdOk() (*int32, bool) {
+func (o *ResponsesHlDomainStats) GetDomainIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.DomainId) {
 		return nil, false
 	}
@@ -134,15 +134,15 @@ func (o *ResponsesHlDomainStats) HasDomainId() bool {
 	return false
 }
 
-// SetDomainId gets a reference to the given int32 and assigns it to the DomainId field.
-func (o *ResponsesHlDomainStats) SetDomainId(v int32) {
+// SetDomainId gets a reference to the given int64 and assigns it to the DomainId field.
+func (o *ResponsesHlDomainStats) SetDomainId(v int64) {
 	o.DomainId = &v
 }
 
 // GetTransfersCount returns the TransfersCount field value if set, zero value otherwise.
-func (o *ResponsesHlDomainStats) GetTransfersCount() int32 {
+func (o *ResponsesHlDomainStats) GetTransfersCount() int64 {
 	if o == nil || IsNil(o.TransfersCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TransfersCount
@@ -150,7 +150,7 @@ func (o *ResponsesHlDomainStats) GetTransfersCount() int32 {
 
 // GetTransfersCountOk returns a tuple with the TransfersCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesHlDomainStats) GetTransfersCountOk() (*int32, bool) {
+func (o *ResponsesHlDomainStats) GetTransfersCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.TransfersCount) {
 		return nil, false
 	}
@@ -166,8 +166,8 @@ func (o *ResponsesHlDomainStats) HasTransfersCount() bool {
 	return false
 }
 
-// SetTransfersCount gets a reference to the given int32 and assigns it to the TransfersCount field.
-func (o *ResponsesHlDomainStats) SetTransfersCount(v int32) {
+// SetTransfersCount gets a reference to the given int64 and assigns it to the TransfersCount field.
+func (o *ResponsesHlDomainStats) SetTransfersCount(v int64) {
 	o.TransfersCount = &v
 }
 

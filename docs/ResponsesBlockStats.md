@@ -5,20 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BlobsCount** | Pointer to **int32** |  | [optional] 
-**BlobsSize** | Pointer to **int32** |  | [optional] 
-**BlockTime** | Pointer to **int32** |  | [optional] 
-**BytesInBlock** | Pointer to **int32** |  | [optional] 
+**BlobsSize** | Pointer to **int64** |  | [optional] 
+**BlockTime** | Pointer to **int64** |  | [optional] 
+**BytesInBlock** | Pointer to **int64** |  | [optional] 
 **Commissions** | Pointer to **string** |  | [optional] 
-**EventsCount** | Pointer to **int32** |  | [optional] 
+**EventsCount** | Pointer to **int64** |  | [optional] 
 **Fee** | Pointer to **string** |  | [optional] 
 **FillRate** | Pointer to **string** |  | [optional] 
-**GasLimit** | Pointer to **int32** |  | [optional] 
-**GasUsed** | Pointer to **int32** |  | [optional] 
+**GasLimit** | Pointer to **int64** |  | [optional] 
+**GasUsed** | Pointer to **int64** |  | [optional] 
 **InflationRate** | Pointer to **string** |  | [optional] 
 **Rewards** | Pointer to **string** |  | [optional] 
-**SquareSize** | Pointer to **int32** |  | [optional] 
+**SquareSize** | Pointer to **int64** |  | [optional] 
 **SupplyChange** | Pointer to **string** |  | [optional] 
-**TxCount** | Pointer to **int32** |  | [optional] 
+**TxCount** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -66,20 +66,20 @@ HasBlobsCount returns a boolean if a field has been set.
 
 ### GetBlobsSize
 
-`func (o *ResponsesBlockStats) GetBlobsSize() int32`
+`func (o *ResponsesBlockStats) GetBlobsSize() int64`
 
 GetBlobsSize returns the BlobsSize field if non-nil, zero value otherwise.
 
 ### GetBlobsSizeOk
 
-`func (o *ResponsesBlockStats) GetBlobsSizeOk() (*int32, bool)`
+`func (o *ResponsesBlockStats) GetBlobsSizeOk() (*int64, bool)`
 
 GetBlobsSizeOk returns a tuple with the BlobsSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlobsSize
 
-`func (o *ResponsesBlockStats) SetBlobsSize(v int32)`
+`func (o *ResponsesBlockStats) SetBlobsSize(v int64)`
 
 SetBlobsSize sets BlobsSize field to given value.
 
@@ -91,20 +91,20 @@ HasBlobsSize returns a boolean if a field has been set.
 
 ### GetBlockTime
 
-`func (o *ResponsesBlockStats) GetBlockTime() int32`
+`func (o *ResponsesBlockStats) GetBlockTime() int64`
 
 GetBlockTime returns the BlockTime field if non-nil, zero value otherwise.
 
 ### GetBlockTimeOk
 
-`func (o *ResponsesBlockStats) GetBlockTimeOk() (*int32, bool)`
+`func (o *ResponsesBlockStats) GetBlockTimeOk() (*int64, bool)`
 
 GetBlockTimeOk returns a tuple with the BlockTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlockTime
 
-`func (o *ResponsesBlockStats) SetBlockTime(v int32)`
+`func (o *ResponsesBlockStats) SetBlockTime(v int64)`
 
 SetBlockTime sets BlockTime field to given value.
 
@@ -116,20 +116,20 @@ HasBlockTime returns a boolean if a field has been set.
 
 ### GetBytesInBlock
 
-`func (o *ResponsesBlockStats) GetBytesInBlock() int32`
+`func (o *ResponsesBlockStats) GetBytesInBlock() int64`
 
 GetBytesInBlock returns the BytesInBlock field if non-nil, zero value otherwise.
 
 ### GetBytesInBlockOk
 
-`func (o *ResponsesBlockStats) GetBytesInBlockOk() (*int32, bool)`
+`func (o *ResponsesBlockStats) GetBytesInBlockOk() (*int64, bool)`
 
 GetBytesInBlockOk returns a tuple with the BytesInBlock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBytesInBlock
 
-`func (o *ResponsesBlockStats) SetBytesInBlock(v int32)`
+`func (o *ResponsesBlockStats) SetBytesInBlock(v int64)`
 
 SetBytesInBlock sets BytesInBlock field to given value.
 
@@ -166,20 +166,20 @@ HasCommissions returns a boolean if a field has been set.
 
 ### GetEventsCount
 
-`func (o *ResponsesBlockStats) GetEventsCount() int32`
+`func (o *ResponsesBlockStats) GetEventsCount() int64`
 
 GetEventsCount returns the EventsCount field if non-nil, zero value otherwise.
 
 ### GetEventsCountOk
 
-`func (o *ResponsesBlockStats) GetEventsCountOk() (*int32, bool)`
+`func (o *ResponsesBlockStats) GetEventsCountOk() (*int64, bool)`
 
 GetEventsCountOk returns a tuple with the EventsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEventsCount
 
-`func (o *ResponsesBlockStats) SetEventsCount(v int32)`
+`func (o *ResponsesBlockStats) SetEventsCount(v int64)`
 
 SetEventsCount sets EventsCount field to given value.
 
@@ -241,20 +241,20 @@ HasFillRate returns a boolean if a field has been set.
 
 ### GetGasLimit
 
-`func (o *ResponsesBlockStats) GetGasLimit() int32`
+`func (o *ResponsesBlockStats) GetGasLimit() int64`
 
 GetGasLimit returns the GasLimit field if non-nil, zero value otherwise.
 
 ### GetGasLimitOk
 
-`func (o *ResponsesBlockStats) GetGasLimitOk() (*int32, bool)`
+`func (o *ResponsesBlockStats) GetGasLimitOk() (*int64, bool)`
 
 GetGasLimitOk returns a tuple with the GasLimit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGasLimit
 
-`func (o *ResponsesBlockStats) SetGasLimit(v int32)`
+`func (o *ResponsesBlockStats) SetGasLimit(v int64)`
 
 SetGasLimit sets GasLimit field to given value.
 
@@ -266,20 +266,20 @@ HasGasLimit returns a boolean if a field has been set.
 
 ### GetGasUsed
 
-`func (o *ResponsesBlockStats) GetGasUsed() int32`
+`func (o *ResponsesBlockStats) GetGasUsed() int64`
 
 GetGasUsed returns the GasUsed field if non-nil, zero value otherwise.
 
 ### GetGasUsedOk
 
-`func (o *ResponsesBlockStats) GetGasUsedOk() (*int32, bool)`
+`func (o *ResponsesBlockStats) GetGasUsedOk() (*int64, bool)`
 
 GetGasUsedOk returns a tuple with the GasUsed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGasUsed
 
-`func (o *ResponsesBlockStats) SetGasUsed(v int32)`
+`func (o *ResponsesBlockStats) SetGasUsed(v int64)`
 
 SetGasUsed sets GasUsed field to given value.
 
@@ -341,20 +341,20 @@ HasRewards returns a boolean if a field has been set.
 
 ### GetSquareSize
 
-`func (o *ResponsesBlockStats) GetSquareSize() int32`
+`func (o *ResponsesBlockStats) GetSquareSize() int64`
 
 GetSquareSize returns the SquareSize field if non-nil, zero value otherwise.
 
 ### GetSquareSizeOk
 
-`func (o *ResponsesBlockStats) GetSquareSizeOk() (*int32, bool)`
+`func (o *ResponsesBlockStats) GetSquareSizeOk() (*int64, bool)`
 
 GetSquareSizeOk returns a tuple with the SquareSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSquareSize
 
-`func (o *ResponsesBlockStats) SetSquareSize(v int32)`
+`func (o *ResponsesBlockStats) SetSquareSize(v int64)`
 
 SetSquareSize sets SquareSize field to given value.
 
@@ -391,20 +391,20 @@ HasSupplyChange returns a boolean if a field has been set.
 
 ### GetTxCount
 
-`func (o *ResponsesBlockStats) GetTxCount() int32`
+`func (o *ResponsesBlockStats) GetTxCount() int64`
 
 GetTxCount returns the TxCount field if non-nil, zero value otherwise.
 
 ### GetTxCountOk
 
-`func (o *ResponsesBlockStats) GetTxCountOk() (*int32, bool)`
+`func (o *ResponsesBlockStats) GetTxCountOk() (*int64, bool)`
 
 GetTxCountOk returns a tuple with the TxCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxCount
 
-`func (o *ResponsesBlockStats) SetTxCount(v int32)`
+`func (o *ResponsesBlockStats) SetTxCount(v int64)`
 
 SetTxCount sets TxCount field to given value.
 

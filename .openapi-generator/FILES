@@ -36,9 +36,11 @@ docs/ResponsesAddress.md
 docs/ResponsesBalance.md
 docs/ResponsesBlob.md
 docs/ResponsesBlobLog.md
+docs/ResponsesBlobProof.md
 docs/ResponsesBlock.md
 docs/ResponsesBlockExplorer.md
 docs/ResponsesBlockStats.md
+docs/ResponsesBondUpdate.md
 docs/ResponsesBusiestChannel.md
 docs/ResponsesCelestial.md
 docs/ResponsesChainMetadata.md
@@ -52,6 +54,7 @@ docs/ResponsesDistributionItem.md
 docs/ResponsesDomainMetadata.md
 docs/ResponsesEnums.md
 docs/ResponsesEvent.md
+docs/ResponsesFibre.md
 docs/ResponsesForwarding.md
 docs/ResponsesForwardingInput.md
 docs/ResponsesGasPayment.md
@@ -143,9 +146,11 @@ model_responses_address.go
 model_responses_balance.go
 model_responses_blob.go
 model_responses_blob_log.go
+model_responses_blob_proof.go
 model_responses_block.go
 model_responses_block_explorer.go
 model_responses_block_stats.go
+model_responses_bond_update.go
 model_responses_busiest_channel.go
 model_responses_celestial.go
 model_responses_chain_metadata.go
@@ -159,6 +164,7 @@ model_responses_distribution_item.go
 model_responses_domain_metadata.go
 model_responses_enums.go
 model_responses_event.go
+model_responses_fibre.go
 model_responses_forwarding.go
 model_responses_forwarding_input.go
 model_responses_gas_payment.go

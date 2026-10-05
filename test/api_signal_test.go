@@ -26,7 +26,7 @@ func Test_celenium_SignalAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var version int32
+		var version int64
 
 		resp, httpRes, err := apiClient.SignalAPI.GetUpgrade(context.Background(), version).Execute()
 

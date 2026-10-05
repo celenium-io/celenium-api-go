@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -87,7 +87,7 @@ No authorization required
 
 ## GetBlobLogs
 
-> []ResponsesBlobLog GetBlobLogs(ctx, id, version).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Commitment(commitment).From(from).To(to).Joins(joins).Signers(signers).Cursor(cursor).Execute()
+> []ResponsesBlobLog GetBlobLogs(ctx, id, version).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Commitment(commitment).From(from).To(to).Joins(joins).Signers(signers).Cursor(cursor).Source(source).Execute()
 
 Get blob changes for namespace
 
@@ -113,15 +113,16 @@ func main() {
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	sortBy := "sortBy_example" // string | Sort field. If it's empty internal id is used (optional)
 	commitment := "commitment_example" // string | Commitment value in URLbase64 format (optional)
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 	joins := true // bool | Flag indicating whether entities of rollup, transaction and signer should be attached or not. Default: true (optional)
-	signers := "signers_example" // string | Comma-separated celestia addresses (optional)
-	cursor := int32(56) // int32 | Last entity id which is used for cursor pagination (optional)
+	signers := []string{"Inner_example"} // []string | Comma-separated celestia addresses (optional)
+	cursor := int64(789) // int64 | Last entity id which is used for cursor pagination (optional)
+	source := "source_example" // string | Blob source. If it's empty both sources are returned (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NamespaceAPI.GetBlobLogs(context.Background(), id, version).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Commitment(commitment).From(from).To(to).Joins(joins).Signers(signers).Cursor(cursor).Execute()
+	resp, r, err := apiClient.NamespaceAPI.GetBlobLogs(context.Background(), id, version).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Commitment(commitment).From(from).To(to).Joins(joins).Signers(signers).Cursor(cursor).Source(source).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NamespaceAPI.GetBlobLogs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -154,11 +155,12 @@ Name | Type | Description  | Notes
  **sort** | **string** | Sort order. Default: desc | 
  **sortBy** | **string** | Sort field. If it&#39;s empty internal id is used | 
  **commitment** | **string** | Commitment value in URLbase64 format | 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
  **joins** | **bool** | Flag indicating whether entities of rollup, transaction and signer should be attached or not. Default: true | 
- **signers** | **string** | Comma-separated celestia addresses | 
- **cursor** | **int32** | Last entity id which is used for cursor pagination | 
+ **signers** | **[]string** | Comma-separated celestia addresses | 
+ **cursor** | **int64** | Last entity id which is used for cursor pagination | 
+ **source** | **string** | Blob source. If it&#39;s empty both sources are returned | 
 
 ### Return type
 
@@ -166,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -232,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -246,7 +248,7 @@ No authorization required
 
 ## GetBlobProof
 
-> ResponsesBlobLog GetBlobProof(ctx).Request(request).Execute()
+> []ResponsesBlobProof GetBlobProof(ctx).Request(request).Execute()
 
 Get blob inclusion proofs
 
@@ -274,7 +276,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `NamespaceAPI.GetBlobProof``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetBlobProof`: ResponsesBlobLog
+	// response from `GetBlobProof`: []ResponsesBlobProof
 	fmt.Fprintf(os.Stdout, "Response from `NamespaceAPI.GetBlobProof`: %v\n", resp)
 }
 ```
@@ -294,11 +296,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponsesBlobLog**](ResponsesBlobLog.md)
+[**[]ResponsesBlobProof**](ResponsesBlobProof.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -312,7 +314,7 @@ No authorization required
 
 ## GetBlobs
 
-> []ResponsesLightBlobLog GetBlobs(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Commitment(commitment).From(from).To(to).Signers(signers).Namespaces(namespaces).Cursor(cursor).Execute()
+> []ResponsesLightBlobLog GetBlobs(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Commitment(commitment).From(from).To(to).Signers(signers).Namespaces(namespaces).Cursor(cursor).Source(source).Execute()
 
 List all blobs with filters
 
@@ -336,15 +338,16 @@ func main() {
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	sortBy := "sortBy_example" // string | Sort field. If it's empty internal id is used (optional)
 	commitment := "commitment_example" // string | Commitment value in URLbase64 format (optional)
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
-	signers := "signers_example" // string | Comma-separated celestia addresses (optional)
-	namespaces := "namespaces_example" // string | Comma-separated celestia namespaces (optional)
-	cursor := int32(56) // int32 | Last entity id which is used for cursor pagination (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
+	signers := []string{"Inner_example"} // []string | Comma-separated celestia addresses (optional)
+	namespaces := []string{"Inner_example"} // []string | Comma-separated celestia namespaces (optional)
+	cursor := int64(789) // int64 | Last entity id which is used for cursor pagination (optional)
+	source := "source_example" // string | Blob source. If it's empty both sources are returned (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NamespaceAPI.GetBlobs(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Commitment(commitment).From(from).To(to).Signers(signers).Namespaces(namespaces).Cursor(cursor).Execute()
+	resp, r, err := apiClient.NamespaceAPI.GetBlobs(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Commitment(commitment).From(from).To(to).Signers(signers).Namespaces(namespaces).Cursor(cursor).Source(source).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NamespaceAPI.GetBlobs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -370,11 +373,12 @@ Name | Type | Description  | Notes
  **sort** | **string** | Sort order. Default: desc | 
  **sortBy** | **string** | Sort field. If it&#39;s empty internal id is used | 
  **commitment** | **string** | Commitment value in URLbase64 format | 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
- **signers** | **string** | Comma-separated celestia addresses | 
- **namespaces** | **string** | Comma-separated celestia namespaces | 
- **cursor** | **int32** | Last entity id which is used for cursor pagination | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
+ **signers** | **[]string** | Comma-separated celestia addresses | 
+ **namespaces** | **[]string** | Comma-separated celestia namespaces | 
+ **cursor** | **int64** | Last entity id which is used for cursor pagination | 
+ **source** | **string** | Blob source. If it&#39;s empty both sources are returned | 
 
 ### Return type
 
@@ -382,7 +386,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -452,7 +456,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -522,7 +526,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -556,7 +560,7 @@ import (
 
 func main() {
 	hash := "hash_example" // string | Base64-encoded namespace id and version
-	height := int32(56) // int32 | Block height
+	height := int64(789) // int64 | Block height
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -577,7 +581,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **hash** | **string** | Base64-encoded namespace id and version | 
-**height** | **int32** | Block height | 
+**height** | **int64** | Block height | 
 
 ### Other Parameters
 
@@ -595,7 +599,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -668,7 +672,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -745,7 +749,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -822,7 +826,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -894,7 +898,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

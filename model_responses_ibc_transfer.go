@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 	"time"
 )
 
@@ -23,22 +22,22 @@ var _ MappedNullable = &ResponsesIbcTransfer{}
 // ResponsesIbcTransfer struct for ResponsesIbcTransfer
 type ResponsesIbcTransfer struct {
 	Amount *string `json:"amount,omitempty"`
-	ChainId **os.File `json:"chain_id,omitempty"`
+	ChainId *string `json:"chain_id,omitempty"`
 	ChannelId *string `json:"channel_id,omitempty"`
 	ConnectionId *string `json:"connection_id,omitempty"`
 	Denom *string `json:"denom,omitempty"`
-	Height *int32 `json:"height,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Height *int64 `json:"height,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Memo *string `json:"memo,omitempty"`
 	Port *string `json:"port,omitempty"`
 	Receiver *ResponsesShortAddress `json:"receiver,omitempty"`
 	Relayer *ResponsesRelayer `json:"relayer,omitempty"`
 	Sender *ResponsesShortAddress `json:"sender,omitempty"`
-	Sequence *int32 `json:"sequence,omitempty"`
+	Sequence *int64 `json:"sequence,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	Timeout *time.Time `json:"timeout,omitempty"`
-	TimeoutHeight *int32 `json:"timeout_height,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	TimeoutHeight *int64 `json:"timeout_height,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
 }
 
 // NewResponsesIbcTransfer instantiates a new ResponsesIbcTransfer object
@@ -91,9 +90,9 @@ func (o *ResponsesIbcTransfer) SetAmount(v string) {
 }
 
 // GetChainId returns the ChainId field value if set, zero value otherwise.
-func (o *ResponsesIbcTransfer) GetChainId() *os.File {
+func (o *ResponsesIbcTransfer) GetChainId() string {
 	if o == nil || IsNil(o.ChainId) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.ChainId
@@ -101,7 +100,7 @@ func (o *ResponsesIbcTransfer) GetChainId() *os.File {
 
 // GetChainIdOk returns a tuple with the ChainId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcTransfer) GetChainIdOk() (**os.File, bool) {
+func (o *ResponsesIbcTransfer) GetChainIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ChainId) {
 		return nil, false
 	}
@@ -117,8 +116,8 @@ func (o *ResponsesIbcTransfer) HasChainId() bool {
 	return false
 }
 
-// SetChainId gets a reference to the given *os.File and assigns it to the ChainId field.
-func (o *ResponsesIbcTransfer) SetChainId(v *os.File) {
+// SetChainId gets a reference to the given string and assigns it to the ChainId field.
+func (o *ResponsesIbcTransfer) SetChainId(v string) {
 	o.ChainId = &v
 }
 
@@ -219,9 +218,9 @@ func (o *ResponsesIbcTransfer) SetDenom(v string) {
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ResponsesIbcTransfer) GetHeight() int32 {
+func (o *ResponsesIbcTransfer) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Height
@@ -229,7 +228,7 @@ func (o *ResponsesIbcTransfer) GetHeight() int32 {
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcTransfer) GetHeightOk() (*int32, bool) {
+func (o *ResponsesIbcTransfer) GetHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.Height) {
 		return nil, false
 	}
@@ -245,15 +244,15 @@ func (o *ResponsesIbcTransfer) HasHeight() bool {
 	return false
 }
 
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ResponsesIbcTransfer) SetHeight(v int32) {
+// SetHeight gets a reference to the given int64 and assigns it to the Height field.
+func (o *ResponsesIbcTransfer) SetHeight(v int64) {
 	o.Height = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesIbcTransfer) GetId() int32 {
+func (o *ResponsesIbcTransfer) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -261,7 +260,7 @@ func (o *ResponsesIbcTransfer) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcTransfer) GetIdOk() (*int32, bool) {
+func (o *ResponsesIbcTransfer) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -277,8 +276,8 @@ func (o *ResponsesIbcTransfer) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesIbcTransfer) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesIbcTransfer) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -443,9 +442,9 @@ func (o *ResponsesIbcTransfer) SetSender(v ResponsesShortAddress) {
 }
 
 // GetSequence returns the Sequence field value if set, zero value otherwise.
-func (o *ResponsesIbcTransfer) GetSequence() int32 {
+func (o *ResponsesIbcTransfer) GetSequence() int64 {
 	if o == nil || IsNil(o.Sequence) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Sequence
@@ -453,7 +452,7 @@ func (o *ResponsesIbcTransfer) GetSequence() int32 {
 
 // GetSequenceOk returns a tuple with the Sequence field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcTransfer) GetSequenceOk() (*int32, bool) {
+func (o *ResponsesIbcTransfer) GetSequenceOk() (*int64, bool) {
 	if o == nil || IsNil(o.Sequence) {
 		return nil, false
 	}
@@ -469,8 +468,8 @@ func (o *ResponsesIbcTransfer) HasSequence() bool {
 	return false
 }
 
-// SetSequence gets a reference to the given int32 and assigns it to the Sequence field.
-func (o *ResponsesIbcTransfer) SetSequence(v int32) {
+// SetSequence gets a reference to the given int64 and assigns it to the Sequence field.
+func (o *ResponsesIbcTransfer) SetSequence(v int64) {
 	o.Sequence = &v
 }
 
@@ -539,9 +538,9 @@ func (o *ResponsesIbcTransfer) SetTimeout(v time.Time) {
 }
 
 // GetTimeoutHeight returns the TimeoutHeight field value if set, zero value otherwise.
-func (o *ResponsesIbcTransfer) GetTimeoutHeight() int32 {
+func (o *ResponsesIbcTransfer) GetTimeoutHeight() int64 {
 	if o == nil || IsNil(o.TimeoutHeight) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TimeoutHeight
@@ -549,7 +548,7 @@ func (o *ResponsesIbcTransfer) GetTimeoutHeight() int32 {
 
 // GetTimeoutHeightOk returns a tuple with the TimeoutHeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcTransfer) GetTimeoutHeightOk() (*int32, bool) {
+func (o *ResponsesIbcTransfer) GetTimeoutHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.TimeoutHeight) {
 		return nil, false
 	}
@@ -565,15 +564,15 @@ func (o *ResponsesIbcTransfer) HasTimeoutHeight() bool {
 	return false
 }
 
-// SetTimeoutHeight gets a reference to the given int32 and assigns it to the TimeoutHeight field.
-func (o *ResponsesIbcTransfer) SetTimeoutHeight(v int32) {
+// SetTimeoutHeight gets a reference to the given int64 and assigns it to the TimeoutHeight field.
+func (o *ResponsesIbcTransfer) SetTimeoutHeight(v int64) {
 	o.TimeoutHeight = &v
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesIbcTransfer) GetTxHash() *os.File {
+func (o *ResponsesIbcTransfer) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -581,7 +580,7 @@ func (o *ResponsesIbcTransfer) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcTransfer) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesIbcTransfer) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -597,8 +596,8 @@ func (o *ResponsesIbcTransfer) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesIbcTransfer) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesIbcTransfer) SetTxHash(v string) {
 	o.TxHash = &v
 }
 

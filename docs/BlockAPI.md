@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## BlockBlobsCount
 
-> int32 BlockBlobsCount(ctx, height).Execute()
+> int64 BlockBlobsCount(ctx, height).Execute()
 
 Count of blobs which was pushed in the block
 
@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-	height := int32(56) // int32 | Block height
+	height := int64(789) // int64 | Block height
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -45,7 +45,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BlockAPI.BlockBlobsCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BlockBlobsCount`: int32
+	// response from `BlockBlobsCount`: int64
 	fmt.Fprintf(os.Stdout, "Response from `BlockAPI.BlockBlobsCount`: %v\n", resp)
 }
 ```
@@ -56,7 +56,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**height** | **int32** | Block height | 
+**height** | **int64** | Block height | 
 
 ### Other Parameters
 
@@ -69,11 +69,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**int32**
+**int64**
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -106,7 +106,7 @@ import (
 )
 
 func main() {
-	height := int32(56) // int32 | Block height
+	height := int64(789) // int64 | Block height
 	stats := true // bool | Need join stats for block (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -127,7 +127,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**height** | **int32** | Block height | 
+**height** | **int64** | Block height | 
 
 ### Other Parameters
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -159,7 +159,7 @@ No authorization required
 
 ## GetBlockBlobs
 
-> []ResponsesBlobLog GetBlockBlobs(ctx, height).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Execute()
+> []ResponsesBlobLog GetBlockBlobs(ctx, height).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Source(source).Execute()
 
 List blobs which was pushed in the block
 
@@ -178,15 +178,16 @@ import (
 )
 
 func main() {
-	height := int32(56) // int32 | Block height
+	height := int64(789) // int64 | Block height
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	sortBy := "sortBy_example" // string | Sort field. If it's empty internal id is used (optional)
+	source := "source_example" // string | Blob source. If it's empty both sources are returned (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BlockAPI.GetBlockBlobs(context.Background(), height).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Execute()
+	resp, r, err := apiClient.BlockAPI.GetBlockBlobs(context.Background(), height).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Source(source).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BlockAPI.GetBlockBlobs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -202,7 +203,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**height** | **int32** | Block height | 
+**height** | **int64** | Block height | 
 
 ### Other Parameters
 
@@ -216,6 +217,7 @@ Name | Type | Description  | Notes
  **offset** | **int32** | Offset | 
  **sort** | **string** | Sort order. Default: desc | 
  **sortBy** | **string** | Sort field. If it&#39;s empty internal id is used | 
+ **source** | **string** | Blob source. If it&#39;s empty both sources are returned | 
 
 ### Return type
 
@@ -223,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -237,7 +239,7 @@ No authorization required
 
 ## GetBlockCount
 
-> int32 GetBlockCount(ctx).Execute()
+> int64 GetBlockCount(ctx).Execute()
 
 Get count of blocks in network
 
@@ -264,7 +266,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BlockAPI.GetBlockCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetBlockCount`: int32
+	// response from `GetBlockCount`: int64
 	fmt.Fprintf(os.Stdout, "Response from `BlockAPI.GetBlockCount`: %v\n", resp)
 }
 ```
@@ -280,11 +282,11 @@ Other parameters are passed through a pointer to a apiGetBlockCountRequest struc
 
 ### Return type
 
-**int32**
+**int64**
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -317,7 +319,7 @@ import (
 )
 
 func main() {
-	height := int32(56) // int32 | Block height
+	height := int64(789) // int64 | Block height
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 
@@ -339,7 +341,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**height** | **int32** | Block height | 
+**height** | **int64** | Block height | 
 
 ### Other Parameters
 
@@ -358,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -391,11 +393,11 @@ import (
 )
 
 func main() {
-	height := int32(56) // int32 | Block height
+	height := int64(789) // int64 | Block height
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
-	msgType := "msgType_example" // string | Comma-separated message types list (optional)
-	excludedMsgType := "excludedMsgType_example" // string | Comma-separated message types which should be excluded from list (optional)
+	msgType := []string{"MsgType_example"} // []string | Comma-separated message types list (optional)
+	excludedMsgType := []string{"ExcludedMsgType_example"} // []string | Comma-separated message types which should be excluded from list (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -415,7 +417,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**height** | **int32** | Block height | 
+**height** | **int64** | Block height | 
 
 ### Other Parameters
 
@@ -427,8 +429,8 @@ Name | Type | Description  | Notes
 
  **limit** | **int32** | Count of requested entities | 
  **offset** | **int32** | Offset | 
- **msgType** | **string** | Comma-separated message types list | 
- **excludedMsgType** | **string** | Comma-separated message types which should be excluded from list | 
+ **msgType** | **[]string** | Comma-separated message types list | 
+ **excludedMsgType** | **[]string** | Comma-separated message types which should be excluded from list | 
 
 ### Return type
 
@@ -436,7 +438,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -469,7 +471,7 @@ import (
 )
 
 func main() {
-	height := int32(56) // int32 | Block height
+	height := int64(789) // int64 | Block height
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -489,7 +491,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**height** | **int32** | Block height | 
+**height** | **int64** | Block height | 
 
 ### Other Parameters
 
@@ -506,7 +508,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -578,7 +580,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

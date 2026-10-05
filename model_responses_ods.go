@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponsesODS{}
 // ResponsesODS struct for ResponsesODS
 type ResponsesODS struct {
 	Items []ResponsesODSItem `json:"items,omitempty"`
-	Width *int32 `json:"width,omitempty"`
+	Width *int64 `json:"width,omitempty"`
 }
 
 // NewResponsesODS instantiates a new ResponsesODS object
@@ -74,9 +74,9 @@ func (o *ResponsesODS) SetItems(v []ResponsesODSItem) {
 }
 
 // GetWidth returns the Width field value if set, zero value otherwise.
-func (o *ResponsesODS) GetWidth() int32 {
+func (o *ResponsesODS) GetWidth() int64 {
 	if o == nil || IsNil(o.Width) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Width
@@ -84,7 +84,7 @@ func (o *ResponsesODS) GetWidth() int32 {
 
 // GetWidthOk returns a tuple with the Width field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesODS) GetWidthOk() (*int32, bool) {
+func (o *ResponsesODS) GetWidthOk() (*int64, bool) {
 	if o == nil || IsNil(o.Width) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *ResponsesODS) HasWidth() bool {
 	return false
 }
 
-// SetWidth gets a reference to the given int32 and assigns it to the Width field.
-func (o *ResponsesODS) SetWidth(v int32) {
+// SetWidth gets a reference to the given int64 and assigns it to the Width field.
+func (o *ResponsesODS) SetWidth(v int64) {
 	o.Width = &v
 }
 

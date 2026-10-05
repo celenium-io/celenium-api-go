@@ -26,7 +26,7 @@ func Test_celenium_BlockAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var height int32
+		var height int64
 
 		resp, httpRes, err := apiClient.BlockAPI.BlockBlobsCount(context.Background(), height).Execute()
 
@@ -40,7 +40,7 @@ func Test_celenium_BlockAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var height int32
+		var height int64
 
 		resp, httpRes, err := apiClient.BlockAPI.GetBlock(context.Background(), height).Execute()
 
@@ -54,7 +54,7 @@ func Test_celenium_BlockAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var height int32
+		var height int64
 
 		resp, httpRes, err := apiClient.BlockAPI.GetBlockBlobs(context.Background(), height).Execute()
 
@@ -80,7 +80,7 @@ func Test_celenium_BlockAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var height int32
+		var height int64
 
 		resp, httpRes, err := apiClient.BlockAPI.GetBlockEvents(context.Background(), height).Execute()
 
@@ -94,7 +94,7 @@ func Test_celenium_BlockAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var height int32
+		var height int64
 
 		resp, httpRes, err := apiClient.BlockAPI.GetBlockMessages(context.Background(), height).Execute()
 
@@ -108,7 +108,7 @@ func Test_celenium_BlockAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var height int32
+		var height int64
 
 		resp, httpRes, err := apiClient.BlockAPI.GetBlockStats(context.Background(), height).Execute()
 

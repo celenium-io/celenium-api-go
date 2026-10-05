@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Fee** | Pointer to **string** |  | [optional] 
 **GasUsed** | Pointer to **int64** |  | [optional] 
 **GasWanted** | Pointer to **int64** |  | [optional] 
-**Hash** | Pointer to ***os.File** |  | [optional] 
+**Hash** | Pointer to **string** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **Memo** | Pointer to **string** |  | [optional] 
@@ -194,20 +194,20 @@ HasGasWanted returns a boolean if a field has been set.
 
 ### GetHash
 
-`func (o *ResponsesTx) GetHash() *os.File`
+`func (o *ResponsesTx) GetHash() string`
 
 GetHash returns the Hash field if non-nil, zero value otherwise.
 
 ### GetHashOk
 
-`func (o *ResponsesTx) GetHashOk() (**os.File, bool)`
+`func (o *ResponsesTx) GetHashOk() (*string, bool)`
 
 GetHashOk returns a tuple with the Hash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHash
 
-`func (o *ResponsesTx) SetHash(v *os.File)`
+`func (o *ResponsesTx) SetHash(v string)`
 
 SetHash sets Hash field to given value.
 

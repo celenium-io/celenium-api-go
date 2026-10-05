@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 )
 
 // checks if the ResponsesNamespaceUsage type satisfies the MappedNullable interface at compile time
@@ -22,8 +21,8 @@ var _ MappedNullable = &ResponsesNamespaceUsage{}
 // ResponsesNamespaceUsage struct for ResponsesNamespaceUsage
 type ResponsesNamespaceUsage struct {
 	Name *string `json:"name,omitempty"`
-	NamespaceId **os.File `json:"namespace_id,omitempty"`
-	Size *float32 `json:"size,omitempty"`
+	NamespaceId *string `json:"namespace_id,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 	Version *int32 `json:"version,omitempty"`
 }
 
@@ -77,9 +76,9 @@ func (o *ResponsesNamespaceUsage) SetName(v string) {
 }
 
 // GetNamespaceId returns the NamespaceId field value if set, zero value otherwise.
-func (o *ResponsesNamespaceUsage) GetNamespaceId() *os.File {
+func (o *ResponsesNamespaceUsage) GetNamespaceId() string {
 	if o == nil || IsNil(o.NamespaceId) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.NamespaceId
@@ -87,7 +86,7 @@ func (o *ResponsesNamespaceUsage) GetNamespaceId() *os.File {
 
 // GetNamespaceIdOk returns a tuple with the NamespaceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesNamespaceUsage) GetNamespaceIdOk() (**os.File, bool) {
+func (o *ResponsesNamespaceUsage) GetNamespaceIdOk() (*string, bool) {
 	if o == nil || IsNil(o.NamespaceId) {
 		return nil, false
 	}
@@ -103,15 +102,15 @@ func (o *ResponsesNamespaceUsage) HasNamespaceId() bool {
 	return false
 }
 
-// SetNamespaceId gets a reference to the given *os.File and assigns it to the NamespaceId field.
-func (o *ResponsesNamespaceUsage) SetNamespaceId(v *os.File) {
+// SetNamespaceId gets a reference to the given string and assigns it to the NamespaceId field.
+func (o *ResponsesNamespaceUsage) SetNamespaceId(v string) {
 	o.NamespaceId = &v
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *ResponsesNamespaceUsage) GetSize() float32 {
+func (o *ResponsesNamespaceUsage) GetSize() int64 {
 	if o == nil || IsNil(o.Size) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.Size
@@ -119,7 +118,7 @@ func (o *ResponsesNamespaceUsage) GetSize() float32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesNamespaceUsage) GetSizeOk() (*float32, bool) {
+func (o *ResponsesNamespaceUsage) GetSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
@@ -135,8 +134,8 @@ func (o *ResponsesNamespaceUsage) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given float32 and assigns it to the Size field.
-func (o *ResponsesNamespaceUsage) SetSize(v float32) {
+// SetSize gets a reference to the given int64 and assigns it to the Size field.
+func (o *ResponsesNamespaceUsage) SetSize(v int64) {
 	o.Size = &v
 }
 

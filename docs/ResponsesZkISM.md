@@ -5,16 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Creator** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
-**ExternalId** | Pointer to ***os.File** |  | [optional] 
-**Groth16Vkey** | Pointer to ***os.File** |  | [optional] 
+**ExternalId** | Pointer to **string** |  | [optional] 
+**Groth16Vkey** | Pointer to **string** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
-**MerkleTreeAddress** | Pointer to ***os.File** |  | [optional] 
-**State** | Pointer to ***os.File** |  | [optional] 
-**StateMembershipVkey** | Pointer to ***os.File** |  | [optional] 
-**StateTransitionVkey** | Pointer to ***os.File** |  | [optional] 
+**MerkleTreeAddress** | Pointer to **string** |  | [optional] 
+**State** | Pointer to **string** |  | [optional] 
+**StateMembershipVkey** | Pointer to **string** |  | [optional] 
+**StateTransitionVkey** | Pointer to **string** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -62,20 +62,20 @@ HasCreator returns a boolean if a field has been set.
 
 ### GetExternalId
 
-`func (o *ResponsesZkISM) GetExternalId() *os.File`
+`func (o *ResponsesZkISM) GetExternalId() string`
 
 GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
 
 ### GetExternalIdOk
 
-`func (o *ResponsesZkISM) GetExternalIdOk() (**os.File, bool)`
+`func (o *ResponsesZkISM) GetExternalIdOk() (*string, bool)`
 
 GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalId
 
-`func (o *ResponsesZkISM) SetExternalId(v *os.File)`
+`func (o *ResponsesZkISM) SetExternalId(v string)`
 
 SetExternalId sets ExternalId field to given value.
 
@@ -87,20 +87,20 @@ HasExternalId returns a boolean if a field has been set.
 
 ### GetGroth16Vkey
 
-`func (o *ResponsesZkISM) GetGroth16Vkey() *os.File`
+`func (o *ResponsesZkISM) GetGroth16Vkey() string`
 
 GetGroth16Vkey returns the Groth16Vkey field if non-nil, zero value otherwise.
 
 ### GetGroth16VkeyOk
 
-`func (o *ResponsesZkISM) GetGroth16VkeyOk() (**os.File, bool)`
+`func (o *ResponsesZkISM) GetGroth16VkeyOk() (*string, bool)`
 
 GetGroth16VkeyOk returns a tuple with the Groth16Vkey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroth16Vkey
 
-`func (o *ResponsesZkISM) SetGroth16Vkey(v *os.File)`
+`func (o *ResponsesZkISM) SetGroth16Vkey(v string)`
 
 SetGroth16Vkey sets Groth16Vkey field to given value.
 
@@ -162,20 +162,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetMerkleTreeAddress
 
-`func (o *ResponsesZkISM) GetMerkleTreeAddress() *os.File`
+`func (o *ResponsesZkISM) GetMerkleTreeAddress() string`
 
 GetMerkleTreeAddress returns the MerkleTreeAddress field if non-nil, zero value otherwise.
 
 ### GetMerkleTreeAddressOk
 
-`func (o *ResponsesZkISM) GetMerkleTreeAddressOk() (**os.File, bool)`
+`func (o *ResponsesZkISM) GetMerkleTreeAddressOk() (*string, bool)`
 
 GetMerkleTreeAddressOk returns a tuple with the MerkleTreeAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMerkleTreeAddress
 
-`func (o *ResponsesZkISM) SetMerkleTreeAddress(v *os.File)`
+`func (o *ResponsesZkISM) SetMerkleTreeAddress(v string)`
 
 SetMerkleTreeAddress sets MerkleTreeAddress field to given value.
 
@@ -187,20 +187,20 @@ HasMerkleTreeAddress returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *ResponsesZkISM) GetState() *os.File`
+`func (o *ResponsesZkISM) GetState() string`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *ResponsesZkISM) GetStateOk() (**os.File, bool)`
+`func (o *ResponsesZkISM) GetStateOk() (*string, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *ResponsesZkISM) SetState(v *os.File)`
+`func (o *ResponsesZkISM) SetState(v string)`
 
 SetState sets State field to given value.
 
@@ -212,20 +212,20 @@ HasState returns a boolean if a field has been set.
 
 ### GetStateMembershipVkey
 
-`func (o *ResponsesZkISM) GetStateMembershipVkey() *os.File`
+`func (o *ResponsesZkISM) GetStateMembershipVkey() string`
 
 GetStateMembershipVkey returns the StateMembershipVkey field if non-nil, zero value otherwise.
 
 ### GetStateMembershipVkeyOk
 
-`func (o *ResponsesZkISM) GetStateMembershipVkeyOk() (**os.File, bool)`
+`func (o *ResponsesZkISM) GetStateMembershipVkeyOk() (*string, bool)`
 
 GetStateMembershipVkeyOk returns a tuple with the StateMembershipVkey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStateMembershipVkey
 
-`func (o *ResponsesZkISM) SetStateMembershipVkey(v *os.File)`
+`func (o *ResponsesZkISM) SetStateMembershipVkey(v string)`
 
 SetStateMembershipVkey sets StateMembershipVkey field to given value.
 
@@ -237,20 +237,20 @@ HasStateMembershipVkey returns a boolean if a field has been set.
 
 ### GetStateTransitionVkey
 
-`func (o *ResponsesZkISM) GetStateTransitionVkey() *os.File`
+`func (o *ResponsesZkISM) GetStateTransitionVkey() string`
 
 GetStateTransitionVkey returns the StateTransitionVkey field if non-nil, zero value otherwise.
 
 ### GetStateTransitionVkeyOk
 
-`func (o *ResponsesZkISM) GetStateTransitionVkeyOk() (**os.File, bool)`
+`func (o *ResponsesZkISM) GetStateTransitionVkeyOk() (*string, bool)`
 
 GetStateTransitionVkeyOk returns a tuple with the StateTransitionVkey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStateTransitionVkey
 
-`func (o *ResponsesZkISM) SetStateTransitionVkey(v *os.File)`
+`func (o *ResponsesZkISM) SetStateTransitionVkey(v string)`
 
 SetStateTransitionVkey sets StateTransitionVkey field to given value.
 
@@ -287,20 +287,20 @@ HasTime returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesZkISM) GetTxHash() *os.File`
+`func (o *ResponsesZkISM) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesZkISM) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesZkISM) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesZkISM) SetTxHash(v *os.File)`
+`func (o *ResponsesZkISM) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 

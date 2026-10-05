@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **string** |  | [optional] 
 **ChainMetadata** | Pointer to [**ResponsesChainMetadata**](ResponsesChainMetadata.md) |  | [optional] 
-**DomainId** | Pointer to **int32** |  | [optional] 
-**TransfersCount** | Pointer to **int32** |  | [optional] 
+**DomainId** | Pointer to **int64** |  | [optional] 
+**TransfersCount** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -80,20 +80,20 @@ HasChainMetadata returns a boolean if a field has been set.
 
 ### GetDomainId
 
-`func (o *ResponsesHlDomainStats) GetDomainId() int32`
+`func (o *ResponsesHlDomainStats) GetDomainId() int64`
 
 GetDomainId returns the DomainId field if non-nil, zero value otherwise.
 
 ### GetDomainIdOk
 
-`func (o *ResponsesHlDomainStats) GetDomainIdOk() (*int32, bool)`
+`func (o *ResponsesHlDomainStats) GetDomainIdOk() (*int64, bool)`
 
 GetDomainIdOk returns a tuple with the DomainId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDomainId
 
-`func (o *ResponsesHlDomainStats) SetDomainId(v int32)`
+`func (o *ResponsesHlDomainStats) SetDomainId(v int64)`
 
 SetDomainId sets DomainId field to given value.
 
@@ -105,20 +105,20 @@ HasDomainId returns a boolean if a field has been set.
 
 ### GetTransfersCount
 
-`func (o *ResponsesHlDomainStats) GetTransfersCount() int32`
+`func (o *ResponsesHlDomainStats) GetTransfersCount() int64`
 
 GetTransfersCount returns the TransfersCount field if non-nil, zero value otherwise.
 
 ### GetTransfersCountOk
 
-`func (o *ResponsesHlDomainStats) GetTransfersCountOk() (*int32, bool)`
+`func (o *ResponsesHlDomainStats) GetTransfersCountOk() (*int64, bool)`
 
 GetTransfersCountOk returns a tuple with the TransfersCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransfersCount
 
-`func (o *ResponsesHlDomainStats) SetTransfersCount(v int32)`
+`func (o *ResponsesHlDomainStats) SetTransfersCount(v int64)`
 
 SetTransfersCount sets TransfersCount field to given value.
 

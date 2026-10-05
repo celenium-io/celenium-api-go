@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -235,7 +235,7 @@ No authorization required
 
 ## GetTransactionsCount
 
-> int32 GetTransactionsCount(ctx).Execute()
+> int64 GetTransactionsCount(ctx).Execute()
 
 Get count of transactions in network
 
@@ -262,7 +262,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransactionsAPI.GetTransactionsCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetTransactionsCount`: int32
+	// response from `GetTransactionsCount`: int64
 	fmt.Fprintf(os.Stdout, "Response from `TransactionsAPI.GetTransactionsCount`: %v\n", resp)
 }
 ```
@@ -278,11 +278,11 @@ Other parameters are passed through a pointer to a apiGetTransactionsCountReques
 
 ### Return type
 
-**int32**
+**int64**
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -366,7 +366,7 @@ No authorization required
 
 ## ListTransactionBlobs
 
-> []ResponsesBlobLog ListTransactionBlobs(ctx, hash).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Execute()
+> []ResponsesBlobLog ListTransactionBlobs(ctx, hash).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Source(source).Execute()
 
 List blobs which was pushed by transaction
 
@@ -390,10 +390,11 @@ func main() {
 	offset := int32(56) // int32 | Offset (optional)
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	sortBy := "sortBy_example" // string | Sort field. If it's empty internal id is used (optional)
+	source := "source_example" // string | Blob source. If it's empty both sources are returned (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TransactionsAPI.ListTransactionBlobs(context.Background(), hash).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Execute()
+	resp, r, err := apiClient.TransactionsAPI.ListTransactionBlobs(context.Background(), hash).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Source(source).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransactionsAPI.ListTransactionBlobs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -423,6 +424,7 @@ Name | Type | Description  | Notes
  **offset** | **int32** | Offset | 
  **sort** | **string** | Sort order. Default: desc | 
  **sortBy** | **string** | Sort field. If it&#39;s empty internal id is used | 
+ **source** | **string** | Blob source. If it&#39;s empty both sources are returned | 
 
 ### Return type
 
@@ -430,7 +432,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -444,7 +446,7 @@ No authorization required
 
 ## ListTransactions
 
-> []ResponsesTx ListTransactions(ctx).Limit(limit).Offset(offset).Sort(sort).Status(status).MsgType(msgType).ExcludedMsgType(excludedMsgType).From(from).To(to).Height(height).Messages(messages).Execute()
+> []ResponsesTx ListTransactions(ctx).Limit(limit).Offset(offset).Sort(sort).Status(status).MsgType(msgType).ExcludedMsgType(excludedMsgType).From(from).To(to).Height(height).Messages(messages).Cursor(cursor).Execute()
 
 List transactions info
 
@@ -466,17 +468,18 @@ func main() {
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 	sort := "sort_example" // string | Sort order (optional)
-	status := "status_example" // string | Comma-separated status list (optional)
-	msgType := "msgType_example" // string | Comma-separated message types list (optional)
-	excludedMsgType := "excludedMsgType_example" // string | Comma-separated message types list which should be excluded (optional)
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
-	height := int32(56) // int32 | Block number (optional)
+	status := []string{"Status_example"} // []string | Comma-separated status list (optional)
+	msgType := []string{"MsgType_example"} // []string | Comma-separated message types list (optional)
+	excludedMsgType := []string{"ExcludedMsgType_example"} // []string | Comma-separated message types list which should be excluded (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
+	height := int64(789) // int64 | Block number (optional)
 	messages := true // bool | If true join messages (optional)
+	cursor := int64(789) // int64 | Last entity id which is used for cursor pagination (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TransactionsAPI.ListTransactions(context.Background()).Limit(limit).Offset(offset).Sort(sort).Status(status).MsgType(msgType).ExcludedMsgType(excludedMsgType).From(from).To(to).Height(height).Messages(messages).Execute()
+	resp, r, err := apiClient.TransactionsAPI.ListTransactions(context.Background()).Limit(limit).Offset(offset).Sort(sort).Status(status).MsgType(msgType).ExcludedMsgType(excludedMsgType).From(from).To(to).Height(height).Messages(messages).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransactionsAPI.ListTransactions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -500,13 +503,14 @@ Name | Type | Description  | Notes
  **limit** | **int32** | Count of requested entities | 
  **offset** | **int32** | Offset | 
  **sort** | **string** | Sort order | 
- **status** | **string** | Comma-separated status list | 
- **msgType** | **string** | Comma-separated message types list | 
- **excludedMsgType** | **string** | Comma-separated message types list which should be excluded | 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
- **height** | **int32** | Block number | 
+ **status** | **[]string** | Comma-separated status list | 
+ **msgType** | **[]string** | Comma-separated message types list | 
+ **excludedMsgType** | **[]string** | Comma-separated message types list which should be excluded | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
+ **height** | **int64** | Block number | 
  **messages** | **bool** | If true join messages | 
+ **cursor** | **int64** | Last entity id which is used for cursor pagination | 
 
 ### Return type
 
@@ -514,7 +518,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -528,7 +532,7 @@ No authorization required
 
 ## TransactionBlobsCount
 
-> int32 TransactionBlobsCount(ctx, hash).Execute()
+> int64 TransactionBlobsCount(ctx, hash).Execute()
 
 Count of blobs which was pushed by transaction
 
@@ -556,7 +560,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransactionsAPI.TransactionBlobsCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `TransactionBlobsCount`: int32
+	// response from `TransactionBlobsCount`: int64
 	fmt.Fprintf(os.Stdout, "Response from `TransactionsAPI.TransactionBlobsCount`: %v\n", resp)
 }
 ```
@@ -580,11 +584,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**int32**
+**int64**
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

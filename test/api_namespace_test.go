@@ -118,7 +118,7 @@ func Test_celenium_NamespaceAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var hash string
-		var height int32
+		var height int64
 
 		resp, httpRes, err := apiClient.NamespaceAPI.GetNamespaceBlobs(context.Background(), hash, height).Execute()
 

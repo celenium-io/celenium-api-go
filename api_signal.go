@@ -27,7 +27,7 @@ type SignalAPIService service
 type ApiGetUpgradeRequest struct {
 	ctx context.Context
 	ApiService *SignalAPIService
-	version int32
+	version int64
 }
 
 func (r ApiGetUpgradeRequest) Execute() (*ResponsesUpgrade, *http.Response, error) {
@@ -43,7 +43,7 @@ Returns details of the on-chain network upgrade for the given software version n
  @param version Upgrade version
  @return ApiGetUpgradeRequest
 */
-func (a *SignalAPIService) GetUpgrade(ctx context.Context, version int32) ApiGetUpgradeRequest {
+func (a *SignalAPIService) GetUpgrade(ctx context.Context, version int64) ApiGetUpgradeRequest {
 	return ApiGetUpgradeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -89,6 +89,20 @@ func (a *SignalAPIService) GetUpgradeExecute(r ApiGetUpgradeRequest) (*Responses
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -151,24 +165,24 @@ func (a *SignalAPIService) GetUpgradeExecute(r ApiGetUpgradeRequest) (*Responses
 type ApiListSignalRequest struct {
 	ctx context.Context
 	ApiService *SignalAPIService
-	version *int32
-	validatorId *int32
+	version *int64
+	validatorId *int64
 	txHash *string
 	limit *int32
 	offset *int32
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 	sort *string
 }
 
 // Version
-func (r ApiListSignalRequest) Version(version int32) ApiListSignalRequest {
+func (r ApiListSignalRequest) Version(version int64) ApiListSignalRequest {
 	r.version = &version
 	return r
 }
 
 // Validator internal id
-func (r ApiListSignalRequest) ValidatorId(validatorId int32) ApiListSignalRequest {
+func (r ApiListSignalRequest) ValidatorId(validatorId int64) ApiListSignalRequest {
 	r.validatorId = &validatorId
 	return r
 }
@@ -192,13 +206,13 @@ func (r ApiListSignalRequest) Offset(offset int32) ApiListSignalRequest {
 }
 
 // Time from in unix timestamp
-func (r ApiListSignalRequest) From(from int32) ApiListSignalRequest {
+func (r ApiListSignalRequest) From(from int64) ApiListSignalRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiListSignalRequest) To(to int32) ApiListSignalRequest {
+func (r ApiListSignalRequest) To(to int64) ApiListSignalRequest {
 	r.to = &to
 	return r
 }
@@ -290,6 +304,20 @@ func (a *SignalAPIService) ListSignalExecute(r ApiListSignalRequest) ([]Response
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -351,7 +379,7 @@ func (a *SignalAPIService) ListSignalExecute(r ApiListSignalRequest) ([]Response
 type ApiListUpgradesRequest struct {
 	ctx context.Context
 	ApiService *SignalAPIService
-	height *int32
+	height *int64
 	txHash *string
 	signer *string
 	limit *int32
@@ -360,7 +388,7 @@ type ApiListUpgradesRequest struct {
 }
 
 // Number of block
-func (r ApiListUpgradesRequest) Height(height int32) ApiListUpgradesRequest {
+func (r ApiListUpgradesRequest) Height(height int64) ApiListUpgradesRequest {
 	r.height = &height
 	return r
 }
@@ -469,6 +497,20 @@ func (a *SignalAPIService) ListUpgradesExecute(r ApiListUpgradesRequest) ([]Resp
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

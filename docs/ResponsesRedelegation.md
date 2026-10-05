@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **string** |  | [optional] 
-**CompletionTime** | Pointer to **string** |  | [optional] 
+**CompletionTime** | Pointer to **time.Time** |  | [optional] 
 **Delegator** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Destination** | Pointer to [**ResponsesShortValidator**](ResponsesShortValidator.md) |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
 **Source** | Pointer to [**ResponsesShortValidator**](ResponsesShortValidator.md) |  | [optional] 
-**Time** | Pointer to **string** |  | [optional] 
+**Time** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -58,20 +58,20 @@ HasAmount returns a boolean if a field has been set.
 
 ### GetCompletionTime
 
-`func (o *ResponsesRedelegation) GetCompletionTime() string`
+`func (o *ResponsesRedelegation) GetCompletionTime() time.Time`
 
 GetCompletionTime returns the CompletionTime field if non-nil, zero value otherwise.
 
 ### GetCompletionTimeOk
 
-`func (o *ResponsesRedelegation) GetCompletionTimeOk() (*string, bool)`
+`func (o *ResponsesRedelegation) GetCompletionTimeOk() (*time.Time, bool)`
 
 GetCompletionTimeOk returns a tuple with the CompletionTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompletionTime
 
-`func (o *ResponsesRedelegation) SetCompletionTime(v string)`
+`func (o *ResponsesRedelegation) SetCompletionTime(v time.Time)`
 
 SetCompletionTime sets CompletionTime field to given value.
 
@@ -133,20 +133,20 @@ HasDestination returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesRedelegation) GetHeight() int32`
+`func (o *ResponsesRedelegation) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesRedelegation) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesRedelegation) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesRedelegation) SetHeight(v int32)`
+`func (o *ResponsesRedelegation) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 
@@ -183,20 +183,20 @@ HasSource returns a boolean if a field has been set.
 
 ### GetTime
 
-`func (o *ResponsesRedelegation) GetTime() string`
+`func (o *ResponsesRedelegation) GetTime() time.Time`
 
 GetTime returns the Time field if non-nil, zero value otherwise.
 
 ### GetTimeOk
 
-`func (o *ResponsesRedelegation) GetTimeOk() (*string, bool)`
+`func (o *ResponsesRedelegation) GetTimeOk() (*time.Time, bool)`
 
 GetTimeOk returns a tuple with the Time field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTime
 
-`func (o *ResponsesRedelegation) SetTime(v string)`
+`func (o *ResponsesRedelegation) SetTime(v time.Time)`
 
 SetTime sets Time field to given value.
 

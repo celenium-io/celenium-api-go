@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AvgSize** | Pointer to **int32** |  | [optional] 
-**BlobsCount** | Pointer to **int32** |  | [optional] 
-**BlobsPerPfb** | Pointer to **float32** |  | [optional] 
+**AvgSize** | Pointer to **int64** |  | [optional] 
+**BlobsCount** | Pointer to **int64** |  | [optional] 
+**BlobsPerPfb** | Pointer to **float64** |  | [optional] 
 **Bridge** | Pointer to **string** |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
 **Color** | Pointer to **string** |  | [optional] 
@@ -15,21 +15,23 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Explorer** | Pointer to **string** |  | [optional] 
 **FeePerPfb** | Pointer to **string** |  | [optional] 
+**FibreBlobsCount** | Pointer to **int64** |  | [optional] 
 **Github** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **L2Beat** | Pointer to **string** |  | [optional] 
 **Logo** | Pointer to **string** |  | [optional] 
 **MbPrice** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**NamespaceCount** | Pointer to **int32** |  | [optional] 
-**PfbCount** | Pointer to **int32** |  | [optional] 
+**NamespaceCount** | Pointer to **int64** |  | [optional] 
+**PfbCount** | Pointer to **int64** |  | [optional] 
+**PffCount** | Pointer to **int64** |  | [optional] 
 **Provider** | Pointer to **string** |  | [optional] 
 **SettledOn** | Pointer to **string** |  | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 **Stack** | Pointer to **string** |  | [optional] 
-**Throughput** | Pointer to **int32** |  | [optional] 
+**Throughput** | Pointer to **int64** |  | [optional] 
 **TotalFee** | Pointer to **string** |  | [optional] 
-**TotalSize** | Pointer to **int32** |  | [optional] 
+**TotalSize** | Pointer to **int64** |  | [optional] 
 **Twitter** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **Vm** | Pointer to **string** |  | [optional] 
@@ -56,20 +58,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAvgSize
 
-`func (o *ResponsesRollupWithDayStats) GetAvgSize() int32`
+`func (o *ResponsesRollupWithDayStats) GetAvgSize() int64`
 
 GetAvgSize returns the AvgSize field if non-nil, zero value otherwise.
 
 ### GetAvgSizeOk
 
-`func (o *ResponsesRollupWithDayStats) GetAvgSizeOk() (*int32, bool)`
+`func (o *ResponsesRollupWithDayStats) GetAvgSizeOk() (*int64, bool)`
 
 GetAvgSizeOk returns a tuple with the AvgSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAvgSize
 
-`func (o *ResponsesRollupWithDayStats) SetAvgSize(v int32)`
+`func (o *ResponsesRollupWithDayStats) SetAvgSize(v int64)`
 
 SetAvgSize sets AvgSize field to given value.
 
@@ -81,20 +83,20 @@ HasAvgSize returns a boolean if a field has been set.
 
 ### GetBlobsCount
 
-`func (o *ResponsesRollupWithDayStats) GetBlobsCount() int32`
+`func (o *ResponsesRollupWithDayStats) GetBlobsCount() int64`
 
 GetBlobsCount returns the BlobsCount field if non-nil, zero value otherwise.
 
 ### GetBlobsCountOk
 
-`func (o *ResponsesRollupWithDayStats) GetBlobsCountOk() (*int32, bool)`
+`func (o *ResponsesRollupWithDayStats) GetBlobsCountOk() (*int64, bool)`
 
 GetBlobsCountOk returns a tuple with the BlobsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlobsCount
 
-`func (o *ResponsesRollupWithDayStats) SetBlobsCount(v int32)`
+`func (o *ResponsesRollupWithDayStats) SetBlobsCount(v int64)`
 
 SetBlobsCount sets BlobsCount field to given value.
 
@@ -106,20 +108,20 @@ HasBlobsCount returns a boolean if a field has been set.
 
 ### GetBlobsPerPfb
 
-`func (o *ResponsesRollupWithDayStats) GetBlobsPerPfb() float32`
+`func (o *ResponsesRollupWithDayStats) GetBlobsPerPfb() float64`
 
 GetBlobsPerPfb returns the BlobsPerPfb field if non-nil, zero value otherwise.
 
 ### GetBlobsPerPfbOk
 
-`func (o *ResponsesRollupWithDayStats) GetBlobsPerPfbOk() (*float32, bool)`
+`func (o *ResponsesRollupWithDayStats) GetBlobsPerPfbOk() (*float64, bool)`
 
 GetBlobsPerPfbOk returns a tuple with the BlobsPerPfb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlobsPerPfb
 
-`func (o *ResponsesRollupWithDayStats) SetBlobsPerPfb(v float32)`
+`func (o *ResponsesRollupWithDayStats) SetBlobsPerPfb(v float64)`
 
 SetBlobsPerPfb sets BlobsPerPfb field to given value.
 
@@ -329,6 +331,31 @@ SetFeePerPfb sets FeePerPfb field to given value.
 
 HasFeePerPfb returns a boolean if a field has been set.
 
+### GetFibreBlobsCount
+
+`func (o *ResponsesRollupWithDayStats) GetFibreBlobsCount() int64`
+
+GetFibreBlobsCount returns the FibreBlobsCount field if non-nil, zero value otherwise.
+
+### GetFibreBlobsCountOk
+
+`func (o *ResponsesRollupWithDayStats) GetFibreBlobsCountOk() (*int64, bool)`
+
+GetFibreBlobsCountOk returns a tuple with the FibreBlobsCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFibreBlobsCount
+
+`func (o *ResponsesRollupWithDayStats) SetFibreBlobsCount(v int64)`
+
+SetFibreBlobsCount sets FibreBlobsCount field to given value.
+
+### HasFibreBlobsCount
+
+`func (o *ResponsesRollupWithDayStats) HasFibreBlobsCount() bool`
+
+HasFibreBlobsCount returns a boolean if a field has been set.
+
 ### GetGithub
 
 `func (o *ResponsesRollupWithDayStats) GetGithub() string`
@@ -356,20 +383,20 @@ HasGithub returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesRollupWithDayStats) GetId() int32`
+`func (o *ResponsesRollupWithDayStats) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesRollupWithDayStats) GetIdOk() (*int32, bool)`
+`func (o *ResponsesRollupWithDayStats) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesRollupWithDayStats) SetId(v int32)`
+`func (o *ResponsesRollupWithDayStats) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -481,20 +508,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetNamespaceCount
 
-`func (o *ResponsesRollupWithDayStats) GetNamespaceCount() int32`
+`func (o *ResponsesRollupWithDayStats) GetNamespaceCount() int64`
 
 GetNamespaceCount returns the NamespaceCount field if non-nil, zero value otherwise.
 
 ### GetNamespaceCountOk
 
-`func (o *ResponsesRollupWithDayStats) GetNamespaceCountOk() (*int32, bool)`
+`func (o *ResponsesRollupWithDayStats) GetNamespaceCountOk() (*int64, bool)`
 
 GetNamespaceCountOk returns a tuple with the NamespaceCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNamespaceCount
 
-`func (o *ResponsesRollupWithDayStats) SetNamespaceCount(v int32)`
+`func (o *ResponsesRollupWithDayStats) SetNamespaceCount(v int64)`
 
 SetNamespaceCount sets NamespaceCount field to given value.
 
@@ -506,20 +533,20 @@ HasNamespaceCount returns a boolean if a field has been set.
 
 ### GetPfbCount
 
-`func (o *ResponsesRollupWithDayStats) GetPfbCount() int32`
+`func (o *ResponsesRollupWithDayStats) GetPfbCount() int64`
 
 GetPfbCount returns the PfbCount field if non-nil, zero value otherwise.
 
 ### GetPfbCountOk
 
-`func (o *ResponsesRollupWithDayStats) GetPfbCountOk() (*int32, bool)`
+`func (o *ResponsesRollupWithDayStats) GetPfbCountOk() (*int64, bool)`
 
 GetPfbCountOk returns a tuple with the PfbCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPfbCount
 
-`func (o *ResponsesRollupWithDayStats) SetPfbCount(v int32)`
+`func (o *ResponsesRollupWithDayStats) SetPfbCount(v int64)`
 
 SetPfbCount sets PfbCount field to given value.
 
@@ -528,6 +555,31 @@ SetPfbCount sets PfbCount field to given value.
 `func (o *ResponsesRollupWithDayStats) HasPfbCount() bool`
 
 HasPfbCount returns a boolean if a field has been set.
+
+### GetPffCount
+
+`func (o *ResponsesRollupWithDayStats) GetPffCount() int64`
+
+GetPffCount returns the PffCount field if non-nil, zero value otherwise.
+
+### GetPffCountOk
+
+`func (o *ResponsesRollupWithDayStats) GetPffCountOk() (*int64, bool)`
+
+GetPffCountOk returns a tuple with the PffCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPffCount
+
+`func (o *ResponsesRollupWithDayStats) SetPffCount(v int64)`
+
+SetPffCount sets PffCount field to given value.
+
+### HasPffCount
+
+`func (o *ResponsesRollupWithDayStats) HasPffCount() bool`
+
+HasPffCount returns a boolean if a field has been set.
 
 ### GetProvider
 
@@ -631,20 +683,20 @@ HasStack returns a boolean if a field has been set.
 
 ### GetThroughput
 
-`func (o *ResponsesRollupWithDayStats) GetThroughput() int32`
+`func (o *ResponsesRollupWithDayStats) GetThroughput() int64`
 
 GetThroughput returns the Throughput field if non-nil, zero value otherwise.
 
 ### GetThroughputOk
 
-`func (o *ResponsesRollupWithDayStats) GetThroughputOk() (*int32, bool)`
+`func (o *ResponsesRollupWithDayStats) GetThroughputOk() (*int64, bool)`
 
 GetThroughputOk returns a tuple with the Throughput field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetThroughput
 
-`func (o *ResponsesRollupWithDayStats) SetThroughput(v int32)`
+`func (o *ResponsesRollupWithDayStats) SetThroughput(v int64)`
 
 SetThroughput sets Throughput field to given value.
 
@@ -681,20 +733,20 @@ HasTotalFee returns a boolean if a field has been set.
 
 ### GetTotalSize
 
-`func (o *ResponsesRollupWithDayStats) GetTotalSize() int32`
+`func (o *ResponsesRollupWithDayStats) GetTotalSize() int64`
 
 GetTotalSize returns the TotalSize field if non-nil, zero value otherwise.
 
 ### GetTotalSizeOk
 
-`func (o *ResponsesRollupWithDayStats) GetTotalSizeOk() (*int32, bool)`
+`func (o *ResponsesRollupWithDayStats) GetTotalSizeOk() (*int64, bool)`
 
 GetTotalSizeOk returns a tuple with the TotalSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalSize
 
-`func (o *ResponsesRollupWithDayStats) SetTotalSize(v int32)`
+`func (o *ResponsesRollupWithDayStats) SetTotalSize(v int64)`
 
 SetTotalSize sets TotalSize field to given value.
 

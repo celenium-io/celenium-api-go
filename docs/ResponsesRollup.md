@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Explorer** | Pointer to **string** |  | [optional] 
 **Github** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **L2Beat** | Pointer to **string** |  | [optional] 
 **Links** | Pointer to **[]string** |  | [optional] 
 **Logo** | Pointer to **string** |  | [optional] 
@@ -248,20 +248,20 @@ HasGithub returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesRollup) GetId() int32`
+`func (o *ResponsesRollup) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesRollup) GetIdOk() (*int32, bool)`
+`func (o *ResponsesRollup) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesRollup) SetId(v int32)`
+`func (o *ResponsesRollup) SetId(v int64)`
 
 SetId sets Id field to given value.
 

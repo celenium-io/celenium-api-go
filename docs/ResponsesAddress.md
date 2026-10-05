@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Balance** | Pointer to [**ResponsesBalance**](ResponsesBalance.md) |  | [optional] 
 **Celestials** | Pointer to [**ResponsesCelestial**](ResponsesCelestial.md) |  | [optional] 
-**FirstHeight** | Pointer to **int32** |  | [optional] 
+**FirstHeight** | Pointer to **int64** |  | [optional] 
 **Hash** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **IsForwarding** | Pointer to **bool** |  | [optional] 
-**LastHeight** | Pointer to **int32** |  | [optional] 
+**LastHeight** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -84,20 +84,20 @@ HasCelestials returns a boolean if a field has been set.
 
 ### GetFirstHeight
 
-`func (o *ResponsesAddress) GetFirstHeight() int32`
+`func (o *ResponsesAddress) GetFirstHeight() int64`
 
 GetFirstHeight returns the FirstHeight field if non-nil, zero value otherwise.
 
 ### GetFirstHeightOk
 
-`func (o *ResponsesAddress) GetFirstHeightOk() (*int32, bool)`
+`func (o *ResponsesAddress) GetFirstHeightOk() (*int64, bool)`
 
 GetFirstHeightOk returns a tuple with the FirstHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFirstHeight
 
-`func (o *ResponsesAddress) SetFirstHeight(v int32)`
+`func (o *ResponsesAddress) SetFirstHeight(v int64)`
 
 SetFirstHeight sets FirstHeight field to given value.
 
@@ -134,20 +134,20 @@ HasHash returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesAddress) GetId() int32`
+`func (o *ResponsesAddress) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesAddress) GetIdOk() (*int32, bool)`
+`func (o *ResponsesAddress) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesAddress) SetId(v int32)`
+`func (o *ResponsesAddress) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -184,20 +184,20 @@ HasIsForwarding returns a boolean if a field has been set.
 
 ### GetLastHeight
 
-`func (o *ResponsesAddress) GetLastHeight() int32`
+`func (o *ResponsesAddress) GetLastHeight() int64`
 
 GetLastHeight returns the LastHeight field if non-nil, zero value otherwise.
 
 ### GetLastHeightOk
 
-`func (o *ResponsesAddress) GetLastHeightOk() (*int32, bool)`
+`func (o *ResponsesAddress) GetLastHeightOk() (*int64, bool)`
 
 GetLastHeightOk returns a tuple with the LastHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastHeight
 
-`func (o *ResponsesAddress) SetLastHeight(v int32)`
+`func (o *ResponsesAddress) SetLastHeight(v int64)`
 
 SetLastHeight sets LastHeight field to given value.
 

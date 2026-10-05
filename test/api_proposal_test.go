@@ -26,7 +26,7 @@ func Test_celenium_ProposalAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.ProposalAPI.GetProposal(context.Background(), id).Execute()
 
@@ -52,7 +52,7 @@ func Test_celenium_ProposalAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.ProposalAPI.ProposalVotes(context.Background(), id).Execute()
 

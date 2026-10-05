@@ -59,7 +59,7 @@ Other parameters are passed through a pointer to a apiGetConstantsRequest struct
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -120,7 +120,7 @@ Other parameters are passed through a pointer to a apiGetEnumsRequest struct via
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -181,7 +181,7 @@ Other parameters are passed through a pointer to a apiHeadRequest struct via the
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

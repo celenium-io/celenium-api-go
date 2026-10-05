@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 	"time"
 )
 
@@ -24,10 +23,10 @@ var _ MappedNullable = &ResponsesZkISMUpdate{}
 type ResponsesZkISMUpdate struct {
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
-	NewState **os.File `json:"new_state,omitempty"`
+	NewState *string `json:"new_state,omitempty"`
 	Signer *ResponsesShortAddress `json:"signer,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
 }
 
 // NewResponsesZkISMUpdate instantiates a new ResponsesZkISMUpdate object
@@ -112,9 +111,9 @@ func (o *ResponsesZkISMUpdate) SetId(v int64) {
 }
 
 // GetNewState returns the NewState field value if set, zero value otherwise.
-func (o *ResponsesZkISMUpdate) GetNewState() *os.File {
+func (o *ResponsesZkISMUpdate) GetNewState() string {
 	if o == nil || IsNil(o.NewState) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.NewState
@@ -122,7 +121,7 @@ func (o *ResponsesZkISMUpdate) GetNewState() *os.File {
 
 // GetNewStateOk returns a tuple with the NewState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISMUpdate) GetNewStateOk() (**os.File, bool) {
+func (o *ResponsesZkISMUpdate) GetNewStateOk() (*string, bool) {
 	if o == nil || IsNil(o.NewState) {
 		return nil, false
 	}
@@ -138,8 +137,8 @@ func (o *ResponsesZkISMUpdate) HasNewState() bool {
 	return false
 }
 
-// SetNewState gets a reference to the given *os.File and assigns it to the NewState field.
-func (o *ResponsesZkISMUpdate) SetNewState(v *os.File) {
+// SetNewState gets a reference to the given string and assigns it to the NewState field.
+func (o *ResponsesZkISMUpdate) SetNewState(v string) {
 	o.NewState = &v
 }
 
@@ -208,9 +207,9 @@ func (o *ResponsesZkISMUpdate) SetTime(v time.Time) {
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesZkISMUpdate) GetTxHash() *os.File {
+func (o *ResponsesZkISMUpdate) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -218,7 +217,7 @@ func (o *ResponsesZkISMUpdate) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISMUpdate) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesZkISMUpdate) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -234,8 +233,8 @@ func (o *ResponsesZkISMUpdate) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesZkISMUpdate) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesZkISMUpdate) SetTxHash(v string) {
 	o.TxHash = &v
 }
 

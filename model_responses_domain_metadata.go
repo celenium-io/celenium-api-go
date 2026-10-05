@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponsesDomainMetadata{}
 // ResponsesDomainMetadata struct for ResponsesDomainMetadata
 type ResponsesDomainMetadata struct {
 	BlockExplorers []ResponsesBlockExplorer `json:"block_explorers,omitempty"`
-	Domain *int32 `json:"domain,omitempty"`
+	Domain *int64 `json:"domain,omitempty"`
 	Name *string `json:"name,omitempty"`
 	NativeToken *ResponsesNativeToken `json:"native_token,omitempty"`
 }
@@ -76,9 +76,9 @@ func (o *ResponsesDomainMetadata) SetBlockExplorers(v []ResponsesBlockExplorer) 
 }
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
-func (o *ResponsesDomainMetadata) GetDomain() int32 {
+func (o *ResponsesDomainMetadata) GetDomain() int64 {
 	if o == nil || IsNil(o.Domain) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Domain
@@ -86,7 +86,7 @@ func (o *ResponsesDomainMetadata) GetDomain() int32 {
 
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesDomainMetadata) GetDomainOk() (*int32, bool) {
+func (o *ResponsesDomainMetadata) GetDomainOk() (*int64, bool) {
 	if o == nil || IsNil(o.Domain) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *ResponsesDomainMetadata) HasDomain() bool {
 	return false
 }
 
-// SetDomain gets a reference to the given int32 and assigns it to the Domain field.
-func (o *ResponsesDomainMetadata) SetDomain(v int32) {
+// SetDomain gets a reference to the given int64 and assigns it to the Domain field.
+func (o *ResponsesDomainMetadata) SetDomain(v int64) {
 	o.Domain = &v
 }
 

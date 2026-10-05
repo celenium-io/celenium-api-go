@@ -27,7 +27,7 @@ type ValidatorAPIService service
 type ApiGetValidatorRequest struct {
 	ctx context.Context
 	ApiService *ValidatorAPIService
-	id int32
+	id int64
 }
 
 func (r ApiGetValidatorRequest) Execute() (*ResponsesValidator, *http.Response, error) {
@@ -43,7 +43,7 @@ Returns detailed information about a validator by internal id, including moniker
  @param id Internal validator id
  @return ApiGetValidatorRequest
 */
-func (a *ValidatorAPIService) GetValidator(ctx context.Context, id int32) ApiGetValidatorRequest {
+func (a *ValidatorAPIService) GetValidator(ctx context.Context, id int64) ApiGetValidatorRequest {
 	return ApiGetValidatorRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -89,6 +89,20 @@ func (a *ValidatorAPIService) GetValidatorExecute(r ApiGetValidatorRequest) (*Re
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -151,7 +165,7 @@ func (a *ValidatorAPIService) GetValidatorExecute(r ApiGetValidatorRequest) (*Re
 type ApiGetValidatorBlocksRequest struct {
 	ctx context.Context
 	ApiService *ValidatorAPIService
-	id int32
+	id int64
 	limit *int32
 	offset *int32
 }
@@ -181,7 +195,7 @@ Returns a paginated list of blocks proposed by the given validator.
  @param id Internal validator id
  @return ApiGetValidatorBlocksRequest
 */
-func (a *ValidatorAPIService) GetValidatorBlocks(ctx context.Context, id int32) ApiGetValidatorBlocksRequest {
+func (a *ValidatorAPIService) GetValidatorBlocks(ctx context.Context, id int64) ApiGetValidatorBlocksRequest {
 	return ApiGetValidatorBlocksRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -233,6 +247,20 @@ func (a *ValidatorAPIService) GetValidatorBlocksExecute(r ApiGetValidatorBlocksR
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -295,7 +323,7 @@ func (a *ValidatorAPIService) GetValidatorBlocksExecute(r ApiGetValidatorBlocksR
 type ApiGetValidatorUptimeRequest struct {
 	ctx context.Context
 	ApiService *ValidatorAPIService
-	id int32
+	id int64
 	limit *int32
 }
 
@@ -318,7 +346,7 @@ Returns the validator's uptime percentage and a history of the last N blocks ind
  @param id Internal validator id
  @return ApiGetValidatorUptimeRequest
 */
-func (a *ValidatorAPIService) GetValidatorUptime(ctx context.Context, id int32) ApiGetValidatorUptimeRequest {
+func (a *ValidatorAPIService) GetValidatorUptime(ctx context.Context, id int64) ApiGetValidatorUptimeRequest {
 	return ApiGetValidatorUptimeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -367,6 +395,20 @@ func (a *ValidatorAPIService) GetValidatorUptimeExecute(r ApiGetValidatorUptimeR
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -433,6 +475,7 @@ type ApiListValidatorRequest struct {
 	offset *int32
 	jailed *bool
 	version *int32
+	status *string
 }
 
 // Count of requested entities
@@ -456,6 +499,12 @@ func (r ApiListValidatorRequest) Jailed(jailed bool) ApiListValidatorRequest {
 // Current validator app version
 func (r ApiListValidatorRequest) Version(version int32) ApiListValidatorRequest {
 	r.version = &version
+	return r
+}
+
+// Validator status
+func (r ApiListValidatorRequest) Status(status string) ApiListValidatorRequest {
+	r.status = &status
 	return r
 }
 
@@ -511,6 +560,9 @@ func (a *ValidatorAPIService) ListValidatorExecute(r ApiListValidatorRequest) ([
 	if r.version != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "version", r.version, "", "")
 	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -527,6 +579,192 @@ func (a *ValidatorAPIService) ListValidatorExecute(r ApiListValidatorRequest) ([
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v HandlerError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiValidatorBondUpdatesRequest struct {
+	ctx context.Context
+	ApiService *ValidatorAPIService
+	id int64
+	limit *int32
+	offset *int32
+	sort *string
+}
+
+// Count of requested entities
+func (r ApiValidatorBondUpdatesRequest) Limit(limit int32) ApiValidatorBondUpdatesRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset
+func (r ApiValidatorBondUpdatesRequest) Offset(offset int32) ApiValidatorBondUpdatesRequest {
+	r.offset = &offset
+	return r
+}
+
+// Sort order by time
+func (r ApiValidatorBondUpdatesRequest) Sort(sort string) ApiValidatorBondUpdatesRequest {
+	r.sort = &sort
+	return r
+}
+
+func (r ApiValidatorBondUpdatesRequest) Execute() ([]ResponsesBondUpdate, *http.Response, error) {
+	return r.ApiService.ValidatorBondUpdatesExecute(r)
+}
+
+/*
+ValidatorBondUpdates Get validator's bond updates
+
+Returns a paginated history of validator's voting power changes taken from validator_updates of block results. Power 0 means the validator left the active set.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Internal validator id
+ @return ApiValidatorBondUpdatesRequest
+*/
+func (a *ValidatorAPIService) ValidatorBondUpdates(ctx context.Context, id int64) ApiValidatorBondUpdatesRequest {
+	return ApiValidatorBondUpdatesRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return []ResponsesBondUpdate
+func (a *ValidatorAPIService) ValidatorBondUpdatesExecute(r ApiValidatorBondUpdatesRequest) ([]ResponsesBondUpdate, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ResponsesBondUpdate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ValidatorAPIService.ValidatorBondUpdates")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/validators/{id}/bond_updates"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "", "")
+	} else {
+		var defaultValue string = "asc"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "", "")
+		r.sort = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -648,6 +886,20 @@ func (a *ValidatorAPIService) ValidatorCountExecute(r ApiValidatorCountRequest) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -709,7 +961,7 @@ func (a *ValidatorAPIService) ValidatorCountExecute(r ApiValidatorCountRequest) 
 type ApiValidatorDelegatorsRequest struct {
 	ctx context.Context
 	ApiService *ValidatorAPIService
-	id int32
+	id int64
 	limit *int32
 	offset *int32
 	showZero *bool
@@ -746,7 +998,7 @@ Returns a paginated list of delegators staking with this validator, including th
  @param id Internal validator id
  @return ApiValidatorDelegatorsRequest
 */
-func (a *ValidatorAPIService) ValidatorDelegators(ctx context.Context, id int32) ApiValidatorDelegatorsRequest {
+func (a *ValidatorAPIService) ValidatorDelegators(ctx context.Context, id int64) ApiValidatorDelegatorsRequest {
 	return ApiValidatorDelegatorsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -801,6 +1053,20 @@ func (a *ValidatorAPIService) ValidatorDelegatorsExecute(r ApiValidatorDelegator
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -863,7 +1129,7 @@ func (a *ValidatorAPIService) ValidatorDelegatorsExecute(r ApiValidatorDelegator
 type ApiValidatorJailsRequest struct {
 	ctx context.Context
 	ApiService *ValidatorAPIService
-	id int32
+	id int64
 	limit *int32
 	offset *int32
 }
@@ -893,7 +1159,7 @@ Returns a paginated list of jail events for this validator, including the jail r
  @param id Internal validator id
  @return ApiValidatorJailsRequest
 */
-func (a *ValidatorAPIService) ValidatorJails(ctx context.Context, id int32) ApiValidatorJailsRequest {
+func (a *ValidatorAPIService) ValidatorJails(ctx context.Context, id int64) ApiValidatorJailsRequest {
 	return ApiValidatorJailsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -945,6 +1211,20 @@ func (a *ValidatorAPIService) ValidatorJailsExecute(r ApiValidatorJailsRequest) 
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1007,12 +1287,12 @@ func (a *ValidatorAPIService) ValidatorJailsExecute(r ApiValidatorJailsRequest) 
 type ApiValidatorMessagesRequest struct {
 	ctx context.Context
 	ApiService *ValidatorAPIService
-	id int32
+	id int64
 	limit *int32
 	offset *int32
 	sort *string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Count of requested entities
@@ -1034,13 +1314,13 @@ func (r ApiValidatorMessagesRequest) Sort(sort string) ApiValidatorMessagesReque
 }
 
 // Time from in unix timestamp
-func (r ApiValidatorMessagesRequest) From(from int32) ApiValidatorMessagesRequest {
+func (r ApiValidatorMessagesRequest) From(from int64) ApiValidatorMessagesRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiValidatorMessagesRequest) To(to int32) ApiValidatorMessagesRequest {
+func (r ApiValidatorMessagesRequest) To(to int64) ApiValidatorMessagesRequest {
 	r.to = &to
 	return r
 }
@@ -1058,7 +1338,7 @@ Returns a paginated list of messages submitted by the validator's operator addre
  @param id Internal validator id
  @return ApiValidatorMessagesRequest
 */
-func (a *ValidatorAPIService) ValidatorMessages(ctx context.Context, id int32) ApiValidatorMessagesRequest {
+func (a *ValidatorAPIService) ValidatorMessages(ctx context.Context, id int64) ApiValidatorMessagesRequest {
 	return ApiValidatorMessagesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1119,6 +1399,20 @@ func (a *ValidatorAPIService) ValidatorMessagesExecute(r ApiValidatorMessagesReq
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1181,7 +1475,7 @@ func (a *ValidatorAPIService) ValidatorMessagesExecute(r ApiValidatorMessagesReq
 type ApiValidatorMetricsRequest struct {
 	ctx context.Context
 	ApiService *ValidatorAPIService
-	id int32
+	id int64
 }
 
 func (r ApiValidatorMetricsRequest) Execute() (*ResponsesMetrics, *http.Response, error) {
@@ -1197,7 +1491,7 @@ Returns performance metrics for a single validator including uptime, missed bloc
  @param id Internal validator id
  @return ApiValidatorMetricsRequest
 */
-func (a *ValidatorAPIService) ValidatorMetrics(ctx context.Context, id int32) ApiValidatorMetricsRequest {
+func (a *ValidatorAPIService) ValidatorMetrics(ctx context.Context, id int64) ApiValidatorMetricsRequest {
 	return ApiValidatorMetricsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1243,6 +1537,20 @@ func (a *ValidatorAPIService) ValidatorMetricsExecute(r ApiValidatorMetricsReque
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1305,7 +1613,7 @@ func (a *ValidatorAPIService) ValidatorMetricsExecute(r ApiValidatorMetricsReque
 type ApiValidatorVotesRequest struct {
 	ctx context.Context
 	ApiService *ValidatorAPIService
-	id int32
+	id int64
 	limit *int32
 	offset *int32
 }
@@ -1335,7 +1643,7 @@ Returns a paginated list of governance votes cast by this validator on on-chain 
  @param id Internal validator id
  @return ApiValidatorVotesRequest
 */
-func (a *ValidatorAPIService) ValidatorVotes(ctx context.Context, id int32) ApiValidatorVotesRequest {
+func (a *ValidatorAPIService) ValidatorVotes(ctx context.Context, id int64) ApiValidatorVotesRequest {
 	return ApiValidatorVotesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1387,6 +1695,20 @@ func (a *ValidatorAPIService) ValidatorVotesExecute(r ApiValidatorVotesRequest) 
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1517,6 +1839,20 @@ func (a *ValidatorAPIService) ValidatorsMetricsExecute(r ApiValidatorsMetricsReq
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

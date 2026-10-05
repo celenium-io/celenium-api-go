@@ -27,7 +27,7 @@ type ForwardingAPIService service
 type ApiGetForwardingRequest struct {
 	ctx context.Context
 	ApiService *ForwardingAPIService
-	id int32
+	id int64
 }
 
 func (r ApiGetForwardingRequest) Execute() (*ResponsesForwarding, *http.Response, error) {
@@ -38,14 +38,15 @@ func (r ApiGetForwardingRequest) Execute() (*ResponsesForwarding, *http.Response
 GetForwarding Get forwarding event by ID
 
 Returns a single forwarding event by its internal ID. The response includes details about
-the cross-domain token transfer such as destination domain, destination address,
-forwarding address, success/failed counts, and the list of individual transfers.
+the cross-domain token transfer such as destination domain, destination address and
+forwarding address, and the inputs: deposits to the forwarding address since its previous
+forwarding (MsgSend, Hyperlane and IBC transfers).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Internal forwarding event ID
  @return ApiGetForwardingRequest
 */
-func (a *ForwardingAPIService) GetForwarding(ctx context.Context, id int32) ApiGetForwardingRequest {
+func (a *ForwardingAPIService) GetForwarding(ctx context.Context, id int64) ApiGetForwardingRequest {
 	return ApiGetForwardingRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -94,6 +95,20 @@ func (a *ForwardingAPIService) GetForwardingExecute(r ApiGetForwardingRequest) (
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -161,9 +176,9 @@ type ApiListForwardingRequest struct {
 	sort *string
 	txHash *string
 	address *string
-	height *int32
-	from *int32
-	to *int32
+	height *int64
+	from *int64
+	to *int64
 }
 
 // Count of requested entities
@@ -197,19 +212,19 @@ func (r ApiListForwardingRequest) Address(address string) ApiListForwardingReque
 }
 
 // Filter by block height
-func (r ApiListForwardingRequest) Height(height int32) ApiListForwardingRequest {
+func (r ApiListForwardingRequest) Height(height int64) ApiListForwardingRequest {
 	r.height = &height
 	return r
 }
 
 // Filter by start time (Unix timestamp)
-func (r ApiListForwardingRequest) From(from int32) ApiListForwardingRequest {
+func (r ApiListForwardingRequest) From(from int64) ApiListForwardingRequest {
 	r.from = &from
 	return r
 }
 
 // Filter by end time (Unix timestamp)
-func (r ApiListForwardingRequest) To(to int32) ApiListForwardingRequest {
+func (r ApiListForwardingRequest) To(to int64) ApiListForwardingRequest {
 	r.to = &to
 	return r
 }
@@ -296,6 +311,20 @@ func (a *ForwardingAPIService) ListForwardingExecute(r ApiListForwardingRequest)
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

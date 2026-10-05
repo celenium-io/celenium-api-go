@@ -23,13 +23,14 @@ var _ MappedNullable = &ResponsesBlobLog{}
 type ResponsesBlobLog struct {
 	Commitment *string `json:"commitment,omitempty"`
 	ContentType *string `json:"content_type,omitempty"`
-	Height *int32 `json:"height,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Height *int64 `json:"height,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Namespace *ResponsesNamespace `json:"namespace,omitempty"`
 	Rollup *ResponsesShortRollup `json:"rollup,omitempty"`
 	ShareVersion *int32 `json:"share_version,omitempty"`
 	Signer *ResponsesShortAddress `json:"signer,omitempty"`
-	Size *int32 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
+	Source *string `json:"source,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	Tx *ResponsesTx `json:"tx,omitempty"`
 }
@@ -116,9 +117,9 @@ func (o *ResponsesBlobLog) SetContentType(v string) {
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ResponsesBlobLog) GetHeight() int32 {
+func (o *ResponsesBlobLog) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Height
@@ -126,7 +127,7 @@ func (o *ResponsesBlobLog) GetHeight() int32 {
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlobLog) GetHeightOk() (*int32, bool) {
+func (o *ResponsesBlobLog) GetHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.Height) {
 		return nil, false
 	}
@@ -142,15 +143,15 @@ func (o *ResponsesBlobLog) HasHeight() bool {
 	return false
 }
 
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ResponsesBlobLog) SetHeight(v int32) {
+// SetHeight gets a reference to the given int64 and assigns it to the Height field.
+func (o *ResponsesBlobLog) SetHeight(v int64) {
 	o.Height = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesBlobLog) GetId() int32 {
+func (o *ResponsesBlobLog) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -158,7 +159,7 @@ func (o *ResponsesBlobLog) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlobLog) GetIdOk() (*int32, bool) {
+func (o *ResponsesBlobLog) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -174,8 +175,8 @@ func (o *ResponsesBlobLog) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesBlobLog) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesBlobLog) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -308,9 +309,9 @@ func (o *ResponsesBlobLog) SetSigner(v ResponsesShortAddress) {
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *ResponsesBlobLog) GetSize() int32 {
+func (o *ResponsesBlobLog) GetSize() int64 {
 	if o == nil || IsNil(o.Size) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Size
@@ -318,7 +319,7 @@ func (o *ResponsesBlobLog) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlobLog) GetSizeOk() (*int32, bool) {
+func (o *ResponsesBlobLog) GetSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
@@ -334,9 +335,41 @@ func (o *ResponsesBlobLog) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given int32 and assigns it to the Size field.
-func (o *ResponsesBlobLog) SetSize(v int32) {
+// SetSize gets a reference to the given int64 and assigns it to the Size field.
+func (o *ResponsesBlobLog) SetSize(v int64) {
 	o.Size = &v
+}
+
+// GetSource returns the Source field value if set, zero value otherwise.
+func (o *ResponsesBlobLog) GetSource() string {
+	if o == nil || IsNil(o.Source) {
+		var ret string
+		return ret
+	}
+	return *o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesBlobLog) GetSourceOk() (*string, bool) {
+	if o == nil || IsNil(o.Source) {
+		return nil, false
+	}
+	return o.Source, true
+}
+
+// HasSource returns a boolean if a field has been set.
+func (o *ResponsesBlobLog) HasSource() bool {
+	if o != nil && !IsNil(o.Source) {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given string and assigns it to the Source field.
+func (o *ResponsesBlobLog) SetSource(v string) {
+	o.Source = &v
 }
 
 // GetTime returns the Time field value if set, zero value otherwise.
@@ -439,6 +472,9 @@ func (o ResponsesBlobLog) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
 	}
 	if !IsNil(o.Time) {
 		toSerialize["time"] = o.Time

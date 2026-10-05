@@ -13,6 +13,7 @@ package celenium
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the ResponsesBlock type satisfies the MappedNullable interface at compile time
@@ -25,8 +26,8 @@ type ResponsesBlock struct {
 	DataHash *string `json:"data_hash,omitempty"`
 	EvidenceHash *string `json:"evidence_hash,omitempty"`
 	Hash *string `json:"hash,omitempty"`
-	Height *int32 `json:"height,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Height *int64 `json:"height,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	LastCommitHash *string `json:"last_commit_hash,omitempty"`
 	LastResultsHash *string `json:"last_results_hash,omitempty"`
 	MessageTypes []string `json:"message_types,omitempty"`
@@ -34,7 +35,7 @@ type ResponsesBlock struct {
 	ParentHash *string `json:"parent_hash,omitempty"`
 	Proposer *ResponsesShortValidator `json:"proposer,omitempty"`
 	Stats *ResponsesBlockStats `json:"stats,omitempty"`
-	Time *string `json:"time,omitempty"`
+	Time *time.Time `json:"time,omitempty"`
 	ValidatorsHash *string `json:"validators_hash,omitempty"`
 	VersionApp *string `json:"version_app,omitempty"`
 	VersionBlock *string `json:"version_block,omitempty"`
@@ -218,9 +219,9 @@ func (o *ResponsesBlock) SetHash(v string) {
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ResponsesBlock) GetHeight() int32 {
+func (o *ResponsesBlock) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Height
@@ -228,7 +229,7 @@ func (o *ResponsesBlock) GetHeight() int32 {
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlock) GetHeightOk() (*int32, bool) {
+func (o *ResponsesBlock) GetHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.Height) {
 		return nil, false
 	}
@@ -244,15 +245,15 @@ func (o *ResponsesBlock) HasHeight() bool {
 	return false
 }
 
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ResponsesBlock) SetHeight(v int32) {
+// SetHeight gets a reference to the given int64 and assigns it to the Height field.
+func (o *ResponsesBlock) SetHeight(v int64) {
 	o.Height = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesBlock) GetId() int32 {
+func (o *ResponsesBlock) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -260,7 +261,7 @@ func (o *ResponsesBlock) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlock) GetIdOk() (*int32, bool) {
+func (o *ResponsesBlock) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -276,8 +277,8 @@ func (o *ResponsesBlock) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesBlock) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesBlock) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -506,9 +507,9 @@ func (o *ResponsesBlock) SetStats(v ResponsesBlockStats) {
 }
 
 // GetTime returns the Time field value if set, zero value otherwise.
-func (o *ResponsesBlock) GetTime() string {
+func (o *ResponsesBlock) GetTime() time.Time {
 	if o == nil || IsNil(o.Time) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.Time
@@ -516,7 +517,7 @@ func (o *ResponsesBlock) GetTime() string {
 
 // GetTimeOk returns a tuple with the Time field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlock) GetTimeOk() (*string, bool) {
+func (o *ResponsesBlock) GetTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Time) {
 		return nil, false
 	}
@@ -532,8 +533,8 @@ func (o *ResponsesBlock) HasTime() bool {
 	return false
 }
 
-// SetTime gets a reference to the given string and assigns it to the Time field.
-func (o *ResponsesBlock) SetTime(v string) {
+// SetTime gets a reference to the given time.Time and assigns it to the Time field.
+func (o *ResponsesBlock) SetTime(v time.Time) {
 	o.Time = &v
 }
 

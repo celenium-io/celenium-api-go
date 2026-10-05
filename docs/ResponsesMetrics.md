@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AppliedProposalsCount** | Pointer to **int32** |  | [optional] 
-**BlockMissedCount** | Pointer to **int32** |  | [optional] 
+**AppliedProposalsCount** | Pointer to **int64** |  | [optional] 
+**BlockMissedCount** | Pointer to **int64** |  | [optional] 
 **BlockMissedMetric** | Pointer to **string** |  | [optional] 
 **CommissionMetric** | Pointer to **string** |  | [optional] 
 **CreationTime** | Pointer to **time.Time** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **MaxChangeRate** | Pointer to **string** |  | [optional] 
 **MaxRate** | Pointer to **string** |  | [optional] 
 **Moniker** | Pointer to **string** |  | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **SelfDelegationAmount** | Pointer to **string** |  | [optional] 
 **SelfDelegationMetric** | Pointer to **string** |  | [optional] 
 **Stake** | Pointer to **string** |  | [optional] 
-**VotesCount** | Pointer to **int32** |  | [optional] 
+**VotesCount** | Pointer to **int64** |  | [optional] 
 **VotesMetric** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -41,20 +41,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAppliedProposalsCount
 
-`func (o *ResponsesMetrics) GetAppliedProposalsCount() int32`
+`func (o *ResponsesMetrics) GetAppliedProposalsCount() int64`
 
 GetAppliedProposalsCount returns the AppliedProposalsCount field if non-nil, zero value otherwise.
 
 ### GetAppliedProposalsCountOk
 
-`func (o *ResponsesMetrics) GetAppliedProposalsCountOk() (*int32, bool)`
+`func (o *ResponsesMetrics) GetAppliedProposalsCountOk() (*int64, bool)`
 
 GetAppliedProposalsCountOk returns a tuple with the AppliedProposalsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAppliedProposalsCount
 
-`func (o *ResponsesMetrics) SetAppliedProposalsCount(v int32)`
+`func (o *ResponsesMetrics) SetAppliedProposalsCount(v int64)`
 
 SetAppliedProposalsCount sets AppliedProposalsCount field to given value.
 
@@ -66,20 +66,20 @@ HasAppliedProposalsCount returns a boolean if a field has been set.
 
 ### GetBlockMissedCount
 
-`func (o *ResponsesMetrics) GetBlockMissedCount() int32`
+`func (o *ResponsesMetrics) GetBlockMissedCount() int64`
 
 GetBlockMissedCount returns the BlockMissedCount field if non-nil, zero value otherwise.
 
 ### GetBlockMissedCountOk
 
-`func (o *ResponsesMetrics) GetBlockMissedCountOk() (*int32, bool)`
+`func (o *ResponsesMetrics) GetBlockMissedCountOk() (*int64, bool)`
 
 GetBlockMissedCountOk returns a tuple with the BlockMissedCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlockMissedCount
 
-`func (o *ResponsesMetrics) SetBlockMissedCount(v int32)`
+`func (o *ResponsesMetrics) SetBlockMissedCount(v int64)`
 
 SetBlockMissedCount sets BlockMissedCount field to given value.
 
@@ -166,20 +166,20 @@ HasCreationTime returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesMetrics) GetId() int32`
+`func (o *ResponsesMetrics) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesMetrics) GetIdOk() (*int32, bool)`
+`func (o *ResponsesMetrics) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesMetrics) SetId(v int32)`
+`func (o *ResponsesMetrics) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -366,20 +366,20 @@ HasStake returns a boolean if a field has been set.
 
 ### GetVotesCount
 
-`func (o *ResponsesMetrics) GetVotesCount() int32`
+`func (o *ResponsesMetrics) GetVotesCount() int64`
 
 GetVotesCount returns the VotesCount field if non-nil, zero value otherwise.
 
 ### GetVotesCountOk
 
-`func (o *ResponsesMetrics) GetVotesCountOk() (*int32, bool)`
+`func (o *ResponsesMetrics) GetVotesCountOk() (*int64, bool)`
 
 GetVotesCountOk returns a tuple with the VotesCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVotesCount
 
-`func (o *ResponsesMetrics) SetVotesCount(v int32)`
+`func (o *ResponsesMetrics) SetVotesCount(v int64)`
 
 SetVotesCount sets VotesCount field to given value.
 

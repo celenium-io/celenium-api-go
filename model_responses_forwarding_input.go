@@ -14,7 +14,6 @@ package celenium
 import (
 	"encoding/json"
 	"time"
-	"os"
 )
 
 // checks if the ResponsesForwardingInput type satisfies the MappedNullable interface at compile time
@@ -23,12 +22,15 @@ var _ MappedNullable = &ResponsesForwardingInput{}
 // ResponsesForwardingInput struct for ResponsesForwardingInput
 type ResponsesForwardingInput struct {
 	Chain *ResponsesChainMetadata `json:"chain,omitempty"`
+	ChainId *string `json:"chain_id,omitempty"`
+	ChannelId *string `json:"channel_id,omitempty"`
 	Denom *string `json:"denom,omitempty"`
 	From *string `json:"from,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Received *string `json:"received,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewResponsesForwardingInput instantiates a new ResponsesForwardingInput object
@@ -78,6 +80,70 @@ func (o *ResponsesForwardingInput) HasChain() bool {
 // SetChain gets a reference to the given ResponsesChainMetadata and assigns it to the Chain field.
 func (o *ResponsesForwardingInput) SetChain(v ResponsesChainMetadata) {
 	o.Chain = &v
+}
+
+// GetChainId returns the ChainId field value if set, zero value otherwise.
+func (o *ResponsesForwardingInput) GetChainId() string {
+	if o == nil || IsNil(o.ChainId) {
+		var ret string
+		return ret
+	}
+	return *o.ChainId
+}
+
+// GetChainIdOk returns a tuple with the ChainId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesForwardingInput) GetChainIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ChainId) {
+		return nil, false
+	}
+	return o.ChainId, true
+}
+
+// HasChainId returns a boolean if a field has been set.
+func (o *ResponsesForwardingInput) HasChainId() bool {
+	if o != nil && !IsNil(o.ChainId) {
+		return true
+	}
+
+	return false
+}
+
+// SetChainId gets a reference to the given string and assigns it to the ChainId field.
+func (o *ResponsesForwardingInput) SetChainId(v string) {
+	o.ChainId = &v
+}
+
+// GetChannelId returns the ChannelId field value if set, zero value otherwise.
+func (o *ResponsesForwardingInput) GetChannelId() string {
+	if o == nil || IsNil(o.ChannelId) {
+		var ret string
+		return ret
+	}
+	return *o.ChannelId
+}
+
+// GetChannelIdOk returns a tuple with the ChannelId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesForwardingInput) GetChannelIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ChannelId) {
+		return nil, false
+	}
+	return o.ChannelId, true
+}
+
+// HasChannelId returns a boolean if a field has been set.
+func (o *ResponsesForwardingInput) HasChannelId() bool {
+	if o != nil && !IsNil(o.ChannelId) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannelId gets a reference to the given string and assigns it to the ChannelId field.
+func (o *ResponsesForwardingInput) SetChannelId(v string) {
+	o.ChannelId = &v
 }
 
 // GetDenom returns the Denom field value if set, zero value otherwise.
@@ -241,9 +307,9 @@ func (o *ResponsesForwardingInput) SetTime(v time.Time) {
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesForwardingInput) GetTxHash() *os.File {
+func (o *ResponsesForwardingInput) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -251,7 +317,7 @@ func (o *ResponsesForwardingInput) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesForwardingInput) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesForwardingInput) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -267,9 +333,41 @@ func (o *ResponsesForwardingInput) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesForwardingInput) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesForwardingInput) SetTxHash(v string) {
 	o.TxHash = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ResponsesForwardingInput) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesForwardingInput) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *ResponsesForwardingInput) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *ResponsesForwardingInput) SetType(v string) {
+	o.Type = &v
 }
 
 func (o ResponsesForwardingInput) MarshalJSON() ([]byte, error) {
@@ -284,6 +382,12 @@ func (o ResponsesForwardingInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Chain) {
 		toSerialize["chain"] = o.Chain
+	}
+	if !IsNil(o.ChainId) {
+		toSerialize["chain_id"] = o.ChainId
+	}
+	if !IsNil(o.ChannelId) {
+		toSerialize["channel_id"] = o.ChannelId
 	}
 	if !IsNil(o.Denom) {
 		toSerialize["denom"] = o.Denom
@@ -302,6 +406,9 @@ func (o ResponsesForwardingInput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TxHash) {
 		toSerialize["tx_hash"] = o.TxHash
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

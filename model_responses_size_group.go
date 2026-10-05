@@ -20,10 +20,10 @@ var _ MappedNullable = &ResponsesSizeGroup{}
 
 // ResponsesSizeGroup struct for ResponsesSizeGroup
 type ResponsesSizeGroup struct {
-	AvgSize *int32 `json:"avg_size,omitempty"`
-	Count *int32 `json:"count,omitempty"`
+	AvgSize *int64 `json:"avg_size,omitempty"`
+	Count *int64 `json:"count,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Size *int32 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 }
 
 // NewResponsesSizeGroup instantiates a new ResponsesSizeGroup object
@@ -44,9 +44,9 @@ func NewResponsesSizeGroupWithDefaults() *ResponsesSizeGroup {
 }
 
 // GetAvgSize returns the AvgSize field value if set, zero value otherwise.
-func (o *ResponsesSizeGroup) GetAvgSize() int32 {
+func (o *ResponsesSizeGroup) GetAvgSize() int64 {
 	if o == nil || IsNil(o.AvgSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AvgSize
@@ -54,7 +54,7 @@ func (o *ResponsesSizeGroup) GetAvgSize() int32 {
 
 // GetAvgSizeOk returns a tuple with the AvgSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesSizeGroup) GetAvgSizeOk() (*int32, bool) {
+func (o *ResponsesSizeGroup) GetAvgSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.AvgSize) {
 		return nil, false
 	}
@@ -70,15 +70,15 @@ func (o *ResponsesSizeGroup) HasAvgSize() bool {
 	return false
 }
 
-// SetAvgSize gets a reference to the given int32 and assigns it to the AvgSize field.
-func (o *ResponsesSizeGroup) SetAvgSize(v int32) {
+// SetAvgSize gets a reference to the given int64 and assigns it to the AvgSize field.
+func (o *ResponsesSizeGroup) SetAvgSize(v int64) {
 	o.AvgSize = &v
 }
 
 // GetCount returns the Count field value if set, zero value otherwise.
-func (o *ResponsesSizeGroup) GetCount() int32 {
+func (o *ResponsesSizeGroup) GetCount() int64 {
 	if o == nil || IsNil(o.Count) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Count
@@ -86,7 +86,7 @@ func (o *ResponsesSizeGroup) GetCount() int32 {
 
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesSizeGroup) GetCountOk() (*int32, bool) {
+func (o *ResponsesSizeGroup) GetCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *ResponsesSizeGroup) HasCount() bool {
 	return false
 }
 
-// SetCount gets a reference to the given int32 and assigns it to the Count field.
-func (o *ResponsesSizeGroup) SetCount(v int32) {
+// SetCount gets a reference to the given int64 and assigns it to the Count field.
+func (o *ResponsesSizeGroup) SetCount(v int64) {
 	o.Count = &v
 }
 
@@ -140,9 +140,9 @@ func (o *ResponsesSizeGroup) SetName(v string) {
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *ResponsesSizeGroup) GetSize() int32 {
+func (o *ResponsesSizeGroup) GetSize() int64 {
 	if o == nil || IsNil(o.Size) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Size
@@ -150,7 +150,7 @@ func (o *ResponsesSizeGroup) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesSizeGroup) GetSizeOk() (*int32, bool) {
+func (o *ResponsesSizeGroup) GetSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
@@ -166,8 +166,8 @@ func (o *ResponsesSizeGroup) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given int32 and assigns it to the Size field.
-func (o *ResponsesSizeGroup) SetSize(v int32) {
+// SetSize gets a reference to the given int64 and assigns it to the Size field.
+func (o *ResponsesSizeGroup) SetSize(v int64) {
 	o.Size = &v
 }
 

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**NamespaceId** | Pointer to ***os.File** |  | [optional] 
-**Size** | Pointer to **float32** |  | [optional] 
+**NamespaceId** | Pointer to **string** |  | [optional] 
+**Size** | Pointer to **int64** |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -55,20 +55,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetNamespaceId
 
-`func (o *ResponsesNamespaceUsage) GetNamespaceId() *os.File`
+`func (o *ResponsesNamespaceUsage) GetNamespaceId() string`
 
 GetNamespaceId returns the NamespaceId field if non-nil, zero value otherwise.
 
 ### GetNamespaceIdOk
 
-`func (o *ResponsesNamespaceUsage) GetNamespaceIdOk() (**os.File, bool)`
+`func (o *ResponsesNamespaceUsage) GetNamespaceIdOk() (*string, bool)`
 
 GetNamespaceIdOk returns a tuple with the NamespaceId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNamespaceId
 
-`func (o *ResponsesNamespaceUsage) SetNamespaceId(v *os.File)`
+`func (o *ResponsesNamespaceUsage) SetNamespaceId(v string)`
 
 SetNamespaceId sets NamespaceId field to given value.
 
@@ -80,20 +80,20 @@ HasNamespaceId returns a boolean if a field has been set.
 
 ### GetSize
 
-`func (o *ResponsesNamespaceUsage) GetSize() float32`
+`func (o *ResponsesNamespaceUsage) GetSize() int64`
 
 GetSize returns the Size field if non-nil, zero value otherwise.
 
 ### GetSizeOk
 
-`func (o *ResponsesNamespaceUsage) GetSizeOk() (*float32, bool)`
+`func (o *ResponsesNamespaceUsage) GetSizeOk() (*int64, bool)`
 
 GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSize
 
-`func (o *ResponsesNamespaceUsage) SetSize(v float32)`
+`func (o *ResponsesNamespaceUsage) SetSize(v int64)`
 
 SetSize sets Size field to given value.
 

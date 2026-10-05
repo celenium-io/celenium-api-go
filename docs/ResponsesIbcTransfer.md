@@ -5,22 +5,22 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **string** |  | [optional] 
-**ChainId** | Pointer to ***os.File** |  | [optional] 
+**ChainId** | Pointer to **string** |  | [optional] 
 **ChannelId** | Pointer to **string** |  | [optional] 
 **ConnectionId** | Pointer to **string** |  | [optional] 
 **Denom** | Pointer to **string** |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Memo** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **Receiver** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Relayer** | Pointer to [**ResponsesRelayer**](ResponsesRelayer.md) |  | [optional] 
 **Sender** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
-**Sequence** | Pointer to **int32** |  | [optional] 
+**Sequence** | Pointer to **int64** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **Timeout** | Pointer to **time.Time** |  | [optional] 
-**TimeoutHeight** | Pointer to **int32** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**TimeoutHeight** | Pointer to **int64** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -68,20 +68,20 @@ HasAmount returns a boolean if a field has been set.
 
 ### GetChainId
 
-`func (o *ResponsesIbcTransfer) GetChainId() *os.File`
+`func (o *ResponsesIbcTransfer) GetChainId() string`
 
 GetChainId returns the ChainId field if non-nil, zero value otherwise.
 
 ### GetChainIdOk
 
-`func (o *ResponsesIbcTransfer) GetChainIdOk() (**os.File, bool)`
+`func (o *ResponsesIbcTransfer) GetChainIdOk() (*string, bool)`
 
 GetChainIdOk returns a tuple with the ChainId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChainId
 
-`func (o *ResponsesIbcTransfer) SetChainId(v *os.File)`
+`func (o *ResponsesIbcTransfer) SetChainId(v string)`
 
 SetChainId sets ChainId field to given value.
 
@@ -168,20 +168,20 @@ HasDenom returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesIbcTransfer) GetHeight() int32`
+`func (o *ResponsesIbcTransfer) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesIbcTransfer) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesIbcTransfer) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesIbcTransfer) SetHeight(v int32)`
+`func (o *ResponsesIbcTransfer) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 
@@ -193,20 +193,20 @@ HasHeight returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesIbcTransfer) GetId() int32`
+`func (o *ResponsesIbcTransfer) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesIbcTransfer) GetIdOk() (*int32, bool)`
+`func (o *ResponsesIbcTransfer) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesIbcTransfer) SetId(v int32)`
+`func (o *ResponsesIbcTransfer) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -343,20 +343,20 @@ HasSender returns a boolean if a field has been set.
 
 ### GetSequence
 
-`func (o *ResponsesIbcTransfer) GetSequence() int32`
+`func (o *ResponsesIbcTransfer) GetSequence() int64`
 
 GetSequence returns the Sequence field if non-nil, zero value otherwise.
 
 ### GetSequenceOk
 
-`func (o *ResponsesIbcTransfer) GetSequenceOk() (*int32, bool)`
+`func (o *ResponsesIbcTransfer) GetSequenceOk() (*int64, bool)`
 
 GetSequenceOk returns a tuple with the Sequence field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSequence
 
-`func (o *ResponsesIbcTransfer) SetSequence(v int32)`
+`func (o *ResponsesIbcTransfer) SetSequence(v int64)`
 
 SetSequence sets Sequence field to given value.
 
@@ -418,20 +418,20 @@ HasTimeout returns a boolean if a field has been set.
 
 ### GetTimeoutHeight
 
-`func (o *ResponsesIbcTransfer) GetTimeoutHeight() int32`
+`func (o *ResponsesIbcTransfer) GetTimeoutHeight() int64`
 
 GetTimeoutHeight returns the TimeoutHeight field if non-nil, zero value otherwise.
 
 ### GetTimeoutHeightOk
 
-`func (o *ResponsesIbcTransfer) GetTimeoutHeightOk() (*int32, bool)`
+`func (o *ResponsesIbcTransfer) GetTimeoutHeightOk() (*int64, bool)`
 
 GetTimeoutHeightOk returns a tuple with the TimeoutHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeoutHeight
 
-`func (o *ResponsesIbcTransfer) SetTimeoutHeight(v int32)`
+`func (o *ResponsesIbcTransfer) SetTimeoutHeight(v int64)`
 
 SetTimeoutHeight sets TimeoutHeight field to given value.
 
@@ -443,20 +443,20 @@ HasTimeoutHeight returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesIbcTransfer) GetTxHash() *os.File`
+`func (o *ResponsesIbcTransfer) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesIbcTransfer) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesIbcTransfer) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesIbcTransfer) SetTxHash(v *os.File)`
+`func (o *ResponsesIbcTransfer) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 

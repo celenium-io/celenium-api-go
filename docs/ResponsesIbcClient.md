@@ -5,22 +5,22 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ChainId** | Pointer to **string** |  | [optional] 
-**ConnectionCount** | Pointer to **int32** |  | [optional] 
+**ConnectionCount** | Pointer to **int64** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **Creator** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
-**FrozenRevisionHeight** | Pointer to **int32** |  | [optional] 
-**FrozenRevisionNumber** | Pointer to **int32** |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
+**FrozenRevisionHeight** | Pointer to **int64** |  | [optional] 
+**FrozenRevisionNumber** | Pointer to **int64** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
-**LatestRevisionHeight** | Pointer to **int32** |  | [optional] 
-**LatestRevisionNumber** | Pointer to **int32** |  | [optional] 
-**MaxClockDrift** | Pointer to **int32** |  | [optional] 
-**TrustLevelDenominator** | Pointer to **int32** |  | [optional] 
-**TrustLevelNumerator** | Pointer to **int32** |  | [optional] 
-**TrustingPeriod** | Pointer to **int32** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**LatestRevisionHeight** | Pointer to **int64** |  | [optional] 
+**LatestRevisionNumber** | Pointer to **int64** |  | [optional] 
+**MaxClockDrift** | Pointer to **int64** |  | [optional] 
+**TrustLevelDenominator** | Pointer to **int64** |  | [optional] 
+**TrustLevelNumerator** | Pointer to **int64** |  | [optional] 
+**TrustingPeriod** | Pointer to **int64** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
-**UnbondingPeriod** | Pointer to **int32** |  | [optional] 
+**UnbondingPeriod** | Pointer to **int64** |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
@@ -69,20 +69,20 @@ HasChainId returns a boolean if a field has been set.
 
 ### GetConnectionCount
 
-`func (o *ResponsesIbcClient) GetConnectionCount() int32`
+`func (o *ResponsesIbcClient) GetConnectionCount() int64`
 
 GetConnectionCount returns the ConnectionCount field if non-nil, zero value otherwise.
 
 ### GetConnectionCountOk
 
-`func (o *ResponsesIbcClient) GetConnectionCountOk() (*int32, bool)`
+`func (o *ResponsesIbcClient) GetConnectionCountOk() (*int64, bool)`
 
 GetConnectionCountOk returns a tuple with the ConnectionCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnectionCount
 
-`func (o *ResponsesIbcClient) SetConnectionCount(v int32)`
+`func (o *ResponsesIbcClient) SetConnectionCount(v int64)`
 
 SetConnectionCount sets ConnectionCount field to given value.
 
@@ -144,20 +144,20 @@ HasCreator returns a boolean if a field has been set.
 
 ### GetFrozenRevisionHeight
 
-`func (o *ResponsesIbcClient) GetFrozenRevisionHeight() int32`
+`func (o *ResponsesIbcClient) GetFrozenRevisionHeight() int64`
 
 GetFrozenRevisionHeight returns the FrozenRevisionHeight field if non-nil, zero value otherwise.
 
 ### GetFrozenRevisionHeightOk
 
-`func (o *ResponsesIbcClient) GetFrozenRevisionHeightOk() (*int32, bool)`
+`func (o *ResponsesIbcClient) GetFrozenRevisionHeightOk() (*int64, bool)`
 
 GetFrozenRevisionHeightOk returns a tuple with the FrozenRevisionHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFrozenRevisionHeight
 
-`func (o *ResponsesIbcClient) SetFrozenRevisionHeight(v int32)`
+`func (o *ResponsesIbcClient) SetFrozenRevisionHeight(v int64)`
 
 SetFrozenRevisionHeight sets FrozenRevisionHeight field to given value.
 
@@ -169,20 +169,20 @@ HasFrozenRevisionHeight returns a boolean if a field has been set.
 
 ### GetFrozenRevisionNumber
 
-`func (o *ResponsesIbcClient) GetFrozenRevisionNumber() int32`
+`func (o *ResponsesIbcClient) GetFrozenRevisionNumber() int64`
 
 GetFrozenRevisionNumber returns the FrozenRevisionNumber field if non-nil, zero value otherwise.
 
 ### GetFrozenRevisionNumberOk
 
-`func (o *ResponsesIbcClient) GetFrozenRevisionNumberOk() (*int32, bool)`
+`func (o *ResponsesIbcClient) GetFrozenRevisionNumberOk() (*int64, bool)`
 
 GetFrozenRevisionNumberOk returns a tuple with the FrozenRevisionNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFrozenRevisionNumber
 
-`func (o *ResponsesIbcClient) SetFrozenRevisionNumber(v int32)`
+`func (o *ResponsesIbcClient) SetFrozenRevisionNumber(v int64)`
 
 SetFrozenRevisionNumber sets FrozenRevisionNumber field to given value.
 
@@ -194,20 +194,20 @@ HasFrozenRevisionNumber returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesIbcClient) GetHeight() int32`
+`func (o *ResponsesIbcClient) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesIbcClient) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesIbcClient) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesIbcClient) SetHeight(v int32)`
+`func (o *ResponsesIbcClient) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 
@@ -244,20 +244,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetLatestRevisionHeight
 
-`func (o *ResponsesIbcClient) GetLatestRevisionHeight() int32`
+`func (o *ResponsesIbcClient) GetLatestRevisionHeight() int64`
 
 GetLatestRevisionHeight returns the LatestRevisionHeight field if non-nil, zero value otherwise.
 
 ### GetLatestRevisionHeightOk
 
-`func (o *ResponsesIbcClient) GetLatestRevisionHeightOk() (*int32, bool)`
+`func (o *ResponsesIbcClient) GetLatestRevisionHeightOk() (*int64, bool)`
 
 GetLatestRevisionHeightOk returns a tuple with the LatestRevisionHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLatestRevisionHeight
 
-`func (o *ResponsesIbcClient) SetLatestRevisionHeight(v int32)`
+`func (o *ResponsesIbcClient) SetLatestRevisionHeight(v int64)`
 
 SetLatestRevisionHeight sets LatestRevisionHeight field to given value.
 
@@ -269,20 +269,20 @@ HasLatestRevisionHeight returns a boolean if a field has been set.
 
 ### GetLatestRevisionNumber
 
-`func (o *ResponsesIbcClient) GetLatestRevisionNumber() int32`
+`func (o *ResponsesIbcClient) GetLatestRevisionNumber() int64`
 
 GetLatestRevisionNumber returns the LatestRevisionNumber field if non-nil, zero value otherwise.
 
 ### GetLatestRevisionNumberOk
 
-`func (o *ResponsesIbcClient) GetLatestRevisionNumberOk() (*int32, bool)`
+`func (o *ResponsesIbcClient) GetLatestRevisionNumberOk() (*int64, bool)`
 
 GetLatestRevisionNumberOk returns a tuple with the LatestRevisionNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLatestRevisionNumber
 
-`func (o *ResponsesIbcClient) SetLatestRevisionNumber(v int32)`
+`func (o *ResponsesIbcClient) SetLatestRevisionNumber(v int64)`
 
 SetLatestRevisionNumber sets LatestRevisionNumber field to given value.
 
@@ -294,20 +294,20 @@ HasLatestRevisionNumber returns a boolean if a field has been set.
 
 ### GetMaxClockDrift
 
-`func (o *ResponsesIbcClient) GetMaxClockDrift() int32`
+`func (o *ResponsesIbcClient) GetMaxClockDrift() int64`
 
 GetMaxClockDrift returns the MaxClockDrift field if non-nil, zero value otherwise.
 
 ### GetMaxClockDriftOk
 
-`func (o *ResponsesIbcClient) GetMaxClockDriftOk() (*int32, bool)`
+`func (o *ResponsesIbcClient) GetMaxClockDriftOk() (*int64, bool)`
 
 GetMaxClockDriftOk returns a tuple with the MaxClockDrift field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxClockDrift
 
-`func (o *ResponsesIbcClient) SetMaxClockDrift(v int32)`
+`func (o *ResponsesIbcClient) SetMaxClockDrift(v int64)`
 
 SetMaxClockDrift sets MaxClockDrift field to given value.
 
@@ -319,20 +319,20 @@ HasMaxClockDrift returns a boolean if a field has been set.
 
 ### GetTrustLevelDenominator
 
-`func (o *ResponsesIbcClient) GetTrustLevelDenominator() int32`
+`func (o *ResponsesIbcClient) GetTrustLevelDenominator() int64`
 
 GetTrustLevelDenominator returns the TrustLevelDenominator field if non-nil, zero value otherwise.
 
 ### GetTrustLevelDenominatorOk
 
-`func (o *ResponsesIbcClient) GetTrustLevelDenominatorOk() (*int32, bool)`
+`func (o *ResponsesIbcClient) GetTrustLevelDenominatorOk() (*int64, bool)`
 
 GetTrustLevelDenominatorOk returns a tuple with the TrustLevelDenominator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrustLevelDenominator
 
-`func (o *ResponsesIbcClient) SetTrustLevelDenominator(v int32)`
+`func (o *ResponsesIbcClient) SetTrustLevelDenominator(v int64)`
 
 SetTrustLevelDenominator sets TrustLevelDenominator field to given value.
 
@@ -344,20 +344,20 @@ HasTrustLevelDenominator returns a boolean if a field has been set.
 
 ### GetTrustLevelNumerator
 
-`func (o *ResponsesIbcClient) GetTrustLevelNumerator() int32`
+`func (o *ResponsesIbcClient) GetTrustLevelNumerator() int64`
 
 GetTrustLevelNumerator returns the TrustLevelNumerator field if non-nil, zero value otherwise.
 
 ### GetTrustLevelNumeratorOk
 
-`func (o *ResponsesIbcClient) GetTrustLevelNumeratorOk() (*int32, bool)`
+`func (o *ResponsesIbcClient) GetTrustLevelNumeratorOk() (*int64, bool)`
 
 GetTrustLevelNumeratorOk returns a tuple with the TrustLevelNumerator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrustLevelNumerator
 
-`func (o *ResponsesIbcClient) SetTrustLevelNumerator(v int32)`
+`func (o *ResponsesIbcClient) SetTrustLevelNumerator(v int64)`
 
 SetTrustLevelNumerator sets TrustLevelNumerator field to given value.
 
@@ -369,20 +369,20 @@ HasTrustLevelNumerator returns a boolean if a field has been set.
 
 ### GetTrustingPeriod
 
-`func (o *ResponsesIbcClient) GetTrustingPeriod() int32`
+`func (o *ResponsesIbcClient) GetTrustingPeriod() int64`
 
 GetTrustingPeriod returns the TrustingPeriod field if non-nil, zero value otherwise.
 
 ### GetTrustingPeriodOk
 
-`func (o *ResponsesIbcClient) GetTrustingPeriodOk() (*int32, bool)`
+`func (o *ResponsesIbcClient) GetTrustingPeriodOk() (*int64, bool)`
 
 GetTrustingPeriodOk returns a tuple with the TrustingPeriod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrustingPeriod
 
-`func (o *ResponsesIbcClient) SetTrustingPeriod(v int32)`
+`func (o *ResponsesIbcClient) SetTrustingPeriod(v int64)`
 
 SetTrustingPeriod sets TrustingPeriod field to given value.
 
@@ -394,20 +394,20 @@ HasTrustingPeriod returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesIbcClient) GetTxHash() *os.File`
+`func (o *ResponsesIbcClient) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesIbcClient) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesIbcClient) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesIbcClient) SetTxHash(v *os.File)`
+`func (o *ResponsesIbcClient) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 
@@ -444,20 +444,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetUnbondingPeriod
 
-`func (o *ResponsesIbcClient) GetUnbondingPeriod() int32`
+`func (o *ResponsesIbcClient) GetUnbondingPeriod() int64`
 
 GetUnbondingPeriod returns the UnbondingPeriod field if non-nil, zero value otherwise.
 
 ### GetUnbondingPeriodOk
 
-`func (o *ResponsesIbcClient) GetUnbondingPeriodOk() (*int32, bool)`
+`func (o *ResponsesIbcClient) GetUnbondingPeriodOk() (*int64, bool)`
 
 GetUnbondingPeriodOk returns a tuple with the UnbondingPeriod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnbondingPeriod
 
-`func (o *ResponsesIbcClient) SetUnbondingPeriod(v int32)`
+`func (o *ResponsesIbcClient) SetUnbondingPeriod(v int64)`
 
 SetUnbondingPeriod sets UnbondingPeriod field to given value.
 

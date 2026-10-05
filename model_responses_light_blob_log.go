@@ -14,7 +14,6 @@ package celenium
 import (
 	"encoding/json"
 	"time"
-	"os"
 )
 
 // checks if the ResponsesLightBlobLog type satisfies the MappedNullable interface at compile time
@@ -24,14 +23,15 @@ var _ MappedNullable = &ResponsesLightBlobLog{}
 type ResponsesLightBlobLog struct {
 	Commitment *string `json:"commitment,omitempty"`
 	ContentType *string `json:"content_type,omitempty"`
-	Height *int32 `json:"height,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Height *int64 `json:"height,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Namespace *string `json:"namespace,omitempty"`
 	ShareVersion *int32 `json:"share_version,omitempty"`
 	Signer *ResponsesShortAddress `json:"signer,omitempty"`
-	Size *int32 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
+	Source *string `json:"source,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
 }
 
 // NewResponsesLightBlobLog instantiates a new ResponsesLightBlobLog object
@@ -116,9 +116,9 @@ func (o *ResponsesLightBlobLog) SetContentType(v string) {
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ResponsesLightBlobLog) GetHeight() int32 {
+func (o *ResponsesLightBlobLog) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Height
@@ -126,7 +126,7 @@ func (o *ResponsesLightBlobLog) GetHeight() int32 {
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesLightBlobLog) GetHeightOk() (*int32, bool) {
+func (o *ResponsesLightBlobLog) GetHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.Height) {
 		return nil, false
 	}
@@ -142,15 +142,15 @@ func (o *ResponsesLightBlobLog) HasHeight() bool {
 	return false
 }
 
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ResponsesLightBlobLog) SetHeight(v int32) {
+// SetHeight gets a reference to the given int64 and assigns it to the Height field.
+func (o *ResponsesLightBlobLog) SetHeight(v int64) {
 	o.Height = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesLightBlobLog) GetId() int32 {
+func (o *ResponsesLightBlobLog) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -158,7 +158,7 @@ func (o *ResponsesLightBlobLog) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesLightBlobLog) GetIdOk() (*int32, bool) {
+func (o *ResponsesLightBlobLog) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -174,8 +174,8 @@ func (o *ResponsesLightBlobLog) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesLightBlobLog) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesLightBlobLog) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -276,9 +276,9 @@ func (o *ResponsesLightBlobLog) SetSigner(v ResponsesShortAddress) {
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *ResponsesLightBlobLog) GetSize() int32 {
+func (o *ResponsesLightBlobLog) GetSize() int64 {
 	if o == nil || IsNil(o.Size) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Size
@@ -286,7 +286,7 @@ func (o *ResponsesLightBlobLog) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesLightBlobLog) GetSizeOk() (*int32, bool) {
+func (o *ResponsesLightBlobLog) GetSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
@@ -302,9 +302,41 @@ func (o *ResponsesLightBlobLog) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given int32 and assigns it to the Size field.
-func (o *ResponsesLightBlobLog) SetSize(v int32) {
+// SetSize gets a reference to the given int64 and assigns it to the Size field.
+func (o *ResponsesLightBlobLog) SetSize(v int64) {
 	o.Size = &v
+}
+
+// GetSource returns the Source field value if set, zero value otherwise.
+func (o *ResponsesLightBlobLog) GetSource() string {
+	if o == nil || IsNil(o.Source) {
+		var ret string
+		return ret
+	}
+	return *o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesLightBlobLog) GetSourceOk() (*string, bool) {
+	if o == nil || IsNil(o.Source) {
+		return nil, false
+	}
+	return o.Source, true
+}
+
+// HasSource returns a boolean if a field has been set.
+func (o *ResponsesLightBlobLog) HasSource() bool {
+	if o != nil && !IsNil(o.Source) {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given string and assigns it to the Source field.
+func (o *ResponsesLightBlobLog) SetSource(v string) {
+	o.Source = &v
 }
 
 // GetTime returns the Time field value if set, zero value otherwise.
@@ -340,9 +372,9 @@ func (o *ResponsesLightBlobLog) SetTime(v time.Time) {
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesLightBlobLog) GetTxHash() *os.File {
+func (o *ResponsesLightBlobLog) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -350,7 +382,7 @@ func (o *ResponsesLightBlobLog) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesLightBlobLog) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesLightBlobLog) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -366,8 +398,8 @@ func (o *ResponsesLightBlobLog) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesLightBlobLog) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesLightBlobLog) SetTxHash(v string) {
 	o.TxHash = &v
 }
 
@@ -404,6 +436,9 @@ func (o ResponsesLightBlobLog) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
 	}
 	if !IsNil(o.Time) {
 		toSerialize["time"] = o.Time

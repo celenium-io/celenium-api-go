@@ -30,7 +30,7 @@ type ResponsesVote struct {
 	Validator *ResponsesShortValidator `json:"validator,omitempty"`
 	Voter *ResponsesShortAddress `json:"voter,omitempty"`
 	VoterId *int64 `json:"voter_id,omitempty"`
-	Weight *int64 `json:"weight,omitempty"`
+	Weight *string `json:"weight,omitempty"`
 }
 
 // NewResponsesVote instantiates a new ResponsesVote object
@@ -339,9 +339,9 @@ func (o *ResponsesVote) SetVoterId(v int64) {
 }
 
 // GetWeight returns the Weight field value if set, zero value otherwise.
-func (o *ResponsesVote) GetWeight() int64 {
+func (o *ResponsesVote) GetWeight() string {
 	if o == nil || IsNil(o.Weight) {
-		var ret int64
+		var ret string
 		return ret
 	}
 	return *o.Weight
@@ -349,7 +349,7 @@ func (o *ResponsesVote) GetWeight() int64 {
 
 // GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesVote) GetWeightOk() (*int64, bool) {
+func (o *ResponsesVote) GetWeightOk() (*string, bool) {
 	if o == nil || IsNil(o.Weight) {
 		return nil, false
 	}
@@ -365,8 +365,8 @@ func (o *ResponsesVote) HasWeight() bool {
 	return false
 }
 
-// SetWeight gets a reference to the given int64 and assigns it to the Weight field.
-func (o *ResponsesVote) SetWeight(v int64) {
+// SetWeight gets a reference to the given string and assigns it to the Weight field.
+func (o *ResponsesVote) SetWeight(v string) {
 	o.Weight = &v
 }
 

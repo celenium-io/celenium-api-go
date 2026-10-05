@@ -14,7 +14,6 @@ package celenium
 import (
 	"encoding/json"
 	"time"
-	"os"
 )
 
 // checks if the ResponsesNamespace type satisfies the MappedNullable interface at compile time
@@ -22,16 +21,18 @@ var _ MappedNullable = &ResponsesNamespace{}
 
 // ResponsesNamespace struct for ResponsesNamespace
 type ResponsesNamespace struct {
-	BlobsCount *int32 `json:"blobs_count,omitempty"`
+	BlobsCount *int64 `json:"blobs_count,omitempty"`
+	FibreSize *int64 `json:"fibre_size,omitempty"`
 	Hash *string `json:"hash,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	LastHeight *int64 `json:"last_height,omitempty"`
 	LastMessageTime *time.Time `json:"last_message_time,omitempty"`
 	Name *string `json:"name,omitempty"`
-	NamespaceId **os.File `json:"namespace_id,omitempty"`
-	PfbCount *int32 `json:"pfb_count,omitempty"`
+	NamespaceId *string `json:"namespace_id,omitempty"`
+	PfbCount *int64 `json:"pfb_count,omitempty"`
+	PffCount *int64 `json:"pff_count,omitempty"`
 	Reserved *bool `json:"reserved,omitempty"`
-	Size *int32 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 	Version *int32 `json:"version,omitempty"`
 }
 
@@ -53,9 +54,9 @@ func NewResponsesNamespaceWithDefaults() *ResponsesNamespace {
 }
 
 // GetBlobsCount returns the BlobsCount field value if set, zero value otherwise.
-func (o *ResponsesNamespace) GetBlobsCount() int32 {
+func (o *ResponsesNamespace) GetBlobsCount() int64 {
 	if o == nil || IsNil(o.BlobsCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BlobsCount
@@ -63,7 +64,7 @@ func (o *ResponsesNamespace) GetBlobsCount() int32 {
 
 // GetBlobsCountOk returns a tuple with the BlobsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesNamespace) GetBlobsCountOk() (*int32, bool) {
+func (o *ResponsesNamespace) GetBlobsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlobsCount) {
 		return nil, false
 	}
@@ -79,9 +80,41 @@ func (o *ResponsesNamespace) HasBlobsCount() bool {
 	return false
 }
 
-// SetBlobsCount gets a reference to the given int32 and assigns it to the BlobsCount field.
-func (o *ResponsesNamespace) SetBlobsCount(v int32) {
+// SetBlobsCount gets a reference to the given int64 and assigns it to the BlobsCount field.
+func (o *ResponsesNamespace) SetBlobsCount(v int64) {
 	o.BlobsCount = &v
+}
+
+// GetFibreSize returns the FibreSize field value if set, zero value otherwise.
+func (o *ResponsesNamespace) GetFibreSize() int64 {
+	if o == nil || IsNil(o.FibreSize) {
+		var ret int64
+		return ret
+	}
+	return *o.FibreSize
+}
+
+// GetFibreSizeOk returns a tuple with the FibreSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesNamespace) GetFibreSizeOk() (*int64, bool) {
+	if o == nil || IsNil(o.FibreSize) {
+		return nil, false
+	}
+	return o.FibreSize, true
+}
+
+// HasFibreSize returns a boolean if a field has been set.
+func (o *ResponsesNamespace) HasFibreSize() bool {
+	if o != nil && !IsNil(o.FibreSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetFibreSize gets a reference to the given int64 and assigns it to the FibreSize field.
+func (o *ResponsesNamespace) SetFibreSize(v int64) {
+	o.FibreSize = &v
 }
 
 // GetHash returns the Hash field value if set, zero value otherwise.
@@ -117,9 +150,9 @@ func (o *ResponsesNamespace) SetHash(v string) {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesNamespace) GetId() int32 {
+func (o *ResponsesNamespace) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -127,7 +160,7 @@ func (o *ResponsesNamespace) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesNamespace) GetIdOk() (*int32, bool) {
+func (o *ResponsesNamespace) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -143,8 +176,8 @@ func (o *ResponsesNamespace) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesNamespace) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesNamespace) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -245,9 +278,9 @@ func (o *ResponsesNamespace) SetName(v string) {
 }
 
 // GetNamespaceId returns the NamespaceId field value if set, zero value otherwise.
-func (o *ResponsesNamespace) GetNamespaceId() *os.File {
+func (o *ResponsesNamespace) GetNamespaceId() string {
 	if o == nil || IsNil(o.NamespaceId) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.NamespaceId
@@ -255,7 +288,7 @@ func (o *ResponsesNamespace) GetNamespaceId() *os.File {
 
 // GetNamespaceIdOk returns a tuple with the NamespaceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesNamespace) GetNamespaceIdOk() (**os.File, bool) {
+func (o *ResponsesNamespace) GetNamespaceIdOk() (*string, bool) {
 	if o == nil || IsNil(o.NamespaceId) {
 		return nil, false
 	}
@@ -271,15 +304,15 @@ func (o *ResponsesNamespace) HasNamespaceId() bool {
 	return false
 }
 
-// SetNamespaceId gets a reference to the given *os.File and assigns it to the NamespaceId field.
-func (o *ResponsesNamespace) SetNamespaceId(v *os.File) {
+// SetNamespaceId gets a reference to the given string and assigns it to the NamespaceId field.
+func (o *ResponsesNamespace) SetNamespaceId(v string) {
 	o.NamespaceId = &v
 }
 
 // GetPfbCount returns the PfbCount field value if set, zero value otherwise.
-func (o *ResponsesNamespace) GetPfbCount() int32 {
+func (o *ResponsesNamespace) GetPfbCount() int64 {
 	if o == nil || IsNil(o.PfbCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PfbCount
@@ -287,7 +320,7 @@ func (o *ResponsesNamespace) GetPfbCount() int32 {
 
 // GetPfbCountOk returns a tuple with the PfbCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesNamespace) GetPfbCountOk() (*int32, bool) {
+func (o *ResponsesNamespace) GetPfbCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.PfbCount) {
 		return nil, false
 	}
@@ -303,9 +336,41 @@ func (o *ResponsesNamespace) HasPfbCount() bool {
 	return false
 }
 
-// SetPfbCount gets a reference to the given int32 and assigns it to the PfbCount field.
-func (o *ResponsesNamespace) SetPfbCount(v int32) {
+// SetPfbCount gets a reference to the given int64 and assigns it to the PfbCount field.
+func (o *ResponsesNamespace) SetPfbCount(v int64) {
 	o.PfbCount = &v
+}
+
+// GetPffCount returns the PffCount field value if set, zero value otherwise.
+func (o *ResponsesNamespace) GetPffCount() int64 {
+	if o == nil || IsNil(o.PffCount) {
+		var ret int64
+		return ret
+	}
+	return *o.PffCount
+}
+
+// GetPffCountOk returns a tuple with the PffCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesNamespace) GetPffCountOk() (*int64, bool) {
+	if o == nil || IsNil(o.PffCount) {
+		return nil, false
+	}
+	return o.PffCount, true
+}
+
+// HasPffCount returns a boolean if a field has been set.
+func (o *ResponsesNamespace) HasPffCount() bool {
+	if o != nil && !IsNil(o.PffCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetPffCount gets a reference to the given int64 and assigns it to the PffCount field.
+func (o *ResponsesNamespace) SetPffCount(v int64) {
+	o.PffCount = &v
 }
 
 // GetReserved returns the Reserved field value if set, zero value otherwise.
@@ -341,9 +406,9 @@ func (o *ResponsesNamespace) SetReserved(v bool) {
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *ResponsesNamespace) GetSize() int32 {
+func (o *ResponsesNamespace) GetSize() int64 {
 	if o == nil || IsNil(o.Size) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Size
@@ -351,7 +416,7 @@ func (o *ResponsesNamespace) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesNamespace) GetSizeOk() (*int32, bool) {
+func (o *ResponsesNamespace) GetSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
@@ -367,8 +432,8 @@ func (o *ResponsesNamespace) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given int32 and assigns it to the Size field.
-func (o *ResponsesNamespace) SetSize(v int32) {
+// SetSize gets a reference to the given int64 and assigns it to the Size field.
+func (o *ResponsesNamespace) SetSize(v int64) {
 	o.Size = &v
 }
 
@@ -417,6 +482,9 @@ func (o ResponsesNamespace) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BlobsCount) {
 		toSerialize["blobs_count"] = o.BlobsCount
 	}
+	if !IsNil(o.FibreSize) {
+		toSerialize["fibre_size"] = o.FibreSize
+	}
 	if !IsNil(o.Hash) {
 		toSerialize["hash"] = o.Hash
 	}
@@ -437,6 +505,9 @@ func (o ResponsesNamespace) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PfbCount) {
 		toSerialize["pfb_count"] = o.PfbCount
+	}
+	if !IsNil(o.PffCount) {
+		toSerialize["pff_count"] = o.PffCount
 	}
 	if !IsNil(o.Reserved) {
 		toSerialize["reserved"] = o.Reserved

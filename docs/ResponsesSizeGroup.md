@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AvgSize** | Pointer to **int32** |  | [optional] 
-**Count** | Pointer to **int32** |  | [optional] 
+**AvgSize** | Pointer to **int64** |  | [optional] 
+**Count** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Size** | Pointer to **int32** |  | [optional] 
+**Size** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAvgSize
 
-`func (o *ResponsesSizeGroup) GetAvgSize() int32`
+`func (o *ResponsesSizeGroup) GetAvgSize() int64`
 
 GetAvgSize returns the AvgSize field if non-nil, zero value otherwise.
 
 ### GetAvgSizeOk
 
-`func (o *ResponsesSizeGroup) GetAvgSizeOk() (*int32, bool)`
+`func (o *ResponsesSizeGroup) GetAvgSizeOk() (*int64, bool)`
 
 GetAvgSizeOk returns a tuple with the AvgSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAvgSize
 
-`func (o *ResponsesSizeGroup) SetAvgSize(v int32)`
+`func (o *ResponsesSizeGroup) SetAvgSize(v int64)`
 
 SetAvgSize sets AvgSize field to given value.
 
@@ -55,20 +55,20 @@ HasAvgSize returns a boolean if a field has been set.
 
 ### GetCount
 
-`func (o *ResponsesSizeGroup) GetCount() int32`
+`func (o *ResponsesSizeGroup) GetCount() int64`
 
 GetCount returns the Count field if non-nil, zero value otherwise.
 
 ### GetCountOk
 
-`func (o *ResponsesSizeGroup) GetCountOk() (*int32, bool)`
+`func (o *ResponsesSizeGroup) GetCountOk() (*int64, bool)`
 
 GetCountOk returns a tuple with the Count field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCount
 
-`func (o *ResponsesSizeGroup) SetCount(v int32)`
+`func (o *ResponsesSizeGroup) SetCount(v int64)`
 
 SetCount sets Count field to given value.
 
@@ -105,20 +105,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetSize
 
-`func (o *ResponsesSizeGroup) GetSize() int32`
+`func (o *ResponsesSizeGroup) GetSize() int64`
 
 GetSize returns the Size field if non-nil, zero value otherwise.
 
 ### GetSizeOk
 
-`func (o *ResponsesSizeGroup) GetSizeOk() (*int32, bool)`
+`func (o *ResponsesSizeGroup) GetSizeOk() (*int64, bool)`
 
 GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSize
 
-`func (o *ResponsesSizeGroup) SetSize(v int32)`
+`func (o *ResponsesSizeGroup) SetSize(v int64)`
 
 SetSize sets Size field to given value.
 

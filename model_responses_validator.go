@@ -22,24 +22,27 @@ var _ MappedNullable = &ResponsesValidator{}
 // ResponsesValidator struct for ResponsesValidator
 type ResponsesValidator struct {
 	Address *ResponsesShortAddress `json:"address,omitempty"`
+	BondUpdatesCount *int64 `json:"bond_updates_count,omitempty"`
 	Commissions *string `json:"commissions,omitempty"`
 	ConsAddress *string `json:"cons_address,omitempty"`
 	Contacts *string `json:"contacts,omitempty"`
 	CreationTime *time.Time `json:"creation_time,omitempty"`
 	Delegator *ResponsesShortAddress `json:"delegator,omitempty"`
 	Details *string `json:"details,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Fibre *ResponsesFibre `json:"fibre,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Identity *string `json:"identity,omitempty"`
 	Jailed *bool `json:"jailed,omitempty"`
 	MaxChangeRate *string `json:"max_change_rate,omitempty"`
 	MaxRate *string `json:"max_rate,omitempty"`
-	MessagesCount *int32 `json:"messages_count,omitempty"`
+	MessagesCount *int64 `json:"messages_count,omitempty"`
 	MinSelfDelegation *string `json:"min_self_delegation,omitempty"`
 	Moniker *string `json:"moniker,omitempty"`
 	Rate *string `json:"rate,omitempty"`
 	Rewards *string `json:"rewards,omitempty"`
 	Stake *string `json:"stake,omitempty"`
-	Version *int32 `json:"version,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Version *int64 `json:"version,omitempty"`
 	VotingPower *string `json:"voting_power,omitempty"`
 	Website *string `json:"website,omitempty"`
 }
@@ -91,6 +94,38 @@ func (o *ResponsesValidator) HasAddress() bool {
 // SetAddress gets a reference to the given ResponsesShortAddress and assigns it to the Address field.
 func (o *ResponsesValidator) SetAddress(v ResponsesShortAddress) {
 	o.Address = &v
+}
+
+// GetBondUpdatesCount returns the BondUpdatesCount field value if set, zero value otherwise.
+func (o *ResponsesValidator) GetBondUpdatesCount() int64 {
+	if o == nil || IsNil(o.BondUpdatesCount) {
+		var ret int64
+		return ret
+	}
+	return *o.BondUpdatesCount
+}
+
+// GetBondUpdatesCountOk returns a tuple with the BondUpdatesCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesValidator) GetBondUpdatesCountOk() (*int64, bool) {
+	if o == nil || IsNil(o.BondUpdatesCount) {
+		return nil, false
+	}
+	return o.BondUpdatesCount, true
+}
+
+// HasBondUpdatesCount returns a boolean if a field has been set.
+func (o *ResponsesValidator) HasBondUpdatesCount() bool {
+	if o != nil && !IsNil(o.BondUpdatesCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetBondUpdatesCount gets a reference to the given int64 and assigns it to the BondUpdatesCount field.
+func (o *ResponsesValidator) SetBondUpdatesCount(v int64) {
+	o.BondUpdatesCount = &v
 }
 
 // GetCommissions returns the Commissions field value if set, zero value otherwise.
@@ -285,10 +320,42 @@ func (o *ResponsesValidator) SetDetails(v string) {
 	o.Details = &v
 }
 
+// GetFibre returns the Fibre field value if set, zero value otherwise.
+func (o *ResponsesValidator) GetFibre() ResponsesFibre {
+	if o == nil || IsNil(o.Fibre) {
+		var ret ResponsesFibre
+		return ret
+	}
+	return *o.Fibre
+}
+
+// GetFibreOk returns a tuple with the Fibre field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesValidator) GetFibreOk() (*ResponsesFibre, bool) {
+	if o == nil || IsNil(o.Fibre) {
+		return nil, false
+	}
+	return o.Fibre, true
+}
+
+// HasFibre returns a boolean if a field has been set.
+func (o *ResponsesValidator) HasFibre() bool {
+	if o != nil && !IsNil(o.Fibre) {
+		return true
+	}
+
+	return false
+}
+
+// SetFibre gets a reference to the given ResponsesFibre and assigns it to the Fibre field.
+func (o *ResponsesValidator) SetFibre(v ResponsesFibre) {
+	o.Fibre = &v
+}
+
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesValidator) GetId() int32 {
+func (o *ResponsesValidator) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -296,7 +363,7 @@ func (o *ResponsesValidator) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesValidator) GetIdOk() (*int32, bool) {
+func (o *ResponsesValidator) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -312,8 +379,8 @@ func (o *ResponsesValidator) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesValidator) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesValidator) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -446,9 +513,9 @@ func (o *ResponsesValidator) SetMaxRate(v string) {
 }
 
 // GetMessagesCount returns the MessagesCount field value if set, zero value otherwise.
-func (o *ResponsesValidator) GetMessagesCount() int32 {
+func (o *ResponsesValidator) GetMessagesCount() int64 {
 	if o == nil || IsNil(o.MessagesCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MessagesCount
@@ -456,7 +523,7 @@ func (o *ResponsesValidator) GetMessagesCount() int32 {
 
 // GetMessagesCountOk returns a tuple with the MessagesCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesValidator) GetMessagesCountOk() (*int32, bool) {
+func (o *ResponsesValidator) GetMessagesCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.MessagesCount) {
 		return nil, false
 	}
@@ -472,8 +539,8 @@ func (o *ResponsesValidator) HasMessagesCount() bool {
 	return false
 }
 
-// SetMessagesCount gets a reference to the given int32 and assigns it to the MessagesCount field.
-func (o *ResponsesValidator) SetMessagesCount(v int32) {
+// SetMessagesCount gets a reference to the given int64 and assigns it to the MessagesCount field.
+func (o *ResponsesValidator) SetMessagesCount(v int64) {
 	o.MessagesCount = &v
 }
 
@@ -637,10 +704,42 @@ func (o *ResponsesValidator) SetStake(v string) {
 	o.Stake = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ResponsesValidator) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesValidator) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *ResponsesValidator) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *ResponsesValidator) SetStatus(v string) {
+	o.Status = &v
+}
+
 // GetVersion returns the Version field value if set, zero value otherwise.
-func (o *ResponsesValidator) GetVersion() int32 {
+func (o *ResponsesValidator) GetVersion() int64 {
 	if o == nil || IsNil(o.Version) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Version
@@ -648,7 +747,7 @@ func (o *ResponsesValidator) GetVersion() int32 {
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesValidator) GetVersionOk() (*int32, bool) {
+func (o *ResponsesValidator) GetVersionOk() (*int64, bool) {
 	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
@@ -664,8 +763,8 @@ func (o *ResponsesValidator) HasVersion() bool {
 	return false
 }
 
-// SetVersion gets a reference to the given int32 and assigns it to the Version field.
-func (o *ResponsesValidator) SetVersion(v int32) {
+// SetVersion gets a reference to the given int64 and assigns it to the Version field.
+func (o *ResponsesValidator) SetVersion(v int64) {
 	o.Version = &v
 }
 
@@ -746,6 +845,9 @@ func (o ResponsesValidator) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
+	if !IsNil(o.BondUpdatesCount) {
+		toSerialize["bond_updates_count"] = o.BondUpdatesCount
+	}
 	if !IsNil(o.Commissions) {
 		toSerialize["commissions"] = o.Commissions
 	}
@@ -763,6 +865,9 @@ func (o ResponsesValidator) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details
+	}
+	if !IsNil(o.Fibre) {
+		toSerialize["fibre"] = o.Fibre
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -796,6 +901,9 @@ func (o ResponsesValidator) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Stake) {
 		toSerialize["stake"] = o.Stake
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version

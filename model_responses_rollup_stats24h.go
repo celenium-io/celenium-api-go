@@ -20,12 +20,12 @@ var _ MappedNullable = &ResponsesRollupStats24h{}
 
 // ResponsesRollupStats24h struct for ResponsesRollupStats24h
 type ResponsesRollupStats24h struct {
-	BlobsCount *int32 `json:"blobs_count,omitempty"`
-	Fee *int32 `json:"fee,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	BlobsCount *int64 `json:"blobs_count,omitempty"`
+	Fee *float64 `json:"fee,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Logo *string `json:"logo,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Size *int32 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 }
 
 // NewResponsesRollupStats24h instantiates a new ResponsesRollupStats24h object
@@ -46,9 +46,9 @@ func NewResponsesRollupStats24hWithDefaults() *ResponsesRollupStats24h {
 }
 
 // GetBlobsCount returns the BlobsCount field value if set, zero value otherwise.
-func (o *ResponsesRollupStats24h) GetBlobsCount() int32 {
+func (o *ResponsesRollupStats24h) GetBlobsCount() int64 {
 	if o == nil || IsNil(o.BlobsCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BlobsCount
@@ -56,7 +56,7 @@ func (o *ResponsesRollupStats24h) GetBlobsCount() int32 {
 
 // GetBlobsCountOk returns a tuple with the BlobsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupStats24h) GetBlobsCountOk() (*int32, bool) {
+func (o *ResponsesRollupStats24h) GetBlobsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlobsCount) {
 		return nil, false
 	}
@@ -72,15 +72,15 @@ func (o *ResponsesRollupStats24h) HasBlobsCount() bool {
 	return false
 }
 
-// SetBlobsCount gets a reference to the given int32 and assigns it to the BlobsCount field.
-func (o *ResponsesRollupStats24h) SetBlobsCount(v int32) {
+// SetBlobsCount gets a reference to the given int64 and assigns it to the BlobsCount field.
+func (o *ResponsesRollupStats24h) SetBlobsCount(v int64) {
 	o.BlobsCount = &v
 }
 
 // GetFee returns the Fee field value if set, zero value otherwise.
-func (o *ResponsesRollupStats24h) GetFee() int32 {
+func (o *ResponsesRollupStats24h) GetFee() float64 {
 	if o == nil || IsNil(o.Fee) {
-		var ret int32
+		var ret float64
 		return ret
 	}
 	return *o.Fee
@@ -88,7 +88,7 @@ func (o *ResponsesRollupStats24h) GetFee() int32 {
 
 // GetFeeOk returns a tuple with the Fee field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupStats24h) GetFeeOk() (*int32, bool) {
+func (o *ResponsesRollupStats24h) GetFeeOk() (*float64, bool) {
 	if o == nil || IsNil(o.Fee) {
 		return nil, false
 	}
@@ -104,15 +104,15 @@ func (o *ResponsesRollupStats24h) HasFee() bool {
 	return false
 }
 
-// SetFee gets a reference to the given int32 and assigns it to the Fee field.
-func (o *ResponsesRollupStats24h) SetFee(v int32) {
+// SetFee gets a reference to the given float64 and assigns it to the Fee field.
+func (o *ResponsesRollupStats24h) SetFee(v float64) {
 	o.Fee = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesRollupStats24h) GetId() int32 {
+func (o *ResponsesRollupStats24h) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -120,7 +120,7 @@ func (o *ResponsesRollupStats24h) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupStats24h) GetIdOk() (*int32, bool) {
+func (o *ResponsesRollupStats24h) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *ResponsesRollupStats24h) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesRollupStats24h) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesRollupStats24h) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -206,9 +206,9 @@ func (o *ResponsesRollupStats24h) SetName(v string) {
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *ResponsesRollupStats24h) GetSize() int32 {
+func (o *ResponsesRollupStats24h) GetSize() int64 {
 	if o == nil || IsNil(o.Size) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Size
@@ -216,7 +216,7 @@ func (o *ResponsesRollupStats24h) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupStats24h) GetSizeOk() (*int32, bool) {
+func (o *ResponsesRollupStats24h) GetSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
@@ -232,8 +232,8 @@ func (o *ResponsesRollupStats24h) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given int32 and assigns it to the Size field.
-func (o *ResponsesRollupStats24h) SetSize(v int32) {
+// SetSize gets a reference to the given int64 and assigns it to the Size field.
+func (o *ResponsesRollupStats24h) SetSize(v int64) {
 	o.Size = &v
 }
 

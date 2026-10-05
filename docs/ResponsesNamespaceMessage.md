@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Data** | Pointer to **map[string]interface{}** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **Namespace** | Pointer to [**ResponsesNamespace**](ResponsesNamespace.md) |  | [optional] 
 **Position** | Pointer to **int64** |  | [optional] 
+**Source** | Pointer to **string** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **Tx** | Pointer to [**ResponsesTx**](ResponsesTx.md) |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
@@ -34,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ResponsesNamespaceMessage) GetData() map[string]map[string]interface{}`
+`func (o *ResponsesNamespaceMessage) GetData() map[string]interface{}`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ResponsesNamespaceMessage) GetDataOk() (*map[string]map[string]interface{}, bool)`
+`func (o *ResponsesNamespaceMessage) GetDataOk() (*map[string]interface{}, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ResponsesNamespaceMessage) SetData(v map[string]map[string]interface{})`
+`func (o *ResponsesNamespaceMessage) SetData(v map[string]interface{})`
 
 SetData sets Data field to given value.
 
@@ -156,6 +157,31 @@ SetPosition sets Position field to given value.
 `func (o *ResponsesNamespaceMessage) HasPosition() bool`
 
 HasPosition returns a boolean if a field has been set.
+
+### GetSource
+
+`func (o *ResponsesNamespaceMessage) GetSource() string`
+
+GetSource returns the Source field if non-nil, zero value otherwise.
+
+### GetSourceOk
+
+`func (o *ResponsesNamespaceMessage) GetSourceOk() (*string, bool)`
+
+GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSource
+
+`func (o *ResponsesNamespaceMessage) SetSource(v string)`
+
+SetSource sets Source field to given value.
+
+### HasSource
+
+`func (o *ResponsesNamespaceMessage) HasSource() bool`
+
+HasSource returns a boolean if a field has been set.
 
 ### GetTime
 

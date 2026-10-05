@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 	"time"
 )
 
@@ -25,7 +24,7 @@ type ResponsesForwarding struct {
 	Amount *string `json:"amount,omitempty"`
 	Chain *ResponsesChainMetadata `json:"chain,omitempty"`
 	Denom *string `json:"denom,omitempty"`
-	DestAddress **os.File `json:"dest_address,omitempty"`
+	DestAddress *string `json:"dest_address,omitempty"`
 	DestDomain *int64 `json:"dest_domain,omitempty"`
 	ForwardAddress *ResponsesShortAddress `json:"forward_address,omitempty"`
 	Height *int64 `json:"height,omitempty"`
@@ -34,7 +33,7 @@ type ResponsesForwarding struct {
 	MessageId *string `json:"message_id,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	TokenId *string `json:"token_id,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
 }
 
 // NewResponsesForwarding instantiates a new ResponsesForwarding object
@@ -151,9 +150,9 @@ func (o *ResponsesForwarding) SetDenom(v string) {
 }
 
 // GetDestAddress returns the DestAddress field value if set, zero value otherwise.
-func (o *ResponsesForwarding) GetDestAddress() *os.File {
+func (o *ResponsesForwarding) GetDestAddress() string {
 	if o == nil || IsNil(o.DestAddress) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.DestAddress
@@ -161,7 +160,7 @@ func (o *ResponsesForwarding) GetDestAddress() *os.File {
 
 // GetDestAddressOk returns a tuple with the DestAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesForwarding) GetDestAddressOk() (**os.File, bool) {
+func (o *ResponsesForwarding) GetDestAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.DestAddress) {
 		return nil, false
 	}
@@ -177,8 +176,8 @@ func (o *ResponsesForwarding) HasDestAddress() bool {
 	return false
 }
 
-// SetDestAddress gets a reference to the given *os.File and assigns it to the DestAddress field.
-func (o *ResponsesForwarding) SetDestAddress(v *os.File) {
+// SetDestAddress gets a reference to the given string and assigns it to the DestAddress field.
+func (o *ResponsesForwarding) SetDestAddress(v string) {
 	o.DestAddress = &v
 }
 
@@ -439,9 +438,9 @@ func (o *ResponsesForwarding) SetTokenId(v string) {
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesForwarding) GetTxHash() *os.File {
+func (o *ResponsesForwarding) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -449,7 +448,7 @@ func (o *ResponsesForwarding) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesForwarding) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesForwarding) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -465,8 +464,8 @@ func (o *ResponsesForwarding) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesForwarding) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesForwarding) SetTxHash(v string) {
 	o.TxHash = &v
 }
 

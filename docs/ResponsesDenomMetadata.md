@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Display** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Symbol** | Pointer to **string** |  | [optional] 
-**Units** | Pointer to **[]int32** |  | [optional] 
+**Units** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **Uri** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -158,20 +158,20 @@ HasSymbol returns a boolean if a field has been set.
 
 ### GetUnits
 
-`func (o *ResponsesDenomMetadata) GetUnits() []int32`
+`func (o *ResponsesDenomMetadata) GetUnits() []map[string]interface{}`
 
 GetUnits returns the Units field if non-nil, zero value otherwise.
 
 ### GetUnitsOk
 
-`func (o *ResponsesDenomMetadata) GetUnitsOk() (*[]int32, bool)`
+`func (o *ResponsesDenomMetadata) GetUnitsOk() (*[]map[string]interface{}, bool)`
 
 GetUnitsOk returns a tuple with the Units field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnits
 
-`func (o *ResponsesDenomMetadata) SetUnits(v []int32)`
+`func (o *ResponsesDenomMetadata) SetUnits(v []map[string]interface{})`
 
 SetUnits sets Units field to given value.
 

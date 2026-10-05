@@ -112,6 +112,38 @@ const (
 	EventTypeCelestiazkismv1EventCreateInterchainSecurityModule TypesEventType = "celestia.zkism.v1.EventCreateInterchainSecurityModule"
 	EventTypeCelestiazkismv1EventUpdateInterchainSecurityModule TypesEventType = "celestia.zkism.v1.EventUpdateInterchainSecurityModule"
 	EventTypeCelestiazkismv1EventSubmitMessages TypesEventType = "celestia.zkism.v1.EventSubmitMessages"
+	EventTypeCelestiafibrev1EventDepositToEscrow TypesEventType = "celestia.fibre.v1.EventDepositToEscrow"
+	EventTypeCelestiafibrev1EventWithdrawFromEscrowRequest TypesEventType = "celestia.fibre.v1.EventWithdrawFromEscrowRequest"
+	EventTypeCelestiafibrev1EventWithdrawFromEscrowExecuted TypesEventType = "celestia.fibre.v1.EventWithdrawFromEscrowExecuted"
+	EventTypeCelestiafibrev1EventPayForFibre TypesEventType = "celestia.fibre.v1.EventPayForFibre"
+	EventTypeCelestiafibrev1EventPaymentPromiseTimeout TypesEventType = "celestia.fibre.v1.EventPaymentPromiseTimeout"
+	EventTypeCelestiafibrev1EventUpdateFibreParams TypesEventType = "celestia.fibre.v1.EventUpdateFibreParams"
+	EventTypeCelestiafibrev1EventProcessedPaymentPruned TypesEventType = "celestia.fibre.v1.EventProcessedPaymentPruned"
+	EventTypeSetFibreProviderInfo TypesEventType = "set_fibre_provider_info"
+	EventTypeClientMisbehaviour TypesEventType = "client_misbehaviour"
+	EventTypeUpgradeClient TypesEventType = "upgrade_client"
+	EventTypeRecoverClient TypesEventType = "recover_client"
+	EventTypeScheduleIbcSoftwareUpgrade TypesEventType = "schedule_ibc_software_upgrade"
+	EventTypeUpgradeChain TypesEventType = "upgrade_chain"
+	EventTypeChannelCloseInit TypesEventType = "channel_close_init"
+	EventTypeChannelClose TypesEventType = "channel_close"
+	EventTypeChannelUpgradeInit TypesEventType = "channel_upgrade_init"
+	EventTypeChannelUpgradeTry TypesEventType = "channel_upgrade_try"
+	EventTypeChannelUpgradeAck TypesEventType = "channel_upgrade_ack"
+	EventTypeChannelUpgradeConfirm TypesEventType = "channel_upgrade_confirm"
+	EventTypeChannelUpgradeOpen TypesEventType = "channel_upgrade_open"
+	EventTypeChannelUpgradeTimeout TypesEventType = "channel_upgrade_timeout"
+	EventTypeChannelUpgradeCancelled TypesEventType = "channel_upgrade_cancelled"
+	EventTypeChannelUpgradeError TypesEventType = "channel_upgrade_error"
+	EventTypeChannelFlushComplete TypesEventType = "channel_flush_complete"
+	EventTypeChannelClosed TypesEventType = "channel_closed"
+	EventTypeDenominationTrace TypesEventType = "denomination_trace"
+	EventTypeIbccallbackerrorDenominationTrace TypesEventType = "ibccallbackerror-denomination_trace"
+	EventTypeCancelProposal TypesEventType = "cancel_proposal"
+	EventTypeHyperlanecoreismv1EventRemoveRoutingIsmDomain TypesEventType = "hyperlane.core.ism.v1.EventRemoveRoutingIsmDomain"
+	EventTypeHyperlanecoreismv1EventAnnounceStorageLocation TypesEventType = "hyperlane.core.ism.v1.EventAnnounceStorageLocation"
+	EventTypeHyperlanecoreismv1EventCreateMessageIdMultisigIsm TypesEventType = "hyperlane.core.ism.v1.EventCreateMessageIdMultisigIsm"
+	EventTypeHyperlanecoreismv1EventCreateMerkleRootMultisigIsm TypesEventType = "hyperlane.core.ism.v1.EventCreateMerkleRootMultisigIsm"
 )
 
 // All allowed values of TypesEventType enum
@@ -207,6 +239,38 @@ var AllowedTypesEventTypeEnumValues = []TypesEventType{
 	"celestia.zkism.v1.EventCreateInterchainSecurityModule",
 	"celestia.zkism.v1.EventUpdateInterchainSecurityModule",
 	"celestia.zkism.v1.EventSubmitMessages",
+	"celestia.fibre.v1.EventDepositToEscrow",
+	"celestia.fibre.v1.EventWithdrawFromEscrowRequest",
+	"celestia.fibre.v1.EventWithdrawFromEscrowExecuted",
+	"celestia.fibre.v1.EventPayForFibre",
+	"celestia.fibre.v1.EventPaymentPromiseTimeout",
+	"celestia.fibre.v1.EventUpdateFibreParams",
+	"celestia.fibre.v1.EventProcessedPaymentPruned",
+	"set_fibre_provider_info",
+	"client_misbehaviour",
+	"upgrade_client",
+	"recover_client",
+	"schedule_ibc_software_upgrade",
+	"upgrade_chain",
+	"channel_close_init",
+	"channel_close",
+	"channel_upgrade_init",
+	"channel_upgrade_try",
+	"channel_upgrade_ack",
+	"channel_upgrade_confirm",
+	"channel_upgrade_open",
+	"channel_upgrade_timeout",
+	"channel_upgrade_cancelled",
+	"channel_upgrade_error",
+	"channel_flush_complete",
+	"channel_closed",
+	"denomination_trace",
+	"ibccallbackerror-denomination_trace",
+	"cancel_proposal",
+	"hyperlane.core.ism.v1.EventRemoveRoutingIsmDomain",
+	"hyperlane.core.ism.v1.EventAnnounceStorageLocation",
+	"hyperlane.core.ism.v1.EventCreateMessageIdMultisigIsm",
+	"hyperlane.core.ism.v1.EventCreateMerkleRootMultisigIsm",
 }
 
 func (v *TypesEventType) UnmarshalJSON(src []byte) error {

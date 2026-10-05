@@ -26,7 +26,7 @@ func Test_celenium_RollupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.RollupAPI.GetRollup(context.Background(), id).Execute()
 
@@ -54,7 +54,7 @@ func Test_celenium_RollupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.RollupAPI.GetRollupBlobs(context.Background(), id).Execute()
 
@@ -82,7 +82,7 @@ func Test_celenium_RollupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 		var name string
 		var timeframe string
 
@@ -98,7 +98,7 @@ func Test_celenium_RollupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.RollupAPI.GetRollupNamespaces(context.Background(), id).Execute()
 
@@ -112,7 +112,7 @@ func Test_celenium_RollupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.RollupAPI.GetRollupProviders(context.Background(), id).Execute()
 
@@ -126,7 +126,7 @@ func Test_celenium_RollupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 		var name string
 		var timeframe string
 
@@ -178,7 +178,7 @@ func Test_celenium_RollupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		httpRes, err := apiClient.RollupAPI.RollupExport(context.Background(), id).Execute()
 

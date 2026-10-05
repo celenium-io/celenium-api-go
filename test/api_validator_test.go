@@ -26,7 +26,7 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.ValidatorAPI.GetValidator(context.Background(), id).Execute()
 
@@ -40,7 +40,7 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.ValidatorAPI.GetValidatorBlocks(context.Background(), id).Execute()
 
@@ -54,7 +54,7 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.ValidatorAPI.GetValidatorUptime(context.Background(), id).Execute()
 
@@ -69,6 +69,20 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ValidatorAPI.ListValidator(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ValidatorAPIService ValidatorBondUpdates", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int64
+
+		resp, httpRes, err := apiClient.ValidatorAPI.ValidatorBondUpdates(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -92,7 +106,7 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.ValidatorAPI.ValidatorDelegators(context.Background(), id).Execute()
 
@@ -106,7 +120,7 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.ValidatorAPI.ValidatorJails(context.Background(), id).Execute()
 
@@ -120,7 +134,7 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.ValidatorAPI.ValidatorMessages(context.Background(), id).Execute()
 
@@ -134,7 +148,7 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.ValidatorAPI.ValidatorMetrics(context.Background(), id).Execute()
 
@@ -148,7 +162,7 @@ func Test_celenium_ValidatorAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.ValidatorAPI.ValidatorVotes(context.Background(), id).Execute()
 

@@ -27,23 +27,23 @@ type GasAPIService service
 type ApiGasEstimateForPfbRequest struct {
 	ctx context.Context
 	ApiService *GasAPIService
-	sizes *string
-	versions *string
+	sizes *[]int32
+	versions *[]int32
 }
 
 // Comma-separated array of blob sizes
-func (r ApiGasEstimateForPfbRequest) Sizes(sizes string) ApiGasEstimateForPfbRequest {
+func (r ApiGasEstimateForPfbRequest) Sizes(sizes []int32) ApiGasEstimateForPfbRequest {
 	r.sizes = &sizes
 	return r
 }
 
 // Comma-separated array of share versions. Default is 0
-func (r ApiGasEstimateForPfbRequest) Versions(versions string) ApiGasEstimateForPfbRequest {
+func (r ApiGasEstimateForPfbRequest) Versions(versions []int32) ApiGasEstimateForPfbRequest {
 	r.versions = &versions
 	return r
 }
 
-func (r ApiGasEstimateForPfbRequest) Execute() (int32, *http.Response, error) {
+func (r ApiGasEstimateForPfbRequest) Execute() (int64, *http.Response, error) {
 	return r.ApiService.GasEstimateForPfbExecute(r)
 }
 
@@ -63,13 +63,13 @@ func (a *GasAPIService) GasEstimateForPfb(ctx context.Context) ApiGasEstimateFor
 }
 
 // Execute executes the request
-//  @return int32
-func (a *GasAPIService) GasEstimateForPfbExecute(r ApiGasEstimateForPfbRequest) (int32, *http.Response, error) {
+//  @return int64
+func (a *GasAPIService) GasEstimateForPfbExecute(r ApiGasEstimateForPfbRequest) (int64, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarReturnValue  int64
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GasAPIService.GasEstimateForPfb")
@@ -86,9 +86,9 @@ func (a *GasAPIService) GasEstimateForPfbExecute(r ApiGasEstimateForPfbRequest) 
 		return localVarReturnValue, nil, reportError("sizes is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "sizes", r.sizes, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "sizes", r.sizes, "form", "csv")
 	if r.versions != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "versions", r.versions, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "versions", r.versions, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -106,6 +106,20 @@ func (a *GasAPIService) GasEstimateForPfbExecute(r ApiGasEstimateForPfbRequest) 
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -227,6 +241,20 @@ func (a *GasAPIService) GasPriceExecute(r ApiGasPriceRequest) (*ResponsesGasPric
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -329,6 +357,20 @@ func (a *GasAPIService) GasPricePriorityExecute(r ApiGasPricePriorityRequest) (s
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

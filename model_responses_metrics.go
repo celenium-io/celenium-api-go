@@ -21,12 +21,12 @@ var _ MappedNullable = &ResponsesMetrics{}
 
 // ResponsesMetrics struct for ResponsesMetrics
 type ResponsesMetrics struct {
-	AppliedProposalsCount *int32 `json:"applied_proposals_count,omitempty"`
-	BlockMissedCount *int32 `json:"block_missed_count,omitempty"`
+	AppliedProposalsCount *int64 `json:"applied_proposals_count,omitempty"`
+	BlockMissedCount *int64 `json:"block_missed_count,omitempty"`
 	BlockMissedMetric *string `json:"block_missed_metric,omitempty"`
 	CommissionMetric *string `json:"commission_metric,omitempty"`
 	CreationTime *time.Time `json:"creation_time,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	MaxChangeRate *string `json:"max_change_rate,omitempty"`
 	MaxRate *string `json:"max_rate,omitempty"`
 	Moniker *string `json:"moniker,omitempty"`
@@ -34,7 +34,7 @@ type ResponsesMetrics struct {
 	SelfDelegationAmount *string `json:"self_delegation_amount,omitempty"`
 	SelfDelegationMetric *string `json:"self_delegation_metric,omitempty"`
 	Stake *string `json:"stake,omitempty"`
-	VotesCount *int32 `json:"votes_count,omitempty"`
+	VotesCount *int64 `json:"votes_count,omitempty"`
 	VotesMetric *string `json:"votes_metric,omitempty"`
 }
 
@@ -56,9 +56,9 @@ func NewResponsesMetricsWithDefaults() *ResponsesMetrics {
 }
 
 // GetAppliedProposalsCount returns the AppliedProposalsCount field value if set, zero value otherwise.
-func (o *ResponsesMetrics) GetAppliedProposalsCount() int32 {
+func (o *ResponsesMetrics) GetAppliedProposalsCount() int64 {
 	if o == nil || IsNil(o.AppliedProposalsCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AppliedProposalsCount
@@ -66,7 +66,7 @@ func (o *ResponsesMetrics) GetAppliedProposalsCount() int32 {
 
 // GetAppliedProposalsCountOk returns a tuple with the AppliedProposalsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesMetrics) GetAppliedProposalsCountOk() (*int32, bool) {
+func (o *ResponsesMetrics) GetAppliedProposalsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.AppliedProposalsCount) {
 		return nil, false
 	}
@@ -82,15 +82,15 @@ func (o *ResponsesMetrics) HasAppliedProposalsCount() bool {
 	return false
 }
 
-// SetAppliedProposalsCount gets a reference to the given int32 and assigns it to the AppliedProposalsCount field.
-func (o *ResponsesMetrics) SetAppliedProposalsCount(v int32) {
+// SetAppliedProposalsCount gets a reference to the given int64 and assigns it to the AppliedProposalsCount field.
+func (o *ResponsesMetrics) SetAppliedProposalsCount(v int64) {
 	o.AppliedProposalsCount = &v
 }
 
 // GetBlockMissedCount returns the BlockMissedCount field value if set, zero value otherwise.
-func (o *ResponsesMetrics) GetBlockMissedCount() int32 {
+func (o *ResponsesMetrics) GetBlockMissedCount() int64 {
 	if o == nil || IsNil(o.BlockMissedCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BlockMissedCount
@@ -98,7 +98,7 @@ func (o *ResponsesMetrics) GetBlockMissedCount() int32 {
 
 // GetBlockMissedCountOk returns a tuple with the BlockMissedCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesMetrics) GetBlockMissedCountOk() (*int32, bool) {
+func (o *ResponsesMetrics) GetBlockMissedCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlockMissedCount) {
 		return nil, false
 	}
@@ -114,8 +114,8 @@ func (o *ResponsesMetrics) HasBlockMissedCount() bool {
 	return false
 }
 
-// SetBlockMissedCount gets a reference to the given int32 and assigns it to the BlockMissedCount field.
-func (o *ResponsesMetrics) SetBlockMissedCount(v int32) {
+// SetBlockMissedCount gets a reference to the given int64 and assigns it to the BlockMissedCount field.
+func (o *ResponsesMetrics) SetBlockMissedCount(v int64) {
 	o.BlockMissedCount = &v
 }
 
@@ -216,9 +216,9 @@ func (o *ResponsesMetrics) SetCreationTime(v time.Time) {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesMetrics) GetId() int32 {
+func (o *ResponsesMetrics) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -226,7 +226,7 @@ func (o *ResponsesMetrics) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesMetrics) GetIdOk() (*int32, bool) {
+func (o *ResponsesMetrics) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -242,8 +242,8 @@ func (o *ResponsesMetrics) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesMetrics) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesMetrics) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -472,9 +472,9 @@ func (o *ResponsesMetrics) SetStake(v string) {
 }
 
 // GetVotesCount returns the VotesCount field value if set, zero value otherwise.
-func (o *ResponsesMetrics) GetVotesCount() int32 {
+func (o *ResponsesMetrics) GetVotesCount() int64 {
 	if o == nil || IsNil(o.VotesCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.VotesCount
@@ -482,7 +482,7 @@ func (o *ResponsesMetrics) GetVotesCount() int32 {
 
 // GetVotesCountOk returns a tuple with the VotesCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesMetrics) GetVotesCountOk() (*int32, bool) {
+func (o *ResponsesMetrics) GetVotesCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.VotesCount) {
 		return nil, false
 	}
@@ -498,8 +498,8 @@ func (o *ResponsesMetrics) HasVotesCount() bool {
 	return false
 }
 
-// SetVotesCount gets a reference to the given int32 and assigns it to the VotesCount field.
-func (o *ResponsesMetrics) SetVotesCount(v int32) {
+// SetVotesCount gets a reference to the given int64 and assigns it to the VotesCount field.
+func (o *ResponsesMetrics) SetVotesCount(v int64) {
 	o.VotesCount = &v
 }
 

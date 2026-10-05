@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	version := int32(56) // int32 | Upgrade version
+	version := int64(789) // int64 | Upgrade version
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -51,7 +51,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**version** | **int32** | Upgrade version | 
+**version** | **int64** | Upgrade version | 
 
 ### Other Parameters
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -101,13 +101,13 @@ import (
 )
 
 func main() {
-	version := int32(56) // int32 | Version (optional)
-	validatorId := int32(56) // int32 | Validator internal id (optional)
+	version := int64(789) // int64 | Version (optional)
+	validatorId := int64(789) // int64 | Validator internal id (optional)
 	txHash := "txHash_example" // string | Transaction hash (optional)
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -133,13 +133,13 @@ Other parameters are passed through a pointer to a apiListSignalRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **version** | **int32** | Version | 
- **validatorId** | **int32** | Validator internal id | 
+ **version** | **int64** | Version | 
+ **validatorId** | **int64** | Validator internal id | 
  **txHash** | **string** | Transaction hash | 
  **limit** | **int32** | Count of requested entities | 
  **offset** | **int32** | Offset | 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
  **sort** | **string** | Sort order. Default: desc | 
 
 ### Return type
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -181,7 +181,7 @@ import (
 )
 
 func main() {
-	height := int32(56) // int32 | Number of block (optional)
+	height := int64(789) // int64 | Number of block (optional)
 	txHash := "txHash_example" // string | Transaction hash (optional)
 	signer := "signer_example" // string | Signer address (optional)
 	limit := int32(56) // int32 | Count of requested entities (optional)
@@ -211,7 +211,7 @@ Other parameters are passed through a pointer to a apiListUpgradesRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **height** | **int32** | Number of block | 
+ **height** | **int64** | Number of block | 
  **txHash** | **string** | Transaction hash | 
  **signer** | **string** | Signer address | 
  **limit** | **int32** | Count of requested entities | 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

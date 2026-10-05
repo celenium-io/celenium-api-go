@@ -8,13 +8,14 @@ Name | Type | Description | Notes
 **AppliedAtLevel** | Pointer to **int64** |  | [optional] 
 **EndHeight** | Pointer to **int64** |  | [optional] 
 **EndTime** | Pointer to **time.Time** |  | [optional] 
+**ExpectedUpgradeHeight** | Pointer to **int64** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **MsgId** | Pointer to **int64** |  | [optional] 
 **SignalsCount** | Pointer to **int64** |  | [optional] 
 **Signer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **int64** |  | [optional] 
 **VotedPower** | Pointer to **string** |  | [optional] 
 **VotingPower** | Pointer to **string** |  | [optional] 
@@ -137,6 +138,31 @@ SetEndTime sets EndTime field to given value.
 `func (o *ResponsesUpgrade) HasEndTime() bool`
 
 HasEndTime returns a boolean if a field has been set.
+
+### GetExpectedUpgradeHeight
+
+`func (o *ResponsesUpgrade) GetExpectedUpgradeHeight() int64`
+
+GetExpectedUpgradeHeight returns the ExpectedUpgradeHeight field if non-nil, zero value otherwise.
+
+### GetExpectedUpgradeHeightOk
+
+`func (o *ResponsesUpgrade) GetExpectedUpgradeHeightOk() (*int64, bool)`
+
+GetExpectedUpgradeHeightOk returns a tuple with the ExpectedUpgradeHeight field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpectedUpgradeHeight
+
+`func (o *ResponsesUpgrade) SetExpectedUpgradeHeight(v int64)`
+
+SetExpectedUpgradeHeight sets ExpectedUpgradeHeight field to given value.
+
+### HasExpectedUpgradeHeight
+
+`func (o *ResponsesUpgrade) HasExpectedUpgradeHeight() bool`
+
+HasExpectedUpgradeHeight returns a boolean if a field has been set.
 
 ### GetHeight
 
@@ -290,20 +316,20 @@ HasTime returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesUpgrade) GetTxHash() *os.File`
+`func (o *ResponsesUpgrade) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesUpgrade) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesUpgrade) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesUpgrade) SetTxHash(v *os.File)`
+`func (o *ResponsesUpgrade) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 

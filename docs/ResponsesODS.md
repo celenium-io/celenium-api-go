@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Items** | Pointer to [**[]ResponsesODSItem**](ResponsesODSItem.md) |  | [optional] 
-**Width** | Pointer to **int32** |  | [optional] 
+**Width** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasItems returns a boolean if a field has been set.
 
 ### GetWidth
 
-`func (o *ResponsesODS) GetWidth() int32`
+`func (o *ResponsesODS) GetWidth() int64`
 
 GetWidth returns the Width field if non-nil, zero value otherwise.
 
 ### GetWidthOk
 
-`func (o *ResponsesODS) GetWidthOk() (*int32, bool)`
+`func (o *ResponsesODS) GetWidthOk() (*int64, bool)`
 
 GetWidthOk returns a tuple with the Width field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWidth
 
-`func (o *ResponsesODS) SetWidth(v int32)`
+`func (o *ResponsesODS) SetWidth(v int64)`
 
 SetWidth sets Width field to given value.
 

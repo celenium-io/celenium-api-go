@@ -20,10 +20,10 @@ var _ MappedNullable = &ResponsesRollupGroupedStats{}
 
 // ResponsesRollupGroupedStats struct for ResponsesRollupGroupedStats
 type ResponsesRollupGroupedStats struct {
-	BlobsCount *int32 `json:"blobs_count,omitempty"`
-	Fee *string `json:"fee,omitempty"`
+	BlobsCount *int64 `json:"blobs_count,omitempty"`
+	Fee *float64 `json:"fee,omitempty"`
 	Group *string `json:"group,omitempty"`
-	Size *int32 `json:"size,omitempty"`
+	Size *float64 `json:"size,omitempty"`
 }
 
 // NewResponsesRollupGroupedStats instantiates a new ResponsesRollupGroupedStats object
@@ -44,9 +44,9 @@ func NewResponsesRollupGroupedStatsWithDefaults() *ResponsesRollupGroupedStats {
 }
 
 // GetBlobsCount returns the BlobsCount field value if set, zero value otherwise.
-func (o *ResponsesRollupGroupedStats) GetBlobsCount() int32 {
+func (o *ResponsesRollupGroupedStats) GetBlobsCount() int64 {
 	if o == nil || IsNil(o.BlobsCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BlobsCount
@@ -54,7 +54,7 @@ func (o *ResponsesRollupGroupedStats) GetBlobsCount() int32 {
 
 // GetBlobsCountOk returns a tuple with the BlobsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupGroupedStats) GetBlobsCountOk() (*int32, bool) {
+func (o *ResponsesRollupGroupedStats) GetBlobsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlobsCount) {
 		return nil, false
 	}
@@ -70,15 +70,15 @@ func (o *ResponsesRollupGroupedStats) HasBlobsCount() bool {
 	return false
 }
 
-// SetBlobsCount gets a reference to the given int32 and assigns it to the BlobsCount field.
-func (o *ResponsesRollupGroupedStats) SetBlobsCount(v int32) {
+// SetBlobsCount gets a reference to the given int64 and assigns it to the BlobsCount field.
+func (o *ResponsesRollupGroupedStats) SetBlobsCount(v int64) {
 	o.BlobsCount = &v
 }
 
 // GetFee returns the Fee field value if set, zero value otherwise.
-func (o *ResponsesRollupGroupedStats) GetFee() string {
+func (o *ResponsesRollupGroupedStats) GetFee() float64 {
 	if o == nil || IsNil(o.Fee) {
-		var ret string
+		var ret float64
 		return ret
 	}
 	return *o.Fee
@@ -86,7 +86,7 @@ func (o *ResponsesRollupGroupedStats) GetFee() string {
 
 // GetFeeOk returns a tuple with the Fee field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupGroupedStats) GetFeeOk() (*string, bool) {
+func (o *ResponsesRollupGroupedStats) GetFeeOk() (*float64, bool) {
 	if o == nil || IsNil(o.Fee) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *ResponsesRollupGroupedStats) HasFee() bool {
 	return false
 }
 
-// SetFee gets a reference to the given string and assigns it to the Fee field.
-func (o *ResponsesRollupGroupedStats) SetFee(v string) {
+// SetFee gets a reference to the given float64 and assigns it to the Fee field.
+func (o *ResponsesRollupGroupedStats) SetFee(v float64) {
 	o.Fee = &v
 }
 
@@ -140,9 +140,9 @@ func (o *ResponsesRollupGroupedStats) SetGroup(v string) {
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *ResponsesRollupGroupedStats) GetSize() int32 {
+func (o *ResponsesRollupGroupedStats) GetSize() float64 {
 	if o == nil || IsNil(o.Size) {
-		var ret int32
+		var ret float64
 		return ret
 	}
 	return *o.Size
@@ -150,7 +150,7 @@ func (o *ResponsesRollupGroupedStats) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupGroupedStats) GetSizeOk() (*int32, bool) {
+func (o *ResponsesRollupGroupedStats) GetSizeOk() (*float64, bool) {
 	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
@@ -166,8 +166,8 @@ func (o *ResponsesRollupGroupedStats) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given int32 and assigns it to the Size field.
-func (o *ResponsesRollupGroupedStats) SetSize(v int32) {
+// SetSize gets a reference to the given float64 and assigns it to the Size field.
+func (o *ResponsesRollupGroupedStats) SetSize(v float64) {
 	o.Size = &v
 }
 

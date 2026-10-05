@@ -21,11 +21,12 @@ var _ MappedNullable = &ResponsesNamespaceMessage{}
 
 // ResponsesNamespaceMessage struct for ResponsesNamespaceMessage
 type ResponsesNamespaceMessage struct {
-	Data map[string]map[string]interface{} `json:"data,omitempty"`
+	Data map[string]interface{} `json:"data,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Namespace *ResponsesNamespace `json:"namespace,omitempty"`
 	Position *int64 `json:"position,omitempty"`
+	Source *string `json:"source,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 	Tx *ResponsesTx `json:"tx,omitempty"`
 	Type *string `json:"type,omitempty"`
@@ -49,9 +50,9 @@ func NewResponsesNamespaceMessageWithDefaults() *ResponsesNamespaceMessage {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ResponsesNamespaceMessage) GetData() map[string]map[string]interface{} {
+func (o *ResponsesNamespaceMessage) GetData() map[string]interface{} {
 	if o == nil || IsNil(o.Data) {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Data
@@ -59,9 +60,9 @@ func (o *ResponsesNamespaceMessage) GetData() map[string]map[string]interface{} 
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesNamespaceMessage) GetDataOk() (map[string]map[string]interface{}, bool) {
+func (o *ResponsesNamespaceMessage) GetDataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Data) {
-		return map[string]map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Data, true
 }
@@ -75,8 +76,8 @@ func (o *ResponsesNamespaceMessage) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given map[string]map[string]interface{} and assigns it to the Data field.
-func (o *ResponsesNamespaceMessage) SetData(v map[string]map[string]interface{}) {
+// SetData gets a reference to the given map[string]interface{} and assigns it to the Data field.
+func (o *ResponsesNamespaceMessage) SetData(v map[string]interface{}) {
 	o.Data = v
 }
 
@@ -208,6 +209,38 @@ func (o *ResponsesNamespaceMessage) SetPosition(v int64) {
 	o.Position = &v
 }
 
+// GetSource returns the Source field value if set, zero value otherwise.
+func (o *ResponsesNamespaceMessage) GetSource() string {
+	if o == nil || IsNil(o.Source) {
+		var ret string
+		return ret
+	}
+	return *o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesNamespaceMessage) GetSourceOk() (*string, bool) {
+	if o == nil || IsNil(o.Source) {
+		return nil, false
+	}
+	return o.Source, true
+}
+
+// HasSource returns a boolean if a field has been set.
+func (o *ResponsesNamespaceMessage) HasSource() bool {
+	if o != nil && !IsNil(o.Source) {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given string and assigns it to the Source field.
+func (o *ResponsesNamespaceMessage) SetSource(v string) {
+	o.Source = &v
+}
+
 // GetTime returns the Time field value if set, zero value otherwise.
 func (o *ResponsesNamespaceMessage) GetTime() time.Time {
 	if o == nil || IsNil(o.Time) {
@@ -328,6 +361,9 @@ func (o ResponsesNamespaceMessage) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Position) {
 		toSerialize["position"] = o.Position
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
 	}
 	if !IsNil(o.Time) {
 		toSerialize["time"] = o.Time

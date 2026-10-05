@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Burned** | Pointer to **string** |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
 **Reason** | Pointer to **string** |  | [optional] 
-**Time** | Pointer to **string** |  | [optional] 
+**Time** | Pointer to **time.Time** |  | [optional] 
 **Validator** | Pointer to [**ResponsesShortValidator**](ResponsesShortValidator.md) |  | [optional] 
 
 ## Methods
@@ -56,20 +56,20 @@ HasBurned returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesJail) GetHeight() int32`
+`func (o *ResponsesJail) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesJail) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesJail) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesJail) SetHeight(v int32)`
+`func (o *ResponsesJail) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 
@@ -106,20 +106,20 @@ HasReason returns a boolean if a field has been set.
 
 ### GetTime
 
-`func (o *ResponsesJail) GetTime() string`
+`func (o *ResponsesJail) GetTime() time.Time`
 
 GetTime returns the Time field if non-nil, zero value otherwise.
 
 ### GetTimeOk
 
-`func (o *ResponsesJail) GetTimeOk() (*string, bool)`
+`func (o *ResponsesJail) GetTimeOk() (*time.Time, bool)`
 
 GetTimeOk returns a tuple with the Time field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTime
 
-`func (o *ResponsesJail) SetTime(v string)`
+`func (o *ResponsesJail) SetTime(v time.Time)`
 
 SetTime sets Time field to given value.
 

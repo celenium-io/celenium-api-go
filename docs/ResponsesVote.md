@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Validator** | Pointer to [**ResponsesShortValidator**](ResponsesShortValidator.md) |  | [optional] 
 **Voter** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **VoterId** | Pointer to **int64** |  | [optional] 
-**Weight** | Pointer to **int64** |  | [optional] 
+**Weight** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -261,20 +261,20 @@ HasVoterId returns a boolean if a field has been set.
 
 ### GetWeight
 
-`func (o *ResponsesVote) GetWeight() int64`
+`func (o *ResponsesVote) GetWeight() string`
 
 GetWeight returns the Weight field if non-nil, zero value otherwise.
 
 ### GetWeightOk
 
-`func (o *ResponsesVote) GetWeightOk() (*int64, bool)`
+`func (o *ResponsesVote) GetWeightOk() (*string, bool)`
 
 GetWeightOk returns a tuple with the Weight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWeight
 
-`func (o *ResponsesVote) SetWeight(v int64)`
+`func (o *ResponsesVote) SetWeight(v string)`
 
 SetWeight sets Weight field to given value.
 

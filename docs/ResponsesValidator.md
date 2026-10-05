@@ -5,24 +5,27 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
+**BondUpdatesCount** | Pointer to **int64** |  | [optional] 
 **Commissions** | Pointer to **string** |  | [optional] 
 **ConsAddress** | Pointer to **string** |  | [optional] 
 **Contacts** | Pointer to **string** |  | [optional] 
 **CreationTime** | Pointer to **time.Time** |  | [optional] 
 **Delegator** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Details** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Fibre** | Pointer to [**ResponsesFibre**](ResponsesFibre.md) |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Identity** | Pointer to **string** |  | [optional] 
 **Jailed** | Pointer to **bool** |  | [optional] 
 **MaxChangeRate** | Pointer to **string** |  | [optional] 
 **MaxRate** | Pointer to **string** |  | [optional] 
-**MessagesCount** | Pointer to **int32** |  | [optional] 
+**MessagesCount** | Pointer to **int64** |  | [optional] 
 **MinSelfDelegation** | Pointer to **string** |  | [optional] 
 **Moniker** | Pointer to **string** |  | [optional] 
 **Rate** | Pointer to **string** |  | [optional] 
 **Rewards** | Pointer to **string** |  | [optional] 
 **Stake** | Pointer to **string** |  | [optional] 
-**Version** | Pointer to **int32** |  | [optional] 
+**Status** | Pointer to **string** |  | [optional] 
+**Version** | Pointer to **int64** |  | [optional] 
 **VotingPower** | Pointer to **string** |  | [optional] 
 **Website** | Pointer to **string** |  | [optional] 
 
@@ -69,6 +72,31 @@ SetAddress sets Address field to given value.
 `func (o *ResponsesValidator) HasAddress() bool`
 
 HasAddress returns a boolean if a field has been set.
+
+### GetBondUpdatesCount
+
+`func (o *ResponsesValidator) GetBondUpdatesCount() int64`
+
+GetBondUpdatesCount returns the BondUpdatesCount field if non-nil, zero value otherwise.
+
+### GetBondUpdatesCountOk
+
+`func (o *ResponsesValidator) GetBondUpdatesCountOk() (*int64, bool)`
+
+GetBondUpdatesCountOk returns a tuple with the BondUpdatesCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBondUpdatesCount
+
+`func (o *ResponsesValidator) SetBondUpdatesCount(v int64)`
+
+SetBondUpdatesCount sets BondUpdatesCount field to given value.
+
+### HasBondUpdatesCount
+
+`func (o *ResponsesValidator) HasBondUpdatesCount() bool`
+
+HasBondUpdatesCount returns a boolean if a field has been set.
 
 ### GetCommissions
 
@@ -220,22 +248,47 @@ SetDetails sets Details field to given value.
 
 HasDetails returns a boolean if a field has been set.
 
+### GetFibre
+
+`func (o *ResponsesValidator) GetFibre() ResponsesFibre`
+
+GetFibre returns the Fibre field if non-nil, zero value otherwise.
+
+### GetFibreOk
+
+`func (o *ResponsesValidator) GetFibreOk() (*ResponsesFibre, bool)`
+
+GetFibreOk returns a tuple with the Fibre field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFibre
+
+`func (o *ResponsesValidator) SetFibre(v ResponsesFibre)`
+
+SetFibre sets Fibre field to given value.
+
+### HasFibre
+
+`func (o *ResponsesValidator) HasFibre() bool`
+
+HasFibre returns a boolean if a field has been set.
+
 ### GetId
 
-`func (o *ResponsesValidator) GetId() int32`
+`func (o *ResponsesValidator) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesValidator) GetIdOk() (*int32, bool)`
+`func (o *ResponsesValidator) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesValidator) SetId(v int32)`
+`func (o *ResponsesValidator) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -347,20 +400,20 @@ HasMaxRate returns a boolean if a field has been set.
 
 ### GetMessagesCount
 
-`func (o *ResponsesValidator) GetMessagesCount() int32`
+`func (o *ResponsesValidator) GetMessagesCount() int64`
 
 GetMessagesCount returns the MessagesCount field if non-nil, zero value otherwise.
 
 ### GetMessagesCountOk
 
-`func (o *ResponsesValidator) GetMessagesCountOk() (*int32, bool)`
+`func (o *ResponsesValidator) GetMessagesCountOk() (*int64, bool)`
 
 GetMessagesCountOk returns a tuple with the MessagesCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessagesCount
 
-`func (o *ResponsesValidator) SetMessagesCount(v int32)`
+`func (o *ResponsesValidator) SetMessagesCount(v int64)`
 
 SetMessagesCount sets MessagesCount field to given value.
 
@@ -495,22 +548,47 @@ SetStake sets Stake field to given value.
 
 HasStake returns a boolean if a field has been set.
 
+### GetStatus
+
+`func (o *ResponsesValidator) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *ResponsesValidator) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *ResponsesValidator) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *ResponsesValidator) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
+
 ### GetVersion
 
-`func (o *ResponsesValidator) GetVersion() int32`
+`func (o *ResponsesValidator) GetVersion() int64`
 
 GetVersion returns the Version field if non-nil, zero value otherwise.
 
 ### GetVersionOk
 
-`func (o *ResponsesValidator) GetVersionOk() (*int32, bool)`
+`func (o *ResponsesValidator) GetVersionOk() (*int64, bool)`
 
 GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersion
 
-`func (o *ResponsesValidator) SetVersion(v int32)`
+`func (o *ResponsesValidator) SetVersion(v int64)`
 
 SetVersion sets Version field to given value.
 

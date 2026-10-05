@@ -13,6 +13,7 @@ package celenium
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the ResponsesRedelegation type satisfies the MappedNullable interface at compile time
@@ -21,12 +22,12 @@ var _ MappedNullable = &ResponsesRedelegation{}
 // ResponsesRedelegation struct for ResponsesRedelegation
 type ResponsesRedelegation struct {
 	Amount *string `json:"amount,omitempty"`
-	CompletionTime *string `json:"completion_time,omitempty"`
+	CompletionTime *time.Time `json:"completion_time,omitempty"`
 	Delegator *ResponsesShortAddress `json:"delegator,omitempty"`
 	Destination *ResponsesShortValidator `json:"destination,omitempty"`
-	Height *int32 `json:"height,omitempty"`
+	Height *int64 `json:"height,omitempty"`
 	Source *ResponsesShortValidator `json:"source,omitempty"`
-	Time *string `json:"time,omitempty"`
+	Time *time.Time `json:"time,omitempty"`
 }
 
 // NewResponsesRedelegation instantiates a new ResponsesRedelegation object
@@ -79,9 +80,9 @@ func (o *ResponsesRedelegation) SetAmount(v string) {
 }
 
 // GetCompletionTime returns the CompletionTime field value if set, zero value otherwise.
-func (o *ResponsesRedelegation) GetCompletionTime() string {
+func (o *ResponsesRedelegation) GetCompletionTime() time.Time {
 	if o == nil || IsNil(o.CompletionTime) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CompletionTime
@@ -89,7 +90,7 @@ func (o *ResponsesRedelegation) GetCompletionTime() string {
 
 // GetCompletionTimeOk returns a tuple with the CompletionTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRedelegation) GetCompletionTimeOk() (*string, bool) {
+func (o *ResponsesRedelegation) GetCompletionTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CompletionTime) {
 		return nil, false
 	}
@@ -105,8 +106,8 @@ func (o *ResponsesRedelegation) HasCompletionTime() bool {
 	return false
 }
 
-// SetCompletionTime gets a reference to the given string and assigns it to the CompletionTime field.
-func (o *ResponsesRedelegation) SetCompletionTime(v string) {
+// SetCompletionTime gets a reference to the given time.Time and assigns it to the CompletionTime field.
+func (o *ResponsesRedelegation) SetCompletionTime(v time.Time) {
 	o.CompletionTime = &v
 }
 
@@ -175,9 +176,9 @@ func (o *ResponsesRedelegation) SetDestination(v ResponsesShortValidator) {
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ResponsesRedelegation) GetHeight() int32 {
+func (o *ResponsesRedelegation) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Height
@@ -185,7 +186,7 @@ func (o *ResponsesRedelegation) GetHeight() int32 {
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRedelegation) GetHeightOk() (*int32, bool) {
+func (o *ResponsesRedelegation) GetHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.Height) {
 		return nil, false
 	}
@@ -201,8 +202,8 @@ func (o *ResponsesRedelegation) HasHeight() bool {
 	return false
 }
 
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ResponsesRedelegation) SetHeight(v int32) {
+// SetHeight gets a reference to the given int64 and assigns it to the Height field.
+func (o *ResponsesRedelegation) SetHeight(v int64) {
 	o.Height = &v
 }
 
@@ -239,9 +240,9 @@ func (o *ResponsesRedelegation) SetSource(v ResponsesShortValidator) {
 }
 
 // GetTime returns the Time field value if set, zero value otherwise.
-func (o *ResponsesRedelegation) GetTime() string {
+func (o *ResponsesRedelegation) GetTime() time.Time {
 	if o == nil || IsNil(o.Time) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.Time
@@ -249,7 +250,7 @@ func (o *ResponsesRedelegation) GetTime() string {
 
 // GetTimeOk returns a tuple with the Time field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRedelegation) GetTimeOk() (*string, bool) {
+func (o *ResponsesRedelegation) GetTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Time) {
 		return nil, false
 	}
@@ -265,8 +266,8 @@ func (o *ResponsesRedelegation) HasTime() bool {
 	return false
 }
 
-// SetTime gets a reference to the given string and assigns it to the Time field.
-func (o *ResponsesRedelegation) SetTime(v string) {
+// SetTime gets a reference to the given time.Time and assigns it to the Time field.
+func (o *ResponsesRedelegation) SetTime(v time.Time) {
 	o.Time = &v
 }
 

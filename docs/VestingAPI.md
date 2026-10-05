@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## GetVestingPeriods
 
-> ResponsesVestingPeriod GetVestingPeriods(ctx, id).Limit(limit).Offset(offset).Execute()
+> []ResponsesVestingPeriod GetVestingPeriods(ctx, id).Limit(limit).Offset(offset).Execute()
 
 Get vesting periods by id
 
@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
+	id := int64(789) // int64 | Internal identity
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 
@@ -40,7 +40,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `VestingAPI.GetVestingPeriods``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetVestingPeriods`: ResponsesVestingPeriod
+	// response from `GetVestingPeriods`: []ResponsesVestingPeriod
 	fmt.Fprintf(os.Stdout, "Response from `VestingAPI.GetVestingPeriods`: %v\n", resp)
 }
 ```
@@ -51,7 +51,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **int64** | Internal identity | 
 
 ### Other Parameters
 
@@ -66,11 +66,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponsesVestingPeriod**](ResponsesVestingPeriod.md)
+[**[]ResponsesVestingPeriod**](ResponsesVestingPeriod.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

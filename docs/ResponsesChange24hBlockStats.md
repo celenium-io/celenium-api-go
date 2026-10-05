@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BlobsSize24h** | Pointer to **float32** |  | [optional] 
-**BytesInBlock24h** | Pointer to **float32** |  | [optional] 
-**Fee24h** | Pointer to **float32** |  | [optional] 
-**TxCount24h** | Pointer to **float32** |  | [optional] 
+**BlobsSize24h** | Pointer to **float64** |  | [optional] 
+**BytesInBlock24h** | Pointer to **float64** |  | [optional] 
+**Fee24h** | Pointer to **float64** |  | [optional] 
+**TxCount24h** | Pointer to **float64** |  | [optional] 
 
 ## Methods
 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetBlobsSize24h
 
-`func (o *ResponsesChange24hBlockStats) GetBlobsSize24h() float32`
+`func (o *ResponsesChange24hBlockStats) GetBlobsSize24h() float64`
 
 GetBlobsSize24h returns the BlobsSize24h field if non-nil, zero value otherwise.
 
 ### GetBlobsSize24hOk
 
-`func (o *ResponsesChange24hBlockStats) GetBlobsSize24hOk() (*float32, bool)`
+`func (o *ResponsesChange24hBlockStats) GetBlobsSize24hOk() (*float64, bool)`
 
 GetBlobsSize24hOk returns a tuple with the BlobsSize24h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlobsSize24h
 
-`func (o *ResponsesChange24hBlockStats) SetBlobsSize24h(v float32)`
+`func (o *ResponsesChange24hBlockStats) SetBlobsSize24h(v float64)`
 
 SetBlobsSize24h sets BlobsSize24h field to given value.
 
@@ -55,20 +55,20 @@ HasBlobsSize24h returns a boolean if a field has been set.
 
 ### GetBytesInBlock24h
 
-`func (o *ResponsesChange24hBlockStats) GetBytesInBlock24h() float32`
+`func (o *ResponsesChange24hBlockStats) GetBytesInBlock24h() float64`
 
 GetBytesInBlock24h returns the BytesInBlock24h field if non-nil, zero value otherwise.
 
 ### GetBytesInBlock24hOk
 
-`func (o *ResponsesChange24hBlockStats) GetBytesInBlock24hOk() (*float32, bool)`
+`func (o *ResponsesChange24hBlockStats) GetBytesInBlock24hOk() (*float64, bool)`
 
 GetBytesInBlock24hOk returns a tuple with the BytesInBlock24h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBytesInBlock24h
 
-`func (o *ResponsesChange24hBlockStats) SetBytesInBlock24h(v float32)`
+`func (o *ResponsesChange24hBlockStats) SetBytesInBlock24h(v float64)`
 
 SetBytesInBlock24h sets BytesInBlock24h field to given value.
 
@@ -80,20 +80,20 @@ HasBytesInBlock24h returns a boolean if a field has been set.
 
 ### GetFee24h
 
-`func (o *ResponsesChange24hBlockStats) GetFee24h() float32`
+`func (o *ResponsesChange24hBlockStats) GetFee24h() float64`
 
 GetFee24h returns the Fee24h field if non-nil, zero value otherwise.
 
 ### GetFee24hOk
 
-`func (o *ResponsesChange24hBlockStats) GetFee24hOk() (*float32, bool)`
+`func (o *ResponsesChange24hBlockStats) GetFee24hOk() (*float64, bool)`
 
 GetFee24hOk returns a tuple with the Fee24h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFee24h
 
-`func (o *ResponsesChange24hBlockStats) SetFee24h(v float32)`
+`func (o *ResponsesChange24hBlockStats) SetFee24h(v float64)`
 
 SetFee24h sets Fee24h field to given value.
 
@@ -105,20 +105,20 @@ HasFee24h returns a boolean if a field has been set.
 
 ### GetTxCount24h
 
-`func (o *ResponsesChange24hBlockStats) GetTxCount24h() float32`
+`func (o *ResponsesChange24hBlockStats) GetTxCount24h() float64`
 
 GetTxCount24h returns the TxCount24h field if non-nil, zero value otherwise.
 
 ### GetTxCount24hOk
 
-`func (o *ResponsesChange24hBlockStats) GetTxCount24hOk() (*float32, bool)`
+`func (o *ResponsesChange24hBlockStats) GetTxCount24hOk() (*float64, bool)`
 
 GetTxCount24hOk returns a tuple with the TxCount24h field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxCount24h
 
-`func (o *ResponsesChange24hBlockStats) SetTxCount24h(v float32)`
+`func (o *ResponsesChange24hBlockStats) SetTxCount24h(v float64)`
 
 SetTxCount24h sets TxCount24h field to given value.
 

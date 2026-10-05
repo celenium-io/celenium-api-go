@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 )
 
 // checks if the ResponsesGasPayment type satisfies the MappedNullable interface at compile time
@@ -23,7 +22,7 @@ var _ MappedNullable = &ResponsesGasPayment{}
 type ResponsesGasPayment struct {
 	Amount *string `json:"amount,omitempty"`
 	GasAmount *string `json:"gas_amount,omitempty"`
-	IgpId **os.File `json:"igp_id,omitempty"`
+	IgpId *string `json:"igp_id,omitempty"`
 }
 
 // NewResponsesGasPayment instantiates a new ResponsesGasPayment object
@@ -108,9 +107,9 @@ func (o *ResponsesGasPayment) SetGasAmount(v string) {
 }
 
 // GetIgpId returns the IgpId field value if set, zero value otherwise.
-func (o *ResponsesGasPayment) GetIgpId() *os.File {
+func (o *ResponsesGasPayment) GetIgpId() string {
 	if o == nil || IsNil(o.IgpId) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.IgpId
@@ -118,7 +117,7 @@ func (o *ResponsesGasPayment) GetIgpId() *os.File {
 
 // GetIgpIdOk returns a tuple with the IgpId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesGasPayment) GetIgpIdOk() (**os.File, bool) {
+func (o *ResponsesGasPayment) GetIgpIdOk() (*string, bool) {
 	if o == nil || IsNil(o.IgpId) {
 		return nil, false
 	}
@@ -134,8 +133,8 @@ func (o *ResponsesGasPayment) HasIgpId() bool {
 	return false
 }
 
-// SetIgpId gets a reference to the given *os.File and assigns it to the IgpId field.
-func (o *ResponsesGasPayment) SetIgpId(v *os.File) {
+// SetIgpId gets a reference to the given string and assigns it to the IgpId field.
+func (o *ResponsesGasPayment) SetIgpId(v string) {
 	o.IgpId = &v
 }
 

@@ -29,7 +29,7 @@ type ApiStats24hChangesRequest struct {
 	ApiService *StatsAPIService
 }
 
-func (r ApiStats24hChangesRequest) Execute() ([]ResponsesChange24hBlockStats, *http.Response, error) {
+func (r ApiStats24hChangesRequest) Execute() (*ResponsesChange24hBlockStats, *http.Response, error) {
 	return r.ApiService.Stats24hChangesExecute(r)
 }
 
@@ -49,13 +49,13 @@ func (a *StatsAPIService) Stats24hChanges(ctx context.Context) ApiStats24hChange
 }
 
 // Execute executes the request
-//  @return []ResponsesChange24hBlockStats
-func (a *StatsAPIService) Stats24hChangesExecute(r ApiStats24hChangesRequest) ([]ResponsesChange24hBlockStats, *http.Response, error) {
+//  @return ResponsesChange24hBlockStats
+func (a *StatsAPIService) Stats24hChangesExecute(r ApiStats24hChangesRequest) (*ResponsesChange24hBlockStats, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ResponsesChange24hBlockStats
+		localVarReturnValue  *ResponsesChange24hBlockStats
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StatsAPIService.Stats24hChanges")
@@ -85,6 +85,20 @@ func (a *StatsAPIService) Stats24hChangesExecute(r ApiStats24hChangesRequest) ([
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -215,6 +229,20 @@ func (a *StatsAPIService) StatsHlDomainsExecute(r ApiStatsHlDomainsRequest) ([]R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -276,21 +304,21 @@ func (a *StatsAPIService) StatsHlDomainsExecute(r ApiStatsHlDomainsRequest) ([]R
 type ApiStatsHlSeriesRequest struct {
 	ctx context.Context
 	ApiService *StatsAPIService
-	id int32
+	id int64
 	timeframe string
 	name string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiStatsHlSeriesRequest) From(from int32) ApiStatsHlSeriesRequest {
+func (r ApiStatsHlSeriesRequest) From(from int64) ApiStatsHlSeriesRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiStatsHlSeriesRequest) To(to int32) ApiStatsHlSeriesRequest {
+func (r ApiStatsHlSeriesRequest) To(to int64) ApiStatsHlSeriesRequest {
 	r.to = &to
 	return r
 }
@@ -310,7 +338,7 @@ Returns a time-series histogram of Hyperlane transfer statistics (count or amoun
  @param name Series name
  @return ApiStatsHlSeriesRequest
 */
-func (a *StatsAPIService) StatsHlSeries(ctx context.Context, id int32, timeframe string, name string) ApiStatsHlSeriesRequest {
+func (a *StatsAPIService) StatsHlSeries(ctx context.Context, id int64, timeframe string, name string) ApiStatsHlSeriesRequest {
 	return ApiStatsHlSeriesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -366,6 +394,20 @@ func (a *StatsAPIService) StatsHlSeriesExecute(r ApiStatsHlSeriesRequest) ([]Res
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -430,18 +472,18 @@ type ApiStatsHlTotalSeriesRequest struct {
 	ApiService *StatsAPIService
 	timeframe string
 	name string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiStatsHlTotalSeriesRequest) From(from int32) ApiStatsHlTotalSeriesRequest {
+func (r ApiStatsHlTotalSeriesRequest) From(from int64) ApiStatsHlTotalSeriesRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiStatsHlTotalSeriesRequest) To(to int32) ApiStatsHlTotalSeriesRequest {
+func (r ApiStatsHlTotalSeriesRequest) To(to int64) ApiStatsHlTotalSeriesRequest {
 	r.to = &to
 	return r
 }
@@ -514,6 +556,20 @@ func (a *StatsAPIService) StatsHlTotalSeriesExecute(r ApiStatsHlTotalSeriesReque
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -655,6 +711,20 @@ func (a *StatsAPIService) StatsIbcChainsExecute(r ApiStatsIbcChainsRequest) ([]R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -719,18 +789,18 @@ type ApiStatsIbcSeriesRequest struct {
 	id string
 	timeframe string
 	name string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiStatsIbcSeriesRequest) From(from int32) ApiStatsIbcSeriesRequest {
+func (r ApiStatsIbcSeriesRequest) From(from int64) ApiStatsIbcSeriesRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiStatsIbcSeriesRequest) To(to int32) ApiStatsIbcSeriesRequest {
+func (r ApiStatsIbcSeriesRequest) To(to int64) ApiStatsIbcSeriesRequest {
 	r.to = &to
 	return r
 }
@@ -807,6 +877,20 @@ func (a *StatsAPIService) StatsIbcSeriesExecute(r ApiStatsIbcSeriesRequest) ([]R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -870,7 +954,7 @@ type ApiStatsIbcSummaryRequest struct {
 	ApiService *StatsAPIService
 }
 
-func (r ApiStatsIbcSummaryRequest) Execute() ([]ResponsesIbcSummaryStats, *http.Response, error) {
+func (r ApiStatsIbcSummaryRequest) Execute() (*ResponsesIbcSummaryStats, *http.Response, error) {
 	return r.ApiService.StatsIbcSummaryExecute(r)
 }
 
@@ -890,13 +974,13 @@ func (a *StatsAPIService) StatsIbcSummary(ctx context.Context) ApiStatsIbcSummar
 }
 
 // Execute executes the request
-//  @return []ResponsesIbcSummaryStats
-func (a *StatsAPIService) StatsIbcSummaryExecute(r ApiStatsIbcSummaryRequest) ([]ResponsesIbcSummaryStats, *http.Response, error) {
+//  @return ResponsesIbcSummaryStats
+func (a *StatsAPIService) StatsIbcSummaryExecute(r ApiStatsIbcSummaryRequest) (*ResponsesIbcSummaryStats, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ResponsesIbcSummaryStats
+		localVarReturnValue  *ResponsesIbcSummaryStats
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StatsAPIService.StatsIbcSummary")
@@ -926,6 +1010,20 @@ func (a *StatsAPIService) StatsIbcSummaryExecute(r ApiStatsIbcSummaryRequest) ([
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1047,6 +1145,20 @@ func (a *StatsAPIService) StatsMessagesCount24hExecute(r ApiStatsMessagesCount24
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1166,6 +1278,20 @@ func (a *StatsAPIService) StatsNamespaceUsageExecute(r ApiStatsNamespaceUsageReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1219,18 +1345,18 @@ type ApiStatsNsSeriesRequest struct {
 	id string
 	timeframe string
 	name string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiStatsNsSeriesRequest) From(from int32) ApiStatsNsSeriesRequest {
+func (r ApiStatsNsSeriesRequest) From(from int64) ApiStatsNsSeriesRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiStatsNsSeriesRequest) To(to int32) ApiStatsNsSeriesRequest {
+func (r ApiStatsNsSeriesRequest) To(to int64) ApiStatsNsSeriesRequest {
 	r.to = &to
 	return r
 }
@@ -1242,7 +1368,7 @@ func (r ApiStatsNsSeriesRequest) Execute() ([]ResponsesSeriesItem, *http.Respons
 /*
 StatsNsSeries Get histogram for namespace with precomputed stats
 
-Returns a time-series histogram of precomputed blob statistics (pfb_count or size) for the specified namespace, filtered by timeframe and optional time range.
+Returns a time-series histogram of precomputed blob statistics (pfb_count, pff_count or size) for the specified namespace, filtered by timeframe and optional time range.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Namespace id in hexadecimal
@@ -1312,6 +1438,20 @@ func (a *StatsAPIService) StatsNsSeriesExecute(r ApiStatsNsSeriesRequest) ([]Res
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1433,6 +1573,20 @@ func (a *StatsAPIService) StatsRollup24hExecute(r ApiStatsRollup24hRequest) ([]R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1496,18 +1650,18 @@ type ApiStatsSeriesRequest struct {
 	ApiService *StatsAPIService
 	timeframe string
 	name string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiStatsSeriesRequest) From(from int32) ApiStatsSeriesRequest {
+func (r ApiStatsSeriesRequest) From(from int64) ApiStatsSeriesRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiStatsSeriesRequest) To(to int32) ApiStatsSeriesRequest {
+func (r ApiStatsSeriesRequest) To(to int64) ApiStatsSeriesRequest {
 	r.to = &to
 	return r
 }
@@ -1581,6 +1735,20 @@ func (a *StatsAPIService) StatsSeriesExecute(r ApiStatsSeriesRequest) ([]Respons
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1644,18 +1812,18 @@ type ApiStatsSeriesCumulativeRequest struct {
 	ApiService *StatsAPIService
 	timeframe string
 	name string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiStatsSeriesCumulativeRequest) From(from int32) ApiStatsSeriesCumulativeRequest {
+func (r ApiStatsSeriesCumulativeRequest) From(from int64) ApiStatsSeriesCumulativeRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiStatsSeriesCumulativeRequest) To(to int32) ApiStatsSeriesCumulativeRequest {
+func (r ApiStatsSeriesCumulativeRequest) To(to int64) ApiStatsSeriesCumulativeRequest {
 	r.to = &to
 	return r
 }
@@ -1728,6 +1896,20 @@ func (a *StatsAPIService) StatsSeriesCumulativeExecute(r ApiStatsSeriesCumulativ
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1849,6 +2031,20 @@ func (a *StatsAPIService) StatsSizeGroupsExecute(r ApiStatsSizeGroupsRequest) ([
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1899,23 +2095,23 @@ func (a *StatsAPIService) StatsSizeGroupsExecute(r ApiStatsSizeGroupsRequest) ([
 type ApiStatsSquareSizeRequest struct {
 	ctx context.Context
 	ApiService *StatsAPIService
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiStatsSquareSizeRequest) From(from int32) ApiStatsSquareSizeRequest {
+func (r ApiStatsSquareSizeRequest) From(from int64) ApiStatsSquareSizeRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiStatsSquareSizeRequest) To(to int32) ApiStatsSquareSizeRequest {
+func (r ApiStatsSquareSizeRequest) To(to int64) ApiStatsSquareSizeRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiStatsSquareSizeRequest) Execute() ([]map[string][]ResponsesTimeValueItem, *http.Response, error) {
+func (r ApiStatsSquareSizeRequest) Execute() (*map[string][]ResponsesTimeValueItem, *http.Response, error) {
 	return r.ApiService.StatsSquareSizeExecute(r)
 }
 
@@ -1935,13 +2131,13 @@ func (a *StatsAPIService) StatsSquareSize(ctx context.Context) ApiStatsSquareSiz
 }
 
 // Execute executes the request
-//  @return []map[string][]ResponsesTimeValueItem
-func (a *StatsAPIService) StatsSquareSizeExecute(r ApiStatsSquareSizeRequest) ([]map[string][]ResponsesTimeValueItem, *http.Response, error) {
+//  @return map[string][]ResponsesTimeValueItem
+func (a *StatsAPIService) StatsSquareSizeExecute(r ApiStatsSquareSizeRequest) (*map[string][]ResponsesTimeValueItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []map[string][]ResponsesTimeValueItem
+		localVarReturnValue  *map[string][]ResponsesTimeValueItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StatsAPIService.StatsSquareSize")
@@ -1977,6 +2173,20 @@ func (a *StatsAPIService) StatsSquareSizeExecute(r ApiStatsSquareSizeRequest) ([
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -2039,18 +2249,18 @@ func (a *StatsAPIService) StatsSquareSizeExecute(r ApiStatsSquareSizeRequest) ([
 type ApiStatsStakingDistributionRequest struct {
 	ctx context.Context
 	ApiService *StatsAPIService
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiStatsStakingDistributionRequest) From(from int32) ApiStatsStakingDistributionRequest {
+func (r ApiStatsStakingDistributionRequest) From(from int64) ApiStatsStakingDistributionRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiStatsStakingDistributionRequest) To(to int32) ApiStatsStakingDistributionRequest {
+func (r ApiStatsStakingDistributionRequest) To(to int64) ApiStatsStakingDistributionRequest {
 	r.to = &to
 	return r
 }
@@ -2118,6 +2328,20 @@ func (a *StatsAPIService) StatsStakingDistributionExecute(r ApiStatsStakingDistr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2179,21 +2403,21 @@ func (a *StatsAPIService) StatsStakingDistributionExecute(r ApiStatsStakingDistr
 type ApiStatsStakingSeriesRequest struct {
 	ctx context.Context
 	ApiService *StatsAPIService
-	id string
+	id int64
 	timeframe string
 	name string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiStatsStakingSeriesRequest) From(from int32) ApiStatsStakingSeriesRequest {
+func (r ApiStatsStakingSeriesRequest) From(from int64) ApiStatsStakingSeriesRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiStatsStakingSeriesRequest) To(to int32) ApiStatsStakingSeriesRequest {
+func (r ApiStatsStakingSeriesRequest) To(to int64) ApiStatsStakingSeriesRequest {
 	r.to = &to
 	return r
 }
@@ -2208,12 +2432,12 @@ StatsStakingSeries Get histogram for staking with precomputed stats
 Returns a time-series histogram of staking metrics (rewards, commissions, delegation flows, etc.) for the specified validator and timeframe.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Validator id
+ @param id Internal validator id
  @param timeframe Timeframe
  @param name Series name
  @return ApiStatsStakingSeriesRequest
 */
-func (a *StatsAPIService) StatsStakingSeries(ctx context.Context, id string, timeframe string, name string) ApiStatsStakingSeriesRequest {
+func (a *StatsAPIService) StatsStakingSeries(ctx context.Context, id int64, timeframe string, name string) ApiStatsStakingSeriesRequest {
 	return ApiStatsStakingSeriesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2246,11 +2470,8 @@ func (a *StatsAPIService) StatsStakingSeriesExecute(r ApiStatsStakingSeriesReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.id) < 56 {
-		return localVarReturnValue, nil, reportError("id must have at least 56 elements")
-	}
-	if strlen(r.id) > 56 {
-		return localVarReturnValue, nil, reportError("id must have less than 56 elements")
+	if r.id < 1 {
+		return localVarReturnValue, nil, reportError("id must be greater than 1")
 	}
 
 	if r.from != nil {
@@ -2275,6 +2496,20 @@ func (a *StatsAPIService) StatsStakingSeriesExecute(r ApiStatsStakingSeriesReque
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -2340,8 +2575,8 @@ type ApiStatsSummaryRequest struct {
 	table string
 	function string
 	column *string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Column name which will be used for computation. Optional for count.
@@ -2351,13 +2586,13 @@ func (r ApiStatsSummaryRequest) Column(column string) ApiStatsSummaryRequest {
 }
 
 // Time from in unix timestamp
-func (r ApiStatsSummaryRequest) From(from int32) ApiStatsSummaryRequest {
+func (r ApiStatsSummaryRequest) From(from int64) ApiStatsSummaryRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiStatsSummaryRequest) To(to int32) ApiStatsSummaryRequest {
+func (r ApiStatsSummaryRequest) To(to int64) ApiStatsSummaryRequest {
 	r.to = &to
 	return r
 }
@@ -2489,6 +2724,20 @@ func (a *StatsAPIService) StatsSummaryExecute(r ApiStatsSummaryRequest) (string,
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

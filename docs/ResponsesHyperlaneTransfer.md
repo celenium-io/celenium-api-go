@@ -11,14 +11,15 @@ Name | Type | Description | Notes
 **GasPayment** | Pointer to [**ResponsesGasPayment**](ResponsesGasPayment.md) |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
-**Mailbox** | Pointer to ***os.File** |  | [optional] 
+**Mailbox** | Pointer to **string** |  | [optional] 
+**MessageId** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **string** |  | [optional] 
 **Nonce** | Pointer to **int64** |  | [optional] 
 **Received** | Pointer to **string** |  | [optional] 
 **Relayer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
-**TokenId** | Pointer to ***os.File** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**TokenId** | Pointer to **string** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **int64** |  | [optional] 
 
@@ -218,20 +219,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetMailbox
 
-`func (o *ResponsesHyperlaneTransfer) GetMailbox() *os.File`
+`func (o *ResponsesHyperlaneTransfer) GetMailbox() string`
 
 GetMailbox returns the Mailbox field if non-nil, zero value otherwise.
 
 ### GetMailboxOk
 
-`func (o *ResponsesHyperlaneTransfer) GetMailboxOk() (**os.File, bool)`
+`func (o *ResponsesHyperlaneTransfer) GetMailboxOk() (*string, bool)`
 
 GetMailboxOk returns a tuple with the Mailbox field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMailbox
 
-`func (o *ResponsesHyperlaneTransfer) SetMailbox(v *os.File)`
+`func (o *ResponsesHyperlaneTransfer) SetMailbox(v string)`
 
 SetMailbox sets Mailbox field to given value.
 
@@ -240,6 +241,31 @@ SetMailbox sets Mailbox field to given value.
 `func (o *ResponsesHyperlaneTransfer) HasMailbox() bool`
 
 HasMailbox returns a boolean if a field has been set.
+
+### GetMessageId
+
+`func (o *ResponsesHyperlaneTransfer) GetMessageId() string`
+
+GetMessageId returns the MessageId field if non-nil, zero value otherwise.
+
+### GetMessageIdOk
+
+`func (o *ResponsesHyperlaneTransfer) GetMessageIdOk() (*string, bool)`
+
+GetMessageIdOk returns a tuple with the MessageId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessageId
+
+`func (o *ResponsesHyperlaneTransfer) SetMessageId(v string)`
+
+SetMessageId sets MessageId field to given value.
+
+### HasMessageId
+
+`func (o *ResponsesHyperlaneTransfer) HasMessageId() bool`
+
+HasMessageId returns a boolean if a field has been set.
 
 ### GetMetadata
 
@@ -368,20 +394,20 @@ HasTime returns a boolean if a field has been set.
 
 ### GetTokenId
 
-`func (o *ResponsesHyperlaneTransfer) GetTokenId() *os.File`
+`func (o *ResponsesHyperlaneTransfer) GetTokenId() string`
 
 GetTokenId returns the TokenId field if non-nil, zero value otherwise.
 
 ### GetTokenIdOk
 
-`func (o *ResponsesHyperlaneTransfer) GetTokenIdOk() (**os.File, bool)`
+`func (o *ResponsesHyperlaneTransfer) GetTokenIdOk() (*string, bool)`
 
 GetTokenIdOk returns a tuple with the TokenId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenId
 
-`func (o *ResponsesHyperlaneTransfer) SetTokenId(v *os.File)`
+`func (o *ResponsesHyperlaneTransfer) SetTokenId(v string)`
 
 SetTokenId sets TokenId field to given value.
 
@@ -393,20 +419,20 @@ HasTokenId returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesHyperlaneTransfer) GetTxHash() *os.File`
+`func (o *ResponsesHyperlaneTransfer) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesHyperlaneTransfer) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesHyperlaneTransfer) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesHyperlaneTransfer) SetTxHash(v *os.File)`
+`func (o *ResponsesHyperlaneTransfer) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 

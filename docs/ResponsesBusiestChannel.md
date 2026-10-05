@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ChainId** | Pointer to **string** |  | [optional] 
 **ChannelId** | Pointer to **string** |  | [optional] 
-**TransfersCount** | Pointer to **int32** |  | [optional] 
+**TransfersCount** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasChannelId returns a boolean if a field has been set.
 
 ### GetTransfersCount
 
-`func (o *ResponsesBusiestChannel) GetTransfersCount() int32`
+`func (o *ResponsesBusiestChannel) GetTransfersCount() int64`
 
 GetTransfersCount returns the TransfersCount field if non-nil, zero value otherwise.
 
 ### GetTransfersCountOk
 
-`func (o *ResponsesBusiestChannel) GetTransfersCountOk() (*int32, bool)`
+`func (o *ResponsesBusiestChannel) GetTransfersCountOk() (*int64, bool)`
 
 GetTransfersCountOk returns a tuple with the TransfersCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransfersCount
 
-`func (o *ResponsesBusiestChannel) SetTransfersCount(v int32)`
+`func (o *ResponsesBusiestChannel) SetTransfersCount(v int64)`
 
 SetTransfersCount sets TransfersCount field to given value.
 

@@ -50,7 +50,7 @@ func Test_celenium_StatsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 		var timeframe string
 		var name string
 
@@ -239,7 +239,7 @@ func Test_celenium_StatsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var id int64
 		var timeframe string
 		var name string
 

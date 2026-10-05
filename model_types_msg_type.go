@@ -136,6 +136,13 @@ const (
 	MsgCreateInterchainSecurityModule TypesMsgType = "MsgCreateInterchainSecurityModule"
 	MsgUpdateInterchainSecurityModule TypesMsgType = "MsgUpdateInterchainSecurityModule"
 	MsgSubmitMessages TypesMsgType = "MsgSubmitMessages"
+	MsgDepositToEscrow TypesMsgType = "MsgDepositToEscrow"
+	MsgRequestWithdrawal TypesMsgType = "MsgRequestWithdrawal"
+	MsgPayForFibre TypesMsgType = "MsgPayForFibre"
+	MsgPaymentPromiseTimeout TypesMsgType = "MsgPaymentPromiseTimeout"
+	MsgUpdateFibreParams TypesMsgType = "MsgUpdateFibreParams"
+	MsgSetFibreProviderInfo TypesMsgType = "MsgSetFibreProviderInfo"
+	MsgCancelProposal TypesMsgType = "MsgCancelProposal"
 )
 
 // All allowed values of TypesMsgType enum
@@ -255,6 +262,13 @@ var AllowedTypesMsgTypeEnumValues = []TypesMsgType{
 	"MsgCreateInterchainSecurityModule",
 	"MsgUpdateInterchainSecurityModule",
 	"MsgSubmitMessages",
+	"MsgDepositToEscrow",
+	"MsgRequestWithdrawal",
+	"MsgPayForFibre",
+	"MsgPaymentPromiseTimeout",
+	"MsgUpdateFibreParams",
+	"MsgSetFibreProviderInfo",
+	"MsgCancelProposal",
 }
 
 func (v *TypesMsgType) UnmarshalJSON(src []byte) error {

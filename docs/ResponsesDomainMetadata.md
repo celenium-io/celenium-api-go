@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BlockExplorers** | Pointer to [**[]ResponsesBlockExplorer**](ResponsesBlockExplorer.md) |  | [optional] 
-**Domain** | Pointer to **int32** |  | [optional] 
+**Domain** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **NativeToken** | Pointer to [**ResponsesNativeToken**](ResponsesNativeToken.md) |  | [optional] 
 
@@ -55,20 +55,20 @@ HasBlockExplorers returns a boolean if a field has been set.
 
 ### GetDomain
 
-`func (o *ResponsesDomainMetadata) GetDomain() int32`
+`func (o *ResponsesDomainMetadata) GetDomain() int64`
 
 GetDomain returns the Domain field if non-nil, zero value otherwise.
 
 ### GetDomainOk
 
-`func (o *ResponsesDomainMetadata) GetDomainOk() (*int32, bool)`
+`func (o *ResponsesDomainMetadata) GetDomainOk() (*int64, bool)`
 
 GetDomainOk returns a tuple with the Domain field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDomain
 
-`func (o *ResponsesDomainMetadata) SetDomain(v int32)`
+`func (o *ResponsesDomainMetadata) SetDomain(v int64)`
 
 SetDomain sets Domain field to given value.
 

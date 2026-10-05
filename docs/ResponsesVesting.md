@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **string** |  | [optional] 
 **EndTime** | Pointer to **time.Time** |  | [optional] 
-**Hash** | Pointer to ***os.File** |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Hash** | Pointer to **string** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **StartTime** | Pointer to **time.Time** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
@@ -84,20 +84,20 @@ HasEndTime returns a boolean if a field has been set.
 
 ### GetHash
 
-`func (o *ResponsesVesting) GetHash() *os.File`
+`func (o *ResponsesVesting) GetHash() string`
 
 GetHash returns the Hash field if non-nil, zero value otherwise.
 
 ### GetHashOk
 
-`func (o *ResponsesVesting) GetHashOk() (**os.File, bool)`
+`func (o *ResponsesVesting) GetHashOk() (*string, bool)`
 
 GetHashOk returns a tuple with the Hash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHash
 
-`func (o *ResponsesVesting) SetHash(v *os.File)`
+`func (o *ResponsesVesting) SetHash(v string)`
 
 SetHash sets Hash field to given value.
 
@@ -109,20 +109,20 @@ HasHash returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesVesting) GetHeight() int32`
+`func (o *ResponsesVesting) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesVesting) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesVesting) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesVesting) SetHeight(v int32)`
+`func (o *ResponsesVesting) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 
@@ -134,20 +134,20 @@ HasHeight returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesVesting) GetId() int32`
+`func (o *ResponsesVesting) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesVesting) GetIdOk() (*int32, bool)`
+`func (o *ResponsesVesting) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesVesting) SetId(v int32)`
+`func (o *ResponsesVesting) SetId(v int64)`
 
 SetId sets Id field to given value.
 

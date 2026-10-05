@@ -5,16 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Client** | Pointer to [**ResponsesShortIbcClient**](ResponsesShortIbcClient.md) |  | [optional] 
-**ConfirmationHeight** | Pointer to **int32** |  | [optional] 
-**ConfirmationTxHash** | Pointer to ***os.File** |  | [optional] 
+**ConfirmationHeight** | Pointer to **int64** |  | [optional] 
+**ConfirmationTxHash** | Pointer to **string** |  | [optional] 
 **ConfirmedAt** | Pointer to **time.Time** |  | [optional] 
 **ConnectionId** | Pointer to **string** |  | [optional] 
 **CounterpartyChannelId** | Pointer to **string** |  | [optional] 
 **CounterpartyPortId** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
-**CreatedTxHash** | Pointer to ***os.File** |  | [optional] 
+**CreatedTxHash** | Pointer to **string** |  | [optional] 
 **Creator** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Ordering** | Pointer to **bool** |  | [optional] 
 **PortId** | Pointer to **string** |  | [optional] 
@@ -67,20 +67,20 @@ HasClient returns a boolean if a field has been set.
 
 ### GetConfirmationHeight
 
-`func (o *ResponsesIbcChannel) GetConfirmationHeight() int32`
+`func (o *ResponsesIbcChannel) GetConfirmationHeight() int64`
 
 GetConfirmationHeight returns the ConfirmationHeight field if non-nil, zero value otherwise.
 
 ### GetConfirmationHeightOk
 
-`func (o *ResponsesIbcChannel) GetConfirmationHeightOk() (*int32, bool)`
+`func (o *ResponsesIbcChannel) GetConfirmationHeightOk() (*int64, bool)`
 
 GetConfirmationHeightOk returns a tuple with the ConfirmationHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfirmationHeight
 
-`func (o *ResponsesIbcChannel) SetConfirmationHeight(v int32)`
+`func (o *ResponsesIbcChannel) SetConfirmationHeight(v int64)`
 
 SetConfirmationHeight sets ConfirmationHeight field to given value.
 
@@ -92,20 +92,20 @@ HasConfirmationHeight returns a boolean if a field has been set.
 
 ### GetConfirmationTxHash
 
-`func (o *ResponsesIbcChannel) GetConfirmationTxHash() *os.File`
+`func (o *ResponsesIbcChannel) GetConfirmationTxHash() string`
 
 GetConfirmationTxHash returns the ConfirmationTxHash field if non-nil, zero value otherwise.
 
 ### GetConfirmationTxHashOk
 
-`func (o *ResponsesIbcChannel) GetConfirmationTxHashOk() (**os.File, bool)`
+`func (o *ResponsesIbcChannel) GetConfirmationTxHashOk() (*string, bool)`
 
 GetConfirmationTxHashOk returns a tuple with the ConfirmationTxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfirmationTxHash
 
-`func (o *ResponsesIbcChannel) SetConfirmationTxHash(v *os.File)`
+`func (o *ResponsesIbcChannel) SetConfirmationTxHash(v string)`
 
 SetConfirmationTxHash sets ConfirmationTxHash field to given value.
 
@@ -242,20 +242,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetCreatedTxHash
 
-`func (o *ResponsesIbcChannel) GetCreatedTxHash() *os.File`
+`func (o *ResponsesIbcChannel) GetCreatedTxHash() string`
 
 GetCreatedTxHash returns the CreatedTxHash field if non-nil, zero value otherwise.
 
 ### GetCreatedTxHashOk
 
-`func (o *ResponsesIbcChannel) GetCreatedTxHashOk() (**os.File, bool)`
+`func (o *ResponsesIbcChannel) GetCreatedTxHashOk() (*string, bool)`
 
 GetCreatedTxHashOk returns a tuple with the CreatedTxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedTxHash
 
-`func (o *ResponsesIbcChannel) SetCreatedTxHash(v *os.File)`
+`func (o *ResponsesIbcChannel) SetCreatedTxHash(v string)`
 
 SetCreatedTxHash sets CreatedTxHash field to given value.
 
@@ -292,20 +292,20 @@ HasCreator returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesIbcChannel) GetHeight() int32`
+`func (o *ResponsesIbcChannel) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesIbcChannel) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesIbcChannel) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesIbcChannel) SetHeight(v int32)`
+`func (o *ResponsesIbcChannel) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 

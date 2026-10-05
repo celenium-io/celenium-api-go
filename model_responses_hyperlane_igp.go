@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 	"time"
 )
 
@@ -26,7 +25,7 @@ type ResponsesHyperlaneIgp struct {
 	Denom *string `json:"denom,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
-	IgpId **os.File `json:"igp_id,omitempty"`
+	IgpId *string `json:"igp_id,omitempty"`
 	Owner *ResponsesShortAddress `json:"owner,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
 }
@@ -177,9 +176,9 @@ func (o *ResponsesHyperlaneIgp) SetId(v int64) {
 }
 
 // GetIgpId returns the IgpId field value if set, zero value otherwise.
-func (o *ResponsesHyperlaneIgp) GetIgpId() *os.File {
+func (o *ResponsesHyperlaneIgp) GetIgpId() string {
 	if o == nil || IsNil(o.IgpId) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.IgpId
@@ -187,7 +186,7 @@ func (o *ResponsesHyperlaneIgp) GetIgpId() *os.File {
 
 // GetIgpIdOk returns a tuple with the IgpId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesHyperlaneIgp) GetIgpIdOk() (**os.File, bool) {
+func (o *ResponsesHyperlaneIgp) GetIgpIdOk() (*string, bool) {
 	if o == nil || IsNil(o.IgpId) {
 		return nil, false
 	}
@@ -203,8 +202,8 @@ func (o *ResponsesHyperlaneIgp) HasIgpId() bool {
 	return false
 }
 
-// SetIgpId gets a reference to the given *os.File and assigns it to the IgpId field.
-func (o *ResponsesHyperlaneIgp) SetIgpId(v *os.File) {
+// SetIgpId gets a reference to the given string and assigns it to the IgpId field.
+func (o *ResponsesHyperlaneIgp) SetIgpId(v string) {
 	o.IgpId = &v
 }
 

@@ -14,7 +14,6 @@ package celenium
 import (
 	"encoding/json"
 	"time"
-	"os"
 )
 
 // checks if the ResponsesUpgrade type satisfies the MappedNullable interface at compile time
@@ -26,13 +25,14 @@ type ResponsesUpgrade struct {
 	AppliedAtLevel *int64 `json:"applied_at_level,omitempty"`
 	EndHeight *int64 `json:"end_height,omitempty"`
 	EndTime *time.Time `json:"end_time,omitempty"`
+	ExpectedUpgradeHeight *int64 `json:"expected_upgrade_height,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	MsgId *int64 `json:"msg_id,omitempty"`
 	SignalsCount *int64 `json:"signals_count,omitempty"`
 	Signer *ResponsesShortAddress `json:"signer,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
 	Version *int64 `json:"version,omitempty"`
 	VotedPower *string `json:"voted_power,omitempty"`
 	VotingPower *string `json:"voting_power,omitempty"`
@@ -181,6 +181,38 @@ func (o *ResponsesUpgrade) HasEndTime() bool {
 // SetEndTime gets a reference to the given time.Time and assigns it to the EndTime field.
 func (o *ResponsesUpgrade) SetEndTime(v time.Time) {
 	o.EndTime = &v
+}
+
+// GetExpectedUpgradeHeight returns the ExpectedUpgradeHeight field value if set, zero value otherwise.
+func (o *ResponsesUpgrade) GetExpectedUpgradeHeight() int64 {
+	if o == nil || IsNil(o.ExpectedUpgradeHeight) {
+		var ret int64
+		return ret
+	}
+	return *o.ExpectedUpgradeHeight
+}
+
+// GetExpectedUpgradeHeightOk returns a tuple with the ExpectedUpgradeHeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesUpgrade) GetExpectedUpgradeHeightOk() (*int64, bool) {
+	if o == nil || IsNil(o.ExpectedUpgradeHeight) {
+		return nil, false
+	}
+	return o.ExpectedUpgradeHeight, true
+}
+
+// HasExpectedUpgradeHeight returns a boolean if a field has been set.
+func (o *ResponsesUpgrade) HasExpectedUpgradeHeight() bool {
+	if o != nil && !IsNil(o.ExpectedUpgradeHeight) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpectedUpgradeHeight gets a reference to the given int64 and assigns it to the ExpectedUpgradeHeight field.
+func (o *ResponsesUpgrade) SetExpectedUpgradeHeight(v int64) {
+	o.ExpectedUpgradeHeight = &v
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
@@ -376,9 +408,9 @@ func (o *ResponsesUpgrade) SetTime(v time.Time) {
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesUpgrade) GetTxHash() *os.File {
+func (o *ResponsesUpgrade) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -386,7 +418,7 @@ func (o *ResponsesUpgrade) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesUpgrade) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesUpgrade) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -402,8 +434,8 @@ func (o *ResponsesUpgrade) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesUpgrade) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesUpgrade) SetTxHash(v string) {
 	o.TxHash = &v
 }
 
@@ -524,6 +556,9 @@ func (o ResponsesUpgrade) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EndTime) {
 		toSerialize["end_time"] = o.EndTime
+	}
+	if !IsNil(o.ExpectedUpgradeHeight) {
+		toSerialize["expected_upgrade_height"] = o.ExpectedUpgradeHeight
 	}
 	if !IsNil(o.Height) {
 		toSerialize["height"] = o.Height

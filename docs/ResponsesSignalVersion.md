@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
 **Validator** | Pointer to [**ResponsesShortValidator**](ResponsesShortValidator.md) |  | [optional] 
 **Version** | Pointer to **int64** |  | [optional] 
 **VotingPower** | Pointer to **string** |  | [optional] 
@@ -108,20 +108,20 @@ HasTime returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesSignalVersion) GetTxHash() *os.File`
+`func (o *ResponsesSignalVersion) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesSignalVersion) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesSignalVersion) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesSignalVersion) SetTxHash(v *os.File)`
+`func (o *ResponsesSignalVersion) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 

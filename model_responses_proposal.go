@@ -21,9 +21,9 @@ var _ MappedNullable = &ResponsesProposal{}
 
 // ResponsesProposal struct for ResponsesProposal
 type ResponsesProposal struct {
-	Abstain *int32 `json:"abstain,omitempty"`
-	AbstainAddrs *int32 `json:"abstain_addrs,omitempty"`
-	AbstainVals *int32 `json:"abstain_vals,omitempty"`
+	Abstain *int64 `json:"abstain,omitempty"`
+	AbstainAddrs *int64 `json:"abstain_addrs,omitempty"`
+	AbstainVals *int64 `json:"abstain_vals,omitempty"`
 	AbstainVotingPower *string `json:"abstain_voting_power,omitempty"`
 	ActivationTime *time.Time `json:"activation_time,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
@@ -32,17 +32,18 @@ type ResponsesProposal struct {
 	Description *string `json:"description,omitempty"`
 	EndTime *time.Time `json:"end_time,omitempty"`
 	Error *string `json:"error,omitempty"`
+	Expedited *bool `json:"expedited,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Metadata *string `json:"metadata,omitempty"`
 	MinDeposit *string `json:"min_deposit,omitempty"`
-	No *int32 `json:"no,omitempty"`
-	NoAddrs *int32 `json:"no_addrs,omitempty"`
-	NoVals *int32 `json:"no_vals,omitempty"`
+	No *int64 `json:"no,omitempty"`
+	NoAddrs *int64 `json:"no_addrs,omitempty"`
+	NoVals *int64 `json:"no_vals,omitempty"`
 	NoVotingPower *string `json:"no_voting_power,omitempty"`
-	NoWithVeto *int32 `json:"no_with_veto,omitempty"`
-	NoWithVetoAddrs *int32 `json:"no_with_veto_addrs,omitempty"`
-	NoWithVetoVals *int32 `json:"no_with_veto_vals,omitempty"`
+	NoWithVeto *int64 `json:"no_with_veto,omitempty"`
+	NoWithVetoAddrs *int64 `json:"no_with_veto_addrs,omitempty"`
+	NoWithVetoVals *int64 `json:"no_with_veto_vals,omitempty"`
 	NoWithVetoVotingPower *string `json:"no_with_veto_voting_power,omitempty"`
 	Proposer *ResponsesShortAddress `json:"proposer,omitempty"`
 	Quorum *string `json:"quorum,omitempty"`
@@ -52,11 +53,11 @@ type ResponsesProposal struct {
 	TotalVotingPower *string `json:"total_voting_power,omitempty"`
 	Type *string `json:"type,omitempty"`
 	VetoQuorum *string `json:"veto_quorum,omitempty"`
-	VotesCount *int32 `json:"votes_count,omitempty"`
+	VotesCount *int64 `json:"votes_count,omitempty"`
 	VotingPower *string `json:"voting_power,omitempty"`
-	Yes *int32 `json:"yes,omitempty"`
-	YesAddrs *int32 `json:"yes_addrs,omitempty"`
-	YesVals *int32 `json:"yes_vals,omitempty"`
+	Yes *int64 `json:"yes,omitempty"`
+	YesAddrs *int64 `json:"yes_addrs,omitempty"`
+	YesVals *int64 `json:"yes_vals,omitempty"`
 	YesVotingPower *string `json:"yes_voting_power,omitempty"`
 }
 
@@ -78,9 +79,9 @@ func NewResponsesProposalWithDefaults() *ResponsesProposal {
 }
 
 // GetAbstain returns the Abstain field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetAbstain() int32 {
+func (o *ResponsesProposal) GetAbstain() int64 {
 	if o == nil || IsNil(o.Abstain) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Abstain
@@ -88,7 +89,7 @@ func (o *ResponsesProposal) GetAbstain() int32 {
 
 // GetAbstainOk returns a tuple with the Abstain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetAbstainOk() (*int32, bool) {
+func (o *ResponsesProposal) GetAbstainOk() (*int64, bool) {
 	if o == nil || IsNil(o.Abstain) {
 		return nil, false
 	}
@@ -104,15 +105,15 @@ func (o *ResponsesProposal) HasAbstain() bool {
 	return false
 }
 
-// SetAbstain gets a reference to the given int32 and assigns it to the Abstain field.
-func (o *ResponsesProposal) SetAbstain(v int32) {
+// SetAbstain gets a reference to the given int64 and assigns it to the Abstain field.
+func (o *ResponsesProposal) SetAbstain(v int64) {
 	o.Abstain = &v
 }
 
 // GetAbstainAddrs returns the AbstainAddrs field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetAbstainAddrs() int32 {
+func (o *ResponsesProposal) GetAbstainAddrs() int64 {
 	if o == nil || IsNil(o.AbstainAddrs) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AbstainAddrs
@@ -120,7 +121,7 @@ func (o *ResponsesProposal) GetAbstainAddrs() int32 {
 
 // GetAbstainAddrsOk returns a tuple with the AbstainAddrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetAbstainAddrsOk() (*int32, bool) {
+func (o *ResponsesProposal) GetAbstainAddrsOk() (*int64, bool) {
 	if o == nil || IsNil(o.AbstainAddrs) {
 		return nil, false
 	}
@@ -136,15 +137,15 @@ func (o *ResponsesProposal) HasAbstainAddrs() bool {
 	return false
 }
 
-// SetAbstainAddrs gets a reference to the given int32 and assigns it to the AbstainAddrs field.
-func (o *ResponsesProposal) SetAbstainAddrs(v int32) {
+// SetAbstainAddrs gets a reference to the given int64 and assigns it to the AbstainAddrs field.
+func (o *ResponsesProposal) SetAbstainAddrs(v int64) {
 	o.AbstainAddrs = &v
 }
 
 // GetAbstainVals returns the AbstainVals field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetAbstainVals() int32 {
+func (o *ResponsesProposal) GetAbstainVals() int64 {
 	if o == nil || IsNil(o.AbstainVals) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AbstainVals
@@ -152,7 +153,7 @@ func (o *ResponsesProposal) GetAbstainVals() int32 {
 
 // GetAbstainValsOk returns a tuple with the AbstainVals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetAbstainValsOk() (*int32, bool) {
+func (o *ResponsesProposal) GetAbstainValsOk() (*int64, bool) {
 	if o == nil || IsNil(o.AbstainVals) {
 		return nil, false
 	}
@@ -168,8 +169,8 @@ func (o *ResponsesProposal) HasAbstainVals() bool {
 	return false
 }
 
-// SetAbstainVals gets a reference to the given int32 and assigns it to the AbstainVals field.
-func (o *ResponsesProposal) SetAbstainVals(v int32) {
+// SetAbstainVals gets a reference to the given int64 and assigns it to the AbstainVals field.
+func (o *ResponsesProposal) SetAbstainVals(v int64) {
 	o.AbstainVals = &v
 }
 
@@ -429,6 +430,38 @@ func (o *ResponsesProposal) SetError(v string) {
 	o.Error = &v
 }
 
+// GetExpedited returns the Expedited field value if set, zero value otherwise.
+func (o *ResponsesProposal) GetExpedited() bool {
+	if o == nil || IsNil(o.Expedited) {
+		var ret bool
+		return ret
+	}
+	return *o.Expedited
+}
+
+// GetExpeditedOk returns a tuple with the Expedited field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesProposal) GetExpeditedOk() (*bool, bool) {
+	if o == nil || IsNil(o.Expedited) {
+		return nil, false
+	}
+	return o.Expedited, true
+}
+
+// HasExpedited returns a boolean if a field has been set.
+func (o *ResponsesProposal) HasExpedited() bool {
+	if o != nil && !IsNil(o.Expedited) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpedited gets a reference to the given bool and assigns it to the Expedited field.
+func (o *ResponsesProposal) SetExpedited(v bool) {
+	o.Expedited = &v
+}
+
 // GetHeight returns the Height field value if set, zero value otherwise.
 func (o *ResponsesProposal) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
@@ -558,9 +591,9 @@ func (o *ResponsesProposal) SetMinDeposit(v string) {
 }
 
 // GetNo returns the No field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetNo() int32 {
+func (o *ResponsesProposal) GetNo() int64 {
 	if o == nil || IsNil(o.No) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.No
@@ -568,7 +601,7 @@ func (o *ResponsesProposal) GetNo() int32 {
 
 // GetNoOk returns a tuple with the No field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetNoOk() (*int32, bool) {
+func (o *ResponsesProposal) GetNoOk() (*int64, bool) {
 	if o == nil || IsNil(o.No) {
 		return nil, false
 	}
@@ -584,15 +617,15 @@ func (o *ResponsesProposal) HasNo() bool {
 	return false
 }
 
-// SetNo gets a reference to the given int32 and assigns it to the No field.
-func (o *ResponsesProposal) SetNo(v int32) {
+// SetNo gets a reference to the given int64 and assigns it to the No field.
+func (o *ResponsesProposal) SetNo(v int64) {
 	o.No = &v
 }
 
 // GetNoAddrs returns the NoAddrs field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetNoAddrs() int32 {
+func (o *ResponsesProposal) GetNoAddrs() int64 {
 	if o == nil || IsNil(o.NoAddrs) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.NoAddrs
@@ -600,7 +633,7 @@ func (o *ResponsesProposal) GetNoAddrs() int32 {
 
 // GetNoAddrsOk returns a tuple with the NoAddrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetNoAddrsOk() (*int32, bool) {
+func (o *ResponsesProposal) GetNoAddrsOk() (*int64, bool) {
 	if o == nil || IsNil(o.NoAddrs) {
 		return nil, false
 	}
@@ -616,15 +649,15 @@ func (o *ResponsesProposal) HasNoAddrs() bool {
 	return false
 }
 
-// SetNoAddrs gets a reference to the given int32 and assigns it to the NoAddrs field.
-func (o *ResponsesProposal) SetNoAddrs(v int32) {
+// SetNoAddrs gets a reference to the given int64 and assigns it to the NoAddrs field.
+func (o *ResponsesProposal) SetNoAddrs(v int64) {
 	o.NoAddrs = &v
 }
 
 // GetNoVals returns the NoVals field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetNoVals() int32 {
+func (o *ResponsesProposal) GetNoVals() int64 {
 	if o == nil || IsNil(o.NoVals) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.NoVals
@@ -632,7 +665,7 @@ func (o *ResponsesProposal) GetNoVals() int32 {
 
 // GetNoValsOk returns a tuple with the NoVals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetNoValsOk() (*int32, bool) {
+func (o *ResponsesProposal) GetNoValsOk() (*int64, bool) {
 	if o == nil || IsNil(o.NoVals) {
 		return nil, false
 	}
@@ -648,8 +681,8 @@ func (o *ResponsesProposal) HasNoVals() bool {
 	return false
 }
 
-// SetNoVals gets a reference to the given int32 and assigns it to the NoVals field.
-func (o *ResponsesProposal) SetNoVals(v int32) {
+// SetNoVals gets a reference to the given int64 and assigns it to the NoVals field.
+func (o *ResponsesProposal) SetNoVals(v int64) {
 	o.NoVals = &v
 }
 
@@ -686,9 +719,9 @@ func (o *ResponsesProposal) SetNoVotingPower(v string) {
 }
 
 // GetNoWithVeto returns the NoWithVeto field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetNoWithVeto() int32 {
+func (o *ResponsesProposal) GetNoWithVeto() int64 {
 	if o == nil || IsNil(o.NoWithVeto) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.NoWithVeto
@@ -696,7 +729,7 @@ func (o *ResponsesProposal) GetNoWithVeto() int32 {
 
 // GetNoWithVetoOk returns a tuple with the NoWithVeto field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetNoWithVetoOk() (*int32, bool) {
+func (o *ResponsesProposal) GetNoWithVetoOk() (*int64, bool) {
 	if o == nil || IsNil(o.NoWithVeto) {
 		return nil, false
 	}
@@ -712,15 +745,15 @@ func (o *ResponsesProposal) HasNoWithVeto() bool {
 	return false
 }
 
-// SetNoWithVeto gets a reference to the given int32 and assigns it to the NoWithVeto field.
-func (o *ResponsesProposal) SetNoWithVeto(v int32) {
+// SetNoWithVeto gets a reference to the given int64 and assigns it to the NoWithVeto field.
+func (o *ResponsesProposal) SetNoWithVeto(v int64) {
 	o.NoWithVeto = &v
 }
 
 // GetNoWithVetoAddrs returns the NoWithVetoAddrs field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetNoWithVetoAddrs() int32 {
+func (o *ResponsesProposal) GetNoWithVetoAddrs() int64 {
 	if o == nil || IsNil(o.NoWithVetoAddrs) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.NoWithVetoAddrs
@@ -728,7 +761,7 @@ func (o *ResponsesProposal) GetNoWithVetoAddrs() int32 {
 
 // GetNoWithVetoAddrsOk returns a tuple with the NoWithVetoAddrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetNoWithVetoAddrsOk() (*int32, bool) {
+func (o *ResponsesProposal) GetNoWithVetoAddrsOk() (*int64, bool) {
 	if o == nil || IsNil(o.NoWithVetoAddrs) {
 		return nil, false
 	}
@@ -744,15 +777,15 @@ func (o *ResponsesProposal) HasNoWithVetoAddrs() bool {
 	return false
 }
 
-// SetNoWithVetoAddrs gets a reference to the given int32 and assigns it to the NoWithVetoAddrs field.
-func (o *ResponsesProposal) SetNoWithVetoAddrs(v int32) {
+// SetNoWithVetoAddrs gets a reference to the given int64 and assigns it to the NoWithVetoAddrs field.
+func (o *ResponsesProposal) SetNoWithVetoAddrs(v int64) {
 	o.NoWithVetoAddrs = &v
 }
 
 // GetNoWithVetoVals returns the NoWithVetoVals field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetNoWithVetoVals() int32 {
+func (o *ResponsesProposal) GetNoWithVetoVals() int64 {
 	if o == nil || IsNil(o.NoWithVetoVals) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.NoWithVetoVals
@@ -760,7 +793,7 @@ func (o *ResponsesProposal) GetNoWithVetoVals() int32 {
 
 // GetNoWithVetoValsOk returns a tuple with the NoWithVetoVals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetNoWithVetoValsOk() (*int32, bool) {
+func (o *ResponsesProposal) GetNoWithVetoValsOk() (*int64, bool) {
 	if o == nil || IsNil(o.NoWithVetoVals) {
 		return nil, false
 	}
@@ -776,8 +809,8 @@ func (o *ResponsesProposal) HasNoWithVetoVals() bool {
 	return false
 }
 
-// SetNoWithVetoVals gets a reference to the given int32 and assigns it to the NoWithVetoVals field.
-func (o *ResponsesProposal) SetNoWithVetoVals(v int32) {
+// SetNoWithVetoVals gets a reference to the given int64 and assigns it to the NoWithVetoVals field.
+func (o *ResponsesProposal) SetNoWithVetoVals(v int64) {
 	o.NoWithVetoVals = &v
 }
 
@@ -1070,9 +1103,9 @@ func (o *ResponsesProposal) SetVetoQuorum(v string) {
 }
 
 // GetVotesCount returns the VotesCount field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetVotesCount() int32 {
+func (o *ResponsesProposal) GetVotesCount() int64 {
 	if o == nil || IsNil(o.VotesCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.VotesCount
@@ -1080,7 +1113,7 @@ func (o *ResponsesProposal) GetVotesCount() int32 {
 
 // GetVotesCountOk returns a tuple with the VotesCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetVotesCountOk() (*int32, bool) {
+func (o *ResponsesProposal) GetVotesCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.VotesCount) {
 		return nil, false
 	}
@@ -1096,8 +1129,8 @@ func (o *ResponsesProposal) HasVotesCount() bool {
 	return false
 }
 
-// SetVotesCount gets a reference to the given int32 and assigns it to the VotesCount field.
-func (o *ResponsesProposal) SetVotesCount(v int32) {
+// SetVotesCount gets a reference to the given int64 and assigns it to the VotesCount field.
+func (o *ResponsesProposal) SetVotesCount(v int64) {
 	o.VotesCount = &v
 }
 
@@ -1134,9 +1167,9 @@ func (o *ResponsesProposal) SetVotingPower(v string) {
 }
 
 // GetYes returns the Yes field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetYes() int32 {
+func (o *ResponsesProposal) GetYes() int64 {
 	if o == nil || IsNil(o.Yes) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Yes
@@ -1144,7 +1177,7 @@ func (o *ResponsesProposal) GetYes() int32 {
 
 // GetYesOk returns a tuple with the Yes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetYesOk() (*int32, bool) {
+func (o *ResponsesProposal) GetYesOk() (*int64, bool) {
 	if o == nil || IsNil(o.Yes) {
 		return nil, false
 	}
@@ -1160,15 +1193,15 @@ func (o *ResponsesProposal) HasYes() bool {
 	return false
 }
 
-// SetYes gets a reference to the given int32 and assigns it to the Yes field.
-func (o *ResponsesProposal) SetYes(v int32) {
+// SetYes gets a reference to the given int64 and assigns it to the Yes field.
+func (o *ResponsesProposal) SetYes(v int64) {
 	o.Yes = &v
 }
 
 // GetYesAddrs returns the YesAddrs field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetYesAddrs() int32 {
+func (o *ResponsesProposal) GetYesAddrs() int64 {
 	if o == nil || IsNil(o.YesAddrs) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.YesAddrs
@@ -1176,7 +1209,7 @@ func (o *ResponsesProposal) GetYesAddrs() int32 {
 
 // GetYesAddrsOk returns a tuple with the YesAddrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetYesAddrsOk() (*int32, bool) {
+func (o *ResponsesProposal) GetYesAddrsOk() (*int64, bool) {
 	if o == nil || IsNil(o.YesAddrs) {
 		return nil, false
 	}
@@ -1192,15 +1225,15 @@ func (o *ResponsesProposal) HasYesAddrs() bool {
 	return false
 }
 
-// SetYesAddrs gets a reference to the given int32 and assigns it to the YesAddrs field.
-func (o *ResponsesProposal) SetYesAddrs(v int32) {
+// SetYesAddrs gets a reference to the given int64 and assigns it to the YesAddrs field.
+func (o *ResponsesProposal) SetYesAddrs(v int64) {
 	o.YesAddrs = &v
 }
 
 // GetYesVals returns the YesVals field value if set, zero value otherwise.
-func (o *ResponsesProposal) GetYesVals() int32 {
+func (o *ResponsesProposal) GetYesVals() int64 {
 	if o == nil || IsNil(o.YesVals) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.YesVals
@@ -1208,7 +1241,7 @@ func (o *ResponsesProposal) GetYesVals() int32 {
 
 // GetYesValsOk returns a tuple with the YesVals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesProposal) GetYesValsOk() (*int32, bool) {
+func (o *ResponsesProposal) GetYesValsOk() (*int64, bool) {
 	if o == nil || IsNil(o.YesVals) {
 		return nil, false
 	}
@@ -1224,8 +1257,8 @@ func (o *ResponsesProposal) HasYesVals() bool {
 	return false
 }
 
-// SetYesVals gets a reference to the given int32 and assigns it to the YesVals field.
-func (o *ResponsesProposal) SetYesVals(v int32) {
+// SetYesVals gets a reference to the given int64 and assigns it to the YesVals field.
+func (o *ResponsesProposal) SetYesVals(v int64) {
 	o.YesVals = &v
 }
 
@@ -1303,6 +1336,9 @@ func (o ResponsesProposal) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Error) {
 		toSerialize["error"] = o.Error
+	}
+	if !IsNil(o.Expedited) {
+		toSerialize["expedited"] = o.Expedited
 	}
 	if !IsNil(o.Height) {
 		toSerialize["height"] = o.Height

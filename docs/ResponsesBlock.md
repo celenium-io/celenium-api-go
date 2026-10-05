@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **DataHash** | Pointer to **string** |  | [optional] 
 **EvidenceHash** | Pointer to **string** |  | [optional] 
 **Hash** | Pointer to **string** |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **LastCommitHash** | Pointer to **string** |  | [optional] 
 **LastResultsHash** | Pointer to **string** |  | [optional] 
 **MessageTypes** | Pointer to **[]string** |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **ParentHash** | Pointer to **string** |  | [optional] 
 **Proposer** | Pointer to [**ResponsesShortValidator**](ResponsesShortValidator.md) |  | [optional] 
 **Stats** | Pointer to [**ResponsesBlockStats**](ResponsesBlockStats.md) |  | [optional] 
-**Time** | Pointer to **string** |  | [optional] 
+**Time** | Pointer to **time.Time** |  | [optional] 
 **ValidatorsHash** | Pointer to **string** |  | [optional] 
 **VersionApp** | Pointer to **string** |  | [optional] 
 **VersionBlock** | Pointer to **string** |  | [optional] 
@@ -169,20 +169,20 @@ HasHash returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesBlock) GetHeight() int32`
+`func (o *ResponsesBlock) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesBlock) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesBlock) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesBlock) SetHeight(v int32)`
+`func (o *ResponsesBlock) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 
@@ -194,20 +194,20 @@ HasHeight returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesBlock) GetId() int32`
+`func (o *ResponsesBlock) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesBlock) GetIdOk() (*int32, bool)`
+`func (o *ResponsesBlock) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesBlock) SetId(v int32)`
+`func (o *ResponsesBlock) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -394,20 +394,20 @@ HasStats returns a boolean if a field has been set.
 
 ### GetTime
 
-`func (o *ResponsesBlock) GetTime() string`
+`func (o *ResponsesBlock) GetTime() time.Time`
 
 GetTime returns the Time field if non-nil, zero value otherwise.
 
 ### GetTimeOk
 
-`func (o *ResponsesBlock) GetTimeOk() (*string, bool)`
+`func (o *ResponsesBlock) GetTimeOk() (*time.Time, bool)`
 
 GetTimeOk returns a tuple with the Time field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTime
 
-`func (o *ResponsesBlock) SetTime(v string)`
+`func (o *ResponsesBlock) SetTime(v time.Time)`
 
 SetTime sets Time field to given value.
 

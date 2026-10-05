@@ -20,11 +20,11 @@ var _ MappedNullable = &ResponsesRollupAllSeriesItem{}
 
 // ResponsesRollupAllSeriesItem struct for ResponsesRollupAllSeriesItem
 type ResponsesRollupAllSeriesItem struct {
-	BlobsCount *int32 `json:"blobs_count,omitempty"`
+	BlobsCount *int64 `json:"blobs_count,omitempty"`
 	Fee *string `json:"fee,omitempty"`
 	Logo *string `json:"logo,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Size *int32 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 }
 
 // NewResponsesRollupAllSeriesItem instantiates a new ResponsesRollupAllSeriesItem object
@@ -45,9 +45,9 @@ func NewResponsesRollupAllSeriesItemWithDefaults() *ResponsesRollupAllSeriesItem
 }
 
 // GetBlobsCount returns the BlobsCount field value if set, zero value otherwise.
-func (o *ResponsesRollupAllSeriesItem) GetBlobsCount() int32 {
+func (o *ResponsesRollupAllSeriesItem) GetBlobsCount() int64 {
 	if o == nil || IsNil(o.BlobsCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BlobsCount
@@ -55,7 +55,7 @@ func (o *ResponsesRollupAllSeriesItem) GetBlobsCount() int32 {
 
 // GetBlobsCountOk returns a tuple with the BlobsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupAllSeriesItem) GetBlobsCountOk() (*int32, bool) {
+func (o *ResponsesRollupAllSeriesItem) GetBlobsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlobsCount) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *ResponsesRollupAllSeriesItem) HasBlobsCount() bool {
 	return false
 }
 
-// SetBlobsCount gets a reference to the given int32 and assigns it to the BlobsCount field.
-func (o *ResponsesRollupAllSeriesItem) SetBlobsCount(v int32) {
+// SetBlobsCount gets a reference to the given int64 and assigns it to the BlobsCount field.
+func (o *ResponsesRollupAllSeriesItem) SetBlobsCount(v int64) {
 	o.BlobsCount = &v
 }
 
@@ -173,9 +173,9 @@ func (o *ResponsesRollupAllSeriesItem) SetName(v string) {
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *ResponsesRollupAllSeriesItem) GetSize() int32 {
+func (o *ResponsesRollupAllSeriesItem) GetSize() int64 {
 	if o == nil || IsNil(o.Size) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Size
@@ -183,7 +183,7 @@ func (o *ResponsesRollupAllSeriesItem) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupAllSeriesItem) GetSizeOk() (*int32, bool) {
+func (o *ResponsesRollupAllSeriesItem) GetSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
@@ -199,8 +199,8 @@ func (o *ResponsesRollupAllSeriesItem) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given int32 and assigns it to the Size field.
-func (o *ResponsesRollupAllSeriesItem) SetSize(v int32) {
+// SetSize gets a reference to the given int64 and assigns it to the Size field.
+func (o *ResponsesRollupAllSeriesItem) SetSize(v int64) {
 	o.Size = &v
 }
 

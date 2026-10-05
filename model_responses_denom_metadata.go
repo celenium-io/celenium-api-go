@@ -25,7 +25,7 @@ type ResponsesDenomMetadata struct {
 	Display *string `json:"display,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Symbol *string `json:"symbol,omitempty"`
-	Units []int32 `json:"units,omitempty"`
+	Units []map[string]interface{} `json:"units,omitempty"`
 	Uri *string `json:"uri,omitempty"`
 }
 
@@ -207,9 +207,9 @@ func (o *ResponsesDenomMetadata) SetSymbol(v string) {
 }
 
 // GetUnits returns the Units field value if set, zero value otherwise.
-func (o *ResponsesDenomMetadata) GetUnits() []int32 {
+func (o *ResponsesDenomMetadata) GetUnits() []map[string]interface{} {
 	if o == nil || IsNil(o.Units) {
-		var ret []int32
+		var ret []map[string]interface{}
 		return ret
 	}
 	return o.Units
@@ -217,7 +217,7 @@ func (o *ResponsesDenomMetadata) GetUnits() []int32 {
 
 // GetUnitsOk returns a tuple with the Units field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesDenomMetadata) GetUnitsOk() ([]int32, bool) {
+func (o *ResponsesDenomMetadata) GetUnitsOk() ([]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Units) {
 		return nil, false
 	}
@@ -233,8 +233,8 @@ func (o *ResponsesDenomMetadata) HasUnits() bool {
 	return false
 }
 
-// SetUnits gets a reference to the given []int32 and assigns it to the Units field.
-func (o *ResponsesDenomMetadata) SetUnits(v []int32) {
+// SetUnits gets a reference to the given []map[string]interface{} and assigns it to the Units field.
+func (o *ResponsesDenomMetadata) SetUnits(v []map[string]interface{}) {
 	o.Units = v
 }
 

@@ -31,8 +31,8 @@ type ResponsesState struct {
 	TotalAccounts *int64 `json:"total_accounts,omitempty"`
 	TotalBlobsSize *int64 `json:"total_blobs_size,omitempty"`
 	TotalFee *string `json:"total_fee,omitempty"`
-	TotalIbcClients *int32 `json:"total_ibc_clients,omitempty"`
-	TotalNamespaces *int32 `json:"total_namespaces,omitempty"`
+	TotalIbcClients *int64 `json:"total_ibc_clients,omitempty"`
+	TotalNamespaces *int64 `json:"total_namespaces,omitempty"`
 	TotalProposals *int64 `json:"total_proposals,omitempty"`
 	TotalSupply *string `json:"total_supply,omitempty"`
 	TotalTx *int64 `json:"total_tx,omitempty"`
@@ -379,9 +379,9 @@ func (o *ResponsesState) SetTotalFee(v string) {
 }
 
 // GetTotalIbcClients returns the TotalIbcClients field value if set, zero value otherwise.
-func (o *ResponsesState) GetTotalIbcClients() int32 {
+func (o *ResponsesState) GetTotalIbcClients() int64 {
 	if o == nil || IsNil(o.TotalIbcClients) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TotalIbcClients
@@ -389,7 +389,7 @@ func (o *ResponsesState) GetTotalIbcClients() int32 {
 
 // GetTotalIbcClientsOk returns a tuple with the TotalIbcClients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesState) GetTotalIbcClientsOk() (*int32, bool) {
+func (o *ResponsesState) GetTotalIbcClientsOk() (*int64, bool) {
 	if o == nil || IsNil(o.TotalIbcClients) {
 		return nil, false
 	}
@@ -405,15 +405,15 @@ func (o *ResponsesState) HasTotalIbcClients() bool {
 	return false
 }
 
-// SetTotalIbcClients gets a reference to the given int32 and assigns it to the TotalIbcClients field.
-func (o *ResponsesState) SetTotalIbcClients(v int32) {
+// SetTotalIbcClients gets a reference to the given int64 and assigns it to the TotalIbcClients field.
+func (o *ResponsesState) SetTotalIbcClients(v int64) {
 	o.TotalIbcClients = &v
 }
 
 // GetTotalNamespaces returns the TotalNamespaces field value if set, zero value otherwise.
-func (o *ResponsesState) GetTotalNamespaces() int32 {
+func (o *ResponsesState) GetTotalNamespaces() int64 {
 	if o == nil || IsNil(o.TotalNamespaces) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TotalNamespaces
@@ -421,7 +421,7 @@ func (o *ResponsesState) GetTotalNamespaces() int32 {
 
 // GetTotalNamespacesOk returns a tuple with the TotalNamespaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesState) GetTotalNamespacesOk() (*int32, bool) {
+func (o *ResponsesState) GetTotalNamespacesOk() (*int64, bool) {
 	if o == nil || IsNil(o.TotalNamespaces) {
 		return nil, false
 	}
@@ -437,8 +437,8 @@ func (o *ResponsesState) HasTotalNamespaces() bool {
 	return false
 }
 
-// SetTotalNamespaces gets a reference to the given int32 and assigns it to the TotalNamespaces field.
-func (o *ResponsesState) SetTotalNamespaces(v int32) {
+// SetTotalNamespaces gets a reference to the given int64 and assigns it to the TotalNamespaces field.
+func (o *ResponsesState) SetTotalNamespaces(v int64) {
 	o.TotalNamespaces = &v
 }
 

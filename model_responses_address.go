@@ -22,11 +22,11 @@ var _ MappedNullable = &ResponsesAddress{}
 type ResponsesAddress struct {
 	Balance *ResponsesBalance `json:"balance,omitempty"`
 	Celestials *ResponsesCelestial `json:"celestials,omitempty"`
-	FirstHeight *int32 `json:"first_height,omitempty"`
+	FirstHeight *int64 `json:"first_height,omitempty"`
 	Hash *string `json:"hash,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	IsForwarding *bool `json:"is_forwarding,omitempty"`
-	LastHeight *int32 `json:"last_height,omitempty"`
+	LastHeight *int64 `json:"last_height,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -112,9 +112,9 @@ func (o *ResponsesAddress) SetCelestials(v ResponsesCelestial) {
 }
 
 // GetFirstHeight returns the FirstHeight field value if set, zero value otherwise.
-func (o *ResponsesAddress) GetFirstHeight() int32 {
+func (o *ResponsesAddress) GetFirstHeight() int64 {
 	if o == nil || IsNil(o.FirstHeight) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.FirstHeight
@@ -122,7 +122,7 @@ func (o *ResponsesAddress) GetFirstHeight() int32 {
 
 // GetFirstHeightOk returns a tuple with the FirstHeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesAddress) GetFirstHeightOk() (*int32, bool) {
+func (o *ResponsesAddress) GetFirstHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.FirstHeight) {
 		return nil, false
 	}
@@ -138,8 +138,8 @@ func (o *ResponsesAddress) HasFirstHeight() bool {
 	return false
 }
 
-// SetFirstHeight gets a reference to the given int32 and assigns it to the FirstHeight field.
-func (o *ResponsesAddress) SetFirstHeight(v int32) {
+// SetFirstHeight gets a reference to the given int64 and assigns it to the FirstHeight field.
+func (o *ResponsesAddress) SetFirstHeight(v int64) {
 	o.FirstHeight = &v
 }
 
@@ -176,9 +176,9 @@ func (o *ResponsesAddress) SetHash(v string) {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesAddress) GetId() int32 {
+func (o *ResponsesAddress) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -186,7 +186,7 @@ func (o *ResponsesAddress) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesAddress) GetIdOk() (*int32, bool) {
+func (o *ResponsesAddress) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -202,8 +202,8 @@ func (o *ResponsesAddress) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesAddress) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesAddress) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -240,9 +240,9 @@ func (o *ResponsesAddress) SetIsForwarding(v bool) {
 }
 
 // GetLastHeight returns the LastHeight field value if set, zero value otherwise.
-func (o *ResponsesAddress) GetLastHeight() int32 {
+func (o *ResponsesAddress) GetLastHeight() int64 {
 	if o == nil || IsNil(o.LastHeight) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LastHeight
@@ -250,7 +250,7 @@ func (o *ResponsesAddress) GetLastHeight() int32 {
 
 // GetLastHeightOk returns a tuple with the LastHeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesAddress) GetLastHeightOk() (*int32, bool) {
+func (o *ResponsesAddress) GetLastHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.LastHeight) {
 		return nil, false
 	}
@@ -266,8 +266,8 @@ func (o *ResponsesAddress) HasLastHeight() bool {
 	return false
 }
 
-// SetLastHeight gets a reference to the given int32 and assigns it to the LastHeight field.
-func (o *ResponsesAddress) SetLastHeight(v int32) {
+// SetLastHeight gets a reference to the given int64 and assigns it to the LastHeight field.
+func (o *ResponsesAddress) SetLastHeight(v int64) {
 	o.LastHeight = &v
 }
 

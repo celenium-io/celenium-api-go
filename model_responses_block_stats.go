@@ -21,20 +21,20 @@ var _ MappedNullable = &ResponsesBlockStats{}
 // ResponsesBlockStats struct for ResponsesBlockStats
 type ResponsesBlockStats struct {
 	BlobsCount *int32 `json:"blobs_count,omitempty"`
-	BlobsSize *int32 `json:"blobs_size,omitempty"`
-	BlockTime *int32 `json:"block_time,omitempty"`
-	BytesInBlock *int32 `json:"bytes_in_block,omitempty"`
+	BlobsSize *int64 `json:"blobs_size,omitempty"`
+	BlockTime *int64 `json:"block_time,omitempty"`
+	BytesInBlock *int64 `json:"bytes_in_block,omitempty"`
 	Commissions *string `json:"commissions,omitempty"`
-	EventsCount *int32 `json:"events_count,omitempty"`
+	EventsCount *int64 `json:"events_count,omitempty"`
 	Fee *string `json:"fee,omitempty"`
 	FillRate *string `json:"fill_rate,omitempty"`
-	GasLimit *int32 `json:"gas_limit,omitempty"`
-	GasUsed *int32 `json:"gas_used,omitempty"`
+	GasLimit *int64 `json:"gas_limit,omitempty"`
+	GasUsed *int64 `json:"gas_used,omitempty"`
 	InflationRate *string `json:"inflation_rate,omitempty"`
 	Rewards *string `json:"rewards,omitempty"`
-	SquareSize *int32 `json:"square_size,omitempty"`
+	SquareSize *int64 `json:"square_size,omitempty"`
 	SupplyChange *string `json:"supply_change,omitempty"`
-	TxCount *int32 `json:"tx_count,omitempty"`
+	TxCount *int64 `json:"tx_count,omitempty"`
 }
 
 // NewResponsesBlockStats instantiates a new ResponsesBlockStats object
@@ -87,9 +87,9 @@ func (o *ResponsesBlockStats) SetBlobsCount(v int32) {
 }
 
 // GetBlobsSize returns the BlobsSize field value if set, zero value otherwise.
-func (o *ResponsesBlockStats) GetBlobsSize() int32 {
+func (o *ResponsesBlockStats) GetBlobsSize() int64 {
 	if o == nil || IsNil(o.BlobsSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BlobsSize
@@ -97,7 +97,7 @@ func (o *ResponsesBlockStats) GetBlobsSize() int32 {
 
 // GetBlobsSizeOk returns a tuple with the BlobsSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlockStats) GetBlobsSizeOk() (*int32, bool) {
+func (o *ResponsesBlockStats) GetBlobsSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlobsSize) {
 		return nil, false
 	}
@@ -113,15 +113,15 @@ func (o *ResponsesBlockStats) HasBlobsSize() bool {
 	return false
 }
 
-// SetBlobsSize gets a reference to the given int32 and assigns it to the BlobsSize field.
-func (o *ResponsesBlockStats) SetBlobsSize(v int32) {
+// SetBlobsSize gets a reference to the given int64 and assigns it to the BlobsSize field.
+func (o *ResponsesBlockStats) SetBlobsSize(v int64) {
 	o.BlobsSize = &v
 }
 
 // GetBlockTime returns the BlockTime field value if set, zero value otherwise.
-func (o *ResponsesBlockStats) GetBlockTime() int32 {
+func (o *ResponsesBlockStats) GetBlockTime() int64 {
 	if o == nil || IsNil(o.BlockTime) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BlockTime
@@ -129,7 +129,7 @@ func (o *ResponsesBlockStats) GetBlockTime() int32 {
 
 // GetBlockTimeOk returns a tuple with the BlockTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlockStats) GetBlockTimeOk() (*int32, bool) {
+func (o *ResponsesBlockStats) GetBlockTimeOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlockTime) {
 		return nil, false
 	}
@@ -145,15 +145,15 @@ func (o *ResponsesBlockStats) HasBlockTime() bool {
 	return false
 }
 
-// SetBlockTime gets a reference to the given int32 and assigns it to the BlockTime field.
-func (o *ResponsesBlockStats) SetBlockTime(v int32) {
+// SetBlockTime gets a reference to the given int64 and assigns it to the BlockTime field.
+func (o *ResponsesBlockStats) SetBlockTime(v int64) {
 	o.BlockTime = &v
 }
 
 // GetBytesInBlock returns the BytesInBlock field value if set, zero value otherwise.
-func (o *ResponsesBlockStats) GetBytesInBlock() int32 {
+func (o *ResponsesBlockStats) GetBytesInBlock() int64 {
 	if o == nil || IsNil(o.BytesInBlock) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BytesInBlock
@@ -161,7 +161,7 @@ func (o *ResponsesBlockStats) GetBytesInBlock() int32 {
 
 // GetBytesInBlockOk returns a tuple with the BytesInBlock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlockStats) GetBytesInBlockOk() (*int32, bool) {
+func (o *ResponsesBlockStats) GetBytesInBlockOk() (*int64, bool) {
 	if o == nil || IsNil(o.BytesInBlock) {
 		return nil, false
 	}
@@ -177,8 +177,8 @@ func (o *ResponsesBlockStats) HasBytesInBlock() bool {
 	return false
 }
 
-// SetBytesInBlock gets a reference to the given int32 and assigns it to the BytesInBlock field.
-func (o *ResponsesBlockStats) SetBytesInBlock(v int32) {
+// SetBytesInBlock gets a reference to the given int64 and assigns it to the BytesInBlock field.
+func (o *ResponsesBlockStats) SetBytesInBlock(v int64) {
 	o.BytesInBlock = &v
 }
 
@@ -215,9 +215,9 @@ func (o *ResponsesBlockStats) SetCommissions(v string) {
 }
 
 // GetEventsCount returns the EventsCount field value if set, zero value otherwise.
-func (o *ResponsesBlockStats) GetEventsCount() int32 {
+func (o *ResponsesBlockStats) GetEventsCount() int64 {
 	if o == nil || IsNil(o.EventsCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.EventsCount
@@ -225,7 +225,7 @@ func (o *ResponsesBlockStats) GetEventsCount() int32 {
 
 // GetEventsCountOk returns a tuple with the EventsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlockStats) GetEventsCountOk() (*int32, bool) {
+func (o *ResponsesBlockStats) GetEventsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.EventsCount) {
 		return nil, false
 	}
@@ -241,8 +241,8 @@ func (o *ResponsesBlockStats) HasEventsCount() bool {
 	return false
 }
 
-// SetEventsCount gets a reference to the given int32 and assigns it to the EventsCount field.
-func (o *ResponsesBlockStats) SetEventsCount(v int32) {
+// SetEventsCount gets a reference to the given int64 and assigns it to the EventsCount field.
+func (o *ResponsesBlockStats) SetEventsCount(v int64) {
 	o.EventsCount = &v
 }
 
@@ -311,9 +311,9 @@ func (o *ResponsesBlockStats) SetFillRate(v string) {
 }
 
 // GetGasLimit returns the GasLimit field value if set, zero value otherwise.
-func (o *ResponsesBlockStats) GetGasLimit() int32 {
+func (o *ResponsesBlockStats) GetGasLimit() int64 {
 	if o == nil || IsNil(o.GasLimit) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.GasLimit
@@ -321,7 +321,7 @@ func (o *ResponsesBlockStats) GetGasLimit() int32 {
 
 // GetGasLimitOk returns a tuple with the GasLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlockStats) GetGasLimitOk() (*int32, bool) {
+func (o *ResponsesBlockStats) GetGasLimitOk() (*int64, bool) {
 	if o == nil || IsNil(o.GasLimit) {
 		return nil, false
 	}
@@ -337,15 +337,15 @@ func (o *ResponsesBlockStats) HasGasLimit() bool {
 	return false
 }
 
-// SetGasLimit gets a reference to the given int32 and assigns it to the GasLimit field.
-func (o *ResponsesBlockStats) SetGasLimit(v int32) {
+// SetGasLimit gets a reference to the given int64 and assigns it to the GasLimit field.
+func (o *ResponsesBlockStats) SetGasLimit(v int64) {
 	o.GasLimit = &v
 }
 
 // GetGasUsed returns the GasUsed field value if set, zero value otherwise.
-func (o *ResponsesBlockStats) GetGasUsed() int32 {
+func (o *ResponsesBlockStats) GetGasUsed() int64 {
 	if o == nil || IsNil(o.GasUsed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.GasUsed
@@ -353,7 +353,7 @@ func (o *ResponsesBlockStats) GetGasUsed() int32 {
 
 // GetGasUsedOk returns a tuple with the GasUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlockStats) GetGasUsedOk() (*int32, bool) {
+func (o *ResponsesBlockStats) GetGasUsedOk() (*int64, bool) {
 	if o == nil || IsNil(o.GasUsed) {
 		return nil, false
 	}
@@ -369,8 +369,8 @@ func (o *ResponsesBlockStats) HasGasUsed() bool {
 	return false
 }
 
-// SetGasUsed gets a reference to the given int32 and assigns it to the GasUsed field.
-func (o *ResponsesBlockStats) SetGasUsed(v int32) {
+// SetGasUsed gets a reference to the given int64 and assigns it to the GasUsed field.
+func (o *ResponsesBlockStats) SetGasUsed(v int64) {
 	o.GasUsed = &v
 }
 
@@ -439,9 +439,9 @@ func (o *ResponsesBlockStats) SetRewards(v string) {
 }
 
 // GetSquareSize returns the SquareSize field value if set, zero value otherwise.
-func (o *ResponsesBlockStats) GetSquareSize() int32 {
+func (o *ResponsesBlockStats) GetSquareSize() int64 {
 	if o == nil || IsNil(o.SquareSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SquareSize
@@ -449,7 +449,7 @@ func (o *ResponsesBlockStats) GetSquareSize() int32 {
 
 // GetSquareSizeOk returns a tuple with the SquareSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlockStats) GetSquareSizeOk() (*int32, bool) {
+func (o *ResponsesBlockStats) GetSquareSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.SquareSize) {
 		return nil, false
 	}
@@ -465,8 +465,8 @@ func (o *ResponsesBlockStats) HasSquareSize() bool {
 	return false
 }
 
-// SetSquareSize gets a reference to the given int32 and assigns it to the SquareSize field.
-func (o *ResponsesBlockStats) SetSquareSize(v int32) {
+// SetSquareSize gets a reference to the given int64 and assigns it to the SquareSize field.
+func (o *ResponsesBlockStats) SetSquareSize(v int64) {
 	o.SquareSize = &v
 }
 
@@ -503,9 +503,9 @@ func (o *ResponsesBlockStats) SetSupplyChange(v string) {
 }
 
 // GetTxCount returns the TxCount field value if set, zero value otherwise.
-func (o *ResponsesBlockStats) GetTxCount() int32 {
+func (o *ResponsesBlockStats) GetTxCount() int64 {
 	if o == nil || IsNil(o.TxCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TxCount
@@ -513,7 +513,7 @@ func (o *ResponsesBlockStats) GetTxCount() int32 {
 
 // GetTxCountOk returns a tuple with the TxCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesBlockStats) GetTxCountOk() (*int32, bool) {
+func (o *ResponsesBlockStats) GetTxCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.TxCount) {
 		return nil, false
 	}
@@ -529,8 +529,8 @@ func (o *ResponsesBlockStats) HasTxCount() bool {
 	return false
 }
 
-// SetTxCount gets a reference to the given int32 and assigns it to the TxCount field.
-func (o *ResponsesBlockStats) SetTxCount(v int32) {
+// SetTxCount gets a reference to the given int64 and assigns it to the TxCount field.
+func (o *ResponsesBlockStats) SetTxCount(v int64) {
 	o.TxCount = &v
 }
 

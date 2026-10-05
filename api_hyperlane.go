@@ -27,7 +27,7 @@ type HyperlaneAPIService service
 type ApiGetHyperlaneIgpRequest struct {
 	ctx context.Context
 	ApiService *HyperlaneAPIService
-	id int32
+	id string
 }
 
 func (r ApiGetHyperlaneIgpRequest) Execute() (*ResponsesHyperlaneIgp, *http.Response, error) {
@@ -40,10 +40,10 @@ GetHyperlaneIgp Get IGP by id
 Returns a single Hyperlane Interchain Gas Paymaster (IGP) by its hexadecimal identity, including its owner and destination gas configs.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Internal identity
+ @param id Hyperlane IGP id
  @return ApiGetHyperlaneIgpRequest
 */
-func (a *HyperlaneAPIService) GetHyperlaneIgp(ctx context.Context, id int32) ApiGetHyperlaneIgpRequest {
+func (a *HyperlaneAPIService) GetHyperlaneIgp(ctx context.Context, id string) ApiGetHyperlaneIgpRequest {
 	return ApiGetHyperlaneIgpRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -72,9 +72,6 @@ func (a *HyperlaneAPIService) GetHyperlaneIgpExecute(r ApiGetHyperlaneIgpRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.id < 1 {
-		return localVarReturnValue, nil, reportError("id must be greater than 1")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -92,6 +89,20 @@ func (a *HyperlaneAPIService) GetHyperlaneIgpExecute(r ApiGetHyperlaneIgpRequest
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -217,6 +228,20 @@ func (a *HyperlaneAPIService) GetHyperlaneMailboxExecute(r ApiGetHyperlaneMailbo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -341,6 +366,20 @@ func (a *HyperlaneAPIService) GetHyperlaneTokenExecute(r ApiGetHyperlaneTokenReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -402,7 +441,7 @@ func (a *HyperlaneAPIService) GetHyperlaneTokenExecute(r ApiGetHyperlaneTokenReq
 type ApiGetHyperlaneTransferRequest struct {
 	ctx context.Context
 	ApiService *HyperlaneAPIService
-	id int32
+	id int64
 }
 
 func (r ApiGetHyperlaneTransferRequest) Execute() (*ResponsesHyperlaneTransfer, *http.Response, error) {
@@ -418,7 +457,7 @@ Returns a single Hyperlane cross-chain token transfer by its internal id, includ
  @param id Internal identity
  @return ApiGetHyperlaneTransferRequest
 */
-func (a *HyperlaneAPIService) GetHyperlaneTransfer(ctx context.Context, id int32) ApiGetHyperlaneTransferRequest {
+func (a *HyperlaneAPIService) GetHyperlaneTransfer(ctx context.Context, id int64) ApiGetHyperlaneTransferRequest {
 	return ApiGetHyperlaneTransferRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -467,6 +506,20 @@ func (a *HyperlaneAPIService) GetHyperlaneTransferExecute(r ApiGetHyperlaneTrans
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -529,7 +582,7 @@ func (a *HyperlaneAPIService) GetHyperlaneTransferExecute(r ApiGetHyperlaneTrans
 type ApiGetZkismRequest struct {
 	ctx context.Context
 	ApiService *HyperlaneAPIService
-	id int32
+	id int64
 }
 
 func (r ApiGetZkismRequest) Execute() (*ResponsesZkISM, *http.Response, error) {
@@ -547,7 +600,7 @@ used for ZK proof verification.
  @param id Internal ZK ISM identity
  @return ApiGetZkismRequest
 */
-func (a *HyperlaneAPIService) GetZkism(ctx context.Context, id int32) ApiGetZkismRequest {
+func (a *HyperlaneAPIService) GetZkism(ctx context.Context, id int64) ApiGetZkismRequest {
 	return ApiGetZkismRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -596,6 +649,20 @@ func (a *HyperlaneAPIService) GetZkismExecute(r ApiGetZkismRequest) (*ResponsesZ
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -658,14 +725,14 @@ func (a *HyperlaneAPIService) GetZkismExecute(r ApiGetZkismRequest) (*ResponsesZ
 type ApiGetZkismMessagesRequest struct {
 	ctx context.Context
 	ApiService *HyperlaneAPIService
-	id int32
+	id int64
 	limit *int32
 	offset *int32
 	sort *string
 	txHash *string
 	address *string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Count of requested entities
@@ -699,13 +766,13 @@ func (r ApiGetZkismMessagesRequest) Address(address string) ApiGetZkismMessagesR
 }
 
 // Filter by start time (Unix timestamp)
-func (r ApiGetZkismMessagesRequest) From(from int32) ApiGetZkismMessagesRequest {
+func (r ApiGetZkismMessagesRequest) From(from int64) ApiGetZkismMessagesRequest {
 	r.from = &from
 	return r
 }
 
 // Filter by end time (Unix timestamp)
-func (r ApiGetZkismMessagesRequest) To(to int32) ApiGetZkismMessagesRequest {
+func (r ApiGetZkismMessagesRequest) To(to int64) ApiGetZkismMessagesRequest {
 	r.to = &to
 	return r
 }
@@ -726,7 +793,7 @@ filtered by signer address, transaction hash, or time range.
  @param id Internal ZK ISM identity
  @return ApiGetZkismMessagesRequest
 */
-func (a *HyperlaneAPIService) GetZkismMessages(ctx context.Context, id int32) ApiGetZkismMessagesRequest {
+func (a *HyperlaneAPIService) GetZkismMessages(ctx context.Context, id int64) ApiGetZkismMessagesRequest {
 	return ApiGetZkismMessagesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -797,6 +864,20 @@ func (a *HyperlaneAPIService) GetZkismMessagesExecute(r ApiGetZkismMessagesReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -858,14 +939,14 @@ func (a *HyperlaneAPIService) GetZkismMessagesExecute(r ApiGetZkismMessagesReque
 type ApiGetZkismUpdatesRequest struct {
 	ctx context.Context
 	ApiService *HyperlaneAPIService
-	id int32
+	id int64
 	limit *int32
 	offset *int32
 	sort *string
 	txHash *string
 	address *string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Count of requested entities
@@ -899,13 +980,13 @@ func (r ApiGetZkismUpdatesRequest) Address(address string) ApiGetZkismUpdatesReq
 }
 
 // Filter by start time (Unix timestamp)
-func (r ApiGetZkismUpdatesRequest) From(from int32) ApiGetZkismUpdatesRequest {
+func (r ApiGetZkismUpdatesRequest) From(from int64) ApiGetZkismUpdatesRequest {
 	r.from = &from
 	return r
 }
 
 // Filter by end time (Unix timestamp)
-func (r ApiGetZkismUpdatesRequest) To(to int32) ApiGetZkismUpdatesRequest {
+func (r ApiGetZkismUpdatesRequest) To(to int64) ApiGetZkismUpdatesRequest {
 	r.to = &to
 	return r
 }
@@ -926,7 +1007,7 @@ transaction hash, or time range.
  @param id Internal ZK ISM identity
  @return ApiGetZkismUpdatesRequest
 */
-func (a *HyperlaneAPIService) GetZkismUpdates(ctx context.Context, id int32) ApiGetZkismUpdatesRequest {
+func (a *HyperlaneAPIService) GetZkismUpdates(ctx context.Context, id int64) ApiGetZkismUpdatesRequest {
 	return ApiGetZkismUpdatesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -997,6 +1078,20 @@ func (a *HyperlaneAPIService) GetZkismUpdatesExecute(r ApiGetZkismUpdatesRequest
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1060,7 +1155,7 @@ type ApiListHyperlaneDomainsRequest struct {
 	ApiService *HyperlaneAPIService
 }
 
-func (r ApiListHyperlaneDomainsRequest) Execute() ([]ResponsesDomainMetadata, *http.Response, error) {
+func (r ApiListHyperlaneDomainsRequest) Execute() (*map[string]ResponsesDomainMetadata, *http.Response, error) {
 	return r.ApiService.ListHyperlaneDomainsExecute(r)
 }
 
@@ -1080,13 +1175,13 @@ func (a *HyperlaneAPIService) ListHyperlaneDomains(ctx context.Context) ApiListH
 }
 
 // Execute executes the request
-//  @return []ResponsesDomainMetadata
-func (a *HyperlaneAPIService) ListHyperlaneDomainsExecute(r ApiListHyperlaneDomainsRequest) ([]ResponsesDomainMetadata, *http.Response, error) {
+//  @return map[string]ResponsesDomainMetadata
+func (a *HyperlaneAPIService) ListHyperlaneDomainsExecute(r ApiListHyperlaneDomainsRequest) (*map[string]ResponsesDomainMetadata, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ResponsesDomainMetadata
+		localVarReturnValue  *map[string]ResponsesDomainMetadata
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HyperlaneAPIService.ListHyperlaneDomains")
@@ -1116,6 +1211,20 @@ func (a *HyperlaneAPIService) ListHyperlaneDomainsExecute(r ApiListHyperlaneDoma
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1267,6 +1376,20 @@ func (a *HyperlaneAPIService) ListHyperlaneIgpsExecute(r ApiListHyperlaneIgpsReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1407,6 +1530,20 @@ func (a *HyperlaneAPIService) ListHyperlaneMailboxExecute(r ApiListHyperlaneMail
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1473,7 +1610,7 @@ type ApiListHyperlaneTokensRequest struct {
 	sort *string
 	owner *string
 	mailbox *string
-	type_ *string
+	type_ *[]string
 }
 
 // Count of requested entities
@@ -1507,7 +1644,7 @@ func (r ApiListHyperlaneTokensRequest) Mailbox(mailbox string) ApiListHyperlaneT
 }
 
 // Comma-separated string of tokens type
-func (r ApiListHyperlaneTokensRequest) Type_(type_ string) ApiListHyperlaneTokensRequest {
+func (r ApiListHyperlaneTokensRequest) Type_(type_ []string) ApiListHyperlaneTokensRequest {
 	r.type_ = &type_
 	return r
 }
@@ -1568,7 +1705,7 @@ func (a *HyperlaneAPIService) ListHyperlaneTokensExecute(r ApiListHyperlaneToken
 		parameterAddToHeaderOrQuery(localVarQueryParams, "mailbox", r.mailbox, "", "")
 	}
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1586,6 +1723,20 @@ func (a *HyperlaneAPIService) ListHyperlaneTokensExecute(r ApiListHyperlaneToken
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1655,8 +1806,8 @@ type ApiListHyperlaneTransfersRequest struct {
 	relayer *string
 	mailbox *string
 	token *string
-	type_ *string
-	domain *int32
+	type_ *[]string
+	domain *int64
 	hash *string
 }
 
@@ -1703,13 +1854,13 @@ func (r ApiListHyperlaneTransfersRequest) Token(token string) ApiListHyperlaneTr
 }
 
 // Comma-separated string of transfer type
-func (r ApiListHyperlaneTransfersRequest) Type_(type_ string) ApiListHyperlaneTransfersRequest {
+func (r ApiListHyperlaneTransfersRequest) Type_(type_ []string) ApiListHyperlaneTransfersRequest {
 	r.type_ = &type_
 	return r
 }
 
 // Domain of counterparty chain
-func (r ApiListHyperlaneTransfersRequest) Domain(domain int32) ApiListHyperlaneTransfersRequest {
+func (r ApiListHyperlaneTransfersRequest) Domain(domain int64) ApiListHyperlaneTransfersRequest {
 	r.domain = &domain
 	return r
 }
@@ -1782,7 +1933,7 @@ func (a *HyperlaneAPIService) ListHyperlaneTransfersExecute(r ApiListHyperlaneTr
 		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "", "")
 	}
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "csv")
 	}
 	if r.domain != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "domain", r.domain, "", "")
@@ -1806,6 +1957,20 @@ func (a *HyperlaneAPIService) ListHyperlaneTransfersExecute(r ApiListHyperlaneTr
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1978,6 +2143,20 @@ func (a *HyperlaneAPIService) ListZkismExecute(r ApiListZkismRequest) ([]Respons
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

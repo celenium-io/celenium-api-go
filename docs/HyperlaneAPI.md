@@ -41,7 +41,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
+	id := "id_example" // string | Hyperlane IGP id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -61,7 +61,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **string** | Hyperlane IGP id | 
 
 ### Other Parameters
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -251,7 +251,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
+	id := int64(789) // int64 | Internal identity
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -271,7 +271,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **int64** | Internal identity | 
 
 ### Other Parameters
 
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -321,7 +321,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal ZK ISM identity
+	id := int64(789) // int64 | Internal ZK ISM identity
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -341,7 +341,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal ZK ISM identity | 
+**id** | **int64** | Internal ZK ISM identity | 
 
 ### Other Parameters
 
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -391,14 +391,14 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal ZK ISM identity
+	id := int64(789) // int64 | Internal ZK ISM identity
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset for pagination (optional)
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	txHash := "txHash_example" // string | Filter by transaction hash (hex) (optional)
 	address := "address_example" // string | Filter by signer Celestia address (optional)
-	from := int32(56) // int32 | Filter by start time (Unix timestamp) (optional)
-	to := int32(56) // int32 | Filter by end time (Unix timestamp) (optional)
+	from := int64(789) // int64 | Filter by start time (Unix timestamp) (optional)
+	to := int64(789) // int64 | Filter by end time (Unix timestamp) (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -418,7 +418,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal ZK ISM identity | 
+**id** | **int64** | Internal ZK ISM identity | 
 
 ### Other Parameters
 
@@ -433,8 +433,8 @@ Name | Type | Description  | Notes
  **sort** | **string** | Sort order. Default: desc | 
  **txHash** | **string** | Filter by transaction hash (hex) | 
  **address** | **string** | Filter by signer Celestia address | 
- **from** | **int32** | Filter by start time (Unix timestamp) | 
- **to** | **int32** | Filter by end time (Unix timestamp) | 
+ **from** | **int64** | Filter by start time (Unix timestamp) | 
+ **to** | **int64** | Filter by end time (Unix timestamp) | 
 
 ### Return type
 
@@ -442,7 +442,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -475,14 +475,14 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal ZK ISM identity
+	id := int64(789) // int64 | Internal ZK ISM identity
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset for pagination (optional)
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	txHash := "txHash_example" // string | Filter by transaction hash (hex) (optional)
 	address := "address_example" // string | Filter by signer Celestia address (optional)
-	from := int32(56) // int32 | Filter by start time (Unix timestamp) (optional)
-	to := int32(56) // int32 | Filter by end time (Unix timestamp) (optional)
+	from := int64(789) // int64 | Filter by start time (Unix timestamp) (optional)
+	to := int64(789) // int64 | Filter by end time (Unix timestamp) (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -502,7 +502,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal ZK ISM identity | 
+**id** | **int64** | Internal ZK ISM identity | 
 
 ### Other Parameters
 
@@ -517,8 +517,8 @@ Name | Type | Description  | Notes
  **sort** | **string** | Sort order. Default: desc | 
  **txHash** | **string** | Filter by transaction hash (hex) | 
  **address** | **string** | Filter by signer Celestia address | 
- **from** | **int32** | Filter by start time (Unix timestamp) | 
- **to** | **int32** | Filter by end time (Unix timestamp) | 
+ **from** | **int64** | Filter by start time (Unix timestamp) | 
+ **to** | **int64** | Filter by end time (Unix timestamp) | 
 
 ### Return type
 
@@ -526,7 +526,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -540,7 +540,7 @@ No authorization required
 
 ## ListHyperlaneDomains
 
-> []ResponsesDomainMetadata ListHyperlaneDomains(ctx).Execute()
+> map[string]ResponsesDomainMetadata ListHyperlaneDomains(ctx).Execute()
 
 List hyperlane domains info
 
@@ -567,7 +567,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HyperlaneAPI.ListHyperlaneDomains``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListHyperlaneDomains`: []ResponsesDomainMetadata
+	// response from `ListHyperlaneDomains`: map[string]ResponsesDomainMetadata
 	fmt.Fprintf(os.Stdout, "Response from `HyperlaneAPI.ListHyperlaneDomains`: %v\n", resp)
 }
 ```
@@ -583,11 +583,11 @@ Other parameters are passed through a pointer to a apiListHyperlaneDomainsReques
 
 ### Return type
 
-[**[]ResponsesDomainMetadata**](ResponsesDomainMetadata.md)
+[**map[string]ResponsesDomainMetadata**](ResponsesDomainMetadata.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -657,7 +657,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -725,7 +725,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -763,7 +763,7 @@ func main() {
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	owner := "owner_example" // string | Owner celestia address (optional)
 	mailbox := "mailbox_example" // string | Mailbox hexademical identity (optional)
-	type_ := "type__example" // string | Comma-separated string of tokens type (optional)
+	type_ := []string{"Type_example"} // []string | Comma-separated string of tokens type (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -793,7 +793,7 @@ Name | Type | Description  | Notes
  **sort** | **string** | Sort order. Default: desc | 
  **owner** | **string** | Owner celestia address | 
  **mailbox** | **string** | Mailbox hexademical identity | 
- **type_** | **string** | Comma-separated string of tokens type | 
+ **type_** | **[]string** | Comma-separated string of tokens type | 
 
 ### Return type
 
@@ -801,7 +801,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -841,8 +841,8 @@ func main() {
 	relayer := "relayer_example" // string | Celestia address of relayer (optional)
 	mailbox := "mailbox_example" // string | Mailbox hexademical identity (optional)
 	token := "token_example" // string | Token hexademical identity (optional)
-	type_ := "type__example" // string | Comma-separated string of transfer type (optional)
-	domain := int32(56) // int32 | Domain of counterparty chain (optional)
+	type_ := []string{"Type_example"} // []string | Comma-separated string of transfer type (optional)
+	domain := int64(789) // int64 | Domain of counterparty chain (optional)
 	hash := "hash_example" // string | Transaction hash in hexadecimal (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -875,8 +875,8 @@ Name | Type | Description  | Notes
  **relayer** | **string** | Celestia address of relayer | 
  **mailbox** | **string** | Mailbox hexademical identity | 
  **token** | **string** | Token hexademical identity | 
- **type_** | **string** | Comma-separated string of transfer type | 
- **domain** | **int32** | Domain of counterparty chain | 
+ **type_** | **[]string** | Comma-separated string of transfer type | 
+ **domain** | **int64** | Domain of counterparty chain | 
  **hash** | **string** | Transaction hash in hexadecimal | 
 
 ### Return type
@@ -885,7 +885,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -959,7 +959,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

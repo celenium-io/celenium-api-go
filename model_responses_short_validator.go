@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponsesShortValidator{}
 // ResponsesShortValidator struct for ResponsesShortValidator
 type ResponsesShortValidator struct {
 	ConsAddress *string `json:"cons_address,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Moniker *string `json:"moniker,omitempty"`
 }
 
@@ -75,9 +75,9 @@ func (o *ResponsesShortValidator) SetConsAddress(v string) {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesShortValidator) GetId() int32 {
+func (o *ResponsesShortValidator) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -85,7 +85,7 @@ func (o *ResponsesShortValidator) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesShortValidator) GetIdOk() (*int32, bool) {
+func (o *ResponsesShortValidator) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *ResponsesShortValidator) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesShortValidator) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesShortValidator) SetId(v int64) {
 	o.Id = &v
 }
 

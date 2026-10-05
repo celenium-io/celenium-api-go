@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 	"time"
 )
 
@@ -23,16 +22,16 @@ var _ MappedNullable = &ResponsesZkISM{}
 // ResponsesZkISM struct for ResponsesZkISM
 type ResponsesZkISM struct {
 	Creator *ResponsesShortAddress `json:"creator,omitempty"`
-	ExternalId **os.File `json:"external_id,omitempty"`
-	Groth16Vkey **os.File `json:"groth16_vkey,omitempty"`
+	ExternalId *string `json:"external_id,omitempty"`
+	Groth16Vkey *string `json:"groth16_vkey,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
-	MerkleTreeAddress **os.File `json:"merkle_tree_address,omitempty"`
-	State **os.File `json:"state,omitempty"`
-	StateMembershipVkey **os.File `json:"state_membership_vkey,omitempty"`
-	StateTransitionVkey **os.File `json:"state_transition_vkey,omitempty"`
+	MerkleTreeAddress *string `json:"merkle_tree_address,omitempty"`
+	State *string `json:"state,omitempty"`
+	StateMembershipVkey *string `json:"state_membership_vkey,omitempty"`
+	StateTransitionVkey *string `json:"state_transition_vkey,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
 }
 
 // NewResponsesZkISM instantiates a new ResponsesZkISM object
@@ -85,9 +84,9 @@ func (o *ResponsesZkISM) SetCreator(v ResponsesShortAddress) {
 }
 
 // GetExternalId returns the ExternalId field value if set, zero value otherwise.
-func (o *ResponsesZkISM) GetExternalId() *os.File {
+func (o *ResponsesZkISM) GetExternalId() string {
 	if o == nil || IsNil(o.ExternalId) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.ExternalId
@@ -95,7 +94,7 @@ func (o *ResponsesZkISM) GetExternalId() *os.File {
 
 // GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISM) GetExternalIdOk() (**os.File, bool) {
+func (o *ResponsesZkISM) GetExternalIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ExternalId) {
 		return nil, false
 	}
@@ -111,15 +110,15 @@ func (o *ResponsesZkISM) HasExternalId() bool {
 	return false
 }
 
-// SetExternalId gets a reference to the given *os.File and assigns it to the ExternalId field.
-func (o *ResponsesZkISM) SetExternalId(v *os.File) {
+// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
+func (o *ResponsesZkISM) SetExternalId(v string) {
 	o.ExternalId = &v
 }
 
 // GetGroth16Vkey returns the Groth16Vkey field value if set, zero value otherwise.
-func (o *ResponsesZkISM) GetGroth16Vkey() *os.File {
+func (o *ResponsesZkISM) GetGroth16Vkey() string {
 	if o == nil || IsNil(o.Groth16Vkey) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.Groth16Vkey
@@ -127,7 +126,7 @@ func (o *ResponsesZkISM) GetGroth16Vkey() *os.File {
 
 // GetGroth16VkeyOk returns a tuple with the Groth16Vkey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISM) GetGroth16VkeyOk() (**os.File, bool) {
+func (o *ResponsesZkISM) GetGroth16VkeyOk() (*string, bool) {
 	if o == nil || IsNil(o.Groth16Vkey) {
 		return nil, false
 	}
@@ -143,8 +142,8 @@ func (o *ResponsesZkISM) HasGroth16Vkey() bool {
 	return false
 }
 
-// SetGroth16Vkey gets a reference to the given *os.File and assigns it to the Groth16Vkey field.
-func (o *ResponsesZkISM) SetGroth16Vkey(v *os.File) {
+// SetGroth16Vkey gets a reference to the given string and assigns it to the Groth16Vkey field.
+func (o *ResponsesZkISM) SetGroth16Vkey(v string) {
 	o.Groth16Vkey = &v
 }
 
@@ -213,9 +212,9 @@ func (o *ResponsesZkISM) SetId(v int64) {
 }
 
 // GetMerkleTreeAddress returns the MerkleTreeAddress field value if set, zero value otherwise.
-func (o *ResponsesZkISM) GetMerkleTreeAddress() *os.File {
+func (o *ResponsesZkISM) GetMerkleTreeAddress() string {
 	if o == nil || IsNil(o.MerkleTreeAddress) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.MerkleTreeAddress
@@ -223,7 +222,7 @@ func (o *ResponsesZkISM) GetMerkleTreeAddress() *os.File {
 
 // GetMerkleTreeAddressOk returns a tuple with the MerkleTreeAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISM) GetMerkleTreeAddressOk() (**os.File, bool) {
+func (o *ResponsesZkISM) GetMerkleTreeAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.MerkleTreeAddress) {
 		return nil, false
 	}
@@ -239,15 +238,15 @@ func (o *ResponsesZkISM) HasMerkleTreeAddress() bool {
 	return false
 }
 
-// SetMerkleTreeAddress gets a reference to the given *os.File and assigns it to the MerkleTreeAddress field.
-func (o *ResponsesZkISM) SetMerkleTreeAddress(v *os.File) {
+// SetMerkleTreeAddress gets a reference to the given string and assigns it to the MerkleTreeAddress field.
+func (o *ResponsesZkISM) SetMerkleTreeAddress(v string) {
 	o.MerkleTreeAddress = &v
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *ResponsesZkISM) GetState() *os.File {
+func (o *ResponsesZkISM) GetState() string {
 	if o == nil || IsNil(o.State) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.State
@@ -255,7 +254,7 @@ func (o *ResponsesZkISM) GetState() *os.File {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISM) GetStateOk() (**os.File, bool) {
+func (o *ResponsesZkISM) GetStateOk() (*string, bool) {
 	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
@@ -271,15 +270,15 @@ func (o *ResponsesZkISM) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given *os.File and assigns it to the State field.
-func (o *ResponsesZkISM) SetState(v *os.File) {
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *ResponsesZkISM) SetState(v string) {
 	o.State = &v
 }
 
 // GetStateMembershipVkey returns the StateMembershipVkey field value if set, zero value otherwise.
-func (o *ResponsesZkISM) GetStateMembershipVkey() *os.File {
+func (o *ResponsesZkISM) GetStateMembershipVkey() string {
 	if o == nil || IsNil(o.StateMembershipVkey) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.StateMembershipVkey
@@ -287,7 +286,7 @@ func (o *ResponsesZkISM) GetStateMembershipVkey() *os.File {
 
 // GetStateMembershipVkeyOk returns a tuple with the StateMembershipVkey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISM) GetStateMembershipVkeyOk() (**os.File, bool) {
+func (o *ResponsesZkISM) GetStateMembershipVkeyOk() (*string, bool) {
 	if o == nil || IsNil(o.StateMembershipVkey) {
 		return nil, false
 	}
@@ -303,15 +302,15 @@ func (o *ResponsesZkISM) HasStateMembershipVkey() bool {
 	return false
 }
 
-// SetStateMembershipVkey gets a reference to the given *os.File and assigns it to the StateMembershipVkey field.
-func (o *ResponsesZkISM) SetStateMembershipVkey(v *os.File) {
+// SetStateMembershipVkey gets a reference to the given string and assigns it to the StateMembershipVkey field.
+func (o *ResponsesZkISM) SetStateMembershipVkey(v string) {
 	o.StateMembershipVkey = &v
 }
 
 // GetStateTransitionVkey returns the StateTransitionVkey field value if set, zero value otherwise.
-func (o *ResponsesZkISM) GetStateTransitionVkey() *os.File {
+func (o *ResponsesZkISM) GetStateTransitionVkey() string {
 	if o == nil || IsNil(o.StateTransitionVkey) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.StateTransitionVkey
@@ -319,7 +318,7 @@ func (o *ResponsesZkISM) GetStateTransitionVkey() *os.File {
 
 // GetStateTransitionVkeyOk returns a tuple with the StateTransitionVkey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISM) GetStateTransitionVkeyOk() (**os.File, bool) {
+func (o *ResponsesZkISM) GetStateTransitionVkeyOk() (*string, bool) {
 	if o == nil || IsNil(o.StateTransitionVkey) {
 		return nil, false
 	}
@@ -335,8 +334,8 @@ func (o *ResponsesZkISM) HasStateTransitionVkey() bool {
 	return false
 }
 
-// SetStateTransitionVkey gets a reference to the given *os.File and assigns it to the StateTransitionVkey field.
-func (o *ResponsesZkISM) SetStateTransitionVkey(v *os.File) {
+// SetStateTransitionVkey gets a reference to the given string and assigns it to the StateTransitionVkey field.
+func (o *ResponsesZkISM) SetStateTransitionVkey(v string) {
 	o.StateTransitionVkey = &v
 }
 
@@ -373,9 +372,9 @@ func (o *ResponsesZkISM) SetTime(v time.Time) {
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesZkISM) GetTxHash() *os.File {
+func (o *ResponsesZkISM) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -383,7 +382,7 @@ func (o *ResponsesZkISM) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISM) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesZkISM) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -399,8 +398,8 @@ func (o *ResponsesZkISM) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesZkISM) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesZkISM) SetTxHash(v string) {
 	o.TxHash = &v
 }
 

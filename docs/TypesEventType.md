@@ -185,6 +185,70 @@
 
 * `EventTypeCelestiazkismv1EventSubmitMessages` (value: `"celestia.zkism.v1.EventSubmitMessages"`)
 
+* `EventTypeCelestiafibrev1EventDepositToEscrow` (value: `"celestia.fibre.v1.EventDepositToEscrow"`)
+
+* `EventTypeCelestiafibrev1EventWithdrawFromEscrowRequest` (value: `"celestia.fibre.v1.EventWithdrawFromEscrowRequest"`)
+
+* `EventTypeCelestiafibrev1EventWithdrawFromEscrowExecuted` (value: `"celestia.fibre.v1.EventWithdrawFromEscrowExecuted"`)
+
+* `EventTypeCelestiafibrev1EventPayForFibre` (value: `"celestia.fibre.v1.EventPayForFibre"`)
+
+* `EventTypeCelestiafibrev1EventPaymentPromiseTimeout` (value: `"celestia.fibre.v1.EventPaymentPromiseTimeout"`)
+
+* `EventTypeCelestiafibrev1EventUpdateFibreParams` (value: `"celestia.fibre.v1.EventUpdateFibreParams"`)
+
+* `EventTypeCelestiafibrev1EventProcessedPaymentPruned` (value: `"celestia.fibre.v1.EventProcessedPaymentPruned"`)
+
+* `EventTypeSetFibreProviderInfo` (value: `"set_fibre_provider_info"`)
+
+* `EventTypeClientMisbehaviour` (value: `"client_misbehaviour"`)
+
+* `EventTypeUpgradeClient` (value: `"upgrade_client"`)
+
+* `EventTypeRecoverClient` (value: `"recover_client"`)
+
+* `EventTypeScheduleIbcSoftwareUpgrade` (value: `"schedule_ibc_software_upgrade"`)
+
+* `EventTypeUpgradeChain` (value: `"upgrade_chain"`)
+
+* `EventTypeChannelCloseInit` (value: `"channel_close_init"`)
+
+* `EventTypeChannelClose` (value: `"channel_close"`)
+
+* `EventTypeChannelUpgradeInit` (value: `"channel_upgrade_init"`)
+
+* `EventTypeChannelUpgradeTry` (value: `"channel_upgrade_try"`)
+
+* `EventTypeChannelUpgradeAck` (value: `"channel_upgrade_ack"`)
+
+* `EventTypeChannelUpgradeConfirm` (value: `"channel_upgrade_confirm"`)
+
+* `EventTypeChannelUpgradeOpen` (value: `"channel_upgrade_open"`)
+
+* `EventTypeChannelUpgradeTimeout` (value: `"channel_upgrade_timeout"`)
+
+* `EventTypeChannelUpgradeCancelled` (value: `"channel_upgrade_cancelled"`)
+
+* `EventTypeChannelUpgradeError` (value: `"channel_upgrade_error"`)
+
+* `EventTypeChannelFlushComplete` (value: `"channel_flush_complete"`)
+
+* `EventTypeChannelClosed` (value: `"channel_closed"`)
+
+* `EventTypeDenominationTrace` (value: `"denomination_trace"`)
+
+* `EventTypeIbccallbackerrorDenominationTrace` (value: `"ibccallbackerror-denomination_trace"`)
+
+* `EventTypeCancelProposal` (value: `"cancel_proposal"`)
+
+* `EventTypeHyperlanecoreismv1EventRemoveRoutingIsmDomain` (value: `"hyperlane.core.ism.v1.EventRemoveRoutingIsmDomain"`)
+
+* `EventTypeHyperlanecoreismv1EventAnnounceStorageLocation` (value: `"hyperlane.core.ism.v1.EventAnnounceStorageLocation"`)
+
+* `EventTypeHyperlanecoreismv1EventCreateMessageIdMultisigIsm` (value: `"hyperlane.core.ism.v1.EventCreateMessageIdMultisigIsm"`)
+
+* `EventTypeHyperlanecoreismv1EventCreateMerkleRootMultisigIsm` (value: `"hyperlane.core.ism.v1.EventCreateMerkleRootMultisigIsm"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

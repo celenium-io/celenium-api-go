@@ -41,7 +41,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
+	id := int64(789) // int64 | Internal identity
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -61,7 +61,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **int64** | Internal identity | 
 
 ### Other Parameters
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -181,7 +181,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
+	id := int64(789) // int64 | Internal identity
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
@@ -206,7 +206,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **int64** | Internal identity | 
 
 ### Other Parameters
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -331,7 +331,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
+	id := int64(789) // int64 | Internal identity
 	name := "name_example" // string | Series name
 	timeframe := "timeframe_example" // string | Timeframe
 
@@ -353,7 +353,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **int64** | Internal identity | 
 **name** | **string** | Series name | 
 **timeframe** | **string** | Timeframe | 
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -407,7 +407,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
+	id := int64(789) // int64 | Internal identity
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 
@@ -429,7 +429,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **int64** | Internal identity | 
 
 ### Other Parameters
 
@@ -448,7 +448,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -481,7 +481,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
+	id := int64(789) // int64 | Internal identity
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -501,7 +501,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **int64** | Internal identity | 
 
 ### Other Parameters
 
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -551,11 +551,11 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
+	id := int64(789) // int64 | Internal identity
 	name := "name_example" // string | Series name
 	timeframe := "timeframe_example" // string | Timeframe
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -575,7 +575,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **int64** | Internal identity | 
 **name** | **string** | Series name | 
 **timeframe** | **string** | Timeframe | 
 
@@ -589,8 +589,8 @@ Name | Type | Description  | Notes
 
 
 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -598,7 +598,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -612,7 +612,7 @@ No authorization required
 
 ## GetRollupsCount
 
-> int32 GetRollupsCount(ctx).Execute()
+> int64 GetRollupsCount(ctx).Execute()
 
 Get count of rollups in network
 
@@ -639,7 +639,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RollupAPI.GetRollupsCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetRollupsCount`: int32
+	// response from `GetRollupsCount`: int64
 	fmt.Fprintf(os.Stdout, "Response from `RollupAPI.GetRollupsCount`: %v\n", resp)
 }
 ```
@@ -655,11 +655,11 @@ Other parameters are passed through a pointer to a apiGetRollupsCountRequest str
 
 ### Return type
 
-**int32**
+**int64**
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -673,7 +673,7 @@ No authorization required
 
 ## ListRollup
 
-> []ResponsesRollupWithStats ListRollup(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).IsActive(isActive).Execute()
+> []ResponsesRollupWithStats ListRollup(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).Type_(type_).IsActive(isActive).Execute()
 
 List rollups info
 
@@ -696,15 +696,16 @@ func main() {
 	offset := int32(56) // int32 | Offset (optional)
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	sortBy := "sortBy_example" // string | Sort field. Default: size (optional)
-	category := "category_example" // string | Comma-separated rollup category list (optional)
-	tags := "tags_example" // string | Comma-separated rollup tags list (optional)
-	stack := "stack_example" // string | Comma-separated rollup stack list (optional)
-	provider := "provider_example" // string | Comma-separated rollup provider list (optional)
+	category := []string{"Inner_example"} // []string | Comma-separated rollup category list (optional)
+	tags := []string{"Inner_example"} // []string | Comma-separated rollup tags list (optional)
+	stack := []string{"Inner_example"} // []string | Comma-separated rollup stack list (optional)
+	provider := []string{"Inner_example"} // []string | Comma-separated rollup provider list (optional)
+	type_ := []string{"Type_example"} // []string | Comma-separated rollup type list (optional)
 	isActive := true // bool | If true, shows rollups with activity over the last month (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RollupAPI.ListRollup(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).IsActive(isActive).Execute()
+	resp, r, err := apiClient.RollupAPI.ListRollup(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).Type_(type_).IsActive(isActive).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RollupAPI.ListRollup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -729,10 +730,11 @@ Name | Type | Description  | Notes
  **offset** | **int32** | Offset | 
  **sort** | **string** | Sort order. Default: desc | 
  **sortBy** | **string** | Sort field. Default: size | 
- **category** | **string** | Comma-separated rollup category list | 
- **tags** | **string** | Comma-separated rollup tags list | 
- **stack** | **string** | Comma-separated rollup stack list | 
- **provider** | **string** | Comma-separated rollup provider list | 
+ **category** | **[]string** | Comma-separated rollup category list | 
+ **tags** | **[]string** | Comma-separated rollup tags list | 
+ **stack** | **[]string** | Comma-separated rollup stack list | 
+ **provider** | **[]string** | Comma-separated rollup provider list | 
+ **type_** | **[]string** | Comma-separated rollup type list | 
  **isActive** | **bool** | If true, shows rollups with activity over the last month | 
 
 ### Return type
@@ -741,7 +743,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -755,7 +757,7 @@ No authorization required
 
 ## ListRollup24h
 
-> []ResponsesRollupWithDayStats ListRollup24h(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).Execute()
+> []ResponsesRollupWithDayStats ListRollup24h(ctx).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).Type_(type_).Execute()
 
 List rollups info with stats by previous 24 hours
 
@@ -778,14 +780,15 @@ func main() {
 	offset := int32(56) // int32 | Offset (optional)
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	sortBy := "sortBy_example" // string | Sort field. Default: mb_price (optional)
-	category := "category_example" // string | Comma-separated rollup category list (optional)
-	tags := "tags_example" // string | Comma-separated rollup tags list (optional)
-	stack := "stack_example" // string | Comma-separated rollup stack list (optional)
-	provider := "provider_example" // string | Comma-separated rollup provider list (optional)
+	category := []string{"Inner_example"} // []string | Comma-separated rollup category list (optional)
+	tags := []string{"Inner_example"} // []string | Comma-separated rollup tags list (optional)
+	stack := []string{"Inner_example"} // []string | Comma-separated rollup stack list (optional)
+	provider := []string{"Inner_example"} // []string | Comma-separated rollup provider list (optional)
+	type_ := []string{"Type_example"} // []string | Comma-separated rollup type list (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RollupAPI.ListRollup24h(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).Execute()
+	resp, r, err := apiClient.RollupAPI.ListRollup24h(context.Background()).Limit(limit).Offset(offset).Sort(sort).SortBy(sortBy).Category(category).Tags(tags).Stack(stack).Provider(provider).Type_(type_).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RollupAPI.ListRollup24h``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -810,10 +813,11 @@ Name | Type | Description  | Notes
  **offset** | **int32** | Offset | 
  **sort** | **string** | Sort order. Default: desc | 
  **sortBy** | **string** | Sort field. Default: mb_price | 
- **category** | **string** | Comma-separated rollup category list | 
- **tags** | **string** | Comma-separated rollup tags list | 
- **stack** | **string** | Comma-separated rollup stack list | 
- **provider** | **string** | Comma-separated rollup provider list | 
+ **category** | **[]string** | Comma-separated rollup category list | 
+ **tags** | **[]string** | Comma-separated rollup tags list | 
+ **stack** | **[]string** | Comma-separated rollup stack list | 
+ **provider** | **[]string** | Comma-separated rollup provider list | 
+ **type_** | **[]string** | Comma-separated rollup type list | 
 
 ### Return type
 
@@ -821,7 +825,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -854,9 +858,9 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal identity
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	id := int64(789) // int64 | Internal identity
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -874,7 +878,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal identity | 
+**id** | **int64** | Internal identity | 
 
 ### Other Parameters
 
@@ -884,8 +888,8 @@ Other parameters are passed through a pointer to a apiRollupExportRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -893,12 +897,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*
+- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -961,7 +965,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

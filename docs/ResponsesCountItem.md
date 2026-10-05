@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to **string** |  | [optional] 
+**Value** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *ResponsesCountItem) GetValue() string`
+`func (o *ResponsesCountItem) GetValue() int64`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *ResponsesCountItem) GetValueOk() (*string, bool)`
+`func (o *ResponsesCountItem) GetValueOk() (*int64, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *ResponsesCountItem) SetValue(v string)`
+`func (o *ResponsesCountItem) SetValue(v int64)`
 
 SetValue sets Value field to given value.
 

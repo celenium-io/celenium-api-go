@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BlobSource** | Pointer to **[]string** |  | [optional] 
 **Categories** | Pointer to **[]string** |  | [optional] 
 **CelestialsStatuses** | Pointer to **[]string** |  | [optional] 
 **EventType** | Pointer to **[]string** |  | [optional] 
@@ -38,6 +39,31 @@ will change when the set of required properties is changed
 NewResponsesEnumsWithDefaults instantiates a new ResponsesEnums object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBlobSource
+
+`func (o *ResponsesEnums) GetBlobSource() []string`
+
+GetBlobSource returns the BlobSource field if non-nil, zero value otherwise.
+
+### GetBlobSourceOk
+
+`func (o *ResponsesEnums) GetBlobSourceOk() (*[]string, bool)`
+
+GetBlobSourceOk returns a tuple with the BlobSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlobSource
+
+`func (o *ResponsesEnums) SetBlobSource(v []string)`
+
+SetBlobSource sets BlobSource field to given value.
+
+### HasBlobSource
+
+`func (o *ResponsesEnums) HasBlobSource() bool`
+
+HasBlobSource returns a boolean if a field has been set.
 
 ### GetCategories
 

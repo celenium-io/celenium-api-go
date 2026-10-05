@@ -21,21 +21,22 @@ var _ MappedNullable = &ResponsesRollupWithStats{}
 
 // ResponsesRollupWithStats struct for ResponsesRollupWithStats
 type ResponsesRollupWithStats struct {
-	BlobsCount *int32 `json:"blobs_count,omitempty"`
-	BlobsCountPct *float32 `json:"blobs_count_pct,omitempty"`
+	BlobsCount *int64 `json:"blobs_count,omitempty"`
+	BlobsCountPct *float64 `json:"blobs_count_pct,omitempty"`
 	Bridge *string `json:"bridge,omitempty"`
 	Category *string `json:"category,omitempty"`
 	Color *string `json:"color,omitempty"`
 	Compression *string `json:"compression,omitempty"`
-	DaPct *float32 `json:"da_pct,omitempty"`
+	DaPct *float64 `json:"da_pct,omitempty"`
 	DefiLama *string `json:"defi_lama,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Explorer *string `json:"explorer,omitempty"`
 	Fee *string `json:"fee,omitempty"`
-	FeePct *float32 `json:"fee_pct,omitempty"`
+	FeePct *float64 `json:"fee_pct,omitempty"`
+	FibreBlobsCount *int64 `json:"fibre_blobs_count,omitempty"`
 	FirstMessageTime *time.Time `json:"first_message_time,omitempty"`
 	Github *string `json:"github,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	IsActive *bool `json:"is_active,omitempty"`
 	L2Beat *string `json:"l2_beat,omitempty"`
 	LastMessageTime *time.Time `json:"last_message_time,omitempty"`
@@ -44,8 +45,8 @@ type ResponsesRollupWithStats struct {
 	Name *string `json:"name,omitempty"`
 	Provider *string `json:"provider,omitempty"`
 	SettledOn *string `json:"settled_on,omitempty"`
-	Size *int32 `json:"size,omitempty"`
-	SizePct *float32 `json:"size_pct,omitempty"`
+	Size *int64 `json:"size,omitempty"`
+	SizePct *float64 `json:"size_pct,omitempty"`
 	Slug *string `json:"slug,omitempty"`
 	Stack *string `json:"stack,omitempty"`
 	Tags []string `json:"tags,omitempty"`
@@ -73,9 +74,9 @@ func NewResponsesRollupWithStatsWithDefaults() *ResponsesRollupWithStats {
 }
 
 // GetBlobsCount returns the BlobsCount field value if set, zero value otherwise.
-func (o *ResponsesRollupWithStats) GetBlobsCount() int32 {
+func (o *ResponsesRollupWithStats) GetBlobsCount() int64 {
 	if o == nil || IsNil(o.BlobsCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BlobsCount
@@ -83,7 +84,7 @@ func (o *ResponsesRollupWithStats) GetBlobsCount() int32 {
 
 // GetBlobsCountOk returns a tuple with the BlobsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithStats) GetBlobsCountOk() (*int32, bool) {
+func (o *ResponsesRollupWithStats) GetBlobsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.BlobsCount) {
 		return nil, false
 	}
@@ -99,15 +100,15 @@ func (o *ResponsesRollupWithStats) HasBlobsCount() bool {
 	return false
 }
 
-// SetBlobsCount gets a reference to the given int32 and assigns it to the BlobsCount field.
-func (o *ResponsesRollupWithStats) SetBlobsCount(v int32) {
+// SetBlobsCount gets a reference to the given int64 and assigns it to the BlobsCount field.
+func (o *ResponsesRollupWithStats) SetBlobsCount(v int64) {
 	o.BlobsCount = &v
 }
 
 // GetBlobsCountPct returns the BlobsCountPct field value if set, zero value otherwise.
-func (o *ResponsesRollupWithStats) GetBlobsCountPct() float32 {
+func (o *ResponsesRollupWithStats) GetBlobsCountPct() float64 {
 	if o == nil || IsNil(o.BlobsCountPct) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.BlobsCountPct
@@ -115,7 +116,7 @@ func (o *ResponsesRollupWithStats) GetBlobsCountPct() float32 {
 
 // GetBlobsCountPctOk returns a tuple with the BlobsCountPct field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithStats) GetBlobsCountPctOk() (*float32, bool) {
+func (o *ResponsesRollupWithStats) GetBlobsCountPctOk() (*float64, bool) {
 	if o == nil || IsNil(o.BlobsCountPct) {
 		return nil, false
 	}
@@ -131,8 +132,8 @@ func (o *ResponsesRollupWithStats) HasBlobsCountPct() bool {
 	return false
 }
 
-// SetBlobsCountPct gets a reference to the given float32 and assigns it to the BlobsCountPct field.
-func (o *ResponsesRollupWithStats) SetBlobsCountPct(v float32) {
+// SetBlobsCountPct gets a reference to the given float64 and assigns it to the BlobsCountPct field.
+func (o *ResponsesRollupWithStats) SetBlobsCountPct(v float64) {
 	o.BlobsCountPct = &v
 }
 
@@ -265,9 +266,9 @@ func (o *ResponsesRollupWithStats) SetCompression(v string) {
 }
 
 // GetDaPct returns the DaPct field value if set, zero value otherwise.
-func (o *ResponsesRollupWithStats) GetDaPct() float32 {
+func (o *ResponsesRollupWithStats) GetDaPct() float64 {
 	if o == nil || IsNil(o.DaPct) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.DaPct
@@ -275,7 +276,7 @@ func (o *ResponsesRollupWithStats) GetDaPct() float32 {
 
 // GetDaPctOk returns a tuple with the DaPct field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithStats) GetDaPctOk() (*float32, bool) {
+func (o *ResponsesRollupWithStats) GetDaPctOk() (*float64, bool) {
 	if o == nil || IsNil(o.DaPct) {
 		return nil, false
 	}
@@ -291,8 +292,8 @@ func (o *ResponsesRollupWithStats) HasDaPct() bool {
 	return false
 }
 
-// SetDaPct gets a reference to the given float32 and assigns it to the DaPct field.
-func (o *ResponsesRollupWithStats) SetDaPct(v float32) {
+// SetDaPct gets a reference to the given float64 and assigns it to the DaPct field.
+func (o *ResponsesRollupWithStats) SetDaPct(v float64) {
 	o.DaPct = &v
 }
 
@@ -425,9 +426,9 @@ func (o *ResponsesRollupWithStats) SetFee(v string) {
 }
 
 // GetFeePct returns the FeePct field value if set, zero value otherwise.
-func (o *ResponsesRollupWithStats) GetFeePct() float32 {
+func (o *ResponsesRollupWithStats) GetFeePct() float64 {
 	if o == nil || IsNil(o.FeePct) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.FeePct
@@ -435,7 +436,7 @@ func (o *ResponsesRollupWithStats) GetFeePct() float32 {
 
 // GetFeePctOk returns a tuple with the FeePct field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithStats) GetFeePctOk() (*float32, bool) {
+func (o *ResponsesRollupWithStats) GetFeePctOk() (*float64, bool) {
 	if o == nil || IsNil(o.FeePct) {
 		return nil, false
 	}
@@ -451,9 +452,41 @@ func (o *ResponsesRollupWithStats) HasFeePct() bool {
 	return false
 }
 
-// SetFeePct gets a reference to the given float32 and assigns it to the FeePct field.
-func (o *ResponsesRollupWithStats) SetFeePct(v float32) {
+// SetFeePct gets a reference to the given float64 and assigns it to the FeePct field.
+func (o *ResponsesRollupWithStats) SetFeePct(v float64) {
 	o.FeePct = &v
+}
+
+// GetFibreBlobsCount returns the FibreBlobsCount field value if set, zero value otherwise.
+func (o *ResponsesRollupWithStats) GetFibreBlobsCount() int64 {
+	if o == nil || IsNil(o.FibreBlobsCount) {
+		var ret int64
+		return ret
+	}
+	return *o.FibreBlobsCount
+}
+
+// GetFibreBlobsCountOk returns a tuple with the FibreBlobsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesRollupWithStats) GetFibreBlobsCountOk() (*int64, bool) {
+	if o == nil || IsNil(o.FibreBlobsCount) {
+		return nil, false
+	}
+	return o.FibreBlobsCount, true
+}
+
+// HasFibreBlobsCount returns a boolean if a field has been set.
+func (o *ResponsesRollupWithStats) HasFibreBlobsCount() bool {
+	if o != nil && !IsNil(o.FibreBlobsCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetFibreBlobsCount gets a reference to the given int64 and assigns it to the FibreBlobsCount field.
+func (o *ResponsesRollupWithStats) SetFibreBlobsCount(v int64) {
+	o.FibreBlobsCount = &v
 }
 
 // GetFirstMessageTime returns the FirstMessageTime field value if set, zero value otherwise.
@@ -521,9 +554,9 @@ func (o *ResponsesRollupWithStats) SetGithub(v string) {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ResponsesRollupWithStats) GetId() int32 {
+func (o *ResponsesRollupWithStats) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -531,7 +564,7 @@ func (o *ResponsesRollupWithStats) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithStats) GetIdOk() (*int32, bool) {
+func (o *ResponsesRollupWithStats) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -547,8 +580,8 @@ func (o *ResponsesRollupWithStats) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ResponsesRollupWithStats) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ResponsesRollupWithStats) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -809,9 +842,9 @@ func (o *ResponsesRollupWithStats) SetSettledOn(v string) {
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *ResponsesRollupWithStats) GetSize() int32 {
+func (o *ResponsesRollupWithStats) GetSize() int64 {
 	if o == nil || IsNil(o.Size) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Size
@@ -819,7 +852,7 @@ func (o *ResponsesRollupWithStats) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithStats) GetSizeOk() (*int32, bool) {
+func (o *ResponsesRollupWithStats) GetSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
@@ -835,15 +868,15 @@ func (o *ResponsesRollupWithStats) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given int32 and assigns it to the Size field.
-func (o *ResponsesRollupWithStats) SetSize(v int32) {
+// SetSize gets a reference to the given int64 and assigns it to the Size field.
+func (o *ResponsesRollupWithStats) SetSize(v int64) {
 	o.Size = &v
 }
 
 // GetSizePct returns the SizePct field value if set, zero value otherwise.
-func (o *ResponsesRollupWithStats) GetSizePct() float32 {
+func (o *ResponsesRollupWithStats) GetSizePct() float64 {
 	if o == nil || IsNil(o.SizePct) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.SizePct
@@ -851,7 +884,7 @@ func (o *ResponsesRollupWithStats) GetSizePct() float32 {
 
 // GetSizePctOk returns a tuple with the SizePct field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesRollupWithStats) GetSizePctOk() (*float32, bool) {
+func (o *ResponsesRollupWithStats) GetSizePctOk() (*float64, bool) {
 	if o == nil || IsNil(o.SizePct) {
 		return nil, false
 	}
@@ -867,8 +900,8 @@ func (o *ResponsesRollupWithStats) HasSizePct() bool {
 	return false
 }
 
-// SetSizePct gets a reference to the given float32 and assigns it to the SizePct field.
-func (o *ResponsesRollupWithStats) SetSizePct(v float32) {
+// SetSizePct gets a reference to the given float64 and assigns it to the SizePct field.
+func (o *ResponsesRollupWithStats) SetSizePct(v float64) {
 	o.SizePct = &v
 }
 
@@ -1141,6 +1174,9 @@ func (o ResponsesRollupWithStats) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FeePct) {
 		toSerialize["fee_pct"] = o.FeePct
+	}
+	if !IsNil(o.FibreBlobsCount) {
+		toSerialize["fibre_blobs_count"] = o.FibreBlobsCount
 	}
 	if !IsNil(o.FirstMessageTime) {
 		toSerialize["first_message_time"] = o.FirstMessageTime

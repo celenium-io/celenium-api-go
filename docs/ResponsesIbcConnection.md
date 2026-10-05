@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChannelsCount** | Pointer to **int32** |  | [optional] 
+**ChannelsCount** | Pointer to **int64** |  | [optional] 
 **Client** | Pointer to [**ResponsesShortIbcClient**](ResponsesShortIbcClient.md) |  | [optional] 
 **ConnectedAt** | Pointer to **time.Time** |  | [optional] 
-**ConnectedHeight** | Pointer to **int32** |  | [optional] 
-**ConnectedTxHash** | Pointer to ***os.File** |  | [optional] 
+**ConnectedHeight** | Pointer to **int64** |  | [optional] 
+**ConnectedTxHash** | Pointer to **string** |  | [optional] 
 **CounterpartyClientId** | Pointer to **string** |  | [optional] 
 **CounterpartyConnectionId** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
-**CreatedTxHash** | Pointer to ***os.File** |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
+**CreatedTxHash** | Pointer to **string** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -37,20 +37,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetChannelsCount
 
-`func (o *ResponsesIbcConnection) GetChannelsCount() int32`
+`func (o *ResponsesIbcConnection) GetChannelsCount() int64`
 
 GetChannelsCount returns the ChannelsCount field if non-nil, zero value otherwise.
 
 ### GetChannelsCountOk
 
-`func (o *ResponsesIbcConnection) GetChannelsCountOk() (*int32, bool)`
+`func (o *ResponsesIbcConnection) GetChannelsCountOk() (*int64, bool)`
 
 GetChannelsCountOk returns a tuple with the ChannelsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChannelsCount
 
-`func (o *ResponsesIbcConnection) SetChannelsCount(v int32)`
+`func (o *ResponsesIbcConnection) SetChannelsCount(v int64)`
 
 SetChannelsCount sets ChannelsCount field to given value.
 
@@ -112,20 +112,20 @@ HasConnectedAt returns a boolean if a field has been set.
 
 ### GetConnectedHeight
 
-`func (o *ResponsesIbcConnection) GetConnectedHeight() int32`
+`func (o *ResponsesIbcConnection) GetConnectedHeight() int64`
 
 GetConnectedHeight returns the ConnectedHeight field if non-nil, zero value otherwise.
 
 ### GetConnectedHeightOk
 
-`func (o *ResponsesIbcConnection) GetConnectedHeightOk() (*int32, bool)`
+`func (o *ResponsesIbcConnection) GetConnectedHeightOk() (*int64, bool)`
 
 GetConnectedHeightOk returns a tuple with the ConnectedHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnectedHeight
 
-`func (o *ResponsesIbcConnection) SetConnectedHeight(v int32)`
+`func (o *ResponsesIbcConnection) SetConnectedHeight(v int64)`
 
 SetConnectedHeight sets ConnectedHeight field to given value.
 
@@ -137,20 +137,20 @@ HasConnectedHeight returns a boolean if a field has been set.
 
 ### GetConnectedTxHash
 
-`func (o *ResponsesIbcConnection) GetConnectedTxHash() *os.File`
+`func (o *ResponsesIbcConnection) GetConnectedTxHash() string`
 
 GetConnectedTxHash returns the ConnectedTxHash field if non-nil, zero value otherwise.
 
 ### GetConnectedTxHashOk
 
-`func (o *ResponsesIbcConnection) GetConnectedTxHashOk() (**os.File, bool)`
+`func (o *ResponsesIbcConnection) GetConnectedTxHashOk() (*string, bool)`
 
 GetConnectedTxHashOk returns a tuple with the ConnectedTxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnectedTxHash
 
-`func (o *ResponsesIbcConnection) SetConnectedTxHash(v *os.File)`
+`func (o *ResponsesIbcConnection) SetConnectedTxHash(v string)`
 
 SetConnectedTxHash sets ConnectedTxHash field to given value.
 
@@ -237,20 +237,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetCreatedTxHash
 
-`func (o *ResponsesIbcConnection) GetCreatedTxHash() *os.File`
+`func (o *ResponsesIbcConnection) GetCreatedTxHash() string`
 
 GetCreatedTxHash returns the CreatedTxHash field if non-nil, zero value otherwise.
 
 ### GetCreatedTxHashOk
 
-`func (o *ResponsesIbcConnection) GetCreatedTxHashOk() (**os.File, bool)`
+`func (o *ResponsesIbcConnection) GetCreatedTxHashOk() (*string, bool)`
 
 GetCreatedTxHashOk returns a tuple with the CreatedTxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedTxHash
 
-`func (o *ResponsesIbcConnection) SetCreatedTxHash(v *os.File)`
+`func (o *ResponsesIbcConnection) SetCreatedTxHash(v string)`
 
 SetCreatedTxHash sets CreatedTxHash field to given value.
 
@@ -262,20 +262,20 @@ HasCreatedTxHash returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesIbcConnection) GetHeight() int32`
+`func (o *ResponsesIbcConnection) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesIbcConnection) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesIbcConnection) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesIbcConnection) SetHeight(v int32)`
+`func (o *ResponsesIbcConnection) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 

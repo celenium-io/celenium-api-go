@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
-**MessageId** | Pointer to ***os.File** |  | [optional] 
+**MessageId** | Pointer to **string** |  | [optional] 
 **Signer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
-**StateRoot** | Pointer to ***os.File** |  | [optional] 
+**StateRoot** | Pointer to **string** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -83,20 +83,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetMessageId
 
-`func (o *ResponsesZkISMMessage) GetMessageId() *os.File`
+`func (o *ResponsesZkISMMessage) GetMessageId() string`
 
 GetMessageId returns the MessageId field if non-nil, zero value otherwise.
 
 ### GetMessageIdOk
 
-`func (o *ResponsesZkISMMessage) GetMessageIdOk() (**os.File, bool)`
+`func (o *ResponsesZkISMMessage) GetMessageIdOk() (*string, bool)`
 
 GetMessageIdOk returns a tuple with the MessageId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessageId
 
-`func (o *ResponsesZkISMMessage) SetMessageId(v *os.File)`
+`func (o *ResponsesZkISMMessage) SetMessageId(v string)`
 
 SetMessageId sets MessageId field to given value.
 
@@ -133,20 +133,20 @@ HasSigner returns a boolean if a field has been set.
 
 ### GetStateRoot
 
-`func (o *ResponsesZkISMMessage) GetStateRoot() *os.File`
+`func (o *ResponsesZkISMMessage) GetStateRoot() string`
 
 GetStateRoot returns the StateRoot field if non-nil, zero value otherwise.
 
 ### GetStateRootOk
 
-`func (o *ResponsesZkISMMessage) GetStateRootOk() (**os.File, bool)`
+`func (o *ResponsesZkISMMessage) GetStateRootOk() (*string, bool)`
 
 GetStateRootOk returns a tuple with the StateRoot field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStateRoot
 
-`func (o *ResponsesZkISMMessage) SetStateRoot(v *os.File)`
+`func (o *ResponsesZkISMMessage) SetStateRoot(v string)`
 
 SetStateRoot sets StateRoot field to given value.
 
@@ -183,20 +183,20 @@ HasTime returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesZkISMMessage) GetTxHash() *os.File`
+`func (o *ResponsesZkISMMessage) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesZkISMMessage) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesZkISMMessage) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesZkISMMessage) SetTxHash(v *os.File)`
+`func (o *ResponsesZkISMMessage) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 

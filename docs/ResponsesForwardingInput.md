@@ -5,12 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Chain** | Pointer to [**ResponsesChainMetadata**](ResponsesChainMetadata.md) |  | [optional] 
+**ChainId** | Pointer to **string** |  | [optional] 
+**ChannelId** | Pointer to **string** |  | [optional] 
 **Denom** | Pointer to **string** |  | [optional] 
 **From** | Pointer to **string** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Received** | Pointer to **string** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -55,6 +58,56 @@ SetChain sets Chain field to given value.
 `func (o *ResponsesForwardingInput) HasChain() bool`
 
 HasChain returns a boolean if a field has been set.
+
+### GetChainId
+
+`func (o *ResponsesForwardingInput) GetChainId() string`
+
+GetChainId returns the ChainId field if non-nil, zero value otherwise.
+
+### GetChainIdOk
+
+`func (o *ResponsesForwardingInput) GetChainIdOk() (*string, bool)`
+
+GetChainIdOk returns a tuple with the ChainId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChainId
+
+`func (o *ResponsesForwardingInput) SetChainId(v string)`
+
+SetChainId sets ChainId field to given value.
+
+### HasChainId
+
+`func (o *ResponsesForwardingInput) HasChainId() bool`
+
+HasChainId returns a boolean if a field has been set.
+
+### GetChannelId
+
+`func (o *ResponsesForwardingInput) GetChannelId() string`
+
+GetChannelId returns the ChannelId field if non-nil, zero value otherwise.
+
+### GetChannelIdOk
+
+`func (o *ResponsesForwardingInput) GetChannelIdOk() (*string, bool)`
+
+GetChannelIdOk returns a tuple with the ChannelId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChannelId
+
+`func (o *ResponsesForwardingInput) SetChannelId(v string)`
+
+SetChannelId sets ChannelId field to given value.
+
+### HasChannelId
+
+`func (o *ResponsesForwardingInput) HasChannelId() bool`
+
+HasChannelId returns a boolean if a field has been set.
 
 ### GetDenom
 
@@ -183,20 +236,20 @@ HasTime returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesForwardingInput) GetTxHash() *os.File`
+`func (o *ResponsesForwardingInput) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesForwardingInput) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesForwardingInput) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesForwardingInput) SetTxHash(v *os.File)`
+`func (o *ResponsesForwardingInput) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 
@@ -205,6 +258,31 @@ SetTxHash sets TxHash field to given value.
 `func (o *ResponsesForwardingInput) HasTxHash() bool`
 
 HasTxHash returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *ResponsesForwardingInput) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *ResponsesForwardingInput) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *ResponsesForwardingInput) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *ResponsesForwardingInput) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

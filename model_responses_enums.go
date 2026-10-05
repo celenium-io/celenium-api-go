@@ -20,6 +20,7 @@ var _ MappedNullable = &ResponsesEnums{}
 
 // ResponsesEnums struct for ResponsesEnums
 type ResponsesEnums struct {
+	BlobSource []string `json:"blob_source,omitempty"`
 	Categories []string `json:"categories,omitempty"`
 	CelestialsStatuses []string `json:"celestials_statuses,omitempty"`
 	EventType []string `json:"event_type,omitempty"`
@@ -52,6 +53,38 @@ func NewResponsesEnums() *ResponsesEnums {
 func NewResponsesEnumsWithDefaults() *ResponsesEnums {
 	this := ResponsesEnums{}
 	return &this
+}
+
+// GetBlobSource returns the BlobSource field value if set, zero value otherwise.
+func (o *ResponsesEnums) GetBlobSource() []string {
+	if o == nil || IsNil(o.BlobSource) {
+		var ret []string
+		return ret
+	}
+	return o.BlobSource
+}
+
+// GetBlobSourceOk returns a tuple with the BlobSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesEnums) GetBlobSourceOk() ([]string, bool) {
+	if o == nil || IsNil(o.BlobSource) {
+		return nil, false
+	}
+	return o.BlobSource, true
+}
+
+// HasBlobSource returns a boolean if a field has been set.
+func (o *ResponsesEnums) HasBlobSource() bool {
+	if o != nil && !IsNil(o.BlobSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetBlobSource gets a reference to the given []string and assigns it to the BlobSource field.
+func (o *ResponsesEnums) SetBlobSource(v []string) {
+	o.BlobSource = v
 }
 
 // GetCategories returns the Categories field value if set, zero value otherwise.
@@ -544,6 +577,9 @@ func (o ResponsesEnums) MarshalJSON() ([]byte, error) {
 
 func (o ResponsesEnums) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BlobSource) {
+		toSerialize["blob_source"] = o.BlobSource
+	}
 	if !IsNil(o.Categories) {
 		toSerialize["categories"] = o.Categories
 	}

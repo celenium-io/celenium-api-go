@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Denom** | Pointer to **string** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
-**IgpId** | Pointer to ***os.File** |  | [optional] 
+**IgpId** | Pointer to **string** |  | [optional] 
 **Owner** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 
@@ -133,20 +133,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetIgpId
 
-`func (o *ResponsesHyperlaneIgp) GetIgpId() *os.File`
+`func (o *ResponsesHyperlaneIgp) GetIgpId() string`
 
 GetIgpId returns the IgpId field if non-nil, zero value otherwise.
 
 ### GetIgpIdOk
 
-`func (o *ResponsesHyperlaneIgp) GetIgpIdOk() (**os.File, bool)`
+`func (o *ResponsesHyperlaneIgp) GetIgpIdOk() (*string, bool)`
 
 GetIgpIdOk returns a tuple with the IgpId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIgpId
 
-`func (o *ResponsesHyperlaneIgp) SetIgpId(v *os.File)`
+`func (o *ResponsesHyperlaneIgp) SetIgpId(v string)`
 
 SetIgpId sets IgpId field to given value.
 

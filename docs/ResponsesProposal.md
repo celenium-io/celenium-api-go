@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Abstain** | Pointer to **int32** |  | [optional] 
-**AbstainAddrs** | Pointer to **int32** |  | [optional] 
-**AbstainVals** | Pointer to **int32** |  | [optional] 
+**Abstain** | Pointer to **int64** |  | [optional] 
+**AbstainAddrs** | Pointer to **int64** |  | [optional] 
+**AbstainVals** | Pointer to **int64** |  | [optional] 
 **AbstainVotingPower** | Pointer to **string** |  | [optional] 
 **ActivationTime** | Pointer to **time.Time** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
@@ -15,17 +15,18 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **EndTime** | Pointer to **time.Time** |  | [optional] 
 **Error** | Pointer to **string** |  | [optional] 
+**Expedited** | Pointer to **bool** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **Metadata** | Pointer to **string** |  | [optional] 
 **MinDeposit** | Pointer to **string** |  | [optional] 
-**No** | Pointer to **int32** |  | [optional] 
-**NoAddrs** | Pointer to **int32** |  | [optional] 
-**NoVals** | Pointer to **int32** |  | [optional] 
+**No** | Pointer to **int64** |  | [optional] 
+**NoAddrs** | Pointer to **int64** |  | [optional] 
+**NoVals** | Pointer to **int64** |  | [optional] 
 **NoVotingPower** | Pointer to **string** |  | [optional] 
-**NoWithVeto** | Pointer to **int32** |  | [optional] 
-**NoWithVetoAddrs** | Pointer to **int32** |  | [optional] 
-**NoWithVetoVals** | Pointer to **int32** |  | [optional] 
+**NoWithVeto** | Pointer to **int64** |  | [optional] 
+**NoWithVetoAddrs** | Pointer to **int64** |  | [optional] 
+**NoWithVetoVals** | Pointer to **int64** |  | [optional] 
 **NoWithVetoVotingPower** | Pointer to **string** |  | [optional] 
 **Proposer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Quorum** | Pointer to **string** |  | [optional] 
@@ -35,11 +36,11 @@ Name | Type | Description | Notes
 **TotalVotingPower** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **VetoQuorum** | Pointer to **string** |  | [optional] 
-**VotesCount** | Pointer to **int32** |  | [optional] 
+**VotesCount** | Pointer to **int64** |  | [optional] 
 **VotingPower** | Pointer to **string** |  | [optional] 
-**Yes** | Pointer to **int32** |  | [optional] 
-**YesAddrs** | Pointer to **int32** |  | [optional] 
-**YesVals** | Pointer to **int32** |  | [optional] 
+**Yes** | Pointer to **int64** |  | [optional] 
+**YesAddrs** | Pointer to **int64** |  | [optional] 
+**YesVals** | Pointer to **int64** |  | [optional] 
 **YesVotingPower** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -63,20 +64,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAbstain
 
-`func (o *ResponsesProposal) GetAbstain() int32`
+`func (o *ResponsesProposal) GetAbstain() int64`
 
 GetAbstain returns the Abstain field if non-nil, zero value otherwise.
 
 ### GetAbstainOk
 
-`func (o *ResponsesProposal) GetAbstainOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetAbstainOk() (*int64, bool)`
 
 GetAbstainOk returns a tuple with the Abstain field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAbstain
 
-`func (o *ResponsesProposal) SetAbstain(v int32)`
+`func (o *ResponsesProposal) SetAbstain(v int64)`
 
 SetAbstain sets Abstain field to given value.
 
@@ -88,20 +89,20 @@ HasAbstain returns a boolean if a field has been set.
 
 ### GetAbstainAddrs
 
-`func (o *ResponsesProposal) GetAbstainAddrs() int32`
+`func (o *ResponsesProposal) GetAbstainAddrs() int64`
 
 GetAbstainAddrs returns the AbstainAddrs field if non-nil, zero value otherwise.
 
 ### GetAbstainAddrsOk
 
-`func (o *ResponsesProposal) GetAbstainAddrsOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetAbstainAddrsOk() (*int64, bool)`
 
 GetAbstainAddrsOk returns a tuple with the AbstainAddrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAbstainAddrs
 
-`func (o *ResponsesProposal) SetAbstainAddrs(v int32)`
+`func (o *ResponsesProposal) SetAbstainAddrs(v int64)`
 
 SetAbstainAddrs sets AbstainAddrs field to given value.
 
@@ -113,20 +114,20 @@ HasAbstainAddrs returns a boolean if a field has been set.
 
 ### GetAbstainVals
 
-`func (o *ResponsesProposal) GetAbstainVals() int32`
+`func (o *ResponsesProposal) GetAbstainVals() int64`
 
 GetAbstainVals returns the AbstainVals field if non-nil, zero value otherwise.
 
 ### GetAbstainValsOk
 
-`func (o *ResponsesProposal) GetAbstainValsOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetAbstainValsOk() (*int64, bool)`
 
 GetAbstainValsOk returns a tuple with the AbstainVals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAbstainVals
 
-`func (o *ResponsesProposal) SetAbstainVals(v int32)`
+`func (o *ResponsesProposal) SetAbstainVals(v int64)`
 
 SetAbstainVals sets AbstainVals field to given value.
 
@@ -336,6 +337,31 @@ SetError sets Error field to given value.
 
 HasError returns a boolean if a field has been set.
 
+### GetExpedited
+
+`func (o *ResponsesProposal) GetExpedited() bool`
+
+GetExpedited returns the Expedited field if non-nil, zero value otherwise.
+
+### GetExpeditedOk
+
+`func (o *ResponsesProposal) GetExpeditedOk() (*bool, bool)`
+
+GetExpeditedOk returns a tuple with the Expedited field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpedited
+
+`func (o *ResponsesProposal) SetExpedited(v bool)`
+
+SetExpedited sets Expedited field to given value.
+
+### HasExpedited
+
+`func (o *ResponsesProposal) HasExpedited() bool`
+
+HasExpedited returns a boolean if a field has been set.
+
 ### GetHeight
 
 `func (o *ResponsesProposal) GetHeight() int64`
@@ -438,20 +464,20 @@ HasMinDeposit returns a boolean if a field has been set.
 
 ### GetNo
 
-`func (o *ResponsesProposal) GetNo() int32`
+`func (o *ResponsesProposal) GetNo() int64`
 
 GetNo returns the No field if non-nil, zero value otherwise.
 
 ### GetNoOk
 
-`func (o *ResponsesProposal) GetNoOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetNoOk() (*int64, bool)`
 
 GetNoOk returns a tuple with the No field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNo
 
-`func (o *ResponsesProposal) SetNo(v int32)`
+`func (o *ResponsesProposal) SetNo(v int64)`
 
 SetNo sets No field to given value.
 
@@ -463,20 +489,20 @@ HasNo returns a boolean if a field has been set.
 
 ### GetNoAddrs
 
-`func (o *ResponsesProposal) GetNoAddrs() int32`
+`func (o *ResponsesProposal) GetNoAddrs() int64`
 
 GetNoAddrs returns the NoAddrs field if non-nil, zero value otherwise.
 
 ### GetNoAddrsOk
 
-`func (o *ResponsesProposal) GetNoAddrsOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetNoAddrsOk() (*int64, bool)`
 
 GetNoAddrsOk returns a tuple with the NoAddrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNoAddrs
 
-`func (o *ResponsesProposal) SetNoAddrs(v int32)`
+`func (o *ResponsesProposal) SetNoAddrs(v int64)`
 
 SetNoAddrs sets NoAddrs field to given value.
 
@@ -488,20 +514,20 @@ HasNoAddrs returns a boolean if a field has been set.
 
 ### GetNoVals
 
-`func (o *ResponsesProposal) GetNoVals() int32`
+`func (o *ResponsesProposal) GetNoVals() int64`
 
 GetNoVals returns the NoVals field if non-nil, zero value otherwise.
 
 ### GetNoValsOk
 
-`func (o *ResponsesProposal) GetNoValsOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetNoValsOk() (*int64, bool)`
 
 GetNoValsOk returns a tuple with the NoVals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNoVals
 
-`func (o *ResponsesProposal) SetNoVals(v int32)`
+`func (o *ResponsesProposal) SetNoVals(v int64)`
 
 SetNoVals sets NoVals field to given value.
 
@@ -538,20 +564,20 @@ HasNoVotingPower returns a boolean if a field has been set.
 
 ### GetNoWithVeto
 
-`func (o *ResponsesProposal) GetNoWithVeto() int32`
+`func (o *ResponsesProposal) GetNoWithVeto() int64`
 
 GetNoWithVeto returns the NoWithVeto field if non-nil, zero value otherwise.
 
 ### GetNoWithVetoOk
 
-`func (o *ResponsesProposal) GetNoWithVetoOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetNoWithVetoOk() (*int64, bool)`
 
 GetNoWithVetoOk returns a tuple with the NoWithVeto field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNoWithVeto
 
-`func (o *ResponsesProposal) SetNoWithVeto(v int32)`
+`func (o *ResponsesProposal) SetNoWithVeto(v int64)`
 
 SetNoWithVeto sets NoWithVeto field to given value.
 
@@ -563,20 +589,20 @@ HasNoWithVeto returns a boolean if a field has been set.
 
 ### GetNoWithVetoAddrs
 
-`func (o *ResponsesProposal) GetNoWithVetoAddrs() int32`
+`func (o *ResponsesProposal) GetNoWithVetoAddrs() int64`
 
 GetNoWithVetoAddrs returns the NoWithVetoAddrs field if non-nil, zero value otherwise.
 
 ### GetNoWithVetoAddrsOk
 
-`func (o *ResponsesProposal) GetNoWithVetoAddrsOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetNoWithVetoAddrsOk() (*int64, bool)`
 
 GetNoWithVetoAddrsOk returns a tuple with the NoWithVetoAddrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNoWithVetoAddrs
 
-`func (o *ResponsesProposal) SetNoWithVetoAddrs(v int32)`
+`func (o *ResponsesProposal) SetNoWithVetoAddrs(v int64)`
 
 SetNoWithVetoAddrs sets NoWithVetoAddrs field to given value.
 
@@ -588,20 +614,20 @@ HasNoWithVetoAddrs returns a boolean if a field has been set.
 
 ### GetNoWithVetoVals
 
-`func (o *ResponsesProposal) GetNoWithVetoVals() int32`
+`func (o *ResponsesProposal) GetNoWithVetoVals() int64`
 
 GetNoWithVetoVals returns the NoWithVetoVals field if non-nil, zero value otherwise.
 
 ### GetNoWithVetoValsOk
 
-`func (o *ResponsesProposal) GetNoWithVetoValsOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetNoWithVetoValsOk() (*int64, bool)`
 
 GetNoWithVetoValsOk returns a tuple with the NoWithVetoVals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNoWithVetoVals
 
-`func (o *ResponsesProposal) SetNoWithVetoVals(v int32)`
+`func (o *ResponsesProposal) SetNoWithVetoVals(v int64)`
 
 SetNoWithVetoVals sets NoWithVetoVals field to given value.
 
@@ -838,20 +864,20 @@ HasVetoQuorum returns a boolean if a field has been set.
 
 ### GetVotesCount
 
-`func (o *ResponsesProposal) GetVotesCount() int32`
+`func (o *ResponsesProposal) GetVotesCount() int64`
 
 GetVotesCount returns the VotesCount field if non-nil, zero value otherwise.
 
 ### GetVotesCountOk
 
-`func (o *ResponsesProposal) GetVotesCountOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetVotesCountOk() (*int64, bool)`
 
 GetVotesCountOk returns a tuple with the VotesCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVotesCount
 
-`func (o *ResponsesProposal) SetVotesCount(v int32)`
+`func (o *ResponsesProposal) SetVotesCount(v int64)`
 
 SetVotesCount sets VotesCount field to given value.
 
@@ -888,20 +914,20 @@ HasVotingPower returns a boolean if a field has been set.
 
 ### GetYes
 
-`func (o *ResponsesProposal) GetYes() int32`
+`func (o *ResponsesProposal) GetYes() int64`
 
 GetYes returns the Yes field if non-nil, zero value otherwise.
 
 ### GetYesOk
 
-`func (o *ResponsesProposal) GetYesOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetYesOk() (*int64, bool)`
 
 GetYesOk returns a tuple with the Yes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetYes
 
-`func (o *ResponsesProposal) SetYes(v int32)`
+`func (o *ResponsesProposal) SetYes(v int64)`
 
 SetYes sets Yes field to given value.
 
@@ -913,20 +939,20 @@ HasYes returns a boolean if a field has been set.
 
 ### GetYesAddrs
 
-`func (o *ResponsesProposal) GetYesAddrs() int32`
+`func (o *ResponsesProposal) GetYesAddrs() int64`
 
 GetYesAddrs returns the YesAddrs field if non-nil, zero value otherwise.
 
 ### GetYesAddrsOk
 
-`func (o *ResponsesProposal) GetYesAddrsOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetYesAddrsOk() (*int64, bool)`
 
 GetYesAddrsOk returns a tuple with the YesAddrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetYesAddrs
 
-`func (o *ResponsesProposal) SetYesAddrs(v int32)`
+`func (o *ResponsesProposal) SetYesAddrs(v int64)`
 
 SetYesAddrs sets YesAddrs field to given value.
 
@@ -938,20 +964,20 @@ HasYesAddrs returns a boolean if a field has been set.
 
 ### GetYesVals
 
-`func (o *ResponsesProposal) GetYesVals() int32`
+`func (o *ResponsesProposal) GetYesVals() int64`
 
 GetYesVals returns the YesVals field if non-nil, zero value otherwise.
 
 ### GetYesValsOk
 
-`func (o *ResponsesProposal) GetYesValsOk() (*int32, bool)`
+`func (o *ResponsesProposal) GetYesValsOk() (*int64, bool)`
 
 GetYesValsOk returns a tuple with the YesVals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetYesVals
 
-`func (o *ResponsesProposal) SetYesVals(v int32)`
+`func (o *ResponsesProposal) SetYesVals(v int64)`
 
 SetYesVals sets YesVals field to given value.
 

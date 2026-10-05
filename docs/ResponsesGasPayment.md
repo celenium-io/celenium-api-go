@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **string** |  | [optional] 
 **GasAmount** | Pointer to **string** |  | [optional] 
-**IgpId** | Pointer to ***os.File** |  | [optional] 
+**IgpId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasGasAmount returns a boolean if a field has been set.
 
 ### GetIgpId
 
-`func (o *ResponsesGasPayment) GetIgpId() *os.File`
+`func (o *ResponsesGasPayment) GetIgpId() string`
 
 GetIgpId returns the IgpId field if non-nil, zero value otherwise.
 
 ### GetIgpIdOk
 
-`func (o *ResponsesGasPayment) GetIgpIdOk() (**os.File, bool)`
+`func (o *ResponsesGasPayment) GetIgpIdOk() (*string, bool)`
 
 GetIgpIdOk returns a tuple with the IgpId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIgpId
 
-`func (o *ResponsesGasPayment) SetIgpId(v *os.File)`
+`func (o *ResponsesGasPayment) SetIgpId(v string)`
 
 SetIgpId sets IgpId field to given value.
 

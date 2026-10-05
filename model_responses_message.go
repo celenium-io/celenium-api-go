@@ -21,7 +21,7 @@ var _ MappedNullable = &ResponsesMessage{}
 
 // ResponsesMessage struct for ResponsesMessage
 type ResponsesMessage struct {
-	Data map[string]map[string]interface{} `json:"data,omitempty"`
+	Data map[string]interface{} `json:"data,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Position *int64 `json:"position,omitempty"`
@@ -50,9 +50,9 @@ func NewResponsesMessageWithDefaults() *ResponsesMessage {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ResponsesMessage) GetData() map[string]map[string]interface{} {
+func (o *ResponsesMessage) GetData() map[string]interface{} {
 	if o == nil || IsNil(o.Data) {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Data
@@ -60,9 +60,9 @@ func (o *ResponsesMessage) GetData() map[string]map[string]interface{} {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesMessage) GetDataOk() (map[string]map[string]interface{}, bool) {
+func (o *ResponsesMessage) GetDataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Data) {
-		return map[string]map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Data, true
 }
@@ -76,8 +76,8 @@ func (o *ResponsesMessage) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given map[string]map[string]interface{} and assigns it to the Data field.
-func (o *ResponsesMessage) SetData(v map[string]map[string]interface{}) {
+// SetData gets a reference to the given map[string]interface{} and assigns it to the Data field.
+func (o *ResponsesMessage) SetData(v map[string]interface{}) {
 	o.Data = v
 }
 

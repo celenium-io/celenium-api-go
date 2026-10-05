@@ -13,6 +13,7 @@ package celenium
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the ResponsesGrant type satisfies the MappedNullable interface at compile time
@@ -21,14 +22,14 @@ var _ MappedNullable = &ResponsesGrant{}
 // ResponsesGrant struct for ResponsesGrant
 type ResponsesGrant struct {
 	Authorization *string `json:"authorization,omitempty"`
-	Expiration *string `json:"expiration,omitempty"`
+	Expiration *time.Time `json:"expiration,omitempty"`
 	Grantee *ResponsesShortAddress `json:"grantee,omitempty"`
 	Granter *ResponsesShortAddress `json:"granter,omitempty"`
-	Height *int32 `json:"height,omitempty"`
-	Params map[string]map[string]interface{} `json:"params,omitempty"`
-	RevokeHeight *int32 `json:"revoke_height,omitempty"`
+	Height *int64 `json:"height,omitempty"`
+	Params map[string]interface{} `json:"params,omitempty"`
+	RevokeHeight *int64 `json:"revoke_height,omitempty"`
 	Revoked *bool `json:"revoked,omitempty"`
-	Time *string `json:"time,omitempty"`
+	Time *time.Time `json:"time,omitempty"`
 }
 
 // NewResponsesGrant instantiates a new ResponsesGrant object
@@ -81,9 +82,9 @@ func (o *ResponsesGrant) SetAuthorization(v string) {
 }
 
 // GetExpiration returns the Expiration field value if set, zero value otherwise.
-func (o *ResponsesGrant) GetExpiration() string {
+func (o *ResponsesGrant) GetExpiration() time.Time {
 	if o == nil || IsNil(o.Expiration) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.Expiration
@@ -91,7 +92,7 @@ func (o *ResponsesGrant) GetExpiration() string {
 
 // GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesGrant) GetExpirationOk() (*string, bool) {
+func (o *ResponsesGrant) GetExpirationOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Expiration) {
 		return nil, false
 	}
@@ -107,8 +108,8 @@ func (o *ResponsesGrant) HasExpiration() bool {
 	return false
 }
 
-// SetExpiration gets a reference to the given string and assigns it to the Expiration field.
-func (o *ResponsesGrant) SetExpiration(v string) {
+// SetExpiration gets a reference to the given time.Time and assigns it to the Expiration field.
+func (o *ResponsesGrant) SetExpiration(v time.Time) {
 	o.Expiration = &v
 }
 
@@ -177,9 +178,9 @@ func (o *ResponsesGrant) SetGranter(v ResponsesShortAddress) {
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ResponsesGrant) GetHeight() int32 {
+func (o *ResponsesGrant) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Height
@@ -187,7 +188,7 @@ func (o *ResponsesGrant) GetHeight() int32 {
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesGrant) GetHeightOk() (*int32, bool) {
+func (o *ResponsesGrant) GetHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.Height) {
 		return nil, false
 	}
@@ -203,15 +204,15 @@ func (o *ResponsesGrant) HasHeight() bool {
 	return false
 }
 
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ResponsesGrant) SetHeight(v int32) {
+// SetHeight gets a reference to the given int64 and assigns it to the Height field.
+func (o *ResponsesGrant) SetHeight(v int64) {
 	o.Height = &v
 }
 
 // GetParams returns the Params field value if set, zero value otherwise.
-func (o *ResponsesGrant) GetParams() map[string]map[string]interface{} {
+func (o *ResponsesGrant) GetParams() map[string]interface{} {
 	if o == nil || IsNil(o.Params) {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Params
@@ -219,9 +220,9 @@ func (o *ResponsesGrant) GetParams() map[string]map[string]interface{} {
 
 // GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesGrant) GetParamsOk() (map[string]map[string]interface{}, bool) {
+func (o *ResponsesGrant) GetParamsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Params) {
-		return map[string]map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Params, true
 }
@@ -235,15 +236,15 @@ func (o *ResponsesGrant) HasParams() bool {
 	return false
 }
 
-// SetParams gets a reference to the given map[string]map[string]interface{} and assigns it to the Params field.
-func (o *ResponsesGrant) SetParams(v map[string]map[string]interface{}) {
+// SetParams gets a reference to the given map[string]interface{} and assigns it to the Params field.
+func (o *ResponsesGrant) SetParams(v map[string]interface{}) {
 	o.Params = v
 }
 
 // GetRevokeHeight returns the RevokeHeight field value if set, zero value otherwise.
-func (o *ResponsesGrant) GetRevokeHeight() int32 {
+func (o *ResponsesGrant) GetRevokeHeight() int64 {
 	if o == nil || IsNil(o.RevokeHeight) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.RevokeHeight
@@ -251,7 +252,7 @@ func (o *ResponsesGrant) GetRevokeHeight() int32 {
 
 // GetRevokeHeightOk returns a tuple with the RevokeHeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesGrant) GetRevokeHeightOk() (*int32, bool) {
+func (o *ResponsesGrant) GetRevokeHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.RevokeHeight) {
 		return nil, false
 	}
@@ -267,8 +268,8 @@ func (o *ResponsesGrant) HasRevokeHeight() bool {
 	return false
 }
 
-// SetRevokeHeight gets a reference to the given int32 and assigns it to the RevokeHeight field.
-func (o *ResponsesGrant) SetRevokeHeight(v int32) {
+// SetRevokeHeight gets a reference to the given int64 and assigns it to the RevokeHeight field.
+func (o *ResponsesGrant) SetRevokeHeight(v int64) {
 	o.RevokeHeight = &v
 }
 
@@ -305,9 +306,9 @@ func (o *ResponsesGrant) SetRevoked(v bool) {
 }
 
 // GetTime returns the Time field value if set, zero value otherwise.
-func (o *ResponsesGrant) GetTime() string {
+func (o *ResponsesGrant) GetTime() time.Time {
 	if o == nil || IsNil(o.Time) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.Time
@@ -315,7 +316,7 @@ func (o *ResponsesGrant) GetTime() string {
 
 // GetTimeOk returns a tuple with the Time field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesGrant) GetTimeOk() (*string, bool) {
+func (o *ResponsesGrant) GetTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Time) {
 		return nil, false
 	}
@@ -331,8 +332,8 @@ func (o *ResponsesGrant) HasTime() bool {
 	return false
 }
 
-// SetTime gets a reference to the given string and assigns it to the Time field.
-func (o *ResponsesGrant) SetTime(v string) {
+// SetTime gets a reference to the given time.Time and assigns it to the Time field.
+func (o *ResponsesGrant) SetTime(v time.Time) {
 	o.Time = &v
 }
 

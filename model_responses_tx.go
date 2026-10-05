@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 	"time"
 )
 
@@ -28,7 +27,7 @@ type ResponsesTx struct {
 	Fee *string `json:"fee,omitempty"`
 	GasUsed *int64 `json:"gas_used,omitempty"`
 	GasWanted *int64 `json:"gas_wanted,omitempty"`
-	Hash **os.File `json:"hash,omitempty"`
+	Hash *string `json:"hash,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	Memo *string `json:"memo,omitempty"`
@@ -252,9 +251,9 @@ func (o *ResponsesTx) SetGasWanted(v int64) {
 }
 
 // GetHash returns the Hash field value if set, zero value otherwise.
-func (o *ResponsesTx) GetHash() *os.File {
+func (o *ResponsesTx) GetHash() string {
 	if o == nil || IsNil(o.Hash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.Hash
@@ -262,7 +261,7 @@ func (o *ResponsesTx) GetHash() *os.File {
 
 // GetHashOk returns a tuple with the Hash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesTx) GetHashOk() (**os.File, bool) {
+func (o *ResponsesTx) GetHashOk() (*string, bool) {
 	if o == nil || IsNil(o.Hash) {
 		return nil, false
 	}
@@ -278,8 +277,8 @@ func (o *ResponsesTx) HasHash() bool {
 	return false
 }
 
-// SetHash gets a reference to the given *os.File and assigns it to the Hash field.
-func (o *ResponsesTx) SetHash(v *os.File) {
+// SetHash gets a reference to the given string and assigns it to the Hash field.
+func (o *ResponsesTx) SetHash(v string) {
 	o.Hash = &v
 }
 

@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 	"time"
 )
 
@@ -22,19 +21,19 @@ var _ MappedNullable = &ResponsesHyperlaneMailbox{}
 
 // ResponsesHyperlaneMailbox struct for ResponsesHyperlaneMailbox
 type ResponsesHyperlaneMailbox struct {
-	DefaultHook **os.File `json:"default_hook,omitempty"`
-	DefaultIsm **os.File `json:"default_ism,omitempty"`
+	DefaultHook *string `json:"default_hook,omitempty"`
+	DefaultIsm *string `json:"default_ism,omitempty"`
 	Domain *int64 `json:"domain,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	HyperlaneId *int64 `json:"hyperlane_id,omitempty"`
 	Id *int64 `json:"id,omitempty"`
-	Mailbox **os.File `json:"mailbox,omitempty"`
+	Mailbox *string `json:"mailbox,omitempty"`
 	Owner *ResponsesShortAddress `json:"owner,omitempty"`
 	ReceivedMessages *int64 `json:"received_messages,omitempty"`
-	RequiredHook **os.File `json:"required_hook,omitempty"`
+	RequiredHook *string `json:"required_hook,omitempty"`
 	SentMessages *int64 `json:"sent_messages,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
 }
 
 // NewResponsesHyperlaneMailbox instantiates a new ResponsesHyperlaneMailbox object
@@ -55,9 +54,9 @@ func NewResponsesHyperlaneMailboxWithDefaults() *ResponsesHyperlaneMailbox {
 }
 
 // GetDefaultHook returns the DefaultHook field value if set, zero value otherwise.
-func (o *ResponsesHyperlaneMailbox) GetDefaultHook() *os.File {
+func (o *ResponsesHyperlaneMailbox) GetDefaultHook() string {
 	if o == nil || IsNil(o.DefaultHook) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.DefaultHook
@@ -65,7 +64,7 @@ func (o *ResponsesHyperlaneMailbox) GetDefaultHook() *os.File {
 
 // GetDefaultHookOk returns a tuple with the DefaultHook field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesHyperlaneMailbox) GetDefaultHookOk() (**os.File, bool) {
+func (o *ResponsesHyperlaneMailbox) GetDefaultHookOk() (*string, bool) {
 	if o == nil || IsNil(o.DefaultHook) {
 		return nil, false
 	}
@@ -81,15 +80,15 @@ func (o *ResponsesHyperlaneMailbox) HasDefaultHook() bool {
 	return false
 }
 
-// SetDefaultHook gets a reference to the given *os.File and assigns it to the DefaultHook field.
-func (o *ResponsesHyperlaneMailbox) SetDefaultHook(v *os.File) {
+// SetDefaultHook gets a reference to the given string and assigns it to the DefaultHook field.
+func (o *ResponsesHyperlaneMailbox) SetDefaultHook(v string) {
 	o.DefaultHook = &v
 }
 
 // GetDefaultIsm returns the DefaultIsm field value if set, zero value otherwise.
-func (o *ResponsesHyperlaneMailbox) GetDefaultIsm() *os.File {
+func (o *ResponsesHyperlaneMailbox) GetDefaultIsm() string {
 	if o == nil || IsNil(o.DefaultIsm) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.DefaultIsm
@@ -97,7 +96,7 @@ func (o *ResponsesHyperlaneMailbox) GetDefaultIsm() *os.File {
 
 // GetDefaultIsmOk returns a tuple with the DefaultIsm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesHyperlaneMailbox) GetDefaultIsmOk() (**os.File, bool) {
+func (o *ResponsesHyperlaneMailbox) GetDefaultIsmOk() (*string, bool) {
 	if o == nil || IsNil(o.DefaultIsm) {
 		return nil, false
 	}
@@ -113,8 +112,8 @@ func (o *ResponsesHyperlaneMailbox) HasDefaultIsm() bool {
 	return false
 }
 
-// SetDefaultIsm gets a reference to the given *os.File and assigns it to the DefaultIsm field.
-func (o *ResponsesHyperlaneMailbox) SetDefaultIsm(v *os.File) {
+// SetDefaultIsm gets a reference to the given string and assigns it to the DefaultIsm field.
+func (o *ResponsesHyperlaneMailbox) SetDefaultIsm(v string) {
 	o.DefaultIsm = &v
 }
 
@@ -247,9 +246,9 @@ func (o *ResponsesHyperlaneMailbox) SetId(v int64) {
 }
 
 // GetMailbox returns the Mailbox field value if set, zero value otherwise.
-func (o *ResponsesHyperlaneMailbox) GetMailbox() *os.File {
+func (o *ResponsesHyperlaneMailbox) GetMailbox() string {
 	if o == nil || IsNil(o.Mailbox) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.Mailbox
@@ -257,7 +256,7 @@ func (o *ResponsesHyperlaneMailbox) GetMailbox() *os.File {
 
 // GetMailboxOk returns a tuple with the Mailbox field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesHyperlaneMailbox) GetMailboxOk() (**os.File, bool) {
+func (o *ResponsesHyperlaneMailbox) GetMailboxOk() (*string, bool) {
 	if o == nil || IsNil(o.Mailbox) {
 		return nil, false
 	}
@@ -273,8 +272,8 @@ func (o *ResponsesHyperlaneMailbox) HasMailbox() bool {
 	return false
 }
 
-// SetMailbox gets a reference to the given *os.File and assigns it to the Mailbox field.
-func (o *ResponsesHyperlaneMailbox) SetMailbox(v *os.File) {
+// SetMailbox gets a reference to the given string and assigns it to the Mailbox field.
+func (o *ResponsesHyperlaneMailbox) SetMailbox(v string) {
 	o.Mailbox = &v
 }
 
@@ -343,9 +342,9 @@ func (o *ResponsesHyperlaneMailbox) SetReceivedMessages(v int64) {
 }
 
 // GetRequiredHook returns the RequiredHook field value if set, zero value otherwise.
-func (o *ResponsesHyperlaneMailbox) GetRequiredHook() *os.File {
+func (o *ResponsesHyperlaneMailbox) GetRequiredHook() string {
 	if o == nil || IsNil(o.RequiredHook) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.RequiredHook
@@ -353,7 +352,7 @@ func (o *ResponsesHyperlaneMailbox) GetRequiredHook() *os.File {
 
 // GetRequiredHookOk returns a tuple with the RequiredHook field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesHyperlaneMailbox) GetRequiredHookOk() (**os.File, bool) {
+func (o *ResponsesHyperlaneMailbox) GetRequiredHookOk() (*string, bool) {
 	if o == nil || IsNil(o.RequiredHook) {
 		return nil, false
 	}
@@ -369,8 +368,8 @@ func (o *ResponsesHyperlaneMailbox) HasRequiredHook() bool {
 	return false
 }
 
-// SetRequiredHook gets a reference to the given *os.File and assigns it to the RequiredHook field.
-func (o *ResponsesHyperlaneMailbox) SetRequiredHook(v *os.File) {
+// SetRequiredHook gets a reference to the given string and assigns it to the RequiredHook field.
+func (o *ResponsesHyperlaneMailbox) SetRequiredHook(v string) {
 	o.RequiredHook = &v
 }
 
@@ -439,9 +438,9 @@ func (o *ResponsesHyperlaneMailbox) SetTime(v time.Time) {
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesHyperlaneMailbox) GetTxHash() *os.File {
+func (o *ResponsesHyperlaneMailbox) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -449,7 +448,7 @@ func (o *ResponsesHyperlaneMailbox) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesHyperlaneMailbox) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesHyperlaneMailbox) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -465,8 +464,8 @@ func (o *ResponsesHyperlaneMailbox) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesHyperlaneMailbox) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesHyperlaneMailbox) SetTxHash(v string) {
 	o.TxHash = &v
 }
 

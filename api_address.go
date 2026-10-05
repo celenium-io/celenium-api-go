@@ -116,6 +116,20 @@ func (a *AddressAPIService) AddressBalancesExecute(r ApiAddressBalancesRequest) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -194,6 +208,7 @@ type ApiAddressBlobsRequest struct {
 	sort *string
 	sortBy *string
 	joins *bool
+	source *string
 }
 
 // Count of requested entities
@@ -226,6 +241,12 @@ func (r ApiAddressBlobsRequest) Joins(joins bool) ApiAddressBlobsRequest {
 	return r
 }
 
+// Blob source. If it&#39;s empty both sources are returned
+func (r ApiAddressBlobsRequest) Source(source string) ApiAddressBlobsRequest {
+	r.source = &source
+	return r
+}
+
 func (r ApiAddressBlobsRequest) Execute() ([]ResponsesBlobLog, *http.Response, error) {
 	return r.ApiService.AddressBlobsExecute(r)
 }
@@ -233,7 +254,7 @@ func (r ApiAddressBlobsRequest) Execute() ([]ResponsesBlobLog, *http.Response, e
 /*
 AddressBlobs Get blobs pushed by address
 
-Returns a paginated list of blobs submitted via PayForBlobs transactions from the given address. Supports sorting by time or size, and optional join of transaction and namespace entities.
+Returns a paginated list of blobs submitted via PayForBlobs or PayForFibre transactions from the given address. Supports sorting by time or size, and optional join of transaction and namespace entities.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Hash
@@ -290,6 +311,9 @@ func (a *AddressAPIService) AddressBlobsExecute(r ApiAddressBlobsRequest) ([]Res
 	if r.joins != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "joins", r.joins, "", "")
 	}
+	if r.source != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -306,6 +330,20 @@ func (a *AddressAPIService) AddressBlobsExecute(r ApiAddressBlobsRequest) ([]Res
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -456,6 +494,20 @@ func (a *AddressAPIService) AddressCelestialsExecute(r ApiAddressCelestialsReque
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -617,6 +669,20 @@ func (a *AddressAPIService) AddressDelegationsExecute(r ApiAddressDelegationsReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -766,6 +832,20 @@ func (a *AddressAPIService) AddressGranteeExecute(r ApiAddressGranteeRequest) ([
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -917,6 +997,20 @@ func (a *AddressAPIService) AddressGrantsExecute(r ApiAddressGrantsRequest) ([]R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -982,7 +1076,7 @@ type ApiAddressMessagesRequest struct {
 	limit *int32
 	offset *int32
 	sort *string
-	msgType *string
+	msgType *[]string
 }
 
 // Count of requested entities
@@ -1004,7 +1098,7 @@ func (r ApiAddressMessagesRequest) Sort(sort string) ApiAddressMessagesRequest {
 }
 
 // Comma-separated message types list
-func (r ApiAddressMessagesRequest) MsgType(msgType string) ApiAddressMessagesRequest {
+func (r ApiAddressMessagesRequest) MsgType(msgType []string) ApiAddressMessagesRequest {
 	r.msgType = &msgType
 	return r
 }
@@ -1068,7 +1162,7 @@ func (a *AddressAPIService) AddressMessagesExecute(r ApiAddressMessagesRequest) 
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "", "")
 	}
 	if r.msgType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "msg_type", r.msgType, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "msg_type", r.msgType, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1086,6 +1180,20 @@ func (a *AddressAPIService) AddressMessagesExecute(r ApiAddressMessagesRequest) 
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1237,6 +1345,20 @@ func (a *AddressAPIService) AddressRedelegationsExecute(r ApiAddressRedelegation
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1301,18 +1423,18 @@ type ApiAddressStatsRequest struct {
 	hash string
 	name string
 	timeframe string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiAddressStatsRequest) From(from int32) ApiAddressStatsRequest {
+func (r ApiAddressStatsRequest) From(from int64) ApiAddressStatsRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiAddressStatsRequest) To(to int32) ApiAddressStatsRequest {
+func (r ApiAddressStatsRequest) To(to int64) ApiAddressStatsRequest {
 	r.to = &to
 	return r
 }
@@ -1395,6 +1517,20 @@ func (a *AddressAPIService) AddressStatsExecute(r ApiAddressStatsRequest) ([]Res
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1460,11 +1596,11 @@ type ApiAddressTransactionsRequest struct {
 	limit *int32
 	offset *int32
 	sort *string
-	status *string
-	msgType *string
-	from *int32
-	to *int32
-	height *int32
+	status *[]string
+	msgType *[]string
+	from *int64
+	to *int64
+	height *int64
 }
 
 // Count of requested entities
@@ -1486,31 +1622,31 @@ func (r ApiAddressTransactionsRequest) Sort(sort string) ApiAddressTransactionsR
 }
 
 // Comma-separated status list
-func (r ApiAddressTransactionsRequest) Status(status string) ApiAddressTransactionsRequest {
+func (r ApiAddressTransactionsRequest) Status(status []string) ApiAddressTransactionsRequest {
 	r.status = &status
 	return r
 }
 
 // Comma-separated message types list
-func (r ApiAddressTransactionsRequest) MsgType(msgType string) ApiAddressTransactionsRequest {
+func (r ApiAddressTransactionsRequest) MsgType(msgType []string) ApiAddressTransactionsRequest {
 	r.msgType = &msgType
 	return r
 }
 
 // Time from in unix timestamp
-func (r ApiAddressTransactionsRequest) From(from int32) ApiAddressTransactionsRequest {
+func (r ApiAddressTransactionsRequest) From(from int64) ApiAddressTransactionsRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiAddressTransactionsRequest) To(to int32) ApiAddressTransactionsRequest {
+func (r ApiAddressTransactionsRequest) To(to int64) ApiAddressTransactionsRequest {
 	r.to = &to
 	return r
 }
 
 // Block number
-func (r ApiAddressTransactionsRequest) Height(height int32) ApiAddressTransactionsRequest {
+func (r ApiAddressTransactionsRequest) Height(height int64) ApiAddressTransactionsRequest {
 	r.height = &height
 	return r
 }
@@ -1574,10 +1710,10 @@ func (a *AddressAPIService) AddressTransactionsExecute(r ApiAddressTransactionsR
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "csv")
 	}
 	if r.msgType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "msg_type", r.msgType, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "msg_type", r.msgType, "form", "csv")
 	}
 	if r.from != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "", "")
@@ -1604,6 +1740,20 @@ func (a *AddressAPIService) AddressTransactionsExecute(r ApiAddressTransactionsR
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1754,6 +1904,20 @@ func (a *AddressAPIService) AddressUndelegationsExecute(r ApiAddressUndelegation
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1915,6 +2079,20 @@ func (a *AddressAPIService) AddressVestingExecute(r ApiAddressVestingRequest) ([
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2065,6 +2243,20 @@ func (a *AddressAPIService) AddressVotesExecute(r ApiAddressVotesRequest) ([]Res
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2195,6 +2387,20 @@ func (a *AddressAPIService) GetAddressExecute(r ApiGetAddressRequest) (*Response
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2258,7 +2464,7 @@ type ApiGetAddressCountRequest struct {
 	ApiService *AddressAPIService
 }
 
-func (r ApiGetAddressCountRequest) Execute() (int32, *http.Response, error) {
+func (r ApiGetAddressCountRequest) Execute() (int64, *http.Response, error) {
 	return r.ApiService.GetAddressCountExecute(r)
 }
 
@@ -2278,13 +2484,13 @@ func (a *AddressAPIService) GetAddressCount(ctx context.Context) ApiGetAddressCo
 }
 
 // Execute executes the request
-//  @return int32
-func (a *AddressAPIService) GetAddressCountExecute(r ApiGetAddressCountRequest) (int32, *http.Response, error) {
+//  @return int64
+func (a *AddressAPIService) GetAddressCountExecute(r ApiGetAddressCountRequest) (int64, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarReturnValue  int64
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressAPIService.GetAddressCount")
@@ -2314,6 +2520,20 @@ func (a *AddressAPIService) GetAddressCountExecute(r ApiGetAddressCountRequest) 
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -2463,6 +2683,20 @@ func (a *AddressAPIService) ListAddressExecute(r ApiListAddressRequest) ([]Respo
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

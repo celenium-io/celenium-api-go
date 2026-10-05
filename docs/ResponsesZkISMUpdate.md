@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Height** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
-**NewState** | Pointer to ***os.File** |  | [optional] 
+**NewState** | Pointer to **string** |  | [optional] 
 **Signer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -82,20 +82,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetNewState
 
-`func (o *ResponsesZkISMUpdate) GetNewState() *os.File`
+`func (o *ResponsesZkISMUpdate) GetNewState() string`
 
 GetNewState returns the NewState field if non-nil, zero value otherwise.
 
 ### GetNewStateOk
 
-`func (o *ResponsesZkISMUpdate) GetNewStateOk() (**os.File, bool)`
+`func (o *ResponsesZkISMUpdate) GetNewStateOk() (*string, bool)`
 
 GetNewStateOk returns a tuple with the NewState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNewState
 
-`func (o *ResponsesZkISMUpdate) SetNewState(v *os.File)`
+`func (o *ResponsesZkISMUpdate) SetNewState(v string)`
 
 SetNewState sets NewState field to given value.
 
@@ -157,20 +157,20 @@ HasTime returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesZkISMUpdate) GetTxHash() *os.File`
+`func (o *ResponsesZkISMUpdate) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesZkISMUpdate) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesZkISMUpdate) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesZkISMUpdate) SetTxHash(v *os.File)`
+`func (o *ResponsesZkISMUpdate) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 

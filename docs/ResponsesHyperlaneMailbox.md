@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DefaultHook** | Pointer to ***os.File** |  | [optional] 
-**DefaultIsm** | Pointer to ***os.File** |  | [optional] 
+**DefaultHook** | Pointer to **string** |  | [optional] 
+**DefaultIsm** | Pointer to **string** |  | [optional] 
 **Domain** | Pointer to **int64** |  | [optional] 
 **Height** | Pointer to **int64** |  | [optional] 
 **HyperlaneId** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
-**Mailbox** | Pointer to ***os.File** |  | [optional] 
+**Mailbox** | Pointer to **string** |  | [optional] 
 **Owner** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **ReceivedMessages** | Pointer to **int64** |  | [optional] 
-**RequiredHook** | Pointer to ***os.File** |  | [optional] 
+**RequiredHook** | Pointer to **string** |  | [optional] 
 **SentMessages** | Pointer to **int64** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
-**TxHash** | Pointer to ***os.File** |  | [optional] 
+**TxHash** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDefaultHook
 
-`func (o *ResponsesHyperlaneMailbox) GetDefaultHook() *os.File`
+`func (o *ResponsesHyperlaneMailbox) GetDefaultHook() string`
 
 GetDefaultHook returns the DefaultHook field if non-nil, zero value otherwise.
 
 ### GetDefaultHookOk
 
-`func (o *ResponsesHyperlaneMailbox) GetDefaultHookOk() (**os.File, bool)`
+`func (o *ResponsesHyperlaneMailbox) GetDefaultHookOk() (*string, bool)`
 
 GetDefaultHookOk returns a tuple with the DefaultHook field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefaultHook
 
-`func (o *ResponsesHyperlaneMailbox) SetDefaultHook(v *os.File)`
+`func (o *ResponsesHyperlaneMailbox) SetDefaultHook(v string)`
 
 SetDefaultHook sets DefaultHook field to given value.
 
@@ -64,20 +64,20 @@ HasDefaultHook returns a boolean if a field has been set.
 
 ### GetDefaultIsm
 
-`func (o *ResponsesHyperlaneMailbox) GetDefaultIsm() *os.File`
+`func (o *ResponsesHyperlaneMailbox) GetDefaultIsm() string`
 
 GetDefaultIsm returns the DefaultIsm field if non-nil, zero value otherwise.
 
 ### GetDefaultIsmOk
 
-`func (o *ResponsesHyperlaneMailbox) GetDefaultIsmOk() (**os.File, bool)`
+`func (o *ResponsesHyperlaneMailbox) GetDefaultIsmOk() (*string, bool)`
 
 GetDefaultIsmOk returns a tuple with the DefaultIsm field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefaultIsm
 
-`func (o *ResponsesHyperlaneMailbox) SetDefaultIsm(v *os.File)`
+`func (o *ResponsesHyperlaneMailbox) SetDefaultIsm(v string)`
 
 SetDefaultIsm sets DefaultIsm field to given value.
 
@@ -189,20 +189,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetMailbox
 
-`func (o *ResponsesHyperlaneMailbox) GetMailbox() *os.File`
+`func (o *ResponsesHyperlaneMailbox) GetMailbox() string`
 
 GetMailbox returns the Mailbox field if non-nil, zero value otherwise.
 
 ### GetMailboxOk
 
-`func (o *ResponsesHyperlaneMailbox) GetMailboxOk() (**os.File, bool)`
+`func (o *ResponsesHyperlaneMailbox) GetMailboxOk() (*string, bool)`
 
 GetMailboxOk returns a tuple with the Mailbox field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMailbox
 
-`func (o *ResponsesHyperlaneMailbox) SetMailbox(v *os.File)`
+`func (o *ResponsesHyperlaneMailbox) SetMailbox(v string)`
 
 SetMailbox sets Mailbox field to given value.
 
@@ -264,20 +264,20 @@ HasReceivedMessages returns a boolean if a field has been set.
 
 ### GetRequiredHook
 
-`func (o *ResponsesHyperlaneMailbox) GetRequiredHook() *os.File`
+`func (o *ResponsesHyperlaneMailbox) GetRequiredHook() string`
 
 GetRequiredHook returns the RequiredHook field if non-nil, zero value otherwise.
 
 ### GetRequiredHookOk
 
-`func (o *ResponsesHyperlaneMailbox) GetRequiredHookOk() (**os.File, bool)`
+`func (o *ResponsesHyperlaneMailbox) GetRequiredHookOk() (*string, bool)`
 
 GetRequiredHookOk returns a tuple with the RequiredHook field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequiredHook
 
-`func (o *ResponsesHyperlaneMailbox) SetRequiredHook(v *os.File)`
+`func (o *ResponsesHyperlaneMailbox) SetRequiredHook(v string)`
 
 SetRequiredHook sets RequiredHook field to given value.
 
@@ -339,20 +339,20 @@ HasTime returns a boolean if a field has been set.
 
 ### GetTxHash
 
-`func (o *ResponsesHyperlaneMailbox) GetTxHash() *os.File`
+`func (o *ResponsesHyperlaneMailbox) GetTxHash() string`
 
 GetTxHash returns the TxHash field if non-nil, zero value otherwise.
 
 ### GetTxHashOk
 
-`func (o *ResponsesHyperlaneMailbox) GetTxHashOk() (**os.File, bool)`
+`func (o *ResponsesHyperlaneMailbox) GetTxHashOk() (*string, bool)`
 
 GetTxHashOk returns a tuple with the TxHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTxHash
 
-`func (o *ResponsesHyperlaneMailbox) SetTxHash(v *os.File)`
+`func (o *ResponsesHyperlaneMailbox) SetTxHash(v string)`
 
 SetTxHash sets TxHash field to given value.
 

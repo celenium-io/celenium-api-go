@@ -20,10 +20,10 @@ var _ MappedNullable = &ResponsesChange24hBlockStats{}
 
 // ResponsesChange24hBlockStats struct for ResponsesChange24hBlockStats
 type ResponsesChange24hBlockStats struct {
-	BlobsSize24h *float32 `json:"blobs_size_24h,omitempty"`
-	BytesInBlock24h *float32 `json:"bytes_in_block_24h,omitempty"`
-	Fee24h *float32 `json:"fee_24h,omitempty"`
-	TxCount24h *float32 `json:"tx_count_24h,omitempty"`
+	BlobsSize24h *float64 `json:"blobs_size_24h,omitempty"`
+	BytesInBlock24h *float64 `json:"bytes_in_block_24h,omitempty"`
+	Fee24h *float64 `json:"fee_24h,omitempty"`
+	TxCount24h *float64 `json:"tx_count_24h,omitempty"`
 }
 
 // NewResponsesChange24hBlockStats instantiates a new ResponsesChange24hBlockStats object
@@ -44,9 +44,9 @@ func NewResponsesChange24hBlockStatsWithDefaults() *ResponsesChange24hBlockStats
 }
 
 // GetBlobsSize24h returns the BlobsSize24h field value if set, zero value otherwise.
-func (o *ResponsesChange24hBlockStats) GetBlobsSize24h() float32 {
+func (o *ResponsesChange24hBlockStats) GetBlobsSize24h() float64 {
 	if o == nil || IsNil(o.BlobsSize24h) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.BlobsSize24h
@@ -54,7 +54,7 @@ func (o *ResponsesChange24hBlockStats) GetBlobsSize24h() float32 {
 
 // GetBlobsSize24hOk returns a tuple with the BlobsSize24h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesChange24hBlockStats) GetBlobsSize24hOk() (*float32, bool) {
+func (o *ResponsesChange24hBlockStats) GetBlobsSize24hOk() (*float64, bool) {
 	if o == nil || IsNil(o.BlobsSize24h) {
 		return nil, false
 	}
@@ -70,15 +70,15 @@ func (o *ResponsesChange24hBlockStats) HasBlobsSize24h() bool {
 	return false
 }
 
-// SetBlobsSize24h gets a reference to the given float32 and assigns it to the BlobsSize24h field.
-func (o *ResponsesChange24hBlockStats) SetBlobsSize24h(v float32) {
+// SetBlobsSize24h gets a reference to the given float64 and assigns it to the BlobsSize24h field.
+func (o *ResponsesChange24hBlockStats) SetBlobsSize24h(v float64) {
 	o.BlobsSize24h = &v
 }
 
 // GetBytesInBlock24h returns the BytesInBlock24h field value if set, zero value otherwise.
-func (o *ResponsesChange24hBlockStats) GetBytesInBlock24h() float32 {
+func (o *ResponsesChange24hBlockStats) GetBytesInBlock24h() float64 {
 	if o == nil || IsNil(o.BytesInBlock24h) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.BytesInBlock24h
@@ -86,7 +86,7 @@ func (o *ResponsesChange24hBlockStats) GetBytesInBlock24h() float32 {
 
 // GetBytesInBlock24hOk returns a tuple with the BytesInBlock24h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesChange24hBlockStats) GetBytesInBlock24hOk() (*float32, bool) {
+func (o *ResponsesChange24hBlockStats) GetBytesInBlock24hOk() (*float64, bool) {
 	if o == nil || IsNil(o.BytesInBlock24h) {
 		return nil, false
 	}
@@ -102,15 +102,15 @@ func (o *ResponsesChange24hBlockStats) HasBytesInBlock24h() bool {
 	return false
 }
 
-// SetBytesInBlock24h gets a reference to the given float32 and assigns it to the BytesInBlock24h field.
-func (o *ResponsesChange24hBlockStats) SetBytesInBlock24h(v float32) {
+// SetBytesInBlock24h gets a reference to the given float64 and assigns it to the BytesInBlock24h field.
+func (o *ResponsesChange24hBlockStats) SetBytesInBlock24h(v float64) {
 	o.BytesInBlock24h = &v
 }
 
 // GetFee24h returns the Fee24h field value if set, zero value otherwise.
-func (o *ResponsesChange24hBlockStats) GetFee24h() float32 {
+func (o *ResponsesChange24hBlockStats) GetFee24h() float64 {
 	if o == nil || IsNil(o.Fee24h) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.Fee24h
@@ -118,7 +118,7 @@ func (o *ResponsesChange24hBlockStats) GetFee24h() float32 {
 
 // GetFee24hOk returns a tuple with the Fee24h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesChange24hBlockStats) GetFee24hOk() (*float32, bool) {
+func (o *ResponsesChange24hBlockStats) GetFee24hOk() (*float64, bool) {
 	if o == nil || IsNil(o.Fee24h) {
 		return nil, false
 	}
@@ -134,15 +134,15 @@ func (o *ResponsesChange24hBlockStats) HasFee24h() bool {
 	return false
 }
 
-// SetFee24h gets a reference to the given float32 and assigns it to the Fee24h field.
-func (o *ResponsesChange24hBlockStats) SetFee24h(v float32) {
+// SetFee24h gets a reference to the given float64 and assigns it to the Fee24h field.
+func (o *ResponsesChange24hBlockStats) SetFee24h(v float64) {
 	o.Fee24h = &v
 }
 
 // GetTxCount24h returns the TxCount24h field value if set, zero value otherwise.
-func (o *ResponsesChange24hBlockStats) GetTxCount24h() float32 {
+func (o *ResponsesChange24hBlockStats) GetTxCount24h() float64 {
 	if o == nil || IsNil(o.TxCount24h) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.TxCount24h
@@ -150,7 +150,7 @@ func (o *ResponsesChange24hBlockStats) GetTxCount24h() float32 {
 
 // GetTxCount24hOk returns a tuple with the TxCount24h field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesChange24hBlockStats) GetTxCount24hOk() (*float32, bool) {
+func (o *ResponsesChange24hBlockStats) GetTxCount24hOk() (*float64, bool) {
 	if o == nil || IsNil(o.TxCount24h) {
 		return nil, false
 	}
@@ -166,8 +166,8 @@ func (o *ResponsesChange24hBlockStats) HasTxCount24h() bool {
 	return false
 }
 
-// SetTxCount24h gets a reference to the given float32 and assigns it to the TxCount24h field.
-func (o *ResponsesChange24hBlockStats) SetTxCount24h(v float32) {
+// SetTxCount24h gets a reference to the given float64 and assigns it to the TxCount24h field.
+func (o *ResponsesChange24hBlockStats) SetTxCount24h(v float64) {
 	o.TxCount24h = &v
 }
 

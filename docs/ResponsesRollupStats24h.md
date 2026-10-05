@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BlobsCount** | Pointer to **int32** |  | [optional] 
-**Fee** | Pointer to **int32** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**BlobsCount** | Pointer to **int64** |  | [optional] 
+**Fee** | Pointer to **float64** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Logo** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Size** | Pointer to **int32** |  | [optional] 
+**Size** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetBlobsCount
 
-`func (o *ResponsesRollupStats24h) GetBlobsCount() int32`
+`func (o *ResponsesRollupStats24h) GetBlobsCount() int64`
 
 GetBlobsCount returns the BlobsCount field if non-nil, zero value otherwise.
 
 ### GetBlobsCountOk
 
-`func (o *ResponsesRollupStats24h) GetBlobsCountOk() (*int32, bool)`
+`func (o *ResponsesRollupStats24h) GetBlobsCountOk() (*int64, bool)`
 
 GetBlobsCountOk returns a tuple with the BlobsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlobsCount
 
-`func (o *ResponsesRollupStats24h) SetBlobsCount(v int32)`
+`func (o *ResponsesRollupStats24h) SetBlobsCount(v int64)`
 
 SetBlobsCount sets BlobsCount field to given value.
 
@@ -57,20 +57,20 @@ HasBlobsCount returns a boolean if a field has been set.
 
 ### GetFee
 
-`func (o *ResponsesRollupStats24h) GetFee() int32`
+`func (o *ResponsesRollupStats24h) GetFee() float64`
 
 GetFee returns the Fee field if non-nil, zero value otherwise.
 
 ### GetFeeOk
 
-`func (o *ResponsesRollupStats24h) GetFeeOk() (*int32, bool)`
+`func (o *ResponsesRollupStats24h) GetFeeOk() (*float64, bool)`
 
 GetFeeOk returns a tuple with the Fee field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFee
 
-`func (o *ResponsesRollupStats24h) SetFee(v int32)`
+`func (o *ResponsesRollupStats24h) SetFee(v float64)`
 
 SetFee sets Fee field to given value.
 
@@ -82,20 +82,20 @@ HasFee returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesRollupStats24h) GetId() int32`
+`func (o *ResponsesRollupStats24h) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesRollupStats24h) GetIdOk() (*int32, bool)`
+`func (o *ResponsesRollupStats24h) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesRollupStats24h) SetId(v int32)`
+`func (o *ResponsesRollupStats24h) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -157,20 +157,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetSize
 
-`func (o *ResponsesRollupStats24h) GetSize() int32`
+`func (o *ResponsesRollupStats24h) GetSize() int64`
 
 GetSize returns the Size field if non-nil, zero value otherwise.
 
 ### GetSizeOk
 
-`func (o *ResponsesRollupStats24h) GetSizeOk() (*int32, bool)`
+`func (o *ResponsesRollupStats24h) GetSizeOk() (*int64, bool)`
 
 GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSize
 
-`func (o *ResponsesRollupStats24h) SetSize(v int32)`
+`func (o *ResponsesRollupStats24h) SetSize(v int64)`
 
 SetSize sets Size field to given value.
 

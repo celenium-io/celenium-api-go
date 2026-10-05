@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 	"time"
 )
 
@@ -24,11 +23,11 @@ var _ MappedNullable = &ResponsesZkISMMessage{}
 type ResponsesZkISMMessage struct {
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
-	MessageId **os.File `json:"message_id,omitempty"`
+	MessageId *string `json:"message_id,omitempty"`
 	Signer *ResponsesShortAddress `json:"signer,omitempty"`
-	StateRoot **os.File `json:"state_root,omitempty"`
+	StateRoot *string `json:"state_root,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
 }
 
 // NewResponsesZkISMMessage instantiates a new ResponsesZkISMMessage object
@@ -113,9 +112,9 @@ func (o *ResponsesZkISMMessage) SetId(v int64) {
 }
 
 // GetMessageId returns the MessageId field value if set, zero value otherwise.
-func (o *ResponsesZkISMMessage) GetMessageId() *os.File {
+func (o *ResponsesZkISMMessage) GetMessageId() string {
 	if o == nil || IsNil(o.MessageId) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.MessageId
@@ -123,7 +122,7 @@ func (o *ResponsesZkISMMessage) GetMessageId() *os.File {
 
 // GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISMMessage) GetMessageIdOk() (**os.File, bool) {
+func (o *ResponsesZkISMMessage) GetMessageIdOk() (*string, bool) {
 	if o == nil || IsNil(o.MessageId) {
 		return nil, false
 	}
@@ -139,8 +138,8 @@ func (o *ResponsesZkISMMessage) HasMessageId() bool {
 	return false
 }
 
-// SetMessageId gets a reference to the given *os.File and assigns it to the MessageId field.
-func (o *ResponsesZkISMMessage) SetMessageId(v *os.File) {
+// SetMessageId gets a reference to the given string and assigns it to the MessageId field.
+func (o *ResponsesZkISMMessage) SetMessageId(v string) {
 	o.MessageId = &v
 }
 
@@ -177,9 +176,9 @@ func (o *ResponsesZkISMMessage) SetSigner(v ResponsesShortAddress) {
 }
 
 // GetStateRoot returns the StateRoot field value if set, zero value otherwise.
-func (o *ResponsesZkISMMessage) GetStateRoot() *os.File {
+func (o *ResponsesZkISMMessage) GetStateRoot() string {
 	if o == nil || IsNil(o.StateRoot) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.StateRoot
@@ -187,7 +186,7 @@ func (o *ResponsesZkISMMessage) GetStateRoot() *os.File {
 
 // GetStateRootOk returns a tuple with the StateRoot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISMMessage) GetStateRootOk() (**os.File, bool) {
+func (o *ResponsesZkISMMessage) GetStateRootOk() (*string, bool) {
 	if o == nil || IsNil(o.StateRoot) {
 		return nil, false
 	}
@@ -203,8 +202,8 @@ func (o *ResponsesZkISMMessage) HasStateRoot() bool {
 	return false
 }
 
-// SetStateRoot gets a reference to the given *os.File and assigns it to the StateRoot field.
-func (o *ResponsesZkISMMessage) SetStateRoot(v *os.File) {
+// SetStateRoot gets a reference to the given string and assigns it to the StateRoot field.
+func (o *ResponsesZkISMMessage) SetStateRoot(v string) {
 	o.StateRoot = &v
 }
 
@@ -241,9 +240,9 @@ func (o *ResponsesZkISMMessage) SetTime(v time.Time) {
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesZkISMMessage) GetTxHash() *os.File {
+func (o *ResponsesZkISMMessage) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -251,7 +250,7 @@ func (o *ResponsesZkISMMessage) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesZkISMMessage) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesZkISMMessage) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -267,8 +266,8 @@ func (o *ResponsesZkISMMessage) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesZkISMMessage) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesZkISMMessage) SetTxHash(v string) {
 	o.TxHash = &v
 }
 

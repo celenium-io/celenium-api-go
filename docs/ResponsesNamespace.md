@@ -4,16 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BlobsCount** | Pointer to **int32** |  | [optional] 
+**BlobsCount** | Pointer to **int64** |  | [optional] 
+**FibreSize** | Pointer to **int64** |  | [optional] 
 **Hash** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **LastHeight** | Pointer to **int64** |  | [optional] 
 **LastMessageTime** | Pointer to **time.Time** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**NamespaceId** | Pointer to ***os.File** |  | [optional] 
-**PfbCount** | Pointer to **int32** |  | [optional] 
+**NamespaceId** | Pointer to **string** |  | [optional] 
+**PfbCount** | Pointer to **int64** |  | [optional] 
+**PffCount** | Pointer to **int64** |  | [optional] 
 **Reserved** | Pointer to **bool** |  | [optional] 
-**Size** | Pointer to **int32** |  | [optional] 
+**Size** | Pointer to **int64** |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -37,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetBlobsCount
 
-`func (o *ResponsesNamespace) GetBlobsCount() int32`
+`func (o *ResponsesNamespace) GetBlobsCount() int64`
 
 GetBlobsCount returns the BlobsCount field if non-nil, zero value otherwise.
 
 ### GetBlobsCountOk
 
-`func (o *ResponsesNamespace) GetBlobsCountOk() (*int32, bool)`
+`func (o *ResponsesNamespace) GetBlobsCountOk() (*int64, bool)`
 
 GetBlobsCountOk returns a tuple with the BlobsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlobsCount
 
-`func (o *ResponsesNamespace) SetBlobsCount(v int32)`
+`func (o *ResponsesNamespace) SetBlobsCount(v int64)`
 
 SetBlobsCount sets BlobsCount field to given value.
 
@@ -59,6 +61,31 @@ SetBlobsCount sets BlobsCount field to given value.
 `func (o *ResponsesNamespace) HasBlobsCount() bool`
 
 HasBlobsCount returns a boolean if a field has been set.
+
+### GetFibreSize
+
+`func (o *ResponsesNamespace) GetFibreSize() int64`
+
+GetFibreSize returns the FibreSize field if non-nil, zero value otherwise.
+
+### GetFibreSizeOk
+
+`func (o *ResponsesNamespace) GetFibreSizeOk() (*int64, bool)`
+
+GetFibreSizeOk returns a tuple with the FibreSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFibreSize
+
+`func (o *ResponsesNamespace) SetFibreSize(v int64)`
+
+SetFibreSize sets FibreSize field to given value.
+
+### HasFibreSize
+
+`func (o *ResponsesNamespace) HasFibreSize() bool`
+
+HasFibreSize returns a boolean if a field has been set.
 
 ### GetHash
 
@@ -87,20 +114,20 @@ HasHash returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesNamespace) GetId() int32`
+`func (o *ResponsesNamespace) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesNamespace) GetIdOk() (*int32, bool)`
+`func (o *ResponsesNamespace) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesNamespace) SetId(v int32)`
+`func (o *ResponsesNamespace) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -187,20 +214,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetNamespaceId
 
-`func (o *ResponsesNamespace) GetNamespaceId() *os.File`
+`func (o *ResponsesNamespace) GetNamespaceId() string`
 
 GetNamespaceId returns the NamespaceId field if non-nil, zero value otherwise.
 
 ### GetNamespaceIdOk
 
-`func (o *ResponsesNamespace) GetNamespaceIdOk() (**os.File, bool)`
+`func (o *ResponsesNamespace) GetNamespaceIdOk() (*string, bool)`
 
 GetNamespaceIdOk returns a tuple with the NamespaceId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNamespaceId
 
-`func (o *ResponsesNamespace) SetNamespaceId(v *os.File)`
+`func (o *ResponsesNamespace) SetNamespaceId(v string)`
 
 SetNamespaceId sets NamespaceId field to given value.
 
@@ -212,20 +239,20 @@ HasNamespaceId returns a boolean if a field has been set.
 
 ### GetPfbCount
 
-`func (o *ResponsesNamespace) GetPfbCount() int32`
+`func (o *ResponsesNamespace) GetPfbCount() int64`
 
 GetPfbCount returns the PfbCount field if non-nil, zero value otherwise.
 
 ### GetPfbCountOk
 
-`func (o *ResponsesNamespace) GetPfbCountOk() (*int32, bool)`
+`func (o *ResponsesNamespace) GetPfbCountOk() (*int64, bool)`
 
 GetPfbCountOk returns a tuple with the PfbCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPfbCount
 
-`func (o *ResponsesNamespace) SetPfbCount(v int32)`
+`func (o *ResponsesNamespace) SetPfbCount(v int64)`
 
 SetPfbCount sets PfbCount field to given value.
 
@@ -234,6 +261,31 @@ SetPfbCount sets PfbCount field to given value.
 `func (o *ResponsesNamespace) HasPfbCount() bool`
 
 HasPfbCount returns a boolean if a field has been set.
+
+### GetPffCount
+
+`func (o *ResponsesNamespace) GetPffCount() int64`
+
+GetPffCount returns the PffCount field if non-nil, zero value otherwise.
+
+### GetPffCountOk
+
+`func (o *ResponsesNamespace) GetPffCountOk() (*int64, bool)`
+
+GetPffCountOk returns a tuple with the PffCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPffCount
+
+`func (o *ResponsesNamespace) SetPffCount(v int64)`
+
+SetPffCount sets PffCount field to given value.
+
+### HasPffCount
+
+`func (o *ResponsesNamespace) HasPffCount() bool`
+
+HasPffCount returns a boolean if a field has been set.
 
 ### GetReserved
 
@@ -262,20 +314,20 @@ HasReserved returns a boolean if a field has been set.
 
 ### GetSize
 
-`func (o *ResponsesNamespace) GetSize() int32`
+`func (o *ResponsesNamespace) GetSize() int64`
 
 GetSize returns the Size field if non-nil, zero value otherwise.
 
 ### GetSizeOk
 
-`func (o *ResponsesNamespace) GetSizeOk() (*int32, bool)`
+`func (o *ResponsesNamespace) GetSizeOk() (*int64, bool)`
 
 GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSize
 
-`func (o *ResponsesNamespace) SetSize(v int32)`
+`func (o *ResponsesNamespace) SetSize(v int64)`
 
 SetSize sets Size field to given value.
 

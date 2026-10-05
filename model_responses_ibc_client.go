@@ -14,7 +14,6 @@ package celenium
 import (
 	"encoding/json"
 	"time"
-	"os"
 )
 
 // checks if the ResponsesIbcClient type satisfies the MappedNullable interface at compile time
@@ -23,22 +22,22 @@ var _ MappedNullable = &ResponsesIbcClient{}
 // ResponsesIbcClient struct for ResponsesIbcClient
 type ResponsesIbcClient struct {
 	ChainId *string `json:"chain_id,omitempty"`
-	ConnectionCount *int32 `json:"connection_count,omitempty"`
+	ConnectionCount *int64 `json:"connection_count,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	Creator *ResponsesShortAddress `json:"creator,omitempty"`
-	FrozenRevisionHeight *int32 `json:"frozen_revision_height,omitempty"`
-	FrozenRevisionNumber *int32 `json:"frozen_revision_number,omitempty"`
-	Height *int32 `json:"height,omitempty"`
+	FrozenRevisionHeight *int64 `json:"frozen_revision_height,omitempty"`
+	FrozenRevisionNumber *int64 `json:"frozen_revision_number,omitempty"`
+	Height *int64 `json:"height,omitempty"`
 	Id *string `json:"id,omitempty"`
-	LatestRevisionHeight *int32 `json:"latest_revision_height,omitempty"`
-	LatestRevisionNumber *int32 `json:"latest_revision_number,omitempty"`
-	MaxClockDrift *int32 `json:"max_clock_drift,omitempty"`
-	TrustLevelDenominator *int32 `json:"trust_level_denominator,omitempty"`
-	TrustLevelNumerator *int32 `json:"trust_level_numerator,omitempty"`
-	TrustingPeriod *int32 `json:"trusting_period,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	LatestRevisionHeight *int64 `json:"latest_revision_height,omitempty"`
+	LatestRevisionNumber *int64 `json:"latest_revision_number,omitempty"`
+	MaxClockDrift *int64 `json:"max_clock_drift,omitempty"`
+	TrustLevelDenominator *int64 `json:"trust_level_denominator,omitempty"`
+	TrustLevelNumerator *int64 `json:"trust_level_numerator,omitempty"`
+	TrustingPeriod *int64 `json:"trusting_period,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
 	Type *string `json:"type,omitempty"`
-	UnbondingPeriod *int32 `json:"unbonding_period,omitempty"`
+	UnbondingPeriod *int64 `json:"unbonding_period,omitempty"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
 
@@ -92,9 +91,9 @@ func (o *ResponsesIbcClient) SetChainId(v string) {
 }
 
 // GetConnectionCount returns the ConnectionCount field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetConnectionCount() int32 {
+func (o *ResponsesIbcClient) GetConnectionCount() int64 {
 	if o == nil || IsNil(o.ConnectionCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ConnectionCount
@@ -102,7 +101,7 @@ func (o *ResponsesIbcClient) GetConnectionCount() int32 {
 
 // GetConnectionCountOk returns a tuple with the ConnectionCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetConnectionCountOk() (*int32, bool) {
+func (o *ResponsesIbcClient) GetConnectionCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.ConnectionCount) {
 		return nil, false
 	}
@@ -118,8 +117,8 @@ func (o *ResponsesIbcClient) HasConnectionCount() bool {
 	return false
 }
 
-// SetConnectionCount gets a reference to the given int32 and assigns it to the ConnectionCount field.
-func (o *ResponsesIbcClient) SetConnectionCount(v int32) {
+// SetConnectionCount gets a reference to the given int64 and assigns it to the ConnectionCount field.
+func (o *ResponsesIbcClient) SetConnectionCount(v int64) {
 	o.ConnectionCount = &v
 }
 
@@ -188,9 +187,9 @@ func (o *ResponsesIbcClient) SetCreator(v ResponsesShortAddress) {
 }
 
 // GetFrozenRevisionHeight returns the FrozenRevisionHeight field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetFrozenRevisionHeight() int32 {
+func (o *ResponsesIbcClient) GetFrozenRevisionHeight() int64 {
 	if o == nil || IsNil(o.FrozenRevisionHeight) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.FrozenRevisionHeight
@@ -198,7 +197,7 @@ func (o *ResponsesIbcClient) GetFrozenRevisionHeight() int32 {
 
 // GetFrozenRevisionHeightOk returns a tuple with the FrozenRevisionHeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetFrozenRevisionHeightOk() (*int32, bool) {
+func (o *ResponsesIbcClient) GetFrozenRevisionHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.FrozenRevisionHeight) {
 		return nil, false
 	}
@@ -214,15 +213,15 @@ func (o *ResponsesIbcClient) HasFrozenRevisionHeight() bool {
 	return false
 }
 
-// SetFrozenRevisionHeight gets a reference to the given int32 and assigns it to the FrozenRevisionHeight field.
-func (o *ResponsesIbcClient) SetFrozenRevisionHeight(v int32) {
+// SetFrozenRevisionHeight gets a reference to the given int64 and assigns it to the FrozenRevisionHeight field.
+func (o *ResponsesIbcClient) SetFrozenRevisionHeight(v int64) {
 	o.FrozenRevisionHeight = &v
 }
 
 // GetFrozenRevisionNumber returns the FrozenRevisionNumber field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetFrozenRevisionNumber() int32 {
+func (o *ResponsesIbcClient) GetFrozenRevisionNumber() int64 {
 	if o == nil || IsNil(o.FrozenRevisionNumber) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.FrozenRevisionNumber
@@ -230,7 +229,7 @@ func (o *ResponsesIbcClient) GetFrozenRevisionNumber() int32 {
 
 // GetFrozenRevisionNumberOk returns a tuple with the FrozenRevisionNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetFrozenRevisionNumberOk() (*int32, bool) {
+func (o *ResponsesIbcClient) GetFrozenRevisionNumberOk() (*int64, bool) {
 	if o == nil || IsNil(o.FrozenRevisionNumber) {
 		return nil, false
 	}
@@ -246,15 +245,15 @@ func (o *ResponsesIbcClient) HasFrozenRevisionNumber() bool {
 	return false
 }
 
-// SetFrozenRevisionNumber gets a reference to the given int32 and assigns it to the FrozenRevisionNumber field.
-func (o *ResponsesIbcClient) SetFrozenRevisionNumber(v int32) {
+// SetFrozenRevisionNumber gets a reference to the given int64 and assigns it to the FrozenRevisionNumber field.
+func (o *ResponsesIbcClient) SetFrozenRevisionNumber(v int64) {
 	o.FrozenRevisionNumber = &v
 }
 
 // GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetHeight() int32 {
+func (o *ResponsesIbcClient) GetHeight() int64 {
 	if o == nil || IsNil(o.Height) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Height
@@ -262,7 +261,7 @@ func (o *ResponsesIbcClient) GetHeight() int32 {
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetHeightOk() (*int32, bool) {
+func (o *ResponsesIbcClient) GetHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.Height) {
 		return nil, false
 	}
@@ -278,8 +277,8 @@ func (o *ResponsesIbcClient) HasHeight() bool {
 	return false
 }
 
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ResponsesIbcClient) SetHeight(v int32) {
+// SetHeight gets a reference to the given int64 and assigns it to the Height field.
+func (o *ResponsesIbcClient) SetHeight(v int64) {
 	o.Height = &v
 }
 
@@ -316,9 +315,9 @@ func (o *ResponsesIbcClient) SetId(v string) {
 }
 
 // GetLatestRevisionHeight returns the LatestRevisionHeight field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetLatestRevisionHeight() int32 {
+func (o *ResponsesIbcClient) GetLatestRevisionHeight() int64 {
 	if o == nil || IsNil(o.LatestRevisionHeight) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LatestRevisionHeight
@@ -326,7 +325,7 @@ func (o *ResponsesIbcClient) GetLatestRevisionHeight() int32 {
 
 // GetLatestRevisionHeightOk returns a tuple with the LatestRevisionHeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetLatestRevisionHeightOk() (*int32, bool) {
+func (o *ResponsesIbcClient) GetLatestRevisionHeightOk() (*int64, bool) {
 	if o == nil || IsNil(o.LatestRevisionHeight) {
 		return nil, false
 	}
@@ -342,15 +341,15 @@ func (o *ResponsesIbcClient) HasLatestRevisionHeight() bool {
 	return false
 }
 
-// SetLatestRevisionHeight gets a reference to the given int32 and assigns it to the LatestRevisionHeight field.
-func (o *ResponsesIbcClient) SetLatestRevisionHeight(v int32) {
+// SetLatestRevisionHeight gets a reference to the given int64 and assigns it to the LatestRevisionHeight field.
+func (o *ResponsesIbcClient) SetLatestRevisionHeight(v int64) {
 	o.LatestRevisionHeight = &v
 }
 
 // GetLatestRevisionNumber returns the LatestRevisionNumber field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetLatestRevisionNumber() int32 {
+func (o *ResponsesIbcClient) GetLatestRevisionNumber() int64 {
 	if o == nil || IsNil(o.LatestRevisionNumber) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LatestRevisionNumber
@@ -358,7 +357,7 @@ func (o *ResponsesIbcClient) GetLatestRevisionNumber() int32 {
 
 // GetLatestRevisionNumberOk returns a tuple with the LatestRevisionNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetLatestRevisionNumberOk() (*int32, bool) {
+func (o *ResponsesIbcClient) GetLatestRevisionNumberOk() (*int64, bool) {
 	if o == nil || IsNil(o.LatestRevisionNumber) {
 		return nil, false
 	}
@@ -374,15 +373,15 @@ func (o *ResponsesIbcClient) HasLatestRevisionNumber() bool {
 	return false
 }
 
-// SetLatestRevisionNumber gets a reference to the given int32 and assigns it to the LatestRevisionNumber field.
-func (o *ResponsesIbcClient) SetLatestRevisionNumber(v int32) {
+// SetLatestRevisionNumber gets a reference to the given int64 and assigns it to the LatestRevisionNumber field.
+func (o *ResponsesIbcClient) SetLatestRevisionNumber(v int64) {
 	o.LatestRevisionNumber = &v
 }
 
 // GetMaxClockDrift returns the MaxClockDrift field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetMaxClockDrift() int32 {
+func (o *ResponsesIbcClient) GetMaxClockDrift() int64 {
 	if o == nil || IsNil(o.MaxClockDrift) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MaxClockDrift
@@ -390,7 +389,7 @@ func (o *ResponsesIbcClient) GetMaxClockDrift() int32 {
 
 // GetMaxClockDriftOk returns a tuple with the MaxClockDrift field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetMaxClockDriftOk() (*int32, bool) {
+func (o *ResponsesIbcClient) GetMaxClockDriftOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaxClockDrift) {
 		return nil, false
 	}
@@ -406,15 +405,15 @@ func (o *ResponsesIbcClient) HasMaxClockDrift() bool {
 	return false
 }
 
-// SetMaxClockDrift gets a reference to the given int32 and assigns it to the MaxClockDrift field.
-func (o *ResponsesIbcClient) SetMaxClockDrift(v int32) {
+// SetMaxClockDrift gets a reference to the given int64 and assigns it to the MaxClockDrift field.
+func (o *ResponsesIbcClient) SetMaxClockDrift(v int64) {
 	o.MaxClockDrift = &v
 }
 
 // GetTrustLevelDenominator returns the TrustLevelDenominator field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetTrustLevelDenominator() int32 {
+func (o *ResponsesIbcClient) GetTrustLevelDenominator() int64 {
 	if o == nil || IsNil(o.TrustLevelDenominator) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TrustLevelDenominator
@@ -422,7 +421,7 @@ func (o *ResponsesIbcClient) GetTrustLevelDenominator() int32 {
 
 // GetTrustLevelDenominatorOk returns a tuple with the TrustLevelDenominator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetTrustLevelDenominatorOk() (*int32, bool) {
+func (o *ResponsesIbcClient) GetTrustLevelDenominatorOk() (*int64, bool) {
 	if o == nil || IsNil(o.TrustLevelDenominator) {
 		return nil, false
 	}
@@ -438,15 +437,15 @@ func (o *ResponsesIbcClient) HasTrustLevelDenominator() bool {
 	return false
 }
 
-// SetTrustLevelDenominator gets a reference to the given int32 and assigns it to the TrustLevelDenominator field.
-func (o *ResponsesIbcClient) SetTrustLevelDenominator(v int32) {
+// SetTrustLevelDenominator gets a reference to the given int64 and assigns it to the TrustLevelDenominator field.
+func (o *ResponsesIbcClient) SetTrustLevelDenominator(v int64) {
 	o.TrustLevelDenominator = &v
 }
 
 // GetTrustLevelNumerator returns the TrustLevelNumerator field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetTrustLevelNumerator() int32 {
+func (o *ResponsesIbcClient) GetTrustLevelNumerator() int64 {
 	if o == nil || IsNil(o.TrustLevelNumerator) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TrustLevelNumerator
@@ -454,7 +453,7 @@ func (o *ResponsesIbcClient) GetTrustLevelNumerator() int32 {
 
 // GetTrustLevelNumeratorOk returns a tuple with the TrustLevelNumerator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetTrustLevelNumeratorOk() (*int32, bool) {
+func (o *ResponsesIbcClient) GetTrustLevelNumeratorOk() (*int64, bool) {
 	if o == nil || IsNil(o.TrustLevelNumerator) {
 		return nil, false
 	}
@@ -470,15 +469,15 @@ func (o *ResponsesIbcClient) HasTrustLevelNumerator() bool {
 	return false
 }
 
-// SetTrustLevelNumerator gets a reference to the given int32 and assigns it to the TrustLevelNumerator field.
-func (o *ResponsesIbcClient) SetTrustLevelNumerator(v int32) {
+// SetTrustLevelNumerator gets a reference to the given int64 and assigns it to the TrustLevelNumerator field.
+func (o *ResponsesIbcClient) SetTrustLevelNumerator(v int64) {
 	o.TrustLevelNumerator = &v
 }
 
 // GetTrustingPeriod returns the TrustingPeriod field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetTrustingPeriod() int32 {
+func (o *ResponsesIbcClient) GetTrustingPeriod() int64 {
 	if o == nil || IsNil(o.TrustingPeriod) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TrustingPeriod
@@ -486,7 +485,7 @@ func (o *ResponsesIbcClient) GetTrustingPeriod() int32 {
 
 // GetTrustingPeriodOk returns a tuple with the TrustingPeriod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetTrustingPeriodOk() (*int32, bool) {
+func (o *ResponsesIbcClient) GetTrustingPeriodOk() (*int64, bool) {
 	if o == nil || IsNil(o.TrustingPeriod) {
 		return nil, false
 	}
@@ -502,15 +501,15 @@ func (o *ResponsesIbcClient) HasTrustingPeriod() bool {
 	return false
 }
 
-// SetTrustingPeriod gets a reference to the given int32 and assigns it to the TrustingPeriod field.
-func (o *ResponsesIbcClient) SetTrustingPeriod(v int32) {
+// SetTrustingPeriod gets a reference to the given int64 and assigns it to the TrustingPeriod field.
+func (o *ResponsesIbcClient) SetTrustingPeriod(v int64) {
 	o.TrustingPeriod = &v
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetTxHash() *os.File {
+func (o *ResponsesIbcClient) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -518,7 +517,7 @@ func (o *ResponsesIbcClient) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesIbcClient) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -534,8 +533,8 @@ func (o *ResponsesIbcClient) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesIbcClient) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesIbcClient) SetTxHash(v string) {
 	o.TxHash = &v
 }
 
@@ -572,9 +571,9 @@ func (o *ResponsesIbcClient) SetType(v string) {
 }
 
 // GetUnbondingPeriod returns the UnbondingPeriod field value if set, zero value otherwise.
-func (o *ResponsesIbcClient) GetUnbondingPeriod() int32 {
+func (o *ResponsesIbcClient) GetUnbondingPeriod() int64 {
 	if o == nil || IsNil(o.UnbondingPeriod) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UnbondingPeriod
@@ -582,7 +581,7 @@ func (o *ResponsesIbcClient) GetUnbondingPeriod() int32 {
 
 // GetUnbondingPeriodOk returns a tuple with the UnbondingPeriod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesIbcClient) GetUnbondingPeriodOk() (*int32, bool) {
+func (o *ResponsesIbcClient) GetUnbondingPeriodOk() (*int64, bool) {
 	if o == nil || IsNil(o.UnbondingPeriod) {
 		return nil, false
 	}
@@ -598,8 +597,8 @@ func (o *ResponsesIbcClient) HasUnbondingPeriod() bool {
 	return false
 }
 
-// SetUnbondingPeriod gets a reference to the given int32 and assigns it to the UnbondingPeriod field.
-func (o *ResponsesIbcClient) SetUnbondingPeriod(v int32) {
+// SetUnbondingPeriod gets a reference to the given int64 and assigns it to the UnbondingPeriod field.
+func (o *ResponsesIbcClient) SetUnbondingPeriod(v int64) {
 	o.UnbondingPeriod = &v
 }
 

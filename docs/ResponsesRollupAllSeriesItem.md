@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BlobsCount** | Pointer to **int32** |  | [optional] 
+**BlobsCount** | Pointer to **int64** |  | [optional] 
 **Fee** | Pointer to **string** |  | [optional] 
 **Logo** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Size** | Pointer to **int32** |  | [optional] 
+**Size** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetBlobsCount
 
-`func (o *ResponsesRollupAllSeriesItem) GetBlobsCount() int32`
+`func (o *ResponsesRollupAllSeriesItem) GetBlobsCount() int64`
 
 GetBlobsCount returns the BlobsCount field if non-nil, zero value otherwise.
 
 ### GetBlobsCountOk
 
-`func (o *ResponsesRollupAllSeriesItem) GetBlobsCountOk() (*int32, bool)`
+`func (o *ResponsesRollupAllSeriesItem) GetBlobsCountOk() (*int64, bool)`
 
 GetBlobsCountOk returns a tuple with the BlobsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlobsCount
 
-`func (o *ResponsesRollupAllSeriesItem) SetBlobsCount(v int32)`
+`func (o *ResponsesRollupAllSeriesItem) SetBlobsCount(v int64)`
 
 SetBlobsCount sets BlobsCount field to given value.
 
@@ -131,20 +131,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetSize
 
-`func (o *ResponsesRollupAllSeriesItem) GetSize() int32`
+`func (o *ResponsesRollupAllSeriesItem) GetSize() int64`
 
 GetSize returns the Size field if non-nil, zero value otherwise.
 
 ### GetSizeOk
 
-`func (o *ResponsesRollupAllSeriesItem) GetSizeOk() (*int32, bool)`
+`func (o *ResponsesRollupAllSeriesItem) GetSizeOk() (*int64, bool)`
 
 GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSize
 
-`func (o *ResponsesRollupAllSeriesItem) SetSize(v int32)`
+`func (o *ResponsesRollupAllSeriesItem) SetSize(v int64)`
 
 SetSize sets Size field to given value.
 

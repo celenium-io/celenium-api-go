@@ -27,7 +27,7 @@ type VestingAPIService service
 type ApiGetVestingPeriodsRequest struct {
 	ctx context.Context
 	ApiService *VestingAPIService
-	id int32
+	id int64
 	limit *int32
 	offset *int32
 }
@@ -44,7 +44,7 @@ func (r ApiGetVestingPeriodsRequest) Offset(offset int32) ApiGetVestingPeriodsRe
 	return r
 }
 
-func (r ApiGetVestingPeriodsRequest) Execute() (*ResponsesVestingPeriod, *http.Response, error) {
+func (r ApiGetVestingPeriodsRequest) Execute() ([]ResponsesVestingPeriod, *http.Response, error) {
 	return r.ApiService.GetVestingPeriodsExecute(r)
 }
 
@@ -57,7 +57,7 @@ Returns vesting periods by vesting id. Returns a non-empty array only for period
  @param id Internal identity
  @return ApiGetVestingPeriodsRequest
 */
-func (a *VestingAPIService) GetVestingPeriods(ctx context.Context, id int32) ApiGetVestingPeriodsRequest {
+func (a *VestingAPIService) GetVestingPeriods(ctx context.Context, id int64) ApiGetVestingPeriodsRequest {
 	return ApiGetVestingPeriodsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -66,13 +66,13 @@ func (a *VestingAPIService) GetVestingPeriods(ctx context.Context, id int32) Api
 }
 
 // Execute executes the request
-//  @return ResponsesVestingPeriod
-func (a *VestingAPIService) GetVestingPeriodsExecute(r ApiGetVestingPeriodsRequest) (*ResponsesVestingPeriod, *http.Response, error) {
+//  @return []ResponsesVestingPeriod
+func (a *VestingAPIService) GetVestingPeriodsExecute(r ApiGetVestingPeriodsRequest) ([]ResponsesVestingPeriod, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponsesVestingPeriod
+		localVarReturnValue  []ResponsesVestingPeriod
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VestingAPIService.GetVestingPeriods")
@@ -109,6 +109,20 @@ func (a *VestingAPIService) GetVestingPeriodsExecute(r ApiGetVestingPeriodsReque
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

@@ -4,21 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BlobsCount** | Pointer to **int32** |  | [optional] 
-**BlobsCountPct** | Pointer to **float32** |  | [optional] 
+**BlobsCount** | Pointer to **int64** |  | [optional] 
+**BlobsCountPct** | Pointer to **float64** |  | [optional] 
 **Bridge** | Pointer to **string** |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
 **Color** | Pointer to **string** |  | [optional] 
 **Compression** | Pointer to **string** |  | [optional] 
-**DaPct** | Pointer to **float32** |  | [optional] 
+**DaPct** | Pointer to **float64** |  | [optional] 
 **DefiLama** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Explorer** | Pointer to **string** |  | [optional] 
 **Fee** | Pointer to **string** |  | [optional] 
-**FeePct** | Pointer to **float32** |  | [optional] 
+**FeePct** | Pointer to **float64** |  | [optional] 
+**FibreBlobsCount** | Pointer to **int64** |  | [optional] 
 **FirstMessageTime** | Pointer to **time.Time** |  | [optional] 
 **Github** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **IsActive** | Pointer to **bool** |  | [optional] 
 **L2Beat** | Pointer to **string** |  | [optional] 
 **LastMessageTime** | Pointer to **time.Time** |  | [optional] 
@@ -27,8 +28,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Provider** | Pointer to **string** |  | [optional] 
 **SettledOn** | Pointer to **string** |  | [optional] 
-**Size** | Pointer to **int32** |  | [optional] 
-**SizePct** | Pointer to **float32** |  | [optional] 
+**Size** | Pointer to **int64** |  | [optional] 
+**SizePct** | Pointer to **float64** |  | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 **Stack** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -58,20 +59,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetBlobsCount
 
-`func (o *ResponsesRollupWithStats) GetBlobsCount() int32`
+`func (o *ResponsesRollupWithStats) GetBlobsCount() int64`
 
 GetBlobsCount returns the BlobsCount field if non-nil, zero value otherwise.
 
 ### GetBlobsCountOk
 
-`func (o *ResponsesRollupWithStats) GetBlobsCountOk() (*int32, bool)`
+`func (o *ResponsesRollupWithStats) GetBlobsCountOk() (*int64, bool)`
 
 GetBlobsCountOk returns a tuple with the BlobsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlobsCount
 
-`func (o *ResponsesRollupWithStats) SetBlobsCount(v int32)`
+`func (o *ResponsesRollupWithStats) SetBlobsCount(v int64)`
 
 SetBlobsCount sets BlobsCount field to given value.
 
@@ -83,20 +84,20 @@ HasBlobsCount returns a boolean if a field has been set.
 
 ### GetBlobsCountPct
 
-`func (o *ResponsesRollupWithStats) GetBlobsCountPct() float32`
+`func (o *ResponsesRollupWithStats) GetBlobsCountPct() float64`
 
 GetBlobsCountPct returns the BlobsCountPct field if non-nil, zero value otherwise.
 
 ### GetBlobsCountPctOk
 
-`func (o *ResponsesRollupWithStats) GetBlobsCountPctOk() (*float32, bool)`
+`func (o *ResponsesRollupWithStats) GetBlobsCountPctOk() (*float64, bool)`
 
 GetBlobsCountPctOk returns a tuple with the BlobsCountPct field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlobsCountPct
 
-`func (o *ResponsesRollupWithStats) SetBlobsCountPct(v float32)`
+`func (o *ResponsesRollupWithStats) SetBlobsCountPct(v float64)`
 
 SetBlobsCountPct sets BlobsCountPct field to given value.
 
@@ -208,20 +209,20 @@ HasCompression returns a boolean if a field has been set.
 
 ### GetDaPct
 
-`func (o *ResponsesRollupWithStats) GetDaPct() float32`
+`func (o *ResponsesRollupWithStats) GetDaPct() float64`
 
 GetDaPct returns the DaPct field if non-nil, zero value otherwise.
 
 ### GetDaPctOk
 
-`func (o *ResponsesRollupWithStats) GetDaPctOk() (*float32, bool)`
+`func (o *ResponsesRollupWithStats) GetDaPctOk() (*float64, bool)`
 
 GetDaPctOk returns a tuple with the DaPct field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDaPct
 
-`func (o *ResponsesRollupWithStats) SetDaPct(v float32)`
+`func (o *ResponsesRollupWithStats) SetDaPct(v float64)`
 
 SetDaPct sets DaPct field to given value.
 
@@ -333,20 +334,20 @@ HasFee returns a boolean if a field has been set.
 
 ### GetFeePct
 
-`func (o *ResponsesRollupWithStats) GetFeePct() float32`
+`func (o *ResponsesRollupWithStats) GetFeePct() float64`
 
 GetFeePct returns the FeePct field if non-nil, zero value otherwise.
 
 ### GetFeePctOk
 
-`func (o *ResponsesRollupWithStats) GetFeePctOk() (*float32, bool)`
+`func (o *ResponsesRollupWithStats) GetFeePctOk() (*float64, bool)`
 
 GetFeePctOk returns a tuple with the FeePct field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeePct
 
-`func (o *ResponsesRollupWithStats) SetFeePct(v float32)`
+`func (o *ResponsesRollupWithStats) SetFeePct(v float64)`
 
 SetFeePct sets FeePct field to given value.
 
@@ -355,6 +356,31 @@ SetFeePct sets FeePct field to given value.
 `func (o *ResponsesRollupWithStats) HasFeePct() bool`
 
 HasFeePct returns a boolean if a field has been set.
+
+### GetFibreBlobsCount
+
+`func (o *ResponsesRollupWithStats) GetFibreBlobsCount() int64`
+
+GetFibreBlobsCount returns the FibreBlobsCount field if non-nil, zero value otherwise.
+
+### GetFibreBlobsCountOk
+
+`func (o *ResponsesRollupWithStats) GetFibreBlobsCountOk() (*int64, bool)`
+
+GetFibreBlobsCountOk returns a tuple with the FibreBlobsCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFibreBlobsCount
+
+`func (o *ResponsesRollupWithStats) SetFibreBlobsCount(v int64)`
+
+SetFibreBlobsCount sets FibreBlobsCount field to given value.
+
+### HasFibreBlobsCount
+
+`func (o *ResponsesRollupWithStats) HasFibreBlobsCount() bool`
+
+HasFibreBlobsCount returns a boolean if a field has been set.
 
 ### GetFirstMessageTime
 
@@ -408,20 +434,20 @@ HasGithub returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesRollupWithStats) GetId() int32`
+`func (o *ResponsesRollupWithStats) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesRollupWithStats) GetIdOk() (*int32, bool)`
+`func (o *ResponsesRollupWithStats) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesRollupWithStats) SetId(v int32)`
+`func (o *ResponsesRollupWithStats) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -633,20 +659,20 @@ HasSettledOn returns a boolean if a field has been set.
 
 ### GetSize
 
-`func (o *ResponsesRollupWithStats) GetSize() int32`
+`func (o *ResponsesRollupWithStats) GetSize() int64`
 
 GetSize returns the Size field if non-nil, zero value otherwise.
 
 ### GetSizeOk
 
-`func (o *ResponsesRollupWithStats) GetSizeOk() (*int32, bool)`
+`func (o *ResponsesRollupWithStats) GetSizeOk() (*int64, bool)`
 
 GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSize
 
-`func (o *ResponsesRollupWithStats) SetSize(v int32)`
+`func (o *ResponsesRollupWithStats) SetSize(v int64)`
 
 SetSize sets Size field to given value.
 
@@ -658,20 +684,20 @@ HasSize returns a boolean if a field has been set.
 
 ### GetSizePct
 
-`func (o *ResponsesRollupWithStats) GetSizePct() float32`
+`func (o *ResponsesRollupWithStats) GetSizePct() float64`
 
 GetSizePct returns the SizePct field if non-nil, zero value otherwise.
 
 ### GetSizePctOk
 
-`func (o *ResponsesRollupWithStats) GetSizePctOk() (*float32, bool)`
+`func (o *ResponsesRollupWithStats) GetSizePctOk() (*float64, bool)`
 
 GetSizePctOk returns a tuple with the SizePct field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSizePct
 
-`func (o *ResponsesRollupWithStats) SetSizePct(v float32)`
+`func (o *ResponsesRollupWithStats) SetSizePct(v float64)`
 
 SetSizePct sets SizePct field to given value.
 

@@ -26,7 +26,7 @@ func Test_celenium_HyperlaneAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id string
 
 		resp, httpRes, err := apiClient.HyperlaneAPI.GetHyperlaneIgp(context.Background(), id).Execute()
 
@@ -68,7 +68,7 @@ func Test_celenium_HyperlaneAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.HyperlaneAPI.GetHyperlaneTransfer(context.Background(), id).Execute()
 
@@ -82,7 +82,7 @@ func Test_celenium_HyperlaneAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.HyperlaneAPI.GetZkism(context.Background(), id).Execute()
 
@@ -96,7 +96,7 @@ func Test_celenium_HyperlaneAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.HyperlaneAPI.GetZkismMessages(context.Background(), id).Execute()
 
@@ -110,7 +110,7 @@ func Test_celenium_HyperlaneAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
+		var id int64
 
 		resp, httpRes, err := apiClient.HyperlaneAPI.GetZkismUpdates(context.Background(), id).Execute()
 

@@ -27,7 +27,7 @@ type ProposalAPIService service
 type ApiGetProposalRequest struct {
 	ctx context.Context
 	ApiService *ProposalAPIService
-	id int32
+	id int64
 }
 
 func (r ApiGetProposalRequest) Execute() (*ResponsesProposal, *http.Response, error) {
@@ -43,7 +43,7 @@ Returns detailed information about a single governance proposal by its internal 
  @param id Internal identity
  @return ApiGetProposalRequest
 */
-func (a *ProposalAPIService) GetProposal(ctx context.Context, id int32) ApiGetProposalRequest {
+func (a *ProposalAPIService) GetProposal(ctx context.Context, id int64) ApiGetProposalRequest {
 	return ApiGetProposalRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -92,6 +92,20 @@ func (a *ProposalAPIService) GetProposalExecute(r ApiGetProposalRequest) (*Respo
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -158,8 +172,8 @@ type ApiListProposalRequest struct {
 	offset *int32
 	sort *string
 	proposer *string
-	status *string
-	type_ *string
+	status *[]string
+	type_ *[]string
 }
 
 // Count of requested entities
@@ -187,13 +201,13 @@ func (r ApiListProposalRequest) Proposer(proposer string) ApiListProposalRequest
 }
 
 // Comma-separated proposal status list
-func (r ApiListProposalRequest) Status(status string) ApiListProposalRequest {
+func (r ApiListProposalRequest) Status(status []string) ApiListProposalRequest {
 	r.status = &status
 	return r
 }
 
 // Comma-separated proposal type list
-func (r ApiListProposalRequest) Type_(type_ string) ApiListProposalRequest {
+func (r ApiListProposalRequest) Type_(type_ []string) ApiListProposalRequest {
 	r.type_ = &type_
 	return r
 }
@@ -251,10 +265,10 @@ func (a *ProposalAPIService) ListProposalExecute(r ApiListProposalRequest) ([]Re
 		parameterAddToHeaderOrQuery(localVarQueryParams, "proposer", r.proposer, "", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "csv")
 	}
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -272,6 +286,20 @@ func (a *ProposalAPIService) ListProposalExecute(r ApiListProposalRequest) ([]Re
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -334,10 +362,10 @@ func (a *ProposalAPIService) ListProposalExecute(r ApiListProposalRequest) ([]Re
 type ApiProposalVotesRequest struct {
 	ctx context.Context
 	ApiService *ProposalAPIService
-	id int32
+	id int64
 	limit *int32
 	offset *int32
-	option *string
+	option *[]string
 	voter *string
 	address *string
 	validator *string
@@ -356,7 +384,7 @@ func (r ApiProposalVotesRequest) Offset(offset int32) ApiProposalVotesRequest {
 }
 
 // Option
-func (r ApiProposalVotesRequest) Option(option string) ApiProposalVotesRequest {
+func (r ApiProposalVotesRequest) Option(option []string) ApiProposalVotesRequest {
 	r.option = &option
 	return r
 }
@@ -392,7 +420,7 @@ Returns a paginated list of governance votes for the given proposal. Can be filt
  @param id Internal identity
  @return ApiProposalVotesRequest
 */
-func (a *ProposalAPIService) ProposalVotes(ctx context.Context, id int32) ApiProposalVotesRequest {
+func (a *ProposalAPIService) ProposalVotes(ctx context.Context, id int64) ApiProposalVotesRequest {
 	return ApiProposalVotesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -432,7 +460,7 @@ func (a *ProposalAPIService) ProposalVotesExecute(r ApiProposalVotesRequest) ([]
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	}
 	if r.option != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "option", r.option, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "option", r.option, "form", "csv")
 	}
 	if r.voter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "voter", r.voter, "", "")
@@ -459,6 +487,20 @@ func (a *ProposalAPIService) ProposalVotesExecute(r ApiProposalVotesRequest) ([]
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

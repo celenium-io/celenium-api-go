@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetValidatorBlocks**](ValidatorAPI.md#GetValidatorBlocks) | **Get** /validators/{id}/blocks | Get blocks which was proposed by validator
 [**GetValidatorUptime**](ValidatorAPI.md#GetValidatorUptime) | **Get** /validators/{id}/uptime | Get validator&#39;s uptime and history of signed block
 [**ListValidator**](ValidatorAPI.md#ListValidator) | **Get** /validators | List validators
+[**ValidatorBondUpdates**](ValidatorAPI.md#ValidatorBondUpdates) | **Get** /validators/{id}/bond_updates | Get validator&#39;s bond updates
 [**ValidatorCount**](ValidatorAPI.md#ValidatorCount) | **Get** /validators/count | Get validator&#39;s count by status
 [**ValidatorDelegators**](ValidatorAPI.md#ValidatorDelegators) | **Get** /validators/{id}/delegators | Get validator&#39;s delegators
 [**ValidatorJails**](ValidatorAPI.md#ValidatorJails) | **Get** /validators/{id}/jails | Get validator&#39;s jails
@@ -39,7 +40,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal validator id
+	id := int64(789) // int64 | Internal validator id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -59,7 +60,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal validator id | 
+**id** | **int64** | Internal validator id | 
 
 ### Other Parameters
 
@@ -76,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -109,7 +110,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal validator id
+	id := int64(789) // int64 | Internal validator id
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 
@@ -131,7 +132,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal validator id | 
+**id** | **int64** | Internal validator id | 
 
 ### Other Parameters
 
@@ -150,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -183,7 +184,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal validator id
+	id := int64(789) // int64 | Internal validator id
 	limit := int32(56) // int32 | Count of requested blocks (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -204,7 +205,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal validator id | 
+**id** | **int64** | Internal validator id | 
 
 ### Other Parameters
 
@@ -222,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -236,7 +237,7 @@ No authorization required
 
 ## ListValidator
 
-> []ResponsesValidator ListValidator(ctx).Limit(limit).Offset(offset).Jailed(jailed).Version(version).Execute()
+> []ResponsesValidator ListValidator(ctx).Limit(limit).Offset(offset).Jailed(jailed).Version(version).Status(status).Execute()
 
 List validators
 
@@ -259,10 +260,11 @@ func main() {
 	offset := int32(56) // int32 | Offset (optional)
 	jailed := true // bool | Return only jailed validators (optional)
 	version := int32(56) // int32 | Current validator app version (optional)
+	status := "status_example" // string | Validator status (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ValidatorAPI.ListValidator(context.Background()).Limit(limit).Offset(offset).Jailed(jailed).Version(version).Execute()
+	resp, r, err := apiClient.ValidatorAPI.ListValidator(context.Background()).Limit(limit).Offset(offset).Jailed(jailed).Version(version).Status(status).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ValidatorAPI.ListValidator``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -287,6 +289,7 @@ Name | Type | Description  | Notes
  **offset** | **int32** | Offset | 
  **jailed** | **bool** | Return only jailed validators | 
  **version** | **int32** | Current validator app version | 
+ **status** | **string** | Validator status | 
 
 ### Return type
 
@@ -294,7 +297,83 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ValidatorBondUpdates
+
+> []ResponsesBondUpdate ValidatorBondUpdates(ctx, id).Limit(limit).Offset(offset).Sort(sort).Execute()
+
+Get validator's bond updates
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/celenium-io/celenium-api-go"
+)
+
+func main() {
+	id := int64(789) // int64 | Internal validator id
+	limit := int32(56) // int32 | Count of requested entities (optional)
+	offset := int32(56) // int32 | Offset (optional)
+	sort := "sort_example" // string | Sort order by time (optional) (default to "asc")
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ValidatorAPI.ValidatorBondUpdates(context.Background(), id).Limit(limit).Offset(offset).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ValidatorAPI.ValidatorBondUpdates``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ValidatorBondUpdates`: []ResponsesBondUpdate
+	fmt.Fprintf(os.Stdout, "Response from `ValidatorAPI.ValidatorBondUpdates`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64** | Internal validator id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiValidatorBondUpdatesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Count of requested entities | 
+ **offset** | **int32** | Offset | 
+ **sort** | **string** | Sort order by time | [default to &quot;asc&quot;]
+
+### Return type
+
+[**[]ResponsesBondUpdate**](ResponsesBondUpdate.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -355,7 +434,7 @@ Other parameters are passed through a pointer to a apiValidatorCountRequest stru
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -388,7 +467,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal validator id
+	id := int64(789) // int64 | Internal validator id
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 	showZero := true // bool | Show zero delegations (optional)
@@ -411,7 +490,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal validator id | 
+**id** | **int64** | Internal validator id | 
 
 ### Other Parameters
 
@@ -431,7 +510,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -464,7 +543,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal validator id
+	id := int64(789) // int64 | Internal validator id
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 
@@ -486,7 +565,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal validator id | 
+**id** | **int64** | Internal validator id | 
 
 ### Other Parameters
 
@@ -505,7 +584,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -538,12 +617,12 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal validator id
+	id := int64(789) // int64 | Internal validator id
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 	sort := "sort_example" // string | Sort order (optional)
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -563,7 +642,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal validator id | 
+**id** | **int64** | Internal validator id | 
 
 ### Other Parameters
 
@@ -576,8 +655,8 @@ Name | Type | Description  | Notes
  **limit** | **int32** | Count of requested entities | 
  **offset** | **int32** | Offset | 
  **sort** | **string** | Sort order | 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -585,7 +664,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -618,7 +697,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal validator id
+	id := int64(789) // int64 | Internal validator id
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -638,7 +717,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal validator id | 
+**id** | **int64** | Internal validator id | 
 
 ### Other Parameters
 
@@ -655,7 +734,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -688,7 +767,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal validator id
+	id := int64(789) // int64 | Internal validator id
 	limit := int32(56) // int32 | Count of requested entities (optional)
 	offset := int32(56) // int32 | Offset (optional)
 
@@ -710,7 +789,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal validator id | 
+**id** | **int64** | Internal validator id | 
 
 ### Other Parameters
 
@@ -729,7 +808,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -795,7 +874,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

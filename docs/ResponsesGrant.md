@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Authorization** | Pointer to **string** |  | [optional] 
-**Expiration** | Pointer to **string** |  | [optional] 
+**Expiration** | Pointer to **time.Time** |  | [optional] 
 **Grantee** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
 **Granter** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
-**Params** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
-**RevokeHeight** | Pointer to **int32** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
+**Params** | Pointer to **map[string]interface{}** |  | [optional] 
+**RevokeHeight** | Pointer to **int64** |  | [optional] 
 **Revoked** | Pointer to **bool** |  | [optional] 
-**Time** | Pointer to **string** |  | [optional] 
+**Time** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -60,20 +60,20 @@ HasAuthorization returns a boolean if a field has been set.
 
 ### GetExpiration
 
-`func (o *ResponsesGrant) GetExpiration() string`
+`func (o *ResponsesGrant) GetExpiration() time.Time`
 
 GetExpiration returns the Expiration field if non-nil, zero value otherwise.
 
 ### GetExpirationOk
 
-`func (o *ResponsesGrant) GetExpirationOk() (*string, bool)`
+`func (o *ResponsesGrant) GetExpirationOk() (*time.Time, bool)`
 
 GetExpirationOk returns a tuple with the Expiration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiration
 
-`func (o *ResponsesGrant) SetExpiration(v string)`
+`func (o *ResponsesGrant) SetExpiration(v time.Time)`
 
 SetExpiration sets Expiration field to given value.
 
@@ -135,20 +135,20 @@ HasGranter returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesGrant) GetHeight() int32`
+`func (o *ResponsesGrant) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesGrant) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesGrant) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesGrant) SetHeight(v int32)`
+`func (o *ResponsesGrant) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 
@@ -160,20 +160,20 @@ HasHeight returns a boolean if a field has been set.
 
 ### GetParams
 
-`func (o *ResponsesGrant) GetParams() map[string]map[string]interface{}`
+`func (o *ResponsesGrant) GetParams() map[string]interface{}`
 
 GetParams returns the Params field if non-nil, zero value otherwise.
 
 ### GetParamsOk
 
-`func (o *ResponsesGrant) GetParamsOk() (*map[string]map[string]interface{}, bool)`
+`func (o *ResponsesGrant) GetParamsOk() (*map[string]interface{}, bool)`
 
 GetParamsOk returns a tuple with the Params field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParams
 
-`func (o *ResponsesGrant) SetParams(v map[string]map[string]interface{})`
+`func (o *ResponsesGrant) SetParams(v map[string]interface{})`
 
 SetParams sets Params field to given value.
 
@@ -185,20 +185,20 @@ HasParams returns a boolean if a field has been set.
 
 ### GetRevokeHeight
 
-`func (o *ResponsesGrant) GetRevokeHeight() int32`
+`func (o *ResponsesGrant) GetRevokeHeight() int64`
 
 GetRevokeHeight returns the RevokeHeight field if non-nil, zero value otherwise.
 
 ### GetRevokeHeightOk
 
-`func (o *ResponsesGrant) GetRevokeHeightOk() (*int32, bool)`
+`func (o *ResponsesGrant) GetRevokeHeightOk() (*int64, bool)`
 
 GetRevokeHeightOk returns a tuple with the RevokeHeight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRevokeHeight
 
-`func (o *ResponsesGrant) SetRevokeHeight(v int32)`
+`func (o *ResponsesGrant) SetRevokeHeight(v int64)`
 
 SetRevokeHeight sets RevokeHeight field to given value.
 
@@ -235,20 +235,20 @@ HasRevoked returns a boolean if a field has been set.
 
 ### GetTime
 
-`func (o *ResponsesGrant) GetTime() string`
+`func (o *ResponsesGrant) GetTime() time.Time`
 
 GetTime returns the Time field if non-nil, zero value otherwise.
 
 ### GetTimeOk
 
-`func (o *ResponsesGrant) GetTimeOk() (*string, bool)`
+`func (o *ResponsesGrant) GetTimeOk() (*time.Time, bool)`
 
 GetTimeOk returns a tuple with the Time field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTime
 
-`func (o *ResponsesGrant) SetTime(v string)`
+`func (o *ResponsesGrant) SetTime(v time.Time)`
 
 SetTime sets Time field to given value.
 

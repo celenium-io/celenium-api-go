@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Internal forwarding event ID
+	id := int64(789) // int64 | Internal forwarding event ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Internal forwarding event ID | 
+**id** | **int64** | Internal forwarding event ID | 
 
 ### Other Parameters
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -105,9 +105,9 @@ func main() {
 	sort := "sort_example" // string | Sort order. Default: desc (optional)
 	txHash := "txHash_example" // string | Filter by transaction hash (hex) (optional)
 	address := "address_example" // string | Filter by Celestia address (optional)
-	height := int32(56) // int32 | Filter by block height (optional)
-	from := int32(56) // int32 | Filter by start time (Unix timestamp) (optional)
-	to := int32(56) // int32 | Filter by end time (Unix timestamp) (optional)
+	height := int64(789) // int64 | Filter by block height (optional)
+	from := int64(789) // int64 | Filter by start time (Unix timestamp) (optional)
+	to := int64(789) // int64 | Filter by end time (Unix timestamp) (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -137,9 +137,9 @@ Name | Type | Description  | Notes
  **sort** | **string** | Sort order. Default: desc | 
  **txHash** | **string** | Filter by transaction hash (hex) | 
  **address** | **string** | Filter by Celestia address | 
- **height** | **int32** | Filter by block height | 
- **from** | **int32** | Filter by start time (Unix timestamp) | 
- **to** | **int32** | Filter by end time (Unix timestamp) | 
+ **height** | **int64** | Filter by block height | 
+ **from** | **int64** | Filter by start time (Unix timestamp) | 
+ **to** | **int64** | Filter by end time (Unix timestamp) | 
 
 ### Return type
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

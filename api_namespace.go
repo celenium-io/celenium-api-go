@@ -99,6 +99,20 @@ func (a *NamespaceAPIService) GetBlobExecute(r ApiGetBlobRequest) (*ResponsesBlo
 	}
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -156,11 +170,12 @@ type ApiGetBlobLogsRequest struct {
 	sort *string
 	sortBy *string
 	commitment *string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 	joins *bool
-	signers *string
-	cursor *int32
+	signers *[]string
+	cursor *int64
+	source *string
 }
 
 // Count of requested entities
@@ -194,13 +209,13 @@ func (r ApiGetBlobLogsRequest) Commitment(commitment string) ApiGetBlobLogsReque
 }
 
 // Time from in unix timestamp
-func (r ApiGetBlobLogsRequest) From(from int32) ApiGetBlobLogsRequest {
+func (r ApiGetBlobLogsRequest) From(from int64) ApiGetBlobLogsRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiGetBlobLogsRequest) To(to int32) ApiGetBlobLogsRequest {
+func (r ApiGetBlobLogsRequest) To(to int64) ApiGetBlobLogsRequest {
 	r.to = &to
 	return r
 }
@@ -212,14 +227,20 @@ func (r ApiGetBlobLogsRequest) Joins(joins bool) ApiGetBlobLogsRequest {
 }
 
 // Comma-separated celestia addresses
-func (r ApiGetBlobLogsRequest) Signers(signers string) ApiGetBlobLogsRequest {
+func (r ApiGetBlobLogsRequest) Signers(signers []string) ApiGetBlobLogsRequest {
 	r.signers = &signers
 	return r
 }
 
 // Last entity id which is used for cursor pagination
-func (r ApiGetBlobLogsRequest) Cursor(cursor int32) ApiGetBlobLogsRequest {
+func (r ApiGetBlobLogsRequest) Cursor(cursor int64) ApiGetBlobLogsRequest {
 	r.cursor = &cursor
+	return r
+}
+
+// Blob source. If it&#39;s empty both sources are returned
+func (r ApiGetBlobLogsRequest) Source(source string) ApiGetBlobLogsRequest {
+	r.source = &source
 	return r
 }
 
@@ -300,10 +321,13 @@ func (a *NamespaceAPIService) GetBlobLogsExecute(r ApiGetBlobLogsRequest) ([]Res
 		parameterAddToHeaderOrQuery(localVarQueryParams, "joins", r.joins, "", "")
 	}
 	if r.signers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "signers", r.signers, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "signers", r.signers, "form", "csv")
 	}
 	if r.cursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "", "")
+	}
+	if r.source != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -321,6 +345,20 @@ func (a *NamespaceAPIService) GetBlobLogsExecute(r ApiGetBlobLogsRequest) ([]Res
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -455,6 +493,20 @@ func (a *NamespaceAPIService) GetBlobMetadataExecute(r ApiGetBlobMetadataRequest
 	}
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -514,7 +566,7 @@ func (r ApiGetBlobProofRequest) Request(request HandlerPostBlobRequest) ApiGetBl
 	return r
 }
 
-func (r ApiGetBlobProofRequest) Execute() (*ResponsesBlobLog, *http.Response, error) {
+func (r ApiGetBlobProofRequest) Execute() ([]ResponsesBlobProof, *http.Response, error) {
 	return r.ApiService.GetBlobProofExecute(r)
 }
 
@@ -534,13 +586,13 @@ func (a *NamespaceAPIService) GetBlobProof(ctx context.Context) ApiGetBlobProofR
 }
 
 // Execute executes the request
-//  @return ResponsesBlobLog
-func (a *NamespaceAPIService) GetBlobProofExecute(r ApiGetBlobProofRequest) (*ResponsesBlobLog, *http.Response, error) {
+//  @return []ResponsesBlobProof
+func (a *NamespaceAPIService) GetBlobProofExecute(r ApiGetBlobProofRequest) ([]ResponsesBlobProof, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ResponsesBlobLog
+		localVarReturnValue  []ResponsesBlobProof
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespaceAPIService.GetBlobProof")
@@ -576,6 +628,20 @@ func (a *NamespaceAPIService) GetBlobProofExecute(r ApiGetBlobProofRequest) (*Re
 	}
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -631,11 +697,12 @@ type ApiGetBlobsRequest struct {
 	sort *string
 	sortBy *string
 	commitment *string
-	from *int32
-	to *int32
-	signers *string
-	namespaces *string
-	cursor *int32
+	from *int64
+	to *int64
+	signers *[]string
+	namespaces *[]string
+	cursor *int64
+	source *string
 }
 
 // Count of requested entities
@@ -669,32 +736,38 @@ func (r ApiGetBlobsRequest) Commitment(commitment string) ApiGetBlobsRequest {
 }
 
 // Time from in unix timestamp
-func (r ApiGetBlobsRequest) From(from int32) ApiGetBlobsRequest {
+func (r ApiGetBlobsRequest) From(from int64) ApiGetBlobsRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiGetBlobsRequest) To(to int32) ApiGetBlobsRequest {
+func (r ApiGetBlobsRequest) To(to int64) ApiGetBlobsRequest {
 	r.to = &to
 	return r
 }
 
 // Comma-separated celestia addresses
-func (r ApiGetBlobsRequest) Signers(signers string) ApiGetBlobsRequest {
+func (r ApiGetBlobsRequest) Signers(signers []string) ApiGetBlobsRequest {
 	r.signers = &signers
 	return r
 }
 
 // Comma-separated celestia namespaces
-func (r ApiGetBlobsRequest) Namespaces(namespaces string) ApiGetBlobsRequest {
+func (r ApiGetBlobsRequest) Namespaces(namespaces []string) ApiGetBlobsRequest {
 	r.namespaces = &namespaces
 	return r
 }
 
 // Last entity id which is used for cursor pagination
-func (r ApiGetBlobsRequest) Cursor(cursor int32) ApiGetBlobsRequest {
+func (r ApiGetBlobsRequest) Cursor(cursor int64) ApiGetBlobsRequest {
 	r.cursor = &cursor
+	return r
+}
+
+// Blob source. If it&#39;s empty both sources are returned
+func (r ApiGetBlobsRequest) Source(source string) ApiGetBlobsRequest {
+	r.source = &source
 	return r
 }
 
@@ -760,13 +833,16 @@ func (a *NamespaceAPIService) GetBlobsExecute(r ApiGetBlobsRequest) ([]Responses
 		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "", "")
 	}
 	if r.signers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "signers", r.signers, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "signers", r.signers, "form", "csv")
 	}
 	if r.namespaces != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", r.namespaces, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", r.namespaces, "form", "csv")
 	}
 	if r.cursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "", "")
+	}
+	if r.source != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -784,6 +860,20 @@ func (a *NamespaceAPIService) GetBlobsExecute(r ApiGetBlobsRequest) ([]Responses
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -903,6 +993,20 @@ func (a *NamespaceAPIService) GetNamespaceExecute(r ApiGetNamespaceRequest) ([]R
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1028,6 +1132,20 @@ func (a *NamespaceAPIService) GetNamespaceBase64Execute(r ApiGetNamespaceBase64R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1090,7 +1208,7 @@ type ApiGetNamespaceBlobsRequest struct {
 	ctx context.Context
 	ApiService *NamespaceAPIService
 	hash string
-	height int32
+	height int64
 }
 
 func (r ApiGetNamespaceBlobsRequest) Execute() ([]ResponsesBlob, *http.Response, error) {
@@ -1107,7 +1225,7 @@ Returns all blobs submitted to the given namespace (identified by base64-encoded
  @param height Block height
  @return ApiGetNamespaceBlobsRequest
 */
-func (a *NamespaceAPIService) GetNamespaceBlobs(ctx context.Context, hash string, height int32) ApiGetNamespaceBlobsRequest {
+func (a *NamespaceAPIService) GetNamespaceBlobs(ctx context.Context, hash string, height int64) ApiGetNamespaceBlobsRequest {
 	return ApiGetNamespaceBlobsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1158,6 +1276,20 @@ func (a *NamespaceAPIService) GetNamespaceBlobsExecute(r ApiGetNamespaceBlobsReq
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1281,6 +1413,20 @@ func (a *NamespaceAPIService) GetNamespaceByVersionAndIdExecute(r ApiGetNamespac
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1436,6 +1582,20 @@ func (a *NamespaceAPIService) GetNamespaceMessagesExecute(r ApiGetNamespaceMessa
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1589,6 +1749,20 @@ func (a *NamespaceAPIService) GetNamespaceRollupsExecute(r ApiGetNamespaceRollup
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1749,6 +1923,20 @@ func (a *NamespaceAPIService) ListNamespaceExecute(r ApiListNamespaceRequest) ([
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

@@ -27,7 +27,7 @@ type RollupAPIService service
 type ApiGetRollupRequest struct {
 	ctx context.Context
 	ApiService *RollupAPIService
-	id int32
+	id int64
 }
 
 func (r ApiGetRollupRequest) Execute() (*ResponsesRollup, *http.Response, error) {
@@ -43,7 +43,7 @@ Returns detailed information and cumulative statistics for the rollup identified
  @param id Internal identity
  @return ApiGetRollupRequest
 */
-func (a *RollupAPIService) GetRollup(ctx context.Context, id int32) ApiGetRollupRequest {
+func (a *RollupAPIService) GetRollup(ctx context.Context, id int64) ApiGetRollupRequest {
 	return ApiGetRollupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -92,6 +92,20 @@ func (a *RollupAPIService) GetRollupExecute(r ApiGetRollupRequest) (*ResponsesRo
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -217,6 +231,20 @@ func (a *RollupAPIService) GetRollupAllSeriesExecute(r ApiGetRollupAllSeriesRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -278,7 +306,7 @@ func (a *RollupAPIService) GetRollupAllSeriesExecute(r ApiGetRollupAllSeriesRequ
 type ApiGetRollupBlobsRequest struct {
 	ctx context.Context
 	ApiService *RollupAPIService
-	id int32
+	id int64
 	limit *int32
 	offset *int32
 	sort *string
@@ -329,7 +357,7 @@ Returns a paginated list of blobs submitted by the rollup. Supports sorting by t
  @param id Internal identity
  @return ApiGetRollupBlobsRequest
 */
-func (a *RollupAPIService) GetRollupBlobs(ctx context.Context, id int32) ApiGetRollupBlobsRequest {
+func (a *RollupAPIService) GetRollupBlobs(ctx context.Context, id int64) ApiGetRollupBlobsRequest {
 	return ApiGetRollupBlobsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -393,6 +421,20 @@ func (a *RollupAPIService) GetRollupBlobsExecute(r ApiGetRollupBlobsRequest) ([]
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -518,6 +560,20 @@ func (a *RollupAPIService) GetRollupBySlugExecute(r ApiGetRollupBySlugRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -579,7 +635,7 @@ func (a *RollupAPIService) GetRollupBySlugExecute(r ApiGetRollupBySlugRequest) (
 type ApiGetRollupDistributionRequest struct {
 	ctx context.Context
 	ApiService *RollupAPIService
-	id int32
+	id int64
 	name string
 	timeframe string
 }
@@ -599,7 +655,7 @@ Returns the intra-timeframe distribution (e.g. by hour-of-day) for the selected 
  @param timeframe Timeframe
  @return ApiGetRollupDistributionRequest
 */
-func (a *RollupAPIService) GetRollupDistribution(ctx context.Context, id int32, name string, timeframe string) ApiGetRollupDistributionRequest {
+func (a *RollupAPIService) GetRollupDistribution(ctx context.Context, id int64, name string, timeframe string) ApiGetRollupDistributionRequest {
 	return ApiGetRollupDistributionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -652,6 +708,20 @@ func (a *RollupAPIService) GetRollupDistributionExecute(r ApiGetRollupDistributi
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -714,7 +784,7 @@ func (a *RollupAPIService) GetRollupDistributionExecute(r ApiGetRollupDistributi
 type ApiGetRollupNamespacesRequest struct {
 	ctx context.Context
 	ApiService *RollupAPIService
-	id int32
+	id int64
 	limit *int32
 	offset *int32
 }
@@ -744,7 +814,7 @@ Returns a paginated list of namespaces that the rollup has submitted blobs to.
  @param id Internal identity
  @return ApiGetRollupNamespacesRequest
 */
-func (a *RollupAPIService) GetRollupNamespaces(ctx context.Context, id int32) ApiGetRollupNamespacesRequest {
+func (a *RollupAPIService) GetRollupNamespaces(ctx context.Context, id int64) ApiGetRollupNamespacesRequest {
 	return ApiGetRollupNamespacesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -799,6 +869,20 @@ func (a *RollupAPIService) GetRollupNamespacesExecute(r ApiGetRollupNamespacesRe
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -861,7 +945,7 @@ func (a *RollupAPIService) GetRollupNamespacesExecute(r ApiGetRollupNamespacesRe
 type ApiGetRollupProvidersRequest struct {
 	ctx context.Context
 	ApiService *RollupAPIService
-	id int32
+	id int64
 }
 
 func (r ApiGetRollupProvidersRequest) Execute() ([]ResponsesRollupProvider, *http.Response, error) {
@@ -877,7 +961,7 @@ Returns a list of data availability providers associated with the rollup (e.g. C
  @param id Internal identity
  @return ApiGetRollupProvidersRequest
 */
-func (a *RollupAPIService) GetRollupProviders(ctx context.Context, id int32) ApiGetRollupProvidersRequest {
+func (a *RollupAPIService) GetRollupProviders(ctx context.Context, id int64) ApiGetRollupProvidersRequest {
 	return ApiGetRollupProvidersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -926,6 +1010,20 @@ func (a *RollupAPIService) GetRollupProvidersExecute(r ApiGetRollupProvidersRequ
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -988,21 +1086,21 @@ func (a *RollupAPIService) GetRollupProvidersExecute(r ApiGetRollupProvidersRequ
 type ApiGetRollupStatsRequest struct {
 	ctx context.Context
 	ApiService *RollupAPIService
-	id int32
+	id int64
 	name string
 	timeframe string
-	from *int32
-	to *int32
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiGetRollupStatsRequest) From(from int32) ApiGetRollupStatsRequest {
+func (r ApiGetRollupStatsRequest) From(from int64) ApiGetRollupStatsRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiGetRollupStatsRequest) To(to int32) ApiGetRollupStatsRequest {
+func (r ApiGetRollupStatsRequest) To(to int64) ApiGetRollupStatsRequest {
 	r.to = &to
 	return r
 }
@@ -1022,7 +1120,7 @@ Returns a time-series histogram for the rollup with the selected metric (blobs_c
  @param timeframe Timeframe
  @return ApiGetRollupStatsRequest
 */
-func (a *RollupAPIService) GetRollupStats(ctx context.Context, id int32, name string, timeframe string) ApiGetRollupStatsRequest {
+func (a *RollupAPIService) GetRollupStats(ctx context.Context, id int64, name string, timeframe string) ApiGetRollupStatsRequest {
 	return ApiGetRollupStatsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1081,6 +1179,20 @@ func (a *RollupAPIService) GetRollupStatsExecute(r ApiGetRollupStatsRequest) ([]
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1145,7 +1257,7 @@ type ApiGetRollupsCountRequest struct {
 	ApiService *RollupAPIService
 }
 
-func (r ApiGetRollupsCountRequest) Execute() (int32, *http.Response, error) {
+func (r ApiGetRollupsCountRequest) Execute() (int64, *http.Response, error) {
 	return r.ApiService.GetRollupsCountExecute(r)
 }
 
@@ -1165,13 +1277,13 @@ func (a *RollupAPIService) GetRollupsCount(ctx context.Context) ApiGetRollupsCou
 }
 
 // Execute executes the request
-//  @return int32
-func (a *RollupAPIService) GetRollupsCountExecute(r ApiGetRollupsCountRequest) (int32, *http.Response, error) {
+//  @return int64
+func (a *RollupAPIService) GetRollupsCountExecute(r ApiGetRollupsCountRequest) (int64, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarReturnValue  int64
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RollupAPIService.GetRollupsCount")
@@ -1201,6 +1313,20 @@ func (a *RollupAPIService) GetRollupsCountExecute(r ApiGetRollupsCountRequest) (
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1256,10 +1382,11 @@ type ApiListRollupRequest struct {
 	offset *int32
 	sort *string
 	sortBy *string
-	category *string
-	tags *string
-	stack *string
-	provider *string
+	category *[]string
+	tags *[]string
+	stack *[]string
+	provider *[]string
+	type_ *[]string
 	isActive *bool
 }
 
@@ -1288,26 +1415,32 @@ func (r ApiListRollupRequest) SortBy(sortBy string) ApiListRollupRequest {
 }
 
 // Comma-separated rollup category list
-func (r ApiListRollupRequest) Category(category string) ApiListRollupRequest {
+func (r ApiListRollupRequest) Category(category []string) ApiListRollupRequest {
 	r.category = &category
 	return r
 }
 
 // Comma-separated rollup tags list
-func (r ApiListRollupRequest) Tags(tags string) ApiListRollupRequest {
+func (r ApiListRollupRequest) Tags(tags []string) ApiListRollupRequest {
 	r.tags = &tags
 	return r
 }
 
 // Comma-separated rollup stack list
-func (r ApiListRollupRequest) Stack(stack string) ApiListRollupRequest {
+func (r ApiListRollupRequest) Stack(stack []string) ApiListRollupRequest {
 	r.stack = &stack
 	return r
 }
 
 // Comma-separated rollup provider list
-func (r ApiListRollupRequest) Provider(provider string) ApiListRollupRequest {
+func (r ApiListRollupRequest) Provider(provider []string) ApiListRollupRequest {
 	r.provider = &provider
+	return r
+}
+
+// Comma-separated rollup type list
+func (r ApiListRollupRequest) Type_(type_ []string) ApiListRollupRequest {
+	r.type_ = &type_
 	return r
 }
 
@@ -1370,16 +1503,19 @@ func (a *RollupAPIService) ListRollupExecute(r ApiListRollupRequest) ([]Response
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "", "")
 	}
 	if r.category != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "category", r.category, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "category", r.category, "form", "csv")
 	}
 	if r.tags != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tags", r.tags, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tags", r.tags, "form", "csv")
 	}
 	if r.stack != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "stack", r.stack, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stack", r.stack, "form", "csv")
 	}
 	if r.provider != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "form", "csv")
+	}
+	if r.type_ != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "csv")
 	}
 	if r.isActive != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "is_active", r.isActive, "", "")
@@ -1400,6 +1536,20 @@ func (a *RollupAPIService) ListRollupExecute(r ApiListRollupRequest) ([]Response
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1466,10 +1616,11 @@ type ApiListRollup24hRequest struct {
 	offset *int32
 	sort *string
 	sortBy *string
-	category *string
-	tags *string
-	stack *string
-	provider *string
+	category *[]string
+	tags *[]string
+	stack *[]string
+	provider *[]string
+	type_ *[]string
 }
 
 // Count of requested entities
@@ -1497,26 +1648,32 @@ func (r ApiListRollup24hRequest) SortBy(sortBy string) ApiListRollup24hRequest {
 }
 
 // Comma-separated rollup category list
-func (r ApiListRollup24hRequest) Category(category string) ApiListRollup24hRequest {
+func (r ApiListRollup24hRequest) Category(category []string) ApiListRollup24hRequest {
 	r.category = &category
 	return r
 }
 
 // Comma-separated rollup tags list
-func (r ApiListRollup24hRequest) Tags(tags string) ApiListRollup24hRequest {
+func (r ApiListRollup24hRequest) Tags(tags []string) ApiListRollup24hRequest {
 	r.tags = &tags
 	return r
 }
 
 // Comma-separated rollup stack list
-func (r ApiListRollup24hRequest) Stack(stack string) ApiListRollup24hRequest {
+func (r ApiListRollup24hRequest) Stack(stack []string) ApiListRollup24hRequest {
 	r.stack = &stack
 	return r
 }
 
 // Comma-separated rollup provider list
-func (r ApiListRollup24hRequest) Provider(provider string) ApiListRollup24hRequest {
+func (r ApiListRollup24hRequest) Provider(provider []string) ApiListRollup24hRequest {
 	r.provider = &provider
+	return r
+}
+
+// Comma-separated rollup type list
+func (r ApiListRollup24hRequest) Type_(type_ []string) ApiListRollup24hRequest {
+	r.type_ = &type_
 	return r
 }
 
@@ -1573,16 +1730,19 @@ func (a *RollupAPIService) ListRollup24hExecute(r ApiListRollup24hRequest) ([]Re
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "", "")
 	}
 	if r.category != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "category", r.category, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "category", r.category, "form", "csv")
 	}
 	if r.tags != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tags", r.tags, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tags", r.tags, "form", "csv")
 	}
 	if r.stack != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "stack", r.stack, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stack", r.stack, "form", "csv")
 	}
 	if r.provider != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "form", "csv")
+	}
+	if r.type_ != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1600,6 +1760,20 @@ func (a *RollupAPIService) ListRollup24hExecute(r ApiListRollup24hRequest) ([]Re
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1662,19 +1836,19 @@ func (a *RollupAPIService) ListRollup24hExecute(r ApiListRollup24hRequest) ([]Re
 type ApiRollupExportRequest struct {
 	ctx context.Context
 	ApiService *RollupAPIService
-	id int32
-	from *int32
-	to *int32
+	id int64
+	from *int64
+	to *int64
 }
 
 // Time from in unix timestamp
-func (r ApiRollupExportRequest) From(from int32) ApiRollupExportRequest {
+func (r ApiRollupExportRequest) From(from int64) ApiRollupExportRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiRollupExportRequest) To(to int32) ApiRollupExportRequest {
+func (r ApiRollupExportRequest) To(to int64) ApiRollupExportRequest {
 	r.to = &to
 	return r
 }
@@ -1692,7 +1866,7 @@ Streams a plain-text export of blob metadata submitted by the rollup, optionally
  @param id Internal identity
  @return ApiRollupExportRequest
 */
-func (a *RollupAPIService) RollupExport(ctx context.Context, id int32) ApiRollupExportRequest {
+func (a *RollupAPIService) RollupExport(ctx context.Context, id int64) ApiRollupExportRequest {
 	return ApiRollupExportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1739,12 +1913,26 @@ func (a *RollupAPIService) RollupExportExecute(r ApiRollupExportRequest) (*http.
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"*/*"}
+	localVarHTTPHeaderAccepts := []string{"text/plain"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1876,6 +2064,20 @@ func (a *RollupAPIService) RollupGroupedStatisticsExecute(r ApiRollupGroupedStat
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

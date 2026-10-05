@@ -96,6 +96,20 @@ func (a *TransactionsAPIService) GetTransactionExecute(r ApiGetTransactionReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -245,6 +259,20 @@ func (a *TransactionsAPIService) GetTransactionEventsExecute(r ApiGetTransaction
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -396,6 +424,20 @@ func (a *TransactionsAPIService) GetTransactionMessagesExecute(r ApiGetTransacti
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -459,7 +501,7 @@ type ApiGetTransactionsCountRequest struct {
 	ApiService *TransactionsAPIService
 }
 
-func (r ApiGetTransactionsCountRequest) Execute() (int32, *http.Response, error) {
+func (r ApiGetTransactionsCountRequest) Execute() (int64, *http.Response, error) {
 	return r.ApiService.GetTransactionsCountExecute(r)
 }
 
@@ -479,13 +521,13 @@ func (a *TransactionsAPIService) GetTransactionsCount(ctx context.Context) ApiGe
 }
 
 // Execute executes the request
-//  @return int32
-func (a *TransactionsAPIService) GetTransactionsCountExecute(r ApiGetTransactionsCountRequest) (int32, *http.Response, error) {
+//  @return int64
+func (a *TransactionsAPIService) GetTransactionsCountExecute(r ApiGetTransactionsCountRequest) (int64, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarReturnValue  int64
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransactionsAPIService.GetTransactionsCount")
@@ -515,6 +557,20 @@ func (a *TransactionsAPIService) GetTransactionsCountExecute(r ApiGetTransaction
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -655,6 +711,20 @@ func (a *TransactionsAPIService) ListGenesisTransactionsExecute(r ApiListGenesis
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -721,6 +791,7 @@ type ApiListTransactionBlobsRequest struct {
 	offset *int32
 	sort *string
 	sortBy *string
+	source *string
 }
 
 // Count of requested entities
@@ -747,6 +818,12 @@ func (r ApiListTransactionBlobsRequest) SortBy(sortBy string) ApiListTransaction
 	return r
 }
 
+// Blob source. If it&#39;s empty both sources are returned
+func (r ApiListTransactionBlobsRequest) Source(source string) ApiListTransactionBlobsRequest {
+	r.source = &source
+	return r
+}
+
 func (r ApiListTransactionBlobsRequest) Execute() ([]ResponsesBlobLog, *http.Response, error) {
 	return r.ApiService.ListTransactionBlobsExecute(r)
 }
@@ -754,7 +831,7 @@ func (r ApiListTransactionBlobsRequest) Execute() ([]ResponsesBlobLog, *http.Res
 /*
 ListTransactionBlobs List blobs which was pushed by transaction
 
-Returns a paginated list of blobs submitted via the PayForBlobs message in the given transaction. Supports sorting by time or blob size.
+Returns a paginated list of blobs submitted via the PayForBlobs or PayForFibre message in the given transaction. Supports sorting by time or blob size.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param hash Transaction hash in hexadecimal
@@ -808,6 +885,9 @@ func (a *TransactionsAPIService) ListTransactionBlobsExecute(r ApiListTransactio
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "", "")
 	}
+	if r.source != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -824,6 +904,20 @@ func (a *TransactionsAPIService) ListTransactionBlobsExecute(r ApiListTransactio
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -889,13 +983,14 @@ type ApiListTransactionsRequest struct {
 	limit *int32
 	offset *int32
 	sort *string
-	status *string
-	msgType *string
-	excludedMsgType *string
-	from *int32
-	to *int32
-	height *int32
+	status *[]string
+	msgType *[]string
+	excludedMsgType *[]string
+	from *int64
+	to *int64
+	height *int64
 	messages *bool
+	cursor *int64
 }
 
 // Count of requested entities
@@ -917,37 +1012,37 @@ func (r ApiListTransactionsRequest) Sort(sort string) ApiListTransactionsRequest
 }
 
 // Comma-separated status list
-func (r ApiListTransactionsRequest) Status(status string) ApiListTransactionsRequest {
+func (r ApiListTransactionsRequest) Status(status []string) ApiListTransactionsRequest {
 	r.status = &status
 	return r
 }
 
 // Comma-separated message types list
-func (r ApiListTransactionsRequest) MsgType(msgType string) ApiListTransactionsRequest {
+func (r ApiListTransactionsRequest) MsgType(msgType []string) ApiListTransactionsRequest {
 	r.msgType = &msgType
 	return r
 }
 
 // Comma-separated message types list which should be excluded
-func (r ApiListTransactionsRequest) ExcludedMsgType(excludedMsgType string) ApiListTransactionsRequest {
+func (r ApiListTransactionsRequest) ExcludedMsgType(excludedMsgType []string) ApiListTransactionsRequest {
 	r.excludedMsgType = &excludedMsgType
 	return r
 }
 
 // Time from in unix timestamp
-func (r ApiListTransactionsRequest) From(from int32) ApiListTransactionsRequest {
+func (r ApiListTransactionsRequest) From(from int64) ApiListTransactionsRequest {
 	r.from = &from
 	return r
 }
 
 // Time to in unix timestamp
-func (r ApiListTransactionsRequest) To(to int32) ApiListTransactionsRequest {
+func (r ApiListTransactionsRequest) To(to int64) ApiListTransactionsRequest {
 	r.to = &to
 	return r
 }
 
 // Block number
-func (r ApiListTransactionsRequest) Height(height int32) ApiListTransactionsRequest {
+func (r ApiListTransactionsRequest) Height(height int64) ApiListTransactionsRequest {
 	r.height = &height
 	return r
 }
@@ -955,6 +1050,12 @@ func (r ApiListTransactionsRequest) Height(height int32) ApiListTransactionsRequ
 // If true join messages
 func (r ApiListTransactionsRequest) Messages(messages bool) ApiListTransactionsRequest {
 	r.messages = &messages
+	return r
+}
+
+// Last entity id which is used for cursor pagination
+func (r ApiListTransactionsRequest) Cursor(cursor int64) ApiListTransactionsRequest {
+	r.cursor = &cursor
 	return r
 }
 
@@ -1008,13 +1109,13 @@ func (a *TransactionsAPIService) ListTransactionsExecute(r ApiListTransactionsRe
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "csv")
 	}
 	if r.msgType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "msg_type", r.msgType, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "msg_type", r.msgType, "form", "csv")
 	}
 	if r.excludedMsgType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "excluded_msg_type", r.excludedMsgType, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "excluded_msg_type", r.excludedMsgType, "form", "csv")
 	}
 	if r.from != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "", "")
@@ -1027,6 +1128,9 @@ func (a *TransactionsAPIService) ListTransactionsExecute(r ApiListTransactionsRe
 	}
 	if r.messages != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "messages", r.messages, "", "")
+	}
+	if r.cursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1044,6 +1148,20 @@ func (a *TransactionsAPIService) ListTransactionsExecute(r ApiListTransactionsRe
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1109,7 +1227,7 @@ type ApiTransactionBlobsCountRequest struct {
 	hash string
 }
 
-func (r ApiTransactionBlobsCountRequest) Execute() (int32, *http.Response, error) {
+func (r ApiTransactionBlobsCountRequest) Execute() (int64, *http.Response, error) {
 	return r.ApiService.TransactionBlobsCountExecute(r)
 }
 
@@ -1131,13 +1249,13 @@ func (a *TransactionsAPIService) TransactionBlobsCount(ctx context.Context, hash
 }
 
 // Execute executes the request
-//  @return int32
-func (a *TransactionsAPIService) TransactionBlobsCountExecute(r ApiTransactionBlobsCountRequest) (int32, *http.Response, error) {
+//  @return int64
+func (a *TransactionsAPIService) TransactionBlobsCountExecute(r ApiTransactionBlobsCountRequest) (int64, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarReturnValue  int64
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransactionsAPIService.TransactionBlobsCount")
@@ -1174,6 +1292,20 @@ func (a *TransactionsAPIService) TransactionBlobsCountExecute(r ApiTransactionBl
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["apikey"] = key
+			}
+		}
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

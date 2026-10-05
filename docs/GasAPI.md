@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## GasEstimateForPfb
 
-> int32 GasEstimateForPfb(ctx).Sizes(sizes).Versions(versions).Execute()
+> int64 GasEstimateForPfb(ctx).Sizes(sizes).Versions(versions).Execute()
 
 Get estimated gas for pay for blob
 
@@ -31,8 +31,8 @@ import (
 )
 
 func main() {
-	sizes := "sizes_example" // string | Comma-separated array of blob sizes
-	versions := "versions_example" // string | Comma-separated array of share versions. Default is 0 (optional)
+	sizes := []int32{int32(123)} // []int32 | Comma-separated array of blob sizes
+	versions := []int32{int32(123)} // []int32 | Comma-separated array of share versions. Default is 0 (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -41,7 +41,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `GasAPI.GasEstimateForPfb``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GasEstimateForPfb`: int32
+	// response from `GasEstimateForPfb`: int64
 	fmt.Fprintf(os.Stdout, "Response from `GasAPI.GasEstimateForPfb`: %v\n", resp)
 }
 ```
@@ -57,16 +57,16 @@ Other parameters are passed through a pointer to a apiGasEstimateForPfbRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sizes** | **string** | Comma-separated array of blob sizes | 
- **versions** | **string** | Comma-separated array of share versions. Default is 0 | 
+ **sizes** | **[]int32** | Comma-separated array of blob sizes | 
+ **versions** | **[]int32** | Comma-separated array of share versions. Default is 0 | 
 
 ### Return type
 
-**int32**
+**int64**
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -127,7 +127,7 @@ Other parameters are passed through a pointer to a apiGasPriceRequest struct via
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

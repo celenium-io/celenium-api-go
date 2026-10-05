@@ -20,10 +20,10 @@ var _ MappedNullable = &ResponsesTPS{}
 
 // ResponsesTPS struct for ResponsesTPS
 type ResponsesTPS struct {
-	ChangeLastHourPct *float32 `json:"change_last_hour_pct,omitempty"`
-	Current *float32 `json:"current,omitempty"`
-	High *float32 `json:"high,omitempty"`
-	Low *float32 `json:"low,omitempty"`
+	ChangeLastHourPct *float64 `json:"change_last_hour_pct,omitempty"`
+	Current *float64 `json:"current,omitempty"`
+	High *float64 `json:"high,omitempty"`
+	Low *float64 `json:"low,omitempty"`
 }
 
 // NewResponsesTPS instantiates a new ResponsesTPS object
@@ -44,9 +44,9 @@ func NewResponsesTPSWithDefaults() *ResponsesTPS {
 }
 
 // GetChangeLastHourPct returns the ChangeLastHourPct field value if set, zero value otherwise.
-func (o *ResponsesTPS) GetChangeLastHourPct() float32 {
+func (o *ResponsesTPS) GetChangeLastHourPct() float64 {
 	if o == nil || IsNil(o.ChangeLastHourPct) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.ChangeLastHourPct
@@ -54,7 +54,7 @@ func (o *ResponsesTPS) GetChangeLastHourPct() float32 {
 
 // GetChangeLastHourPctOk returns a tuple with the ChangeLastHourPct field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesTPS) GetChangeLastHourPctOk() (*float32, bool) {
+func (o *ResponsesTPS) GetChangeLastHourPctOk() (*float64, bool) {
 	if o == nil || IsNil(o.ChangeLastHourPct) {
 		return nil, false
 	}
@@ -70,15 +70,15 @@ func (o *ResponsesTPS) HasChangeLastHourPct() bool {
 	return false
 }
 
-// SetChangeLastHourPct gets a reference to the given float32 and assigns it to the ChangeLastHourPct field.
-func (o *ResponsesTPS) SetChangeLastHourPct(v float32) {
+// SetChangeLastHourPct gets a reference to the given float64 and assigns it to the ChangeLastHourPct field.
+func (o *ResponsesTPS) SetChangeLastHourPct(v float64) {
 	o.ChangeLastHourPct = &v
 }
 
 // GetCurrent returns the Current field value if set, zero value otherwise.
-func (o *ResponsesTPS) GetCurrent() float32 {
+func (o *ResponsesTPS) GetCurrent() float64 {
 	if o == nil || IsNil(o.Current) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.Current
@@ -86,7 +86,7 @@ func (o *ResponsesTPS) GetCurrent() float32 {
 
 // GetCurrentOk returns a tuple with the Current field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesTPS) GetCurrentOk() (*float32, bool) {
+func (o *ResponsesTPS) GetCurrentOk() (*float64, bool) {
 	if o == nil || IsNil(o.Current) {
 		return nil, false
 	}
@@ -102,15 +102,15 @@ func (o *ResponsesTPS) HasCurrent() bool {
 	return false
 }
 
-// SetCurrent gets a reference to the given float32 and assigns it to the Current field.
-func (o *ResponsesTPS) SetCurrent(v float32) {
+// SetCurrent gets a reference to the given float64 and assigns it to the Current field.
+func (o *ResponsesTPS) SetCurrent(v float64) {
 	o.Current = &v
 }
 
 // GetHigh returns the High field value if set, zero value otherwise.
-func (o *ResponsesTPS) GetHigh() float32 {
+func (o *ResponsesTPS) GetHigh() float64 {
 	if o == nil || IsNil(o.High) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.High
@@ -118,7 +118,7 @@ func (o *ResponsesTPS) GetHigh() float32 {
 
 // GetHighOk returns a tuple with the High field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesTPS) GetHighOk() (*float32, bool) {
+func (o *ResponsesTPS) GetHighOk() (*float64, bool) {
 	if o == nil || IsNil(o.High) {
 		return nil, false
 	}
@@ -134,15 +134,15 @@ func (o *ResponsesTPS) HasHigh() bool {
 	return false
 }
 
-// SetHigh gets a reference to the given float32 and assigns it to the High field.
-func (o *ResponsesTPS) SetHigh(v float32) {
+// SetHigh gets a reference to the given float64 and assigns it to the High field.
+func (o *ResponsesTPS) SetHigh(v float64) {
 	o.High = &v
 }
 
 // GetLow returns the Low field value if set, zero value otherwise.
-func (o *ResponsesTPS) GetLow() float32 {
+func (o *ResponsesTPS) GetLow() float64 {
 	if o == nil || IsNil(o.Low) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.Low
@@ -150,7 +150,7 @@ func (o *ResponsesTPS) GetLow() float32 {
 
 // GetLowOk returns a tuple with the Low field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesTPS) GetLowOk() (*float32, bool) {
+func (o *ResponsesTPS) GetLowOk() (*float64, bool) {
 	if o == nil || IsNil(o.Low) {
 		return nil, false
 	}
@@ -166,8 +166,8 @@ func (o *ResponsesTPS) HasLow() bool {
 	return false
 }
 
-// SetLow gets a reference to the given float32 and assigns it to the Low field.
-func (o *ResponsesTPS) SetLow(v float32) {
+// SetLow gets a reference to the given float64 and assigns it to the Low field.
+func (o *ResponsesTPS) SetLow(v float64) {
 	o.Low = &v
 }
 

@@ -13,7 +13,6 @@ package celenium
 
 import (
 	"encoding/json"
-	"os"
 	"time"
 )
 
@@ -29,14 +28,15 @@ type ResponsesHyperlaneTransfer struct {
 	GasPayment *ResponsesGasPayment `json:"gas_payment,omitempty"`
 	Height *int64 `json:"height,omitempty"`
 	Id *int64 `json:"id,omitempty"`
-	Mailbox **os.File `json:"mailbox,omitempty"`
+	Mailbox *string `json:"mailbox,omitempty"`
+	MessageId *string `json:"message_id,omitempty"`
 	Metadata *string `json:"metadata,omitempty"`
 	Nonce *int64 `json:"nonce,omitempty"`
 	Received *string `json:"received,omitempty"`
 	Relayer *ResponsesShortAddress `json:"relayer,omitempty"`
 	Time *time.Time `json:"time,omitempty"`
-	TokenId **os.File `json:"token_id,omitempty"`
-	TxHash **os.File `json:"tx_hash,omitempty"`
+	TokenId *string `json:"token_id,omitempty"`
+	TxHash *string `json:"tx_hash,omitempty"`
 	Type *string `json:"type,omitempty"`
 	Version *int64 `json:"version,omitempty"`
 }
@@ -283,9 +283,9 @@ func (o *ResponsesHyperlaneTransfer) SetId(v int64) {
 }
 
 // GetMailbox returns the Mailbox field value if set, zero value otherwise.
-func (o *ResponsesHyperlaneTransfer) GetMailbox() *os.File {
+func (o *ResponsesHyperlaneTransfer) GetMailbox() string {
 	if o == nil || IsNil(o.Mailbox) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.Mailbox
@@ -293,7 +293,7 @@ func (o *ResponsesHyperlaneTransfer) GetMailbox() *os.File {
 
 // GetMailboxOk returns a tuple with the Mailbox field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesHyperlaneTransfer) GetMailboxOk() (**os.File, bool) {
+func (o *ResponsesHyperlaneTransfer) GetMailboxOk() (*string, bool) {
 	if o == nil || IsNil(o.Mailbox) {
 		return nil, false
 	}
@@ -309,9 +309,41 @@ func (o *ResponsesHyperlaneTransfer) HasMailbox() bool {
 	return false
 }
 
-// SetMailbox gets a reference to the given *os.File and assigns it to the Mailbox field.
-func (o *ResponsesHyperlaneTransfer) SetMailbox(v *os.File) {
+// SetMailbox gets a reference to the given string and assigns it to the Mailbox field.
+func (o *ResponsesHyperlaneTransfer) SetMailbox(v string) {
 	o.Mailbox = &v
+}
+
+// GetMessageId returns the MessageId field value if set, zero value otherwise.
+func (o *ResponsesHyperlaneTransfer) GetMessageId() string {
+	if o == nil || IsNil(o.MessageId) {
+		var ret string
+		return ret
+	}
+	return *o.MessageId
+}
+
+// GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesHyperlaneTransfer) GetMessageIdOk() (*string, bool) {
+	if o == nil || IsNil(o.MessageId) {
+		return nil, false
+	}
+	return o.MessageId, true
+}
+
+// HasMessageId returns a boolean if a field has been set.
+func (o *ResponsesHyperlaneTransfer) HasMessageId() bool {
+	if o != nil && !IsNil(o.MessageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessageId gets a reference to the given string and assigns it to the MessageId field.
+func (o *ResponsesHyperlaneTransfer) SetMessageId(v string) {
+	o.MessageId = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -475,9 +507,9 @@ func (o *ResponsesHyperlaneTransfer) SetTime(v time.Time) {
 }
 
 // GetTokenId returns the TokenId field value if set, zero value otherwise.
-func (o *ResponsesHyperlaneTransfer) GetTokenId() *os.File {
+func (o *ResponsesHyperlaneTransfer) GetTokenId() string {
 	if o == nil || IsNil(o.TokenId) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TokenId
@@ -485,7 +517,7 @@ func (o *ResponsesHyperlaneTransfer) GetTokenId() *os.File {
 
 // GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesHyperlaneTransfer) GetTokenIdOk() (**os.File, bool) {
+func (o *ResponsesHyperlaneTransfer) GetTokenIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
@@ -501,15 +533,15 @@ func (o *ResponsesHyperlaneTransfer) HasTokenId() bool {
 	return false
 }
 
-// SetTokenId gets a reference to the given *os.File and assigns it to the TokenId field.
-func (o *ResponsesHyperlaneTransfer) SetTokenId(v *os.File) {
+// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
+func (o *ResponsesHyperlaneTransfer) SetTokenId(v string) {
 	o.TokenId = &v
 }
 
 // GetTxHash returns the TxHash field value if set, zero value otherwise.
-func (o *ResponsesHyperlaneTransfer) GetTxHash() *os.File {
+func (o *ResponsesHyperlaneTransfer) GetTxHash() string {
 	if o == nil || IsNil(o.TxHash) {
-		var ret *os.File
+		var ret string
 		return ret
 	}
 	return *o.TxHash
@@ -517,7 +549,7 @@ func (o *ResponsesHyperlaneTransfer) GetTxHash() *os.File {
 
 // GetTxHashOk returns a tuple with the TxHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponsesHyperlaneTransfer) GetTxHashOk() (**os.File, bool) {
+func (o *ResponsesHyperlaneTransfer) GetTxHashOk() (*string, bool) {
 	if o == nil || IsNil(o.TxHash) {
 		return nil, false
 	}
@@ -533,8 +565,8 @@ func (o *ResponsesHyperlaneTransfer) HasTxHash() bool {
 	return false
 }
 
-// SetTxHash gets a reference to the given *os.File and assigns it to the TxHash field.
-func (o *ResponsesHyperlaneTransfer) SetTxHash(v *os.File) {
+// SetTxHash gets a reference to the given string and assigns it to the TxHash field.
+func (o *ResponsesHyperlaneTransfer) SetTxHash(v string) {
 	o.TxHash = &v
 }
 
@@ -635,6 +667,9 @@ func (o ResponsesHyperlaneTransfer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Mailbox) {
 		toSerialize["mailbox"] = o.Mailbox
+	}
+	if !IsNil(o.MessageId) {
+		toSerialize["message_id"] = o.MessageId
 	}
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata

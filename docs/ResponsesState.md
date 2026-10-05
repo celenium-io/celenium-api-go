@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **TotalAccounts** | Pointer to **int64** |  | [optional] 
 **TotalBlobsSize** | Pointer to **int64** |  | [optional] 
 **TotalFee** | Pointer to **string** |  | [optional] 
-**TotalIbcClients** | Pointer to **int32** |  | [optional] 
-**TotalNamespaces** | Pointer to **int32** |  | [optional] 
+**TotalIbcClients** | Pointer to **int64** |  | [optional] 
+**TotalNamespaces** | Pointer to **int64** |  | [optional] 
 **TotalProposals** | Pointer to **int64** |  | [optional] 
 **TotalSupply** | Pointer to **string** |  | [optional] 
 **TotalTx** | Pointer to **int64** |  | [optional] 
@@ -294,20 +294,20 @@ HasTotalFee returns a boolean if a field has been set.
 
 ### GetTotalIbcClients
 
-`func (o *ResponsesState) GetTotalIbcClients() int32`
+`func (o *ResponsesState) GetTotalIbcClients() int64`
 
 GetTotalIbcClients returns the TotalIbcClients field if non-nil, zero value otherwise.
 
 ### GetTotalIbcClientsOk
 
-`func (o *ResponsesState) GetTotalIbcClientsOk() (*int32, bool)`
+`func (o *ResponsesState) GetTotalIbcClientsOk() (*int64, bool)`
 
 GetTotalIbcClientsOk returns a tuple with the TotalIbcClients field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalIbcClients
 
-`func (o *ResponsesState) SetTotalIbcClients(v int32)`
+`func (o *ResponsesState) SetTotalIbcClients(v int64)`
 
 SetTotalIbcClients sets TotalIbcClients field to given value.
 
@@ -319,20 +319,20 @@ HasTotalIbcClients returns a boolean if a field has been set.
 
 ### GetTotalNamespaces
 
-`func (o *ResponsesState) GetTotalNamespaces() int32`
+`func (o *ResponsesState) GetTotalNamespaces() int64`
 
 GetTotalNamespaces returns the TotalNamespaces field if non-nil, zero value otherwise.
 
 ### GetTotalNamespacesOk
 
-`func (o *ResponsesState) GetTotalNamespacesOk() (*int32, bool)`
+`func (o *ResponsesState) GetTotalNamespacesOk() (*int64, bool)`
 
 GetTotalNamespacesOk returns a tuple with the TotalNamespaces field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalNamespaces
 
-`func (o *ResponsesState) SetTotalNamespaces(v int32)`
+`func (o *ResponsesState) SetTotalNamespaces(v int64)`
 
 SetTotalNamespaces sets TotalNamespaces field to given value.
 

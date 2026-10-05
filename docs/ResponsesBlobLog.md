@@ -6,13 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Commitment** | Pointer to **string** |  | [optional] 
 **ContentType** | Pointer to **string** |  | [optional] 
-**Height** | Pointer to **int32** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Height** | Pointer to **int64** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Namespace** | Pointer to [**ResponsesNamespace**](ResponsesNamespace.md) |  | [optional] 
 **Rollup** | Pointer to [**ResponsesShortRollup**](ResponsesShortRollup.md) |  | [optional] 
 **ShareVersion** | Pointer to **int32** |  | [optional] 
 **Signer** | Pointer to [**ResponsesShortAddress**](ResponsesShortAddress.md) |  | [optional] 
-**Size** | Pointer to **int32** |  | [optional] 
+**Size** | Pointer to **int64** |  | [optional] 
+**Source** | Pointer to **string** |  | [optional] 
 **Time** | Pointer to **time.Time** |  | [optional] 
 **Tx** | Pointer to [**ResponsesTx**](ResponsesTx.md) |  | [optional] 
 
@@ -87,20 +88,20 @@ HasContentType returns a boolean if a field has been set.
 
 ### GetHeight
 
-`func (o *ResponsesBlobLog) GetHeight() int32`
+`func (o *ResponsesBlobLog) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ResponsesBlobLog) GetHeightOk() (*int32, bool)`
+`func (o *ResponsesBlobLog) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ResponsesBlobLog) SetHeight(v int32)`
+`func (o *ResponsesBlobLog) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 
@@ -112,20 +113,20 @@ HasHeight returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ResponsesBlobLog) GetId() int32`
+`func (o *ResponsesBlobLog) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ResponsesBlobLog) GetIdOk() (*int32, bool)`
+`func (o *ResponsesBlobLog) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ResponsesBlobLog) SetId(v int32)`
+`func (o *ResponsesBlobLog) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -237,20 +238,20 @@ HasSigner returns a boolean if a field has been set.
 
 ### GetSize
 
-`func (o *ResponsesBlobLog) GetSize() int32`
+`func (o *ResponsesBlobLog) GetSize() int64`
 
 GetSize returns the Size field if non-nil, zero value otherwise.
 
 ### GetSizeOk
 
-`func (o *ResponsesBlobLog) GetSizeOk() (*int32, bool)`
+`func (o *ResponsesBlobLog) GetSizeOk() (*int64, bool)`
 
 GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSize
 
-`func (o *ResponsesBlobLog) SetSize(v int32)`
+`func (o *ResponsesBlobLog) SetSize(v int64)`
 
 SetSize sets Size field to given value.
 
@@ -259,6 +260,31 @@ SetSize sets Size field to given value.
 `func (o *ResponsesBlobLog) HasSize() bool`
 
 HasSize returns a boolean if a field has been set.
+
+### GetSource
+
+`func (o *ResponsesBlobLog) GetSource() string`
+
+GetSource returns the Source field if non-nil, zero value otherwise.
+
+### GetSourceOk
+
+`func (o *ResponsesBlobLog) GetSourceOk() (*string, bool)`
+
+GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSource
+
+`func (o *ResponsesBlobLog) SetSource(v string)`
+
+SetSource sets Source field to given value.
+
+### HasSource
+
+`func (o *ResponsesBlobLog) HasSource() bool`
+
+HasSource returns a boolean if a field has been set.
 
 ### GetTime
 

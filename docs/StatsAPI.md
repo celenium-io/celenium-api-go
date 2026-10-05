@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 ## Stats24hChanges
 
-> []ResponsesChange24hBlockStats Stats24hChanges(ctx).Execute()
+> ResponsesChange24hBlockStats Stats24hChanges(ctx).Execute()
 
 Get changes for 24 hours
 
@@ -54,7 +54,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StatsAPI.Stats24hChanges``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Stats24hChanges`: []ResponsesChange24hBlockStats
+	// response from `Stats24hChanges`: ResponsesChange24hBlockStats
 	fmt.Fprintf(os.Stdout, "Response from `StatsAPI.Stats24hChanges`: %v\n", resp)
 }
 ```
@@ -70,11 +70,11 @@ Other parameters are passed through a pointer to a apiStats24hChangesRequest str
 
 ### Return type
 
-[**[]ResponsesChange24hBlockStats**](ResponsesChange24hBlockStats.md)
+[**ResponsesChange24hBlockStats**](ResponsesChange24hBlockStats.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -175,11 +175,11 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Domain id
+	id := int64(789) // int64 | Domain id
 	timeframe := "timeframe_example" // string | Timeframe
 	name := "name_example" // string | Series name
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -199,7 +199,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Domain id | 
+**id** | **int64** | Domain id | 
 **timeframe** | **string** | Timeframe | 
 **name** | **string** | Series name | 
 
@@ -213,8 +213,8 @@ Name | Type | Description  | Notes
 
 
 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -257,8 +257,8 @@ import (
 func main() {
 	timeframe := "timeframe_example" // string | Timeframe
 	name := "name_example" // string | Series name
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -290,8 +290,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -403,8 +403,8 @@ func main() {
 	id := "id_example" // string | Channel id
 	timeframe := "timeframe_example" // string | Timeframe
 	name := "name_example" // string | Series name
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -438,8 +438,8 @@ Name | Type | Description  | Notes
 
 
 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -447,7 +447,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -461,7 +461,7 @@ No authorization required
 
 ## StatsIbcSummary
 
-> []ResponsesIbcSummaryStats StatsIbcSummary(ctx).Execute()
+> ResponsesIbcSummaryStats StatsIbcSummary(ctx).Execute()
 
 Get stats for ibc the largest transfer and busiest channel per day
 
@@ -488,7 +488,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StatsAPI.StatsIbcSummary``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `StatsIbcSummary`: []ResponsesIbcSummaryStats
+	// response from `StatsIbcSummary`: ResponsesIbcSummaryStats
 	fmt.Fprintf(os.Stdout, "Response from `StatsAPI.StatsIbcSummary`: %v\n", resp)
 }
 ```
@@ -504,11 +504,11 @@ Other parameters are passed through a pointer to a apiStatsIbcSummaryRequest str
 
 ### Return type
 
-[**[]ResponsesIbcSummaryStats**](ResponsesIbcSummaryStats.md)
+[**ResponsesIbcSummaryStats**](ResponsesIbcSummaryStats.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -569,7 +569,7 @@ Other parameters are passed through a pointer to a apiStatsMessagesCount24hReque
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -635,7 +635,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -671,8 +671,8 @@ func main() {
 	id := "id_example" // string | Namespace id in hexadecimal
 	timeframe := "timeframe_example" // string | Timeframe
 	name := "name_example" // string | Series name
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -706,8 +706,8 @@ Name | Type | Description  | Notes
 
 
 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -715,7 +715,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -776,7 +776,7 @@ Other parameters are passed through a pointer to a apiStatsRollup24hRequest stru
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -811,8 +811,8 @@ import (
 func main() {
 	timeframe := "timeframe_example" // string | Timeframe
 	name := "name_example" // string | Series name
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -844,8 +844,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -853,7 +853,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -888,8 +888,8 @@ import (
 func main() {
 	timeframe := "timeframe_example" // string | Timeframe
 	name := "name_example" // string | Series name
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -921,8 +921,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -930,7 +930,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -991,7 +991,7 @@ Other parameters are passed through a pointer to a apiStatsSizeGroupsRequest str
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1005,7 +1005,7 @@ No authorization required
 
 ## StatsSquareSize
 
-> []map[string][]ResponsesTimeValueItem StatsSquareSize(ctx).From(from).To(to).Execute()
+> map[string][]ResponsesTimeValueItem StatsSquareSize(ctx).From(from).To(to).Execute()
 
 Get histogram for square size distribution
 
@@ -1024,8 +1024,8 @@ import (
 )
 
 func main() {
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1034,7 +1034,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StatsAPI.StatsSquareSize``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `StatsSquareSize`: []map[string][]ResponsesTimeValueItem
+	// response from `StatsSquareSize`: map[string][]ResponsesTimeValueItem
 	fmt.Fprintf(os.Stdout, "Response from `StatsAPI.StatsSquareSize`: %v\n", resp)
 }
 ```
@@ -1050,16 +1050,16 @@ Other parameters are passed through a pointer to a apiStatsSquareSizeRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
-[**[]map[string][]ResponsesTimeValueItem**](map.md)
+[**map[string][]ResponsesTimeValueItem**](array.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1092,8 +1092,8 @@ import (
 )
 
 func main() {
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1118,8 +1118,8 @@ Other parameters are passed through a pointer to a apiStatsStakingDistributionRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -1127,7 +1127,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1160,11 +1160,11 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | Validator id
+	id := int64(789) // int64 | Internal validator id
 	timeframe := "timeframe_example" // string | Timeframe
 	name := "name_example" // string | Series name
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1184,7 +1184,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Validator id | 
+**id** | **int64** | Internal validator id | 
 **timeframe** | **string** | Timeframe | 
 **name** | **string** | Series name | 
 
@@ -1198,8 +1198,8 @@ Name | Type | Description  | Notes
 
 
 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -1207,7 +1207,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1243,8 +1243,8 @@ func main() {
 	table := "table_example" // string | Table name
 	function := "function_example" // string | Function name
 	column := "column_example" // string | Column name which will be used for computation. Optional for count. (optional)
-	from := int32(56) // int32 | Time from in unix timestamp (optional)
-	to := int32(56) // int32 | Time to in unix timestamp (optional)
+	from := int64(789) // int64 | Time from in unix timestamp (optional)
+	to := int64(789) // int64 | Time to in unix timestamp (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1277,8 +1277,8 @@ Name | Type | Description  | Notes
 
 
  **column** | **string** | Column name which will be used for computation. Optional for count. | 
- **from** | **int32** | Time from in unix timestamp | 
- **to** | **int32** | Time to in unix timestamp | 
+ **from** | **int64** | Time from in unix timestamp | 
+ **to** | **int64** | Time to in unix timestamp | 
 
 ### Return type
 
@@ -1286,7 +1286,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
