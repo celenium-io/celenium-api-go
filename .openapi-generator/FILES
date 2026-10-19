@@ -55,6 +55,7 @@ docs/ResponsesDomainMetadata.md
 docs/ResponsesEnums.md
 docs/ResponsesEvent.md
 docs/ResponsesFibre.md
+docs/ResponsesFibreLocation.md
 docs/ResponsesForwarding.md
 docs/ResponsesForwardingInput.md
 docs/ResponsesGasPayment.md
@@ -165,6 +166,7 @@ model_responses_domain_metadata.go
 model_responses_enums.go
 model_responses_event.go
 model_responses_fibre.go
+model_responses_fibre_location.go
 model_responses_forwarding.go
 model_responses_forwarding_input.go
 model_responses_gas_payment.go

@@ -7895,7 +7895,7 @@ components:
           - MsgSend
           - MsgUnjail
           messages:
-          - data: "{}"
+          - data: {}
             height: 100
             id: 321
             position: 2
@@ -7904,7 +7904,7 @@ components:
             tx: null
             tx_id: 11
             type: MsgCreatePeriodicVestingAccount
-          - data: "{}"
+          - data: {}
             height: 100
             id: 321
             position: 2
@@ -8309,8 +8309,8 @@ components:
           name: TIA
           symbol: TIA
           units:
-          - "{}"
-          - "{}"
+          - {}
+          - {}
           uri: https://example.com
         - base: utia
           description: Some description
@@ -8318,11 +8318,12 @@ components:
           name: TIA
           symbol: TIA
           units:
-          - "{}"
-          - "{}"
+          - {}
+          - {}
           uri: https://example.com
         module:
-          key: null
+          key:
+            key: responses.Params
       properties:
         denom_metadata:
           items:
@@ -8406,8 +8407,8 @@ components:
         name: TIA
         symbol: TIA
         units:
-        - "{}"
-        - "{}"
+        - {}
+        - {}
         uri: https://example.com
       properties:
         base:
@@ -8625,6 +8626,11 @@ components:
       example:
         height: 100
         host: 100.100.100.100:12345
+        location:
+          as_org: Hetzner Online GmbH
+          asn: 24940
+          country_code: DE
+          ip: 100.100.100.100
       properties:
         height:
           example: 100
@@ -8632,6 +8638,28 @@ components:
           type: integer
         host:
           example: 100.100.100.100:12345
+          type: string
+        location:
+          $ref: "#/components/schemas/responses.FibreLocation"
+      type: object
+    responses.FibreLocation:
+      example:
+        as_org: Hetzner Online GmbH
+        asn: 24940
+        country_code: DE
+        ip: 100.100.100.100
+      properties:
+        as_org:
+          example: Hetzner Online GmbH
+          type: string
+        asn:
+          example: 24940
+          type: integer
+        country_code:
+          example: DE
+          type: string
+        ip:
+          example: 100.100.100.100
           type: string
       type: object
     responses.Forwarding:
@@ -8894,7 +8922,7 @@ components:
             status: VERIFIED
           hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         height: 123123
-        params: "{}"
+        params: {}
         revoke_height: 123123
         revoked: true
         time: 2023-07-04T03:10:57Z
@@ -9943,7 +9971,7 @@ components:
       type: object
     responses.Message:
       example:
-        data: "{}"
+        data: {}
         height: 100
         id: 321
         position: 2
@@ -9990,7 +10018,7 @@ components:
       type: object
     responses.MessageForAddress:
       example:
-        data: "{}"
+        data: {}
         height: 100
         id: 321
         invocation_type: fromAddress
@@ -10203,7 +10231,7 @@ components:
       - DefaultNamespace
     responses.NamespaceMessage:
       example:
-        data: "{}"
+        data: {}
         height: 100
         id: 321
         namespace:
@@ -10238,7 +10266,7 @@ components:
           - MsgSend
           - MsgUnjail
           messages:
-          - data: "{}"
+          - data: {}
             height: 100
             id: 321
             position: 2
@@ -10247,7 +10275,7 @@ components:
             tx: null
             tx_id: 11
             type: MsgCreatePeriodicVestingAccount
-          - data: "{}"
+          - data: {}
             height: 100
             id: 321
             position: 2
@@ -10394,6 +10422,8 @@ components:
     responses.Params:
       additionalProperties:
         type: string
+      example:
+        key: responses.Params
       type: object
     responses.Proposal:
       example:
@@ -11249,7 +11279,7 @@ components:
       type: object
     responses.SearchItem:
       example:
-        result: "{}"
+        result: {}
         type: type
       properties:
         result:
@@ -11653,7 +11683,7 @@ components:
         - MsgSend
         - MsgUnjail
         messages:
-        - data: "{}"
+        - data: {}
           height: 100
           id: 321
           position: 2
@@ -11662,7 +11692,7 @@ components:
           tx: null
           tx_id: 11
           type: MsgCreatePeriodicVestingAccount
-        - data: "{}"
+        - data: {}
           height: 100
           id: 321
           position: 2
@@ -11948,6 +11978,11 @@ components:
         fibre:
           height: 100
           host: 100.100.100.100:12345
+          location:
+            as_org: Hetzner Online GmbH
+            asn: 24940
+            country_code: DE
+            ip: 100.100.100.100
         id: 321
         identity: 2C877AC873132C91
         jailed: false

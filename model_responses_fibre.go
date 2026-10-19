@@ -22,6 +22,7 @@ var _ MappedNullable = &ResponsesFibre{}
 type ResponsesFibre struct {
 	Height *int64 `json:"height,omitempty"`
 	Host *string `json:"host,omitempty"`
+	Location *ResponsesFibreLocation `json:"location,omitempty"`
 }
 
 // NewResponsesFibre instantiates a new ResponsesFibre object
@@ -105,6 +106,38 @@ func (o *ResponsesFibre) SetHost(v string) {
 	o.Host = &v
 }
 
+// GetLocation returns the Location field value if set, zero value otherwise.
+func (o *ResponsesFibre) GetLocation() ResponsesFibreLocation {
+	if o == nil || IsNil(o.Location) {
+		var ret ResponsesFibreLocation
+		return ret
+	}
+	return *o.Location
+}
+
+// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesFibre) GetLocationOk() (*ResponsesFibreLocation, bool) {
+	if o == nil || IsNil(o.Location) {
+		return nil, false
+	}
+	return o.Location, true
+}
+
+// HasLocation returns a boolean if a field has been set.
+func (o *ResponsesFibre) HasLocation() bool {
+	if o != nil && !IsNil(o.Location) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocation gets a reference to the given ResponsesFibreLocation and assigns it to the Location field.
+func (o *ResponsesFibre) SetLocation(v ResponsesFibreLocation) {
+	o.Location = &v
+}
+
 func (o ResponsesFibre) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -120,6 +153,9 @@ func (o ResponsesFibre) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host
+	}
+	if !IsNil(o.Location) {
+		toSerialize["location"] = o.Location
 	}
 	return toSerialize, nil
 }

@@ -226,6 +226,7 @@ Class | Method | HTTP request | Description
  - [ResponsesEnums](docs/ResponsesEnums.md)
  - [ResponsesEvent](docs/ResponsesEvent.md)
  - [ResponsesFibre](docs/ResponsesFibre.md)
+ - [ResponsesFibreLocation](docs/ResponsesFibreLocation.md)
  - [ResponsesForwarding](docs/ResponsesForwarding.md)
  - [ResponsesForwardingInput](docs/ResponsesForwardingInput.md)
  - [ResponsesGasPayment](docs/ResponsesGasPayment.md)
