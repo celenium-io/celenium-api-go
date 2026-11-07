@@ -7072,6 +7072,8 @@ paths:
         in: query
         name: count
         schema:
+          maximum: 100
+          minimum: 1
           type: integer
       responses:
         "200":
