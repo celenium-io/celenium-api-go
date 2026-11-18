@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **Hash** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **IsForwarding** | Pointer to **bool** |  | [optional] 
+**IsFrozen** | Pointer to **bool** |  | [optional] 
+**IsWhitehat** | Pointer to **bool** |  | [optional] 
 **LastHeight** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 
@@ -181,6 +183,56 @@ SetIsForwarding sets IsForwarding field to given value.
 `func (o *ResponsesAddress) HasIsForwarding() bool`
 
 HasIsForwarding returns a boolean if a field has been set.
+
+### GetIsFrozen
+
+`func (o *ResponsesAddress) GetIsFrozen() bool`
+
+GetIsFrozen returns the IsFrozen field if non-nil, zero value otherwise.
+
+### GetIsFrozenOk
+
+`func (o *ResponsesAddress) GetIsFrozenOk() (*bool, bool)`
+
+GetIsFrozenOk returns a tuple with the IsFrozen field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsFrozen
+
+`func (o *ResponsesAddress) SetIsFrozen(v bool)`
+
+SetIsFrozen sets IsFrozen field to given value.
+
+### HasIsFrozen
+
+`func (o *ResponsesAddress) HasIsFrozen() bool`
+
+HasIsFrozen returns a boolean if a field has been set.
+
+### GetIsWhitehat
+
+`func (o *ResponsesAddress) GetIsWhitehat() bool`
+
+GetIsWhitehat returns the IsWhitehat field if non-nil, zero value otherwise.
+
+### GetIsWhitehatOk
+
+`func (o *ResponsesAddress) GetIsWhitehatOk() (*bool, bool)`
+
+GetIsWhitehatOk returns a tuple with the IsWhitehat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsWhitehat
+
+`func (o *ResponsesAddress) SetIsWhitehat(v bool)`
+
+SetIsWhitehat sets IsWhitehat field to given value.
+
+### HasIsWhitehat
+
+`func (o *ResponsesAddress) HasIsWhitehat() bool`
+
+HasIsWhitehat returns a boolean if a field has been set.
 
 ### GetLastHeight
 

@@ -7767,6 +7767,8 @@ components:
         hash: celestia1jc92qdnty48pafummfr8ava2tjtuhfdw774w60
         id: 321
         is_forwarding: true
+        is_frozen: true
+        is_whitehat: false
         last_height: 100
         name: bonded_tokens_pool
       properties:
@@ -7787,6 +7789,12 @@ components:
           type: integer
         is_forwarding:
           example: true
+          type: boolean
+        is_frozen:
+          example: true
+          type: boolean
+        is_whitehat:
+          example: false
           type: boolean
         last_height:
           example: 100
@@ -8683,7 +8691,7 @@ components:
             name: Ether
             symbol: ETH
         denom: hyperlane/0x726f757465725f61707000000000000000000000000000020000000000000024
-        dest_address: 0x000000000000000000000000d5e85e86fc692cedad6d6992f1f0ccf273e39913
+        dest_address: "0x000000000000000000000000d5e85e86fc692cedad6d6992f1f0ccf273e39913"
         dest_domain: 11155111
         forward_address:
           celestials:
@@ -8713,7 +8721,7 @@ components:
           chain_id: osmosis-1
           channel_id: channel-2
           denom: utia
-          from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+          from: "0x000000000000000000000000123456789abcdef123456789abcdef12345609"
           height: 100
           received: "123445"
           time: 2023-07-04T03:10:57Z
@@ -8737,7 +8745,7 @@ components:
           chain_id: osmosis-1
           channel_id: channel-2
           denom: utia
-          from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+          from: "0x000000000000000000000000123456789abcdef123456789abcdef12345609"
           height: 100
           received: "123445"
           time: 2023-07-04T03:10:57Z
@@ -8759,7 +8767,7 @@ components:
           format: hex
           type: string
         dest_address:
-          example: 0x000000000000000000000000d5e85e86fc692cedad6d6992f1f0ccf273e39913
+          example: "0x000000000000000000000000d5e85e86fc692cedad6d6992f1f0ccf273e39913"
           format: hex
           type: string
         dest_domain:
@@ -8817,7 +8825,7 @@ components:
         chain_id: osmosis-1
         channel_id: channel-2
         denom: utia
-        from: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+        from: "0x000000000000000000000000123456789abcdef123456789abcdef12345609"
         height: 100
         received: "123445"
         time: 2023-07-04T03:10:57Z
@@ -8839,7 +8847,7 @@ components:
           format: string
           type: string
         from:
-          example: 0x000000000000000000000000123456789abcdef123456789abcdef12345609
+          example: "0x000000000000000000000000123456789abcdef123456789abcdef12345609"
           format: string
           type: string
         height:
@@ -10896,11 +10904,11 @@ components:
       type: object
     responses.RollupProvider:
       example:
-        address: 0x1234567890abcdef1234567890abcdef12345678
+        address: "0x1234567890abcdef1234567890abcdef12345678"
         namespace: U3dhZ2dlciByb2Nrcw==
       properties:
         address:
-          example: 0x1234567890abcdef1234567890abcdef12345678
+          example: "0x1234567890abcdef1234567890abcdef12345678"
           format: string
           type: string
         namespace:

@@ -26,6 +26,8 @@ type ResponsesAddress struct {
 	Hash *string `json:"hash,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	IsForwarding *bool `json:"is_forwarding,omitempty"`
+	IsFrozen *bool `json:"is_frozen,omitempty"`
+	IsWhitehat *bool `json:"is_whitehat,omitempty"`
 	LastHeight *int64 `json:"last_height,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
@@ -239,6 +241,70 @@ func (o *ResponsesAddress) SetIsForwarding(v bool) {
 	o.IsForwarding = &v
 }
 
+// GetIsFrozen returns the IsFrozen field value if set, zero value otherwise.
+func (o *ResponsesAddress) GetIsFrozen() bool {
+	if o == nil || IsNil(o.IsFrozen) {
+		var ret bool
+		return ret
+	}
+	return *o.IsFrozen
+}
+
+// GetIsFrozenOk returns a tuple with the IsFrozen field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesAddress) GetIsFrozenOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsFrozen) {
+		return nil, false
+	}
+	return o.IsFrozen, true
+}
+
+// HasIsFrozen returns a boolean if a field has been set.
+func (o *ResponsesAddress) HasIsFrozen() bool {
+	if o != nil && !IsNil(o.IsFrozen) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsFrozen gets a reference to the given bool and assigns it to the IsFrozen field.
+func (o *ResponsesAddress) SetIsFrozen(v bool) {
+	o.IsFrozen = &v
+}
+
+// GetIsWhitehat returns the IsWhitehat field value if set, zero value otherwise.
+func (o *ResponsesAddress) GetIsWhitehat() bool {
+	if o == nil || IsNil(o.IsWhitehat) {
+		var ret bool
+		return ret
+	}
+	return *o.IsWhitehat
+}
+
+// GetIsWhitehatOk returns a tuple with the IsWhitehat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponsesAddress) GetIsWhitehatOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsWhitehat) {
+		return nil, false
+	}
+	return o.IsWhitehat, true
+}
+
+// HasIsWhitehat returns a boolean if a field has been set.
+func (o *ResponsesAddress) HasIsWhitehat() bool {
+	if o != nil && !IsNil(o.IsWhitehat) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsWhitehat gets a reference to the given bool and assigns it to the IsWhitehat field.
+func (o *ResponsesAddress) SetIsWhitehat(v bool) {
+	o.IsWhitehat = &v
+}
+
 // GetLastHeight returns the LastHeight field value if set, zero value otherwise.
 func (o *ResponsesAddress) GetLastHeight() int64 {
 	if o == nil || IsNil(o.LastHeight) {
@@ -330,6 +396,12 @@ func (o ResponsesAddress) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsForwarding) {
 		toSerialize["is_forwarding"] = o.IsForwarding
+	}
+	if !IsNil(o.IsFrozen) {
+		toSerialize["is_frozen"] = o.IsFrozen
+	}
+	if !IsNil(o.IsWhitehat) {
+		toSerialize["is_whitehat"] = o.IsWhitehat
 	}
 	if !IsNil(o.LastHeight) {
 		toSerialize["last_height"] = o.LastHeight
